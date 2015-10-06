@@ -17,6 +17,7 @@ public class SignIn extends javax.swing.JFrame {
     public SignIn() {
         this.setTitle("Mixtec Transcription: Sign-in");
         initComponents();
+        //ECL: Create SignInBE here
     }
 
     /**
