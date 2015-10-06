@@ -18,6 +18,8 @@ public class SignIn extends javax.swing.JFrame {
         this.setTitle("Mixtec Transcription: Sign-in");
         initComponents();
         //ECL: Create SignInBE here
+        backend = new SignInBE();
+        backend.setupDB;
     }
 
     /**
@@ -98,8 +100,19 @@ public class SignIn extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
-        Home home =new Home(jTextField3.getText());
-        home.setVisible(true);
+        
+        //ECL: Checking username and password
+        String username = jTextField3.getText();
+        String password = jPasswordField1.getText();
+        
+        if (backend.checkPassword(username, password)){
+            Home home =new Home(jTextField3.getText());
+            home.setVisible(true);
+            backend.closeDB();
+        }else{
+            jTextField3.setText("Login failed. Please try again.");
+            jPasswordField1.setText("");
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -148,4 +161,5 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+    private SignInBE backend;
 }
