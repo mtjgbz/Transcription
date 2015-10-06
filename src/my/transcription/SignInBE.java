@@ -46,10 +46,10 @@ public class SignInBE {
 			rs = stmt.executeQuery(query);
 			if (rs.getInt("Users") == 1){
 				//maybe just return true here and then use results to print something like this somewhere else
-				query = "SELECT Fname FROM USERS WHERE USERNAME LIKE '" + username + "';";
-				rs = stmt.executeQuery(query);
-				String fname = rs.getString("Fname"); 
-				System.out.println("Welcome, " + fname);
+				//query = "SELECT Fname FROM USERS WHERE USERNAME LIKE '" + username + "';";
+				//rs = stmt.executeQuery(query);
+				//String fname = rs.getString("Fname"); 
+				//System.out.println("Welcome, " + fname);
 				return true;
 			}else{
 				System.out.println("Login failed. Please try again.");
