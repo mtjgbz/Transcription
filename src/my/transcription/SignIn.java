@@ -100,13 +100,12 @@ public class SignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-        
         //ECL: Checking username and password
         String username = jTextField3.getText();
         String password = jPasswordField1.getText();
         
         if (backend.checkPassword(username, password)){
+            dispose();
             Home home =new Home(jTextField3.getText());
             home.setVisible(true);
             backend.closeDB();
