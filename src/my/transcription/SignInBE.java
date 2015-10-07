@@ -9,7 +9,7 @@ public class SignInBE {
 	private ResultSet rs;
 	
 	public SignInBE(){
-		//ECL: Checking things here
+		
 	}
 	
 	public void setupDB(){
