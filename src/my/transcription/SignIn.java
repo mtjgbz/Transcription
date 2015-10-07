@@ -10,6 +10,7 @@ package my.transcription;
  * @author Michael
  */
 public class SignIn extends javax.swing.JFrame {
+    private SignInBE backend;
 
     /**
      * Creates new form SignIn
@@ -19,7 +20,7 @@ public class SignIn extends javax.swing.JFrame {
         initComponents();
         //ECL: Create SignInBE here
         backend = new SignInBE();
-        backend.setupDB;
+        backend.setupDB();
     }
 
     /**
@@ -161,5 +162,4 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
-    private SignInBE backend;
 }
