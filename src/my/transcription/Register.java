@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
-
-
+//TODO: Popup for mismatched password
 
 /**
  *
@@ -13,11 +12,13 @@ package my.transcription;
  */
 public class Register extends javax.swing.JFrame {
 
+    private RegisterBE backend;
     /**
      * Creates new form Register
      */
     public Register() {
         initComponents();
+        backend = new RegisterBE();
     }
 
     /**
@@ -139,8 +140,25 @@ public class Register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-        new Home().setVisible(true);
+        //ECL: Getting login info and sending to insert
+        String fname = jTextField1.getText();
+        String lname = jTextField2.getText();
+        String username = jTextField3.getText();
+        String password = jPasswordField1.getText();
+        String match = jPasswordField2.getText();
+        int questionID = jComboBox1.getSelectedIndex();
+        String answer = jTextField4.getText();
+        if (backend.setInfo(fname, lname, username, password, match, 
+                questionID, answer)){
+            dispose();
+            new Home().setVisible(true);
+        }else{
+            //reset sensitive info when passwords don't match
+            jPasswordField1.setText("");
+            jPasswordField2.setText("");
+            jComboBox1.setSelectedIndex(0);
+            jTextField4.setText("");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
