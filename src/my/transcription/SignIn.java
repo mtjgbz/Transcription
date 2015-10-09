@@ -5,6 +5,8 @@
  */
 package my.transcription;
 
+import java.awt.Color;
+
 /**
  *
  * @author Michael
@@ -21,6 +23,7 @@ public class SignIn extends javax.swing.JFrame {
         //ECL: Create SignInBE here
         backend = new SignInBE();
         backend.setupDB();
+        
     }
 
     /**
@@ -51,6 +54,11 @@ public class SignIn extends javax.swing.JFrame {
         });
 
         jButton2.setText("Register");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Password");
 
@@ -127,6 +135,12 @@ public class SignIn extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+        Register reg = new Register();
+        reg.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
