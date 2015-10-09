@@ -101,15 +101,23 @@ public class SignIn extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //ECL: Checking username and password
+        //CAU: Checking if admin or not
         String username = jTextField3.getText();
         String password = jPasswordField1.getText();
         
         if (backend.checkPassword(username, password)){
             dispose();
-            Home home =new Home(jTextField3.getText());
-            home.setVisible(true);
+            Home home1 =new Home(jTextField3.getText());
+            home1.setVisible(true);
             backend.closeDB();
-        }else{
+            //need to add the admin page
+            if (backend.checkAdmin(username, password)) {
+                Home home2 =new Home(jTextField3.getText());
+                home2.setVisible(true);
+                backend.closeDB();
+            }
+        }   
+        else{
             jTextField3.setText("Login failed. Please try again.");
             jPasswordField1.setText("");
         }
