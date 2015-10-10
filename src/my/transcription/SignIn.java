@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
+//TODO: Popup for failed login.
 
 import java.awt.Color;
 
