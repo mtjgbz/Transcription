@@ -37,9 +37,10 @@ public class Test extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(665, 340));
         setMinimumSize(new java.awt.Dimension(665, 340));
         setPreferredSize(new java.awt.Dimension(665, 340));
-        setSize(new java.awt.Dimension(665, 340));
+        setResizable(false);
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -99,9 +100,9 @@ public class Test extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(jButton3)
-                .addGap(49, 49, 49))
+                .addGap(43, 43, 43))
         );
 
         pack();
