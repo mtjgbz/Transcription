@@ -74,6 +74,7 @@ public class Passive extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(665, 340));
         setMinimumSize(new java.awt.Dimension(665, 340));
         setPreferredSize(new java.awt.Dimension(665, 340));
+        setResizable(false);
         setSize(new java.awt.Dimension(665, 340));
 
         jFormattedTextField1.setText("jFormattedTextField1");
