@@ -6,7 +6,7 @@
 package my.transcription;
 import java.sql.*;
 import java.util.Scanner;
-//TODO: set up to simultaneously create new information in LESSONTRACK
+//TODO: set up to simultaneously create new information in LESSON_TRACK
 //TODO: set up query to get question id numbers
 //TODO: check if user already exists
 
