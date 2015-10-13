@@ -47,7 +47,7 @@ public class SignInBE {
 
     public boolean checkPassword(String username, String password){
         try {
-            String query = "SELECT COUNT(*) AS Users FROM USERS WHERE USERNAME LIKE '" + username + "' AND PASSWORD LIKE '" + password + "';";
+            String query = "SELECT COUNT(*) AS Users FROM USERS WHERE USERNAME = '" + username + "' AND PASSWORD = '" + password + "';";
             rs = stmt.executeQuery(query);
             if (rs.getInt("Users") == 1){
                 //maybe just return true here and then use results to print something like this somewhere else
