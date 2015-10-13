@@ -1,5 +1,7 @@
 package my.transcription;
 import java.sql.*;
+//TODO: move setupDB as part of constructor and close DB within the methods
+
 
 public class SignInBE {
     private String username;

@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
-
-
+//TODO: Popup for mismatched password
 
 /**
  *
@@ -13,11 +12,13 @@ package my.transcription;
  */
 public class Register extends javax.swing.JFrame {
 
+    private RegisterBE backend;
     /**
      * Creates new form Register
      */
     public Register() {
         initComponents();
+        backend = new RegisterBE();
     }
 
     /**
@@ -45,6 +46,10 @@ public class Register extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(450, 550));
+        setMinimumSize(new java.awt.Dimension(450, 550));
+        setResizable(false);
+        setSize(new java.awt.Dimension(450, 550));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +84,7 @@ public class Register extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
+                        .addGap(93, 93, 93)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
@@ -96,9 +101,9 @@ public class Register extends javax.swing.JFrame {
                                 .addComponent(jTextField1)
                                 .addComponent(jTextField4))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addComponent(jButton1)))
-                .addContainerGap(163, Short.MAX_VALUE))
+                        .addGap(163, 163, 163)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +136,7 @@ public class Register extends javax.swing.JFrame {
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jButton1)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,8 +144,25 @@ public class Register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-        new Home().setVisible(true);
+        //ECL: Getting login info and sending to insert
+        String fname = jTextField1.getText();
+        String lname = jTextField2.getText();
+        String username = jTextField3.getText();
+        String password = jPasswordField1.getText();
+        String match = jPasswordField2.getText();
+        int questionID = jComboBox1.getSelectedIndex();
+        String answer = jTextField4.getText();
+        if (backend.setInfo(fname, lname, username, password, match, 
+                questionID, answer)){
+            dispose();
+            new Home().setVisible(true);
+        }else{
+            //reset sensitive info when passwords don't match
+            jPasswordField1.setText("");
+            jPasswordField2.setText("");
+            jComboBox1.setSelectedIndex(0);
+            jTextField4.setText("");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
