@@ -25,6 +25,9 @@ public class SignIn extends javax.swing.JFrame {
         backend = new SignInBE();
         backend.setupDB();
         
+    //how to set the color of the JFrame
+    getContentPane().setBackground(new Color(187,209,221));
+        
     }
 
     /**
@@ -44,6 +47,7 @@ public class SignIn extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(187, 209, 221));
         setMaximumSize(new java.awt.Dimension(400, 332));
         setMinimumSize(new java.awt.Dimension(400, 332));
 
