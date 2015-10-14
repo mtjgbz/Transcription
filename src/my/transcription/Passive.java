@@ -71,16 +71,12 @@ public class Passive extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(665, 400));
         setMinimumSize(new java.awt.Dimension(665, 400));
-        setPreferredSize(new java.awt.Dimension(665, 400));
         setResizable(false);
-        setSize(new java.awt.Dimension(665, 400));
 
         jSlider1.setMaximumSize(new java.awt.Dimension(190, 30));
         jSlider1.setMinimumSize(new java.awt.Dimension(190, 30));
         jSlider1.setPreferredSize(new java.awt.Dimension(190, 30));
-        jSlider1.setSize(new java.awt.Dimension(190, 30));
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -104,7 +100,12 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
+        jMenu1.setText("Home");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -174,6 +175,11 @@ public class Passive extends javax.swing.JFrame {
     private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+       dispose();
+       new Home().setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
