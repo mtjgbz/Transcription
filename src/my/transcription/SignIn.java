@@ -48,10 +48,7 @@ public class SignIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(187, 209, 221));
-        setMaximumSize(new java.awt.Dimension(400, 340));
         setMinimumSize(new java.awt.Dimension(400, 340));
-        setPreferredSize(new java.awt.Dimension(400, 340));
-        setSize(new java.awt.Dimension(400, 340));
 
         jButton1.setText("Sign In");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +67,12 @@ public class SignIn extends javax.swing.JFrame {
         jLabel1.setText("Password");
 
         jLabel2.setText("User Name");
+
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,6 +152,30 @@ public class SignIn extends javax.swing.JFrame {
         Register reg = new Register();
         reg.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+        if(evt.getKeyCode()==10){
+            String username = jTextField3.getText();
+        String password = jPasswordField1.getText();
+        
+        if (backend.checkPassword(username, password)){
+            dispose();
+            Home home1 =new Home(jTextField3.getText());
+            home1.setVisible(true);
+            backend.closeDB();
+            //need to add the admin page
+            if (backend.checkAdmin(username, password)) {
+                Home home2 =new Home(jTextField3.getText());
+                home2.setVisible(true);
+                backend.closeDB();
+            }
+        }   
+        else{
+            jTextField3.setText("Login failed. Please try again.");
+            jPasswordField1.setText("");
+        }
+        }
+    }//GEN-LAST:event_jPasswordField1KeyPressed
 
     /**
      * @param args the command line arguments
