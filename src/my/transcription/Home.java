@@ -20,6 +20,7 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setTitle("Mixtec Transcription: Home");
+        getContentPane().setBackground(new Color(187,202,162));
         
     }
     public Home(String user){
