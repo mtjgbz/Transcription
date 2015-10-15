@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package my.transcription;
-//TODO: Popup for failed login.
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
+//import javax.swing.JDialog;
 
 /**
  *
@@ -25,11 +26,23 @@ public class SignIn extends javax.swing.JFrame {
         backend = new SignInBE();
         backend.setupDB();
         
-    //how to set the color of the JFrame
-    getContentPane().setBackground(new Color(187,209,221));
+        //how to set the color of the JFrame
+        getContentPane().setBackground(new Color(187,209,221));
         
     }
-
+    
+    
+    /**
+     * This method is called when the trainee/admin inputs incorrect credentials
+     * It pops up an error message window with an error message.
+     * @param infoMessage  Message displayed
+     * @param titleBar   Title of pop up window
+     * @author CAU
+     */
+    public static void errorMsg(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -121,7 +134,7 @@ public class SignIn extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //ECL: Checking username and password
         //CAU: Checking if admin or not
@@ -141,8 +154,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         }   
         else{
-            jTextField3.setText("Login failed. Please try again.");
-            jPasswordField1.setText("");
+            errorMsg("Sign-in failed.  Please try again.", "Sign-in");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -153,27 +165,27 @@ public class SignIn extends javax.swing.JFrame {
         reg.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
         if(evt.getKeyCode()==10){
             String username = jTextField3.getText();
-        String password = jPasswordField1.getText();
-        
-        if (backend.checkPassword(username, password)){
-            dispose();
-            Home home1 =new Home(jTextField3.getText());
-            home1.setVisible(true);
-            backend.closeDB();
-            //need to add the admin page
-            if (backend.checkAdmin(username, password)) {
-                Home home2 =new Home(jTextField3.getText());
-                home2.setVisible(true);
+            String password = jPasswordField1.getText();
+
+            if (backend.checkPassword(username, password)){
+                dispose();
+                Home home1 =new Home(jTextField3.getText());
+                home1.setVisible(true);
                 backend.closeDB();
+                //need to add the admin page
+                if (backend.checkAdmin(username, password)) {
+                    Home home2 =new Home(jTextField3.getText());
+                    home2.setVisible(true);
+                    backend.closeDB();
+                }
+            }   
+            else{
+                errorMsg("Sign-in failed.  Please try again.", "Sign-in");
             }
-        }   
-        else{
-            jTextField3.setText("Login failed. Please try again.");
-            jPasswordField1.setText("");
-        }
         }
     }//GEN-LAST:event_jPasswordField1KeyPressed
 
@@ -213,7 +225,6 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
