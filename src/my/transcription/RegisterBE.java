@@ -67,9 +67,10 @@ public class RegisterBE {
      * @return      True if the match enters the initial password.
      */
     public boolean passwordMatch(String pw){
-        if (pw.equals(password)){
+        if (pw.equals(password)) {
             return true;
-        }else{
+        }
+        else {
             return false;
         }
     }
@@ -91,10 +92,12 @@ public class RegisterBE {
             int changed = stmt.executeUpdate(query);
             if(changed < 1){
                 System.out.println("Insert failed.");
-            }else{
+            }
+            else{
                 closeDB();
             }
-        }catch(Exception e){
+        }
+        catch(Exception e){
             e.printStackTrace();
         }
                 
