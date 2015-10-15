@@ -74,7 +74,6 @@ public class SignInBE {
             return true;
         }
         else {
-            System.out.println("Login failed. Please try again.");
             return false;
         }
 
