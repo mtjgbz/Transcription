@@ -57,7 +57,6 @@ public class Home extends javax.swing.JFrame {
         setBackground(new java.awt.Color(187, 202, 162));
         setMaximumSize(new java.awt.Dimension(665, 400));
         setMinimumSize(new java.awt.Dimension(665, 400));
-        setPreferredSize(new java.awt.Dimension(665, 400));
         setResizable(false);
 
         lessonBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4" }));
@@ -143,9 +142,9 @@ public class Home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(292, Short.MAX_VALUE)
+                .addContainerGap(288, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(284, 284, 284))
+                .addGap(288, 288, 288))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -214,6 +213,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        dispose();
         new TraineeLog().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -225,8 +225,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        dispose();
-        new Active().setVisible(true);
+    new Active().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
