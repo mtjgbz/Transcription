@@ -6,11 +6,11 @@
 package my.transcription;
 import java.sql.*;
 import java.util.Scanner;
-//TODO: set up to simultaneously create new information in LESSON_TRACK upon registering
-//TODO: set up query to get security question id numbers for registration/forgotton password
-//TODO: check if user already exists
-//TODO: check for empty text fields in registration 
-//TODO: catching errors from SQL
+//TODO: (CAU) set up to simultaneously create new information in LESSON_TRACK upon registering 
+//TODO: (CAU) set up query to get security question id numbers for registration/forgotton password
+//TODO: (CAU) check if user already exists
+//TODO: (ECL) check for empty text fields in registration 
+//TODO: (ECL) catching errors from SQL
 
 /**
  *
