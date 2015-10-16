@@ -6,9 +6,11 @@
 package my.transcription;
 import java.sql.*;
 import java.util.Scanner;
-//TODO: set up to simultaneously create new information in LESSON_TRACK
-//TODO: set up query to get question id numbers
-//TODO: check if user already exists
+//TODO: (CAU) set up to simultaneously create new information in LESSON_TRACK upon registering 
+//TODO: (CAU) set up query to get security question id numbers for registration/forgotton password
+//TODO: (CAU) check if user already exists
+//TODO: (ECL) check for empty text fields in registration 
+//TODO: (ECL) catching errors from SQL
 
 /**
  *
@@ -67,9 +69,10 @@ public class RegisterBE {
      * @return      True if the match enters the initial password.
      */
     public boolean passwordMatch(String pw){
-        if (pw.equals(password)){
+        if (pw.equals(password)) {
             return true;
-        }else{
+        }
+        else {
             return false;
         }
     }
@@ -91,10 +94,12 @@ public class RegisterBE {
             int changed = stmt.executeUpdate(query);
             if(changed < 1){
                 System.out.println("Insert failed.");
-            }else{
+            }
+            else{
                 closeDB();
             }
-        }catch(Exception e){
+        }
+        catch(Exception e){
             e.printStackTrace();
         }
                 
