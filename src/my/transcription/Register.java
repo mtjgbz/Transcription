@@ -153,11 +153,13 @@ public class Register extends javax.swing.JFrame {
         String match = jPasswordField2.getText();
         int questionID = jComboBox1.getSelectedIndex();
         String answer = jTextField4.getText();
+        
         if (backend.setInfo(fname, lname, username, password, match, 
                 questionID, answer)){
             dispose();
             new Home().setVisible(true);
-        }else{
+        }
+        else{
             //reset sensitive info when passwords don't match
             jPasswordField1.setText("");
             jPasswordField2.setText("");
