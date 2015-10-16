@@ -94,6 +94,10 @@ public class Passive extends javax.swing.JFrame {
         });
 
         jButton1.setText("Play");
+        jButton1.setMaximumSize(new java.awt.Dimension(97, 29));
+        jButton1.setMinimumSize(new java.awt.Dimension(97, 29));
+        jButton1.setPreferredSize(new java.awt.Dimension(97, 29));
+        jButton1.setSize(new java.awt.Dimension(97, 29));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -133,7 +137,7 @@ public class Passive extends javax.swing.JFrame {
                             .addComponent(jFormattedTextField5)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(293, 293, 293)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -151,7 +155,7 @@ public class Passive extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 57, Short.MAX_VALUE))
         );
 
