@@ -4,17 +4,24 @@
  * and open the template in the editor.
  */
 package my.transcription;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Michael
  */
 public class Active extends javax.swing.JFrame {
-
+    
+    JFrame home;
     /**
      * Creates new form Active
      */
     public Active() {
+        initComponents();
+    }
+    
+    public Active(JFrame home) {
+        this.home=home;
         initComponents();
     }
 
@@ -30,9 +37,14 @@ public class Active extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(400, 160));
+        setMinimumSize(new java.awt.Dimension(400, 160));
 
         jButton1.setText("Practice");
+        jButton1.setMaximumSize(new java.awt.Dimension(97, 30));
+        jButton1.setMinimumSize(new java.awt.Dimension(97, 30));
+        jButton1.setPreferredSize(new java.awt.Dimension(97, 30));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -40,6 +52,9 @@ public class Active extends javax.swing.JFrame {
         });
 
         jButton2.setText("Test");
+        jButton2.setMaximumSize(new java.awt.Dimension(97, 30));
+        jButton2.setMinimumSize(new java.awt.Dimension(97, 30));
+        jButton2.setPreferredSize(new java.awt.Dimension(97, 30));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -52,19 +67,19 @@ public class Active extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(95, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
@@ -72,13 +87,15 @@ public class Active extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
         new Practice().setVisible(true);
+        dispose();
+        home.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        dispose();
         new Test().setVisible(true);
+        dispose();
+        home.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
