@@ -137,8 +137,8 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        dispose();
-        new Home().setVisible(true);
+         new Home().setVisible(true);
+         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
     /**

@@ -32,7 +32,10 @@ public class TraineeLog extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(665, 420));
+        setMaximumSize(new java.awt.Dimension(665, 415));
+        setMinimumSize(new java.awt.Dimension(665, 415));
+        setPreferredSize(new java.awt.Dimension(665, 415));
+        setSize(new java.awt.Dimension(665, 415));
 
         jMenu1.setText("Home");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -56,7 +59,7 @@ public class TraineeLog extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -65,8 +68,8 @@ public class TraineeLog extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        dispose();
-        new Home().setVisible(true);
+       new Home().setVisible(true);
+       dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
     /**

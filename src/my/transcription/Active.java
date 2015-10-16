@@ -88,14 +88,14 @@ public class Active extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new Practice().setVisible(true);
-        dispose();
         home.dispose();
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new Test().setVisible(true);
-        dispose();
         home.dispose();
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

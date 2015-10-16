@@ -142,9 +142,9 @@ public class SignIn extends javax.swing.JFrame {
         String password = jPasswordField1.getText();
         
         if (backend.checkPassword(username, password)){
-            dispose();
             Home home1 =new Home(jTextField3.getText());
             home1.setVisible(true);
+            dispose();
             backend.closeDB();
             //need to add the admin page
             if (backend.checkAdmin(username, password)) {
@@ -162,9 +162,9 @@ public class SignIn extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //ECL: Close the DB
         backend.closeDB();
-        dispose();
         Register reg = new Register();
         reg.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
