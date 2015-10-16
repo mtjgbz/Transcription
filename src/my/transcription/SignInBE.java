@@ -29,7 +29,9 @@ public class SignInBE {
     public void closeDB(){
         try {
             stmt.close();
-            rs.close();
+            if (rs != null){
+                rs.close();
+            }
             conn.close();
         } 
         catch (SQLException e) {

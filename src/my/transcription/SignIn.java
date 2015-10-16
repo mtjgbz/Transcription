@@ -160,6 +160,8 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //ECL: Close the DB
+        backend.closeDB();
         dispose();
         Register reg = new Register();
         reg.setVisible(true);

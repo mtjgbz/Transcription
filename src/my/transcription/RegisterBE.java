@@ -64,7 +64,7 @@ public class RegisterBE {
     }
     
     /**
-     * Checks the password against its entered match.
+     * Checks the password against its entered match. Also checks if either field is blank.
      * @param pw    password to be matched against the original.
      * @return      True if the match enters the initial password.
      */
@@ -72,6 +72,11 @@ public class RegisterBE {
         if (pw.equals(password)) {
             return true;
         }
+        //ECL: Checking if password fields are blank.
+        else if (password == "" || pw == ""){
+            return false;
+        }
+        
         else {
             return false;
         }
@@ -106,6 +111,29 @@ public class RegisterBE {
     }
     
     /**
+     * Checks if there are any empty fields submitted.
+     * @param fname     First name field
+     * @param lname     Last name field
+     * @param username  Username field
+     * @param answer    Security question answer field
+     * @return          True if fields are empty.
+     */
+    private boolean emptyFields(String fname, String lname, String username, String answer){
+        if(fname.equals("")){
+            return true;
+        }else if (lname.equals("")){
+            return true;
+        }else if (username.equals("")){
+            return true;
+        }else if (answer.equals("")){
+            return true;
+        }else{        
+            System.out.println("All fields have values.");
+            return false;
+        }
+    }
+    
+    /**
      * Sets the information given by the user.
      * @param f     First name as entered.
      * @param l     Last name as entered.
@@ -114,15 +142,21 @@ public class RegisterBE {
      * @param p2    Password match as entered.
      * @param id    Number of the security question selected.
      * @param a     Answer of the security question selected.
+     * @return      True if no errors were found in the information provided
      */
     public boolean setInfo(String f, String l, String u, String p, String p2, int id, String a){
         password = p;
-        if (!passwordMatch(p2)){ //ECL: If the two passwords given don't match.
+        if (!passwordMatch(p2)){ //ECL: If the two passwords given don't match or are blank
             password = null;
             System.out.println("Passwords do not match.");
             return false;
         }
         
+        //ECL: Check if any of the fields are empty - if they are, return false
+        if (emptyFields(f, l, u, a)){
+            password = null;
+            return false;
+        }
         fname = f;
         lname = l;
         username = u;

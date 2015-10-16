@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
-//TODO: Popup for mismatched password
+//TODO: Popup for mismatched password & incorrect login info
 
 /**
  *
@@ -182,6 +182,8 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        //ECL: close the backend before moving to the other page
+        backend.closeDB();
         dispose();
         new SignIn().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenu1MouseClicked
