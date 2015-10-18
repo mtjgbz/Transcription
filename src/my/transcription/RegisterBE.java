@@ -84,8 +84,9 @@ public class RegisterBE {
     
     /**
      * Inserts the user into the database.
+     * @return      error message if there is one.
      */
-    private void insertUser(){
+    private String insertUser(){
         String query = "INSERT INTO USERS" 
                 + "(Fname, Lname, Username, Password, "
                 + "QuestionID, QuestionAnswer) VALUES('"
@@ -105,9 +106,13 @@ public class RegisterBE {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
+            if(e.getMessage().contains("UNIQUE")){
+                return "Username already exists. Please try again.";
+            }
+            return e.getMessage();
         }
-                
+        
+        return null;
     }
     
     /**
@@ -142,20 +147,20 @@ public class RegisterBE {
      * @param p2    Password match as entered.
      * @param id    Number of the security question selected.
      * @param a     Answer of the security question selected.
-     * @return      True if no errors were found in the information provided
+     * @return      Null if there are no errors throughout the process.
      */
-    public boolean setInfo(String f, String l, String u, String p, String p2, int id, String a){
+    public String setInfo(String f, String l, String u, String p, String p2, int id, String a){
         password = p;
         if (!passwordMatch(p2)){ //ECL: If the two passwords given don't match or are blank
             password = null;
             System.out.println("Passwords do not match.");
-            return false;
+            return "Passwords do not match.";
         }
         
-        //ECL: Check if any of the fields are empty - if they are, return false
+        //ECL: Check if any of the fields are empty - if they are, produce error
         if (emptyFields(f, l, u, a)){
             password = null;
-            return false;
+            return "Not all fields were filled.";
         }
         fname = f;
         lname = l;
@@ -163,8 +168,12 @@ public class RegisterBE {
         questionID = id;
         questionAnswer = a;
         
-        insertUser();
+        //ECL: Catch any error messages that might exist and use for popup.
+        String success = insertUser();
+        if(success != null){
+            return success;
+        }
         
-        return true;
+        return null;
     }
 }
