@@ -115,6 +115,37 @@ public class RegisterBE {
         return null;
     }
     
+    private void setInitialLesson() {
+        String query1 = "INSERT INTO LESSON_TRACK "
+                + "(Username) "
+                + "SELECT Username "
+                + "FROM USERS "
+                + "WHERE Username = '" + username + "';";
+        
+//        String query2 = "UPDATE LESSON_TRACK "
+//                + "SET LatestLesson = 1, LatestSubLesson = a, "
+//                + "FurthestLesson = 1, FurthestSublesson = a "
+//                + "WHERE UserID= "
+//                + "(SELECT UserID FROM USERS WHERE Username = '" + username + "');";
+        try {
+            int changed1 = stmt.executeUpdate(query1);
+            //int changed2 = stmt.executeUpdate(query2);
+            if(changed1 < 1){
+                System.out.println("Insert failed.");
+            }
+//            if(changed2 < 1){
+//                System.out.println("Insert failed.");
+//            }
+            else{
+                System.out.println("Lesson Track updated");
+                closeDB();
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Checks if there are any empty fields submitted.
      * @param fname     First name field
@@ -171,6 +202,7 @@ public class RegisterBE {
         //ECL: Catch any error messages that might exist and use for popup.
         String success = insertUser();
         if(success != null){
+            setInitialLesson();
             return success;
         }
         
