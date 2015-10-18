@@ -101,9 +101,6 @@ public class RegisterBE {
             if(changed < 1){
                 System.out.println("Insert failed.");
             }
-            else{
-                closeDB();
-            }
         }
         catch(Exception e){
             if(e.getMessage().contains("UNIQUE")){
@@ -112,15 +109,11 @@ public class RegisterBE {
             return e.getMessage();
         }
         
-        return null;
+        return "";
     }
     
     private void setInitialLesson() {
-        String query1 = "INSERT INTO LESSON_TRACK "
-                + "(Username) "
-                + "SELECT Username "
-                + "FROM USERS "
-                + "WHERE Username = '" + username + "';";
+        String query1 = "INSERT INTO LESSON_TRACK(Username) VALUES ('" + username + "');";
         
 //        String query2 = "UPDATE LESSON_TRACK "
 //                + "SET LatestLesson = 1, LatestSubLesson = a, "
@@ -164,7 +157,7 @@ public class RegisterBE {
         }else if (answer.equals("")){
             return true;
         }else{        
-            System.out.println("All fields have values.");
+            //System.out.println("All fields have values.");
             return false;
         }
     }
@@ -206,6 +199,7 @@ public class RegisterBE {
             return success;
         }
         
-        return null;
+        closeDB();
+        return "";
     }
 }

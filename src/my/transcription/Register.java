@@ -174,7 +174,7 @@ public class Register extends javax.swing.JFrame {
         //ECL: Printing error messages
         String success = backend.setInfo(fname, lname, username, password, match,
                 questionID, answer);
-        if (success.equals(null)){
+        if (success.equals("")){
             dispose();
             new Home().setVisible(true);
         }
