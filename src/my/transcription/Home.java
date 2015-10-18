@@ -28,6 +28,7 @@ public class Home extends javax.swing.JFrame {
         this.setTitle("Mixtec Transcription: Home");
         this.user=user;
         getContentPane().setBackground(new Color(187,202,162));
+        jMenu2.setText(user);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -132,7 +133,7 @@ public class Home extends javax.swing.JFrame {
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("User");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
