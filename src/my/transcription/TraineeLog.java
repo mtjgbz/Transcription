@@ -10,11 +10,12 @@ package my.transcription;
  * @author mike
  */
 public class TraineeLog extends javax.swing.JFrame {
-
+    String user;
     /**
      * Creates new form TraineeLog
      */
-    public TraineeLog() {
+    public TraineeLog(String user) {
+        this.user=user;
         initComponents();
     }
 
@@ -68,7 +69,7 @@ public class TraineeLog extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-       new Home().setVisible(true);
+       new Home(user).setVisible(true);
        dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -102,7 +103,7 @@ public class TraineeLog extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TraineeLog().setVisible(true);
+             //   new TraineeLog().setVisible(true);
             }
         });
     }
