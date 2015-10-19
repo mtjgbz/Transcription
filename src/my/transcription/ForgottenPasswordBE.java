@@ -12,7 +12,10 @@ import java.util.Scanner;
  * @author Casey
  */
 public class ForgottenPasswordBE {
-
+// TODO: pull security question from DB and populate jTextField4 with it
+// TODO: pull inputted username and security question answer and check agianst DB entries.
+//       if match pull password from DB and populate jTextField3 with it
+    
     private String fname;
     private String lname;
     private String username;
