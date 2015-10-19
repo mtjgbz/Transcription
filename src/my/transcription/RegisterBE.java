@@ -6,7 +6,7 @@
 package my.transcription;
 import java.sql.*;
 import java.util.Scanner;
-//TODO: (CAU) set up query to get security question id numbers for registration/forgotton password
+
 
 /**
  *
