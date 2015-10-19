@@ -11,6 +11,14 @@ package my.transcription;
  */
 public class Practice extends javax.swing.JFrame {
     String user;
+    
+    Inclitics inc = new Inclitics();
+    Nasalizations nas = new Nasalizations();
+    ToneTable tone = new ToneTable();
+    
+    int incCount = 0;
+    int nasCount = 0;
+    int toneCount = 0;
     /**
      * Creates new form Practice
      */
@@ -160,20 +168,44 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        inc.dispose();
+        nas.dispose();
+        tone.dispose();
         new Home(user).setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        new Inclitics().setVisible(true);        // TODO add your handling code here:
+        if(incCount == 1) {
+           inc.dispose();
+           incCount = 0;
+        }
+        if(incCount == 0) {
+           inc.setVisible(true);
+           incCount++;
+        }   
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-        new Nasalizations().setVisible(true);// TODO add your handling code here:
+        if(nasCount == 1) {
+           nas.dispose();
+           nasCount = 0;
+        }
+        if(nasCount == 0) {
+           nas.setVisible(true);
+           nasCount++;
+        }
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
-        new ToneTable().setVisible(true); // TODO add your handling code here:
+        if(toneCount == 1) {
+           tone.dispose();
+           toneCount = 0;
+        }
+        if(toneCount == 0) {
+           tone.setVisible(true);
+           toneCount++;
+        }
     }//GEN-LAST:event_jMenu4MouseClicked
 
     /**

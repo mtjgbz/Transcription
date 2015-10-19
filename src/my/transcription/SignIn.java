@@ -93,7 +93,7 @@ public class SignIn extends javax.swing.JFrame {
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Forgotten Password?");
-        jLabel3.setForeground(new Color(110,111,218));
+        jLabel3.setForeground(new Color(54,91,143));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -145,9 +145,9 @@ public class SignIn extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addContainerGap())
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
