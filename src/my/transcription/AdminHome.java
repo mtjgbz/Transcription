@@ -5,17 +5,29 @@
  */
 package my.transcription;
 
+import java.awt.Color;
+
 /**
  *
  * @author mike
  */
 public class AdminHome extends javax.swing.JFrame {
-
+    private String user;
     /**
      * Creates new form AdminHome
      */
     public AdminHome() {
         initComponents();
+        this.setTitle("Mixtec Transcription: Administrator Home");
+        getContentPane().setBackground(new Color(187,202,162));
+    }
+    
+    public AdminHome(String user){
+        initComponents();
+        this.setTitle("Mixtec Transcription: Administrator Home");
+        this.user=user;
+        getContentPane().setBackground(new Color(187,202,162));
+        jMenu2.setText(user);
     }
 
     /**
