@@ -198,7 +198,7 @@ public class Register extends javax.swing.JFrame {
                 questionID, answer);
         if (success.equals("")){
             dispose();
-            new Home().setVisible(true);
+            new Home(username).setVisible(true);
         }
         else{
             System.out.println(success);

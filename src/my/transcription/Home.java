@@ -271,26 +271,38 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       if(!act.isShowing()) {
+        pass1.dispose();
+        inc.dispose();
+        nas.dispose();
+        tone.dispose();
+        if(!act.isShowing()) {
            act.setVisible(true);
+        }else{
+            act.toFront();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if(!tone.isShowing()) {
            tone.setVisible(true);
+        }else{
+            tone.toFront();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         if(!nas.isShowing()){
             nas.setVisible(true);
+        }else{
+            nas.toFront();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         if(!inc.isShowing()){
             inc.setVisible(true);
+        }else{
+            inc.toFront();
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
