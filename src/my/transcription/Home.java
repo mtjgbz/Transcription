@@ -14,6 +14,19 @@ import java.awt.Color;
 public class Home extends javax.swing.JFrame {
     private String lesson;
     private String user;
+    
+    Active act = new Active(this,user);
+    ChangePass pass1 = new ChangePass();
+    Inclitics inc = new Inclitics();
+    Nasalizations nas = new Nasalizations();
+    ToneTable tone = new ToneTable();
+    
+    int actCount = 0;
+    int pass1Count = 0;
+    int incCount = 0;
+    int nasCount = 0;
+    int toneCount = 0;
+    
     /**
      * Creates new form Home
      */
@@ -57,7 +70,6 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(187, 202, 162));
-        setMaximumSize(new java.awt.Dimension(665, 400));
         setMinimumSize(new java.awt.Dimension(665, 400));
         setResizable(false);
 
@@ -138,6 +150,9 @@ public class Home extends javax.swing.JFrame {
 
         jMenuItem1.setText("Change Password");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseReleased(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuItem1MouseClicked(evt);
             }
@@ -219,16 +234,34 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_lessonBoxActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        act.dispose();
+        pass1.dispose();
+        inc.dispose();
+        nas.dispose();
+        tone.dispose();
+        
         dispose();
         new SignIn().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        act.dispose();
+        pass1.dispose();
+        inc.dispose();
+        nas.dispose();
+        tone.dispose();
+        
         new TraineeLog(user).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        act.dispose();
+        pass1.dispose();
+        inc.dispose();
+        nas.dispose();
+        tone.dispose();
+        
         Passive pass = new Passive(user);
         pass.setVisible(true);
         dispose();
@@ -236,24 +269,64 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new Active(this,user).setVisible(true);
+        if(actCount == 1) {
+           act.dispose();
+           actCount = 0;
+        }
+        if(actCount == 0) {
+           act.setVisible(true);
+           actCount++;
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new ToneTable().setVisible(true);
+        if(toneCount == 1) {
+           tone.dispose();
+           toneCount = 0;
+        }
+        if(toneCount == 0) {
+           tone.setVisible(true);
+           toneCount++;
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        new Nasalizations().setVisible(true);
+        if(nasCount == 1) {
+           nas.dispose();
+           nasCount = 0;
+        }
+        if(nasCount == 0) {
+           nas.setVisible(true);
+           nasCount++;
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        new Inclitics().setVisible(true);
+        if(incCount == 1) {
+           inc.dispose();
+           incCount = 0;
+        }
+        if(incCount == 0) {
+           inc.setVisible(true);
+           incCount++;
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-       new ChangePass().setVisible(true);
+       //new ChangePass().setVisible(true);
+       pass1.setVisible(true);
     }//GEN-LAST:event_jMenuItem1MouseClicked
+
+    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+        if(pass1Count == 1) {
+           pass1.dispose();
+           pass1Count = 0;
+        }
+        if(pass1Count == 0) {
+           pass1.setVisible(true);
+           pass1Count++;
+        }
+    }//GEN-LAST:event_jMenuItem1MouseReleased
 
     /**
      * @param args the command line arguments
