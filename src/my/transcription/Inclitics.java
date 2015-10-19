@@ -29,8 +29,6 @@ public class Inclitics extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         jLabel1.setText("PUT INCLITICS HERE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
