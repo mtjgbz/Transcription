@@ -146,7 +146,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,6 +212,7 @@ public class SignIn extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         new ForgottenPassword().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
