@@ -21,7 +21,7 @@ public class RegisterBE {
     private String questionAnswer;
     
     private Connection conn;
-    private Statement stmt;
+    Statement stmt;
     //private ResultSet rs;
     
     /**
