@@ -21,12 +21,6 @@ public class Home extends javax.swing.JFrame {
     Nasalizations nas;
     ToneTable tone;
     
-    int actCount = 0;
-    int pass1Count = 0;
-    int incCount = 0;
-    int nasCount = 0;
-    int toneCount = 0;
-    
     /**
      * Creates new form Home
      */
@@ -277,13 +271,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(actCount == 1) {
-           act.dispose();
-           actCount = 0;
-        }
-        if(actCount == 0) {
+       if(!act.isShowing()) {
            act.setVisible(true);
-           actCount++;
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -311,13 +300,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
-        if(pass1Count == 1) {
-           pass1.dispose();
-           pass1Count = 0;
-        }
-        if(pass1Count == 0) {
+        if(!pass1.isShowing()) {
            pass1.setVisible(true);
-           pass1Count++;
         }
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
