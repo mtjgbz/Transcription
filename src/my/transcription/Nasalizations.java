@@ -29,8 +29,6 @@ public class Nasalizations extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         jLabel1.setText("PUT TABLE HERE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
