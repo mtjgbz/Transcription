@@ -165,13 +165,14 @@ public class SignIn extends javax.swing.JFrame {
             home1.setVisible(true);
             dispose();
             backend.closeDB();
-            //need to add the admin page
-            if (backend.checkAdmin(username, password)) {
-                Home home2 =new Home(jTextField3.getText());
-                home2.setVisible(true);
-                backend.closeDB();
-            }
+            
+            
         }   
+        if (backend.checkAdmin(username)) {
+            AdminHome home2 =new AdminHome(jTextField3.getText());
+            home2.setVisible(true);
+            backend.closeDB();
+            }
         else{
             errorMsg("Sign-in failed.  Please try again.", "Sign-in");
         }
@@ -198,7 +199,7 @@ public class SignIn extends javax.swing.JFrame {
                 home1.setVisible(true);
                 backend.closeDB();
                 //need to add the admin page
-                if (backend.checkAdmin(username, password)) {
+                if (backend.checkAdmin(username)) {
                     Home home2 =new Home(jTextField3.getText());
                     home2.setVisible(true);
                     backend.closeDB();
