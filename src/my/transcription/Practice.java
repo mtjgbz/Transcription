@@ -10,12 +10,13 @@ package my.transcription;
  * @author mike
  */
 public class Practice extends javax.swing.JFrame {
-
+    String user;
     /**
      * Creates new form Practice
      */
-    public Practice() {
+    public Practice(String user) {
         initComponents();
+        this.user=user;
     }
 
     /**
@@ -159,7 +160,7 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        new Home().setVisible(true);
+        new Home(user).setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -205,7 +206,7 @@ public class Practice extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Practice().setVisible(true);
+                //new Practice().setVisible(true);
             }
         });
     }

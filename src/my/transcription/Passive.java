@@ -21,11 +21,12 @@ public class Passive extends javax.swing.JFrame {
     AudioInputStream audioIn;
     Clip clip;
     File file;
-    
+    String user;
     /**
      * Creates new form Passive
      */
-    public Passive() {
+    public Passive(String user) {
+        this.user=user;
         playing = false;
         file= new File("oGolden.wav");
         initComponents();
@@ -204,7 +205,7 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-       new Home().setVisible(true);
+       new Home(user).setVisible(true);
        dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -250,7 +251,7 @@ public class Passive extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Passive().setVisible(true);
+                //new Passive().setVisible(true);
             }
         });
     }

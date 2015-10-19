@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 public class Active extends javax.swing.JFrame {
     
     JFrame home;
+    String user;
     /**
      * Creates new form Active
      */
@@ -20,8 +21,9 @@ public class Active extends javax.swing.JFrame {
         initComponents();
     }
     
-    public Active(JFrame home) {
+    public Active(JFrame home, String user) {
         this.home=home;
+        this.user=user;
         initComponents();
     }
 
@@ -87,13 +89,13 @@ public class Active extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new Practice().setVisible(true);
+        new Practice(user).setVisible(true);
         home.dispose();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Test().setVisible(true);
+        new Test(user).setVisible(true);
         home.dispose();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
