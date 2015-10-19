@@ -11,11 +11,13 @@ package my.transcription;
  */
 public class ForgottenPassword extends javax.swing.JFrame {
 
+    private ForgottenPasswordBE backend;
     /**
      * Creates new form ForgottenPassword
      */
     public ForgottenPassword() {
         initComponents();
+        backend = new ForgottenPasswordBE();
     }
 
     /**
@@ -41,6 +43,11 @@ public class ForgottenPassword extends javax.swing.JFrame {
         jLabel1.setText("Username");
 
         jButton1.setText("Validate");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Your Password:");
 
@@ -94,6 +101,13 @@ public class ForgottenPassword extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Getting username and security question info and sending to validatePassword
+        String username = jTextField1.getText();
+        String answer = jTextField2.getText();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

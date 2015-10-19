@@ -38,6 +38,12 @@ public class Register extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
+    /**
+     * @author Casey
+     * Method pulls security questions with query from the Database,
+     * executes the query,
+     * and populates the JComboBox with them
+     */
     private void populateSecurityQuestions() {
         try {
             String query = "SELECT Question FROM SECURITY_QUESTIONS;";
