@@ -13,6 +13,7 @@ public class Test extends javax.swing.JFrame {
     String user;
     /**
      * Creates new form Test
+     * @param user
      */
     public Test(String user) {
         this.user=user;

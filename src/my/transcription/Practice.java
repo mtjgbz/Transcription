@@ -21,6 +21,7 @@ public class Practice extends javax.swing.JFrame {
     int toneCount = 0;
     /**
      * Creates new form Practice
+     * @param user
      */
     public Practice(String user) {
         initComponents();
