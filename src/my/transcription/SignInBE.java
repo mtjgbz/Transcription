@@ -69,16 +69,12 @@ public class SignInBE {
 
         return false;
     }
-
-    public boolean checkAdmin(String username, String password) {
-
-        if(username == "admin") {
-            return true;
-        }
-        else {
-            return false;
-        }
+    
+    public boolean checkAdmin(String username) {
+       
+        return username.equals("admin");
 
     }
+    
 
 }
