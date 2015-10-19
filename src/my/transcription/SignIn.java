@@ -8,6 +8,8 @@ package my.transcription;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 //import javax.swing.JDialog;
+//TODO: add admin home page
+//TODO: Figure out how to carry username throughout windows
 
 /**
  *

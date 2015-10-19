@@ -6,11 +6,7 @@
 package my.transcription;
 import java.sql.*;
 import java.util.Scanner;
-//TODO: (CAU) set up to simultaneously create new information in LESSON_TRACK upon registering 
 //TODO: (CAU) set up query to get security question id numbers for registration/forgotton password
-//TODO: (CAU) check if user already exists
-//TODO: (ECL) check for empty text fields in registration 
-//TODO: (ECL) catching errors from SQL
 
 /**
  *
@@ -84,8 +80,9 @@ public class RegisterBE {
     
     /**
      * Inserts the user into the database.
+     * @return      error message if there is one.
      */
-    private void insertUser(){
+    private String insertUser(){
         String query = "INSERT INTO USERS" 
                 + "(Fname, Lname, Username, Password, "
                 + "QuestionID, QuestionAnswer) VALUES('"
@@ -100,16 +97,44 @@ public class RegisterBE {
             if(changed < 1){
                 System.out.println("Insert failed.");
             }
+        }
+        catch(Exception e){
+            if(e.getMessage().contains("UNIQUE")){
+                return "Username already exists. Please try again.";
+            }
+            return e.getMessage();
+        }
+        
+        return "";
+    }
+    
+    private void setInitialLesson() {
+        String query1 = "INSERT INTO LESSON_TRACK(Username) VALUES ('" + username + "');";
+        
+//        String query2 = "UPDATE LESSON_TRACK "
+//                + "SET LatestLesson = 1, LatestSubLesson = a, "
+//                + "FurthestLesson = 1, FurthestSublesson = a "
+//                + "WHERE UserID= "
+//                + "(SELECT UserID FROM USERS WHERE Username = '" + username + "');";
+        try {
+            int changed1 = stmt.executeUpdate(query1);
+            //int changed2 = stmt.executeUpdate(query2);
+            if(changed1 < 1){
+                System.out.println("Insert failed.");
+            }
+//            if(changed2 < 1){
+//                System.out.println("Insert failed.");
+//            }
             else{
+                System.out.println("Lesson Track updated");
                 closeDB();
             }
         }
-        catch(Exception e){
+        catch(Exception e) {
             e.printStackTrace();
         }
-                
     }
-    
+
     /**
      * Checks if there are any empty fields submitted.
      * @param fname     First name field
@@ -128,7 +153,7 @@ public class RegisterBE {
         }else if (answer.equals("")){
             return true;
         }else{        
-            System.out.println("All fields have values.");
+            //System.out.println("All fields have values.");
             return false;
         }
     }
@@ -142,20 +167,20 @@ public class RegisterBE {
      * @param p2    Password match as entered.
      * @param id    Number of the security question selected.
      * @param a     Answer of the security question selected.
-     * @return      True if no errors were found in the information provided
+     * @return      Null if there are no errors throughout the process.
      */
-    public boolean setInfo(String f, String l, String u, String p, String p2, int id, String a){
+    public String setInfo(String f, String l, String u, String p, String p2, int id, String a){
         password = p;
         if (!passwordMatch(p2)){ //ECL: If the two passwords given don't match or are blank
             password = null;
             System.out.println("Passwords do not match.");
-            return false;
+            return "Passwords do not match.";
         }
         
-        //ECL: Check if any of the fields are empty - if they are, return false
+        //ECL: Check if any of the fields are empty - if they are, produce error
         if (emptyFields(f, l, u, a)){
             password = null;
-            return false;
+            return "Not all fields were filled.";
         }
         fname = f;
         lname = l;
@@ -163,8 +188,14 @@ public class RegisterBE {
         questionID = id;
         questionAnswer = a;
         
-        insertUser();
+        //ECL: Catch any error messages that might exist and use for popup.
+        String success = insertUser();
+        if(success != null){
+            setInitialLesson();
+            return success;
+        }
         
-        return true;
+        closeDB();
+        return "";
     }
 }

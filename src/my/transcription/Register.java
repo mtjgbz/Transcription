@@ -6,6 +6,10 @@
 package my.transcription;
 //TODO: Popup for mismatched password & incorrect login info
 
+import javax.swing.JOptionPane;
+
+
+
 /**
  *
  * @author mike
@@ -19,6 +23,10 @@ public class Register extends javax.swing.JFrame {
     public Register() {
         initComponents();
         backend = new RegisterBE();
+    }
+    
+    public static void errorMsg(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }
 
     /**
@@ -163,17 +171,21 @@ public class Register extends javax.swing.JFrame {
         int questionID = jComboBox1.getSelectedIndex();
         String answer = jTextField4.getText();
         
-        if (backend.setInfo(fname, lname, username, password, match, 
-                questionID, answer)){
+        //ECL: Printing error messages
+        String success = backend.setInfo(fname, lname, username, password, match,
+                questionID, answer);
+        if (success.equals("")){
             dispose();
             new Home().setVisible(true);
         }
         else{
+            System.out.println(success);
             //reset sensitive info when passwords don't match
             jPasswordField1.setText("");
             jPasswordField2.setText("");
             jComboBox1.setSelectedIndex(0);
             jTextField4.setText("");
+            errorMsg(success, "Registration");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
