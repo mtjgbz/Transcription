@@ -46,14 +46,12 @@ public class Practice extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAutoRequestFocus(false);
         setMinimumSize(new java.awt.Dimension(665, 420));
         setResizable(false);
 
         jSlider1.setMaximumSize(new java.awt.Dimension(190, 30));
         jSlider1.setMinimumSize(new java.awt.Dimension(190, 30));
         jSlider1.setPreferredSize(new java.awt.Dimension(190, 30));
-        jSlider1.setSize(new java.awt.Dimension(190, 30));
 
         jFormattedTextField1.setText("jFormattedTextField1");
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -176,18 +174,24 @@ public class Practice extends javax.swing.JFrame {
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         if(!inc.isShowing()) {
            inc.setVisible(true);
+        }else{
+            inc.toFront();
         }
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
          if(!nas.isShowing()) {
            nas.setVisible(true);
+        }else{
+            nas.toFront();
         }
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
          if(!tone.isShowing()) {
            tone.setVisible(true);
+        }else{
+            tone.toFront();
         }
     }//GEN-LAST:event_jMenu4MouseClicked
 

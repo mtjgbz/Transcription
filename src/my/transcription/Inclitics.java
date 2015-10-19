@@ -29,6 +29,9 @@ public class Inclitics extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setAutoRequestFocus(false);
+        setFocusTraversalPolicyProvider(true);
+
         jLabel1.setText("PUT INCLITICS HERE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

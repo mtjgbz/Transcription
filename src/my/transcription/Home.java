@@ -314,6 +314,8 @@ public class Home extends javax.swing.JFrame {
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
         if(!pass1.isShowing()) {
            pass1.setVisible(true);
+        }else{
+            pass1.toFront();
         }
     }//GEN-LAST:event_jMenuItem1MouseReleased
 

@@ -108,7 +108,6 @@ public class Passive extends javax.swing.JFrame {
         jButton1.setMaximumSize(new java.awt.Dimension(97, 29));
         jButton1.setMinimumSize(new java.awt.Dimension(97, 29));
         jButton1.setPreferredSize(new java.awt.Dimension(97, 29));
-        jButton1.setSize(new java.awt.Dimension(97, 29));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -224,18 +223,24 @@ public class Passive extends javax.swing.JFrame {
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
          if(!inc.isShowing()) {
            inc.setVisible(true);
+        }else{
+            inc.toFront();
         }
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         if(!nas.isShowing()) {
            nas.setVisible(true);
+        }else{
+            nas.toFront();
         }
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         if(!tone.isShowing()) {
            tone.setVisible(true);
+        }else{
+           tone.toFront();
         }
     }//GEN-LAST:event_jMenu4MouseClicked
 
