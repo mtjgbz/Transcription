@@ -15,11 +15,11 @@ public class Home extends javax.swing.JFrame {
     private String lesson;
     private String user;
     
-    Active act = new Active(this,user);
-    ChangePass pass1 = new ChangePass();
-    Inclitics inc = new Inclitics();
-    Nasalizations nas = new Nasalizations();
-    ToneTable tone = new ToneTable();
+    Active act;
+    ChangePass pass1;
+    Inclitics inc;
+    Nasalizations nas;
+    ToneTable tone;
     
     int actCount = 0;
     int pass1Count = 0;
@@ -42,6 +42,14 @@ public class Home extends javax.swing.JFrame {
         this.user=user;
         getContentPane().setBackground(new Color(187,202,162));
         jMenu2.setText(user);
+        act = new Active(this,user);
+        pass1 = new ChangePass();
+        inc = new Inclitics();
+        nas = new Nasalizations();
+        tone = new ToneTable();
+        
+        
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.

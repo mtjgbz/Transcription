@@ -12,16 +12,16 @@ import javax.swing.JFrame;
  */
 public class Active extends javax.swing.JFrame {
     
-    JFrame home;
+    Home home;
     String user;
     /**
      * Creates new form Active
      */
-    public Active() {
-        initComponents();
-    }
+    //public Active() {
+    //    initComponents();
+    //}
     
-    public Active(JFrame home, String user) {
+    public Active(Home home, String user) {
         this.home=home;
         this.user=user;
         initComponents();
@@ -130,7 +130,7 @@ public class Active extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Active().setVisible(true);
+            //    new Active().setVisible(true);
             }
         });
     }
