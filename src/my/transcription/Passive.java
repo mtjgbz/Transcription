@@ -198,6 +198,7 @@ public class Passive extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         if(playing==false){
+            clip.setMicrosecondPosition(10000000);
             clip.start();
             playing = true;
             jButton1.setText("Pause");
