@@ -41,10 +41,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(400, 350));
         setMinimumSize(new java.awt.Dimension(400, 350));
-        setPreferredSize(new java.awt.Dimension(400, 350));
-        setSize(new java.awt.Dimension(400, 350));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +59,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("New Password:");
+        jLabel2.setText("Your Password:");
 
         jLabel3.setText("Security Question Answer:");
 
