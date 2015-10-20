@@ -21,6 +21,7 @@ public class Practice extends javax.swing.JFrame {
      * @param user
      */
     public Practice(String user) {
+        this.setTitle("Mixtec Transcription: Practice");
         initComponents();
         this.user=user;
     }

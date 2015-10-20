@@ -19,6 +19,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
      */
     public ForgottenPassword() {
         initComponents();
+        jTextField2.setEditable(false);
         backend = new ForgottenPasswordBE();
         
     }

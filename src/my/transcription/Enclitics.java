@@ -12,7 +12,7 @@ package my.transcription;
 public class Enclitics extends javax.swing.JFrame {
 
     /**
-     * Creates new form Inclitics
+     * Creates new form Enclitics
      */
     public Enclitics() {
         initComponents();

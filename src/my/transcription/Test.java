@@ -18,6 +18,7 @@ public class Test extends javax.swing.JFrame {
     public Test(String user) {
         this.user=user;
         initComponents();
+        this.setTitle("Mixtec Transcription: Test");
     }
 
     /**
