@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class ForgottenPasswordBE {
 // TODO: pull security question from DB and populate jTextField4 with it
-// TODO: pull inputted username and security question answer and check agianst DB entries.
+// TODO: pull inputted username and sec ques ans and check agianst DB entries.
 //       if match pull password from DB and populate jTextField3 with it
     
     private String fname;
@@ -25,7 +25,7 @@ public class ForgottenPasswordBE {
     
     private Connection conn;
     Statement stmt;
-    //private ResultSet rs;
+    private ResultSet rs;
     
     /**
      * Constructor to set up database.
@@ -54,7 +54,7 @@ public class ForgottenPasswordBE {
      */
     public void closeDB(){
         try{
-            //rs.close();
+            rs.close();
             stmt.close();
             conn.close();
         }
@@ -64,6 +64,52 @@ public class ForgottenPasswordBE {
         
     }
     
+    /**
+     * @author Casey
+     * @param un the username that the method will pull the security question from
+     * @return the security question matching the username given
+     */
+    public String retrieveSecurityQuestion(String un) {
+        username = un;
+        String question = null;
+        try {
+            // 1st Query to pull QuestionID from USERS
+            String query1 = "SELECT QuestionID FROM USERS WHERE Username='" + username + "';";
+        
+            // Execute first query and store in questionID
+            rs = stmt.executeQuery(query1);
+            questionID = rs.getInt("QuestionID");
+            
+            // 2nd Query to pull question from SECURITY_QUESTIONS using QuestionID
+            String query2 = "SELECT Question FROM SECURITY_QUESTIONS WHERE QuestionID ='" + questionID + "';";
+            // Execute second query and store result as a string
+            rs = stmt.executeQuery(query2);
+            question = rs.getString("Question");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        // return the security question
+        return question;
+    }
     
+    public String validatePassword(String un, String qAnswer) {
+        username = un; 
+        questionAnswer = qAnswer;
+        try {
+            String query = "SELECT Password FROM USERS "
+                + "WHERE QuestionID ='" + questionID + "' "
+                + "AND Username='" + username + "' "
+                + "AND QuestionAnswer='" + questionAnswer + "';";
+        
+            rs = stmt.executeQuery(query);
+            password = rs.getString("Password");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        
+        return password;
+    }
     
 }

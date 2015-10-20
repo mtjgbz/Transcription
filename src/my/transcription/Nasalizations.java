@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
-
+import java.awt.*;
 /**
  *
  * @author mike
@@ -18,6 +18,14 @@ public class Nasalizations extends javax.swing.JFrame {
         initComponents();
     }
 
+    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+    Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+    
+    int x = (int) rect.getMaxX();
+    int y = (int) rect.getMaxY();
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,6 +36,8 @@ public class Nasalizations extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+
+        setLocation(new java.awt.Point(x, y));
 
         jLabel1.setText("PUT TABLE HERE");
 
@@ -49,7 +59,6 @@ public class Nasalizations extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

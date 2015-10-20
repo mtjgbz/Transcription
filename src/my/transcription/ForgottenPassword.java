@@ -5,6 +5,8 @@
  */
 package my.transcription;
 
+import javax.swing.JOptionPane;
+// TODO: Print error messages
 /**
  *
  * @author mike
@@ -18,6 +20,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
     public ForgottenPassword() {
         initComponents();
         backend = new ForgottenPasswordBE();
+        
     }
 
     /**
@@ -126,15 +129,24 @@ public class ForgottenPassword extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public static void errorMsg(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Getting username and security question info and sending to validatePassword
+        // Getting username and security question answer info and sending to validatePassword
         String username = jTextField1.getText();
         String answer = jTextField2.getText();
+        
+        String password = backend.validatePassword(username, answer);
+        jTextField3.setText(password);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        String username = jTextField1.getText();
+        String secQuestion = backend.retrieveSecurityQuestion(username);
+        jTextField4.setText(secQuestion);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
