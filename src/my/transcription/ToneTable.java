@@ -5,6 +5,8 @@
  */
 package my.transcription;
 
+import java.awt.*;
+
 /**
  *
  * @author mike
@@ -17,6 +19,13 @@ public class ToneTable extends javax.swing.JFrame {
     public ToneTable() {
         initComponents();
     }
+    
+    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+    Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+    
+    int x = 0;
+    int y = ((int) rect.getMaxY())/ 3;;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,6 +37,8 @@ public class ToneTable extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+
+        setLocation(new java.awt.Point(x, y));
 
         jLabel1.setText("PUT THE TABLE HERE");
 
@@ -49,7 +60,6 @@ public class ToneTable extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

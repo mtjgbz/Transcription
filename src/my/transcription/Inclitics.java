@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
-
+import java.awt.*;
 /**
  *
  * @author mike
@@ -17,6 +17,13 @@ public class Inclitics extends javax.swing.JFrame {
     public Inclitics() {
         initComponents();
     }
+    
+    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+    Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+    
+    int x = (int) rect.getMaxX();
+    int y = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +38,7 @@ public class Inclitics extends javax.swing.JFrame {
 
         setAutoRequestFocus(false);
         setFocusTraversalPolicyProvider(true);
+        setLocation(new java.awt.Point(x, y));
 
         jLabel1.setText("PUT INCLITICS HERE");
 
@@ -52,7 +60,6 @@ public class Inclitics extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

@@ -312,6 +312,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+        act.dispose();
+        pass1.dispose();
+        inc.dispose();
+        nas.dispose();
+        tone.dispose();
         if(!pass1.isShowing()) {
            pass1.setVisible(true);
         }else{
