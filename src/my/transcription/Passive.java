@@ -23,13 +23,10 @@ public class Passive extends javax.swing.JFrame {
     File file;
     String user;
     
-    Enclitics inc = new Enclitics();
+    Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
-    
-    int incCount = 0;
-    int nasCount = 0;
-    int toneCount = 0;
+   
     /**
      * Creates new form Passive
      */
@@ -215,7 +212,7 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-       inc.dispose();
+       enc.dispose();
        nas.dispose();
        tone.dispose();
        new Home(user).setVisible(true);
@@ -223,10 +220,10 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-         if(!inc.isShowing()) {
-           inc.setVisible(true);
+         if(!enc.isShowing()) {
+           enc.setVisible(true);
         }else{
-            inc.toFront();
+            enc.toFront();
         }
     }//GEN-LAST:event_jMenu2MouseClicked
 
