@@ -15,6 +15,7 @@ public class ForgottenPasswordBE {
 // TODO: pull security question from DB and populate jTextField4 with it
 // TODO: pull inputted username and sec ques ans and check agianst DB entries.
 //       if match pull password from DB and populate jTextField3 with it
+// TODO: ResultSet closed error
     
     private String fname;
     private String lname;
