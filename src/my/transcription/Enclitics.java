@@ -4,26 +4,19 @@
  * and open the template in the editor.
  */
 package my.transcription;
-import java.awt.*;
+
 /**
  *
  * @author mike
  */
-public class Inclitics extends javax.swing.JFrame {
+public class Enclitics extends javax.swing.JFrame {
 
     /**
      * Creates new form Inclitics
      */
-    public Inclitics() {
+    public Enclitics() {
         initComponents();
     }
-    
-    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
-    Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-    
-    int x = (int) rect.getMaxX();
-    int y = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,10 +28,6 @@ public class Inclitics extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-
-        setAutoRequestFocus(false);
-        setFocusTraversalPolicyProvider(true);
-        setLocation(new java.awt.Point(x, y));
 
         jLabel1.setText("PUT INCLITICS HERE");
 
@@ -60,6 +49,7 @@ public class Inclitics extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -79,20 +69,21 @@ public class Inclitics extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inclitics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Enclitics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inclitics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Enclitics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inclitics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Enclitics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inclitics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Enclitics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inclitics().setVisible(true);
+                new Enclitics().setVisible(true);
             }
         });
     }

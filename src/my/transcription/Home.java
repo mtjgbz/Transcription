@@ -17,7 +17,7 @@ public class Home extends javax.swing.JFrame {
     
     Active act;
     ChangePass pass1;
-    Inclitics inc;
+    Enclitics inc;
     Nasalizations nas;
     ToneTable tone;
     
@@ -38,7 +38,7 @@ public class Home extends javax.swing.JFrame {
         jMenu2.setText(user);
         act = new Active(this,user);
         pass1 = new ChangePass();
-        inc = new Inclitics();
+        inc = new Enclitics();
         nas = new Nasalizations();
         tone = new ToneTable();
         

@@ -23,7 +23,7 @@ public class Passive extends javax.swing.JFrame {
     File file;
     String user;
     
-    Inclitics inc = new Inclitics();
+    Enclitics inc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
     

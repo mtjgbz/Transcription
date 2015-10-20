@@ -12,7 +12,7 @@ package my.transcription;
 public class Practice extends javax.swing.JFrame {
     String user;
     
-    Inclitics inc = new Inclitics();
+    Enclitics inc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
 
