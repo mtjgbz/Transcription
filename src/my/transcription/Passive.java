@@ -32,6 +32,7 @@ public class Passive extends javax.swing.JFrame {
     int toneCount = 0;
     /**
      * Creates new form Passive
+     * @param user
      */
     public Passive(String user) {
         this.user=user;
@@ -39,6 +40,7 @@ public class Passive extends javax.swing.JFrame {
         file= new File("oGolden.wav");
         initComponents();
         this.setTitle("Mixtec Transcription: Passive Training");
+        jFormattedTextField1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
         try {
             audioIn = AudioSystem.getAudioInputStream(file);
             clip = AudioSystem.getClip();
@@ -52,9 +54,19 @@ public class Passive extends javax.swing.JFrame {
         }
         
     }
+
+    /**
+     *
+     * @param string
+     */
     public void setLesson(String string){
         this.lesson = string;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getLesson(){
         return this.lesson;
     }
