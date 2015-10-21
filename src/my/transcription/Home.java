@@ -17,7 +17,7 @@ public class Home extends javax.swing.JFrame {
     
     Active act;
     ChangePass pass1;
-    Enclitics inc;
+    Enclitics enc;
     Nasalizations nas;
     ToneTable tone;
     
@@ -38,7 +38,7 @@ public class Home extends javax.swing.JFrame {
         jMenu2.setText(user);
         act = new Active(this,user);
         pass1 = new ChangePass();
-        inc = new Enclitics();
+        enc = new Enclitics();
         nas = new Nasalizations();
         tone = new ToneTable();
         
@@ -137,7 +137,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setText("Inclitics");
+        jButton7.setText("Enclitics");
         jButton7.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,7 +238,7 @@ public class Home extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         act.dispose();
         pass1.dispose();
-        inc.dispose();
+        enc.dispose();
         nas.dispose();
         tone.dispose();
         
@@ -249,7 +249,7 @@ public class Home extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         act.dispose();
         pass1.dispose();
-        inc.dispose();
+        enc.dispose();
         nas.dispose();
         tone.dispose();
         
@@ -260,7 +260,7 @@ public class Home extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         act.dispose();
         pass1.dispose();
-        inc.dispose();
+        enc.dispose();
         nas.dispose();
         tone.dispose();
         
@@ -272,7 +272,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         pass1.dispose();
-        inc.dispose();
+        enc.dispose();
         nas.dispose();
         tone.dispose();
         if(!act.isShowing()) {
@@ -299,10 +299,10 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        if(!inc.isShowing()){
-            inc.setVisible(true);
+        if(!enc.isShowing()){
+            enc.setVisible(true);
         }else{
-            inc.toFront();
+            enc.toFront();
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -314,7 +314,7 @@ public class Home extends javax.swing.JFrame {
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
         act.dispose();
         pass1.dispose();
-        inc.dispose();
+        enc.dispose();
         nas.dispose();
         tone.dispose();
         if(!pass1.isShowing()) {
