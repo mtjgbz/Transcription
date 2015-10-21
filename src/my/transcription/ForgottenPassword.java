@@ -19,7 +19,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
      */
     public ForgottenPassword() {
         initComponents();
-        jTextField2.setEditable(false);
+        jTextField4.setEditable(false);
         backend = new ForgottenPasswordBE();
         
     }
@@ -35,7 +35,6 @@ public class ForgottenPassword extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -43,6 +42,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -62,11 +62,6 @@ public class ForgottenPassword extends javax.swing.JFrame {
 
         jLabel1.setText("            Username:");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jTextField2.setMaximumSize(new java.awt.Dimension(198, 28));
-        jTextField2.setMinimumSize(new java.awt.Dimension(198, 28));
-        jTextField2.setPreferredSize(new java.awt.Dimension(198, 28));
-        jTextField2.setSize(new java.awt.Dimension(198, 28));
 
         jButton1.setText("Validate");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,9 +88,19 @@ public class ForgottenPassword extends javax.swing.JFrame {
         });
 
         jButton2.setText("Confirm");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("            Security Question:");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jTextField5.setMaximumSize(new java.awt.Dimension(198, 28));
+        jTextField5.setMinimumSize(new java.awt.Dimension(198, 28));
+        jTextField5.setPreferredSize(new java.awt.Dimension(198, 28));
+        jTextField5.setSize(new java.awt.Dimension(198, 28));
 
         jMenu1.setText("Back");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,13 +117,10 @@ public class ForgottenPassword extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +136,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
@@ -166,8 +168,8 @@ public class ForgottenPassword extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -186,7 +188,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Getting username and security question answer info and sending to validatePassword
         String username = jTextField1.getText();
-        String answer = jTextField2.getText();
+        String answer = jTextField5.getText();
         
         String password = backend.validatePassword(username, answer);
         jTextField3.setText(password);
@@ -194,9 +196,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        String username = jTextField1.getText();
-        String secQuestion = backend.retrieveSecurityQuestion(username);
-        jTextField4.setText(secQuestion);
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -209,6 +209,12 @@ public class ForgottenPassword extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String username = jTextField1.getText();
+        String secQuestion = backend.retrieveSecurityQuestion(username);
+        jTextField4.setText(secQuestion);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,8 +261,8 @@ public class ForgottenPassword extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
