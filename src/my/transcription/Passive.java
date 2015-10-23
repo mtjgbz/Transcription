@@ -22,6 +22,8 @@ public class Passive extends javax.swing.JFrame {
     Clip clip;
     File file;
     String user;
+    long time1 = 0;
+    long currentTime = 0;
     
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
@@ -206,17 +208,24 @@ public class Passive extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        if(playing==false){
-            clip.setMicrosecondPosition(10000000);
-            clip.start();
-            playing = true;
-            jButton1.setText("Pause");
-        }else{
-            clip.stop();
-            playing = false;
-            jButton1.setText("Play");
-        }
+            if(!playing && currentTime == time1){
+                clip.setMicrosecondPosition(time1);
+                clip.start();
+                playing = true;
+                jButton1.setText("Pause");
+            }
+            else if(!playing && currentTime != time1) {
+                clip.setMicrosecondPosition(currentTime);
+                clip.start();
+                playing = true;
+                jButton1.setText("Pause"); 
+            }
+            else if(playing) { 
+                currentTime = clip.getMicrosecondPosition();
+                clip.stop();
+                playing = false;
+                jButton1.setText("Play");
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
