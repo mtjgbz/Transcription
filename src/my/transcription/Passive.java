@@ -17,7 +17,6 @@ import java.util.logging.Logger;
  */
 public class Passive extends javax.swing.JFrame {
     private String lesson;
-    boolean playing;
     AudioInputStream audioIn;
     Clip clip;
     File file;
@@ -35,7 +34,6 @@ public class Passive extends javax.swing.JFrame {
      */
     public Passive(String user) {
         this.user=user;
-        playing = false;
         file= new File("oGolden.wav");
         initComponents();
         this.setTitle("Mixtec Transcription: Passive Training");
@@ -208,22 +206,19 @@ public class Passive extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            if(!playing && currentTime == time1){
+            if(!clip.isRunning() && currentTime == time1){
                 clip.setMicrosecondPosition(time1);
                 clip.start();
-                playing = true;
                 jButton1.setText("Pause");
             }
-            else if(!playing && currentTime != time1) {
+            else if(!clip.isRunning() && currentTime != time1) {
                 clip.setMicrosecondPosition(currentTime);
                 clip.start();
-                playing = true;
                 jButton1.setText("Pause"); 
             }
-            else if(playing) { 
+            else if(clip.isRunning()) { 
                 currentTime = clip.getMicrosecondPosition();
                 clip.stop();
-                playing = false;
                 jButton1.setText("Play");
             }
     }//GEN-LAST:event_jButton1ActionPerformed
