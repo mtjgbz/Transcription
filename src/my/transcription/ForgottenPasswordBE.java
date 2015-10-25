@@ -68,7 +68,8 @@ public class ForgottenPasswordBE {
     /**
      * @author Casey
      * @param un the username that the method will pull the security question from
-     * @return the security question matching the username given
+     * @return the security question matching the username given if the username is correct,
+     * or an empty string if it isn't.
      */
     public String retrieveSecurityQuestion(String un) {
         username = un;
@@ -79,13 +80,18 @@ public class ForgottenPasswordBE {
         
             // Execute first query and store in questionID
             rs = stmt.executeQuery(query1);
-            questionID = rs.getInt("QuestionID");
-            
-            // 2nd Query to pull question from SECURITY_QUESTIONS using QuestionID
-            String query2 = "SELECT Question FROM SECURITY_QUESTIONS WHERE QuestionID ='" + questionID + "';";
-            // Execute second query and store result as a string
-            rs = stmt.executeQuery(query2);
-            question = rs.getString("Question");
+            if(rs.next()) {
+                questionID = rs.getInt("QuestionID");
+                // 2nd Query to pull question from SECURITY_QUESTIONS using QuestionID
+                String query2 = "SELECT Question FROM SECURITY_QUESTIONS WHERE QuestionID ='" + questionID + "';";
+                // Execute second query and store result as a string
+                rs = stmt.executeQuery(query2);
+                question = rs.getString("Question");
+            }
+            else {
+                question = "";
+            }
+       
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -94,6 +100,13 @@ public class ForgottenPasswordBE {
         return question;
     }
     
+    /**
+     * @author Casey
+     * @param un username pulled from the trainees input
+     * @param qAnswer security question answer that was pulled from the Trainee's input
+     * @return either an empty string if the security answer was incorrect, 
+     * or the trainee's password if it was correct
+     */
     public String validatePassword(String un, String qAnswer) {
         username = un; 
         questionAnswer = qAnswer;
@@ -104,7 +117,12 @@ public class ForgottenPasswordBE {
                 + "AND QuestionAnswer='" + questionAnswer + "';";
         
             rs = stmt.executeQuery(query);
-            password = rs.getString("Password");
+            if(rs.next()) {
+                password = rs.getString("Password");
+            }
+            else {
+                password = "";
+            }
         }
         catch(Exception e) {
             e.printStackTrace();
