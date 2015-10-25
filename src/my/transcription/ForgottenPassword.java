@@ -191,7 +191,13 @@ public class ForgottenPassword extends javax.swing.JFrame {
         String answer = jTextField5.getText();
         
         String password = backend.validatePassword(username, answer);
-        jTextField3.setText(password);
+        if(password == "") {
+            errorMsg("Security Answer is incorrect.", "Forgotten Password");
+        }
+        else {
+           jTextField3.setText(password); 
+        }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -202,7 +208,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         //ECL: close the backend before moving to the other page
         backend.closeDB();
-        new SignIn().setVisible(true);    // TODO add your handling code here:
+        new SignIn().setVisible(true);   
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -213,7 +219,13 @@ public class ForgottenPassword extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String username = jTextField1.getText();
         String secQuestion = backend.retrieveSecurityQuestion(username);
-        jTextField4.setText(secQuestion);
+        if (secQuestion == "") {
+            errorMsg("Username not found.", "Forgotten Password");
+        }
+        else {
+            jTextField4.setText(secQuestion);
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
