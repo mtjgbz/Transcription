@@ -206,21 +206,29 @@ public class Passive extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            if(!clip.isRunning() && currentTime == time1){
-                clip.setMicrosecondPosition(time1);
-                clip.start();
-                jButton1.setText("Pause");
+//            if(!clip.isRunning() && currentTime == time1){
+//                clip.setMicrosecondPosition(time1);
+//                clip.start();
+//                jButton1.setText("Pause");
+//            }
+//            else if(!clip.isRunning() && currentTime != time1) {
+//                clip.setMicrosecondPosition(currentTime);
+//                clip.start();
+//                jButton1.setText("Pause"); 
+//            }
+//            else if(clip.isRunning()) { 
+//                currentTime = clip.getMicrosecondPosition();
+//                clip.stop();
+//                jButton1.setText("Play");
+//            }
+            long start = System.currentTimeMillis();
+            long end = 5000;
+            clip.setMicrosecondPosition(time1);
+            clip.start();
+            while(System.currentTimeMillis()-start<end){
+   
             }
-            else if(!clip.isRunning() && currentTime != time1) {
-                clip.setMicrosecondPosition(currentTime);
-                clip.start();
-                jButton1.setText("Pause"); 
-            }
-            else if(clip.isRunning()) { 
-                currentTime = clip.getMicrosecondPosition();
-                clip.stop();
-                jButton1.setText("Play");
-            }
+            clip.stop();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
