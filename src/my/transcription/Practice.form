@@ -14,7 +14,8 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Inclitics"/>
+            <Property name="actionCommand" type="java.lang.String" value="Enclitics"/>
+            <Property name="label" type="java.lang.String" value="Enclitics"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu2MouseClicked"/>

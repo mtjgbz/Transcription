@@ -37,7 +37,7 @@ public class Passive extends javax.swing.JFrame {
         file= new File("oGolden.wav");
         initComponents();
         this.setTitle("Mixtec Transcription: Passive Training");
-        jTextPane5.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
+        jTextPane1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
         try {
             audioIn = AudioSystem.getAudioInputStream(file);
             clip = AudioSystem.getClip();
@@ -147,7 +147,8 @@ public class Passive extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Inclitics");
+        jMenu2.setActionCommand("Enclitics");
+        jMenu2.setLabel("Enclitics");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2MouseClicked(evt);

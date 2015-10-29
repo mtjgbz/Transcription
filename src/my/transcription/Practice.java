@@ -82,7 +82,8 @@ public class Practice extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Inclitics");
+        jMenu2.setActionCommand("Enclitics");
+        jMenu2.setLabel("Enclitics");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2MouseClicked(evt);
