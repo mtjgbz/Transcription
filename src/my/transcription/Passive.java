@@ -37,7 +37,7 @@ public class Passive extends javax.swing.JFrame {
         file= new File("oGolden.wav");
         initComponents();
         this.setTitle("Mixtec Transcription: Passive Training");
-        jTextPane1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
+        jTextPane5.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
         try {
             audioIn = AudioSystem.getAudioInputStream(file);
             clip = AudioSystem.getClip();
@@ -79,15 +79,15 @@ public class Passive extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
-        jScrollPane6 = new javax.swing.JScrollPane();
         jTextPane5 = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextPane4 = new javax.swing.JTextPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -109,35 +109,35 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
-        jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
-        jTextPane1.setMinimumSize(new java.awt.Dimension(550, 70));
-        jTextPane1.setPreferredSize(new java.awt.Dimension(550, 70));
-        jTextPane1.setSize(new java.awt.Dimension(550, 70));
-        jScrollPane2.setViewportView(jTextPane1);
-
-        jTextPane2.setMaximumSize(new java.awt.Dimension(550, 70));
-        jTextPane2.setMinimumSize(new java.awt.Dimension(550, 70));
-        jTextPane2.setPreferredSize(new java.awt.Dimension(550, 70));
-        jTextPane2.setSize(new java.awt.Dimension(550, 70));
-        jScrollPane3.setViewportView(jTextPane2);
+        jTextPane5.setMaximumSize(new java.awt.Dimension(550, 70));
+        jTextPane5.setMinimumSize(new java.awt.Dimension(550, 70));
+        jTextPane5.setPreferredSize(new java.awt.Dimension(550, 70));
+        jTextPane5.setSize(new java.awt.Dimension(550, 70));
+        jScrollPane2.setViewportView(jTextPane5);
 
         jTextPane3.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane3.setMinimumSize(new java.awt.Dimension(550, 70));
         jTextPane3.setPreferredSize(new java.awt.Dimension(550, 70));
         jTextPane3.setSize(new java.awt.Dimension(550, 70));
-        jScrollPane4.setViewportView(jTextPane3);
+        jScrollPane3.setViewportView(jTextPane3);
+
+        jTextPane2.setMaximumSize(new java.awt.Dimension(550, 70));
+        jTextPane2.setMinimumSize(new java.awt.Dimension(550, 70));
+        jTextPane2.setPreferredSize(new java.awt.Dimension(550, 70));
+        jTextPane2.setSize(new java.awt.Dimension(550, 70));
+        jScrollPane4.setViewportView(jTextPane2);
+
+        jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
+        jTextPane1.setMinimumSize(new java.awt.Dimension(550, 70));
+        jTextPane1.setPreferredSize(new java.awt.Dimension(550, 70));
+        jTextPane1.setSize(new java.awt.Dimension(550, 70));
+        jScrollPane5.setViewportView(jTextPane1);
 
         jTextPane4.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane4.setMinimumSize(new java.awt.Dimension(550, 70));
         jTextPane4.setPreferredSize(new java.awt.Dimension(550, 70));
         jTextPane4.setSize(new java.awt.Dimension(550, 70));
-        jScrollPane5.setViewportView(jTextPane4);
-
-        jTextPane5.setMaximumSize(new java.awt.Dimension(550, 70));
-        jTextPane5.setMinimumSize(new java.awt.Dimension(550, 70));
-        jTextPane5.setPreferredSize(new java.awt.Dimension(550, 70));
-        jTextPane5.setSize(new java.awt.Dimension(550, 70));
-        jScrollPane6.setViewportView(jTextPane5);
+        jScrollPane6.setViewportView(jTextPane4);
 
         jMenu1.setText("Home");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
