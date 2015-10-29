@@ -56,7 +56,7 @@ public class AdminHome extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jList1);
 
-        jMenu1.setText("Sign Out");
+        jMenu1.setText("Log Out");
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);

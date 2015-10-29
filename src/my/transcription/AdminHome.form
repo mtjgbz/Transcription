@@ -11,7 +11,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sign Out"/>
+            <Property name="text" type="java.lang.String" value="Log Out"/>
           </Properties>
         </Menu>
       </SubComponents>
