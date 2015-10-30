@@ -38,6 +38,7 @@ public class Passive extends javax.swing.JFrame {
         this.user=user;
         file= new File("oGolden.wav");
         initComponents();
+        jMenu5.setText(user);
         this.setTitle("Mixtec Transcription: Passive Training");
         jTextPane1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
         try {
@@ -97,6 +98,8 @@ public class Passive extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(970, 600));
@@ -106,31 +109,26 @@ public class Passive extends javax.swing.JFrame {
         jTextPane5.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane5.setMinimumSize(new java.awt.Dimension(550, 70));
         jTextPane5.setPreferredSize(new java.awt.Dimension(550, 70));
-        jTextPane5.setSize(new java.awt.Dimension(550, 70));
         jScrollPane2.setViewportView(jTextPane5);
 
         jTextPane3.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane3.setMinimumSize(new java.awt.Dimension(550, 70));
         jTextPane3.setPreferredSize(new java.awt.Dimension(550, 70));
-        jTextPane3.setSize(new java.awt.Dimension(550, 70));
         jScrollPane3.setViewportView(jTextPane3);
 
         jTextPane2.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane2.setMinimumSize(new java.awt.Dimension(550, 70));
         jTextPane2.setPreferredSize(new java.awt.Dimension(550, 70));
-        jTextPane2.setSize(new java.awt.Dimension(550, 70));
         jScrollPane4.setViewportView(jTextPane2);
 
         jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane1.setMinimumSize(new java.awt.Dimension(550, 70));
         jTextPane1.setPreferredSize(new java.awt.Dimension(550, 70));
-        jTextPane1.setSize(new java.awt.Dimension(550, 70));
         jScrollPane5.setViewportView(jTextPane1);
 
         jTextPane4.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane4.setMinimumSize(new java.awt.Dimension(550, 70));
         jTextPane4.setPreferredSize(new java.awt.Dimension(550, 70));
-        jTextPane4.setSize(new java.awt.Dimension(550, 70));
         jScrollPane6.setViewportView(jTextPane4);
 
         jButton1.setText("Play");
@@ -188,6 +186,18 @@ public class Passive extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("User");
+
+        jMenuItem1.setText("Log out");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseReleased(evt);
+            }
+        });
+        jMenu5.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -312,6 +322,11 @@ public class Passive extends javax.swing.JFrame {
             clip.stop();
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+        new SignIn().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1MouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -355,7 +370,9 @@ public class Passive extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

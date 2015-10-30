@@ -24,6 +24,7 @@ public class Practice extends javax.swing.JFrame {
         this.setTitle("Mixtec Transcription: Practice");
         initComponents();
         this.user=user;
+        jMenu5.setText(user);
     }
 
     /**
@@ -45,6 +46,8 @@ public class Practice extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(665, 420));
@@ -106,6 +109,18 @@ public class Practice extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("User");
+
+        jMenuItem1.setText("Log out");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseReleased(evt);
+            }
+        });
+        jMenu5.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -183,6 +198,11 @@ public class Practice extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenu4MouseClicked
 
+    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+        new SignIn().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1MouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -226,7 +246,9 @@ public class Practice extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

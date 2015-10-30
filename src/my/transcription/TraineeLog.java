@@ -17,6 +17,7 @@ public class TraineeLog extends javax.swing.JFrame {
     public TraineeLog(String user) {
         this.user=user;
         initComponents();
+        jMenu2.setText(user);
     }
 
     /**
@@ -31,12 +32,11 @@ public class TraineeLog extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(665, 415));
         setMinimumSize(new java.awt.Dimension(665, 415));
-        setPreferredSize(new java.awt.Dimension(665, 415));
-        setSize(new java.awt.Dimension(665, 415));
 
         jMenu1.setText("Home");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -45,6 +45,18 @@ public class TraineeLog extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("User");
+
+        jMenuItem1.setText("Log out");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseReleased(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -72,6 +84,11 @@ public class TraineeLog extends javax.swing.JFrame {
        new Home(user).setVisible(true);
        dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+        new SignIn().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1MouseReleased
 
     /**
      * @param args the command line arguments
@@ -110,7 +127,9 @@ public class TraineeLog extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

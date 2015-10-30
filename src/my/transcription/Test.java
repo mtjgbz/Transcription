@@ -19,6 +19,7 @@ public class Test extends javax.swing.JFrame {
         this.user=user;
         initComponents();
         this.setTitle("Mixtec Transcription: Test");
+        jMenu2.setVisible(true);
     }
 
     /**
@@ -37,6 +38,8 @@ public class Test extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 23, 665, 420));
@@ -75,6 +78,18 @@ public class Test extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("User");
+
+        jMenuItem1.setText("Log out");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseReleased(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -124,6 +139,11 @@ public class Test extends javax.swing.JFrame {
          dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
+    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+        new SignIn().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1MouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -164,7 +184,9 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
