@@ -139,6 +139,9 @@ public class Passive extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton1MousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
@@ -296,7 +299,16 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MousePressed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-               //            if(!clip.isRunning() && currentTime == time1){
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+        new SignIn().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1MouseReleased
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+                       //            if(!clip.isRunning() && currentTime == time1){
 //                clip.setMicrosecondPosition(time1);
 //                clip.start();
 //                jButton1.setText("Pause");
@@ -320,12 +332,7 @@ public class Passive extends javax.swing.JFrame {
    
             }
             clip.stop();
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
-        new SignIn().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem1MouseReleased
+    }//GEN-LAST:event_jButton1MouseReleased
 
     /**
      * @param args the command line arguments

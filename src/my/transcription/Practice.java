@@ -25,6 +25,8 @@ public class Practice extends javax.swing.JFrame {
         initComponents();
         this.user=user;
         jMenu5.setText(user);
+        jTextArea1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
+      
     }
 
     /**
@@ -74,6 +76,7 @@ public class Practice extends javax.swing.JFrame {
         });
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
