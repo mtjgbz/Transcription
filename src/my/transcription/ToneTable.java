@@ -25,7 +25,7 @@ public class ToneTable extends javax.swing.JFrame {
     Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
     
     int x = 0;
-    int y = ((int) rect.getMaxY())/ 3;;
+    int y = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,23 +40,17 @@ public class ToneTable extends javax.swing.JFrame {
 
         setLocation(new java.awt.Point(x, y));
 
-        jLabel1.setText("PUT THE TABLE HERE");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/ToneTable.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(138, 138, 138))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(jLabel1)
-                .addContainerGap(151, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
