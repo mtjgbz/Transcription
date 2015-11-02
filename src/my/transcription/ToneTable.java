@@ -39,6 +39,7 @@ public class ToneTable extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setLocation(new java.awt.Point(x, y));
+        setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/ToneTable.png"))); // NOI18N
 
