@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package my.transcription;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 
 //import javafx.scene.media.Media;
 /**
@@ -136,14 +139,19 @@ public class Passive extends javax.swing.JFrame {
         jButton1.setMinimumSize(new java.awt.Dimension(97, 29));
         jButton1.setPreferredSize(new java.awt.Dimension(97, 29));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton1MousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jButton1MouseReleased(evt);
             }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -308,31 +316,24 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-                       //            if(!clip.isRunning() && currentTime == time1){
-//                clip.setMicrosecondPosition(time1);
-//                clip.start();
-//                jButton1.setText("Pause");
-//            }
-//            else if(!clip.isRunning() && currentTime != time1) {
-//                clip.setMicrosecondPosition(currentTime);
-//                clip.start();
-//                jButton1.setText("Pause"); 
-//            }
-//            else if(clip.isRunning()) { 
-//                currentTime = clip.getMicrosecondPosition();
-//                clip.stop();
-//                jButton1.setText("Play");
-//            }
-            pause = true;
-            long start = System.currentTimeMillis();
-            long end = 5000;
-            clip.setMicrosecondPosition(time1);
+        if(!clip.isRunning()){
             clip.start();
-            while(System.currentTimeMillis()-start < end && pause){
-   
-            }
+        }else{
             clip.stop();
+        }
+        
+        ActionListener listener = new ActionListener(){
+            public void actionPerformed(ActionEvent event){
+                clip.stop();
+            }
+        };
+        Timer timer = new Timer(10000, listener);
+        timer.start();
     }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
