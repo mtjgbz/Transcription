@@ -29,6 +29,15 @@ public class Passive extends javax.swing.JFrame {
     int count = 0;
     boolean pause = false;
     
+    ActionListener listener = new ActionListener(){
+            public void actionPerformed(ActionEvent event){
+                clip.stop();
+                clip.setMicrosecondPosition(time1);
+                jButton1.setText("Play");
+            }
+        };
+    Timer timer = new Timer(10000, listener);
+    
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
@@ -242,7 +251,6 @@ public class Passive extends javax.swing.JFrame {
         jButton6.setMaximumSize(new java.awt.Dimension(97, 29));
         jButton6.setMinimumSize(new java.awt.Dimension(97, 29));
         jButton6.setPreferredSize(new java.awt.Dimension(97, 29));
-        jButton6.setSize(new java.awt.Dimension(97, 29));
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton6MouseClicked(evt);
@@ -264,7 +272,6 @@ public class Passive extends javax.swing.JFrame {
         jButton7.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton7.setMinimumSize(new java.awt.Dimension(97, 30));
         jButton7.setPreferredSize(new java.awt.Dimension(97, 30));
-        jButton7.setSize(new java.awt.Dimension(97, 30));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -275,7 +282,6 @@ public class Passive extends javax.swing.JFrame {
         jButton8.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton8.setMinimumSize(new java.awt.Dimension(97, 30));
         jButton8.setPreferredSize(new java.awt.Dimension(97, 30));
-        jButton8.setSize(new java.awt.Dimension(97, 30));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -374,7 +380,7 @@ public class Passive extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,10 +413,9 @@ public class Passive extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81))
@@ -470,17 +475,13 @@ public class Passive extends javax.swing.JFrame {
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         if(!clip.isRunning()){
             clip.start();
+            timer.start();
+            jButton1.setText("Pause");
         }else{
             clip.stop();
+            timer.stop();
+            jButton1.setText("Play");
         }
-        
-        ActionListener listener = new ActionListener(){
-            public void actionPerformed(ActionEvent event){
-                clip.stop();
-            }
-        };
-        Timer timer = new Timer(10000, listener);
-        timer.start();
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
