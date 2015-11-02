@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.sound.sampled.*;
@@ -19,6 +20,7 @@ import javax.swing.Timer;
  * @author Michael
  */
 public class Passive extends javax.swing.JFrame {
+
     private String lesson;
     AudioInputStream audioIn;
     Clip clip1;
@@ -28,36 +30,37 @@ public class Passive extends javax.swing.JFrame {
     Clip clip5;
     File file;
     String user;
-    long time1 = 0;
+    long time1 = 9029000;
     long currentTime = 0;
     int count = 0;
     boolean pause = false;
-    
-    ActionListener listener = new ActionListener(){
-            public void actionPerformed(ActionEvent event){
-                clip1.stop();
-                clip1.setMicrosecondPosition(time1);
-                playButton1.setText("Play");
-            }
-        };
-    Timer timer = new Timer(10000, listener);
-    Timer timer1 = new Timer(10000, listener);
+
+    ActionListener listener = new ActionListener() {
+        public void actionPerformed(ActionEvent event) {
+            clip1.stop();
+            clip1.setMicrosecondPosition(time1);
+            playButton1.setText("Play");
+        }
+    };
+    Timer timer = new Timer(4428, listener);
+    Timer timer1 = new Timer(4428, listener);
     Timer timer2;
     Timer timer3;
     Timer timer4;
     Timer timer5;
-    
+
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
-   
+
     /**
      * Creates new form Passive
+     *
      * @param user
      */
     public Passive(String user) {
-        this.user=user;
-        file= new File("oGolden.wav");
+        this.user = user;
+        file = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
         initComponents();
         jMenu5.setText(user);
         this.setTitle("Mixtec Transcription: Passive Training");
@@ -66,6 +69,7 @@ public class Passive extends javax.swing.JFrame {
             audioIn = AudioSystem.getAudioInputStream(file);
             clip1 = AudioSystem.getClip();
             clip1.open(audioIn);
+            clip1.setMicrosecondPosition(time1);
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -73,18 +77,17 @@ public class Passive extends javax.swing.JFrame {
         } catch (LineUnavailableException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         initAudio();
         initTextFields();
-        
+
     }
-    
 
     /**
      *
      * @param string
      */
-    public void setLesson(String string){
+    public void setLesson(String string) {
         this.lesson = string;
     }
 
@@ -92,12 +95,10 @@ public class Passive extends javax.swing.JFrame {
      *
      * @return
      */
-    public String getLesson(){
+    public String getLesson() {
         return this.lesson;
     }
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -385,43 +386,43 @@ public class Passive extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void initAudio(){
-        
+    public void initAudio() {
+
     }
-    
-    public void initTextFields(){
-        
+
+    public void initTextFields() {
+
     }
-    
+
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-       enc.dispose();
-       nas.dispose();
-       tone.dispose();
-       new Home(user).setVisible(true);
-       dispose();
+        enc.dispose();
+        nas.dispose();
+        tone.dispose();
+        new Home(user).setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-         if(!enc.isShowing()) {
-           enc.setVisible(true);
-        }else{
+        if (!enc.isShowing()) {
+            enc.setVisible(true);
+        } else {
             enc.toFront();
         }
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-        if(!nas.isShowing()) {
-           nas.setVisible(true);
-        }else{
+        if (!nas.isShowing()) {
+            nas.setVisible(true);
+        } else {
             nas.toFront();
         }
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
-        if(!tone.isShowing()) {
-           tone.setVisible(true);
-        }else{
-           tone.toFront();
+        if (!tone.isShowing()) {
+            tone.setVisible(true);
+        } else {
+            tone.toFront();
         }
     }//GEN-LAST:event_jMenu4MouseClicked
 
@@ -431,24 +432,24 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
     private void playButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton1MouseReleased
-        clip2.stop();
-        timer2.stop();
-        playButton2.setText("Play");
-        clip3.stop();
-        timer3.stop();
-        playButton3.setText("Play");
-        clip4.stop();
-        timer4.stop();
-        playButton4.setText("Play");
-        clip5.stop();
-        timer5.stop();
-        playButton5.setText("Play");
-        
-        if(!clip1.isRunning()){
+//        clip2.stop();
+//        timer2.stop();
+//        playButton2.setText("Play");
+//        clip3.stop();
+//        timer3.stop();
+//        playButton3.setText("Play");
+//        clip4.stop();
+//        timer4.stop();
+//        playButton4.setText("Play");
+//        clip5.stop();
+//        timer5.stop();
+//        playButton5.setText("Play");
+
+        if (!clip1.isRunning()) {
             clip1.start();
             timer1.start();
             playButton1.setText("Pause");
-        }else{
+        } else {
             clip1.stop();
             timer.stop();
             playButton1.setText("Play");
@@ -468,12 +469,12 @@ public class Passive extends javax.swing.JFrame {
         clip5.stop();
         timer5.stop();
         playButton5.setText("Play");
-        
-        if(!clip2.isRunning()){
+
+        if (!clip2.isRunning()) {
             clip2.start();
             timer2.start();
             playButton2.setText("Pause");
-        }else{
+        } else {
             clip2.stop();
             timer2.stop();
             playButton2.setText("Play");
@@ -493,12 +494,12 @@ public class Passive extends javax.swing.JFrame {
         clip5.stop();
         timer5.stop();
         playButton5.setText("Play");
-        
-        if(!clip3.isRunning()){
+
+        if (!clip3.isRunning()) {
             clip3.start();
             timer3.start();
             playButton3.setText("Pause");
-        }else{
+        } else {
             clip3.stop();
             timer3.stop();
             playButton3.setText("Play");
@@ -518,12 +519,12 @@ public class Passive extends javax.swing.JFrame {
         clip5.stop();
         timer5.stop();
         playButton5.setText("Play");
-        
-        if(!clip4.isRunning()){
+
+        if (!clip4.isRunning()) {
             clip4.start();
             timer4.start();
             playButton4.setText("Pause");
-        }else{
+        } else {
             clip4.stop();
             timer4.stop();
             playButton4.setText("Play");
@@ -543,12 +544,12 @@ public class Passive extends javax.swing.JFrame {
         clip1.stop();
         timer1.stop();
         playButton1.setText("Play");
-        
-        if(!clip5.isRunning()){
+
+        if (!clip5.isRunning()) {
             clip5.start();
             timer5.start();
             playButton5.setText("Pause");
-        }else{
+        } else {
             clip5.stop();
             timer5.stop();
             playButton5.setText("Play");
