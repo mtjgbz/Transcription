@@ -74,7 +74,11 @@ public class Passive extends javax.swing.JFrame {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        initAudio();
+        initTextFields();
+        
     }
+    
 
     /**
      *
@@ -91,6 +95,8 @@ public class Passive extends javax.swing.JFrame {
     public String getLesson(){
         return this.lesson;
     }
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -379,7 +385,13 @@ public class Passive extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
+    public void initAudio(){
+        
+    }
+    
+    public void initTextFields(){
+        
+    }
     
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
        enc.dispose();
