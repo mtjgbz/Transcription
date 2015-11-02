@@ -431,6 +431,19 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
     private void playButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton1MouseReleased
+        clip2.stop();
+        timer2.stop();
+        playButton2.setText("Play");
+        clip3.stop();
+        timer3.stop();
+        playButton3.setText("Play");
+        clip4.stop();
+        timer4.stop();
+        playButton4.setText("Play");
+        clip5.stop();
+        timer5.stop();
+        playButton5.setText("Play");
+        
         if(!clip1.isRunning()){
             clip1.start();
             timer1.start();
@@ -443,6 +456,19 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_playButton1MouseReleased
 
     private void playButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton2MouseReleased
+        clip1.stop();
+        timer1.stop();
+        playButton1.setText("Play");
+        clip3.stop();
+        timer3.stop();
+        playButton3.setText("Play");
+        clip4.stop();
+        timer4.stop();
+        playButton4.setText("Play");
+        clip5.stop();
+        timer5.stop();
+        playButton5.setText("Play");
+        
         if(!clip2.isRunning()){
             clip2.start();
             timer2.start();
@@ -455,6 +481,19 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_playButton2MouseReleased
 
     private void playButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton3MouseReleased
+        clip2.stop();
+        timer2.stop();
+        playButton2.setText("Play");
+        clip1.stop();
+        timer1.stop();
+        playButton1.setText("Play");
+        clip4.stop();
+        timer4.stop();
+        playButton4.setText("Play");
+        clip5.stop();
+        timer5.stop();
+        playButton5.setText("Play");
+        
         if(!clip3.isRunning()){
             clip3.start();
             timer3.start();
@@ -467,6 +506,19 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_playButton3MouseReleased
 
     private void playButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton4MouseReleased
+        clip2.stop();
+        timer2.stop();
+        playButton2.setText("Play");
+        clip3.stop();
+        timer3.stop();
+        playButton3.setText("Play");
+        clip1.stop();
+        timer1.stop();
+        playButton1.setText("Play");
+        clip5.stop();
+        timer5.stop();
+        playButton5.setText("Play");
+        
         if(!clip4.isRunning()){
             clip4.start();
             timer4.start();
@@ -479,6 +531,19 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_playButton4MouseReleased
 
     private void playButton5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton5MouseReleased
+        clip2.stop();
+        timer2.stop();
+        playButton2.setText("Play");
+        clip3.stop();
+        timer3.stop();
+        playButton3.setText("Play");
+        clip4.stop();
+        timer4.stop();
+        playButton4.setText("Play");
+        clip1.stop();
+        timer1.stop();
+        playButton1.setText("Play");
+        
         if(!clip5.isRunning()){
             clip5.start();
             timer5.start();
