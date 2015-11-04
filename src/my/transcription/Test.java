@@ -5,12 +5,17 @@
  */
 package my.transcription;
 
+import javax.sound.sampled.Clip;
+import javax.swing.Timer;
+
 /**
  *
  * @author mike
  */
 public class Test extends javax.swing.JFrame {
     String user;
+    Clip clip;
+    Timer timer;
     /**
      * Creates new form Test
      * @param user
@@ -131,7 +136,15 @@ public class Test extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if (!clip.isRunning()) {
+            clip.start();
+            timer.start();
+            jButton1.setText("Pause");
+        } else {
+            clip.stop();
+            timer.stop();
+            jButton1.setText("Play");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked

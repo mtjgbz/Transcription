@@ -5,12 +5,18 @@
  */
 package my.transcription;
 
+import javax.sound.sampled.Clip;
+import javax.swing.Timer;
+
 /**
  *
  * @author mike
  */
 public class Practice extends javax.swing.JFrame {
     String user;
+    
+    Clip clip;
+    Timer timer;
     
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
@@ -86,6 +92,11 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton1.setMinimumSize(new java.awt.Dimension(97, 29));
         playButton1.setPreferredSize(new java.awt.Dimension(97, 29));
+        playButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Home");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,6 +228,18 @@ public class Practice extends javax.swing.JFrame {
         new SignIn().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem1MouseReleased
+
+    private void playButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton1ActionPerformed
+        if (!clip.isRunning()) {
+            clip.start();
+            timer.start();
+            jButton1.setText("Pause");
+        } else {
+            clip.stop();
+            timer.stop();
+            jButton1.setText("Play");
+        }
+    }//GEN-LAST:event_playButton1ActionPerformed
 
     /**
      * @param args the command line arguments

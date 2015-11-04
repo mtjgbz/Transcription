@@ -432,18 +432,18 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
     private void playButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton1MouseReleased
-//        clip2.stop();
-//        timer2.stop();
-//        playButton2.setText("Play");
-//        clip3.stop();
-//        timer3.stop();
-//        playButton3.setText("Play");
-//        clip4.stop();
-//        timer4.stop();
-//        playButton4.setText("Play");
-//        clip5.stop();
-//        timer5.stop();
-//        playButton5.setText("Play");
+        clip2.stop();
+        timer2.stop();
+        playButton2.setText("Play");
+        clip3.stop();
+        timer3.stop();
+        playButton3.setText("Play");
+        clip4.stop();
+        timer4.stop();
+        playButton4.setText("Play");
+        clip5.stop();
+        timer5.stop();
+        playButton5.setText("Play");
 
         if (!clip1.isRunning()) {
             clip1.start();
