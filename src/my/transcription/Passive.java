@@ -52,6 +52,8 @@ public class Passive extends javax.swing.JFrame {
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
+    
+    private PassiveBE backend;
 
     /**
      * Creates new form Passive
@@ -81,7 +83,8 @@ public class Passive extends javax.swing.JFrame {
 
        initAudio();
        initTextFields();
-
+       
+       backend = new PassiveBE();
     }
 
     /**
@@ -392,7 +395,7 @@ public class Passive extends javax.swing.JFrame {
     }
 
     public void initTextFields() {
-
+        System.out.println(backend.findFile(1, 'a'));
     }
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
