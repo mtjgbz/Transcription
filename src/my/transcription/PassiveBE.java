@@ -4,6 +4,9 @@ import java.io.*;
 import java.sql.*;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.*;
+import javax.xml.parsers.*;
+import org.w3c.dom.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -84,6 +87,37 @@ public class PassiveBE {
             e.printStackTrace();
         }
         closeDB();
+        return null;
+    }
+    
+    public String findPhrase(String document){
+        try{
+            File file = new File(document);
+            DocumentBuilderFactory dbFactory
+                    = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(file);
+            NodeList nList = doc.getElementsByTagName("Sync");
+            
+            Pattern regexp = Pattern.compile("[a-zñ][aeiou]([134])[a-zñ][aeiou]\\1");       //example exp - change later
+            Matcher matcher = regexp.matcher(file.getName());
+            
+            int count = Math.abs(rand.nextInt() % nList.getLength());
+            
+            for(int i = 0; i < nList.getLength(); i++){
+                Node nNode = nList.item(i);
+                NamedNodeMap attributes = nNode.getAttributes();
+                String value = nNode.getNextSibling().getNodeValue();
+                matcher.reset(value);
+                if(matcher.find()){
+                    if(i >= count){
+                        return value;
+                    }
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
     //Parse through document paths until random one reached
