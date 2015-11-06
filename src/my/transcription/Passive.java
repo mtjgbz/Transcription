@@ -36,18 +36,8 @@ public class Passive extends javax.swing.JFrame {
     File file4;
     File file5;
     
-    File sound1;
-    File sound2;
-    File sound3;
-    File sound4;
-    File sound5;
-    File sound6;
-    File sound7;
-    File sound8;
-    File sound9;
-    File sound10;
-            
-    
+    int strCount = 1;
+          
     int page = 1;
     String user;
     
@@ -63,26 +53,15 @@ public class Passive extends javax.swing.JFrame {
     long time4 = init4;
     long time5 = init5;
     
-    String text1 = "nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3";
-    String text2 = "text2";
-    String text3 = "text3";
-    String text4 = "text4";
-    String text5 = "text5";
-    String text6 = "text6";
-    String text7 = "text7";
-    String text8 = "text8";
-    String text9 = "text9";
-    String text10 = "text10";
-    String text11 = "text11";
-    String text12 = "text12";
-    String text13 = "text13";
-    String text14 = "text14";
-    String text15 = "text15";
-    String text16 = "text16";
-    String text17 = "text17";
-    String text18 = "text18";
-    String text19 = "text19";
-    String text20 = "text20";
+    ArrayList<String> group1 = new ArrayList<String>();
+    ArrayList<String> group2 = new ArrayList<String>();
+    ArrayList<String> group3 = new ArrayList<String>();
+    ArrayList<String> group4 = new ArrayList<String>();
+    
+    ArrayList<File> soundArr1 = new ArrayList<File>();
+    ArrayList<File> soundArr2 = new ArrayList<File>();
+    ArrayList<File> soundArr3 = new ArrayList<File>();
+    ArrayList<File> soundArr4 = new ArrayList<File>();
    
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
@@ -125,33 +104,57 @@ public class Passive extends javax.swing.JFrame {
     public Passive(String user) {
         this.user = user;
         
+        group1.add("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
+        group1.add("text2");
+        group1.add("text3");
+        group1.add("text4");
+        group1.add("text5");
         
-        sound1 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
-        sound2 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
-        sound3 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
-        sound4 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
-        sound5 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
-        sound6 = new File("oGolden.wav");
-        sound7 = new File("oGolden.wav");
-        sound8 = new File("oGolden.wav");
-        sound9 = new File("oGolden.wav");
-        sound10 = new File("oGolden.wav");
+        group2.add("text6");
+        group2.add("text7");
+        group2.add("text8");
+        group2.add("text9");
+        group2.add("text10");
         
-        file1 = sound1;
-        file2 = sound2;
-        file3 = sound3;
-        file4 = sound4;
-        file5 = sound5;
+        group3.add("text11");
+        group3.add("text12");
+        group3.add("text13");
+        group3.add("text14");
+        group3.add("text15");
+        
+        group4.add("text16");
+        group4.add("text17");
+        group4.add("text18");
+        group4.add("text19");
+        group4.add("text20");
+        
+        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        
+        soundArr2.add(new File("oGolden.wav"));
+        soundArr2.add(new File("oGolden.wav"));
+        soundArr2.add(new File("oGolden.wav"));
+        soundArr2.add(new File("oGolden.wav"));
+        soundArr2.add(new File("oGolden.wav"));
+        
+        file1 = soundArr1.get(0);
+        file2 = soundArr1.get(1);
+        file3 = soundArr1.get(2);
+        file4 = soundArr1.get(3);
+        file5 = soundArr1.get(4);
         
         initComponents();
         
         jMenu5.setText(user);
         this.setTitle("Mixtec Transcription: Passive Training");
-        jTextPane1.setText(text1);
-        jTextPane2.setText(text2);
-        jTextPane3.setText(text3);
-        jTextPane4.setText(text4);
-        jTextPane5.setText(text5);
+        jTextPane1.setText(group1.get(0));
+        jTextPane2.setText(group1.get(1));
+        jTextPane3.setText(group1.get(2));
+        jTextPane4.setText(group1.get(3));
+        jTextPane5.setText(group1.get(4));
 
        initAudio();
        initTextFields();
@@ -749,34 +752,34 @@ public class Passive extends javax.swing.JFrame {
         if(page == 2) {
             jButton7.setText("Page 3 >>");
             jButton8.setText("<< Page 1");
-            jTextPane1.setText(text6);
-            jTextPane2.setText(text7);
-            jTextPane3.setText(text8);
-            jTextPane4.setText(text9);
-            jTextPane5.setText(text10);
-            file1 = sound6;
-            file2 = sound7;
-            file3 = sound8;
-            file4 = sound9;
-            file5 = sound10;
+            jTextPane1.setText(group2.get(0));
+            jTextPane2.setText(group2.get(1));
+            jTextPane3.setText(group2.get(2));
+            jTextPane4.setText(group2.get(3));
+            jTextPane5.setText(group2.get(4));
+            file1 = soundArr2.get(0);
+            file2 = soundArr2.get(1);
+            file3 = soundArr2.get(2);
+            file4 = soundArr2.get(3);
+            file5 = soundArr2.get(4);
         }
         else if (page == 3) {
             jButton7.setText("Page 4 >>");
             jButton8.setText("<< Page 2");
-            jTextPane1.setText(text11);
-            jTextPane2.setText(text12);
-            jTextPane3.setText(text13);
-            jTextPane4.setText(text14);
-            jTextPane5.setText(text15); 
+            jTextPane1.setText(group3.get(0));
+            jTextPane2.setText(group3.get(1));
+            jTextPane3.setText(group3.get(2));
+            jTextPane4.setText(group3.get(3));
+            jTextPane5.setText(group3.get(4)); 
         }
         else if (page == 4) {
             jButton8.setText("<< Page 3");
             jButton7.setText("Current");
-            jTextPane1.setText(text16);
-            jTextPane2.setText(text17);
-            jTextPane3.setText(text18);
-            jTextPane4.setText(text19);
-            jTextPane5.setText(text20); 
+            jTextPane1.setText(group4.get(0));
+            jTextPane2.setText(group4.get(1));
+            jTextPane3.setText(group4.get(2));
+            jTextPane4.setText(group4.get(3));
+            jTextPane5.setText(group4.get(4)); 
         }
         clip1.stop();
         timer1.stop();
@@ -802,42 +805,42 @@ public class Passive extends javax.swing.JFrame {
             page --;
         }
         if (page == 1) {
-           jButton7.setText("Page 2 >>");
-           jButton8.setText("Current");
-           jTextPane1.setText(text1);
-           jTextPane2.setText(text2);
-           jTextPane3.setText(text3);
-           jTextPane4.setText(text4);
-           jTextPane5.setText(text5);
-           file1 = sound1;
-           file2 = sound2;
-           file3 = sound3;
-           file4 = sound4;
-           file5 = sound5;
+            jButton7.setText("Page 2 >>");
+            jButton8.setText("Current");
+            jTextPane1.setText(group1.get(0));
+            jTextPane2.setText(group1.get(1));
+            jTextPane3.setText(group1.get(2));
+            jTextPane4.setText(group1.get(3));
+            jTextPane5.setText(group1.get(4));
+            file1 = soundArr1.get(0);
+            file2 = soundArr1.get(1);
+            file3 = soundArr1.get(2);
+            file4 = soundArr1.get(3);
+            file5 = soundArr1.get(4);
            
         }
         else if(page == 2) {
             jButton7.setText("Page 3 >>");
             jButton8.setText("<< Page 1");
-            jTextPane1.setText(text6);
-            jTextPane2.setText(text7);
-            jTextPane3.setText(text8);
-            jTextPane4.setText(text9);
-            jTextPane5.setText(text10);
-            file1 = sound6;
-            file2 = sound7;
-            file3 = sound8;
-            file4 = sound9;
-            file5 = sound10;
+            jTextPane1.setText(group2.get(0));
+            jTextPane2.setText(group2.get(1));
+            jTextPane3.setText(group2.get(2));
+            jTextPane4.setText(group2.get(3));
+            jTextPane5.setText(group2.get(4));
+            file1 = soundArr2.get(0);
+            file2 = soundArr2.get(1);
+            file3 = soundArr2.get(2);
+            file4 = soundArr2.get(3);
+            file5 = soundArr2.get(4);
         }
         else if (page == 3) {
             jButton7.setText("Page 4 >>");
             jButton8.setText("<< Page 2");
-            jTextPane1.setText(text11);
-            jTextPane2.setText(text12);
-            jTextPane3.setText(text13);  
-            jTextPane4.setText(text14);
-            jTextPane5.setText(text15); 
+            jTextPane1.setText(group3.get(0));
+            jTextPane2.setText(group3.get(1));
+            jTextPane3.setText(group3.get(2));
+            jTextPane4.setText(group3.get(3));
+            jTextPane5.setText(group3.get(4)); 
         }
         clip1.stop();
         timer1.stop();
