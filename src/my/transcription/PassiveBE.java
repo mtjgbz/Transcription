@@ -71,10 +71,7 @@ public class PassiveBE {
             while (line != null){
                 line = reader.readLine();
             }
-            
-            int lineNum = reader.getLineNumber() - 1;
-            reader.setLineNumber(lineNum);
-            line = reader.readLine();
+                      
             
             int num = Integer.parseInt(line);
             int random = rand.nextInt() % num;
