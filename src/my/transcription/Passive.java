@@ -35,6 +35,7 @@ public class Passive extends javax.swing.JFrame {
     File file4;
     File file5;
     
+    int page = 1;
     String user;
     
     long init1 = 9029000;
@@ -49,8 +50,27 @@ public class Passive extends javax.swing.JFrame {
     long time4 = init4;
     long time5 = init5;
     
-    
-
+    String text1 = "nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3";
+    String text2 = "text2";
+    String text3 = "text3";
+    String text4 = "text4";
+    String text5 = "text5";
+    String text6 = "text6";
+    String text7 = "text7";
+    String text8 = "text8";
+    String text9 = "text9";
+    String text10 = "text10";
+    String text11 = "text11";
+    String text12 = "text12";
+    String text13 = "text13";
+    String text14 = "text14";
+    String text15 = "text15";
+    String text16 = "text16";
+    String text17 = "text17";
+    String text18 = "text18";
+    String text19 = "text19";
+    String text20 = "text20";
+   
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             clip1.stop();
@@ -101,7 +121,11 @@ public class Passive extends javax.swing.JFrame {
         
         jMenu5.setText(user);
         this.setTitle("Mixtec Transcription: Passive Training");
-        jTextPane1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
+        jTextPane1.setText(text1);
+        jTextPane2.setText(text2);
+        jTextPane3.setText(text3);
+        jTextPane4.setText(text4);
+        jTextPane5.setText(text5);
 
        initAudio();
        initTextFields();
@@ -691,11 +715,89 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_playButton5MouseReleased
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        if(page >= 1 && page < 4) {
+            page ++;
+        }
+        if(page == 2) {
+            jTextPane1.setText(text6);
+            jTextPane2.setText(text7);
+            jTextPane3.setText(text8);
+            jTextPane4.setText(text9);
+            jTextPane5.setText(text10);
+        }
+        else if (page == 3) {
+           jTextPane1.setText(text11);
+           jTextPane2.setText(text12);
+           jTextPane3.setText(text13);
+           jTextPane4.setText(text14);
+           jTextPane5.setText(text15); 
+        }
+        else if (page == 4) {
+           jTextPane1.setText(text16);
+           jTextPane2.setText(text17);
+           jTextPane3.setText(text18);
+           jTextPane4.setText(text19);
+           jTextPane5.setText(text20); 
+        }
+        clip1.stop();
+        timer1.stop();
+        playButton1.setText("Play");
+        clip2.stop();
+        timer2.stop();
+        playButton2.setText("Play");
+        clip3.stop();
+        timer3.stop();
+        playButton3.setText("Play");
+        clip4.stop();
+        timer4.stop();
+        playButton4.setText("Play");
+        clip1.stop();
+        timer1.stop();
+        playButton1.setText("Play");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        if(page <= 4 && page > 1) {
+            page --;
+        }
+        if (page == 1) {
+           jTextPane1.setText(text1);
+           jTextPane2.setText(text2);
+           jTextPane3.setText(text3);
+           jTextPane4.setText(text4);
+           jTextPane5.setText(text5); 
+           
+        }
+        else if(page == 2) {
+            jTextPane1.setText(text6);
+            jTextPane2.setText(text7);
+            jTextPane3.setText(text8);
+            jTextPane4.setText(text9);
+            jTextPane5.setText(text10);
+        }
+        else if (page == 3) {
+           jTextPane1.setText(text11);
+           jTextPane2.setText(text12);
+           jTextPane3.setText(text13);
+           jTextPane4.setText(text14);
+           jTextPane5.setText(text15); 
+        }
+        clip1.stop();
+        timer1.stop();
+        playButton1.setText("Play");
+        clip2.stop();
+        timer2.stop();
+        playButton2.setText("Play");
+        clip3.stop();
+        timer3.stop();
+        playButton3.setText("Play");
+        clip4.stop();
+        timer4.stop();
+        playButton4.setText("Play");
+        clip1.stop();
+        timer1.stop();
+        playButton1.setText("Play");
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
