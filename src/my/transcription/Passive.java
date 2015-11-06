@@ -70,6 +70,7 @@ public class Passive extends javax.swing.JFrame {
             clip1 = AudioSystem.getClip();
             clip1.open(audioIn);
             clip1.setMicrosecondPosition(time1);
+      
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -78,8 +79,8 @@ public class Passive extends javax.swing.JFrame {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        initAudio();
-        initTextFields();
+       initAudio();
+       initTextFields();
 
     }
 
