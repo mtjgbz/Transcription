@@ -83,8 +83,6 @@ public class Passive extends javax.swing.JFrame {
 
        initAudio();
        initTextFields();
-       
-       backend = new PassiveBE();
     }
 
     /**
@@ -395,6 +393,7 @@ public class Passive extends javax.swing.JFrame {
     }
 
     public void initTextFields() {
+        backend = new PassiveBE();
         System.out.println(backend.findFile(1, 'a'));
     }
 
