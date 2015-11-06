@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
@@ -34,6 +35,18 @@ public class Passive extends javax.swing.JFrame {
     File file3;
     File file4;
     File file5;
+    
+    File sound1;
+    File sound2;
+    File sound3;
+    File sound4;
+    File sound5;
+    File sound6;
+    File sound7;
+    File sound8;
+    File sound9;
+    File sound10;
+            
     
     int page = 1;
     String user;
@@ -111,11 +124,24 @@ public class Passive extends javax.swing.JFrame {
      */
     public Passive(String user) {
         this.user = user;
-        file1 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
-        file2 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
-        file3 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
-        file4 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
-        file5 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        
+        
+        sound1 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        sound2 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        sound3 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        sound4 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        sound5 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        sound6 = new File("oGolden.wav");
+        sound7 = new File("oGolden.wav");
+        sound8 = new File("oGolden.wav");
+        sound9 = new File("oGolden.wav");
+        sound10 = new File("oGolden.wav");
+        
+        file1 = sound1;
+        file2 = sound2;
+        file3 = sound3;
+        file4 = sound4;
+        file5 = sound5;
         
         initComponents();
         
@@ -277,7 +303,7 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setText("Next");
+        jButton7.setText("Page 2 >>");
         jButton7.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton7.setMinimumSize(new java.awt.Dimension(97, 30));
         jButton7.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -287,7 +313,7 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("Previous");
+        jButton8.setText("Current");
         jButton8.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton8.setMinimumSize(new java.awt.Dimension(97, 30));
         jButton8.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -384,12 +410,12 @@ public class Passive extends javax.swing.JFrame {
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(388, 388, 388))
+                .addGap(385, 385, 385))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -418,14 +444,16 @@ public class Passive extends javax.swing.JFrame {
                         .addComponent(playButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(playButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                        .addGap(72, 72, 72))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81))
         );
@@ -719,25 +747,36 @@ public class Passive extends javax.swing.JFrame {
             page ++;
         }
         if(page == 2) {
+            jButton7.setText("Page 3 >>");
+            jButton8.setText("<< Page 1");
             jTextPane1.setText(text6);
             jTextPane2.setText(text7);
             jTextPane3.setText(text8);
             jTextPane4.setText(text9);
             jTextPane5.setText(text10);
+            file1 = sound6;
+            file2 = sound7;
+            file3 = sound8;
+            file4 = sound9;
+            file5 = sound10;
         }
         else if (page == 3) {
-           jTextPane1.setText(text11);
-           jTextPane2.setText(text12);
-           jTextPane3.setText(text13);
-           jTextPane4.setText(text14);
-           jTextPane5.setText(text15); 
+            jButton7.setText("Page 4 >>");
+            jButton8.setText("<< Page 2");
+            jTextPane1.setText(text11);
+            jTextPane2.setText(text12);
+            jTextPane3.setText(text13);
+            jTextPane4.setText(text14);
+            jTextPane5.setText(text15); 
         }
         else if (page == 4) {
-           jTextPane1.setText(text16);
-           jTextPane2.setText(text17);
-           jTextPane3.setText(text18);
-           jTextPane4.setText(text19);
-           jTextPane5.setText(text20); 
+            jButton8.setText("<< Page 3");
+            jButton7.setText("Current");
+            jTextPane1.setText(text16);
+            jTextPane2.setText(text17);
+            jTextPane3.setText(text18);
+            jTextPane4.setText(text19);
+            jTextPane5.setText(text20); 
         }
         clip1.stop();
         timer1.stop();
@@ -754,6 +793,8 @@ public class Passive extends javax.swing.JFrame {
         clip1.stop();
         timer1.stop();
         playButton1.setText("Play");
+       
+        initAudio();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -761,26 +802,42 @@ public class Passive extends javax.swing.JFrame {
             page --;
         }
         if (page == 1) {
+           jButton7.setText("Page 2 >>");
+           jButton8.setText("Current");
            jTextPane1.setText(text1);
            jTextPane2.setText(text2);
            jTextPane3.setText(text3);
            jTextPane4.setText(text4);
-           jTextPane5.setText(text5); 
+           jTextPane5.setText(text5);
+           file1 = sound1;
+           file2 = sound2;
+           file3 = sound3;
+           file4 = sound4;
+           file5 = sound5;
            
         }
         else if(page == 2) {
+            jButton7.setText("Page 3 >>");
+            jButton8.setText("<< Page 1");
             jTextPane1.setText(text6);
             jTextPane2.setText(text7);
             jTextPane3.setText(text8);
             jTextPane4.setText(text9);
             jTextPane5.setText(text10);
+            file1 = sound6;
+            file2 = sound7;
+            file3 = sound8;
+            file4 = sound9;
+            file5 = sound10;
         }
         else if (page == 3) {
-           jTextPane1.setText(text11);
-           jTextPane2.setText(text12);
-           jTextPane3.setText(text13);
-           jTextPane4.setText(text14);
-           jTextPane5.setText(text15); 
+            jButton7.setText("Page 4 >>");
+            jButton8.setText("<< Page 2");
+            jTextPane1.setText(text11);
+            jTextPane2.setText(text12);
+            jTextPane3.setText(text13);  
+            jTextPane4.setText(text14);
+            jTextPane5.setText(text15); 
         }
         clip1.stop();
         timer1.stop();
@@ -798,6 +855,7 @@ public class Passive extends javax.swing.JFrame {
         timer1.stop();
         playButton1.setText("Play");
         
+        initAudio();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
