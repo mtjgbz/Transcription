@@ -53,15 +53,15 @@ public class Passive extends javax.swing.JFrame {
     long time4 = init4;
     long time5 = init5;
     
-    ArrayList<String> group1 = new ArrayList<String>();
-    ArrayList<String> group2 = new ArrayList<String>();
-    ArrayList<String> group3 = new ArrayList<String>();
-    ArrayList<String> group4 = new ArrayList<String>();
+    ArrayList<String> textGroup1 = new ArrayList<>();
+    ArrayList<String> textGroup2 = new ArrayList<>();
+    ArrayList<String> textGroup3 = new ArrayList<>();
+    ArrayList<String> textGroup4 = new ArrayList<>();
     
-    ArrayList<File> soundArr1 = new ArrayList<File>();
-    ArrayList<File> soundArr2 = new ArrayList<File>();
-    ArrayList<File> soundArr3 = new ArrayList<File>();
-    ArrayList<File> soundArr4 = new ArrayList<File>();
+    ArrayList<File> soundArr1 = new ArrayList<>();
+    ArrayList<File> soundArr2 = new ArrayList<>();
+    ArrayList<File> soundArr3 = new ArrayList<>();
+    ArrayList<File> soundArr4 = new ArrayList<>();
    
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
@@ -104,29 +104,29 @@ public class Passive extends javax.swing.JFrame {
     public Passive(String user) {
         this.user = user;
         
-        group1.add("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
-        group1.add("text2");
-        group1.add("text3");
-        group1.add("text4");
-        group1.add("text5");
+        textGroup1.add("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
+        textGroup1.add("text2");
+        textGroup1.add("text3");
+        textGroup1.add("text4");
+        textGroup1.add("text5");
         
-        group2.add("text6");
-        group2.add("text7");
-        group2.add("text8");
-        group2.add("text9");
-        group2.add("text10");
+        textGroup2.add("text6");
+        textGroup2.add("text7");
+        textGroup2.add("text8");
+        textGroup2.add("text9");
+        textGroup2.add("text10");
         
-        group3.add("text11");
-        group3.add("text12");
-        group3.add("text13");
-        group3.add("text14");
-        group3.add("text15");
+        textGroup3.add("text11");
+        textGroup3.add("text12");
+        textGroup3.add("text13");
+        textGroup3.add("text14");
+        textGroup3.add("text15");
         
-        group4.add("text16");
-        group4.add("text17");
-        group4.add("text18");
-        group4.add("text19");
-        group4.add("text20");
+        textGroup4.add("text16");
+        textGroup4.add("text17");
+        textGroup4.add("text18");
+        textGroup4.add("text19");
+        textGroup4.add("text20");
         
         soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
         soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
@@ -150,11 +150,11 @@ public class Passive extends javax.swing.JFrame {
         
         jMenu5.setText(user);
         this.setTitle("Mixtec Transcription: Passive Training");
-        jTextPane1.setText(group1.get(0));
-        jTextPane2.setText(group1.get(1));
-        jTextPane3.setText(group1.get(2));
-        jTextPane4.setText(group1.get(3));
-        jTextPane5.setText(group1.get(4));
+        jTextPane1.setText(textGroup1.get(0));
+        jTextPane2.setText(textGroup1.get(1));
+        jTextPane3.setText(textGroup1.get(2));
+        jTextPane4.setText(textGroup1.get(3));
+        jTextPane5.setText(textGroup1.get(4));
 
        initAudio();
        initTextFields();
@@ -752,11 +752,11 @@ public class Passive extends javax.swing.JFrame {
         if(page == 2) {
             jButton7.setText("Page 3 >>");
             jButton8.setText("<< Page 1");
-            jTextPane1.setText(group2.get(0));
-            jTextPane2.setText(group2.get(1));
-            jTextPane3.setText(group2.get(2));
-            jTextPane4.setText(group2.get(3));
-            jTextPane5.setText(group2.get(4));
+            jTextPane1.setText(textGroup2.get(0));
+            jTextPane2.setText(textGroup2.get(1));
+            jTextPane3.setText(textGroup2.get(2));
+            jTextPane4.setText(textGroup2.get(3));
+            jTextPane5.setText(textGroup2.get(4));
             file1 = soundArr2.get(0);
             file2 = soundArr2.get(1);
             file3 = soundArr2.get(2);
@@ -766,20 +766,21 @@ public class Passive extends javax.swing.JFrame {
         else if (page == 3) {
             jButton7.setText("Page 4 >>");
             jButton8.setText("<< Page 2");
-            jTextPane1.setText(group3.get(0));
-            jTextPane2.setText(group3.get(1));
-            jTextPane3.setText(group3.get(2));
-            jTextPane4.setText(group3.get(3));
-            jTextPane5.setText(group3.get(4)); 
+            jTextPane1.setText(textGroup3.get(0));
+            jTextPane2.setText(textGroup3.get(1));
+            jTextPane3.setText(textGroup3.get(2));
+            jTextPane4.setText(textGroup3.get(3));
+            jTextPane5.setText(textGroup3.get(4));
+            
         }
         else if (page == 4) {
             jButton8.setText("<< Page 3");
             jButton7.setText("Current");
-            jTextPane1.setText(group4.get(0));
-            jTextPane2.setText(group4.get(1));
-            jTextPane3.setText(group4.get(2));
-            jTextPane4.setText(group4.get(3));
-            jTextPane5.setText(group4.get(4)); 
+            jTextPane1.setText(textGroup4.get(0));
+            jTextPane2.setText(textGroup4.get(1));
+            jTextPane3.setText(textGroup4.get(2));
+            jTextPane4.setText(textGroup4.get(3));
+            jTextPane5.setText(textGroup4.get(4)); 
         }
         clip1.stop();
         timer1.stop();
@@ -793,10 +794,9 @@ public class Passive extends javax.swing.JFrame {
         clip4.stop();
         timer4.stop();
         playButton4.setText("Play");
-        clip1.stop();
-        timer1.stop();
-        playButton1.setText("Play");
-       
+        clip5.stop();
+        timer5.stop();
+        playButton5.setText("Play");
         initAudio();
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -807,11 +807,11 @@ public class Passive extends javax.swing.JFrame {
         if (page == 1) {
             jButton7.setText("Page 2 >>");
             jButton8.setText("Current");
-            jTextPane1.setText(group1.get(0));
-            jTextPane2.setText(group1.get(1));
-            jTextPane3.setText(group1.get(2));
-            jTextPane4.setText(group1.get(3));
-            jTextPane5.setText(group1.get(4));
+            jTextPane1.setText(textGroup1.get(0));
+            jTextPane2.setText(textGroup1.get(1));
+            jTextPane3.setText(textGroup1.get(2));
+            jTextPane4.setText(textGroup1.get(3));
+            jTextPane5.setText(textGroup1.get(4));
             file1 = soundArr1.get(0);
             file2 = soundArr1.get(1);
             file3 = soundArr1.get(2);
@@ -822,11 +822,11 @@ public class Passive extends javax.swing.JFrame {
         else if(page == 2) {
             jButton7.setText("Page 3 >>");
             jButton8.setText("<< Page 1");
-            jTextPane1.setText(group2.get(0));
-            jTextPane2.setText(group2.get(1));
-            jTextPane3.setText(group2.get(2));
-            jTextPane4.setText(group2.get(3));
-            jTextPane5.setText(group2.get(4));
+            jTextPane1.setText(textGroup2.get(0));
+            jTextPane2.setText(textGroup2.get(1));
+            jTextPane3.setText(textGroup2.get(2));
+            jTextPane4.setText(textGroup2.get(3));
+            jTextPane5.setText(textGroup2.get(4));
             file1 = soundArr2.get(0);
             file2 = soundArr2.get(1);
             file3 = soundArr2.get(2);
@@ -836,11 +836,11 @@ public class Passive extends javax.swing.JFrame {
         else if (page == 3) {
             jButton7.setText("Page 4 >>");
             jButton8.setText("<< Page 2");
-            jTextPane1.setText(group3.get(0));
-            jTextPane2.setText(group3.get(1));
-            jTextPane3.setText(group3.get(2));
-            jTextPane4.setText(group3.get(3));
-            jTextPane5.setText(group3.get(4)); 
+            jTextPane1.setText(textGroup3.get(0));
+            jTextPane2.setText(textGroup3.get(1));
+            jTextPane3.setText(textGroup3.get(2));
+            jTextPane4.setText(textGroup3.get(3));
+            jTextPane5.setText(textGroup3.get(4)); 
         }
         clip1.stop();
         timer1.stop();
@@ -854,10 +854,9 @@ public class Passive extends javax.swing.JFrame {
         clip4.stop();
         timer4.stop();
         playButton4.setText("Play");
-        clip1.stop();
-        timer1.stop();
-        playButton1.setText("Play");
-        
+        clip5.stop();
+        timer5.stop();
+        playButton5.setText("Play");
         initAudio();
     }//GEN-LAST:event_jButton8ActionPerformed
 
