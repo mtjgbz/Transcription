@@ -69,24 +69,40 @@ public class PassiveBE {
             //pulling filename from lesson match .txt file
             File file = new File(path);
             LineNumberReader reader = new LineNumberReader(new FileReader(file));
+            int lineCount = 0;
             
+            //reading lines int the file
             String line = reader.readLine();
+            //mark the first line so can reset when go to pull random line later
+            reader.mark((int)file.length());
+            //go through lines and count them to get the total number
             while (line != null){
                 line = reader.readLine();
+                lineCount++;
             }
-                      
             
-            int num = Integer.parseInt(line);
-            int random = rand.nextInt() % num;
+            System.out.println("Line num: " + lineCount);
+            //get a random line number from the total number of lines
+            int random = rand.nextInt(lineCount +1);
+            System.out.println("Random: " + random);
             
-            reader.setLineNumber(random);
-            path = reader.readLine();
-            return path;
+            //reset lineReader to the beginnig of the file so can read up to the random line
+            //and then return it
+            reader.reset();
+            System.out.println("Line before loop: " + reader.getLineNumber());
+            for(int i = 0; i < random-1; i++) {
+                path = reader.readLine();
+            }
+            
+            //close the lineReader and return the line (path for findPhrase)
+            reader.close();
+            return "Path: " + path;
             
         }catch(Exception e){
             e.printStackTrace();
         }
         closeDB();
+        
         return null;
     }
     
@@ -111,7 +127,7 @@ public class PassiveBE {
                 matcher.reset(value);
                 if(matcher.find()){
                     if(i >= count){
-                        return value;
+                        return "Value: : " + value;
                     }
                 }
             }
