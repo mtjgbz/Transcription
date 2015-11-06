@@ -25,7 +25,7 @@ public class ForgottenPasswordBE {
     private String questionAnswer;
     
     private Connection conn;
-    Statement stmt;
+    private Statement stmt;
     private ResultSet rs;
     
     /**
