@@ -86,6 +86,7 @@ public class PassiveBE {
         }catch(Exception e){
             e.printStackTrace();
         }
+        closeDB();
         return null;
     }
     //Parse through document paths until random one reached
