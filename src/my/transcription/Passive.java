@@ -28,26 +28,55 @@ public class Passive extends javax.swing.JFrame {
     Clip clip3;
     Clip clip4;
     Clip clip5;
-    File file;
+    
+    File file1;
+    File file2;
+    File file3;
+    File file4;
+    File file5;
+    
     String user;
-    long time1 = 9029000;
-    long currentTime = 0;
-    int count = 0;
-    boolean pause = false;
+    
+    long init1 = 9029000;
+    long init2 = 9029000;
+    long init3 = 9029000;
+    long init4 = 9029000;
+    long init5 = 9029000;
+    
+    long time1 = init1;
+    long time2 = init2;
+    long time3 = init3;
+    long time4 = init4;
+    long time5 = init5;
+    
+    
 
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             clip1.stop();
             clip1.setMicrosecondPosition(time1);
+            clip2.stop();
+            clip2.setMicrosecondPosition(time2);
+            clip3.stop();
+            clip3.setMicrosecondPosition(time3);
+            clip4.stop();
+            clip4.setMicrosecondPosition(time4);
+            clip5.stop();
+            clip5.setMicrosecondPosition(time5);
             playButton1.setText("Play");
+            playButton2.setText("Play");
+            playButton3.setText("Play");
+            playButton4.setText("Play");
+            playButton5.setText("Play");
         }
     };
-    Timer timer = new Timer(4428, listener);
+    
+    //Timer timer = new Timer(4428, listener);
     Timer timer1 = new Timer(4428, listener);
-    Timer timer2;
-    Timer timer3;
-    Timer timer4;
-    Timer timer5;
+    Timer timer2 = new Timer(4428, listener);
+    Timer timer3 = new Timer(4428, listener);
+    Timer timer4 = new Timer(4428, listener);
+    Timer timer5 = new Timer(4428, listener);
 
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
@@ -60,24 +89,17 @@ public class Passive extends javax.swing.JFrame {
      */
     public Passive(String user) {
         this.user = user;
-        file = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        file1 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        file2 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        file3 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        file4 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        file5 = new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav");
+        
         initComponents();
+        
         jMenu5.setText(user);
         this.setTitle("Mixtec Transcription: Passive Training");
         jTextPane1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
-        try {
-            audioIn = AudioSystem.getAudioInputStream(file);
-            clip1 = AudioSystem.getClip();
-            clip1.open(audioIn);
-            clip1.setMicrosecondPosition(time1);
-      
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
        initAudio();
        initTextFields();
@@ -388,7 +410,66 @@ public class Passive extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void initAudio() {
-
+          try {
+            audioIn = AudioSystem.getAudioInputStream(file1);
+            clip1 = AudioSystem.getClip();
+            clip1.open(audioIn);
+            clip1.setMicrosecondPosition(time1);
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          try {
+            audioIn = AudioSystem.getAudioInputStream(file2);
+            clip2 = AudioSystem.getClip();
+            clip2.open(audioIn);
+            clip2.setMicrosecondPosition(time2);
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          try {
+            audioIn = AudioSystem.getAudioInputStream(file3);
+            clip3 = AudioSystem.getClip();
+            clip3.open(audioIn);
+            clip3.setMicrosecondPosition(time3);
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          try {
+            audioIn = AudioSystem.getAudioInputStream(file4);
+            clip4 = AudioSystem.getClip();
+            clip4.open(audioIn);
+            clip4.setMicrosecondPosition(time4);
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          try {
+            audioIn = AudioSystem.getAudioInputStream(file5);
+             clip5 = AudioSystem.getClip();
+            clip5.open(audioIn);
+            clip5.setMicrosecondPosition(time5);
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void initTextFields() {
@@ -445,6 +526,16 @@ public class Passive extends javax.swing.JFrame {
         clip5.stop();
         timer5.stop();
         playButton5.setText("Play");
+        
+        time2 = init2;
+        time3 = init3;
+        time4 = init4;
+        time5 = init5;
+        
+        clip2.setMicrosecondPosition(time2);
+        clip3.setMicrosecondPosition(time3);
+        clip4.setMicrosecondPosition(time4);
+        clip5.setMicrosecondPosition(time5);
 
         if (!clip1.isRunning()) {
             clip1.start();
@@ -452,7 +543,7 @@ public class Passive extends javax.swing.JFrame {
             playButton1.setText("Pause");
         } else {
             clip1.stop();
-            timer.stop();
+            timer1.stop();
             playButton1.setText("Play");
         }
     }//GEN-LAST:event_playButton1MouseReleased
@@ -470,6 +561,16 @@ public class Passive extends javax.swing.JFrame {
         clip5.stop();
         timer5.stop();
         playButton5.setText("Play");
+        
+        time1 = init1;
+        time3 = init3;
+        time4 = init4;
+        time5 = init5;
+        
+        clip1.setMicrosecondPosition(time1);
+        clip3.setMicrosecondPosition(time3);
+        clip4.setMicrosecondPosition(time4);
+        clip5.setMicrosecondPosition(time5);
 
         if (!clip2.isRunning()) {
             clip2.start();
@@ -495,6 +596,16 @@ public class Passive extends javax.swing.JFrame {
         clip5.stop();
         timer5.stop();
         playButton5.setText("Play");
+        
+        time1 = init1;
+        time2 = init2;
+        time4 = init4;
+        time5 = init5;
+        
+        clip1.setMicrosecondPosition(time1);
+        clip2.setMicrosecondPosition(time2);
+        clip4.setMicrosecondPosition(time4);
+        clip5.setMicrosecondPosition(time5);
 
         if (!clip3.isRunning()) {
             clip3.start();
@@ -520,6 +631,16 @@ public class Passive extends javax.swing.JFrame {
         clip5.stop();
         timer5.stop();
         playButton5.setText("Play");
+        
+        time1 = init1;
+        time2 = init2;
+        time3 = init3;
+        time5 = init5;
+        
+        clip1.setMicrosecondPosition(time1);
+        clip2.setMicrosecondPosition(time2);
+        clip3.setMicrosecondPosition(time3);
+        clip5.setMicrosecondPosition(time5);
 
         if (!clip4.isRunning()) {
             clip4.start();
@@ -545,6 +666,16 @@ public class Passive extends javax.swing.JFrame {
         clip1.stop();
         timer1.stop();
         playButton1.setText("Play");
+        
+        time1 = init1;
+        time2 = init2;
+        time3 = init3;
+        time4 = init4;
+        
+        clip1.setMicrosecondPosition(time1);
+        clip2.setMicrosecondPosition(time2);
+        clip3.setMicrosecondPosition(time3);
+        clip4.setMicrosecondPosition(time4);
 
         if (!clip5.isRunning()) {
             clip5.start();
