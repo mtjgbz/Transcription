@@ -499,7 +499,7 @@ public class Passive extends javax.swing.JFrame {
 
     public void initTextFields() {
         backend = new PassiveBE();
-        System.out.println(backend.findFile(1, 'a'));
+        System.out.println(backend.findPhrase("test.trs")); //ECL: Adjusted this to test the findPhrase
     }
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
