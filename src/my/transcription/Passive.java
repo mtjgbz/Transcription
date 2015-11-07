@@ -24,57 +24,37 @@ public class Passive extends javax.swing.JFrame {
 
     private String lesson;
     AudioInputStream audioIn;
-    Clip clip1;
-    Clip clip2;
-    Clip clip3;
-    Clip clip4;
-    Clip clip5;
-    
-    File file1;
-    File file2;
-    File file3;
-    File file4;
-    File file5;
-    
-    int strCount = 1;
           
     int page = 1;
     String user;
+    int t = 0;
     
-    long init1 = 9029000;
-    long init2 = 9029000;
-    long init3 = 9029000;
-    long init4 = 9029000;
-    long init5 = 9029000;
+    boolean running1 = false;
+    boolean running2 = false;
+    boolean running3 = false;
+    boolean running4 = false;
+    boolean running5 = false;
     
-    long time1 = init1;
-    long time2 = init2;
-    long time3 = init3;
-    long time4 = init4;
-    long time5 = init5;
+    ArrayList<String> textData = new ArrayList<>();
+    ArrayList<File> soundArr = new ArrayList<>();
+    ArrayList<File> files = new ArrayList<>();
+    ArrayList<Clip> clips = new ArrayList<>();
+    ArrayList<Integer> times = new ArrayList<>();
+    ArrayList<Timer> timers = new ArrayList<>();
     
-    ArrayList<String> textGroup1 = new ArrayList<>();
-    ArrayList<String> textGroup2 = new ArrayList<>();
-    ArrayList<String> textGroup3 = new ArrayList<>();
-    ArrayList<String> textGroup4 = new ArrayList<>();
-    
-    ArrayList<File> soundArr1 = new ArrayList<>();
-    ArrayList<File> soundArr2 = new ArrayList<>();
-    ArrayList<File> soundArr3 = new ArrayList<>();
-    ArrayList<File> soundArr4 = new ArrayList<>();
    
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
-            clip1.stop();
-            clip1.setMicrosecondPosition(time1);
-            clip2.stop();
-            clip2.setMicrosecondPosition(time2);
-            clip3.stop();
-            clip3.setMicrosecondPosition(time3);
-            clip4.stop();
-            clip4.setMicrosecondPosition(time4);
-            clip5.stop();
-            clip5.setMicrosecondPosition(time5);
+            clips.get(0).stop();
+            clips.get(0).setMicrosecondPosition(times.get(0));
+            clips.get(1).stop();
+            clips.get(1).setMicrosecondPosition(times.get(1));
+            clips.get(2).stop();
+            clips.get(2).setMicrosecondPosition(times.get(2));
+            clips.get(3).stop();
+            clips.get(3).setMicrosecondPosition(times.get(3));
+            clips.get(4).stop();
+            clips.get(4).setMicrosecondPosition(times.get(4));
             playButton1.setText("Play");
             playButton2.setText("Play");
             playButton3.setText("Play");
@@ -82,13 +62,6 @@ public class Passive extends javax.swing.JFrame {
             playButton5.setText("Play");
         }
     };
-    
-    //Timer timer = new Timer(4428, listener);
-    Timer timer1 = new Timer(4428, listener);
-    Timer timer2 = new Timer(4428, listener);
-    Timer timer3 = new Timer(4428, listener);
-    Timer timer4 = new Timer(4428, listener);
-    Timer timer5 = new Timer(4428, listener);
 
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
@@ -104,57 +77,68 @@ public class Passive extends javax.swing.JFrame {
     public Passive(String user) {
         this.user = user;
         
-        textGroup1.add("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
-        textGroup1.add("text2");
-        textGroup1.add("text3");
-        textGroup1.add("text4");
-        textGroup1.add("text5");
+        for(int i = 0; i < 20; i++) {
+            timers.add(new Timer(4428, listener));
+            times.add(9029000);
+        }
         
-        textGroup2.add("text6");
-        textGroup2.add("text7");
-        textGroup2.add("text8");
-        textGroup2.add("text9");
-        textGroup2.add("text10");
+        textData.add("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
+        textData.add("text2");
+        textData.add("text3");
+        textData.add("text4");
+        textData.add("text5");
         
-        textGroup3.add("text11");
-        textGroup3.add("text12");
-        textGroup3.add("text13");
-        textGroup3.add("text14");
-        textGroup3.add("text15");
+        textData.add("text6");
+        textData.add("text7");
+        textData.add("text8");
+        textData.add("text9");
+        textData.add("text10");
         
-        textGroup4.add("text16");
-        textGroup4.add("text17");
-        textGroup4.add("text18");
-        textGroup4.add("text19");
-        textGroup4.add("text20");
+        textData.add("text11");
+        textData.add("text12");
+        textData.add("text13");
+        textData.add("text14");
+        textData.add("text15");
         
-        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-        soundArr1.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        textData.add("text16");
+        textData.add("text17");
+        textData.add("text18");
+        textData.add("text19");
+        textData.add("text20");
         
-        soundArr2.add(new File("oGolden.wav"));
-        soundArr2.add(new File("oGolden.wav"));
-        soundArr2.add(new File("oGolden.wav"));
-        soundArr2.add(new File("oGolden.wav"));
-        soundArr2.add(new File("oGolden.wav"));
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
         
-        file1 = soundArr1.get(0);
-        file2 = soundArr1.get(1);
-        file3 = soundArr1.get(2);
-        file4 = soundArr1.get(3);
-        file5 = soundArr1.get(4);
+        soundArr.add(new File("oGolden.wav"));
+        soundArr.add(new File("oGolden.wav"));
+        soundArr.add(new File("oGolden.wav"));
+        soundArr.add(new File("oGolden.wav"));
+        soundArr.add(new File("oGolden.wav"));
+        
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        soundArr.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+        
+        soundArr.add(new File("oGolden.wav"));
+        soundArr.add(new File("oGolden.wav"));
+        soundArr.add(new File("oGolden.wav"));
+        soundArr.add(new File("oGolden.wav"));
+        soundArr.add(new File("oGolden.wav"));
         
         initComponents();
-        
         jMenu5.setText(user);
         this.setTitle("Mixtec Transcription: Passive Training");
-        jTextPane1.setText(textGroup1.get(0));
-        jTextPane2.setText(textGroup1.get(1));
-        jTextPane3.setText(textGroup1.get(2));
-        jTextPane4.setText(textGroup1.get(3));
-        jTextPane5.setText(textGroup1.get(4));
+        
+        jTextPane1.setText(textData.get(0));
+        jTextPane2.setText(textData.get(1));
+        jTextPane3.setText(textData.get(2));
+        jTextPane4.setText(textData.get(3));
+        jTextPane5.setText(textData.get(4));
 
        initAudio();
        initTextFields();
@@ -467,58 +451,87 @@ public class Passive extends javax.swing.JFrame {
 
     public void initAudio() {
           try {
-            audioIn = AudioSystem.getAudioInputStream(file1);
-            clip1 = AudioSystem.getClip();
-            clip1.open(audioIn);
-            clip1.setMicrosecondPosition(time1);
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          try {
-            audioIn = AudioSystem.getAudioInputStream(file2);
-            clip2 = AudioSystem.getClip();
-            clip2.open(audioIn);
-            clip2.setMicrosecondPosition(time2);
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          try {
-            audioIn = AudioSystem.getAudioInputStream(file3);
-            clip3 = AudioSystem.getClip();
-            clip3.open(audioIn);
-            clip3.setMicrosecondPosition(time3);
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          try {
-            audioIn = AudioSystem.getAudioInputStream(file4);
-            clip4 = AudioSystem.getClip();
-            clip4.open(audioIn);
-            clip4.setMicrosecondPosition(time4);
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          try {
-            audioIn = AudioSystem.getAudioInputStream(file5);
-             clip5 = AudioSystem.getClip();
-            clip5.open(audioIn);
-            clip5.setMicrosecondPosition(time5);
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(0));
+            clips.add(AudioSystem.getClip());
+            clips.get(0).open(audioIn);
+            clips.get(0).setMicrosecondPosition(times.get(0));  
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(1));
+            clips.add(AudioSystem.getClip());
+            clips.get(1).open(audioIn);
+            clips.get(1).setMicrosecondPosition(times.get(1));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(2));
+            clips.add(AudioSystem.getClip());
+            clips.get(2).open(audioIn);
+            clips.get(2).setMicrosecondPosition(times.get(2));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(3));
+            clips.add(AudioSystem.getClip());
+            clips.get(3).open(audioIn);
+            clips.get(3).setMicrosecondPosition(times.get(3));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(4));
+            clips.add(AudioSystem.getClip());
+            clips.get(4).open(audioIn);
+            clips.get(4).setMicrosecondPosition(times.get(4));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(5));
+            clips.add(AudioSystem.getClip());
+            clips.get(5).open(audioIn);
+            clips.get(5).setMicrosecondPosition(times.get(5));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(6));
+            clips.add(AudioSystem.getClip());
+            clips.get(6).open(audioIn);
+            clips.get(6).setMicrosecondPosition(times.get(6));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(7));
+            clips.add(AudioSystem.getClip());
+            clips.get(7).open(audioIn);
+            clips.get(7).setMicrosecondPosition(times.get(7));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(8));
+            clips.add(AudioSystem.getClip());
+            clips.get(8).open(audioIn);
+            clips.get(8).setMicrosecondPosition(times.get(8));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(9));
+            clips.add(AudioSystem.getClip());
+            clips.get(9).open(audioIn);
+            clips.get(9).setMicrosecondPosition(times.get(9));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(10));
+            clips.add(AudioSystem.getClip());
+            clips.get(10).open(audioIn);
+            clips.get(10).setMicrosecondPosition(times.get(10));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(11));
+            clips.add(AudioSystem.getClip());
+            clips.get(11).open(audioIn);
+            clips.get(11).setMicrosecondPosition(times.get(11));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(12));
+            clips.add(AudioSystem.getClip());
+            clips.get(12).open(audioIn);
+            clips.get(12).setMicrosecondPosition(times.get(12));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(13));
+            clips.add(AudioSystem.getClip());
+            clips.get(13).open(audioIn);
+            clips.get(13).setMicrosecondPosition(times.get(13));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(14));
+            clips.add(AudioSystem.getClip());
+            clips.get(14).open(audioIn);
+            clips.get(14).setMicrosecondPosition(times.get(14));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(15));
+            clips.add(AudioSystem.getClip());
+            clips.get(15).open(audioIn);
+            clips.get(15).setMicrosecondPosition(times.get(15));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(16));
+            clips.add(AudioSystem.getClip());
+            clips.get(16).open(audioIn);
+            clips.get(16).setMicrosecondPosition(times.get(16));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(17));
+            clips.add(AudioSystem.getClip());
+            clips.get(17).open(audioIn);
+            clips.get(17).setMicrosecondPosition(times.get(17));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(18));
+            clips.add(AudioSystem.getClip());
+            clips.get(18).open(audioIn);
+            clips.get(18).setMicrosecondPosition(times.get(18));
+            audioIn = AudioSystem.getAudioInputStream(soundArr.get(19));
+            clips.add(AudioSystem.getClip());
+            clips.get(19).open(audioIn);
+            clips.get(19).setMicrosecondPosition(times.get(19));
+        
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -571,177 +584,202 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
     private void playButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton1MouseReleased
-        clip2.stop();
-        timer2.stop();
+        for(int i = 0; i < clips.size(); i++) {
+            if(i != 0 || i != 5 || i != 10 || i != 15) {
+               clips.get(i).stop();
+               timers.get(i).stop();
+            }
+            clips.get(i).setMicrosecondPosition(times.get(i));
+        }
         playButton2.setText("Play");
-        clip3.stop();
-        timer3.stop();
         playButton3.setText("Play");
-        clip4.stop();
-        timer4.stop();
         playButton4.setText("Play");
-        clip5.stop();
-        timer5.stop();
         playButton5.setText("Play");
         
-        time2 = init2;
-        time3 = init3;
-        time4 = init4;
-        time5 = init5;
+        if(page == 1) {
+            t = 0;
+        }
+        else if(page == 2) {
+            t = 5;
+        }
+        else if(page == 3) {
+            t = 10;
+        }
+        else {
+            t = 15;
+        }
         
-        clip2.setMicrosecondPosition(time2);
-        clip3.setMicrosecondPosition(time3);
-        clip4.setMicrosecondPosition(time4);
-        clip5.setMicrosecondPosition(time5);
-
-        if (!clip1.isRunning()) {
-            clip1.start();
-            timer1.start();
+        if (!running1) {
+            clips.get(t).start();
+            timers.get(t).start();
             playButton1.setText("Pause");
-        } else {
-            clip1.stop();
-            timer1.stop();
+            running1 = true;
+        }
+        else {
+            clips.get(t).stop();
+            timers.get(t).stop();
             playButton1.setText("Play");
+            running1 = false;
         }
     }//GEN-LAST:event_playButton1MouseReleased
 
     private void playButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton2MouseReleased
-        clip1.stop();
-        timer1.stop();
+        for(int i = 0; i < clips.size(); i++) {
+            if(i != 1 || i != 6 || i != 11 || i != 16) {
+               clips.get(i).stop();
+               timers.get(i).stop();
+               clips.get(i).setMicrosecondPosition(times.get(i));
+            }
+        }
         playButton1.setText("Play");
-        clip3.stop();
-        timer3.stop();
         playButton3.setText("Play");
-        clip4.stop();
-        timer4.stop();
         playButton4.setText("Play");
-        clip5.stop();
-        timer5.stop();
         playButton5.setText("Play");
-        
-        time1 = init1;
-        time3 = init3;
-        time4 = init4;
-        time5 = init5;
-        
-        clip1.setMicrosecondPosition(time1);
-        clip3.setMicrosecondPosition(time3);
-        clip4.setMicrosecondPosition(time4);
-        clip5.setMicrosecondPosition(time5);
 
-        if (!clip2.isRunning()) {
-            clip2.start();
-            timer2.start();
+        if(page == 1) {
+            t = 1;
+        }
+        else if(page == 2) {
+            t = 6;
+        }
+        else if(page == 3) {
+            t = 11;
+        }
+        else {
+            t = 16;
+        }
+        
+        if (!running2) {
+            clips.get(t).start();
+            timers.get(t).start();
             playButton2.setText("Pause");
-        } else {
-            clip2.stop();
-            timer2.stop();
+            running2 = true;
+        }
+        else {
+            clips.get(t).stop();
+            timers.get(t).stop();
             playButton2.setText("Play");
+            running2 = false;
         }
     }//GEN-LAST:event_playButton2MouseReleased
 
     private void playButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton3MouseReleased
-        clip2.stop();
-        timer2.stop();
+        for(int i = 0; i < clips.size(); i++) {
+            if(i != 2 || i != 7 || i != 12 || i != 17) {
+               clips.get(i).stop();
+               timers.get(i).stop();
+               clips.get(i).setMicrosecondPosition(times.get(i));
+            }
+        }
         playButton2.setText("Play");
-        clip1.stop();
-        timer1.stop();
         playButton1.setText("Play");
-        clip4.stop();
-        timer4.stop();
         playButton4.setText("Play");
-        clip5.stop();
-        timer5.stop();
         playButton5.setText("Play");
-        
-        time1 = init1;
-        time2 = init2;
-        time4 = init4;
-        time5 = init5;
-        
-        clip1.setMicrosecondPosition(time1);
-        clip2.setMicrosecondPosition(time2);
-        clip4.setMicrosecondPosition(time4);
-        clip5.setMicrosecondPosition(time5);
 
-        if (!clip3.isRunning()) {
-            clip3.start();
-            timer3.start();
+        if(page == 1) {
+            t = 2;
+        }
+        else if(page == 2) {
+            t = 7;
+        }
+        else if(page == 3) {
+            t = 12;
+        }
+        else {
+            t = 17;
+        }
+        
+        if (!running3) {
+            clips.get(t).start();
+            timers.get(t).start();
             playButton3.setText("Pause");
-        } else {
-            clip3.stop();
-            timer3.stop();
+            running3 = true;
+        }
+        else {
+            clips.get(t).stop();
+            timers.get(t).stop();
             playButton3.setText("Play");
+            running3 = false;
         }
     }//GEN-LAST:event_playButton3MouseReleased
 
     private void playButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton4MouseReleased
-        clip2.stop();
-        timer2.stop();
+        for(int i = 0; i < clips.size(); i++) {
+            if(i != 3 || i != 8 || i != 13 || i != 18) {
+               clips.get(i).stop();
+               timers.get(i).stop();
+               clips.get(i).setMicrosecondPosition(times.get(i));
+            }
+        }
         playButton2.setText("Play");
-        clip3.stop();
-        timer3.stop();
         playButton3.setText("Play");
-        clip1.stop();
-        timer1.stop();
         playButton1.setText("Play");
-        clip5.stop();
-        timer5.stop();
         playButton5.setText("Play");
-        
-        time1 = init1;
-        time2 = init2;
-        time3 = init3;
-        time5 = init5;
-        
-        clip1.setMicrosecondPosition(time1);
-        clip2.setMicrosecondPosition(time2);
-        clip3.setMicrosecondPosition(time3);
-        clip5.setMicrosecondPosition(time5);
 
-        if (!clip4.isRunning()) {
-            clip4.start();
-            timer4.start();
+        if(page == 1) {
+            t = 3;
+        }
+        else if(page == 2) {
+            t = 8;
+        }
+        else if(page == 3) {
+            t = 13;
+        }
+        else {
+            t = 18;
+        }
+        
+        if (!running4) {
+            clips.get(t).start();
+            timers.get(t).start();
             playButton4.setText("Pause");
-        } else {
-            clip4.stop();
-            timer4.stop();
+            running4 = true;
+        }
+        else {
+            clips.get(t).stop();
+            timers.get(t).stop();
             playButton4.setText("Play");
+            running4 = false;
         }
     }//GEN-LAST:event_playButton4MouseReleased
 
     private void playButton5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton5MouseReleased
-        clip2.stop();
-        timer2.stop();
+        for(int i = 0; i < clips.size(); i++) {
+            if(i != 4 || i != 9 || i != 14 || i != 19) {
+               clips.get(i).stop();
+               timers.get(i).stop();
+               clips.get(i).setMicrosecondPosition(times.get(i));
+            }
+        }
         playButton2.setText("Play");
-        clip3.stop();
-        timer3.stop();
         playButton3.setText("Play");
-        clip4.stop();
-        timer4.stop();
         playButton4.setText("Play");
-        clip1.stop();
-        timer1.stop();
         playButton1.setText("Play");
+      
+        if(page == 1) {
+            t = 4;
+        }
+        else if(page == 2) {
+            t = 9;
+        }
+        else if(page == 3) {
+            t = 14;
+        }
+        else {
+            t = 19;
+        }
         
-        time1 = init1;
-        time2 = init2;
-        time3 = init3;
-        time4 = init4;
-        
-        clip1.setMicrosecondPosition(time1);
-        clip2.setMicrosecondPosition(time2);
-        clip3.setMicrosecondPosition(time3);
-        clip4.setMicrosecondPosition(time4);
-
-        if (!clip5.isRunning()) {
-            clip5.start();
-            timer5.start();
+        if (!running5) {
+            clips.get(t).start();
+            timers.get(t).start();
             playButton5.setText("Pause");
-        } else {
-            clip5.stop();
-            timer5.stop();
+            running5 = true;
+        }
+        else {
+            clips.get(t).stop();
+            timers.get(t).stop();
             playButton5.setText("Play");
+            running5 = false;
         }
     }//GEN-LAST:event_playButton5MouseReleased
 
@@ -752,52 +790,41 @@ public class Passive extends javax.swing.JFrame {
         if(page == 2) {
             jButton7.setText("Page 3 >>");
             jButton8.setText("<< Page 1");
-            jTextPane1.setText(textGroup2.get(0));
-            jTextPane2.setText(textGroup2.get(1));
-            jTextPane3.setText(textGroup2.get(2));
-            jTextPane4.setText(textGroup2.get(3));
-            jTextPane5.setText(textGroup2.get(4));
-            file1 = soundArr2.get(0);
-            file2 = soundArr2.get(1);
-            file3 = soundArr2.get(2);
-            file4 = soundArr2.get(3);
-            file5 = soundArr2.get(4);
+            jTextPane1.setText(textData.get(5));
+            jTextPane2.setText(textData.get(6));
+            jTextPane3.setText(textData.get(7));
+            jTextPane4.setText(textData.get(8));
+            jTextPane5.setText(textData.get(9));
         }
         else if (page == 3) {
             jButton7.setText("Page 4 >>");
             jButton8.setText("<< Page 2");
-            jTextPane1.setText(textGroup3.get(0));
-            jTextPane2.setText(textGroup3.get(1));
-            jTextPane3.setText(textGroup3.get(2));
-            jTextPane4.setText(textGroup3.get(3));
-            jTextPane5.setText(textGroup3.get(4));
-            
+            jTextPane1.setText(textData.get(10));
+            jTextPane2.setText(textData.get(11));
+            jTextPane3.setText(textData.get(12));
+            jTextPane4.setText(textData.get(13));
+            jTextPane5.setText(textData.get(14));
         }
         else if (page == 4) {
             jButton8.setText("<< Page 3");
             jButton7.setText("Current");
-            jTextPane1.setText(textGroup4.get(0));
-            jTextPane2.setText(textGroup4.get(1));
-            jTextPane3.setText(textGroup4.get(2));
-            jTextPane4.setText(textGroup4.get(3));
-            jTextPane5.setText(textGroup4.get(4)); 
+            jTextPane1.setText(textData.get(15)); 
+            jTextPane2.setText(textData.get(16));
+            jTextPane3.setText(textData.get(17));
+            jTextPane4.setText(textData.get(18));
+            jTextPane5.setText(textData.get(19));
         }
-        clip1.stop();
-        timer1.stop();
+        for(int i = 0; i < 19; i++){
+            clips.get(i).stop();
+            timers.get(i).stop();
+        }
+     
         playButton1.setText("Play");
-        clip2.stop();
-        timer2.stop();
         playButton2.setText("Play");
-        clip3.stop();
-        timer3.stop();
         playButton3.setText("Play");
-        clip4.stop();
-        timer4.stop();
         playButton4.setText("Play");
-        clip5.stop();
-        timer5.stop();
         playButton5.setText("Play");
-        initAudio();
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -807,57 +834,41 @@ public class Passive extends javax.swing.JFrame {
         if (page == 1) {
             jButton7.setText("Page 2 >>");
             jButton8.setText("Current");
-            jTextPane1.setText(textGroup1.get(0));
-            jTextPane2.setText(textGroup1.get(1));
-            jTextPane3.setText(textGroup1.get(2));
-            jTextPane4.setText(textGroup1.get(3));
-            jTextPane5.setText(textGroup1.get(4));
-            file1 = soundArr1.get(0);
-            file2 = soundArr1.get(1);
-            file3 = soundArr1.get(2);
-            file4 = soundArr1.get(3);
-            file5 = soundArr1.get(4);
-           
+            jTextPane1.setText(textData.get(0));
+            jTextPane2.setText(textData.get(1));
+            jTextPane3.setText(textData.get(2));
+            jTextPane4.setText(textData.get(3));
+            jTextPane5.setText(textData.get(4));  
         }
         else if(page == 2) {
             jButton7.setText("Page 3 >>");
             jButton8.setText("<< Page 1");
-            jTextPane1.setText(textGroup2.get(0));
-            jTextPane2.setText(textGroup2.get(1));
-            jTextPane3.setText(textGroup2.get(2));
-            jTextPane4.setText(textGroup2.get(3));
-            jTextPane5.setText(textGroup2.get(4));
-            file1 = soundArr2.get(0);
-            file2 = soundArr2.get(1);
-            file3 = soundArr2.get(2);
-            file4 = soundArr2.get(3);
-            file5 = soundArr2.get(4);
+            jTextPane1.setText(textData.get(5));
+            jTextPane2.setText(textData.get(6));
+            jTextPane3.setText(textData.get(7));
+            jTextPane4.setText(textData.get(8));
+            jTextPane5.setText(textData.get(9)); 
         }
         else if (page == 3) {
             jButton7.setText("Page 4 >>");
             jButton8.setText("<< Page 2");
-            jTextPane1.setText(textGroup3.get(0));
-            jTextPane2.setText(textGroup3.get(1));
-            jTextPane3.setText(textGroup3.get(2));
-            jTextPane4.setText(textGroup3.get(3));
-            jTextPane5.setText(textGroup3.get(4)); 
+            jTextPane1.setText(textData.get(10)); 
+            jTextPane2.setText(textData.get(11));
+            jTextPane3.setText(textData.get(12));
+            jTextPane4.setText(textData.get(13));
+            jTextPane5.setText(textData.get(14));    
         }
-        clip1.stop();
-        timer1.stop();
+        for(int i = 0; i < 19; i++){
+            clips.get(i).stop();
+            timers.get(i).stop();
+        }
+     
         playButton1.setText("Play");
-        clip2.stop();
-        timer2.stop();
         playButton2.setText("Play");
-        clip3.stop();
-        timer3.stop();
         playButton3.setText("Play");
-        clip4.stop();
-        timer4.stop();
         playButton4.setText("Play");
-        clip5.stop();
-        timer5.stop();
         playButton5.setText("Play");
-        initAudio();
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
