@@ -45,16 +45,9 @@ public class Passive extends javax.swing.JFrame {
    
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
-            clips.get(0).stop();
-            clips.get(0).setMicrosecondPosition(times.get(0));
-            clips.get(1).stop();
-            clips.get(1).setMicrosecondPosition(times.get(1));
-            clips.get(2).stop();
-            clips.get(2).setMicrosecondPosition(times.get(2));
-            clips.get(3).stop();
-            clips.get(3).setMicrosecondPosition(times.get(3));
-            clips.get(4).stop();
-            clips.get(4).setMicrosecondPosition(times.get(4));
+            clips.get(t).stop();
+            clips.get(t).setMicrosecondPosition(times.get(t));
+
             playButton1.setText("Play");
             playButton2.setText("Play");
             playButton3.setText("Play");
@@ -241,6 +234,8 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane6.setViewportView(jTextPane4);
 
         playButton1.setText("Play");
+        playButton1.setFocusCycleRoot(true);
+        playButton1.setFocusTraversalPolicyProvider(true);
         playButton1.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton1.setMinimumSize(new java.awt.Dimension(97, 29));
         playButton1.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -610,17 +605,15 @@ public class Passive extends javax.swing.JFrame {
             t = 15;
         }
         
-        if (!running1) {
+        if (!clips.get(t).isRunning()) {
             clips.get(t).start();
             timers.get(t).start();
             playButton1.setText("Pause");
-            running1 = true;
         }
         else {
             clips.get(t).stop();
             timers.get(t).stop();
             playButton1.setText("Play");
-            running1 = false;
         }
     }//GEN-LAST:event_playButton1MouseReleased
 
@@ -650,17 +643,15 @@ public class Passive extends javax.swing.JFrame {
             t = 16;
         }
         
-        if (!running2) {
+        if (!clips.get(t).isRunning()) {
             clips.get(t).start();
             timers.get(t).start();
             playButton2.setText("Pause");
-            running2 = true;
         }
         else {
             clips.get(t).stop();
             timers.get(t).stop();
             playButton2.setText("Play");
-            running2 = false;
         }
     }//GEN-LAST:event_playButton2MouseReleased
 
@@ -690,17 +681,15 @@ public class Passive extends javax.swing.JFrame {
             t = 17;
         }
         
-        if (!running3) {
+        if (!clips.get(t).isRunning()) {
             clips.get(t).start();
             timers.get(t).start();
             playButton3.setText("Pause");
-            running3 = true;
         }
         else {
             clips.get(t).stop();
             timers.get(t).stop();
             playButton3.setText("Play");
-            running3 = false;
         }
     }//GEN-LAST:event_playButton3MouseReleased
 
@@ -730,17 +719,15 @@ public class Passive extends javax.swing.JFrame {
             t = 18;
         }
         
-        if (!running4) {
+        if (!clips.get(t).isRunning()) {
             clips.get(t).start();
             timers.get(t).start();
             playButton4.setText("Pause");
-            running4 = true;
         }
         else {
             clips.get(t).stop();
             timers.get(t).stop();
             playButton4.setText("Play");
-            running4 = false;
         }
     }//GEN-LAST:event_playButton4MouseReleased
 
@@ -770,17 +757,15 @@ public class Passive extends javax.swing.JFrame {
             t = 19;
         }
         
-        if (!running5) {
+        if (!clips.get(t).isRunning()) {
             clips.get(t).start();
             timers.get(t).start();
             playButton5.setText("Pause");
-            running5 = true;
         }
         else {
             clips.get(t).stop();
             timers.get(t).stop();
             playButton5.setText("Play");
-            running5 = false;
         }
     }//GEN-LAST:event_playButton5MouseReleased
 
