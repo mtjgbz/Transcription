@@ -2,6 +2,7 @@ package my.transcription;
 
 import java.io.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.*;
@@ -96,7 +97,7 @@ public class PassiveBE {
             
             //close the lineReader and return the line (path for findPhrase)
             reader.close();
-            return "Path: " + path;
+            return path;
             
         }catch(Exception e){
             e.printStackTrace();
@@ -106,8 +107,9 @@ public class PassiveBE {
         return null;
     }
     
-    public String findPhrase(String document){
+    public ArrayList<String> findPhrase(String document){
         try{
+            ArrayList<String> phrase = new ArrayList<String>();
             File file = new File(document);
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
@@ -127,7 +129,11 @@ public class PassiveBE {
                 matcher.reset(value);
                 if(matcher.find()){
                     if(i >= count){
-                        return "Value: : " + value;
+                        phrase.add(attributes.getNamedItem("time").toString());
+                        phrase.add(value);
+                        NamedNodeMap nextAttributes = nList.item(i + 1).getAttributes();
+                        phrase.add(nextAttributes.getNamedItem("time").toString());
+                        return phrase;
                     }
                 }
             }
