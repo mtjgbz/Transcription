@@ -11,6 +11,7 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
@@ -42,6 +43,8 @@ public class Passive extends javax.swing.JFrame {
     ArrayList<Integer> times = new ArrayList<>();
     ArrayList<Timer> timers = new ArrayList<>();
     
+    private LinkedList<ArrayList> phraseList;
+    private int currPageIndex;
    
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
@@ -538,8 +541,18 @@ public class Passive extends javax.swing.JFrame {
 
     public void initTextFields() {
         backend = new PassiveBE();
-        String file = backend.findFile(1, 'a');
-        System.out.println("Phrase found: " + backend.findPhrase(file)); //ECL: Adjusted this to test the findPhrase
+        currPageIndex = 0;
+        phraseList = new LinkedList<ArrayList>();
+        for(int i = 0; i < 20; i++){
+            String file = backend.findFile(1, 'a');
+            ArrayList<String> phrase = backend.findPhrase(file); //ECL: Adjusted this to test the findPhrase
+            phraseList.add(phrase);
+        }
+        setTextFields();
+    }
+    
+    public void setTextFields(){
+        phraseList.get(currPageIndex);
     }
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked

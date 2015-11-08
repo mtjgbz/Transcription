@@ -113,6 +113,7 @@ public class PassiveBE {
             File file = new File(document);
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
+            dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
             NodeList nList = doc.getElementsByTagName("Sync");
@@ -129,10 +130,16 @@ public class PassiveBE {
                 matcher.reset(value);
                 if(matcher.find()){
                     if(i >= count){
-                        phrase.add(attributes.getNamedItem("time").toString());
+                        String time = attributes.getNamedItem("time").toString();
+                        time = time.replace("time=", "");
+                        time = time.replace("\"", "");
+                        phrase.add(time);
                         phrase.add(value);
                         NamedNodeMap nextAttributes = nList.item(i + 1).getAttributes();
-                        phrase.add(nextAttributes.getNamedItem("time").toString());
+                        time = nextAttributes.getNamedItem("time").toString();
+                        time = time.replace("time=", "");
+                        time = time.replace("\"", "");
+                        phrase.add(time);
                         return phrase;
                     }
                 }
