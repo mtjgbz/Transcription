@@ -683,20 +683,47 @@ public class Passive extends javax.swing.JFrame {
         for(int i = 0; i < 20; i++){
             String file = backend.findFile(1, 'a');
             ArrayList<String> phrase = backend.findPhrase(file);
-            if(phrase == null || textData.contains(phrase.get(1))){
+            ArrayList<String> currList;
+            if(phrase == null){
+                i--;
+            }
+            boolean contains = false;
+            if (i > 15){
+                currList = textList.get(3);
+                if(currList.contains(phrase.get(1))){
+                    contains = true;
+                }
+            }else if (i > 10){
+                currList = textList.get(2);
+                if(currList.contains(phrase.get(1))){
+                    contains = true;
+                }
+            }else if (i > 5){
+                currList = textList.get(1);
+                if(currList.contains(phrase.get(1))){
+                    contains = true;
+                }
+            }else{
+                currList = textList.get(0);
+                if(currList.contains(phrase.get(1))){
+                    contains = true;
+                }
+            }
+            if(contains == true){
                 i--;
             }else{
                 phraseList.add(phrase);
-                textData.set(i, phrase.get(1));
+                currList.set(i, phrase.get(1));
             }
             //check for if textData already contains the phrase, if it does i--
         }
         
-        jTextPane1.setText(textData.get(0));
-        jTextPane2.setText(textData.get(1));
-        jTextPane3.setText(textData.get(2));
-        jTextPane4.setText(textData.get(3));
-        jTextPane5.setText(textData.get(4));
+        ArrayList<String> currList = textList.get(0);
+        jTextPane1.setText(currList.get(0));
+        jTextPane2.setText(currList.get(1));
+        jTextPane3.setText(currList.get(2));
+        jTextPane4.setText(currList.get(3));
+        jTextPane5.setText(currList.get(4));
     }
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
