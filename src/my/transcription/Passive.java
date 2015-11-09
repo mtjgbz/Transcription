@@ -790,9 +790,10 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         
         if (!clip1.isRunning()) {
+            clip1.setMicrosecondPosition(9029000);
             clip1.start();
             timer1.start();
-            playButton1.setText("Pause");
+            playButton1.setText("Stop");
         }
         else {
             clip1.stop();
