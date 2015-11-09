@@ -819,9 +819,10 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         
         if (!clip2.isRunning()) {
+            clip2.setMicrosecondPosition(9029000);
             clip2.start();
             timer2.start();
-            playButton2.setText("Pause");
+            playButton2.setText("Stop");
         }
         else {
             clip2.stop();
@@ -847,9 +848,10 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         
         if (!clip3.isRunning()) {
+            clip3.setMicrosecondPosition(9029000);
             clip3.start();
             timer3.start();
-            playButton3.setText("Pause");
+            playButton3.setText("Stop");
         }
         else {
             clip3.stop();
@@ -875,9 +877,10 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setText("Play");
         
         if (!clip4.isRunning()) {
+            clip4.setMicrosecondPosition(9029000);
             clip4.start();
             timer4.start();
-            playButton4.setText("Pause");
+            playButton4.setText("Stop");
         }
         else {
             clip4.stop();
@@ -903,9 +906,10 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         
         if (!clip5.isRunning()) {
+            clip5.setMicrosecondPosition(9029000);
             clip5.start();
             timer5.start();
-            playButton5.setText("Pause");
+            playButton5.setText("Stop");
         }
         else {
             clip5.stop();
