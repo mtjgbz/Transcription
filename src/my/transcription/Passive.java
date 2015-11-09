@@ -175,6 +175,7 @@ public class Passive extends javax.swing.JFrame {
 
         initAudioLists();
         initAudio();
+        initTextFields();
     }
     
     public void initAudioLists(){
@@ -684,21 +685,22 @@ public class Passive extends javax.swing.JFrame {
             String file = backend.findFile(1, 'a');
             ArrayList<String> phrase = backend.findPhrase(file);
             ArrayList<String> currList;
-            if(phrase == null){
+            if(phrase == null || phrase.get(1) == null){
                 i--;
+                continue;
             }
             boolean contains = false;
-            if (i > 15){
+            if (i >= 15){
                 currList = textList.get(3);
                 if(currList.contains(phrase.get(1))){
                     contains = true;
                 }
-            }else if (i > 10){
+            }else if (i >= 10){
                 currList = textList.get(2);
                 if(currList.contains(phrase.get(1))){
                     contains = true;
                 }
-            }else if (i > 5){
+            }else if (i >= 5){
                 currList = textList.get(1);
                 if(currList.contains(phrase.get(1))){
                     contains = true;
@@ -713,7 +715,7 @@ public class Passive extends javax.swing.JFrame {
                 i--;
             }else{
                 phraseList.add(phrase);
-                currList.set(i, phrase.get(1));
+                currList.set(i % 5, phrase.get(1));
             }
             //check for if textData already contains the phrase, if it does i--
         }

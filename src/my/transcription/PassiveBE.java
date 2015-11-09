@@ -110,7 +110,7 @@ public class PassiveBE {
     public ArrayList<String> findPhrase(String document){
         try{
             ArrayList<String> phrase = new ArrayList<String>();
-            System.out.println(document);
+            //System.out.println(document);
             File file = new File(document);
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
@@ -126,7 +126,7 @@ public class PassiveBE {
             Matcher matcher = regexp.matcher(file.getName());
             
             int count = rand.nextInt(nList.getLength());
-            System.out.println(count + " out of " + nList.getLength());
+            //System.out.println(count + " out of " + nList.getLength());
             
             for(int i = 0; i < nList.getLength(); i++){
                 Node nNode = nList.item(i);
@@ -141,7 +141,7 @@ public class PassiveBE {
                         phrase.add(time);
                         if(value != null){
                             phrase.add(value);
-                            System.out.println(value);
+                            //System.out.println(value);
                         }else{
                             return null;
                         }
