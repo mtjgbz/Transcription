@@ -97,6 +97,9 @@ public class Passive extends javax.swing.JFrame {
     public Passive(String user) {
         this.user = user;
         initLists();
+        initAudioLists();
+        initAudio();
+        
         
         //test stuff
         for(int i = 0; i < 5; i++) {
@@ -172,8 +175,6 @@ public class Passive extends javax.swing.JFrame {
         jTextPane4.setText(textList.get(t).get(3));
         jTextPane5.setText(textList.get(t).get(4));
 
-        //initAudioLists();
-        //initAudio();
     }
     
     public void initAudioLists(){
