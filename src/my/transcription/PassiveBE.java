@@ -82,15 +82,15 @@ public class PassiveBE {
                 lineCount++;
             }
             
-            System.out.println("Line num: " + lineCount);
+            //System.out.println("Line num: " + lineCount);
             //get a random line number from the total number of lines
-            int random = rand.nextInt(lineCount +1);
-            System.out.println("Random: " + random);
+            int random = rand.nextInt(lineCount);
+            //System.out.println("Random: " + random);
             
             //reset lineReader to the beginnig of the file so can read up to the random line
             //and then return it
             reader.reset();
-            System.out.println("Line before loop: " + reader.getLineNumber());
+            //System.out.println("Line before loop: " + reader.getLineNumber());
             for(int i = 0; i < random-1; i++) {
                 path = reader.readLine();
             }
@@ -110,18 +110,23 @@ public class PassiveBE {
     public ArrayList<String> findPhrase(String document){
         try{
             ArrayList<String> phrase = new ArrayList<String>();
+            System.out.println(document);
             File file = new File(document);
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
             dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            if(document.contains("list.txt")){
+                return null;
+            }
             Document doc = dBuilder.parse(file);
             NodeList nList = doc.getElementsByTagName("Sync");
             
             Pattern regexp = Pattern.compile("[a-zñ][aeiou]([134])[a-zñ][aeiou]\\1");       //example exp - change later
             Matcher matcher = regexp.matcher(file.getName());
             
-            int count = Math.abs(rand.nextInt() % nList.getLength());
+            int count = rand.nextInt(nList.getLength());
+            System.out.println(count + " out of " + nList.getLength());
             
             for(int i = 0; i < nList.getLength(); i++){
                 Node nNode = nList.item(i);
@@ -134,13 +139,23 @@ public class PassiveBE {
                         time = time.replace("time=", "");
                         time = time.replace("\"", "");
                         phrase.add(time);
-                        phrase.add(value);
-                        NamedNodeMap nextAttributes = nList.item(i + 1).getAttributes();
-                        time = nextAttributes.getNamedItem("time").toString();
-                        time = time.replace("time=", "");
-                        time = time.replace("\"", "");
-                        phrase.add(time);
-                        return phrase;
+                        if(value != null){
+                            phrase.add(value);
+                            System.out.println(value);
+                        }else{
+                            return null;
+                        }
+                        if(nList.item(i + 1) != null){
+                            NamedNodeMap nextAttributes = nList.item(i + 1).getAttributes();
+                            time = nextAttributes.getNamedItem("time").toString();
+                            time = time.replace("time=", "");
+                            time = time.replace("\"", "");
+                            phrase.add(time);
+                            return phrase;
+                        }else{
+                            phrase.add("0");
+                            return phrase;
+                        }
                     }
                 }
             }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Timer;
+import javax.swing.*;
 
 //import javafx.scene.media.Media;
 /**
@@ -682,14 +682,21 @@ public class Passive extends javax.swing.JFrame {
         phraseList = new LinkedList<ArrayList>();
         for(int i = 0; i < 20; i++){
             String file = backend.findFile(1, 'a');
-            ArrayList<String> phrase = backend.findPhrase(file); //ECL: Adjusted this to test the findPhrase
-            phraseList.add(phrase);
+            ArrayList<String> phrase = backend.findPhrase(file);
+            if(phrase == null || textData.contains(phrase.get(1))){
+                i--;
+            }else{
+                phraseList.add(phrase);
+                textData.set(i, phrase.get(1));
+            }
+            //check for if textData already contains the phrase, if it does i--
         }
-        setTextFields();
-    }
-    
-    public void setTextFields(){
-        phraseList.get(currPageIndex);
+        
+        jTextPane1.setText(textData.get(0));
+        jTextPane2.setText(textData.get(1));
+        jTextPane3.setText(textData.get(2));
+        jTextPane4.setText(textData.get(3));
+        jTextPane5.setText(textData.get(4));
     }
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
