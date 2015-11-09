@@ -717,7 +717,13 @@ public class Passive extends javax.swing.JFrame {
                 phraseList.add(phrase);
                 currList.set(i % 5, phrase.get(1));
             }
-            //check for if textData already contains the phrase, if it does i--
+            file = file.replace(".trs", ".wav");
+            file = file.replace("Transcripciones", "Sonido");
+            if(file.contains("_ed")){
+                file = file.split("_ed")[0];
+                file = file + ".wav";
+            }
+            System.out.println(file);
         }
         
         ArrayList<String> currList = textList.get(0);
