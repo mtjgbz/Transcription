@@ -790,9 +790,9 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         
         if (!clip1.isRunning()) {
-            clip1.setMicrosecondPosition(9029000);
+            clip1.setMicrosecondPosition(timesList.get(t).get(0));
             clip1.start();
-            timer1.start();
+            timer1.restart();
             playButton1.setText("Stop");
         }
         else {
@@ -819,9 +819,9 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         
         if (!clip2.isRunning()) {
-            clip2.setMicrosecondPosition(9029000);
+            clip2.setMicrosecondPosition(timesList.get(t).get(1));
             clip2.start();
-            timer2.start();
+            timer2.restart();
             playButton2.setText("Stop");
         }
         else {
@@ -848,9 +848,9 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         
         if (!clip3.isRunning()) {
-            clip3.setMicrosecondPosition(9029000);
+            clip3.setMicrosecondPosition(timesList.get(t).get(2));
             clip3.start();
-            timer3.start();
+            timer3.restart();
             playButton3.setText("Stop");
         }
         else {
@@ -877,9 +877,9 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setText("Play");
         
         if (!clip4.isRunning()) {
-            clip4.setMicrosecondPosition(9029000);
+            clip4.setMicrosecondPosition(timesList.get(t).get(3));
             clip4.start();
-            timer4.start();
+            timer4.restart();
             playButton4.setText("Stop");
         }
         else {
@@ -906,9 +906,9 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         
         if (!clip5.isRunning()) {
-            clip5.setMicrosecondPosition(9029000);
+            clip5.setMicrosecondPosition(timesList.get(t).get(4));
             clip5.start();
-            timer5.start();
+            timer5.restart();
             playButton5.setText("Stop");
         }
         else {
