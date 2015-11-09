@@ -2,6 +2,7 @@ package my.transcription;
 
 import java.io.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.*;
@@ -96,7 +97,7 @@ public class PassiveBE {
             
             //close the lineReader and return the line (path for findPhrase)
             reader.close();
-            return "Path: " + path;
+            return path;
             
         }catch(Exception e){
             e.printStackTrace();
@@ -106,11 +107,13 @@ public class PassiveBE {
         return null;
     }
     
-    public String findPhrase(String document){
+    public ArrayList<String> findPhrase(String document){
         try{
+            ArrayList<String> phrase = new ArrayList<String>();
             File file = new File(document);
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
+            dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
             NodeList nList = doc.getElementsByTagName("Sync");
@@ -127,7 +130,17 @@ public class PassiveBE {
                 matcher.reset(value);
                 if(matcher.find()){
                     if(i >= count){
-                        return "Value: : " + value;
+                        String time = attributes.getNamedItem("time").toString();
+                        time = time.replace("time=", "");
+                        time = time.replace("\"", "");
+                        phrase.add(time);
+                        phrase.add(value);
+                        NamedNodeMap nextAttributes = nList.item(i + 1).getAttributes();
+                        time = nextAttributes.getNamedItem("time").toString();
+                        time = time.replace("time=", "");
+                        time = time.replace("\"", "");
+                        phrase.add(time);
+                        return phrase;
                     }
                 }
             }
