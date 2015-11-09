@@ -771,6 +771,16 @@ public class Passive extends javax.swing.JFrame {
         clip4.stop();
         clip5.stop();
         
+        timer5.stop();
+        timer2.stop();
+        timer3.stop();
+        timer4.stop();
+        
+        playButton5.setText("Play");
+        playButton2.setText("Play");
+        playButton3.setText("Play");
+        playButton4.setText("Play");
+        
         if (!clip1.isRunning()) {
             clip1.start();
             timer1.start();
@@ -788,6 +798,16 @@ public class Passive extends javax.swing.JFrame {
         clip3.stop();
         clip4.stop();
         clip5.stop();
+        
+        timer1.stop();
+        timer5.stop();
+        timer3.stop();
+        timer4.stop();
+        
+        playButton1.setText("Play");
+        playButton5.setText("Play");
+        playButton3.setText("Play");
+        playButton4.setText("Play");
         
         if (!clip2.isRunning()) {
             clip2.start();
@@ -807,6 +827,16 @@ public class Passive extends javax.swing.JFrame {
         clip4.stop();
         clip5.stop();
         
+        timer1.stop();
+        timer2.stop();
+        timer5.stop();
+        timer4.stop();
+        
+        playButton1.setText("Play");
+        playButton2.setText("Play");
+        playButton5.setText("Play");
+        playButton4.setText("Play");
+        
         if (!clip3.isRunning()) {
             clip3.start();
             timer3.start();
@@ -825,6 +855,16 @@ public class Passive extends javax.swing.JFrame {
         clip3.stop();
         clip5.stop();
         
+        timer1.stop();
+        timer2.stop();
+        timer3.stop();
+        timer5.stop();
+        
+        playButton1.setText("Play");
+        playButton2.setText("Play");
+        playButton3.setText("Play");
+        playButton5.setText("Play");
+        
         if (!clip4.isRunning()) {
             clip4.start();
             timer4.start();
@@ -842,6 +882,16 @@ public class Passive extends javax.swing.JFrame {
         clip2.stop();
         clip3.stop();
         clip4.stop();
+        
+        timer1.stop();
+        timer2.stop();
+        timer3.stop();
+        timer4.stop();
+        
+        playButton1.setText("Play");
+        playButton2.setText("Play");
+        playButton3.setText("Play");
+        playButton4.setText("Play");
         
         if (!clip5.isRunning()) {
             clip5.start();
