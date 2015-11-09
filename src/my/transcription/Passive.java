@@ -33,6 +33,8 @@ public class Passive extends javax.swing.JFrame {
     ArrayList<ArrayList<Timer>> timersList = new ArrayList<>();
     ArrayList<ArrayList<String>> textList = new ArrayList<>();
     ArrayList<ArrayList<Integer>> timesList = new ArrayList<>();
+    
+    //Dummy array list
     ArrayList<File> clips = new ArrayList<>();
     
     Clip clip1;
@@ -175,7 +177,7 @@ public class Passive extends javax.swing.JFrame {
 
         initAudioLists();
         initAudio();
-        initTextFields();
+        //initTextFields();
     }
     
     public void initAudioLists(){
@@ -676,7 +678,7 @@ public class Passive extends javax.swing.JFrame {
         timer4 = timersList.get(page-1).get(3);
         timer5 = timersList.get(page-1).get(4);
     }
-
+    
     public void initTextFields() {
         backend = new PassiveBE();
         currPageIndex = 0;
@@ -915,7 +917,6 @@ public class Passive extends javax.swing.JFrame {
         if(page >= 1 && page < 4) {
             page ++;
         }
-        initAudio();
         
         if(page == 2) {
             jButton7.setText("Page 3 >>");
