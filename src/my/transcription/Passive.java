@@ -177,7 +177,7 @@ public class Passive extends javax.swing.JFrame {
 
         initAudioLists();
         initAudio();
-        //initTextFields();
+        initTextFields();
     }
     
     public void initAudioLists(){
@@ -719,14 +719,11 @@ public class Passive extends javax.swing.JFrame {
                 phraseList.add(phrase);
                 currList.set(i % 5, phrase.get(1));
             }
-            file = file.replace(".trs", ".wav");
-            file = file.replace("Transcripciones", "Sonido");
-            if(file.contains("_ed")){
-                file = file.split("_ed")[0];
-                file = file + ".wav";
-            }
+            //Put clip and time info here - how are we getting the time information?
+            //use getClips to return the clip names and files
             System.out.println(file);
         }
+        
         
         ArrayList<String> currList = textList.get(0);
         jTextPane1.setText(currList.get(0));

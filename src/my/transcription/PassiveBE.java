@@ -25,6 +25,7 @@ public class PassiveBE {
     private Statement stmt;
     private ResultSet rs;
     private Random rand;
+    private static ArrayList<File> clips;
     
     /**
      * Creates the passive backend.
@@ -107,10 +108,23 @@ public class PassiveBE {
         return null;
     }
     
+    public ArrayList<File> getClips(){
+        return clips;
+    }
+    
     public ArrayList<String> findPhrase(String document){
         try{
             ArrayList<String> phrase = new ArrayList<String>();
-            //System.out.println(document);
+            
+            String soundName = document.replace(".trs", ".wav");
+            soundName = soundName.replace("Transcripciones", "Sonido");
+            if(soundName.contains("_ed")){
+                document = soundName.split("_ed")[0];
+                soundName = soundName + ".wav";
+                
+            }
+            clips.add(new File(soundName));
+            
             File file = new File(document);
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
