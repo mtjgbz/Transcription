@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
+import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
@@ -24,6 +25,7 @@ public class Active extends javax.swing.JFrame {
     public Active(Home home, String user) {
         this.home=home;
         this.user=user;
+        getContentPane().setBackground(new Color(148,189,203));
         initComponents();
     }
 

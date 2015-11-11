@@ -5,6 +5,7 @@
  */
 package my.transcription;
 
+import java.awt.Color;
 import javax.sound.sampled.Clip;
 import javax.swing.Timer;
 
@@ -21,6 +22,7 @@ public class Test extends javax.swing.JFrame {
      * @param user
      */
     public Test(String user) {
+        getContentPane().setBackground(new Color(148,189,203));
         this.user=user;
         initComponents();
         this.setTitle("Mixtec Transcription: Test");
