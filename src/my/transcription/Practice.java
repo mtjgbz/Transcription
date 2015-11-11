@@ -5,6 +5,7 @@
  */
 package my.transcription;
 
+import java.awt.Color;
 import javax.sound.sampled.Clip;
 import javax.swing.Timer;
 
@@ -27,6 +28,7 @@ public class Practice extends javax.swing.JFrame {
      * @param user
      */
     public Practice(String user) {
+        getContentPane().setBackground(new Color(148,189,203));
         this.setTitle("Mixtec Transcription: Practice");
         initComponents();
         this.user=user;

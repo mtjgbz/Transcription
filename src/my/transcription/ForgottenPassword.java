@@ -5,6 +5,7 @@
  */
 package my.transcription;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 // TODO: Print error messages
 /**
@@ -21,6 +22,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
         initComponents();
         jTextField4.setEditable(false);
         backend = new ForgottenPasswordBE();
+        getContentPane().setBackground(new Color(148,189,203));
         
     }
 

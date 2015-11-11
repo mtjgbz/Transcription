@@ -6,6 +6,7 @@
 package my.transcription;
 //TODO: Popup for mismatched password & incorrect login info
 
+import java.awt.Color;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -22,6 +23,7 @@ public class Register extends javax.swing.JFrame {
      * Creates new form Register
      */
     public Register() {
+        getContentPane().setBackground(new Color(148,189,203));
         initComponents();
         backend = new RegisterBE();
         populateSecurityQuestions();

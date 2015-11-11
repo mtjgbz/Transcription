@@ -103,6 +103,7 @@ public class Passive extends javax.swing.JFrame {
      */
     public Passive(String user) {
         this.user = user;
+        getContentPane().setBackground(new Color(148,189,203));
        
         initLists();
         
@@ -292,6 +293,7 @@ public class Passive extends javax.swing.JFrame {
         setResizable(false);
 
         jTextPane5.setEditable(false);
+        jTextPane5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane5.setAutoscrolls(false);
         jTextPane5.setFocusable(false);
         jTextPane5.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -301,6 +303,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextPane5);
 
         jTextPane3.setEditable(false);
+        jTextPane3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane3.setAutoscrolls(false);
         jTextPane3.setFocusable(false);
         jTextPane3.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -310,6 +313,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTextPane3);
 
         jTextPane2.setEditable(false);
+        jTextPane2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane2.setAutoscrolls(false);
         jTextPane2.setFocusable(false);
         jTextPane2.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -319,6 +323,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTextPane2);
 
         jTextPane1.setEditable(false);
+        jTextPane1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane1.setAutoscrolls(false);
         jTextPane1.setFocusable(false);
         jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -328,6 +333,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTextPane1);
 
         jTextPane4.setEditable(false);
+        jTextPane4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane4.setAutoscrolls(false);
         jTextPane4.setFocusable(false);
         jTextPane4.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -336,6 +342,9 @@ public class Passive extends javax.swing.JFrame {
         jTextPane4.setRequestFocusEnabled(false);
         jScrollPane6.setViewportView(jTextPane4);
 
+        playButton1.setBackground(new java.awt.Color(204, 204, 204));
+        playButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
         playButton1.setText("Play");
         playButton1.setFocusCycleRoot(true);
         playButton1.setFocusTraversalPolicyProvider(true);
@@ -348,6 +357,9 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
+        playButton2.setBackground(new java.awt.Color(204, 204, 204));
+        playButton2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        playButton2.setForeground(new java.awt.Color(0, 153, 51));
         playButton2.setText("Play");
         playButton2.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton2.setMinimumSize(new java.awt.Dimension(97, 29));
@@ -358,6 +370,9 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
+        playButton3.setBackground(new java.awt.Color(204, 204, 204));
+        playButton3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        playButton3.setForeground(new java.awt.Color(0, 153, 51));
         playButton3.setText("Play");
         playButton3.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton3.setMinimumSize(new java.awt.Dimension(97, 29));
@@ -368,6 +383,9 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
+        playButton4.setBackground(new java.awt.Color(204, 204, 204));
+        playButton4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        playButton4.setForeground(new java.awt.Color(0, 153, 51));
         playButton4.setText("Play");
         playButton4.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton4.setMinimumSize(new java.awt.Dimension(97, 29));
@@ -378,6 +396,9 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
+        playButton5.setBackground(new java.awt.Color(204, 204, 204));
+        playButton5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        playButton5.setForeground(new java.awt.Color(0, 153, 51));
         playButton5.setText("Play");
         playButton5.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton5.setMinimumSize(new java.awt.Dimension(97, 29));
@@ -388,6 +409,8 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setBackground(new java.awt.Color(204, 204, 204));
+        jButton7.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton7.setText("Page 2 >>");
         jButton7.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton7.setMinimumSize(new java.awt.Dimension(97, 30));
@@ -398,6 +421,8 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setBackground(new java.awt.Color(204, 204, 204));
+        jButton8.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton8.setText("Current");
         jButton8.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton8.setMinimumSize(new java.awt.Dimension(97, 30));
@@ -407,6 +432,8 @@ public class Passive extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
+
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
         jMenu1.setText("Home");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -757,16 +784,22 @@ public class Passive extends javax.swing.JFrame {
         playButton2.setText("Play");
         playButton3.setText("Play");
         playButton4.setText("Play");
+        playButton2.setForeground(new java.awt.Color(0,153,51));
+        playButton3.setForeground(new java.awt.Color(0,153,51));
+        playButton4.setForeground(new java.awt.Color(0,153,51));
+        playButton5.setForeground(new java.awt.Color(0,153,51));
         
         if (!clip1.isRunning()) {
             clip1.setMicrosecondPosition(timesList.get(t).get(0));
             clip1.start();
             timer1.restart();
+            playButton1.setForeground(new java.awt.Color(255, 51, 51));
             playButton1.setText("Stop");
         }
         else {
             clip1.stop();
             timer1.stop();
+            playButton1.setForeground(new java.awt.Color(0,153,51));
             playButton1.setText("Play");
         }
     }//GEN-LAST:event_playButton1MouseReleased
@@ -786,16 +819,22 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setText("Play");
         playButton3.setText("Play");
         playButton4.setText("Play");
+        playButton1.setForeground(new java.awt.Color(0,153,51));
+        playButton3.setForeground(new java.awt.Color(0,153,51));
+        playButton4.setForeground(new java.awt.Color(0,153,51));
+        playButton5.setForeground(new java.awt.Color(0,153,51));
         
         if (!clip2.isRunning()) {
             clip2.setMicrosecondPosition(timesList.get(t).get(1));
             clip2.start();
             timer2.restart();
+            playButton2.setForeground(new java.awt.Color(255, 51, 51));
             playButton2.setText("Stop");
         }
         else {
             clip2.stop();
             timer2.stop();
+            playButton2.setForeground(new java.awt.Color(0,153,51));
             playButton2.setText("Play");
         }
     }//GEN-LAST:event_playButton2MouseReleased
@@ -815,16 +854,22 @@ public class Passive extends javax.swing.JFrame {
         playButton2.setText("Play");
         playButton5.setText("Play");
         playButton4.setText("Play");
+        playButton1.setForeground(new java.awt.Color(0,153,51));
+        playButton2.setForeground(new java.awt.Color(0,153,51));
+        playButton4.setForeground(new java.awt.Color(0,153,51));
+        playButton5.setForeground(new java.awt.Color(0,153,51));
         
         if (!clip3.isRunning()) {
             clip3.setMicrosecondPosition(timesList.get(t).get(2));
             clip3.start();
             timer3.restart();
+            playButton3.setForeground(new java.awt.Color(255, 51, 51));
             playButton3.setText("Stop");
         }
         else {
             clip3.stop();
             timer3.stop();
+            playButton3.setForeground(new java.awt.Color(0,153,51));
             playButton3.setText("Play");
         }
     }//GEN-LAST:event_playButton3MouseReleased
@@ -844,16 +889,22 @@ public class Passive extends javax.swing.JFrame {
         playButton2.setText("Play");
         playButton3.setText("Play");
         playButton5.setText("Play");
+        playButton1.setForeground(new java.awt.Color(0,153,51));
+        playButton2.setForeground(new java.awt.Color(0,153,51));
+        playButton3.setForeground(new java.awt.Color(0,153,51));
+        playButton5.setForeground(new java.awt.Color(0,153,51));
         
         if (!clip4.isRunning()) {
             clip4.setMicrosecondPosition(timesList.get(t).get(3));
             clip4.start();
             timer4.restart();
+            playButton4.setForeground(new java.awt.Color(255, 51, 51));
             playButton4.setText("Stop");
         }
         else {
             clip4.stop();
             timer4.stop();
+            playButton4.setForeground(new java.awt.Color(0,153,51));
             playButton4.setText("Play");
         }
     }//GEN-LAST:event_playButton4MouseReleased
@@ -873,16 +924,22 @@ public class Passive extends javax.swing.JFrame {
         playButton2.setText("Play");
         playButton3.setText("Play");
         playButton4.setText("Play");
+        playButton1.setForeground(new java.awt.Color(0,153,51));
+        playButton2.setForeground(new java.awt.Color(0,153,51));
+        playButton3.setForeground(new java.awt.Color(0,153,51));
+        playButton4.setForeground(new java.awt.Color(0,153,51));
         
         if (!clip5.isRunning()) {
             clip5.setMicrosecondPosition(timesList.get(t).get(4));
             clip5.start();
             timer5.restart();
+            playButton5.setForeground(new java.awt.Color(255, 51, 51));
             playButton5.setText("Stop");
         }
         else {
             clip5.stop();
             timer5.stop();
+            playButton5.setForeground(new java.awt.Color(0,153,51));
             playButton5.setText("Play");
         }
     }//GEN-LAST:event_playButton5MouseReleased
@@ -922,6 +979,12 @@ public class Passive extends javax.swing.JFrame {
         timer3.stop();
         timer4.stop();
         timer5.stop();
+        
+        playButton1.setForeground(new java.awt.Color(0,153,51));
+        playButton2.setForeground(new java.awt.Color(0,153,51));
+        playButton3.setForeground(new java.awt.Color(0,153,51));
+        playButton4.setForeground(new java.awt.Color(0,153,51));
+        playButton5.setForeground(new java.awt.Color(0,153,51));
      
         playButton1.setText("Play");
         playButton2.setText("Play");
@@ -973,6 +1036,12 @@ public class Passive extends javax.swing.JFrame {
         timer3.stop();
         timer4.stop();
         timer5.stop();
+        
+        playButton1.setForeground(new java.awt.Color(0,153,51));
+        playButton2.setForeground(new java.awt.Color(0,153,51));
+        playButton3.setForeground(new java.awt.Color(0,153,51));
+        playButton4.setForeground(new java.awt.Color(0,153,51));
+        playButton5.setForeground(new java.awt.Color(0,153,51));
      
         playButton1.setText("Play");
         playButton2.setText("Play");
