@@ -5,7 +5,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
@@ -26,6 +33,28 @@ public class PassiveBE {
     private ResultSet rs;
     private Random rand;
     private static ArrayList<File> clips;
+    
+    private Clip clip1;
+    private Clip clip2;
+    private Clip clip3;
+    private Clip clip4;
+    private Clip clip5;
+    private Clip clip6;
+    private Clip clip7;
+    private Clip clip8;
+    private Clip clip9;
+    private Clip clip10;
+    private Clip clip11;
+    private Clip clip12;
+    private Clip clip13;
+    private Clip clip14;
+    private Clip clip15;
+    private Clip clip16;
+    private Clip clip17;
+    private Clip clip18;
+    private Clip clip19;
+    private Clip clip20;
+    
     
     /**
      * Creates the passive backend.
@@ -181,6 +210,209 @@ public class PassiveBE {
         }
         return null;
     }
+    
+    public ArrayList<ArrayList<Clip>> makeClips(){
+        ArrayList<ArrayList<Clip>>  clipsList = new ArrayList<>();
+        ArrayList<Clip> clips1 = new ArrayList<>();
+        ArrayList<Clip> clips2 = new ArrayList<>();
+        ArrayList<Clip> clips3 = new ArrayList<>();
+        ArrayList<Clip> clips4 = new ArrayList<>();
+         try {
+            
+            
+            
+            
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip1 = AudioSystem.getClip();
+            clip1.open(audioIn);
+            //clips1.setMicrosecondPosition(timesList.get(0).get(0));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip2 = AudioSystem.getClip();
+            clip2.open(audioIn);
+            //clips2.setMicrosecondPosition(timesList.get(0).get(1));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip3 = AudioSystem.getClip();
+            clip3.open(audioIn);
+            //clips3.setMicrosecondPosition(timesList.get(0).get(2));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip4 = AudioSystem.getClip();
+            clip4.open(audioIn);
+            //clips4.setMicrosecondPosition(timesList.get(0).get(3));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip5 = AudioSystem.getClip();
+            clip5.open(audioIn);
+            //clips5.setMicrosecondPosition(timesList.get(0).get(4));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip6 = AudioSystem.getClip();
+            clip6.open(audioIn);
+            //clips6.setMicrosecondPosition(timesList.get(1).get(0));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip7 = AudioSystem.getClip();
+            clip7.open(audioIn);
+            //clips7.setMicrosecondPosition(timesList.get(1).get(1));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip8 = AudioSystem.getClip();
+            clip8.open(audioIn);
+            //clips8.setMicrosecondPosition(timesList.get(1).get(2));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip9 = AudioSystem.getClip();
+            clip9.open(audioIn);
+            //clips9.setMicrosecondPosition(timesList.get(1).get(3));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip10 = AudioSystem.getClip();
+            clip10.open(audioIn);
+            //clips10.setMicrosecondPosition(timesList.get(1).get(4));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip11 = AudioSystem.getClip();
+            clip11.open(audioIn);
+            //clips11.setMicrosecondPosition(timesList.get(2).get(0));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip12 = AudioSystem.getClip();
+            clip12.open(audioIn);
+            //clips12.setMicrosecondPosition(timesList.get(2).get(1));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip13 = AudioSystem.getClip();
+            clip13.open(audioIn);
+            //clips13.setMicrosecondPosition(timesList.get(2).get(2));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip14 = AudioSystem.getClip();
+            clip14.open(audioIn);
+            //clips14.setMicrosecondPosition(timesList.get(2).get(3));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            clip15 = AudioSystem.getClip();
+            clip15.open(audioIn);
+            //clips15.setMicrosecondPosition(timesList.get(2).get(4));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip16 = AudioSystem.getClip();
+            clip16.open(audioIn);
+            //clips16.setMicrosecondPosition(timesList.get(3).get(0));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip17 = AudioSystem.getClip();
+            clip17.open(audioIn);
+            //clips17.setMicrosecondPosition(timesList.get(3).get(1));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip18 = AudioSystem.getClip();
+            clip18.open(audioIn);
+            //clips18.setMicrosecondPosition(timesList.get(3).get(2));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip19 = AudioSystem.getClip();
+            clip19.open(audioIn);
+            //clips19.setMicrosecondPosition(timesList.get(3).get(3));
+            audioIn.close();
+            
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+            clip20 = AudioSystem.getClip();
+            clip20.open(audioIn);
+            //clips20.setMicrosecondPosition(timesList.get(3).get(4));
+            audioIn.close();
+            
+            clips1.add(clip1);
+            clips1.add(clip2);
+            clips1.add(clip3);
+            clips1.add(clip4);
+            clips1.add(clip5);
+            
+            clips2.add(clip6);
+            clips2.add(clip7);
+            clips2.add(clip8);
+            clips2.add(clip9);
+            clips2.add(clip10);
+            
+            
+            clips3.add(clip11);
+            clips3.add(clip12);
+            clips3.add(clip13);
+            clips3.add(clip14);
+            clips3.add(clip15);
+            
+            clips4.add(clip16);
+            clips4.add(clip17);
+            clips4.add(clip18);
+            clips4.add(clip19);
+            clips4.add(clip20);
+            
+            
+            
+            clipsList.add(clips1);
+            clipsList.add(clips2);
+            clipsList.add(clips3);
+            clipsList.add(clips4);
+            
+            
+            
+            return clipsList;
+           
+            
+                
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return clipsList;
+    }
+    
+    public void closeAudio(){
+        clip1.close();
+        clip2.close();
+        clip3.close();
+        clip4.close();
+        clip5.close();
+        clip6.close();
+        clip7.close();
+        clip8.close();
+        clip9.close();
+        clip10.close();
+        clip11.close();
+        clip12.close();
+        clip13.close();
+        clip14.close();
+        clip15.close();
+        clip16.close();
+        clip17.close();
+        clip18.close();
+        clip19.close();
+        clip20.close();
+    }
+    
     //Parse through document paths until random one reached
     //Create parser to go through file
     //Randomly select a line from that file

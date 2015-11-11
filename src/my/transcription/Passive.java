@@ -100,7 +100,9 @@ public class Passive extends javax.swing.JFrame {
         this.user = user;
        
         initLists();
-       
+        
+        backend = new PassiveBE();
+        
         for(int i = 0; i < 5; i++) {
             timersList.get(0).add(new Timer(4428, listener));
             timersList.get(1).add(new Timer(4428, listener));
@@ -174,147 +176,17 @@ public class Passive extends javax.swing.JFrame {
         jTextPane3.setText(textList.get(t).get(2));
         jTextPane4.setText(textList.get(t).get(3));
         jTextPane5.setText(textList.get(t).get(4));
+        
+        clipsList = backend.makeClips();
+        //initAudioLists();
 
         initTextFields();
         initAudioLists();
         initAudio();
-        
+        //initTextFields();
     }
     
-    public void initAudioLists(){
-        try {
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(0));
-            Clip clips1 = AudioSystem.getClip();
-            clips1.open(audioIn);
-            clips1.setMicrosecondPosition(timesList.get(0).get(0));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(1));
-            Clip clips2 = AudioSystem.getClip();
-            clips2.open(audioIn);
-            clips2.setMicrosecondPosition(timesList.get(0).get(1));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(2));
-            Clip clips3 = AudioSystem.getClip();
-            clips3.open(audioIn);
-            clips3.setMicrosecondPosition(timesList.get(0).get(2));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(3));
-            Clip clips4 = AudioSystem.getClip();
-            clips4.open(audioIn);
-            clips4.setMicrosecondPosition(timesList.get(0).get(3));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(4));
-            Clip clips5 = AudioSystem.getClip();
-            clips5.open(audioIn);
-            clips5.setMicrosecondPosition(timesList.get(0).get(4));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(5));
-            Clip clips6 = AudioSystem.getClip();
-            clips6.open(audioIn);
-            clips6.setMicrosecondPosition(timesList.get(1).get(0));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(6));
-            Clip clips7 = AudioSystem.getClip();
-            clips7.open(audioIn);
-            clips7.setMicrosecondPosition(timesList.get(1).get(1));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(7));
-            Clip clips8 = AudioSystem.getClip();
-            clips8.open(audioIn);
-            clips8.setMicrosecondPosition(timesList.get(1).get(2));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(8));
-            Clip clips9 = AudioSystem.getClip();
-            clips9.open(audioIn);
-            clips9.setMicrosecondPosition(timesList.get(1).get(3));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(9));
-            Clip clips10 = AudioSystem.getClip();
-            clips10.open(audioIn);
-            clips10.setMicrosecondPosition(timesList.get(1).get(4));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(10));
-            Clip clips11 = AudioSystem.getClip();
-            clips11.open(audioIn);
-            clips11.setMicrosecondPosition(timesList.get(2).get(0));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(11));
-            Clip clips12 = AudioSystem.getClip();
-            clips12.open(audioIn);
-            clips12.setMicrosecondPosition(timesList.get(2).get(1));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(12));
-            Clip clips13 = AudioSystem.getClip();
-            clips13.open(audioIn);
-            clips13.setMicrosecondPosition(timesList.get(2).get(2));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(13));
-            Clip clips14 = AudioSystem.getClip();
-            clips14.open(audioIn);
-            clips14.setMicrosecondPosition(timesList.get(2).get(3));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(14));
-            Clip clips15 = AudioSystem.getClip();
-            clips15.open(audioIn);
-            clips15.setMicrosecondPosition(timesList.get(2).get(4));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(15));
-            Clip clips16 = AudioSystem.getClip();
-            clips16.open(audioIn);
-            clips16.setMicrosecondPosition(timesList.get(3).get(0));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(16));
-            Clip clips17 = AudioSystem.getClip();
-            clips17.open(audioIn);
-            clips17.setMicrosecondPosition(timesList.get(3).get(1));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(17));
-            Clip clips18 = AudioSystem.getClip();
-            clips18.open(audioIn);
-            clips18.setMicrosecondPosition(timesList.get(3).get(2));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(18));
-            Clip clips19 = AudioSystem.getClip();
-            clips19.open(audioIn);
-            clips19.setMicrosecondPosition(timesList.get(3).get(3));
-            
-            audioIn = AudioSystem.getAudioInputStream(clips.get(19));
-            Clip clips20 = AudioSystem.getClip();
-            clips20.open(audioIn);
-            clips20.setMicrosecondPosition(timesList.get(3).get(4));
-            
-            clipsList.get(0).add(clips1);
-            clipsList.get(0).add(clips2);
-            clipsList.get(0).add(clips3);
-            clipsList.get(0).add(clips4);
-            clipsList.get(0).add(clips5);
-            
-            clipsList.get(1).add(clips6);
-            clipsList.get(1).add(clips7);
-            clipsList.get(1).add(clips8);
-            clipsList.get(1).add(clips9);
-            clipsList.get(1).add(clips10);
-            
-            clipsList.get(2).add(clips11);
-            clipsList.get(2).add(clips12);
-            clipsList.get(2).add(clips13);
-            clipsList.get(2).add(clips14);
-            clipsList.get(2).add(clips15);
-            
-            clipsList.get(3).add(clips16);
-            clipsList.get(3).add(clips17);
-            clipsList.get(3).add(clips18);
-            clipsList.get(3).add(clips19);
-            clipsList.get(3).add(clips20);
-                
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
-        }   
-    }
+
     
     
     public void initLists(){
@@ -758,6 +630,7 @@ public class Passive extends javax.swing.JFrame {
         nas.dispose();
         tone.dispose();
         new Home(user).setVisible(true);
+        backend.closeAudio();
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
