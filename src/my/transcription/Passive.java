@@ -49,7 +49,7 @@ public class Passive extends javax.swing.JFrame {
     Timer timer4;
     Timer timer5;
     
-    private LinkedList<ArrayList> phraseList;
+    private ArrayList<ArrayList<String>> phraseList;
     private int currPageIndex;
    
     ActionListener listener = new ActionListener() {
@@ -175,9 +175,10 @@ public class Passive extends javax.swing.JFrame {
         jTextPane4.setText(textList.get(t).get(3));
         jTextPane5.setText(textList.get(t).get(4));
 
+        initTextFields();
         initAudioLists();
         initAudio();
-        initTextFields();
+        
     }
     
     public void initAudioLists(){
@@ -682,7 +683,7 @@ public class Passive extends javax.swing.JFrame {
     public void initTextFields() {
         backend = new PassiveBE();
         currPageIndex = 0;
-        phraseList = new LinkedList<ArrayList>();
+        phraseList = new ArrayList<ArrayList<String>>();
         for(int i = 0; i < 20; i++){
             String file = backend.findFile(1, 'a');
             ArrayList<String> phrase = backend.findPhrase(file);
@@ -692,22 +693,27 @@ public class Passive extends javax.swing.JFrame {
                 continue;
             }
             boolean contains = false;
+            int index = 0;
             if (i >= 15){
+                index = 3;
                 currList = textList.get(3);
                 if(currList.contains(phrase.get(1))){
                     contains = true;
                 }
             }else if (i >= 10){
+                index = 2;
                 currList = textList.get(2);
                 if(currList.contains(phrase.get(1))){
                     contains = true;
                 }
             }else if (i >= 5){
+                index = 1;
                 currList = textList.get(1);
                 if(currList.contains(phrase.get(1))){
                     contains = true;
                 }
             }else{
+                index = 0;
                 currList = textList.get(0);
                 if(currList.contains(phrase.get(1))){
                     contains = true;
@@ -721,9 +727,23 @@ public class Passive extends javax.swing.JFrame {
             }
             //Put clip and time info here - how are we getting the time information?
             //use getClips to return the clip names and files
-            System.out.println(file);
+            Float startTime = Float.parseFloat(phrase.get(0));
+            int startNum = (int) (startTime * 1000000);
+            
+            timesList.get(index).set(i % 5, startNum);
+            
+            Float endTime = Float.parseFloat(phrase.get(2));
+            int endNum = (int) (endTime * 1000);
+            startNum = (int) (startTime * 1000);
+            int length = endNum - startNum;
+            
+            System.out.println(length);
+            timersList.get(index).set(i % 5, new Timer(length, listener));
         }
         
+        clips = backend.getClips();
+        System.out.println(clips);
+        //System.out.println(clips);
         
         ArrayList<String> currList = textList.get(0);
         jTextPane1.setText(currList.get(0));
