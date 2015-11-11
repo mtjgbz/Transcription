@@ -187,6 +187,10 @@ public class Passive extends javax.swing.JFrame {
 
         
         initAudio();
+       
+        for(String w : wordsList) {
+            System.out.println("Word: " + w);
+        }
     }
 
     public void initLists(){
@@ -620,7 +624,7 @@ public class Passive extends javax.swing.JFrame {
             System.out.println("Word: " + w);
         }
         try {
-            highlightWord(wordsList, currList);
+            highlightWord(wordsList, textList.get(page-1));
         } catch (BadLocationException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -926,6 +930,12 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setText("Play");    
         
         initAudio();
+        backend.findWords(textList.get(page-1), wordsList);
+        try {
+            highlightWord(wordsList, textList.get(page-1));
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -971,6 +981,13 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setText("Play");
         
         initAudio();
+        backend.findWords(textList.get(page-1), wordsList);
+       
+        try {
+            highlightWord(wordsList, textList.get(page-1));
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
