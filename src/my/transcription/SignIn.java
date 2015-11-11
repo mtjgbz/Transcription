@@ -28,7 +28,7 @@ public class SignIn extends javax.swing.JFrame {
         backend.setupDB();
         
         //how to set the color of the JFrame
-        getContentPane().setBackground(new Color(178,198,206));
+        getContentPane().setBackground(new Color(190,202,174));
         
     }
     
@@ -62,9 +62,10 @@ public class SignIn extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(178, 201, 213));
+        setBackground(new java.awt.Color(190, 202, 174));
         setMinimumSize(new java.awt.Dimension(400, 340));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sign In");
         //jButton1.setBackground(Color.RED);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +74,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Register");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +92,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Forgotten Password?");
         jLabel3.setForeground(new Color(54,91,143));

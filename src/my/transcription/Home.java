@@ -27,7 +27,7 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setTitle("Mixtec Transcription: Home");
-        getContentPane().setBackground(new Color(187,202,162));
+        getContentPane().setBackground(new Color(190,202,174));
         
     }
     public Home(String user){
@@ -75,6 +75,7 @@ public class Home extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(665, 400));
         setResizable(false);
 
+        lessonBox.setBackground(new java.awt.Color(255, 255, 255));
         lessonBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4" }));
         lessonBox.setPreferredSize(new java.awt.Dimension(130, 30));
         lessonBox.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +84,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setPreferredSize(new java.awt.Dimension(130, 30));
 
@@ -90,6 +92,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel2.setText("Sub-lesson");
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Log Out");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +100,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Passive");
         jButton2.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +109,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Active");
         jButton3.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +118,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Trainee Log");
         jButton4.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +127,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Tones");
         jButton5.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +136,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Nasalizations");
         jButton6.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +145,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Enclitics");
         jButton7.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +153,8 @@ public class Home extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
+
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
