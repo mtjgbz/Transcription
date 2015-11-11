@@ -178,11 +178,9 @@ public class Passive extends javax.swing.JFrame {
         jTextPane5.setText(textList.get(t).get(4));
         
         clipsList = backend.makeClips();
-        //initAudioLists();
 
-        initTextFields();
-        initAudio();
         //initTextFields();
+        initAudio();
     }
 
     public void initLists(){
@@ -284,6 +282,7 @@ public class Passive extends javax.swing.JFrame {
         setResizable(false);
 
         jTextPane5.setEditable(false);
+        jTextPane5.setAutoscrolls(false);
         jTextPane5.setFocusable(false);
         jTextPane5.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane5.setMinimumSize(new java.awt.Dimension(550, 70));
@@ -292,6 +291,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextPane5);
 
         jTextPane3.setEditable(false);
+        jTextPane3.setAutoscrolls(false);
         jTextPane3.setFocusable(false);
         jTextPane3.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane3.setMinimumSize(new java.awt.Dimension(550, 70));
@@ -300,6 +300,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTextPane3);
 
         jTextPane2.setEditable(false);
+        jTextPane2.setAutoscrolls(false);
         jTextPane2.setFocusable(false);
         jTextPane2.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane2.setMinimumSize(new java.awt.Dimension(550, 70));
@@ -308,6 +309,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTextPane2);
 
         jTextPane1.setEditable(false);
+        jTextPane1.setAutoscrolls(false);
         jTextPane1.setFocusable(false);
         jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane1.setMinimumSize(new java.awt.Dimension(550, 70));
@@ -316,6 +318,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTextPane1);
 
         jTextPane4.setEditable(false);
+        jTextPane4.setAutoscrolls(false);
         jTextPane4.setFocusable(false);
         jTextPane4.setMaximumSize(new java.awt.Dimension(550, 70));
         jTextPane4.setMinimumSize(new java.awt.Dimension(550, 70));
