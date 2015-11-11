@@ -100,7 +100,9 @@ public class Passive extends javax.swing.JFrame {
         this.user = user;
        
         initLists();
-       
+        
+        backend = new PassiveBE();
+        
         for(int i = 0; i < 5; i++) {
             timersList.get(0).add(new Timer(4428, listener));
             timersList.get(1).add(new Timer(4428, listener));
@@ -174,10 +176,11 @@ public class Passive extends javax.swing.JFrame {
         jTextPane3.setText(textList.get(t).get(2));
         jTextPane4.setText(textList.get(t).get(3));
         jTextPane5.setText(textList.get(t).get(4));
-
-        initAudioLists();
+        
+        clipsList = backend.makeClips();
+        //initAudioLists();
         initAudio();
-        initTextFields();
+        //initTextFields();
     }
     
     public void initAudioLists(){
@@ -282,6 +285,9 @@ public class Passive extends javax.swing.JFrame {
             clips20.open(audioIn);
             clips20.setMicrosecondPosition(timesList.get(3).get(4));
             
+            
+            audioIn.close();
+            
             clipsList.get(0).add(clips1);
             clipsList.get(0).add(clips2);
             clipsList.get(0).add(clips3);
@@ -305,6 +311,27 @@ public class Passive extends javax.swing.JFrame {
             clipsList.get(3).add(clips18);
             clipsList.get(3).add(clips19);
             clipsList.get(3).add(clips20);
+            
+            clips1.drain();
+            clips2.drain();
+            clips3.drain();
+            clips4.drain();
+            clips5.drain();
+            clips6.drain();
+            clips7.drain();
+            clips8.drain();
+            clips9.drain();
+            clips10.drain();
+            clips11.drain();
+            clips12.drain();
+            clips13.drain();
+            clips14.drain();
+            clips15.drain();
+            clips16.drain();
+            clips17.drain();
+            clips18.drain();
+            clips19.drain();
+            clips20.drain();
                 
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
@@ -738,6 +765,7 @@ public class Passive extends javax.swing.JFrame {
         nas.dispose();
         tone.dispose();
         new Home(user).setVisible(true);
+        backend.closeAudio();
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
