@@ -184,10 +184,7 @@ public class Passive extends javax.swing.JFrame {
         initAudio();
         //initTextFields();
     }
-    
 
-    
-    
     public void initLists(){
         ArrayList<Clip> clips1 = new ArrayList<>();
         ArrayList<Clip> clips2 = new ArrayList<>();
