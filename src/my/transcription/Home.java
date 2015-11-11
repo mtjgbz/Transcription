@@ -26,15 +26,14 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-        this.setTitle("Mixtec Transcription: Home");
-        getContentPane().setBackground(new Color(190,202,174));
-        
+        this.setTitle("Mixtec Transcription: Home");   
     }
+    
     public Home(String user){
         initComponents();
         this.setTitle("Mixtec Transcription: Home");
         this.user=user;
-        getContentPane().setBackground(new Color(187,202,162));
+        getContentPane().setBackground(new Color(148,189,203));
         jMenu2.setText(user);
         act = new Active(this,user);
         pass1 = new ChangePass();
@@ -71,11 +70,11 @@ public class Home extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(187, 202, 162));
         setMinimumSize(new java.awt.Dimension(665, 400));
         setResizable(false);
 
-        lessonBox.setBackground(new java.awt.Color(255, 255, 255));
+        lessonBox.setBackground(new java.awt.Color(204, 204, 204));
+        lessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         lessonBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4" }));
         lessonBox.setPreferredSize(new java.awt.Dimension(130, 30));
         lessonBox.addActionListener(new java.awt.event.ActionListener() {
@@ -84,15 +83,19 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox2.setBackground(new java.awt.Color(204, 204, 204));
+        jComboBox2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setPreferredSize(new java.awt.Dimension(130, 30));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel1.setText("Lesson");
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel2.setText("Sub-lesson");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton1.setText("Log Out");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +103,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton2.setText("Passive");
         jButton2.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +113,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(204, 204, 204));
+        jButton3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton3.setText("Active");
         jButton3.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +123,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setBackground(new java.awt.Color(204, 204, 204));
+        jButton4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton4.setText("Trainee Log");
         jButton4.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +133,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setBackground(new java.awt.Color(204, 204, 204));
+        jButton5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton5.setText("Tones");
         jButton5.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +143,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setBackground(new java.awt.Color(204, 204, 204));
+        jButton6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton6.setText("Nasalizations");
         jButton6.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +153,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setBackground(new java.awt.Color(204, 204, 204));
+        jButton7.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton7.setText("Enclitics");
         jButton7.setPreferredSize(new java.awt.Dimension(130, 30));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +205,7 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addGap(45, 45, 45)))
+                        .addGap(39, 39, 39)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
@@ -235,7 +244,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(jButton1)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();

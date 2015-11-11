@@ -103,7 +103,7 @@ public class Passive extends javax.swing.JFrame {
      */
     public Passive(String user) {
         this.user = user;
-        getContentPane().setBackground(new Color(190,202,174));
+        getContentPane().setBackground(new Color(148,189,203));
        
         initLists();
         
@@ -183,7 +183,7 @@ public class Passive extends javax.swing.JFrame {
         jTextPane4.setText(textList.get(t).get(3));
         jTextPane5.setText(textList.get(t).get(4));
         
-        initTextFields();
+        //initTextFields();
         clipsList = backend.makeClips();
 
         
@@ -289,6 +289,7 @@ public class Passive extends javax.swing.JFrame {
         setResizable(false);
 
         jTextPane5.setEditable(false);
+        jTextPane5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane5.setAutoscrolls(false);
         jTextPane5.setFocusable(false);
         jTextPane5.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -298,6 +299,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextPane5);
 
         jTextPane3.setEditable(false);
+        jTextPane3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane3.setAutoscrolls(false);
         jTextPane3.setFocusable(false);
         jTextPane3.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -307,6 +309,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTextPane3);
 
         jTextPane2.setEditable(false);
+        jTextPane2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane2.setAutoscrolls(false);
         jTextPane2.setFocusable(false);
         jTextPane2.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -316,6 +319,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTextPane2);
 
         jTextPane1.setEditable(false);
+        jTextPane1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane1.setAutoscrolls(false);
         jTextPane1.setFocusable(false);
         jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -325,6 +329,7 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTextPane1);
 
         jTextPane4.setEditable(false);
+        jTextPane4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane4.setAutoscrolls(false);
         jTextPane4.setFocusable(false);
         jTextPane4.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -333,7 +338,8 @@ public class Passive extends javax.swing.JFrame {
         jTextPane4.setRequestFocusEnabled(false);
         jScrollPane6.setViewportView(jTextPane4);
 
-        playButton1.setBackground(new java.awt.Color(255, 255, 255));
+        playButton1.setBackground(new java.awt.Color(204, 204, 204));
+        playButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         playButton1.setText("Play");
         playButton1.setFocusCycleRoot(true);
@@ -348,6 +354,7 @@ public class Passive extends javax.swing.JFrame {
         });
 
         playButton2.setBackground(new java.awt.Color(204, 204, 204));
+        playButton2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton2.setForeground(new java.awt.Color(0, 153, 51));
         playButton2.setText("Play");
         playButton2.setMaximumSize(new java.awt.Dimension(97, 29));
@@ -360,6 +367,7 @@ public class Passive extends javax.swing.JFrame {
         });
 
         playButton3.setBackground(new java.awt.Color(204, 204, 204));
+        playButton3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton3.setForeground(new java.awt.Color(0, 153, 51));
         playButton3.setText("Play");
         playButton3.setMaximumSize(new java.awt.Dimension(97, 29));
@@ -372,6 +380,7 @@ public class Passive extends javax.swing.JFrame {
         });
 
         playButton4.setBackground(new java.awt.Color(204, 204, 204));
+        playButton4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton4.setForeground(new java.awt.Color(0, 153, 51));
         playButton4.setText("Play");
         playButton4.setMaximumSize(new java.awt.Dimension(97, 29));
@@ -384,6 +393,7 @@ public class Passive extends javax.swing.JFrame {
         });
 
         playButton5.setBackground(new java.awt.Color(204, 204, 204));
+        playButton5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton5.setForeground(new java.awt.Color(0, 153, 51));
         playButton5.setText("Play");
         playButton5.setMaximumSize(new java.awt.Dimension(97, 29));
@@ -395,7 +405,8 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setBackground(new java.awt.Color(204, 204, 204));
+        jButton7.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton7.setText("Page 2 >>");
         jButton7.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton7.setMinimumSize(new java.awt.Dimension(97, 30));
@@ -406,7 +417,8 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setBackground(new java.awt.Color(204, 204, 204));
+        jButton8.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton8.setText("Current");
         jButton8.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton8.setMinimumSize(new java.awt.Dimension(97, 30));
