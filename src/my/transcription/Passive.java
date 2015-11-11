@@ -181,7 +181,6 @@ public class Passive extends javax.swing.JFrame {
         //initAudioLists();
 
         initTextFields();
-        initAudioLists();
         initAudio();
         //initTextFields();
     }
