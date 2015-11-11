@@ -33,6 +33,7 @@ public class PassiveBE {
     public PassiveBE(){
         setupDB();
         rand = new Random();
+        clips = new ArrayList<File>();
     }
     /**
      * Sets up the database for use by the backend.
@@ -98,6 +99,17 @@ public class PassiveBE {
             
             //close the lineReader and return the line (path for findPhrase)
             reader.close();
+            
+            System.out.println(path);
+            String soundName = path.replace(".trs", ".wav");
+            soundName = soundName.replace("Transcripciones", "Sonido");
+            if(soundName.contains("_ed")){
+                soundName = soundName.split("_ed")[0];
+                soundName = soundName + ".wav";
+                
+            }
+            clips.add(new File(soundName));
+            
             return path;
             
         }catch(Exception e){
@@ -115,15 +127,6 @@ public class PassiveBE {
     public ArrayList<String> findPhrase(String document){
         try{
             ArrayList<String> phrase = new ArrayList<String>();
-            
-            String soundName = document.replace(".trs", ".wav");
-            soundName = soundName.replace("Transcripciones", "Sonido");
-            if(soundName.contains("_ed")){
-                document = soundName.split("_ed")[0];
-                soundName = soundName + ".wav";
-                
-            }
-            clips.add(new File(soundName));
             
             File file = new File(document);
             DocumentBuilderFactory dbFactory
