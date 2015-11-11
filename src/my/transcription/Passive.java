@@ -5,6 +5,7 @@
  */
 package my.transcription;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.sound.sampled.*;
@@ -15,6 +16,9 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
 
 //import javafx.scene.media.Media;
 /**
@@ -50,6 +54,7 @@ public class Passive extends javax.swing.JFrame {
     Timer timer5;
     
     private ArrayList<ArrayList<String>> phraseList;
+    private ArrayList<String> wordsList = new ArrayList<String>();
     private int currPageIndex;
    
     ActionListener listener = new ActionListener() {
@@ -540,6 +545,8 @@ public class Passive extends javax.swing.JFrame {
         for(int i = 0; i < 20; i++){
             String file = backend.findFile(1, 'a');
             ArrayList<String> phrase = backend.findPhrase(file);
+            
+            
             ArrayList<String> currList;
             if(phrase == null || phrase.get(1) == null){
                 i--;
@@ -604,6 +611,93 @@ public class Passive extends javax.swing.JFrame {
         jTextPane3.setText(currList.get(2));
         jTextPane4.setText(currList.get(3));
         jTextPane5.setText(currList.get(4));
+        
+//        for(ArrayList<String> p : textList) {
+//            System.out.println("text list p: " + p);
+//        }
+        backend.findWords(currList, wordsList);
+        for(String w : wordsList) {
+            System.out.println("Word: " + w);
+        }
+        try {
+            highlightWord(wordsList, currList);
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void highlightWord(ArrayList<String> words, ArrayList<String> phrases) throws BadLocationException {
+        //String text = "tan3 u1bi1 ku4u4 na1 kan4 tu4u13 ran4, tan3 i3kan4 ndu4ku4=na2, ya1kan3";
+        //jTextArea1.setText(text);
+        
+        Highlighter highlighter = null;
+        Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.pink);
+        
+        String temp = "";
+        String word = "";
+        
+        for(int i = 0; i < phrases.size(); i++) {
+            //for(int j = 0; j < phrases.get(i).size(); j++) {
+                if(i == 0) {
+                    highlighter = jTextPane1.getHighlighter();
+                    jTextPane1.setHighlighter(highlighter);
+                }
+                if(i == 1) {
+                    highlighter = jTextPane2.getHighlighter();
+                    jTextPane2.setHighlighter(highlighter);
+                }
+                if(i == 2) {
+                    highlighter = jTextPane3.getHighlighter();
+                    jTextPane3.setHighlighter(highlighter);
+                }
+                if(i == 3) {
+                    highlighter = jTextPane4.getHighlighter();
+                    jTextPane4.setHighlighter(highlighter);
+                }
+                if(i == 4) {
+                    highlighter = jTextPane5.getHighlighter();
+                    jTextPane5.setHighlighter(highlighter);
+                }
+
+                for(int k = 0; k < words.size(); k++) {
+                    temp = phrases.get(i);
+                    word = words.get(k);
+                    int start = temp.indexOf(word);
+                    while(start >= 0) {    
+                        char[] chars = temp.toCharArray();
+                        if(start != 0 && Character.isWhitespace(chars[start-1])){
+                            try{
+                                int end = start + word.length();
+                                highlighter.addHighlight(start, end, painter);
+                                if(i == 0) {
+                                    jTextPane1.setCaretPosition(end);
+                                }
+                                if(i == 1) {
+                                    jTextPane2.setCaretPosition(end);
+                                }
+                                if(i == 2) {
+                                    jTextPane3.setCaretPosition(end);
+                                }
+                                if(i == 3) {
+                                    jTextPane4.setCaretPosition(end);
+                                }
+                                if(i == 4) {
+                                    jTextPane5.setCaretPosition(end);
+                                }
+                            }catch(BadLocationException e){
+                                e.printStackTrace();
+                            }
+                            start = temp.indexOf(word, start+word.length());
+                        }
+                        else {
+                            start = temp.indexOf(word, start+word.length());
+                        }
+
+                    }
+                }
+            //}
+        }
+ 
     }
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
