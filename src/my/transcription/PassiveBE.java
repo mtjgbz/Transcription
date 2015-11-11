@@ -33,6 +33,8 @@ public class PassiveBE {
     private ResultSet rs;
     private Random rand;
     private static ArrayList<File> clips;
+    private static ArrayList<String> phrases;
+    private static ArrayList<String> words;
     
     private Clip clip1;
     private Clip clip2;
@@ -129,7 +131,7 @@ public class PassiveBE {
             //close the lineReader and return the line (path for findPhrase)
             reader.close();
             
-            System.out.println(path);
+            //System.out.println(path);
             String soundName = path.replace(".trs", ".wav");
             soundName = soundName.replace("Transcripciones", "Sonido");
             if(soundName.contains("_ed")){
@@ -180,6 +182,7 @@ public class PassiveBE {
                 String value = nNode.getNextSibling().getNodeValue();
                 matcher.reset(value);
                 if(matcher.find()){
+                    //phrases.add(value);
                     if(i >= count){
                         String time = attributes.getNamedItem("time").toString();
                         time = time.replace("time=", "");
@@ -208,7 +211,31 @@ public class PassiveBE {
         }catch(Exception e){
             e.printStackTrace();
         }
+//        for(String p : phrases) {
+//            System.out.println("Phrase: " + p);
+//        }
+//        System.out.println("Size: " + phrases.size());
         return null;
+    }
+    
+    public void findWords(ArrayList<String> phrases, ArrayList<String> words) {
+        Pattern regexp = Pattern.compile("([a-zñ][aeiou]([134])[a-zñ][aeiou]\\2)");       //example exp - change later
+        Matcher matcher;
+        for(String phrase : phrases) {
+            matcher = regexp.matcher(phrase);
+            //System.out.println(phrase);
+            while(matcher.find()) {
+                String word = matcher.group(1);
+                //System.out.println("Phrase: " + phrase + " Word: " + word);
+                if(!words.contains(word)) {
+                    words.add(word);
+                }
+            }
+        }
+//        for(String w : words) {
+//            System.out.println("Word in Words: " + w);
+//        }
+        
     }
     
     public ArrayList<ArrayList<Clip>> makeClips(){
