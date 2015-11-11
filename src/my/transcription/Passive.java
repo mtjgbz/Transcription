@@ -177,9 +177,10 @@ public class Passive extends javax.swing.JFrame {
         jTextPane4.setText(textList.get(t).get(3));
         jTextPane5.setText(textList.get(t).get(4));
         
+        initTextFields();
         clipsList = backend.makeClips();
 
-        //initTextFields();
+        
         initAudio();
     }
 
