@@ -124,7 +124,7 @@ public class PassiveBE {
             //and then return it
             reader.reset();
             //System.out.println("Line before loop: " + reader.getLineNumber());
-            for(int i = 0; i < random-1; i++) {
+            for(int i = 1; i < random-1; i++) {
                 path = reader.readLine();
             }
             
@@ -249,125 +249,125 @@ public class PassiveBE {
             
             
             
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(0));
             clip1 = AudioSystem.getClip();
             clip1.open(audioIn);
             //clips1.setMicrosecondPosition(timesList.get(0).get(0));
             audioIn.close();
             
-            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            audioIn = AudioSystem.getAudioInputStream(clips.get(1));
             clip2 = AudioSystem.getClip();
             clip2.open(audioIn);
             //clips2.setMicrosecondPosition(timesList.get(0).get(1));
             audioIn.close();
             
-            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            audioIn = AudioSystem.getAudioInputStream(clips.get(2));
             clip3 = AudioSystem.getClip();
             clip3.open(audioIn);
             //clips3.setMicrosecondPosition(timesList.get(0).get(2));
             audioIn.close();
             
-            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            audioIn = AudioSystem.getAudioInputStream(clips.get(3));
             clip4 = AudioSystem.getClip();
             clip4.open(audioIn);
             //clips4.setMicrosecondPosition(timesList.get(0).get(3));
             audioIn.close();
             
-            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+            audioIn = AudioSystem.getAudioInputStream(clips.get(4));
             clip5 = AudioSystem.getClip();
             clip5.open(audioIn);
             //clips5.setMicrosecondPosition(timesList.get(0).get(4));
             audioIn.close();
             
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip6 = AudioSystem.getClip();
-            clip6.open(audioIn);
-            //clips6.setMicrosecondPosition(timesList.get(1).get(0));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip7 = AudioSystem.getClip();
-            clip7.open(audioIn);
-            //clips7.setMicrosecondPosition(timesList.get(1).get(1));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip8 = AudioSystem.getClip();
-            clip8.open(audioIn);
-            //clips8.setMicrosecondPosition(timesList.get(1).get(2));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip9 = AudioSystem.getClip();
-            clip9.open(audioIn);
-            //clips9.setMicrosecondPosition(timesList.get(1).get(3));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip10 = AudioSystem.getClip();
-            clip10.open(audioIn);
-            //clips10.setMicrosecondPosition(timesList.get(1).get(4));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-            clip11 = AudioSystem.getClip();
-            clip11.open(audioIn);
-            //clips11.setMicrosecondPosition(timesList.get(2).get(0));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-            clip12 = AudioSystem.getClip();
-            clip12.open(audioIn);
-            //clips12.setMicrosecondPosition(timesList.get(2).get(1));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-            clip13 = AudioSystem.getClip();
-            clip13.open(audioIn);
-            //clips13.setMicrosecondPosition(timesList.get(2).get(2));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-            clip14 = AudioSystem.getClip();
-            clip14.open(audioIn);
-            //clips14.setMicrosecondPosition(timesList.get(2).get(3));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-            clip15 = AudioSystem.getClip();
-            clip15.open(audioIn);
-            //clips15.setMicrosecondPosition(timesList.get(2).get(4));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip16 = AudioSystem.getClip();
-            clip16.open(audioIn);
-            //clips16.setMicrosecondPosition(timesList.get(3).get(0));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip17 = AudioSystem.getClip();
-            clip17.open(audioIn);
-            //clips17.setMicrosecondPosition(timesList.get(3).get(1));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip18 = AudioSystem.getClip();
-            clip18.open(audioIn);
-            //clips18.setMicrosecondPosition(timesList.get(3).get(2));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip19 = AudioSystem.getClip();
-            clip19.open(audioIn);
-            //clips19.setMicrosecondPosition(timesList.get(3).get(3));
-            audioIn.close();
-            
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip20 = AudioSystem.getClip();
-            clip20.open(audioIn);
-            //clips20.setMicrosecondPosition(timesList.get(3).get(4));
-            audioIn.close();
+//            audioIn = AudioSystem.getAudioInputStream(clips.get(5));
+//            clip6 = AudioSystem.getClip();
+//            clip6.open(audioIn);
+//            //clips6.setMicrosecondPosition(timesList.get(1).get(0));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(clips.get(6));
+//            clip7 = AudioSystem.getClip();
+//            clip7.open(audioIn);
+//            //clips7.setMicrosecondPosition(timesList.get(1).get(1));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(clips.get(7));
+//            clip8 = AudioSystem.getClip();
+//            clip8.open(audioIn);
+//            //clips8.setMicrosecondPosition(timesList.get(1).get(2));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(clips.get(8));
+//            clip9 = AudioSystem.getClip();
+//            clip9.open(audioIn);
+//            //clips9.setMicrosecondPosition(timesList.get(1).get(3));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(clips.get(9));
+//            clip10 = AudioSystem.getClip();
+//            clip10.open(audioIn);
+//            //clips10.setMicrosecondPosition(timesList.get(1).get(4));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+//            clip11 = AudioSystem.getClip();
+//            clip11.open(audioIn);
+//            //clips11.setMicrosecondPosition(timesList.get(2).get(0));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+//            clip12 = AudioSystem.getClip();
+//            clip12.open(audioIn);
+//            //clips12.setMicrosecondPosition(timesList.get(2).get(1));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+//            clip13 = AudioSystem.getClip();
+//            clip13.open(audioIn);
+//            //clips13.setMicrosecondPosition(timesList.get(2).get(2));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+//            clip14 = AudioSystem.getClip();
+//            clip14.open(audioIn);
+//            //clips14.setMicrosecondPosition(timesList.get(2).get(3));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
+//            clip15 = AudioSystem.getClip();
+//            clip15.open(audioIn);
+//            //clips15.setMicrosecondPosition(timesList.get(2).get(4));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+//            clip16 = AudioSystem.getClip();
+//            clip16.open(audioIn);
+//            //clips16.setMicrosecondPosition(timesList.get(3).get(0));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+//            clip17 = AudioSystem.getClip();
+//            clip17.open(audioIn);
+//            //clips17.setMicrosecondPosition(timesList.get(3).get(1));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+//            clip18 = AudioSystem.getClip();
+//            clip18.open(audioIn);
+//            //clips18.setMicrosecondPosition(timesList.get(3).get(2));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+//            clip19 = AudioSystem.getClip();
+//            clip19.open(audioIn);
+//            //clips19.setMicrosecondPosition(timesList.get(3).get(3));
+//            audioIn.close();
+//            
+//            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
+//            clip20 = AudioSystem.getClip();
+//            clip20.open(audioIn);
+//            //clips20.setMicrosecondPosition(timesList.get(3).get(4));
+//            audioIn.close();
             
             clips1.add(clip1);
             clips1.add(clip2);

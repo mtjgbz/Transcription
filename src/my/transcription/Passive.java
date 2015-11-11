@@ -577,7 +577,6 @@ public class Passive extends javax.swing.JFrame {
             String file = backend.findFile(1, 'a');
             ArrayList<String> phrase = backend.findPhrase(file);
             
-            
             ArrayList<String> currList;
             if(phrase == null || phrase.get(1) == null){
                 i--;
@@ -628,7 +627,6 @@ public class Passive extends javax.swing.JFrame {
             startNum = (int) (startTime * 1000);
             int length = endNum - startNum;
             
-            System.out.println(length);
             timersList.get(index).set(i % 5, new Timer(length, listener));
         }
         
