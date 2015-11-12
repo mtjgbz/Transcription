@@ -245,10 +245,7 @@ public class PassiveBE {
         ArrayList<Clip> clips3 = new ArrayList<>();
         ArrayList<Clip> clips4 = new ArrayList<>();
          try {
-            
-            
-            
-            
+
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(0));
             clip1 = AudioSystem.getClip();
             clip1.open(audioIn);
