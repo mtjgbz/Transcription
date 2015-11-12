@@ -82,6 +82,12 @@ public class Passive extends javax.swing.JFrame {
             clip5.stop();
             clip5.setMicrosecondPosition(timesList.get(t).get(4));
 
+            playButton1.setForeground(new java.awt.Color(0,153,51));
+            playButton2.setForeground(new java.awt.Color(0,153,51));
+            playButton3.setForeground(new java.awt.Color(0,153,51));
+            playButton4.setForeground(new java.awt.Color(0,153,51));
+            playButton5.setForeground(new java.awt.Color(0,153,51));
+            
             playButton1.setText("Play");
             playButton2.setText("Play");
             playButton3.setText("Play");
@@ -279,6 +285,7 @@ public class Passive extends javax.swing.JFrame {
         playButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -293,7 +300,6 @@ public class Passive extends javax.swing.JFrame {
         setResizable(false);
 
         jTextPane5.setEditable(false);
-        jTextPane5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane5.setAutoscrolls(false);
         jTextPane5.setFocusable(false);
         jTextPane5.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -303,7 +309,6 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextPane5);
 
         jTextPane3.setEditable(false);
-        jTextPane3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane3.setAutoscrolls(false);
         jTextPane3.setFocusable(false);
         jTextPane3.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -313,7 +318,6 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTextPane3);
 
         jTextPane2.setEditable(false);
-        jTextPane2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane2.setAutoscrolls(false);
         jTextPane2.setFocusable(false);
         jTextPane2.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -323,7 +327,6 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTextPane2);
 
         jTextPane1.setEditable(false);
-        jTextPane1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane1.setAutoscrolls(false);
         jTextPane1.setFocusable(false);
         jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -333,7 +336,6 @@ public class Passive extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTextPane1);
 
         jTextPane4.setEditable(false);
-        jTextPane4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTextPane4.setAutoscrolls(false);
         jTextPane4.setFocusable(false);
         jTextPane4.setMaximumSize(new java.awt.Dimension(550, 70));
@@ -433,6 +435,12 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
+        jLabel1.setFocusTraversalKeysEnabled(false);
+        jLabel1.setFocusable(false);
+        jLabel1.setRequestFocusEnabled(false);
+        jLabel1.setVerifyInputWhenFocusTarget(false);
+
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
         jMenu1.setText("Home");
@@ -512,6 +520,8 @@ public class Passive extends javax.swing.JFrame {
                             .addComponent(jScrollPane6)
                             .addComponent(jScrollPane2))))
                 .addContainerGap(147, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -549,6 +559,8 @@ public class Passive extends javax.swing.JFrame {
                 .addGap(76, 76, 76)
                 .addComponent(playButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -1096,6 +1108,7 @@ public class Passive extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
