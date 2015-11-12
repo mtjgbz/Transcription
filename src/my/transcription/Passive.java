@@ -33,7 +33,7 @@ public class Passive extends javax.swing.JFrame {
     String user;
     int t = 0;
     
-    ArrayList<ArrayList<Clip>> clipsList = new ArrayList<>();
+    ArrayList<Clip> clipsList = new ArrayList<>();
     ArrayList<ArrayList<Timer>> timersList = new ArrayList<>();
     ArrayList<ArrayList<String>> textList = new ArrayList<>();
     ArrayList<ArrayList<Integer>> timesList = new ArrayList<>();
@@ -190,7 +190,7 @@ public class Passive extends javax.swing.JFrame {
         jTextPane5.setText(textList.get(t).get(4));
         
         initTextFields();
-        clipsList = backend.makeClips();
+        clipsList = backend.makeClips(1);
 
         
         initAudio();
@@ -201,15 +201,6 @@ public class Passive extends javax.swing.JFrame {
     }
 
     public void initLists(){
-        ArrayList<Clip> clips1 = new ArrayList<>();
-        ArrayList<Clip> clips2 = new ArrayList<>();
-        ArrayList<Clip> clips3 = new ArrayList<>();
-        ArrayList<Clip> clips4 = new ArrayList<>();
-        
-        clipsList.add(clips1);
-        clipsList.add(clips2);
-        clipsList.add(clips3);
-        clipsList.add(clips4);
         
         ArrayList<Timer> timers1 = new ArrayList<>();
         ArrayList<Timer> timers2 = new ArrayList<>();
@@ -568,11 +559,11 @@ public class Passive extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void initAudio() {        
-        clip1 = clipsList.get(page-1).get(0);
-        clip2 = clipsList.get(page-1).get(1);
-        clip3 = clipsList.get(page-1).get(2);
-        clip4 = clipsList.get(page-1).get(3);
-        clip5 = clipsList.get(page-1).get(4);
+        clip1 = clipsList.get(0);
+        clip2 = clipsList.get(1);
+        clip3 = clipsList.get(2);
+        clip4 = clipsList.get(3);
+        clip5 = clipsList.get(4);
         
         timer1 = timersList.get(page-1).get(0);
         timer2 = timersList.get(page-1).get(1);
@@ -1002,6 +993,8 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         playButton5.setText("Play");    
         
+        backend.closeAudio();
+        clipsList = backend.makeClips(page);
         initAudio();
         backend.findWords(textList.get(page-1), wordsList);
         try {
@@ -1059,6 +1052,8 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setText("Play");
         playButton5.setText("Play");
         
+        backend.closeAudio();
+        clipsList = backend.makeClips(page);
         initAudio();
         backend.findWords(textList.get(page-1), wordsList);
        
