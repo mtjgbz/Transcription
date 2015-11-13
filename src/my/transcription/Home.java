@@ -6,6 +6,7 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,6 +21,10 @@ public class Home extends javax.swing.JFrame {
     Enclitics enc;
     Nasalizations nas;
     ToneTable tone;
+    
+    ArrayList<Integer> lessonList;
+    ArrayList<Character> subLessonList;
+    
     
     /**
      * Creates new form Home
@@ -40,6 +45,16 @@ public class Home extends javax.swing.JFrame {
         enc = new Enclitics();
         nas = new Nasalizations();
         tone = new ToneTable();
+        
+        lessonList = new ArrayList<>();
+        lessonList.add(1);
+        lessonList.add(2);
+        lessonList.add(3);
+        
+        subLessonList = new ArrayList<>();
+        subLessonList.add('a');
+        subLessonList.add('b');
+        subLessonList.add('c');
         
         
         
@@ -291,10 +306,9 @@ public class Home extends javax.swing.JFrame {
         nas.dispose();
         tone.dispose();
         
-        Passive pass = new Passive(user);
+        Passive pass = new Passive(user,lessonList.get(lessonBox.getSelectedIndex()),subLessonList.get(jComboBox2.getSelectedIndex()) );
         pass.setVisible(true);
         dispose();
-        pass.setLesson("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

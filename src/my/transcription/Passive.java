@@ -27,11 +27,13 @@ import javax.swing.text.Highlighter;
  */
 public class Passive extends javax.swing.JFrame {
 
-    private String lesson;
+    private Integer lesson;
         
     int page = 1;
     String user;
     int t = 0;
+    
+    Character subLesson;
     
     ArrayList<Clip> clipsList = new ArrayList<>();
     ArrayList<ArrayList<Timer>> timersList = new ArrayList<>();
@@ -107,10 +109,13 @@ public class Passive extends javax.swing.JFrame {
      *
      * @param user
      */
-    public Passive(String user) {
+    public Passive(String user,Integer lesson, Character subLesson) {
         this.user = user;
         getContentPane().setBackground(new Color(148,189,203));
-       
+        
+        this.lesson = lesson;
+        this.subLesson = subLesson;
+        
         initLists();
         
         backend = new PassiveBE();
@@ -233,21 +238,6 @@ public class Passive extends javax.swing.JFrame {
         timesList.add(times4); 
     }
     
-    /**
-     *
-     * @param string
-     */
-    public void setLesson(String string) {
-        this.lesson = string;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getLesson() {
-        return this.lesson;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -577,7 +567,7 @@ public class Passive extends javax.swing.JFrame {
         currPageIndex = 0;
         phraseList = new ArrayList<ArrayList<String>>();
         for(int i = 0; i < 20; i++){
-            String file = backend.findFile(1, 'a');
+            String file = backend.findFile(lesson, subLesson);
             ArrayList<String> phrase = backend.findPhrase(file);
             
             ArrayList<String> currList;
