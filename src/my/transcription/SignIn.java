@@ -177,9 +177,14 @@ public class SignIn extends javax.swing.JFrame {
         //ECL: Checking username and password
         //CAU: Checking if admin or not
         String username = jTextField3.getText();
-        String password = jPasswordField1.getText();
+        char[] password = jPasswordField1.getPassword();
+        
+        String pass ="";
+        for (char a:password){
+            pass=pass + a;
+        }
 
-        if (backend.checkPassword(username, password)) {
+        if (backend.checkPassword(username, pass)) {
             Home home1 = new Home(jTextField3.getText());
             home1.setVisible(true);
             dispose();

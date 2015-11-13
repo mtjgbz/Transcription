@@ -40,21 +40,6 @@ public class PassiveBE {
     private Clip clip3;
     private Clip clip4;
     private Clip clip5;
-    private Clip clip6;
-    private Clip clip7;
-    private Clip clip8;
-    private Clip clip9;
-    private Clip clip10;
-    private Clip clip11;
-    private Clip clip12;
-    private Clip clip13;
-    private Clip clip14;
-    private Clip clip15;
-    private Clip clip16;
-    private Clip clip17;
-    private Clip clip18;
-    private Clip clip19;
-    private Clip clip20;
 
     /**
      * Creates the passive backend.
@@ -89,8 +74,14 @@ public class PassiveBE {
         }
     }
 
-    //Randomly select file from list of them in DB
-    public String findFile(int lesson, char sublesson) {
+
+    /**
+     *
+     * @param lesson
+     * @param sublesson
+     * @return
+     */
+        public String findFile(int lesson, char sublesson) {
         try {
             //pulling .txt file that contains lesson matches
             String query = "SELECT(FileList) FROM LESSONS WHERE Lesson = " + lesson
@@ -122,7 +113,10 @@ public class PassiveBE {
             //and then return it
             reader.reset();
             //System.out.println("Line before loop: " + reader.getLineNumber());
-            for (int i = 1; i < random - 1; i++) {
+            for (int i = 1; i < random; i++) {
+                path = reader.readLine();
+            }
+            if (path.contains("txt")){
                 path = reader.readLine();
             }
 
@@ -149,10 +143,19 @@ public class PassiveBE {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<File> getClips() {
         return clips;
     }
 
+    /**
+     *
+     * @param document
+     * @return
+     */
     public ArrayList<String> findPhrase(String document) {
         try {
             ArrayList<String> phrase = new ArrayList<String>();
@@ -216,6 +219,11 @@ public class PassiveBE {
         return null;
     }
 
+    /**
+     *
+     * @param phrases
+     * @param words
+     */
     public void findWords(ArrayList<String> phrases, ArrayList<String> words) {
         Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2)");       //example exp - change later
         Matcher matcher;
@@ -236,6 +244,11 @@ public class PassiveBE {
 
     }
 
+    /**
+     *
+     * @param pageNum
+     * @return
+     */
     public ArrayList<Clip> makeClips(int pageNum) {
         ArrayList<Clip> clips1 = new ArrayList<>();
 
@@ -381,6 +394,9 @@ public class PassiveBE {
         return clips1;
     }
 
+    /**
+     *
+     */
     public void closeAudio() {
         clip1.close();
         clip2.close();

@@ -550,6 +550,9 @@ public class Passive extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     *
+     */
     public void initAudio() {
         clip1 = clipsList.get(0);
         clip2 = clipsList.get(1);
@@ -564,6 +567,9 @@ public class Passive extends javax.swing.JFrame {
         timer5 = timersList.get(page - 1).get(4);
     }
 
+    /**
+     *
+     */
     public void initTextFields() {
         backend = new PassiveBE();
         currPageIndex = 0;
@@ -650,6 +656,12 @@ public class Passive extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     * @param words
+     * @param phrases
+     * @throws BadLocationException
+     */
     public void highlightWord(ArrayList<String> words, ArrayList<String> phrases) throws BadLocationException {
         //String text = "tan3 u1bi1 ku4u4 na1 kan4 tu4u13 ran4, tan3 i3kan4 ndu4ku4=na2, ya1kan3";
         //jTextArea1.setText(text);
