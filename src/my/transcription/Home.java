@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package my.transcription;
-
 import java.awt.Color;
 import java.util.ArrayList;
 
 /**
  *
- * @author Michael
+ * @author Michael, Noah, Casey & Erica
  */
 public class Home extends javax.swing.JFrame {
 
@@ -34,6 +33,10 @@ public class Home extends javax.swing.JFrame {
         this.setTitle("Mixtec Transcription: Home");
     }
 
+    /**
+     * Constructor
+     * @param user 
+     */
     public Home(String user) {
         initComponents();
         this.setTitle("Mixtec Transcription: Home");
@@ -46,11 +49,13 @@ public class Home extends javax.swing.JFrame {
         nas = new Nasalizations();
         tone = new ToneTable();
 
+        //create lists for lesson numbers
         lessonList = new ArrayList<>();
         lessonList.add(1);
         lessonList.add(2);
         lessonList.add(3);
 
+        //create lists
         subLessonList = new ArrayList<>();
         subLessonList.add('a');
         subLessonList.add('b');
