@@ -19,11 +19,11 @@ public class Enclitics extends javax.swing.JFrame {
     public Enclitics() {
         initComponents();
     }
-    
+
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
     Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-    
+
     int x = (int) rect.getMaxX();
     int y = 0;
 

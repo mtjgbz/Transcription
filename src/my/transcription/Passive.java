@@ -28,49 +28,46 @@ import javax.swing.text.Highlighter;
 public class Passive extends javax.swing.JFrame {
 
     private Integer lesson;
-        
+
     int page = 1;
     String user;
     int t = 0;
-    
+
     Character subLesson;
-    
+
     ArrayList<Clip> clipsList = new ArrayList<>();
     ArrayList<ArrayList<Timer>> timersList = new ArrayList<>();
     ArrayList<ArrayList<String>> textList = new ArrayList<>();
     ArrayList<ArrayList<Integer>> timesList = new ArrayList<>();
-    
+
     //Dummy array list
     ArrayList<File> clips = new ArrayList<>();
-    
+
     Clip clip1;
     Clip clip2;
     Clip clip3;
     Clip clip4;
     Clip clip5;
-    
+
     Timer timer1;
     Timer timer2;
     Timer timer3;
     Timer timer4;
     Timer timer5;
-    
+
     private ArrayList<ArrayList<String>> phraseList;
     private ArrayList<String> wordsList = new ArrayList<String>();
     private int currPageIndex;
-   
+
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
-            if(page == 1) {
+            if (page == 1) {
                 t = 0;
-            }
-            else if(page == 2) {
+            } else if (page == 2) {
                 t = 1;
-            }
-                else if(page == 3) {
+            } else if (page == 3) {
                 t = 2;
-            }
-            else {
+            } else {
                 t = 3;
             }
             clip1.stop();
@@ -84,12 +81,12 @@ public class Passive extends javax.swing.JFrame {
             clip5.stop();
             clip5.setMicrosecondPosition(timesList.get(t).get(4));
 
-            playButton1.setForeground(new java.awt.Color(0,153,51));
-            playButton2.setForeground(new java.awt.Color(0,153,51));
-            playButton3.setForeground(new java.awt.Color(0,153,51));
-            playButton4.setForeground(new java.awt.Color(0,153,51));
-            playButton5.setForeground(new java.awt.Color(0,153,51));
-            
+            playButton1.setForeground(new java.awt.Color(0, 153, 51));
+            playButton2.setForeground(new java.awt.Color(0, 153, 51));
+            playButton3.setForeground(new java.awt.Color(0, 153, 51));
+            playButton4.setForeground(new java.awt.Color(0, 153, 51));
+            playButton5.setForeground(new java.awt.Color(0, 153, 51));
+
             playButton1.setText("Play");
             playButton2.setText("Play");
             playButton3.setText("Play");
@@ -101,7 +98,7 @@ public class Passive extends javax.swing.JFrame {
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
-    
+
     private PassiveBE backend;
 
     /**
@@ -111,18 +108,18 @@ public class Passive extends javax.swing.JFrame {
      * @param lesson
      * @param subLesson
      */
-    public Passive(String user,Integer lesson, Character subLesson) {
+    public Passive(String user, Integer lesson, Character subLesson) {
         this.user = user;
-        getContentPane().setBackground(new Color(148,189,203));
-        
+        getContentPane().setBackground(new Color(148, 189, 203));
+
         this.lesson = lesson;
         this.subLesson = subLesson;
-        
+
         initLists();
-        
+
         backend = new PassiveBE();
-        
-        for(int i = 0; i < 5; i++) {
+
+        for (int i = 0; i < 5; i++) {
             timersList.get(0).add(new Timer(4428, listener));
             timersList.get(1).add(new Timer(4428, listener));
             timersList.get(2).add(new Timer(4428, listener));
@@ -132,114 +129,112 @@ public class Passive extends javax.swing.JFrame {
             timesList.get(2).add(9029000);
             timesList.get(3).add(9029000);
         }
-    
+
         textList.get(0).add("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
         textList.get(0).add("text2");
         textList.get(0).add("text3");
         textList.get(0).add("text4");
         textList.get(0).add("text5");
-        
+
         textList.get(1).add("text6");
         textList.get(1).add("text7");
         textList.get(1).add("text8");
         textList.get(1).add("text9");
         textList.get(1).add("text10");
-        
+
         textList.get(2).add("text11");
         textList.get(2).add("text12");
         textList.get(2).add("text13");
         textList.get(2).add("text14");
         textList.get(2).add("text15");
-        
+
         textList.get(3).add("text16");
         textList.get(3).add("text17");
         textList.get(3).add("text18");
         textList.get(3).add("text19");
         textList.get(3).add("text20");
 
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             clips.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
         }
-        
-        for(int i = 0; i < 5; i++) {
+
+        for (int i = 0; i < 5; i++) {
             clips.add(new File("oGolden.wav"));
         }
-        
-        for(int i = 0; i < 5; i++) {
+
+        for (int i = 0; i < 5; i++) {
             clips.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
         }
-        
-        for(int i = 0; i < 5; i++) {
+
+        for (int i = 0; i < 5; i++) {
             clips.add(new File("oGolden.wav"));
         }
-        
+
         initComponents();
         jMenu5.setText(user);
         this.setTitle("Mixtec Transcription: Passive Training");
-        
-        if(page == 1) {
+
+        if (page == 1) {
             t = 0;
-        }
-        else if(page == 2) {
+        } else if (page == 2) {
             t = 1;
-        }
-        else if(page == 3) {
+        } else if (page == 3) {
             t = 2;
-        }
-        else {
+        } else {
             t = 3;
         }
-        
+
         jTextPane1.setText(textList.get(t).get(0));
         jTextPane2.setText(textList.get(t).get(1));
         jTextPane3.setText(textList.get(t).get(2));
         jTextPane4.setText(textList.get(t).get(3));
         jTextPane5.setText(textList.get(t).get(4));
-        
+
         initTextFields();
         clipsList = backend.makeClips(1);
 
-        
         initAudio();
-       
-        for(String w : wordsList) {
+
+        for (String w : wordsList) {
             System.out.println("Word: " + w);
         }
     }
 
-    public void initLists(){
-        
+    /**
+     *
+     */
+    public void initLists() {
+
         ArrayList<Timer> timers1 = new ArrayList<>();
         ArrayList<Timer> timers2 = new ArrayList<>();
         ArrayList<Timer> timers3 = new ArrayList<>();
         ArrayList<Timer> timers4 = new ArrayList<>();
-        
+
         timersList.add(timers1);
         timersList.add(timers2);
         timersList.add(timers3);
         timersList.add(timers4);
-        
+
         ArrayList<String> texts1 = new ArrayList<>();
         ArrayList<String> texts2 = new ArrayList<>();
         ArrayList<String> texts3 = new ArrayList<>();
         ArrayList<String> texts4 = new ArrayList<>();
-        
+
         textList.add(texts1);
         textList.add(texts2);
         textList.add(texts3);
-        textList.add(texts4);  
-        
+        textList.add(texts4);
+
         ArrayList<Integer> times1 = new ArrayList<>();
         ArrayList<Integer> times2 = new ArrayList<>();
         ArrayList<Integer> times3 = new ArrayList<>();
         ArrayList<Integer> times4 = new ArrayList<>();
-        
+
         timesList.add(times1);
         timesList.add(times2);
         timesList.add(times3);
-        timesList.add(times4); 
+        timesList.add(times4);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -549,63 +544,63 @@ public class Passive extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void initAudio() {        
+    public void initAudio() {
         clip1 = clipsList.get(0);
         clip2 = clipsList.get(1);
         clip3 = clipsList.get(2);
         clip4 = clipsList.get(3);
         clip5 = clipsList.get(4);
-        
-        timer1 = timersList.get(page-1).get(0);
-        timer2 = timersList.get(page-1).get(1);
-        timer3 = timersList.get(page-1).get(2);
-        timer4 = timersList.get(page-1).get(3);
-        timer5 = timersList.get(page-1).get(4);
+
+        timer1 = timersList.get(page - 1).get(0);
+        timer2 = timersList.get(page - 1).get(1);
+        timer3 = timersList.get(page - 1).get(2);
+        timer4 = timersList.get(page - 1).get(3);
+        timer5 = timersList.get(page - 1).get(4);
     }
-    
+
     public void initTextFields() {
         backend = new PassiveBE();
         currPageIndex = 0;
         phraseList = new ArrayList<ArrayList<String>>();
-        for(int i = 0; i < 20; i++){
+        for (int i = 0; i < 20; i++) {
             String file = backend.findFile(lesson, subLesson);
             ArrayList<String> phrase = backend.findPhrase(file);
-            
+
             ArrayList<String> currList;
-            if(phrase == null || phrase.get(1) == null){
+            if (phrase == null || phrase.get(1) == null) {
                 i--;
                 continue;
             }
             boolean contains = false;
             int index = 0;
-            if (i >= 15){
+            if (i >= 15) {
                 index = 3;
                 currList = textList.get(3);
-                if(currList.contains(phrase.get(1))){
+                if (currList.contains(phrase.get(1))) {
                     contains = true;
                 }
-            }else if (i >= 10){
+            } else if (i >= 10) {
                 index = 2;
                 currList = textList.get(2);
-                if(currList.contains(phrase.get(1))){
+                if (currList.contains(phrase.get(1))) {
                     contains = true;
                 }
-            }else if (i >= 5){
+            } else if (i >= 5) {
                 index = 1;
                 currList = textList.get(1);
-                if(currList.contains(phrase.get(1))){
+                if (currList.contains(phrase.get(1))) {
                     contains = true;
                 }
-            }else{
+            } else {
                 index = 0;
                 currList = textList.get(0);
-                if(currList.contains(phrase.get(1))){
+                if (currList.contains(phrase.get(1))) {
                     contains = true;
                 }
             }
-            if(contains == true){
+            if (contains == true) {
                 i--;
-            }else{
+            } else {
                 phraseList.add(phrase);
                 currList.set(i % 5, phrase.get(1));
             }
@@ -613,114 +608,113 @@ public class Passive extends javax.swing.JFrame {
             //use getClips to return the clip names and files
             Float startTime = Float.parseFloat(phrase.get(0));
             int startNum = (int) (startTime * 1000000);
-            
+
             timesList.get(index).set(i % 5, startNum);
-            
+
             Float endTime = Float.parseFloat(phrase.get(2));
             int endNum = (int) (endTime * 1000);
             startNum = (int) (startTime * 1000);
             int length = endNum - startNum;
-            
+
             timersList.get(index).set(i % 5, new Timer(length, listener));
         }
-        
+
         clips = backend.getClips();
         System.out.println(clips);
         //System.out.println(clips);
-        
+
         ArrayList<String> currList = textList.get(0);
         jTextPane1.setText(currList.get(0));
         jTextPane2.setText(currList.get(1));
         jTextPane3.setText(currList.get(2));
         jTextPane4.setText(currList.get(3));
         jTextPane5.setText(currList.get(4));
-        
+
 //        for(ArrayList<String> p : textList) {
 //            System.out.println("text list p: " + p);
 //        }
         backend.findWords(currList, wordsList);
-        for(String w : wordsList) {
+        for (String w : wordsList) {
             System.out.println("Word: " + w);
         }
         try {
-            highlightWord(wordsList, textList.get(page-1));
+            highlightWord(wordsList, textList.get(page - 1));
         } catch (BadLocationException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void highlightWord(ArrayList<String> words, ArrayList<String> phrases) throws BadLocationException {
         //String text = "tan3 u1bi1 ku4u4 na1 kan4 tu4u13 ran4, tan3 i3kan4 ndu4ku4=na2, ya1kan3";
         //jTextArea1.setText(text);
-        
+
         Highlighter highlighter = null;
         Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.pink);
-        
+
         String temp = "";
         String word = "";
-        
-        for(int i = 0; i < phrases.size(); i++) {
+
+        for (int i = 0; i < phrases.size(); i++) {
             //for(int j = 0; j < phrases.get(i).size(); j++) {
-                if(i == 0) {
-                    highlighter = jTextPane1.getHighlighter();
-                    jTextPane1.setHighlighter(highlighter);
-                }
-                if(i == 1) {
-                    highlighter = jTextPane2.getHighlighter();
-                    jTextPane2.setHighlighter(highlighter);
-                }
-                if(i == 2) {
-                    highlighter = jTextPane3.getHighlighter();
-                    jTextPane3.setHighlighter(highlighter);
-                }
-                if(i == 3) {
-                    highlighter = jTextPane4.getHighlighter();
-                    jTextPane4.setHighlighter(highlighter);
-                }
-                if(i == 4) {
-                    highlighter = jTextPane5.getHighlighter();
-                    jTextPane5.setHighlighter(highlighter);
-                }
+            if (i == 0) {
+                highlighter = jTextPane1.getHighlighter();
+                jTextPane1.setHighlighter(highlighter);
+            }
+            if (i == 1) {
+                highlighter = jTextPane2.getHighlighter();
+                jTextPane2.setHighlighter(highlighter);
+            }
+            if (i == 2) {
+                highlighter = jTextPane3.getHighlighter();
+                jTextPane3.setHighlighter(highlighter);
+            }
+            if (i == 3) {
+                highlighter = jTextPane4.getHighlighter();
+                jTextPane4.setHighlighter(highlighter);
+            }
+            if (i == 4) {
+                highlighter = jTextPane5.getHighlighter();
+                jTextPane5.setHighlighter(highlighter);
+            }
 
-                for(int k = 0; k < words.size(); k++) {
-                    temp = phrases.get(i);
-                    word = words.get(k);
-                    int start = temp.indexOf(word);
-                    while(start >= 0) {    
-                        char[] chars = temp.toCharArray();
-                        if(start != 0 && Character.isWhitespace(chars[start-1])){
-                            try{
-                                int end = start + word.length();
-                                highlighter.addHighlight(start, end, painter);
-                                if(i == 0) {
-                                    jTextPane1.setCaretPosition(end);
-                                }
-                                if(i == 1) {
-                                    jTextPane2.setCaretPosition(end);
-                                }
-                                if(i == 2) {
-                                    jTextPane3.setCaretPosition(end);
-                                }
-                                if(i == 3) {
-                                    jTextPane4.setCaretPosition(end);
-                                }
-                                if(i == 4) {
-                                    jTextPane5.setCaretPosition(end);
-                                }
-                            }catch(BadLocationException e){
-                                e.printStackTrace();
+            for (int k = 0; k < words.size(); k++) {
+                temp = phrases.get(i);
+                word = words.get(k);
+                int start = temp.indexOf(word);
+                while (start >= 0) {
+                    char[] chars = temp.toCharArray();
+                    if (start != 0 && Character.isWhitespace(chars[start - 1])) {
+                        try {
+                            int end = start + word.length();
+                            highlighter.addHighlight(start, end, painter);
+                            if (i == 0) {
+                                jTextPane1.setCaretPosition(end);
                             }
-                            start = temp.indexOf(word, start+word.length());
+                            if (i == 1) {
+                                jTextPane2.setCaretPosition(end);
+                            }
+                            if (i == 2) {
+                                jTextPane3.setCaretPosition(end);
+                            }
+                            if (i == 3) {
+                                jTextPane4.setCaretPosition(end);
+                            }
+                            if (i == 4) {
+                                jTextPane5.setCaretPosition(end);
+                            }
+                        } catch (BadLocationException e) {
+                            e.printStackTrace();
                         }
-                        else {
-                            start = temp.indexOf(word, start+word.length());
-                        }
-
+                        start = temp.indexOf(word, start + word.length());
+                    } else {
+                        start = temp.indexOf(word, start + word.length());
                     }
+
                 }
+            }
             //}
         }
- 
+
     }
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -766,32 +760,31 @@ public class Passive extends javax.swing.JFrame {
         clip3.stop();
         clip4.stop();
         clip5.stop();
-        
+
         timer5.stop();
         timer2.stop();
         timer3.stop();
         timer4.stop();
-        
+
         playButton5.setText("Play");
         playButton2.setText("Play");
         playButton3.setText("Play");
         playButton4.setText("Play");
-        playButton2.setForeground(new java.awt.Color(0,153,51));
-        playButton3.setForeground(new java.awt.Color(0,153,51));
-        playButton4.setForeground(new java.awt.Color(0,153,51));
-        playButton5.setForeground(new java.awt.Color(0,153,51));
-        
+        playButton2.setForeground(new java.awt.Color(0, 153, 51));
+        playButton3.setForeground(new java.awt.Color(0, 153, 51));
+        playButton4.setForeground(new java.awt.Color(0, 153, 51));
+        playButton5.setForeground(new java.awt.Color(0, 153, 51));
+
         if (!clip1.isRunning()) {
             clip1.setMicrosecondPosition(timesList.get(t).get(0));
             clip1.start();
             timer1.restart();
             playButton1.setForeground(new java.awt.Color(255, 51, 51));
             playButton1.setText("Stop");
-        }
-        else {
+        } else {
             clip1.stop();
             timer1.stop();
-            playButton1.setForeground(new java.awt.Color(0,153,51));
+            playButton1.setForeground(new java.awt.Color(0, 153, 51));
             playButton1.setText("Play");
         }
     }//GEN-LAST:event_playButton1MouseReleased
@@ -801,32 +794,31 @@ public class Passive extends javax.swing.JFrame {
         clip3.stop();
         clip4.stop();
         clip5.stop();
-        
+
         timer1.stop();
         timer5.stop();
         timer3.stop();
         timer4.stop();
-        
+
         playButton1.setText("Play");
         playButton5.setText("Play");
         playButton3.setText("Play");
         playButton4.setText("Play");
-        playButton1.setForeground(new java.awt.Color(0,153,51));
-        playButton3.setForeground(new java.awt.Color(0,153,51));
-        playButton4.setForeground(new java.awt.Color(0,153,51));
-        playButton5.setForeground(new java.awt.Color(0,153,51));
-        
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton3.setForeground(new java.awt.Color(0, 153, 51));
+        playButton4.setForeground(new java.awt.Color(0, 153, 51));
+        playButton5.setForeground(new java.awt.Color(0, 153, 51));
+
         if (!clip2.isRunning()) {
             clip2.setMicrosecondPosition(timesList.get(t).get(1));
             clip2.start();
             timer2.restart();
             playButton2.setForeground(new java.awt.Color(255, 51, 51));
             playButton2.setText("Stop");
-        }
-        else {
+        } else {
             clip2.stop();
             timer2.stop();
-            playButton2.setForeground(new java.awt.Color(0,153,51));
+            playButton2.setForeground(new java.awt.Color(0, 153, 51));
             playButton2.setText("Play");
         }
     }//GEN-LAST:event_playButton2MouseReleased
@@ -836,32 +828,31 @@ public class Passive extends javax.swing.JFrame {
         clip2.stop();
         clip4.stop();
         clip5.stop();
-        
+
         timer1.stop();
         timer2.stop();
         timer5.stop();
         timer4.stop();
-        
+
         playButton1.setText("Play");
         playButton2.setText("Play");
         playButton5.setText("Play");
         playButton4.setText("Play");
-        playButton1.setForeground(new java.awt.Color(0,153,51));
-        playButton2.setForeground(new java.awt.Color(0,153,51));
-        playButton4.setForeground(new java.awt.Color(0,153,51));
-        playButton5.setForeground(new java.awt.Color(0,153,51));
-        
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton2.setForeground(new java.awt.Color(0, 153, 51));
+        playButton4.setForeground(new java.awt.Color(0, 153, 51));
+        playButton5.setForeground(new java.awt.Color(0, 153, 51));
+
         if (!clip3.isRunning()) {
             clip3.setMicrosecondPosition(timesList.get(t).get(2));
             clip3.start();
             timer3.restart();
             playButton3.setForeground(new java.awt.Color(255, 51, 51));
             playButton3.setText("Stop");
-        }
-        else {
+        } else {
             clip3.stop();
             timer3.stop();
-            playButton3.setForeground(new java.awt.Color(0,153,51));
+            playButton3.setForeground(new java.awt.Color(0, 153, 51));
             playButton3.setText("Play");
         }
     }//GEN-LAST:event_playButton3MouseReleased
@@ -871,32 +862,31 @@ public class Passive extends javax.swing.JFrame {
         clip2.stop();
         clip3.stop();
         clip5.stop();
-        
+
         timer1.stop();
         timer2.stop();
         timer3.stop();
         timer5.stop();
-        
+
         playButton1.setText("Play");
         playButton2.setText("Play");
         playButton3.setText("Play");
         playButton5.setText("Play");
-        playButton1.setForeground(new java.awt.Color(0,153,51));
-        playButton2.setForeground(new java.awt.Color(0,153,51));
-        playButton3.setForeground(new java.awt.Color(0,153,51));
-        playButton5.setForeground(new java.awt.Color(0,153,51));
-        
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton2.setForeground(new java.awt.Color(0, 153, 51));
+        playButton3.setForeground(new java.awt.Color(0, 153, 51));
+        playButton5.setForeground(new java.awt.Color(0, 153, 51));
+
         if (!clip4.isRunning()) {
             clip4.setMicrosecondPosition(timesList.get(t).get(3));
             clip4.start();
             timer4.restart();
             playButton4.setForeground(new java.awt.Color(255, 51, 51));
             playButton4.setText("Stop");
-        }
-        else {
+        } else {
             clip4.stop();
             timer4.stop();
-            playButton4.setForeground(new java.awt.Color(0,153,51));
+            playButton4.setForeground(new java.awt.Color(0, 153, 51));
             playButton4.setText("Play");
         }
     }//GEN-LAST:event_playButton4MouseReleased
@@ -906,162 +896,157 @@ public class Passive extends javax.swing.JFrame {
         clip2.stop();
         clip3.stop();
         clip4.stop();
-        
+
         timer1.stop();
         timer2.stop();
         timer3.stop();
         timer4.stop();
-        
+
         playButton1.setText("Play");
         playButton2.setText("Play");
         playButton3.setText("Play");
         playButton4.setText("Play");
-        playButton1.setForeground(new java.awt.Color(0,153,51));
-        playButton2.setForeground(new java.awt.Color(0,153,51));
-        playButton3.setForeground(new java.awt.Color(0,153,51));
-        playButton4.setForeground(new java.awt.Color(0,153,51));
-        
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton2.setForeground(new java.awt.Color(0, 153, 51));
+        playButton3.setForeground(new java.awt.Color(0, 153, 51));
+        playButton4.setForeground(new java.awt.Color(0, 153, 51));
+
         if (!clip5.isRunning()) {
             clip5.setMicrosecondPosition(timesList.get(t).get(4));
             clip5.start();
             timer5.restart();
             playButton5.setForeground(new java.awt.Color(255, 51, 51));
             playButton5.setText("Stop");
-        }
-        else {
+        } else {
             clip5.stop();
             timer5.stop();
-            playButton5.setForeground(new java.awt.Color(0,153,51));
+            playButton5.setForeground(new java.awt.Color(0, 153, 51));
             playButton5.setText("Play");
         }
     }//GEN-LAST:event_playButton5MouseReleased
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        if(page >= 1 && page < 4) {
-            page ++;
+        if (page >= 1 && page < 4) {
+            page++;
         }
-        
-        if(page == 2) {
+
+        if (page == 2) {
             jButton7.setText("Page 3 >>");
             jButton8.setText("<< Page 1");
-        }
-        else if (page == 3) {
+        } else if (page == 3) {
             jButton7.setText("Page 4 >>");
             jButton8.setText("<< Page 2");
-        }
-        else {
+        } else {
             jButton8.setText("<< Page 3");
             jButton7.setText("Current");
         }
-        
-        jTextPane1.setText(textList.get(page-1).get(0));
-        jTextPane2.setText(textList.get(page-1).get(1));
-        jTextPane3.setText(textList.get(page-1).get(2));
-        jTextPane4.setText(textList.get(page-1).get(3));
-        jTextPane5.setText(textList.get(page-1).get(4));
-        
+
+        jTextPane1.setText(textList.get(page - 1).get(0));
+        jTextPane2.setText(textList.get(page - 1).get(1));
+        jTextPane3.setText(textList.get(page - 1).get(2));
+        jTextPane4.setText(textList.get(page - 1).get(3));
+        jTextPane5.setText(textList.get(page - 1).get(4));
+
         clip1.stop();
         clip2.stop();
         clip3.stop();
         clip4.stop();
         clip5.stop();
-        
+
         clip1.close();
         clip2.close();
         clip3.close();
         clip4.close();
         clip5.close();
-        
+
         timer1.stop();
         timer2.stop();
         timer3.stop();
         timer4.stop();
         timer5.stop();
-        
-        playButton1.setForeground(new java.awt.Color(0,153,51));
-        playButton2.setForeground(new java.awt.Color(0,153,51));
-        playButton3.setForeground(new java.awt.Color(0,153,51));
-        playButton4.setForeground(new java.awt.Color(0,153,51));
-        playButton5.setForeground(new java.awt.Color(0,153,51));
-     
+
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton2.setForeground(new java.awt.Color(0, 153, 51));
+        playButton3.setForeground(new java.awt.Color(0, 153, 51));
+        playButton4.setForeground(new java.awt.Color(0, 153, 51));
+        playButton5.setForeground(new java.awt.Color(0, 153, 51));
+
         playButton1.setText("Play");
         playButton2.setText("Play");
         playButton3.setText("Play");
         playButton4.setText("Play");
-        playButton5.setText("Play");    
-        
+        playButton5.setText("Play");
+
         backend.closeAudio();
         clipsList = backend.makeClips(page);
         initAudio();
-        backend.findWords(textList.get(page-1), wordsList);
+        backend.findWords(textList.get(page - 1), wordsList);
         try {
-            highlightWord(wordsList, textList.get(page-1));
+            highlightWord(wordsList, textList.get(page - 1));
         } catch (BadLocationException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        if(page <= 4 && page > 1) {
-            page --;
+        if (page <= 4 && page > 1) {
+            page--;
         }
-         
-         if (page == 1) {
-             jButton7.setText("Page 2 >>");
-             jButton8.setText("Current");
-         }
-         else if(page == 2) {
-             jButton7.setText("Page 3 >>");
-             jButton8.setText("<< Page 1");
-         }
-         else if (page == 3) {
-             jButton7.setText("Page 4 >>");
-             jButton8.setText("<< Page 2");   
-         }
-        
-        jTextPane1.setText(textList.get(page-1).get(0));
-        jTextPane2.setText(textList.get(page-1).get(1));
-        jTextPane3.setText(textList.get(page-1).get(2));
-        jTextPane4.setText(textList.get(page-1).get(3));
-        jTextPane5.setText(textList.get(page-1).get(4));
-        
+
+        if (page == 1) {
+            jButton7.setText("Page 2 >>");
+            jButton8.setText("Current");
+        } else if (page == 2) {
+            jButton7.setText("Page 3 >>");
+            jButton8.setText("<< Page 1");
+        } else if (page == 3) {
+            jButton7.setText("Page 4 >>");
+            jButton8.setText("<< Page 2");
+        }
+
+        jTextPane1.setText(textList.get(page - 1).get(0));
+        jTextPane2.setText(textList.get(page - 1).get(1));
+        jTextPane3.setText(textList.get(page - 1).get(2));
+        jTextPane4.setText(textList.get(page - 1).get(3));
+        jTextPane5.setText(textList.get(page - 1).get(4));
+
         clip1.stop();
         clip2.stop();
         clip3.stop();
         clip4.stop();
         clip5.stop();
-        
+
         clip1.close();
         clip2.close();
         clip3.close();
         clip4.close();
         clip5.close();
-        
+
         timer1.stop();
         timer2.stop();
         timer3.stop();
         timer4.stop();
         timer5.stop();
-        
-        playButton1.setForeground(new java.awt.Color(0,153,51));
-        playButton2.setForeground(new java.awt.Color(0,153,51));
-        playButton3.setForeground(new java.awt.Color(0,153,51));
-        playButton4.setForeground(new java.awt.Color(0,153,51));
-        playButton5.setForeground(new java.awt.Color(0,153,51));
-     
+
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton2.setForeground(new java.awt.Color(0, 153, 51));
+        playButton3.setForeground(new java.awt.Color(0, 153, 51));
+        playButton4.setForeground(new java.awt.Color(0, 153, 51));
+        playButton5.setForeground(new java.awt.Color(0, 153, 51));
+
         playButton1.setText("Play");
         playButton2.setText("Play");
         playButton3.setText("Play");
         playButton4.setText("Play");
         playButton5.setText("Play");
-        
+
         backend.closeAudio();
         clipsList = backend.makeClips(page);
         initAudio();
-        backend.findWords(textList.get(page-1), wordsList);
-       
+        backend.findWords(textList.get(page - 1), wordsList);
+
         try {
-            highlightWord(wordsList, textList.get(page-1));
+            highlightWord(wordsList, textList.get(page - 1));
         } catch (BadLocationException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         }

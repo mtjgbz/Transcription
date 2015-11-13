@@ -14,24 +14,26 @@ import javax.swing.Timer;
  * @author mike
  */
 public class Practice extends javax.swing.JFrame {
+
     String user;
-    
+
     Clip clip;
     Timer timer;
-    
+
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
 
     /**
      * Creates new form Practice
+     *
      * @param user
      */
     public Practice(String user) {
-        getContentPane().setBackground(new Color(148,189,203));
+        getContentPane().setBackground(new Color(148, 189, 203));
         this.setTitle("Mixtec Transcription: Practice");
         initComponents();
-        this.user=user;
+        this.user = user;
         jMenu5.setText(user);
         jTextArea1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
     }
@@ -203,25 +205,25 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        if(!enc.isShowing()) {
-           enc.setVisible(true);
-        }else{
+        if (!enc.isShowing()) {
+            enc.setVisible(true);
+        } else {
             enc.toFront();
         }
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-         if(!nas.isShowing()) {
-           nas.setVisible(true);
-        }else{
+        if (!nas.isShowing()) {
+            nas.setVisible(true);
+        } else {
             nas.toFront();
         }
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
-         if(!tone.isShowing()) {
-           tone.setVisible(true);
-        }else{
+        if (!tone.isShowing()) {
+            tone.setVisible(true);
+        } else {
             tone.toFront();
         }
     }//GEN-LAST:event_jMenu4MouseClicked

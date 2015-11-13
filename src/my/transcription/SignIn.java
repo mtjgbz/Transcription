@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  * @author Michael
  */
 public class SignIn extends javax.swing.JFrame {
+
     private SignInBE backend;
 
     /**
@@ -26,25 +27,25 @@ public class SignIn extends javax.swing.JFrame {
         //ECL: Create SignInBE here
         backend = new SignInBE();
         backend.setupDB();
-        
+
         //how to set the color of the JFrame
-        getContentPane().setBackground(new Color(148,189,203));
-        jLabel3.setForeground(new java.awt.Color(200,200,200));
-        
+        getContentPane().setBackground(new Color(148, 189, 203));
+        jLabel3.setForeground(new java.awt.Color(200, 200, 200));
+
     }
-    
-    
+
     /**
      * This method is called when the trainee/admin inputs incorrect credentials
      * It pops up an error message window with an error message.
-     * @param infoMessage  Message displayed
-     * @param titleBar   Title of pop up window
+     *
+     * @param infoMessage Message displayed
+     * @param titleBar Title of pop up window
      * @author CAU
      */
     public static void errorMsg(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,32 +172,29 @@ public class SignIn extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //ECL: Checking username and password
         //CAU: Checking if admin or not
         String username = jTextField3.getText();
         String password = jPasswordField1.getText();
-        
-        if (backend.checkPassword(username, password)){
-            Home home1 =new Home(jTextField3.getText());
+
+        if (backend.checkPassword(username, password)) {
+            Home home1 = new Home(jTextField3.getText());
             home1.setVisible(true);
             dispose();
             backend.closeDB();
-            
-            
-        }   
-        else if (backend.checkAdmin(username)) {
-            
-            AdminHome home2 =new AdminHome(jTextField3.getText());
+
+        } else if (backend.checkAdmin(username)) {
+
+            AdminHome home2 = new AdminHome(jTextField3.getText());
             home2.setVisible(true);
             backend.closeDB();
             dispose();
-            }
-        else{
+        } else {
             errorMsg("Sign-in failed.  Please try again.", "Sign-in");
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -207,27 +205,25 @@ public class SignIn extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
+
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
-        if(evt.getKeyCode()==10){
+        if (evt.getKeyCode() == 10) {
             String username = jTextField3.getText();
             String password = jPasswordField1.getText();
 
-            if (backend.checkPassword(username, password)){
-                
-                Home home1 =new Home(jTextField3.getText());
+            if (backend.checkPassword(username, password)) {
+
+                Home home1 = new Home(jTextField3.getText());
                 home1.setVisible(true);
                 backend.closeDB();
                 dispose();
                 //need to add the admin page
-            }
-            else if (backend.checkAdmin(username)) {
-                AdminHome home2 =new AdminHome(jTextField3.getText());
+            } else if (backend.checkAdmin(username)) {
+                AdminHome home2 = new AdminHome(jTextField3.getText());
                 home2.setVisible(true);
                 backend.closeDB();
                 dispose();
-            }               
-            else{
+            } else {
                 errorMsg("Sign-in failed.  Please try again.", "Sign-in");
             }
         }
@@ -270,7 +266,7 @@ public class SignIn extends javax.swing.JFrame {
             @Override
             public void run() {
                 new SignIn().setVisible(true);
-                
+
             }
         });
     }

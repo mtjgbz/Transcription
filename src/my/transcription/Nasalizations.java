@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package my.transcription;
+
 import java.awt.*;
+
 /**
  *
  * @author mike
@@ -21,10 +23,9 @@ public class Nasalizations extends javax.swing.JFrame {
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
     Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-    
+
     int x = (int) rect.getMaxX();
     int y = (int) rect.getMaxY();
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

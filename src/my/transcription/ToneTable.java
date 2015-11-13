@@ -19,11 +19,11 @@ public class ToneTable extends javax.swing.JFrame {
     public ToneTable() {
         initComponents();
     }
-    
+
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
     Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-    
+
     int x = 0;
     int y = 0;
 

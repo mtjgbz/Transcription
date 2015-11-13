@@ -13,52 +13,51 @@ import java.util.ArrayList;
  * @author Michael
  */
 public class Home extends javax.swing.JFrame {
+
     private String lesson;
     private String user;
-    
+
     Active act;
     ChangePass pass1;
     Enclitics enc;
     Nasalizations nas;
     ToneTable tone;
-    
+
     ArrayList<Integer> lessonList;
     ArrayList<Character> subLessonList;
-    
-    
+
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
-        this.setTitle("Mixtec Transcription: Home");   
+        this.setTitle("Mixtec Transcription: Home");
     }
-    
-    public Home(String user){
+
+    public Home(String user) {
         initComponents();
         this.setTitle("Mixtec Transcription: Home");
-        this.user=user;
-        getContentPane().setBackground(new Color(148,189,203));
+        this.user = user;
+        getContentPane().setBackground(new Color(148, 189, 203));
         jMenu2.setText(user);
-        act = new Active(this,user);
+        act = new Active(this, user);
         pass1 = new ChangePass();
         enc = new Enclitics();
         nas = new Nasalizations();
         tone = new ToneTable();
-        
+
         lessonList = new ArrayList<>();
         lessonList.add(1);
         lessonList.add(2);
         lessonList.add(3);
-        
+
         subLessonList = new ArrayList<>();
         subLessonList.add('a');
         subLessonList.add('b');
         subLessonList.add('c');
-        
-        
-        
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -283,7 +282,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        
+
         dispose();
         new SignIn().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -294,7 +293,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        
+
         new TraineeLog(user).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -305,8 +304,8 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        
-        Passive pass = new Passive(user,lessonList.get(lessonBox.getSelectedIndex()),subLessonList.get(subLessonBox.getSelectedIndex()) );
+
+        Passive pass = new Passive(user, lessonList.get(lessonBox.getSelectedIndex()), subLessonList.get(subLessonBox.getSelectedIndex()));
         pass.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -316,40 +315,40 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if(!act.isShowing()) {
-           act.setVisible(true);
-        }else{
+        if (!act.isShowing()) {
+            act.setVisible(true);
+        } else {
             act.toFront();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if(!tone.isShowing()) {
-           tone.setVisible(true);
-        }else{
+        if (!tone.isShowing()) {
+            tone.setVisible(true);
+        } else {
             tone.toFront();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        if(!nas.isShowing()){
+        if (!nas.isShowing()) {
             nas.setVisible(true);
-        }else{
+        } else {
             nas.toFront();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        if(!enc.isShowing()){
+        if (!enc.isShowing()) {
             enc.setVisible(true);
-        }else{
+        } else {
             enc.toFront();
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-       //new ChangePass().setVisible(true);
-       pass1.setVisible(true);
+        //new ChangePass().setVisible(true);
+        pass1.setVisible(true);
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
@@ -358,9 +357,9 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if(!pass1.isShowing()) {
-           pass1.setVisible(true);
-        }else{
+        if (!pass1.isShowing()) {
+            pass1.setVisible(true);
+        } else {
             pass1.toFront();
         }
     }//GEN-LAST:event_jMenuItem1MouseReleased

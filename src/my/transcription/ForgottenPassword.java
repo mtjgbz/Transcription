@@ -8,6 +8,7 @@ package my.transcription;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 // TODO: Print error messages
+
 /**
  *
  * @author mike
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 public class ForgottenPassword extends javax.swing.JFrame {
 
     private ForgottenPasswordBE backend;
+
     /**
      * Creates new form ForgottenPassword
      */
@@ -22,8 +24,8 @@ public class ForgottenPassword extends javax.swing.JFrame {
         initComponents();
         jTextField4.setEditable(false);
         backend = new ForgottenPasswordBE();
-        getContentPane().setBackground(new Color(148,189,203));
-        
+        getContentPane().setBackground(new Color(148, 189, 203));
+
     }
 
     /**
@@ -55,7 +57,6 @@ public class ForgottenPassword extends javax.swing.JFrame {
         jTextField1.setMaximumSize(new java.awt.Dimension(198, 28));
         jTextField1.setMinimumSize(new java.awt.Dimension(198, 28));
         jTextField1.setPreferredSize(new java.awt.Dimension(198, 28));
-        jTextField1.setSize(new java.awt.Dimension(198, 28));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -82,7 +83,6 @@ public class ForgottenPassword extends javax.swing.JFrame {
         jTextField4.setMaximumSize(new java.awt.Dimension(300, 28));
         jTextField4.setMinimumSize(new java.awt.Dimension(300, 28));
         jTextField4.setPreferredSize(new java.awt.Dimension(300, 28));
-        jTextField4.setSize(new java.awt.Dimension(300, 28));
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -102,7 +102,6 @@ public class ForgottenPassword extends javax.swing.JFrame {
         jTextField5.setMaximumSize(new java.awt.Dimension(198, 28));
         jTextField5.setMinimumSize(new java.awt.Dimension(198, 28));
         jTextField5.setPreferredSize(new java.awt.Dimension(198, 28));
-        jTextField5.setSize(new java.awt.Dimension(198, 28));
 
         jMenu1.setText("Back");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,31 +185,30 @@ public class ForgottenPassword extends javax.swing.JFrame {
     public static void errorMsg(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Getting username and security question answer info and sending to validatePassword
         String username = jTextField1.getText();
         String answer = jTextField5.getText();
-        
+
         String password = backend.validatePassword(username, answer);
-        if(password == "") {
+        if (password == "") {
             errorMsg("Security Answer is incorrect.", "Forgotten Password");
+        } else {
+            jTextField3.setText(password);
         }
-        else {
-           jTextField3.setText(password); 
-        }
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         //ECL: close the backend before moving to the other page
         backend.closeDB();
-        new SignIn().setVisible(true);   
+        new SignIn().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -223,11 +221,10 @@ public class ForgottenPassword extends javax.swing.JFrame {
         String secQuestion = backend.retrieveSecurityQuestion(username);
         if (secQuestion == "") {
             errorMsg("Username not found.", "Forgotten Password");
-        }
-        else {
+        } else {
             jTextField4.setText(secQuestion);
         }
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

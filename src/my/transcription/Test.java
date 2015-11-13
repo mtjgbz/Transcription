@@ -14,16 +14,19 @@ import javax.swing.Timer;
  * @author mike
  */
 public class Test extends javax.swing.JFrame {
+
     String user;
     Clip clip;
     Timer timer;
+
     /**
      * Creates new form Test
+     *
      * @param user
      */
     public Test(String user) {
-        getContentPane().setBackground(new Color(148,189,203));
-        this.user=user;
+        getContentPane().setBackground(new Color(148, 189, 203));
+        this.user = user;
         initComponents();
         this.setTitle("Mixtec Transcription: Test");
         jMenu2.setVisible(true);
@@ -159,8 +162,8 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-         new Home(user).setVisible(true);
-         dispose();
+        new Home(user).setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased

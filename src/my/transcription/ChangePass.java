@@ -18,7 +18,7 @@ public class ChangePass extends javax.swing.JFrame {
      */
     public ChangePass() {
         initComponents();
-        getContentPane().setBackground(new Color(148,189,203));
+        getContentPane().setBackground(new Color(148, 189, 203));
     }
 
     /**

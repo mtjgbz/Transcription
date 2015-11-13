@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
+
 import java.awt.Color;
 import javax.swing.JFrame;
 
@@ -12,20 +13,21 @@ import javax.swing.JFrame;
  * @author Michael
  */
 public class Active extends javax.swing.JFrame {
-    
+
     Home home;
     String user;
+
     /**
      * Creates new form Active
      */
     //public Active() {
     //    initComponents();
     //}
-    
+
     public Active(Home home, String user) {
-        this.home=home;
-        this.user=user;
-        getContentPane().setBackground(new Color(148,189,203));
+        this.home = home;
+        this.user = user;
+        getContentPane().setBackground(new Color(148, 189, 203));
         initComponents();
     }
 
@@ -132,7 +134,7 @@ public class Active extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            //    new Active().setVisible(true);
+                //    new Active().setVisible(true);
             }
         });
     }
