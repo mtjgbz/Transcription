@@ -108,6 +108,8 @@ public class Passive extends javax.swing.JFrame {
      * Creates new form Passive
      *
      * @param user
+     * @param lesson
+     * @param subLesson
      */
     public Passive(String user,Integer lesson, Character subLesson) {
         this.user = user;
@@ -417,7 +419,6 @@ public class Passive extends javax.swing.JFrame {
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
-        jLabel1.setFocusTraversalKeysEnabled(false);
         jLabel1.setFocusable(false);
         jLabel1.setRequestFocusEnabled(false);
         jLabel1.setVerifyInputWhenFocusTarget(false);
