@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author mike
+ * @author Erica, Noah, Casey and Mike
  */
 public class Register extends javax.swing.JFrame {
 
@@ -28,6 +28,9 @@ public class Register extends javax.swing.JFrame {
         populateSecurityQuestions();
     }
 
+    /*
+    Error message when something is wrong
+    */
     public static void errorMsg(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }
@@ -49,7 +52,7 @@ public class Register extends javax.swing.JFrame {
             ResultSet rs = backend.stmt.executeQuery(query);
             while (rs.next()) {
                 String question = rs.getString("Question");
-                jComboBox1.addItem(question);
+                jSecurityQuestionComboBox.addItem(question);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,60 +61,63 @@ public class Register extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jFNTextField = new javax.swing.JTextField();
+        jLNTextField = new javax.swing.JTextField();
+        jUsernameTextField = new javax.swing.JTextField();
+        jSecQuestAnswerField = new javax.swing.JTextField();
+        jPasswordField = new javax.swing.JPasswordField();
+        jReTypePassField = new javax.swing.JPasswordField();
+        jSecurityQuestionComboBox = new javax.swing.JComboBox();
+        jFirstNameLabel = new javax.swing.JLabel();
+        jLastNameLabel = new javax.swing.JLabel();
+        jUsernameLabel = new javax.swing.JLabel();
+        jPasswordLabel = new javax.swing.JLabel();
+        jRetypePassLabel = new javax.swing.JLabel();
+        jRegisterButton = new javax.swing.JButton();
+        jSecQuestionAnswerLabel = new javax.swing.JLabel();
+        jBackground = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jBackButton = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 550));
         setResizable(false);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose a Security Question." }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jSecurityQuestionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose a Security Question." }));
+        jSecurityQuestionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jSecurityQuestionComboBoxActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("First Name");
+        jFirstNameLabel.setText("First Name");
 
-        jLabel2.setText("Last Name");
+        jLastNameLabel.setText("Last Name");
 
-        jLabel3.setText("Username");
+        jUsernameLabel.setText("Username");
 
-        jLabel4.setText("Password");
+        jPasswordLabel.setText("Password");
 
-        jLabel5.setText("Retype Password");
+        jRetypePassLabel.setText("Retype Password");
 
-        jButton1.setText("Register");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jRegisterButton.setText("Register");
+        jRegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jRegisterButtonActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Answer Security Question");
+        jSecQuestionAnswerLabel.setText("Answer Security Question");
 
-        jMenu1.setText("Back");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
+
+        jBackButton.setText("Back");
+        jBackButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jBackButtonMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jBackButton);
 
         setJMenuBar(jMenuBar1);
 
@@ -124,72 +130,76 @@ public class Register extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
+                            .addComponent(jRetypePassLabel)
+                            .addComponent(jPasswordLabel)
+                            .addComponent(jUsernameLabel)
+                            .addComponent(jLastNameLabel)
+                            .addComponent(jFirstNameLabel)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jComboBox1, 0, 265, Short.MAX_VALUE)
-                                .addComponent(jPasswordField2)
-                                .addComponent(jLabel6)
-                                .addComponent(jPasswordField1)
-                                .addComponent(jTextField3)
-                                .addComponent(jTextField2)
-                                .addComponent(jTextField1)
-                                .addComponent(jTextField4))))
+                                .addComponent(jSecurityQuestionComboBox, 0, 265, Short.MAX_VALUE)
+                                .addComponent(jReTypePassField)
+                                .addComponent(jSecQuestionAnswerLabel)
+                                .addComponent(jPasswordField)
+                                .addComponent(jUsernameTextField)
+                                .addComponent(jLNTextField)
+                                .addComponent(jFNTextField)
+                                .addComponent(jSecQuestAnswerField))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel1)
+                .addComponent(jFirstNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(jLabel2)
+                .addComponent(jLastNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(jLabel3)
+                .addComponent(jUsernameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(jLabel4)
+                .addComponent(jPasswordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(jRetypePassLabel)
                 .addGap(5, 5, 5)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jReTypePassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSecurityQuestionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(jSecQuestionAnswerLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSecQuestAnswerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(jButton1)
+                .addComponent(jRegisterButton)
                 .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 528, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterButtonActionPerformed
         //ECL: Getting login info and sending to insert
-        String fname = jTextField1.getText();
-        String lname = jTextField2.getText();
-        String username = jTextField3.getText();
-        String password = jPasswordField1.getText();
-        String match = jPasswordField2.getText();
-        int questionID = jComboBox1.getSelectedIndex();
-        String answer = jTextField4.getText();
+        String fname = jFNTextField.getText();
+        String lname = jLNTextField.getText();
+        String username = jUsernameTextField.getText();
+        String password = jPasswordField.getText();
+        String match = jReTypePassField.getText();
+        int questionID = jSecurityQuestionComboBox.getSelectedIndex();
+        String answer = jSecQuestAnswerField.getText();
 
         //ECL: Printing error messages
         String success = backend.setInfo(fname, lname, username, password, match,
@@ -200,24 +210,24 @@ public class Register extends javax.swing.JFrame {
         } else {
             System.out.println(success);
             //reset sensitive info when passwords don't match
-            jPasswordField1.setText("");
-            jPasswordField2.setText("");
-            jComboBox1.setSelectedIndex(0);
-            jTextField4.setText("");
+            jPasswordField.setText("");
+            jReTypePassField.setText("");
+            jSecurityQuestionComboBox.setSelectedIndex(0);
+            jSecQuestAnswerField.setText("");
             errorMsg(success, "Registration");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jRegisterButtonActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jSecurityQuestionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSecurityQuestionComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jSecurityQuestionComboBoxActionPerformed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jBackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackButtonMouseClicked
         //ECL: close the backend before moving to the other page
         backend.closeDB();
         new SignIn().setVisible(true);    // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_jBackButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -255,21 +265,22 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jBackButton;
+    private javax.swing.JLabel jBackground;
+    private javax.swing.JTextField jFNTextField;
+    private javax.swing.JLabel jFirstNameLabel;
+    private javax.swing.JTextField jLNTextField;
+    private javax.swing.JLabel jLastNameLabel;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JPasswordField jPasswordField;
+    private javax.swing.JLabel jPasswordLabel;
+    private javax.swing.JPasswordField jReTypePassField;
+    private javax.swing.JButton jRegisterButton;
+    private javax.swing.JLabel jRetypePassLabel;
+    private javax.swing.JTextField jSecQuestAnswerField;
+    private javax.swing.JLabel jSecQuestionAnswerLabel;
+    private javax.swing.JComboBox jSecurityQuestionComboBox;
+    private javax.swing.JLabel jUsernameLabel;
+    private javax.swing.JTextField jUsernameTextField;
     // End of variables declaration//GEN-END:variables
 }

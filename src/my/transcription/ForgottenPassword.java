@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author mike
+ * @author Mike, Noah, Erica and Casey
  */
 public class ForgottenPassword extends javax.swing.JFrame {
 
@@ -22,7 +22,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
      */
     public ForgottenPassword() {
         initComponents();
-        jTextField4.setEditable(false);
+        jSecQuestTextField.setEditable(false);
         backend = new ForgottenPasswordBE();
         getContentPane().setBackground(new Color(148, 189, 203));
 
@@ -37,79 +37,82 @@ public class ForgottenPassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jUsernameTextField = new javax.swing.JTextField();
+        jUsernameLabel = new javax.swing.JLabel();
+        jYourPasswordTextField = new javax.swing.JTextField();
+        jValidateButton = new javax.swing.JButton();
+        jYourPasswordLabel = new javax.swing.JLabel();
+        jSecQuestAnsLabel = new javax.swing.JLabel();
+        jSecQuestTextField = new javax.swing.JTextField();
+        jConfirmButton = new javax.swing.JButton();
+        jSecQuestLabel = new javax.swing.JLabel();
+        jSecQuestAnsTextField = new javax.swing.JTextField();
+        jBackground = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jBackMenuButton = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(414, 350));
         setMinimumSize(new java.awt.Dimension(414, 350));
 
-        jTextField1.setMaximumSize(new java.awt.Dimension(198, 28));
-        jTextField1.setMinimumSize(new java.awt.Dimension(198, 28));
-        jTextField1.setPreferredSize(new java.awt.Dimension(198, 28));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jUsernameTextField.setMaximumSize(new java.awt.Dimension(198, 28));
+        jUsernameTextField.setMinimumSize(new java.awt.Dimension(198, 28));
+        jUsernameTextField.setPreferredSize(new java.awt.Dimension(198, 28));
+        jUsernameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jUsernameTextFieldActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("            Username:");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jUsernameLabel.setText("            Username:");
+        jUsernameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton1.setText("Validate");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jValidateButton.setText("Validate");
+        jValidateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jValidateButtonActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Your Password:");
+        jYourPasswordLabel.setText("Your Password:");
 
-        jLabel3.setText("            Security Question Answer:");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jSecQuestAnsLabel.setText("            Security Question Answer:");
+        jSecQuestAnsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("SECURITY QUESTION");
-        jTextField4.setMaximumSize(new java.awt.Dimension(300, 28));
-        jTextField4.setMinimumSize(new java.awt.Dimension(300, 28));
-        jTextField4.setPreferredSize(new java.awt.Dimension(300, 28));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jSecQuestTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jSecQuestTextField.setText("SECURITY QUESTION");
+        jSecQuestTextField.setMaximumSize(new java.awt.Dimension(300, 28));
+        jSecQuestTextField.setMinimumSize(new java.awt.Dimension(300, 28));
+        jSecQuestTextField.setPreferredSize(new java.awt.Dimension(300, 28));
+        jSecQuestTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jSecQuestTextFieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Confirm");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jConfirmButton.setText("Confirm");
+        jConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jConfirmButtonActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("            Security Question:");
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jSecQuestLabel.setText("            Security Question:");
+        jSecQuestLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jTextField5.setMaximumSize(new java.awt.Dimension(198, 28));
-        jTextField5.setMinimumSize(new java.awt.Dimension(198, 28));
-        jTextField5.setPreferredSize(new java.awt.Dimension(198, 28));
+        jSecQuestAnsTextField.setMaximumSize(new java.awt.Dimension(198, 28));
+        jSecQuestAnsTextField.setMinimumSize(new java.awt.Dimension(198, 28));
+        jSecQuestAnsTextField.setPreferredSize(new java.awt.Dimension(198, 28));
 
-        jMenu1.setText("Back");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
+
+        jBackMenuButton.setText("Back");
+        jBackMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jBackMenuButtonMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jBackMenuButton);
 
         setJMenuBar(jMenuBar1);
 
@@ -120,34 +123,36 @@ public class ForgottenPassword extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSecQuestAnsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSecQuestLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSecQuestTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSecQuestAnsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jValidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(128, 128, 128)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jYourPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(jYourPasswordLabel)
                 .addGap(157, 157, 157))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,27 +160,29 @@ public class ForgottenPassword extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jLabel1)
+                        .addComponent(jUsernameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
+                        .addComponent(jConfirmButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(4, 4, 4)
-                .addComponent(jLabel4)
+                .addComponent(jSecQuestLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSecQuestTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jSecQuestAnsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jValidateButton)
+                    .addComponent(jSecQuestAnsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(jYourPasswordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jYourPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -186,46 +193,51 @@ public class ForgottenPassword extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jValidateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jValidateButtonActionPerformed
         // Getting username and security question answer info and sending to validatePassword
-        String username = jTextField1.getText();
-        String answer = jTextField5.getText();
+        String username = jUsernameTextField.getText();
+        String answer = jSecQuestAnsTextField.getText();
 
+        //validate that the password is correct
         String password = backend.validatePassword(username, answer);
         if (password == "") {
             errorMsg("Security Answer is incorrect.", "Forgotten Password");
         } else {
-            jTextField3.setText(password);
+            jYourPasswordTextField.setText(password);
         }
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jValidateButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jUsernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUsernameTextFieldActionPerformed
 
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jUsernameTextFieldActionPerformed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jBackMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMenuButtonMouseClicked
         //ECL: close the backend before moving to the other page
         backend.closeDB();
         new SignIn().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_jBackMenuButtonMouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jSecQuestTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSecQuestTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_jSecQuestTextFieldActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String username = jTextField1.getText();
+    /**
+     * Confirms the username and then gets the question related to that username
+     * @param evt 
+     */
+    private void jConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfirmButtonActionPerformed
+        String username = jUsernameTextField.getText();
         String secQuestion = backend.retrieveSecurityQuestion(username);
         if (secQuestion == "") {
             errorMsg("Username not found.", "Forgotten Password");
         } else {
-            jTextField4.setText(secQuestion);
+            jSecQuestTextField.setText(secQuestion);
         }
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jConfirmButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,17 +275,18 @@ public class ForgottenPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jBackMenuButton;
+    private javax.swing.JLabel jBackground;
+    private javax.swing.JButton jConfirmButton;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel jSecQuestAnsLabel;
+    private javax.swing.JTextField jSecQuestAnsTextField;
+    private javax.swing.JLabel jSecQuestLabel;
+    private javax.swing.JTextField jSecQuestTextField;
+    private javax.swing.JLabel jUsernameLabel;
+    private javax.swing.JTextField jUsernameTextField;
+    private javax.swing.JButton jValidateButton;
+    private javax.swing.JLabel jYourPasswordLabel;
+    private javax.swing.JTextField jYourPasswordTextField;
     // End of variables declaration//GEN-END:variables
 }

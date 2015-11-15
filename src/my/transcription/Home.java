@@ -42,7 +42,7 @@ public class Home extends javax.swing.JFrame {
         this.setTitle("Mixtec Transcription: Home");
         this.user = user;
         getContentPane().setBackground(new Color(148, 189, 203));
-        jMenu2.setText(user);
+        jUsernameMenuDropDown.setText(user);
         act = new Active(this, user);
         pass1 = new ChangePass();
         enc = new Enclitics();
@@ -72,138 +72,138 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lessonBox = new javax.swing.JComboBox();
-        subLessonBox = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jlessonBox = new javax.swing.JComboBox();
+        jsubLessonBox = new javax.swing.JComboBox();
+        jLessonLabel = new javax.swing.JLabel();
+        jSubLessonLabel = new javax.swing.JLabel();
+        jLogOutButton = new javax.swing.JButton();
+        jPassiveButton = new javax.swing.JButton();
+        jActiveButton = new javax.swing.JButton();
+        jTraineeLogButton = new javax.swing.JButton();
+        jTonesButton = new javax.swing.JButton();
+        jNasalizationButton = new javax.swing.JButton();
+        jEncliticButton = new javax.swing.JButton();
+        jBackground = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jFileMenuItem = new javax.swing.JMenu();
+        jUsernameMenuDropDown = new javax.swing.JMenu();
+        jChangePassword = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(665, 400));
         setResizable(false);
 
-        lessonBox.setBackground(new java.awt.Color(204, 204, 204));
-        lessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        lessonBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4" }));
-        lessonBox.setPreferredSize(new java.awt.Dimension(130, 30));
-        lessonBox.addActionListener(new java.awt.event.ActionListener() {
+        jlessonBox.setBackground(new java.awt.Color(204, 204, 204));
+        jlessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jlessonBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4" }));
+        jlessonBox.setPreferredSize(new java.awt.Dimension(130, 30));
+        jlessonBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lessonBoxActionPerformed(evt);
+                jlessonBoxActionPerformed(evt);
             }
         });
 
-        subLessonBox.setBackground(new java.awt.Color(204, 204, 204));
-        subLessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        subLessonBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        subLessonBox.setPreferredSize(new java.awt.Dimension(130, 30));
+        jsubLessonBox.setBackground(new java.awt.Color(204, 204, 204));
+        jsubLessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jsubLessonBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jsubLessonBox.setPreferredSize(new java.awt.Dimension(130, 30));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel1.setText("Lesson");
+        jLessonLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLessonLabel.setText("Lesson");
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel2.setText("Sub-lesson");
+        jSubLessonLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jSubLessonLabel.setText("Sub-lesson");
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton1.setText("Log Out");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLogOutButton.setBackground(new java.awt.Color(204, 204, 204));
+        jLogOutButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLogOutButton.setText("Log Out");
+        jLogOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jLogOutButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton2.setText("Passive");
-        jButton2.setPreferredSize(new java.awt.Dimension(130, 30));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jPassiveButton.setBackground(new java.awt.Color(204, 204, 204));
+        jPassiveButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jPassiveButton.setText("Passive");
+        jPassiveButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        jPassiveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jPassiveButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton3.setText("Active");
-        jButton3.setPreferredSize(new java.awt.Dimension(130, 30));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jActiveButton.setBackground(new java.awt.Color(204, 204, 204));
+        jActiveButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jActiveButton.setText("Active");
+        jActiveButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        jActiveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jActiveButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton4.setText("Trainee Log");
-        jButton4.setPreferredSize(new java.awt.Dimension(130, 30));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jTraineeLogButton.setBackground(new java.awt.Color(204, 204, 204));
+        jTraineeLogButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jTraineeLogButton.setText("Trainee Log");
+        jTraineeLogButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        jTraineeLogButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jTraineeLogButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(204, 204, 204));
-        jButton5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton5.setText("Tones");
-        jButton5.setPreferredSize(new java.awt.Dimension(130, 30));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jTonesButton.setBackground(new java.awt.Color(204, 204, 204));
+        jTonesButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jTonesButton.setText("Tones");
+        jTonesButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        jTonesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jTonesButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(204, 204, 204));
-        jButton6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton6.setText("Nasalizations");
-        jButton6.setPreferredSize(new java.awt.Dimension(130, 30));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jNasalizationButton.setBackground(new java.awt.Color(204, 204, 204));
+        jNasalizationButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jNasalizationButton.setText("Nasalizations");
+        jNasalizationButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        jNasalizationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jNasalizationButtonActionPerformed(evt);
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(204, 204, 204));
-        jButton7.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton7.setText("Enclitics");
-        jButton7.setPreferredSize(new java.awt.Dimension(130, 30));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jEncliticButton.setBackground(new java.awt.Color(204, 204, 204));
+        jEncliticButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jEncliticButton.setText("Enclitics");
+        jEncliticButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        jEncliticButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jEncliticButtonActionPerformed(evt);
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
+        jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jFileMenuItem.setText("File");
+        jMenuBar1.add(jFileMenuItem);
 
-        jMenu2.setText("User");
+        jUsernameMenuDropDown.setText("User");
 
-        jMenuItem1.setText("Change Password");
-        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jChangePassword.setText("Change Password");
+        jChangePassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseReleased(evt);
+                jChangePasswordMouseReleased(evt);
             }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseClicked(evt);
+                jChangePasswordMouseClicked(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jUsernameMenuDropDown.add(jChangePassword);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jUsernameMenuDropDown);
 
         setJMenuBar(jMenuBar1);
 
@@ -213,86 +213,96 @@ public class Home extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(288, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(288, 288, 288))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jNasalizationButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPassiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)
+                        .addComponent(jLessonLabel)
                         .addGap(39, 39, 39)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(subLessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jActiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTonesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jEncliticButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jsubLessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(jLabel2)))
+                        .addComponent(jSubLessonLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 665, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLessonLabel)
+                    .addComponent(jSubLessonLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(subLessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jsubLessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPassiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jActiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTonesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jNasalizationButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jEncliticButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(jButton1)
+                .addComponent(jLogOutButton)
                 .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lessonBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lessonBoxActionPerformed
+    private void jlessonBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlessonBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lessonBoxActionPerformed
+    }//GEN-LAST:event_jlessonBoxActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /**
+     * Log out button 
+     * @param evt 
+     */
+    private void jLogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogOutButtonActionPerformed
         act.dispose();
         pass1.dispose();
         enc.dispose();
         nas.dispose();
         tone.dispose();
 
-        dispose();
         new SignIn().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jLogOutButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    /**
+     * Trainee Log Button
+     * @param evt 
+     */
+    private void jTraineeLogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTraineeLogButtonActionPerformed
         act.dispose();
         pass1.dispose();
         enc.dispose();
@@ -301,21 +311,29 @@ public class Home extends javax.swing.JFrame {
 
         new TraineeLog(user).setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jTraineeLogButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    /**
+     * Passive Training Button
+     * @param evt 
+     */
+    private void jPassiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassiveButtonActionPerformed
         act.dispose();
         pass1.dispose();
         enc.dispose();
         nas.dispose();
         tone.dispose();
 
-        Passive pass = new Passive(user, lessonList.get(lessonBox.getSelectedIndex()), subLessonList.get(subLessonBox.getSelectedIndex()));
+        Passive pass = new Passive(user, lessonList.get(jlessonBox.getSelectedIndex()), subLessonList.get(jsubLessonBox.getSelectedIndex()));
         pass.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jPassiveButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    /**
+     * Active Training Button and Pop-Up
+     * @param evt 
+     */
+    private void jActiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActiveButtonActionPerformed
         pass1.dispose();
         enc.dispose();
         nas.dispose();
@@ -325,38 +343,53 @@ public class Home extends javax.swing.JFrame {
         } else {
             act.toFront();
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jActiveButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    /**
+     * Tone Table Button
+     * @param evt 
+     */
+    private void jTonesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTonesButtonActionPerformed
         if (!tone.isShowing()) {
             tone.setVisible(true);
         } else {
             tone.toFront();
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jTonesButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jNasalizationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNasalizationButtonActionPerformed
         if (!nas.isShowing()) {
             nas.setVisible(true);
         } else {
             nas.toFront();
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jNasalizationButtonActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    /**
+     * Enclitic Button
+     * @param evt 
+     */
+    private void jEncliticButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEncliticButtonActionPerformed
         if (!enc.isShowing()) {
             enc.setVisible(true);
         } else {
             enc.toFront();
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jEncliticButtonActionPerformed
 
-    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-        //new ChangePass().setVisible(true);
+    /**
+     * Change Password page
+     * @param evt 
+     */
+    private void jChangePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseClicked
         pass1.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1MouseClicked
+    }//GEN-LAST:event_jChangePasswordMouseClicked
 
-    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+    /**
+     * Change Password page
+     * @param evt 
+     */
+    private void jChangePasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseReleased
         act.dispose();
         pass1.dispose();
         enc.dispose();
@@ -367,7 +400,7 @@ public class Home extends javax.swing.JFrame {
         } else {
             pass1.toFront();
         }
-    }//GEN-LAST:event_jMenuItem1MouseReleased
+    }//GEN-LAST:event_jChangePasswordMouseReleased
 
     /**
      * @param args the command line arguments
@@ -406,21 +439,21 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JButton jActiveButton;
+    private javax.swing.JLabel jBackground;
+    private javax.swing.JMenuItem jChangePassword;
+    private javax.swing.JButton jEncliticButton;
+    private javax.swing.JMenu jFileMenuItem;
+    private javax.swing.JLabel jLessonLabel;
+    private javax.swing.JButton jLogOutButton;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JComboBox lessonBox;
-    private javax.swing.JComboBox subLessonBox;
+    private javax.swing.JButton jNasalizationButton;
+    private javax.swing.JButton jPassiveButton;
+    private javax.swing.JLabel jSubLessonLabel;
+    private javax.swing.JButton jTonesButton;
+    private javax.swing.JButton jTraineeLogButton;
+    private javax.swing.JMenu jUsernameMenuDropDown;
+    private javax.swing.JComboBox jlessonBox;
+    private javax.swing.JComboBox jsubLessonBox;
     // End of variables declaration//GEN-END:variables
 }
