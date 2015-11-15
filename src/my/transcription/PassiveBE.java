@@ -216,11 +216,6 @@ public class PassiveBE {
         return null;
     }
 
-    /**
-     *
-     * @param phrases
-     * @param words
-     */
     public void findWords(ArrayList<String> phrases, ArrayList<String> words) {
         Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2)");       //example exp - change later
         Matcher matcher;
@@ -241,11 +236,6 @@ public class PassiveBE {
 
     }
 
-    /**
-     *
-     * @param pageNum
-     * @return
-     */
     public ArrayList<Clip> makeClips(int pageNum) {
         ArrayList<Clip> clips1 = new ArrayList<>();
 
@@ -391,9 +381,6 @@ public class PassiveBE {
         return clips1;
     }
 
-    /**
-     *
-     */
     public void closeAudio() {
         clip1.close();
         clip2.close();
