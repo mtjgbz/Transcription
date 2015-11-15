@@ -23,7 +23,7 @@ import javax.swing.text.Highlighter;
 //import javafx.scene.media.Media;
 /**
  *
- * @author Michael
+ * @author Mike, Noah, Casey and Erica
  */
 public class Passive extends javax.swing.JFrame {
 
@@ -57,7 +57,6 @@ public class Passive extends javax.swing.JFrame {
 
     private ArrayList<ArrayList<String>> phraseList;
     private ArrayList<String> wordsList = new ArrayList<String>();
-    private int currPageIndex;
 
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
@@ -104,74 +103,25 @@ public class Passive extends javax.swing.JFrame {
     /**
      * Creates new form Passive
      *
-     * @param user
-     * @param lesson
-     * @param subLesson
+     * @param user the username of the user
+     * @param lesson the lesson the user selected
+     * @param subLesson the sub-lesson the user selected
      */
     public Passive(String user, Integer lesson, Character subLesson) {
         this.user = user;
-        getContentPane().setBackground(new Color(148, 189, 203));
-
         this.lesson = lesson;
         this.subLesson = subLesson;
-
+        
+        //initializes the Lists
         initLists();
 
-        backend = new PassiveBE();
-
-        for (int i = 0; i < 5; i++) {
-            timersList.get(0).add(new Timer(4428, listener));
-            timersList.get(1).add(new Timer(4428, listener));
-            timersList.get(2).add(new Timer(4428, listener));
-            timersList.get(3).add(new Timer(4428, listener));
-            timesList.get(0).add(9029000);
-            timesList.get(1).add(9029000);
-            timesList.get(2).add(9029000);
-            timesList.get(3).add(9029000);
-        }
-
-        textList.get(0).add("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
-        textList.get(0).add("text2");
-        textList.get(0).add("text3");
-        textList.get(0).add("text4");
-        textList.get(0).add("text5");
-
-        textList.get(1).add("text6");
-        textList.get(1).add("text7");
-        textList.get(1).add("text8");
-        textList.get(1).add("text9");
-        textList.get(1).add("text10");
-
-        textList.get(2).add("text11");
-        textList.get(2).add("text12");
-        textList.get(2).add("text13");
-        textList.get(2).add("text14");
-        textList.get(2).add("text15");
-
-        textList.get(3).add("text16");
-        textList.get(3).add("text17");
-        textList.get(3).add("text18");
-        textList.get(3).add("text19");
-        textList.get(3).add("text20");
-
-        for (int i = 0; i < 5; i++) {
-            clips.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-        }
-
-        for (int i = 0; i < 5; i++) {
-            clips.add(new File("oGolden.wav"));
-        }
-
-        for (int i = 0; i < 5; i++) {
-            clips.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-        }
-
-        for (int i = 0; i < 5; i++) {
-            clips.add(new File("oGolden.wav"));
-        }
-
+        //setting the backend
+        backend = new PassiveBE();     
+        //initializes the components
         initComponents();
-        jMenu5.setText(user);
+        //sets this text to the username
+        jUserButton.setText(user);
+        //sets the title of the page to this
         this.setTitle("Mixtec Transcription: Passive Training");
 
         if (page == 1) {
@@ -184,15 +134,11 @@ public class Passive extends javax.swing.JFrame {
             t = 3;
         }
 
-        jTextPane1.setText(textList.get(t).get(0));
-        jTextPane2.setText(textList.get(t).get(1));
-        jTextPane3.setText(textList.get(t).get(2));
-        jTextPane4.setText(textList.get(t).get(3));
-        jTextPane5.setText(textList.get(t).get(4));
-
+        //initializes the text fields
         initTextFields();
+        //populates an array in the array ClipList
         clipsList = backend.makeClips(1);
-
+        //initializes the audio
         initAudio();
 
         for (String w : wordsList) {
@@ -201,7 +147,7 @@ public class Passive extends javax.swing.JFrame {
     }
 
     /**
-     *
+     *initialize Lists method
      */
     public void initLists() {
 
@@ -261,15 +207,17 @@ public class Passive extends javax.swing.JFrame {
         playButton3 = new javax.swing.JButton();
         playButton4 = new javax.swing.JButton();
         playButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jNextButton = new javax.swing.JButton();
+        jBackButton = new javax.swing.JButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 40), new java.awt.Dimension(32767, 40));
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        jHomeMenuButton = new javax.swing.JMenu();
+        jEncliticMenuButton = new javax.swing.JMenu();
+        jNasMenuButton = new javax.swing.JMenu();
+        jTTMenuButton = new javax.swing.JMenu();
+        jUserButton = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -389,29 +337,31 @@ public class Passive extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(204, 204, 204));
-        jButton7.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton7.setText("Page 2 >>");
-        jButton7.setMaximumSize(new java.awt.Dimension(97, 30));
-        jButton7.setMinimumSize(new java.awt.Dimension(97, 30));
-        jButton7.setPreferredSize(new java.awt.Dimension(97, 30));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jNextButton.setBackground(new java.awt.Color(204, 204, 204));
+        jNextButton.setText("Next");
+        jNextButton.setMaximumSize(new java.awt.Dimension(97, 30));
+        jNextButton.setMinimumSize(new java.awt.Dimension(97, 30));
+        jNextButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        jNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jNextButtonActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(204, 204, 204));
-        jButton8.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton8.setText("Current");
-        jButton8.setMaximumSize(new java.awt.Dimension(97, 30));
-        jButton8.setMinimumSize(new java.awt.Dimension(97, 30));
-        jButton8.setPreferredSize(new java.awt.Dimension(97, 30));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jBackButton.setBackground(new java.awt.Color(204, 204, 204));
+        jBackButton.setText("Current");
+        jBackButton.setMaximumSize(new java.awt.Dimension(97, 30));
+        jBackButton.setMinimumSize(new java.awt.Dimension(97, 30));
+        jBackButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        jBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jBackButtonActionPerformed(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("Page 1");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
         jLabel1.setFocusable(false);
@@ -420,40 +370,40 @@ public class Passive extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
-        jMenu1.setText("Home");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jHomeMenuButton.setText("Home");
+        jHomeMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jHomeMenuButtonMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jHomeMenuButton);
 
-        jMenu2.setActionCommand("Enclitics");
-        jMenu2.setLabel("Enclitics");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jEncliticMenuButton.setActionCommand("Enclitics");
+        jEncliticMenuButton.setLabel("Enclitics");
+        jEncliticMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
+                jEncliticMenuButtonMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jEncliticMenuButton);
 
-        jMenu3.setText("Nasalization");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jNasMenuButton.setText("Nasalization");
+        jNasMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
+                jNasMenuButtonMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jNasMenuButton);
 
-        jMenu4.setText("Tone Table");
-        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTTMenuButton.setText("Tone Table");
+        jTTMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu4MouseClicked(evt);
+                jTTMenuButtonMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jTTMenuButton);
 
-        jMenu5.setText("User");
+        jUserButton.setText("User");
 
         jMenuItem1.setText("Log out");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -461,9 +411,9 @@ public class Passive extends javax.swing.JFrame {
                 jMenuItem1MouseReleased(evt);
             }
         });
-        jMenu5.add(jMenuItem1);
+        jUserButton.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jUserButton);
 
         setJMenuBar(jMenuBar1);
 
@@ -473,32 +423,35 @@ public class Passive extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 970, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(playButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(playButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(playButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(playButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-                            .addComponent(jScrollPane4)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane6)
-                            .addComponent(jScrollPane2))))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGap(120, 120, 120)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(playButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(playButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(playButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(playButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane6)
+                    .addComponent(jScrollPane2))
+                .addGap(147, 147, 147))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(385, 385, 385)
+                .addComponent(jBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(240, 240, 240)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(20, 20, 20))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 972, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,17 +466,20 @@ public class Passive extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -537,7 +493,7 @@ public class Passive extends javax.swing.JFrame {
                 .addComponent(playButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, Short.MAX_VALUE))
         );
 
         pack();
@@ -545,7 +501,7 @@ public class Passive extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     *
+     * initialize audio method
      */
     public void initAudio() {
         clip1 = clipsList.get(0);
@@ -562,11 +518,10 @@ public class Passive extends javax.swing.JFrame {
     }
 
     /**
-     *
+     *initializes text field method
      */
     public void initTextFields() {
         backend = new PassiveBE();
-        currPageIndex = 0;
         phraseList = new ArrayList<ArrayList<String>>();
         for (int i = 0; i < 20; i++) {
             String file = backend.findFile(lesson, subLesson);
@@ -610,6 +565,7 @@ public class Passive extends javax.swing.JFrame {
                 phraseList.add(phrase);
                 currList.set(i % 5, phrase.get(1));
             }
+            
             //Put clip and time info here - how are we getting the time information?
             //use getClips to return the clip names and files
             Float startTime = Float.parseFloat(phrase.get(0));
@@ -636,9 +592,6 @@ public class Passive extends javax.swing.JFrame {
         jTextPane4.setText(currList.get(3));
         jTextPane5.setText(currList.get(4));
 
-//        for(ArrayList<String> p : textList) {
-//            System.out.println("text list p: " + p);
-//        }
         backend.findWords(currList, wordsList);
         for (String w : wordsList) {
             System.out.println("Word: " + w);
@@ -657,8 +610,6 @@ public class Passive extends javax.swing.JFrame {
      * @throws BadLocationException
      */
     public void highlightWord(ArrayList<String> words, ArrayList<String> phrases) throws BadLocationException {
-        //String text = "tan3 u1bi1 ku4u4 na1 kan4 tu4u13 ran4, tan3 i3kan4 ndu4ku4=na2, ya1kan3";
-        //jTextArea1.setText(text);
 
         Highlighter highlighter = null;
         Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.pink);
@@ -667,7 +618,6 @@ public class Passive extends javax.swing.JFrame {
         String word = "";
 
         for (int i = 0; i < phrases.size(); i++) {
-            //for(int j = 0; j < phrases.get(i).size(); j++) {
             if (i == 0) {
                 highlighter = jTextPane1.getHighlighter();
                 jTextPane1.setHighlighter(highlighter);
@@ -721,46 +671,43 @@ public class Passive extends javax.swing.JFrame {
                     } else {
                         start = temp.indexOf(word, start + word.length());
                     }
-
                 }
             }
-            //}
         }
-
     }
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jHomeMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuButtonMouseClicked
         enc.dispose();
         nas.dispose();
         tone.dispose();
         new Home(user).setVisible(true);
         backend.closeAudio();
         dispose();
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_jHomeMenuButtonMouseClicked
 
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+    private void jEncliticMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEncliticMenuButtonMouseClicked
         if (!enc.isShowing()) {
             enc.setVisible(true);
         } else {
             enc.toFront();
         }
-    }//GEN-LAST:event_jMenu2MouseClicked
+    }//GEN-LAST:event_jEncliticMenuButtonMouseClicked
 
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+    private void jNasMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNasMenuButtonMouseClicked
         if (!nas.isShowing()) {
             nas.setVisible(true);
         } else {
             nas.toFront();
         }
-    }//GEN-LAST:event_jMenu3MouseClicked
+    }//GEN-LAST:event_jNasMenuButtonMouseClicked
 
-    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+    private void jTTMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTMenuButtonMouseClicked
         if (!tone.isShowing()) {
             tone.setVisible(true);
         } else {
             tone.toFront();
         }
-    }//GEN-LAST:event_jMenu4MouseClicked
+    }//GEN-LAST:event_jTTMenuButtonMouseClicked
 
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
         new SignIn().setVisible(true);
@@ -937,22 +884,20 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playButton5MouseReleased
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNextButtonActionPerformed
         if (page >= 1 && page < 4) {
             page++;
         }
 
-        if (page == 2) {
-            jButton7.setText("Page 3 >>");
-            jButton8.setText("<< Page 1");
-        } else if (page == 3) {
-            jButton7.setText("Page 4 >>");
-            jButton8.setText("<< Page 2");
-        } else {
-            jButton8.setText("<< Page 3");
-            jButton7.setText("Current");
+        jLabel2.setText("Page " + page);
+        
+       if (page == 4) {
+            jNextButton.setText("Current");  
         }
-
+        if (page != 1){
+            jBackButton.setText("Back");
+        }
+        
         jTextPane1.setText(textList.get(page - 1).get(0));
         jTextPane2.setText(textList.get(page - 1).get(1));
         jTextPane3.setText(textList.get(page - 1).get(2));
@@ -998,22 +943,21 @@ public class Passive extends javax.swing.JFrame {
         } catch (BadLocationException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jNextButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackButtonActionPerformed
         if (page <= 4 && page > 1) {
             page--;
         }
 
-        if (page == 1) {
-            jButton7.setText("Page 2 >>");
-            jButton8.setText("Current");
-        } else if (page == 2) {
-            jButton7.setText("Page 3 >>");
-            jButton8.setText("<< Page 1");
-        } else if (page == 3) {
-            jButton7.setText("Page 4 >>");
-            jButton8.setText("<< Page 2");
+        jLabel2.setText("Page " + page);
+        
+        if(page == 1) {
+            jBackButton.setText("Current"); 
+        }
+            
+        if(page != 1){
+            jNextButton.setText("Next");
         }
 
         jTextPane1.setText(textList.get(page - 1).get(0));
@@ -1062,7 +1006,7 @@ public class Passive extends javax.swing.JFrame {
         } catch (BadLocationException ex) {
             Logger.getLogger(Passive.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jBackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1101,26 +1045,28 @@ public class Passive extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.JButton jBackButton;
+    private javax.swing.JMenu jEncliticMenuButton;
+    private javax.swing.JMenu jHomeMenuButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jNasMenuButton;
+    private javax.swing.JButton jNextButton;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JMenu jTTMenuButton;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
     private javax.swing.JTextPane jTextPane5;
+    private javax.swing.JMenu jUserButton;
     private javax.swing.JButton playButton1;
     private javax.swing.JButton playButton2;
     private javax.swing.JButton playButton3;

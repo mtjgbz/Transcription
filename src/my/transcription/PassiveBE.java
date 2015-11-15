@@ -113,7 +113,10 @@ public class PassiveBE {
             //and then return it
             reader.reset();
             //System.out.println("Line before loop: " + reader.getLineNumber());
-            for (int i = 1; i < random - 1; i++) {
+            for (int i = 1; i < random; i++) {
+                path = reader.readLine();
+            }
+            if (path.contains("txt")){
                 path = reader.readLine();
             }
 
