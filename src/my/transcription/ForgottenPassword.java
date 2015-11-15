@@ -67,6 +67,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
         jUsernameLabel.setText("            Username:");
         jUsernameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        jValidateButton.setBackground(new java.awt.Color(255, 255, 255));
         jValidateButton.setText("Validate");
         jValidateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +91,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
             }
         });
 
+        jConfirmButton.setBackground(new java.awt.Color(255, 255, 255));
         jConfirmButton.setText("Confirm");
         jConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

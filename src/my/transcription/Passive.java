@@ -117,22 +117,6 @@ public class Passive extends javax.swing.JFrame {
 
         //setting the backend
         backend = new PassiveBE();     
-
-        for (int i = 0; i < 5; i++) {
-            clips.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-        }
-
-        for (int i = 0; i < 5; i++) {
-            clips.add(new File("oGolden.wav"));
-        }
-
-        for (int i = 0; i < 5; i++) {
-            clips.add(new File("Yolox_Narra_EGS505_Servicio-en-el-pueblo_2010-12-15-s.wav"));
-        }
-
-        for (int i = 0; i < 5; i++) {
-            clips.add(new File("oGolden.wav"));
-        }
         //initializes the components
         initComponents();
         //sets this text to the username
@@ -149,12 +133,6 @@ public class Passive extends javax.swing.JFrame {
         } else {
             t = 3;
         }
-
-        jTextPane1.setText(textList.get(t).get(0));
-        jTextPane2.setText(textList.get(t).get(1));
-        jTextPane3.setText(textList.get(t).get(2));
-        jTextPane4.setText(textList.get(t).get(3));
-        jTextPane5.setText(textList.get(t).get(4));
 
         //initializes the text fields
         initTextFields();
@@ -587,6 +565,7 @@ public class Passive extends javax.swing.JFrame {
                 phraseList.add(phrase);
                 currList.set(i % 5, phrase.get(1));
             }
+            
             //Put clip and time info here - how are we getting the time information?
             //use getClips to return the clip names and files
             Float startTime = Float.parseFloat(phrase.get(0));
