@@ -16,6 +16,8 @@ public class Active extends javax.swing.JFrame {
 
     Home home;
     String user;
+    Integer lesson;
+    Character subLesson;
 
     /**
      * Creates new form Active
@@ -27,8 +29,17 @@ public class Active extends javax.swing.JFrame {
     public Active(Home home, String user) {
         this.home = home;
         this.user = user;
+        this.lesson = lesson;
+        this.subLesson = subLesson;
         getContentPane().setBackground(new Color(148, 189, 203));
         initComponents();
+    }
+    
+    public void setLesson(Integer lesson){
+        this.lesson = lesson;
+    }
+    public void setSubLesson(Character subLesson){
+        this.subLesson = subLesson;
     }
 
     /**
@@ -93,13 +104,13 @@ public class Active extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new Practice(user).setVisible(true);
+        new Practice(user,lesson,subLesson).setVisible(true);
         home.dispose();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Test(user).setVisible(true);
+        new Test(user,lesson,subLesson).setVisible(true);
         home.dispose();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
