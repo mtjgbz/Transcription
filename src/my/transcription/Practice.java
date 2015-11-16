@@ -6,7 +6,10 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 
 /**
@@ -25,6 +28,10 @@ public class Practice extends javax.swing.JFrame {
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
+    
+    PracticeBE pbe;
+    
+    int page = 1;
 
     /**
      * Creates new form Practice
@@ -40,6 +47,12 @@ public class Practice extends javax.swing.JFrame {
         this.subLesson = subLesson;
         jMenu5.setText(user);
         jTextArea1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
+        pbe = new PracticeBE();
+        initAudio(); 
+    }
+    
+    private void initAudio(){
+        clip = pbe.makeClip(page);
     }
 
     /**
@@ -52,8 +65,8 @@ public class Practice extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        prevButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         playButton1 = new javax.swing.JButton();
@@ -74,18 +87,23 @@ public class Practice extends javax.swing.JFrame {
         jButton1.setMinimumSize(new java.awt.Dimension(97, 30));
         jButton1.setPreferredSize(new java.awt.Dimension(97, 30));
 
-        jButton2.setText("Next");
-        jButton2.setMaximumSize(new java.awt.Dimension(97, 30));
-        jButton2.setMinimumSize(new java.awt.Dimension(97, 30));
-        jButton2.setPreferredSize(new java.awt.Dimension(97, 30));
-
-        jButton3.setText("Previous");
-        jButton3.setMaximumSize(new java.awt.Dimension(97, 30));
-        jButton3.setMinimumSize(new java.awt.Dimension(97, 30));
-        jButton3.setPreferredSize(new java.awt.Dimension(97, 30));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        nextButton.setText("Next");
+        nextButton.setMaximumSize(new java.awt.Dimension(97, 30));
+        nextButton.setMinimumSize(new java.awt.Dimension(97, 30));
+        nextButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                nextButtonActionPerformed(evt);
+            }
+        });
+
+        prevButton.setText("Previous");
+        prevButton.setMaximumSize(new java.awt.Dimension(97, 30));
+        prevButton.setMinimumSize(new java.awt.Dimension(97, 30));
+        prevButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        prevButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevButtonActionPerformed(evt);
             }
         });
 
@@ -165,9 +183,9 @@ public class Practice extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(215, 215, 215))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,8 +203,8 @@ public class Practice extends javax.swing.JFrame {
                 .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
@@ -196,15 +214,19 @@ public class Practice extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
+        page--;
+        pbe.closeAudio();
+        clip = pbe.makeClip(page);
+        
+    }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         enc.dispose();
         nas.dispose();
         tone.dispose();
         new Home(user).setVisible(true);
+        pbe.closeAudio();
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -249,6 +271,12 @@ public class Practice extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playButton1ActionPerformed
 
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        page++;
+        pbe.closeAudio();
+        clip = pbe.makeClip(page);
+    }//GEN-LAST:event_nextButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,8 +314,6 @@ public class Practice extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -297,6 +323,8 @@ public class Practice extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton nextButton;
     private javax.swing.JButton playButton1;
+    private javax.swing.JButton prevButton;
     // End of variables declaration//GEN-END:variables
 }

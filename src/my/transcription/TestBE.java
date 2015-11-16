@@ -69,7 +69,7 @@ public class TestBE {
         }
     }
     
-    public Clip makeClip(int pageNum) throws LineUnavailableException {
+    public Clip makeClip(int pageNum) {
         
         AudioInputStream audioIn;
         try {
@@ -78,11 +78,14 @@ public class TestBE {
             clip.open(audioIn);
         //clips1.setMicrosecondPosition(timesList.get(0).get(0));
             audioIn.close();
+            return clip;
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(PracticeBE.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(PracticeBE.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (LineUnavailableException ex) {
+           Logger.getLogger(TestBE.class.getName()).log(Level.SEVERE, null, ex);
+       }
         
         return clip;
     }
@@ -90,4 +93,8 @@ public class TestBE {
     public void closeAudio(){
         clip.close();
     } 
+
+    Clip makeClip(Clip clip) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

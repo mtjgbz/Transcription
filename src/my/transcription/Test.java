@@ -6,7 +6,10 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 
 /**
@@ -20,6 +23,10 @@ public class Test extends javax.swing.JFrame {
     Timer timer;
     Integer lesson;
     Character subLesson;
+    
+    TestBE tbe;
+    
+    int page = 1;
 
     /**
      * Creates new form Test
@@ -34,6 +41,12 @@ public class Test extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Test");
         jMenu2.setVisible(true);
+        tbe = new TestBE();
+        initAudio();
+    }
+    
+    private void initAudio(){
+        clip = tbe.makeClip(page);
     }
 
     /**
@@ -45,11 +58,11 @@ public class Test extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        prevButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
         playButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -62,13 +75,13 @@ public class Test extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(665, 420));
         setResizable(false);
 
-        jButton1.setText("Previous");
-        jButton1.setMaximumSize(new java.awt.Dimension(97, 30));
-        jButton1.setMinimumSize(new java.awt.Dimension(97, 30));
-        jButton1.setPreferredSize(new java.awt.Dimension(97, 30));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        prevButton.setText("Previous");
+        prevButton.setMaximumSize(new java.awt.Dimension(97, 30));
+        prevButton.setMinimumSize(new java.awt.Dimension(97, 30));
+        prevButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        prevButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                prevButtonActionPerformed(evt);
             }
         });
 
@@ -81,10 +94,15 @@ public class Test extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton2.setText("Next");
-        jButton2.setMaximumSize(new java.awt.Dimension(97, 30));
-        jButton2.setMinimumSize(new java.awt.Dimension(97, 30));
-        jButton2.setPreferredSize(new java.awt.Dimension(97, 30));
+        nextButton.setText("Next");
+        nextButton.setMaximumSize(new java.awt.Dimension(97, 30));
+        nextButton.setMinimumSize(new java.awt.Dimension(97, 30));
+        nextButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
 
         playButton1.setText("Play");
         playButton1.setMaximumSize(new java.awt.Dimension(97, 29));
@@ -128,9 +146,9 @@ public class Test extends javax.swing.JFrame {
                 .addGap(284, 284, 284))
             .addGroup(layout.createSequentialGroup()
                 .addGap(216, 216, 216)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,8 +168,8 @@ public class Test extends javax.swing.JFrame {
                 .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
@@ -161,12 +179,15 @@ public class Test extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
+       page--;
+       tbe.closeAudio(); 
+       clip = tbe.makeClip(page); 
+    }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         new Home(user).setVisible(true);
+        tbe.closeAudio();
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -179,13 +200,19 @@ public class Test extends javax.swing.JFrame {
         if (!clip.isRunning()) {
             clip.start();
             timer.start();
-            jButton1.setText("Pause");
+            prevButton.setText("Pause");
         } else {
             clip.stop();
             timer.stop();
-            jButton1.setText("Play");
+            prevButton.setText("Play");
         }
     }//GEN-LAST:event_playButton1ActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        page++;
+        tbe.closeAudio();
+        clip = tbe.makeClip(page);
+    }//GEN-LAST:event_nextButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,8 +250,6 @@ public class Test extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -232,6 +257,8 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton nextButton;
     private javax.swing.JButton playButton1;
+    private javax.swing.JButton prevButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -69,7 +69,7 @@ public class PracticeBE {
         }
     }
     
-    public Clip makeClip(int pageNum) throws LineUnavailableException {
+    public Clip makeClip(int pageNum){
         
         AudioInputStream audioIn;
         try {
@@ -78,9 +78,12 @@ public class PracticeBE {
             clip.open(audioIn);
         //clips1.setMicrosecondPosition(timesList.get(0).get(0));
             audioIn.close();
+            return clip;
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(PracticeBE.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
+            Logger.getLogger(PracticeBE.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
             Logger.getLogger(PracticeBE.class.getName()).log(Level.SEVERE, null, ex);
         }
         
