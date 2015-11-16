@@ -5,6 +5,8 @@
  */
 package my.transcription;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -25,6 +27,9 @@ public class Home extends javax.swing.JFrame {
 
     ArrayList<Integer> lessonList;
     ArrayList<Character> subLessonList;
+    
+    Timer timer1;
+    Boolean loading = false;
 
     /**
      * Creates new form Home
@@ -62,6 +67,7 @@ public class Home extends javax.swing.JFrame {
         subLessonList.add('a');
         subLessonList.add('b');
         subLessonList.add('c');
+        
     }
 
     /**
@@ -97,7 +103,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setText("Loading...");
+        jLabel1.setText("Loading");
 
         jlessonBox.setBackground(new java.awt.Color(204, 204, 204));
         jlessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -254,8 +260,8 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jLogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(288, 288, 288))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(271, 271, 271))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(231, 231, 231))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, Short.MAX_VALUE))
         );
@@ -287,7 +293,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jLogOutButton)
                 .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 378, Short.MAX_VALUE))
+                .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 378, Short.MAX_VALUE))
         );
 
         pack();
@@ -420,9 +426,27 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jChangePasswordMouseReleased
 
     private void jPassiveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPassiveButtonMousePressed
-    jLabel1.setText("Loading...");    
+        isLoading();
     }//GEN-LAST:event_jPassiveButtonMousePressed
 
+    private void isLoading() {
+        jLabel1.setText("Loading");
+
+        ActionListener listener = new ActionListener() {
+            int dots = 0;
+            public void actionPerformed(ActionEvent event) {
+                if(dots < 3) {
+                    jLabel1.setText(jLabel1.getText() + ".");
+                    dots++;
+                } else {
+                    dots = 0;
+                    jLabel1.setText("Loading");
+                }
+            }
+        };
+        timer1 = new Timer(300, listener);
+        timer1.start();
+    }
     /**
      * @param args the command line arguments
      */
