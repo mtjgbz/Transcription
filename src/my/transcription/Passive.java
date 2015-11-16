@@ -107,44 +107,65 @@ public class Passive extends javax.swing.JFrame {
      * @param lesson the lesson the user selected
      * @param subLesson the sub-lesson the user selected
      */
-    public Passive(String user, Integer lesson, Character subLesson) {
-        this.user = user;
-        this.lesson = lesson;
-        this.subLesson = subLesson;
-        
-        //initializes the Lists
-        initLists();
-
-        //setting the backend
-        backend = new PassiveBE();     
-        //initializes the components
-        initComponents();
-        //sets this text to the username
-        jUserButton.setText(user);
-        //sets the title of the page to this
-        this.setTitle("Mixtec Transcription: Passive Training");
-
-        if (page == 1) {
-            t = 0;
-        } else if (page == 2) {
-            t = 1;
-        } else if (page == 3) {
-            t = 2;
-        } else {
-            t = 3;
-        }
-
-        //initializes the text fields
-        initTextFields();
-        //populates an array in the array ClipList
-        clipsList = backend.makeClips(1);
-        //initializes the audio
-        initAudio();
-
-        for (String w : wordsList) {
-            System.out.println("Word: " + w);
-        }
-    }
+        public Passive(String user, Integer lesson, Character subLesson) {
+         this.user = user;
+         getContentPane().setBackground(new Color(148, 189, 203));
+ 
+         this.lesson = lesson;
+         this.subLesson = subLesson;
+ 
+         initLists();
+ 
+         backend = new PassiveBE();
+ 
+         for (int i = 0; i < 5; i++) {
+             timersList.get(0).add(new Timer(4428, listener));
+             timersList.get(1).add(new Timer(4428, listener));
+             timersList.get(2).add(new Timer(4428, listener));
+             timersList.get(3).add(new Timer(4428, listener));
+             timesList.get(0).add(9029000);
+             timesList.get(1).add(9029000);
+             timesList.get(2).add(9029000);
+             timesList.get(3).add(9029000);
+         }
+ 
+         textList.get(0).add("text1");
+         textList.get(0).add("text2");
+         textList.get(0).add("text3");
+         textList.get(0).add("text4");
+         textList.get(0).add("text5");
+ 
+         textList.get(1).add("text6");
+         textList.get(1).add("text7");
+         textList.get(1).add("text8");
+         textList.get(1).add("text9");
+         textList.get(1).add("text10");
+ 
+         textList.get(2).add("text11");
+         textList.get(2).add("text12");
+         textList.get(2).add("text13");
+         textList.get(2).add("text14");
+         textList.get(2).add("text15");
+ 
+         textList.get(3).add("text16");
+         textList.get(3).add("text17");
+         textList.get(3).add("text18");
+         textList.get(3).add("text19");
+         textList.get(3).add("text20");
+ 
+         initComponents();
+         jUserButton.setText(user);
+         this.setTitle("Mixtec Transcription: Passive Training");
+ 
+         initTextFields();
+         clipsList = backend.makeClips(1);
+ 
+         initAudio();
+ 
+         for (String w : wordsList) {
+             System.out.println("Word: " + w);
+         }
+     }
 
     /**
      *initialize Lists method
