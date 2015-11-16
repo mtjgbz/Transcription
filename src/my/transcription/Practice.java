@@ -16,6 +16,8 @@ import javax.swing.Timer;
 public class Practice extends javax.swing.JFrame {
 
     String user;
+    Integer lesson;
+    Character subLesson;
 
     Clip clip;
     Timer timer;
@@ -29,11 +31,13 @@ public class Practice extends javax.swing.JFrame {
      *
      * @param user
      */
-    public Practice(String user) {
+    public Practice(String user, Integer lesson, Character subLesson) {
         getContentPane().setBackground(new Color(148, 189, 203));
         this.setTitle("Mixtec Transcription: Practice");
         initComponents();
         this.user = user;
+        this.lesson = lesson;
+        this.subLesson = subLesson;
         jMenu5.setText(user);
         jTextArea1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
     }

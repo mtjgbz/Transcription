@@ -18,15 +18,19 @@ public class Test extends javax.swing.JFrame {
     String user;
     Clip clip;
     Timer timer;
+    Integer lesson;
+    Character subLesson;
 
     /**
      * Creates new form Test
      *
      * @param user
      */
-    public Test(String user) {
+    public Test(String user,Integer lesson, Character subLesson) {
         getContentPane().setBackground(new Color(148, 189, 203));
         this.user = user;
+        this.lesson = lesson;
+        this.subLesson = subLesson;
         initComponents();
         this.setTitle("Mixtec Transcription: Test");
         jMenu2.setVisible(true);

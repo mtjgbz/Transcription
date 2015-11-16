@@ -339,6 +339,8 @@ public class Home extends javax.swing.JFrame {
         nas.dispose();
         tone.dispose();
         if (!act.isShowing()) {
+            act.setLesson(lessonList.get(jlessonBox.getSelectedIndex()));
+            act.setSubLesson(subLessonList.get(jsubLessonBox.getSelectedIndex()));
             act.setVisible(true);
         } else {
             act.toFront();
