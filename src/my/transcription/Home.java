@@ -6,13 +6,14 @@
 package my.transcription;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
  * @author Michael, Noah, Casey & Erica
  */
 public class Home extends javax.swing.JFrame {
-
     private String lesson;
     private String user;
 
@@ -48,6 +49,7 @@ public class Home extends javax.swing.JFrame {
         enc = new Enclitics();
         nas = new Nasalizations();
         tone = new ToneTable();
+        jLabel1.setText(" ");
 
         //create lists for lesson numbers
         lessonList = new ArrayList<>();
@@ -60,7 +62,6 @@ public class Home extends javax.swing.JFrame {
         subLessonList.add('a');
         subLessonList.add('b');
         subLessonList.add('c');
-
     }
 
     /**
@@ -72,6 +73,7 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jlessonBox = new javax.swing.JComboBox();
         jsubLessonBox = new javax.swing.JComboBox();
         jLessonLabel = new javax.swing.JLabel();
@@ -92,6 +94,10 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(665, 400));
         setResizable(false);
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("Loading...");
 
         jlessonBox.setBackground(new java.awt.Color(204, 204, 204));
         jlessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -127,6 +133,11 @@ public class Home extends javax.swing.JFrame {
         jPassiveButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jPassiveButton.setText("Passive");
         jPassiveButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        jPassiveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPassiveButtonMousePressed(evt);
+            }
+        });
         jPassiveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPassiveButtonActionPerformed(evt);
@@ -211,10 +222,6 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(288, Short.MAX_VALUE)
-                .addComponent(jLogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(288, 288, 288))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -239,14 +246,24 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jSubLessonLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(288, 288, 288))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(271, 271, 271))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 665, Short.MAX_VALUE))
+                .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLessonLabel)
                     .addComponent(jSubLessonLabel))
@@ -270,9 +287,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jLogOutButton)
                 .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 378, Short.MAX_VALUE))
         );
 
         pack();
@@ -402,6 +417,10 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jChangePasswordMouseReleased
 
+    private void jPassiveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPassiveButtonMousePressed
+    jLabel1.setText("Loading...");    
+    }//GEN-LAST:event_jPassiveButtonMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -444,6 +463,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jChangePassword;
     private javax.swing.JButton jEncliticButton;
     private javax.swing.JMenu jFileMenuItem;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLessonLabel;
     private javax.swing.JButton jLogOutButton;
     private javax.swing.JMenuBar jMenuBar1;
