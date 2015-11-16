@@ -56,7 +56,6 @@ public class ForgottenPasswordBE {
      */
     public void closeDB() {
         try {
-            rs.close();
             stmt.close();
             conn.close();
         } catch (Exception e) {
@@ -91,11 +90,13 @@ public class ForgottenPasswordBE {
             } else {
                 question = "";
             }
+            rs.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         // return the security question
+        
         return question;
     }
 
@@ -122,9 +123,11 @@ public class ForgottenPasswordBE {
             } else {
                 password = "";
             }
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
 
         return password;
     }

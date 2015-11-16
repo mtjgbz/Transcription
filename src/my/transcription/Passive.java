@@ -79,7 +79,6 @@ public class Passive extends javax.swing.JFrame {
             clip4.setMicrosecondPosition(timesList.get(t).get(3));
             clip5.stop();
             clip5.setMicrosecondPosition(timesList.get(t).get(4));
-
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
             playButton2.setForeground(new java.awt.Color(0, 153, 51));
             playButton3.setForeground(new java.awt.Color(0, 153, 51));
