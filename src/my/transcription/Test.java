@@ -41,6 +41,9 @@ public class Test extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Test");
         jMenu2.setVisible(true);
+        prevButton.setText("Current");
+        prevButton.setEnabled(false);
+        
         tbe = new TestBE();
         initAudio();
     }
@@ -182,7 +185,14 @@ public class Test extends javax.swing.JFrame {
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
        page--;
        tbe.closeAudio(); 
-       clip = tbe.makeClip(page); 
+       clip = tbe.makeClip(page);
+       if(page==1){
+           prevButton.setText("Current");
+           prevButton.setEnabled(false);
+       }else if(page==19){
+           nextButton.setEnabled(true);
+           nextButton.setText("Next");
+       }
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -212,6 +222,13 @@ public class Test extends javax.swing.JFrame {
         page++;
         tbe.closeAudio();
         clip = tbe.makeClip(page);
+        if(page==20){
+           nextButton.setText("Current");
+           nextButton.setEnabled(false);
+       }else if(page==2){
+           prevButton.setEnabled(true);
+           prevButton.setText("Previous");
+       }
     }//GEN-LAST:event_nextButtonActionPerformed
 
     /**

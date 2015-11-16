@@ -47,6 +47,9 @@ public class Practice extends javax.swing.JFrame {
         this.subLesson = subLesson;
         jMenu5.setText(user);
         jTextArea1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
+        prevButton.setText("Current");
+        prevButton.setEnabled(false);
+        
         pbe = new PracticeBE();
         initAudio(); 
     }
@@ -215,10 +218,16 @@ public class Practice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
-        page--;
-        pbe.closeAudio();
-        clip = pbe.makeClip(page);
-        
+       page--;
+       pbe.closeAudio(); 
+       clip = pbe.makeClip(page);
+       if(page==1){
+           prevButton.setText("Current");
+           prevButton.setEnabled(false);
+       }else if(page==19){
+           nextButton.setEnabled(true);
+           nextButton.setText("Next");
+       }
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -275,6 +284,13 @@ public class Practice extends javax.swing.JFrame {
         page++;
         pbe.closeAudio();
         clip = pbe.makeClip(page);
+        if(page==20){
+           nextButton.setText("Current");
+           nextButton.setEnabled(false);
+       }else if(page==2){
+           prevButton.setEnabled(true);
+           prevButton.setText("Previous");
+       }
     }//GEN-LAST:event_nextButtonActionPerformed
 
     /**
