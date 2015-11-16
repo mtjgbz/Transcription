@@ -73,7 +73,8 @@ public class TestBE {
         
         AudioInputStream audioIn;
         try {
-            audioIn = AudioSystem.getAudioInputStream(clips.get(pageNum-1));
+            //audioIn = AudioSystem.getAudioInputStream(clips.get(pageNum-1));
+            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
             clip = AudioSystem.getClip();
             clip.open(audioIn);
         //clips1.setMicrosecondPosition(timesList.get(0).get(0));
