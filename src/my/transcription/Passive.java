@@ -26,7 +26,6 @@ import javax.swing.text.Highlighter;
  * @author Mike, Noah, Casey and Erica
  */
 public class Passive extends javax.swing.JFrame {
-
     private Integer lesson;
 
     int page = 1;
@@ -164,6 +163,7 @@ public class Passive extends javax.swing.JFrame {
          for (String w : wordsList) {
              System.out.println("Word: " + w);
          }
+         jBackButton.setEnabled(false);
      }
 
     /**
@@ -201,7 +201,7 @@ public class Passive extends javax.swing.JFrame {
         timesList.add(times3);
         timesList.add(times4);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -912,10 +912,13 @@ public class Passive extends javax.swing.JFrame {
         jLabel2.setText("Page " + page);
         
        if (page == 4) {
-            jNextButton.setText("Current");  
+            jNextButton.setText("Current");
+            jNextButton.setEnabled(false);
         }
-        if (page != 1){
+       
+        if (page != 1) {
             jBackButton.setText("Back");
+            jBackButton.setEnabled(true);
         }
         
         jTextPane1.setText(textList.get(page - 1).get(0));
@@ -969,15 +972,17 @@ public class Passive extends javax.swing.JFrame {
         if (page <= 4 && page > 1) {
             page--;
         }
-
+    
         jLabel2.setText("Page " + page);
         
         if(page == 1) {
-            jBackButton.setText("Current"); 
+            jBackButton.setText("Current");
+            jBackButton.setEnabled(false);
         }
-            
-        if(page != 1){
+
+        if(page != 1) {
             jNextButton.setText("Next");
+            jNextButton.setEnabled(true);
         }
 
         jTextPane1.setText(textList.get(page - 1).get(0));

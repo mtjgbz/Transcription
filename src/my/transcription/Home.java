@@ -103,7 +103,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setText("Loading");
+        jLabel1.setText("Loading...");
 
         jlessonBox.setBackground(new java.awt.Color(204, 204, 204));
         jlessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -201,6 +201,10 @@ public class Home extends javax.swing.JFrame {
         });
 
         jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
+        jBackground.setFocusTraversalKeysEnabled(false);
+        jBackground.setFocusable(false);
+        jBackground.setRequestFocusEnabled(false);
+        jBackground.setVerifyInputWhenFocusTarget(false);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
@@ -261,15 +265,16 @@ public class Home extends javax.swing.JFrame {
                         .addGap(288, 288, 288))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(231, 231, 231))))
+                        .addGap(235, 235, 235))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, Short.MAX_VALUE))
+                .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(9, 9, 9)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLessonLabel)
                     .addComponent(jSubLessonLabel))
@@ -293,7 +298,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jLogOutButton)
                 .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 378, Short.MAX_VALUE))
+                .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -430,7 +435,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jPassiveButtonMousePressed
 
     private void isLoading() {
-        jLabel1.setText("Loading");
+        jLabel1.setText("Loading...");
 
         ActionListener listener = new ActionListener() {
             int dots = 0;

@@ -45,7 +45,7 @@ public class Practice extends javax.swing.JFrame {
         this.user = user;
         this.lesson = lesson;
         this.subLesson = subLesson;
-        jMenu5.setText(user);
+        jUserMenu.setText(user);
         jTextArea1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
         prevButton.setText("Current");
         prevButton.setEnabled(false);
@@ -67,29 +67,33 @@ public class Practice extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        SubmitButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
         prevButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         playButton1 = new javax.swing.JButton();
+        jPageLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        jHomeMenu = new javax.swing.JMenu();
+        jEncMenu = new javax.swing.JMenu();
+        jNasMenu = new javax.swing.JMenu();
+        jToneTableMenu = new javax.swing.JMenu();
+        jUserMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(665, 420));
         setResizable(false);
 
-        jButton1.setText("Submit");
-        jButton1.setMaximumSize(new java.awt.Dimension(97, 30));
-        jButton1.setMinimumSize(new java.awt.Dimension(97, 30));
-        jButton1.setPreferredSize(new java.awt.Dimension(97, 30));
+        SubmitButton.setBackground(new java.awt.Color(255, 255, 255));
+        SubmitButton.setText("Submit");
+        SubmitButton.setMaximumSize(new java.awt.Dimension(97, 30));
+        SubmitButton.setMinimumSize(new java.awt.Dimension(97, 30));
+        SubmitButton.setPreferredSize(new java.awt.Dimension(97, 30));
 
+        nextButton.setBackground(new java.awt.Color(255, 255, 255));
         nextButton.setText("Next");
         nextButton.setMaximumSize(new java.awt.Dimension(97, 30));
         nextButton.setMinimumSize(new java.awt.Dimension(97, 30));
@@ -100,6 +104,7 @@ public class Practice extends javax.swing.JFrame {
             }
         });
 
+        prevButton.setBackground(new java.awt.Color(255, 255, 255));
         prevButton.setText("Previous");
         prevButton.setMaximumSize(new java.awt.Dimension(97, 30));
         prevButton.setMinimumSize(new java.awt.Dimension(97, 30));
@@ -117,6 +122,7 @@ public class Practice extends javax.swing.JFrame {
         jTextArea1.setCaretColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTextArea1);
 
+        playButton1.setBackground(new java.awt.Color(255, 255, 255));
         playButton1.setText("Play");
         playButton1.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton1.setMinimumSize(new java.awt.Dimension(97, 29));
@@ -127,40 +133,50 @@ public class Practice extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Home");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPageLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jPageLabel.setForeground(new java.awt.Color(204, 204, 204));
+        jPageLabel.setText("Page 1");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
+        jLabel1.setFocusTraversalKeysEnabled(false);
+        jLabel1.setFocusable(false);
+        jLabel1.setRequestFocusEnabled(false);
+        jLabel1.setVerifyInputWhenFocusTarget(false);
+
+        jHomeMenu.setText("Home");
+        jHomeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jHomeMenuMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jHomeMenu);
 
-        jMenu2.setActionCommand("Enclitics");
-        jMenu2.setLabel("Enclitics");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jEncMenu.setActionCommand("Enclitics");
+        jEncMenu.setLabel("Enclitics");
+        jEncMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
+                jEncMenuMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jEncMenu);
 
-        jMenu3.setText("Nasalization");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jNasMenu.setText("Nasalization");
+        jNasMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
+                jNasMenuMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jNasMenu);
 
-        jMenu4.setText("Tone Table");
-        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jToneTableMenu.setText("Tone Table");
+        jToneTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu4MouseClicked(evt);
+                jToneTableMenuMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jToneTableMenu);
 
-        jMenu5.setText("User");
+        jUserMenu.setText("User");
 
         jMenuItem1.setText("Log out");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,9 +184,9 @@ public class Practice extends javax.swing.JFrame {
                 jMenuItem1MouseReleased(evt);
             }
         });
-        jMenu5.add(jMenuItem1);
+        jUserMenu.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jUserMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -191,11 +207,16 @@ public class Practice extends javax.swing.JFrame {
                         .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(215, 215, 215))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(284, 284, 284))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(284, 284, 284))))
+                        .addGap(284, 284, 284))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPageLabel)
+                        .addGap(20, 20, 20))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,8 +230,12 @@ public class Practice extends javax.swing.JFrame {
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPageLabel)
+                .addGap(15, 15, 15))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, Short.MAX_VALUE))
         );
 
         pack();
@@ -219,49 +244,50 @@ public class Practice extends javax.swing.JFrame {
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
        page--;
+       jPageLabel.setText("Page " + page);
        pbe.closeAudio(); 
        clip = pbe.makeClip(page);
-       if(page==1){
+       if(page == 1){
            prevButton.setText("Current");
            prevButton.setEnabled(false);
-       }else if(page==19){
+       }else if(page == 19){
            nextButton.setEnabled(true);
            nextButton.setText("Next");
        }
     }//GEN-LAST:event_prevButtonActionPerformed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
         enc.dispose();
         nas.dispose();
         tone.dispose();
         new Home(user).setVisible(true);
         pbe.closeAudio();
         dispose();
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_jHomeMenuMouseClicked
 
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+    private void jEncMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEncMenuMouseClicked
         if (!enc.isShowing()) {
             enc.setVisible(true);
         } else {
             enc.toFront();
         }
-    }//GEN-LAST:event_jMenu2MouseClicked
+    }//GEN-LAST:event_jEncMenuMouseClicked
 
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+    private void jNasMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNasMenuMouseClicked
         if (!nas.isShowing()) {
             nas.setVisible(true);
         } else {
             nas.toFront();
         }
-    }//GEN-LAST:event_jMenu3MouseClicked
+    }//GEN-LAST:event_jNasMenuMouseClicked
 
-    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+    private void jToneTableMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToneTableMenuMouseClicked
         if (!tone.isShowing()) {
             tone.setVisible(true);
         } else {
             tone.toFront();
         }
-    }//GEN-LAST:event_jMenu4MouseClicked
+    }//GEN-LAST:event_jToneTableMenuMouseClicked
 
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
         new SignIn().setVisible(true);
@@ -272,16 +298,17 @@ public class Practice extends javax.swing.JFrame {
         if (!clip.isRunning()) {
             clip.start();
             timer.start();
-            jButton1.setText("Pause");
+            SubmitButton.setText("Pause");
         } else {
             clip.stop();
             timer.stop();
-            jButton1.setText("Play");
+            SubmitButton.setText("Play");
         }
     }//GEN-LAST:event_playButton1ActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         page++;
+        jPageLabel.setText("Page " + page);
         pbe.closeAudio();
         clip = pbe.makeClip(page);
         if(page==20){
@@ -329,16 +356,18 @@ public class Practice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JButton SubmitButton;
+    private javax.swing.JMenu jEncMenu;
+    private javax.swing.JMenu jHomeMenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jNasMenu;
+    private javax.swing.JLabel jPageLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JMenu jToneTableMenu;
+    private javax.swing.JMenu jUserMenu;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton playButton1;
     private javax.swing.JButton prevButton;
