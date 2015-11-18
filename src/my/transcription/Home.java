@@ -96,6 +96,7 @@ public class Home extends javax.swing.JFrame {
         jFileMenuItem = new javax.swing.JMenu();
         jUsernameMenuDropDown = new javax.swing.JMenu();
         jChangePassword = new javax.swing.JMenuItem();
+        jLoadTextMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(665, 400));
@@ -225,6 +226,14 @@ public class Home extends javax.swing.JFrame {
         jUsernameMenuDropDown.add(jChangePassword);
 
         jMenuBar1.add(jUsernameMenuDropDown);
+
+        jLoadTextMenu.setText("Load Text");
+        jLoadTextMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLoadTextMenuActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jLoadTextMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -434,6 +443,10 @@ public class Home extends javax.swing.JFrame {
         isLoading();
     }//GEN-LAST:event_jPassiveButtonMousePressed
 
+    private void jLoadTextMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTextMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLoadTextMenuActionPerformed
+
     private void isLoading() {
         jLabel1.setText("Loading...");
 
@@ -496,6 +509,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenu jFileMenuItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLessonLabel;
+    private javax.swing.JMenu jLoadTextMenu;
     private javax.swing.JButton jLogOutButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton jNasalizationButton;
