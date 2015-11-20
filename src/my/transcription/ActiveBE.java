@@ -99,7 +99,7 @@ public class ActiveBE {
         clip.close();
     }
     
-    public void submit(ArrayList<String> answerList){
+    public void submit(ArrayList<String> answerList, ArrayList<String> attemptList){
         if(isTest){
             
         }else{

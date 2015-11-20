@@ -31,6 +31,7 @@ public class Practice extends javax.swing.JFrame {
     ToneTable tone = new ToneTable();
     
     private ArrayList<String> answerList;
+    private ArrayList<String> attemptList;
     
     ActiveBE pbe;
     
@@ -343,7 +344,7 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        pbe.submit(answerList);
+        pbe.submit(answerList, attemptList);
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**

@@ -27,6 +27,7 @@ public class Test extends javax.swing.JFrame {
     Timer timer;
     
     private ArrayList<String> answerList;
+    private ArrayList<String> attemptList;
     ActiveBE tbe;
     
     private int page = 1;
@@ -252,7 +253,7 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        tbe.submit(answerList);
+        tbe.submit(answerList, attemptList);
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
