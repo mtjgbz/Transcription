@@ -6,6 +6,7 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
@@ -18,12 +19,14 @@ import javax.swing.Timer;
  */
 public class Test extends javax.swing.JFrame {
 
-    String user;
+    private String user;
+    private Integer lesson;
+    private Character subLesson;
+    
     Clip clip;
     Timer timer;
-    Integer lesson;
-    Character subLesson;
     
+    private ArrayList<String> answerList;
     ActiveBE tbe;
     
     int page = 1;
@@ -43,6 +46,8 @@ public class Test extends javax.swing.JFrame {
         jMenu2.setVisible(true);
         prevButton.setText("Current");
         prevButton.setEnabled(false);
+        playButton.setForeground(new java.awt.Color(0, 153, 51));
+        submitButton.setEnabled(false);
         
         tbe = new ActiveBE(true);
         initAudio();
@@ -62,7 +67,7 @@ public class Test extends javax.swing.JFrame {
     private void initComponents() {
 
         prevButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         nextButton = new javax.swing.JButton();
@@ -88,10 +93,15 @@ public class Test extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Submit");
-        jButton3.setMaximumSize(new java.awt.Dimension(97, 30));
-        jButton3.setMinimumSize(new java.awt.Dimension(97, 30));
-        jButton3.setPreferredSize(new java.awt.Dimension(97, 30));
+        submitButton.setText("Submit");
+        submitButton.setMaximumSize(new java.awt.Dimension(97, 30));
+        submitButton.setMinimumSize(new java.awt.Dimension(97, 30));
+        submitButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -145,7 +155,7 @@ public class Test extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(284, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(284, 284, 284))
             .addGroup(layout.createSequentialGroup()
                 .addGap(216, 216, 216)
@@ -174,7 +184,7 @@ public class Test extends javax.swing.JFrame {
                     .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -184,6 +194,7 @@ public class Test extends javax.swing.JFrame {
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
        page--;
+       playButton.setForeground(new java.awt.Color(0, 153, 51));
        clip.stop();
         //timer.stop();
        tbe.closeAudio(); 
@@ -213,15 +224,19 @@ public class Test extends javax.swing.JFrame {
             clip.start();
             //timer.start();
             playButton.setText("Stop");
+            playButton.setForeground(new java.awt.Color(255, 51, 51));
+            
         } else {
             clip.stop();
             //timer.stop();
             playButton.setText("Play");
+            playButton.setForeground(new java.awt.Color(0, 153, 51));
         }
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         page++;
+        playButton.setForeground(new java.awt.Color(0, 153, 51));
         clip.stop();
         //timer.stop();
         tbe.closeAudio();
@@ -229,11 +244,16 @@ public class Test extends javax.swing.JFrame {
         if(page==20){
            nextButton.setText("Current");
            nextButton.setEnabled(false);
+           submitButton.setEnabled(true);
        }else if(page==2){
            prevButton.setEnabled(true);
            prevButton.setText("Previous");
        }
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        tbe.submit(answerList);
+    }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,7 +291,6 @@ public class Test extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -281,5 +300,6 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JButton nextButton;
     private javax.swing.JButton playButton;
     private javax.swing.JButton prevButton;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }

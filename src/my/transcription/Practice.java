@@ -6,6 +6,7 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
@@ -18,16 +19,18 @@ import javax.swing.Timer;
  */
 public class Practice extends javax.swing.JFrame {
 
-    String user;
-    Integer lesson;
-    Character subLesson;
+    private String user;
+    private Integer lesson;
+    private Character subLesson;
 
-    Clip clip;
-    Timer timer;
+    private Clip clip;
+    private Timer timer;
 
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
+    
+    private ArrayList<String> answerList;
     
     ActiveBE pbe;
     
@@ -49,6 +52,8 @@ public class Practice extends javax.swing.JFrame {
         jTextArea1.setText("nda4a2 chi3ñu3 ba42 nu14u3 nu14u3 i4xa3=na2 tan3 sa1a3 nda4-ya'1a3=na2 kwa'1an1=na1 tan42 i3in3 tan42 i3in3 chi3ñu3 kan4 tan3");
         prevButton.setText("Current");
         prevButton.setEnabled(false);
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        SubmitButton.setEnabled(false);
         
         pbe = new ActiveBE(false);
         initAudio(); 
@@ -93,6 +98,11 @@ public class Practice extends javax.swing.JFrame {
         SubmitButton.setMaximumSize(new java.awt.Dimension(97, 30));
         SubmitButton.setMinimumSize(new java.awt.Dimension(97, 30));
         SubmitButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        SubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitButtonActionPerformed(evt);
+            }
+        });
 
         nextButton.setBackground(new java.awt.Color(255, 255, 255));
         nextButton.setText("Next");
@@ -247,6 +257,7 @@ public class Practice extends javax.swing.JFrame {
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
        page--;
+       playButton1.setForeground(new java.awt.Color(0, 153, 51));
        clip.stop();
        //timer.stop();
        jPageLabel.setText("Page " + page);
@@ -304,15 +315,18 @@ public class Practice extends javax.swing.JFrame {
             clip.start();
             //timer.start();
             playButton1.setText("Pause");
+            playButton1.setForeground(new java.awt.Color(255, 51, 51));
         } else {
             clip.stop();
             //timer.stop();
             playButton1.setText("Play");
+            playButton1.setForeground(new java.awt.Color(0, 153, 51));
         }
     }//GEN-LAST:event_playButton1ActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         page++;
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
         clip.stop();
         //timer.stop();
         jPageLabel.setText("Page " + page);
@@ -321,11 +335,16 @@ public class Practice extends javax.swing.JFrame {
         if(page==20){
            nextButton.setText("Current");
            nextButton.setEnabled(false);
+           SubmitButton.setEnabled(true);
        }else if(page==2){
            prevButton.setEnabled(true);
            prevButton.setText("Previous");
        }
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+        pbe.submit(answerList);
+    }//GEN-LAST:event_SubmitButtonActionPerformed
 
     /**
      * @param args the command line arguments

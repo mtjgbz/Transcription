@@ -98,4 +98,12 @@ public class ActiveBE {
     public void closeAudio(){
         clip.close();
     }
+    
+    public void submit(ArrayList<String> answerList){
+        if(isTest){
+            
+        }else{
+            
+        }
+    }
 }
