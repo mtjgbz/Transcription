@@ -85,11 +85,11 @@ public class ActiveBE {
             audioIn.close();
             return clip;
         } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(PracticeBE.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActiveBE.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(PracticeBE.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActiveBE.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
-            Logger.getLogger(PracticeBE.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActiveBE.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return clip;
