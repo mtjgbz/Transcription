@@ -24,7 +24,7 @@ public class Test extends javax.swing.JFrame {
     Integer lesson;
     Character subLesson;
     
-    TestBE tbe;
+    ActiveBE tbe;
     
     int page = 1;
 
@@ -44,7 +44,7 @@ public class Test extends javax.swing.JFrame {
         prevButton.setText("Current");
         prevButton.setEnabled(false);
         
-        tbe = new TestBE();
+        tbe = new ActiveBE(true);
         initAudio();
     }
     
@@ -66,7 +66,7 @@ public class Test extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         nextButton = new javax.swing.JButton();
-        playButton1 = new javax.swing.JButton();
+        playButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -107,13 +107,13 @@ public class Test extends javax.swing.JFrame {
             }
         });
 
-        playButton1.setText("Play");
-        playButton1.setMaximumSize(new java.awt.Dimension(97, 29));
-        playButton1.setMinimumSize(new java.awt.Dimension(97, 29));
-        playButton1.setPreferredSize(new java.awt.Dimension(97, 29));
-        playButton1.addActionListener(new java.awt.event.ActionListener() {
+        playButton.setText("Play");
+        playButton.setMaximumSize(new java.awt.Dimension(97, 29));
+        playButton.setMinimumSize(new java.awt.Dimension(97, 29));
+        playButton.setPreferredSize(new java.awt.Dimension(97, 29));
+        playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playButton1ActionPerformed(evt);
+                playButtonActionPerformed(evt);
             }
         });
 
@@ -159,7 +159,7 @@ public class Test extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(284, 284, 284)
-                .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -168,7 +168,7 @@ public class Test extends javax.swing.JFrame {
                 .addGap(100, 100, 100)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,6 +184,8 @@ public class Test extends javax.swing.JFrame {
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
        page--;
+       clip.stop();
+        //timer.stop();
        tbe.closeAudio(); 
        clip = tbe.makeClip(page);
        if(page==1){
@@ -206,20 +208,22 @@ public class Test extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
-    private void playButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton1ActionPerformed
+    private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         if (!clip.isRunning()) {
             clip.start();
-            timer.start();
-            prevButton.setText("Pause");
+            //timer.start();
+            playButton.setText("Stop");
         } else {
             clip.stop();
-            timer.stop();
-            prevButton.setText("Play");
+            //timer.stop();
+            playButton.setText("Play");
         }
-    }//GEN-LAST:event_playButton1ActionPerformed
+    }//GEN-LAST:event_playButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         page++;
+        clip.stop();
+        //timer.stop();
         tbe.closeAudio();
         clip = tbe.makeClip(page);
         if(page==20){
@@ -275,7 +279,7 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton nextButton;
-    private javax.swing.JButton playButton1;
+    private javax.swing.JButton playButton;
     private javax.swing.JButton prevButton;
     // End of variables declaration//GEN-END:variables
 }

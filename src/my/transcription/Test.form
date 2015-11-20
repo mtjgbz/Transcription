@@ -82,7 +82,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
-              <Component id="playButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="playButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -93,7 +93,7 @@
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="playButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="playButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="prevButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -170,7 +170,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="playButton1">
+    <Component class="javax.swing.JButton" name="playButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Play"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -184,7 +184,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

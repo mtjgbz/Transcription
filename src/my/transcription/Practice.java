@@ -29,7 +29,7 @@ public class Practice extends javax.swing.JFrame {
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
     
-    PracticeBE pbe;
+    ActiveBE pbe;
     
     int page = 1;
 
@@ -50,7 +50,7 @@ public class Practice extends javax.swing.JFrame {
         prevButton.setText("Current");
         prevButton.setEnabled(false);
         
-        pbe = new PracticeBE();
+        pbe = new ActiveBE(false);
         initAudio(); 
     }
     
@@ -85,11 +85,8 @@ public class Practice extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusableWindowState(false);
-        setMaximumSize(new java.awt.Dimension(665, 400));
         setMinimumSize(new java.awt.Dimension(665, 400));
-        setPreferredSize(new java.awt.Dimension(665, 400));
         setResizable(false);
-        setSize(new java.awt.Dimension(665, 400));
 
         SubmitButton.setBackground(new java.awt.Color(255, 255, 255));
         SubmitButton.setText("Submit");
@@ -142,7 +139,6 @@ public class Practice extends javax.swing.JFrame {
         jPageLabel.setText("Page 1");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
-        jLabel1.setFocusTraversalKeysEnabled(false);
         jLabel1.setFocusable(false);
         jLabel1.setRequestFocusEnabled(false);
         jLabel1.setVerifyInputWhenFocusTarget(false);
@@ -251,6 +247,8 @@ public class Practice extends javax.swing.JFrame {
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
        page--;
+       clip.stop();
+       //timer.stop();
        jPageLabel.setText("Page " + page);
        pbe.closeAudio(); 
        clip = pbe.makeClip(page);
@@ -304,17 +302,19 @@ public class Practice extends javax.swing.JFrame {
     private void playButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton1ActionPerformed
         if (!clip.isRunning()) {
             clip.start();
-            timer.start();
-            SubmitButton.setText("Pause");
+            //timer.start();
+            playButton1.setText("Pause");
         } else {
             clip.stop();
-            timer.stop();
-            SubmitButton.setText("Play");
+            //timer.stop();
+            playButton1.setText("Play");
         }
     }//GEN-LAST:event_playButton1ActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         page++;
+        clip.stop();
+        //timer.stop();
         jPageLabel.setText("Page " + page);
         pbe.closeAudio();
         clip = pbe.makeClip(page);
