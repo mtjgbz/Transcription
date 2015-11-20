@@ -53,7 +53,7 @@ public class Practice extends javax.swing.JFrame {
         prevButton.setText("Current");
         prevButton.setEnabled(false);
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
-        SubmitButton.setEnabled(false);
+        submitButton.setEnabled(false);
         
         pbe = new ActiveBE(false);
         initAudio(); 
@@ -72,7 +72,7 @@ public class Practice extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SubmitButton = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
         prevButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -93,14 +93,14 @@ public class Practice extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(665, 400));
         setResizable(false);
 
-        SubmitButton.setBackground(new java.awt.Color(255, 255, 255));
-        SubmitButton.setText("Submit");
-        SubmitButton.setMaximumSize(new java.awt.Dimension(97, 30));
-        SubmitButton.setMinimumSize(new java.awt.Dimension(97, 30));
-        SubmitButton.setPreferredSize(new java.awt.Dimension(97, 30));
-        SubmitButton.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setBackground(new java.awt.Color(255, 255, 255));
+        submitButton.setText("Submit");
+        submitButton.setMaximumSize(new java.awt.Dimension(97, 30));
+        submitButton.setMinimumSize(new java.awt.Dimension(97, 30));
+        submitButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SubmitButtonActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
 
@@ -219,7 +219,7 @@ public class Practice extends javax.swing.JFrame {
                         .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(283, 283, 283)
-                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -243,7 +243,7 @@ public class Practice extends javax.swing.JFrame {
                     .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPageLabel)
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -335,16 +335,16 @@ public class Practice extends javax.swing.JFrame {
         if(page==20){
            nextButton.setText("Current");
            nextButton.setEnabled(false);
-           SubmitButton.setEnabled(true);
+           submitButton.setEnabled(true);
        }else if(page==2){
            prevButton.setEnabled(true);
            prevButton.setText("Previous");
        }
     }//GEN-LAST:event_nextButtonActionPerformed
 
-    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         pbe.submit(answerList);
-    }//GEN-LAST:event_SubmitButtonActionPerformed
+    }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,7 +382,6 @@ public class Practice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton SubmitButton;
     private javax.swing.JMenu jEncMenu;
     private javax.swing.JMenu jHomeMenu;
     private javax.swing.JLabel jLabel1;
@@ -397,5 +396,6 @@ public class Practice extends javax.swing.JFrame {
     private javax.swing.JButton nextButton;
     private javax.swing.JButton playButton1;
     private javax.swing.JButton prevButton;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }
