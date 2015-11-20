@@ -10,9 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -20,7 +18,6 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 
-//import javafx.scene.media.Media;
 /**
  *
  * @author Mike, Noah, Casey and Erica
@@ -59,25 +56,17 @@ public class Passive extends javax.swing.JFrame {
 
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
-            if (page == 1) {
-                t = 0;
-            } else if (page == 2) {
-                t = 1;
-            } else if (page == 3) {
-                t = 2;
-            } else {
-                t = 3;
-            }
+            
             clip1.stop();
-            clip1.setMicrosecondPosition(timesList.get(t).get(0));
+            clip1.setMicrosecondPosition(timesList.get(page - 1).get(0));
             clip2.stop();
-            clip2.setMicrosecondPosition(timesList.get(t).get(1));
+            clip2.setMicrosecondPosition(timesList.get(page - 1).get(1));
             clip3.stop();
-            clip3.setMicrosecondPosition(timesList.get(t).get(2));
+            clip3.setMicrosecondPosition(timesList.get(page - 1).get(2));
             clip4.stop();
-            clip4.setMicrosecondPosition(timesList.get(t).get(3));
+            clip4.setMicrosecondPosition(timesList.get(page - 1).get(3));
             clip5.stop();
-            clip5.setMicrosecondPosition(timesList.get(t).get(4));
+            clip5.setMicrosecondPosition(timesList.get(page - 1).get(4));
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
             playButton2.setForeground(new java.awt.Color(0, 153, 51));
             playButton3.setForeground(new java.awt.Color(0, 153, 51));
@@ -160,9 +149,6 @@ public class Passive extends javax.swing.JFrame {
  
          initAudio();
  
-         for (String w : wordsList) {
-             System.out.println("Word: " + w);
-         }
          jBackButton.setEnabled(false);
      }
 
@@ -613,9 +599,6 @@ public class Passive extends javax.swing.JFrame {
         jTextPane5.setText(currList.get(4));
 
         backend.findWords(currList, wordsList);
-        for (String w : wordsList) {
-            System.out.println("Word: " + w);
-        }
         try {
             highlightWord(wordsList, textList.get(page - 1));
         } catch (BadLocationException ex) {

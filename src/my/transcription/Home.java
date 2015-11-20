@@ -227,7 +227,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jUsernameMenuDropDown);
 
-        jLoadTextMenu.setText("Load Text");
+        jLoadTextMenu.setText("LoadText");
         jLoadTextMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLoadTextMenuActionPerformed(evt);
