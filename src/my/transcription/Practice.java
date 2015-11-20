@@ -34,7 +34,7 @@ public class Practice extends javax.swing.JFrame {
     
     ActiveBE pbe;
     
-    int page = 1;
+    private int page = 1;
 
     /**
      * Creates new form Practice

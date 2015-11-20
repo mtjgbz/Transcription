@@ -29,7 +29,7 @@ public class Test extends javax.swing.JFrame {
     private ArrayList<String> answerList;
     ActiveBE tbe;
     
-    int page = 1;
+    private int page = 1;
 
     /**
      * Creates new form Test
