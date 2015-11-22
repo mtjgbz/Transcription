@@ -7,6 +7,7 @@ package my.transcription;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -348,11 +349,16 @@ public class Home extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jTraineeLogButtonActionPerformed
 
+    public static void loading() {
+        JOptionPane.showOptionDialog(null, "         Loading...","Passive Loading", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
+    }
+    
     /**
      * Passive Training Button
      * @param evt 
      */
     private void jPassiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassiveButtonActionPerformed
+        loading = true;
         act.dispose();
         pass1.dispose();
         enc.dispose();
