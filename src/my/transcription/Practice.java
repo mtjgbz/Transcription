@@ -458,7 +458,7 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         if(!clip.isRunning()) {
-            //clip1.setMicrosecondPosition(timesList.get(t).get(3));
+            clip.setMicrosecondPosition(timesVar);
             clip.start();
             timer.start();
             playButton1.setForeground(new java.awt.Color(255, 51, 51));
