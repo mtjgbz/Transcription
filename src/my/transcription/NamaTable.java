@@ -22,7 +22,7 @@ public class NamaTable extends javax.swing.JFrame {
     public NamaTable() {
         initComponents();
         NamaLoader loader = new NamaLoader();
-        cliplist =loader.load();
+        cliplist = loader.load();
     }
 
     /**

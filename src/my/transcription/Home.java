@@ -204,7 +204,6 @@ public class Home extends javax.swing.JFrame {
         });
 
         jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
-        jBackground.setFocusTraversalKeysEnabled(false);
         jBackground.setFocusable(false);
         jBackground.setRequestFocusEnabled(false);
         jBackground.setVerifyInputWhenFocusTarget(false);
@@ -213,6 +212,11 @@ public class Home extends javax.swing.JFrame {
         jNaMaButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jNaMaButton.setText("NaMa");
         jNaMaButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        jNaMaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jNaMaButtonActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
@@ -320,7 +324,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jLogOutButton)
                 .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 384, Short.MAX_VALUE))
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 391, Short.MAX_VALUE))
         );
 
         pack();
@@ -464,6 +468,10 @@ public class Home extends javax.swing.JFrame {
     private void jLoadTextMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTextMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jLoadTextMenuActionPerformed
+
+    private void jNaMaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNaMaButtonActionPerformed
+        new NamaTable().setVisible(true);
+    }//GEN-LAST:event_jNaMaButtonActionPerformed
 
     private void isLoading() {
         jLabel1.setText("Loading...");
