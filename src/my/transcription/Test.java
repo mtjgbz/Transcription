@@ -158,6 +158,7 @@ public class Test extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(700, 430));
         setResizable(false);
 
+        prevButton.setBackground(new java.awt.Color(255, 255, 255));
         prevButton.setText("Previous");
         prevButton.setMaximumSize(new java.awt.Dimension(97, 30));
         prevButton.setMinimumSize(new java.awt.Dimension(97, 30));
@@ -168,6 +169,7 @@ public class Test extends javax.swing.JFrame {
             }
         });
 
+        submitButton.setBackground(new java.awt.Color(255, 255, 255));
         submitButton.setText("Submit");
         submitButton.setMaximumSize(new java.awt.Dimension(97, 30));
         submitButton.setMinimumSize(new java.awt.Dimension(97, 30));
@@ -185,6 +187,7 @@ public class Test extends javax.swing.JFrame {
         jTextArea1.setSize(new java.awt.Dimension(470, 150));
         jScrollPane1.setViewportView(jTextArea1);
 
+        nextButton.setBackground(new java.awt.Color(255, 255, 255));
         nextButton.setText("Next");
         nextButton.setMaximumSize(new java.awt.Dimension(97, 30));
         nextButton.setMinimumSize(new java.awt.Dimension(97, 30));
@@ -195,6 +198,7 @@ public class Test extends javax.swing.JFrame {
             }
         });
 
+        playButton1.setBackground(new java.awt.Color(255, 255, 255));
         playButton1.setText("Play");
         playButton1.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton1.setMinimumSize(new java.awt.Dimension(97, 29));
