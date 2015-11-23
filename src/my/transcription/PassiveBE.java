@@ -4,7 +4,6 @@ import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.*;
@@ -27,7 +26,6 @@ import org.w3c.dom.*;
  */
 public class PassiveBE {
 
-    private Connection conn;
     private Statement stmt;
     private ResultSet rs;
     private Random rand;
@@ -45,35 +43,10 @@ public class PassiveBE {
      * Creates the passive backend.
      */
     public PassiveBE() {
-        setupDB();
+        stmt = User.setupDB();
         rand = new Random();
         clips = new ArrayList<File>();
     }
-
-    /**
-     * Sets up the database for use by the backend.
-     */
-    private void setupDB() {
-        try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:TAA.db");
-            System.out.println("Database opened successfully.");
-            stmt = conn.createStatement();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void closeDB() {
-        try {
-            conn.close();
-            stmt.close();
-            rs.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
     /**
      *
@@ -138,23 +111,24 @@ public class PassiveBE {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        closeDB();
+        User.closeDB(stmt, rs);
 
         return null;
     }
 
     /**
-     *
-     * @return
+     * Get the list of sound clip file names
+     * @return  The list of sound clip file names
      */
     public ArrayList<File> getClips() {
         return clips;
     }
 
     /**
-     *
-     * @param document
-     * @return
+     * Finds the phrase and time around the phrase containing the words for the
+     * lesson.
+     * @param document  Path name for the transcription file containing the phrase.
+     * @return          The start time, phrase, and end time as given in the document
      */
     public ArrayList<String> findPhrase(String document) {
         try {
@@ -165,7 +139,7 @@ public class PassiveBE {
                     = DocumentBuilderFactory.newInstance();
             dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            if (document.contains("list.txt")) {
+            if (document.contains(".txt")) {
                 return null;
             }
             Document doc = dBuilder.parse(file);
@@ -219,6 +193,11 @@ public class PassiveBE {
         return null;
     }
 
+    /**
+     * Finds the words that fit the lesson in the phrase selected.
+     * @param phrases   Phrases given to Passive that contains applicable words
+     * @param words     Words within the phrases that match the regular expression.
+     */
     public void findWords(ArrayList<String> phrases, ArrayList<String> words) {
         Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2)");       //example exp - change later
         Matcher matcher;
@@ -239,6 +218,11 @@ public class PassiveBE {
 
     }
 
+    /**
+     * 
+     * @param pageNum
+     * @return 
+     */
     public ArrayList<Clip> makeClips(int pageNum) {
         ArrayList<Clip> clips1 = new ArrayList<>();
 
