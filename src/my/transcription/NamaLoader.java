@@ -27,7 +27,7 @@ public class NamaLoader {
         ArrayList<Clip> clips = new ArrayList<>();
         AudioInputStream audioIn;
         try {          
-            audioIn = AudioSystem.getAudioInputStream(new File(path+"01-01-na2ma3_edited.wav"));
+            audioIn = AudioSystem.getAudioInputStream(new File(path+"01-01-na3ma3_edited.wav"));
             Clip clip1 = AudioSystem.getClip();
             clip1.open(audioIn);
             audioIn.close();

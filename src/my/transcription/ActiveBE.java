@@ -25,10 +25,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author mike
  */
 public class ActiveBE {
-    private Connection conn;
-    private Statement stmt;
-    private ResultSet rs;
     private Random rand;
+    private Statement stmt;
     private static ArrayList<File> clips;
     private static ArrayList<String> phrases;
     private static ArrayList<String> words;
@@ -38,7 +36,7 @@ public class ActiveBE {
     
     public ActiveBE(boolean isTest) {
         this.isTest=isTest;
-        User.setupDB();
+        stmt = User.setupDB();
         rand = new Random();
         clips = new ArrayList<>();
     }
@@ -75,5 +73,26 @@ public class ActiveBE {
         }else{
             
         }
+    }
+    
+    public int newPractice(String username, int lesson, char sublesson){
+        try{
+        String query = "INSERT INTO PRACTICE(Username, DateTaken, Lesson, Sublesson, DateTaken)"
+                + " VALUES('" + username + "', " + lesson + ", '" + sublesson + "', "
+                + "NOW());";
+        stmt.execute(query);
+        query = "SELECT(PracticeID) FROM PRACTICE WHERE PracticeID = LAST_INSERT_ROWID();";
+        ResultSet rs = stmt.executeQuery(query);
+        int id = rs.getInt("PracticeID");
+        rs.close();
+        return id;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    public void newAttempt(){
+        
     }
 }
