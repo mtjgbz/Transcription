@@ -93,7 +93,7 @@ public class Home extends javax.swing.JFrame {
         jNasalizationButton = new javax.swing.JButton();
         jEncliticButton = new javax.swing.JButton();
         jBackground = new javax.swing.JLabel();
-        jEncliticButton1 = new javax.swing.JButton();
+        jNaMaButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jFileMenuItem = new javax.swing.JMenu();
         jUsernameMenuDropDown = new javax.swing.JMenu();
@@ -209,10 +209,10 @@ public class Home extends javax.swing.JFrame {
         jBackground.setRequestFocusEnabled(false);
         jBackground.setVerifyInputWhenFocusTarget(false);
 
-        jEncliticButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jEncliticButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jEncliticButton1.setText("NaMa");
-        jEncliticButton1.setPreferredSize(new java.awt.Dimension(130, 30));
+        jNaMaButton.setBackground(new java.awt.Color(204, 204, 204));
+        jNaMaButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jNaMaButton.setText("NaMa");
+        jNaMaButton.setPreferredSize(new java.awt.Dimension(130, 30));
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
@@ -284,13 +284,10 @@ public class Home extends javax.swing.JFrame {
                         .addGap(290, 290, 290))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(270, 270, 270)
-                .addComponent(jEncliticButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jNaMaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(71, 71, 71)))
+                .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 671, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,15 +315,12 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jNasalizationButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEncliticButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jEncliticButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jNaMaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLogOutButton)
                 .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(206, 206, 206)))
+                .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 384, Short.MAX_VALUE))
         );
 
         pack();
@@ -530,13 +524,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jBackground;
     private javax.swing.JMenuItem jChangePassword;
     private javax.swing.JButton jEncliticButton;
-    private javax.swing.JButton jEncliticButton1;
     private javax.swing.JMenu jFileMenuItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLessonLabel;
     private javax.swing.JMenu jLoadTextMenu;
     private javax.swing.JButton jLogOutButton;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton jNaMaButton;
     private javax.swing.JButton jNasalizationButton;
     private javax.swing.JButton jPassiveButton;
     private javax.swing.JLabel jSubLessonLabel;
