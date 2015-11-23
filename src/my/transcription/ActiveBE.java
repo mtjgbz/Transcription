@@ -7,10 +7,7 @@ package my.transcription;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
@@ -41,36 +38,9 @@ public class ActiveBE {
     
     public ActiveBE(boolean isTest) {
         this.isTest=isTest;
-        setupDB();
+        User.setupDB();
         rand = new Random();
         clips = new ArrayList<>();
-    }
-     
-     /**
-     * Sets up the database for use by the backend.
-     */
-    private void setupDB() {
-        try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:TAA.db");
-            System.out.println("Database opened successfully.");
-            stmt = conn.createStatement();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    /**
-     * Break down the database after use.
-     */
-    private void closeDB() {
-        try {
-            conn.close();
-            stmt.close();
-            rs.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     
     public Clip makeClip(int pageNum){
