@@ -530,16 +530,20 @@ public class Passive extends javax.swing.JFrame {
         backend = new PassiveBE();
         phraseList = new ArrayList<ArrayList<String>>();
         for (int i = 0; i < 20; i++) {
+            //pulls the transcription file for searching
             String file = backend.findFile(lesson, subLesson);
+            //pulls the start time, phrase, and end time from the file selected above
             ArrayList<String> phrase = backend.findPhrase(file);
 
+            //if a phrase is not found, try again
             ArrayList<String> currList;
             if (phrase == null || phrase.get(1) == null) {
                 i--;
                 continue;
             }
-            boolean contains = false;
-            int index = 0;
+            boolean contains = false;   //if the phrase has already been used
+            int index = 0;              //index of the array list within arraylists
+            //sets the index to the applicable spot, checks if the phrase has been used
             if (i >= 15) {
                 index = 3;
                 currList = textList.get(3);
@@ -566,19 +570,19 @@ public class Passive extends javax.swing.JFrame {
                 }
             }
             if (contains == true) {
-                i--;
+                i--;                //if the phrase has already been used, try again
             } else {
                 phraseList.add(phrase);
-                currList.set(i % 5, phrase.get(1));
+                currList.set(i % 5, phrase.get(1)); //set the right arraylist position in textList
             }
             
-            //Put clip and time info here - how are we getting the time information?
-            //use getClips to return the clip names and files
+            //Get the start time and add it to the list
             Float startTime = Float.parseFloat(phrase.get(0));
             int startNum = (int) (startTime * 1000000);
 
             timesList.get(index).set(i % 5, startNum);
 
+            //Calculate the duration and add it to the list
             Float endTime = Float.parseFloat(phrase.get(2));
             int endNum = (int) (endTime * 1000);
             startNum = (int) (startTime * 1000);

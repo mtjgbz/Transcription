@@ -77,15 +77,15 @@ public class ActiveBE {
     
     public int newPractice(String username, int lesson, char sublesson){
         try{
-        String query = "INSERT INTO PRACTICE(Username, DateTaken, Lesson, Sublesson, DateTaken)"
-                + " VALUES('" + username + "', " + lesson + ", '" + sublesson + "', "
-                + "NOW());";
-        stmt.execute(query);
-        query = "SELECT(PracticeID) FROM PRACTICE WHERE PracticeID = LAST_INSERT_ROWID();";
-        ResultSet rs = stmt.executeQuery(query);
-        int id = rs.getInt("PracticeID");
-        rs.close();
-        return id;
+            String query = "INSERT INTO PRACTICE(Username, DateTaken, Lesson, Sublesson, DateTaken)"
+                    + " VALUES('" + username + "', " + lesson + ", '" + sublesson + "', "
+                    + "NOW());";
+            stmt.execute(query);
+            query = "SELECT(PracticeID) FROM PRACTICE WHERE PracticeID = LAST_INSERT_ROWID();";
+            ResultSet rs = stmt.executeQuery(query);
+            int id = rs.getInt("PracticeID");
+            rs.close();
+            return id;
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -93,6 +93,11 @@ public class ActiveBE {
     }
     
     public void newAttempt(){
-        
+        try{
+            //Put attempt in the database
+            //return the question id?
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
