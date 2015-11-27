@@ -29,7 +29,7 @@ public class Passive extends javax.swing.JFrame {
     String user;
     int t = 0;
 
-    Character subLesson;
+    String subLesson;
 
     ArrayList<Clip> clipsList = new ArrayList<>();
     ArrayList<ArrayList<Timer>> timersList = new ArrayList<>();
@@ -94,7 +94,7 @@ public class Passive extends javax.swing.JFrame {
      * @param lesson the lesson the user selected
      * @param subLesson the sub-lesson the user selected
      */
-        public Passive(String user, Integer lesson, Character subLesson) {
+        public Passive(String user, Integer lesson, String subLesson) {
          this.user = user;
          getContentPane().setBackground(new Color(148, 189, 203));
  

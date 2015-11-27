@@ -27,7 +27,7 @@ public class Home extends javax.swing.JFrame {
     ToneTable tone;
 
     ArrayList<Integer> lessonList;
-    ArrayList<Character> subLessonList;
+    ArrayList<String> subLessonList;
     
     Timer timer1;
     Boolean loading = false;
@@ -65,9 +65,9 @@ public class Home extends javax.swing.JFrame {
 
         //create lists
         subLessonList = new ArrayList<>();
-        subLessonList.add('a');
-        subLessonList.add('b');
-        subLessonList.add('c');
+        subLessonList.add("a");
+        subLessonList.add("b");
+        subLessonList.add("c");
         
     }
 

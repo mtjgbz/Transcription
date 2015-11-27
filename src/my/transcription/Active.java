@@ -17,7 +17,7 @@ public class Active extends javax.swing.JFrame {
     Home home;
     String user;
     Integer lesson;
-    Character subLesson;
+    String subLesson;
 
     /**
      * Creates new form Active
@@ -38,7 +38,7 @@ public class Active extends javax.swing.JFrame {
     public void setLesson(Integer lesson){
         this.lesson = lesson;
     }
-    public void setSubLesson(Character subLesson){
+    public void setSubLesson(String subLesson){
         this.subLesson = subLesson;
     }
 

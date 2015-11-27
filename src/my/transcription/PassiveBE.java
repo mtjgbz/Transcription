@@ -54,7 +54,7 @@ public class PassiveBE {
      * @param sublesson
      * @return
      */
-        public String findFile(int lesson, char sublesson) {
+        public String findFile(int lesson, String sublesson) {
         try {
             //pulling .txt file that contains lesson matches
             String query = "SELECT(FileList) FROM LESSONS WHERE Lesson = " + lesson

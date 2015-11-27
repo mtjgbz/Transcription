@@ -24,7 +24,7 @@ public class Practice extends javax.swing.JFrame {
 
     String user;
     Integer lesson;
-    Character subLesson;
+    String subLesson;
 
     Clip clip;
     Timer timer;
@@ -58,7 +58,7 @@ public class Practice extends javax.swing.JFrame {
      *
      * @param user
      */
-    public Practice(String user, Integer lesson, Character subLesson) {
+    public Practice(String user, Integer lesson, String subLesson) {
         this.setTitle("Mixtec Transcription: Practice");
         initComponents();
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
@@ -390,9 +390,9 @@ public class Practice extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // pbe.submit(answerList);
-    }//GEN-LAST:event_SubmitButtonActionPerformed
+    }                                            
     
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
        page--;

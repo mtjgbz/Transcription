@@ -75,7 +75,7 @@ public class ActiveBE {
         }
     }
     
-    public int newPractice(String username, int lesson, char sublesson){
+    public int newPractice(String username, int lesson, String sublesson){
         try{
             String query = "INSERT INTO PRACTICE(Username, DateTaken, Lesson, Sublesson, DateTaken)"
                     + " VALUES('" + username + "', " + lesson + ", '" + sublesson + "', "

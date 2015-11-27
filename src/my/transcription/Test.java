@@ -23,7 +23,7 @@ public class Test extends javax.swing.JFrame {
 
     String user;
     Integer lesson;
-    Character subLesson;
+    String subLesson;
 
     Clip clip;
     Timer timer;
@@ -57,7 +57,7 @@ public class Test extends javax.swing.JFrame {
      *
      * @param user
      */
-    public Test(String user,Integer lesson, Character subLesson) {
+    public Test(String user,Integer lesson, String subLesson) {
         this.setTitle("Mixtec Transcription: Practice");
         initComponents();
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
