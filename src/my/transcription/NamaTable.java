@@ -5,8 +5,13 @@
  */
 package my.transcription;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineEvent;
+import static javax.sound.sampled.LineEvent.Type.STOP;
+import javax.sound.sampled.LineListener;
 
 /**
  *
@@ -15,6 +20,17 @@ import javax.sound.sampled.Clip;
 public class NamaTable extends javax.swing.JFrame {
 
     ArrayList<Clip> cliplist;
+    ArrayList<LineListener> listenerlist = new ArrayList<>();
+    
+    
+    LineListener listener1 = new LineListener() {
+        @Override
+        public void update(LineEvent event) {
+            if(event.getType()==STOP){
+                cliplist.get(1).start();
+            }
+        }
+    };
     
     /**
      * Creates new form NamaTable
@@ -23,6 +39,267 @@ public class NamaTable extends javax.swing.JFrame {
         initComponents();
         NamaLoader loader = new NamaLoader();
         cliplist = loader.load();
+        listenerlist=listeners();
+    }
+    
+    public ArrayList<LineListener> listeners(){
+        ArrayList<LineListener> listeners = new ArrayList<>();
+        
+       
+        LineListener listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(1).start();
+                }
+            }
+        };
+        listeners.add(listener);
+    
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(2).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(3).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(4).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(5).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(6).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(7).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(8).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(9).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(10).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(11).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(12).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(13).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(14).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(15).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(16).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(17).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(18).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(19).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(20).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(21).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(22).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        listener = new LineListener() {
+                
+            @Override
+            public void update(LineEvent event) {
+                if(event.getType()==STOP){
+                    cliplist.get(23).start();
+                }
+            }
+        };
+        listeners.add(listener);
+        
+        return listeners;
     }
 
     /**
@@ -58,6 +335,7 @@ public class NamaTable extends javax.swing.JFrame {
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
+        playAllButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -229,11 +507,18 @@ public class NamaTable extends javax.swing.JFrame {
             }
         });
 
+        playAllButton.setText("Play All");
+        playAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playAllButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -247,25 +532,28 @@ public class NamaTable extends javax.swing.JFrame {
                     .addComponent(jButton22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jButton11)
-                    .addComponent(jButton14)
-                    .addComponent(jButton17)
-                    .addComponent(jButton20)
-                    .addComponent(jButton23))
-                .addGap(150, 150, 150)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton21)
-                    .addComponent(jButton18)
-                    .addComponent(jButton15)
-                    .addComponent(jButton3)
-                    .addComponent(jButton6)
-                    .addComponent(jButton9)
-                    .addComponent(jButton12)
-                    .addComponent(jButton24))
+                    .addComponent(playAllButton)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jButton11)
+                            .addComponent(jButton14)
+                            .addComponent(jButton17)
+                            .addComponent(jButton20)
+                            .addComponent(jButton23))
+                        .addGap(150, 150, 150)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton21)
+                            .addComponent(jButton18)
+                            .addComponent(jButton15)
+                            .addComponent(jButton3)
+                            .addComponent(jButton6)
+                            .addComponent(jButton9)
+                            .addComponent(jButton12)
+                            .addComponent(jButton24))))
                 .addGap(109, 109, 109))
         );
         layout.setVerticalGroup(
@@ -311,7 +599,9 @@ public class NamaTable extends javax.swing.JFrame {
                     .addComponent(jButton22)
                     .addComponent(jButton23)
                     .addComponent(jButton24))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(playAllButton)
+                .addContainerGap())
         );
 
         pack();
@@ -605,6 +895,17 @@ public class NamaTable extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton24ActionPerformed
 
+    private void playAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playAllButtonActionPerformed
+        for(Clip clip:cliplist){
+            clip.setMicrosecondPosition(0);
+            if(cliplist.indexOf(clip)<23){
+                clip.addLineListener(listenerlist.get(cliplist.indexOf(clip)));
+            }
+        }
+        cliplist.get(0).start();
+        
+    }//GEN-LAST:event_playAllButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -665,5 +966,6 @@ public class NamaTable extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JButton playAllButton;
     // End of variables declaration//GEN-END:variables
 }
