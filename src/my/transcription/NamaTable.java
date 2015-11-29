@@ -5,6 +5,9 @@
  */
 package my.transcription;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -41,6 +44,13 @@ public class NamaTable extends javax.swing.JFrame {
         cliplist = loader.load();
         listenerlist=listeners();
     }
+    
+    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+    Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+
+    int x = (int) rect.getMaxX();
+    int y = 0;
     
     public ArrayList<LineListener> listeners(){
         ArrayList<LineListener> listeners = new ArrayList<>();
@@ -336,6 +346,8 @@ public class NamaTable extends javax.swing.JFrame {
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         playAllButton = new javax.swing.JButton();
+
+        setLocation(new java.awt.Point(x, y));
 
         jButton1.setText("na3ma3");
         jButton1.setMaximumSize(new java.awt.Dimension(110, 30));
