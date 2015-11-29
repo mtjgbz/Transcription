@@ -698,7 +698,9 @@ public class Passive extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        na.dispose();
+        if(NaMaCount > 0) {
+            na.dispose();
+        }
         new Home(user).setVisible(true);
         backend.closeAudio();
         dispose();

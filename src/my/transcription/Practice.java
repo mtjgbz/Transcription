@@ -427,7 +427,9 @@ public class Practice extends javax.swing.JFrame {
 
     private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
         enc.dispose();
-        nas.dispose();
+        if(NaMaCount > 0) {
+            na.dispose();
+        }
         tone.dispose();
         na.dispose();
         new Home(user).setVisible(true);

@@ -352,7 +352,9 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        na.dispose();
+        if(NaMaCount > 0) {
+            na.dispose();
+        }
 
         new SignIn().setVisible(true);
         dispose();
@@ -368,7 +370,9 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        na.dispose();
+        if(NaMaCount > 0) {
+            na.dispose();
+        }
 
         new TraineeLog(user).setVisible(true);
         dispose();
@@ -389,7 +393,9 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        na.dispose();
+        if(NaMaCount > 0) {
+            na.dispose();
+        }
 
         Passive pass = new Passive(user, lessonList.get(jlessonBox.getSelectedIndex()), subLessonList.get(jsubLessonBox.getSelectedIndex()));
         pass.setVisible(true);
@@ -405,7 +411,9 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        na.dispose();
+        if(NaMaCount > 0) {
+            na.dispose();
+        }
         if (!act.isShowing()) {
             act.setLesson(lessonList.get(jlessonBox.getSelectedIndex()));
             act.setSubLesson(subLessonList.get(jsubLessonBox.getSelectedIndex()));
