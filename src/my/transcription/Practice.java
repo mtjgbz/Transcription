@@ -32,6 +32,8 @@ public class Practice extends javax.swing.JFrame {
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
+    NamaTable na;
+    int NaMaCount = 0;
     
     private ActiveBE pbe;
     
@@ -155,15 +157,14 @@ public class Practice extends javax.swing.JFrame {
         jEncMenu = new javax.swing.JMenu();
         jNasMenu = new javax.swing.JMenu();
         jToneTableMenu = new javax.swing.JMenu();
+        jNaMaMenu = new javax.swing.JMenu();
         jUserMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusableWindowState(false);
-        setMaximumSize(new java.awt.Dimension(700, 430));
         setMinimumSize(new java.awt.Dimension(700, 430));
         setResizable(false);
-        setSize(new java.awt.Dimension(700, 430));
 
         submitButton.setBackground(new java.awt.Color(255, 255, 255));
         submitButton.setText("Submit");
@@ -291,6 +292,14 @@ public class Practice extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jToneTableMenu);
+
+        jNaMaMenu.setText("NaMa");
+        jNaMaMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jNaMaMenuMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jNaMaMenu);
 
         jUserMenu.setText("User");
 
@@ -420,6 +429,7 @@ public class Practice extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
+        na.dispose();
         new Home(user).setVisible(true);
         pbe.closeAudio();
         dispose();
@@ -509,6 +519,18 @@ public class Practice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
+    private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
+        if(NaMaCount == 0){
+            na = new NamaTable();
+        }
+        if (!na.isShowing()) {
+            na.setVisible(true);
+        } else {
+            na.toFront();
+        }
+        NaMaCount++;
+    }//GEN-LAST:event_jNaMaMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -553,6 +575,7 @@ public class Practice extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jNaMaMenu;
     private javax.swing.JMenu jNasMenu;
     private javax.swing.JLabel jPageLabel;
     private javax.swing.JScrollPane jScrollPane1;

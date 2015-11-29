@@ -84,6 +84,8 @@ public class Passive extends javax.swing.JFrame {
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
+    NamaTable na;
+    int NaMaCount = 0;
 
     private PassiveBE backend;
 
@@ -223,6 +225,7 @@ public class Passive extends javax.swing.JFrame {
         jEncliticMenuButton = new javax.swing.JMenu();
         jNasMenuButton = new javax.swing.JMenu();
         jTTMenuButton = new javax.swing.JMenu();
+        jNaMaMenu = new javax.swing.JMenu();
         jUserButton = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -409,6 +412,14 @@ public class Passive extends javax.swing.JFrame {
         });
         jMenuBar1.add(jTTMenuButton);
 
+        jNaMaMenu.setText("NaMa");
+        jNaMaMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jNaMaMenuMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jNaMaMenu);
+
         jUserButton.setText("User");
 
         jMenuItem1.setText("Log out");
@@ -499,7 +510,7 @@ public class Passive extends javax.swing.JFrame {
                 .addComponent(playButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, Short.MAX_VALUE))
         );
 
         pack();
@@ -687,6 +698,7 @@ public class Passive extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
+        na.dispose();
         new Home(user).setVisible(true);
         backend.closeAudio();
         dispose();
@@ -1020,6 +1032,18 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBackButtonActionPerformed
 
+    private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
+        if(NaMaCount == 0){
+            na = new NamaTable();
+        }
+        if (!na.isShowing()) {
+            na.setVisible(true);
+        } else {
+            na.toFront();
+        }
+        NaMaCount++;
+    }//GEN-LAST:event_jNaMaMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1065,6 +1089,7 @@ public class Passive extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jNaMaMenu;
     private javax.swing.JMenu jNasMenuButton;
     private javax.swing.JButton jNextButton;
     private javax.swing.JScrollPane jScrollPane2;

@@ -25,6 +25,8 @@ public class Home extends javax.swing.JFrame {
     Enclitics enc;
     Nasalizations nas;
     ToneTable tone;
+    NamaTable na;
+    int NaMaCount = 0;
 
     ArrayList<Integer> lessonList;
     ArrayList<String> subLessonList;
@@ -327,7 +329,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jNaMaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLogOutButton)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 391, Short.MAX_VALUE))
         );
@@ -350,6 +352,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
+        na.dispose();
 
         new SignIn().setVisible(true);
         dispose();
@@ -365,6 +368,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
+        na.dispose();
 
         new TraineeLog(user).setVisible(true);
         dispose();
@@ -385,6 +389,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
+        na.dispose();
 
         Passive pass = new Passive(user, lessonList.get(jlessonBox.getSelectedIndex()), subLessonList.get(jsubLessonBox.getSelectedIndex()));
         pass.setVisible(true);
@@ -400,6 +405,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
+        na.dispose();
         if (!act.isShowing()) {
             act.setLesson(lessonList.get(jlessonBox.getSelectedIndex()));
             act.setSubLesson(subLessonList.get(jsubLessonBox.getSelectedIndex()));
@@ -475,7 +481,15 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoadTextMenuActionPerformed
 
     private void jNaMaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNaMaButtonActionPerformed
-        new NamaTable().setVisible(true);
+        if(NaMaCount == 0){
+            na = new NamaTable();
+        }
+        if (!na.isShowing()) {
+            na.setVisible(true);
+        } else {
+            na.toFront();
+        }
+        NaMaCount++;
     }//GEN-LAST:event_jNaMaButtonActionPerformed
 
     private void jLoadTextMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMenuMousePressed
