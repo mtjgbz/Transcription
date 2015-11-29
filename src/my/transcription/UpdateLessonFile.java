@@ -30,7 +30,7 @@ public class UpdateLessonFile extends javax.swing.JFrame {
         if(returnVal == JFileChooser.APPROVE_OPTION) {
            return chooser.getSelectedFile().getPath();
         }else{
-            return null;
+            return "";
         }
     }
     

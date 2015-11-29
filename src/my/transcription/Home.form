@@ -35,6 +35,7 @@
             <Property name="text" type="java.lang.String" value="Load Text"/>
           </Properties>
           <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLoadTextMenuMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLoadTextMenuActionPerformed"/>
           </Events>
         </Menu>

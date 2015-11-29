@@ -239,6 +239,11 @@ public class Home extends javax.swing.JFrame {
         jMenuBar1.add(jUsernameMenuDropDown);
 
         jLoadTextMenu.setText("Load Text");
+        jLoadTextMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLoadTextMenuMousePressed(evt);
+            }
+        });
         jLoadTextMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLoadTextMenuActionPerformed(evt);
@@ -466,12 +471,17 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jPassiveButtonMousePressed
 
     private void jLoadTextMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTextMenuActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jLoadTextMenuActionPerformed
 
     private void jNaMaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNaMaButtonActionPerformed
         new NamaTable().setVisible(true);
     }//GEN-LAST:event_jNaMaButtonActionPerformed
+
+    private void jLoadTextMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMenuMousePressed
+        UpdateLessonFile window = new UpdateLessonFile();
+        window.setVisible(true);
+    }//GEN-LAST:event_jLoadTextMenuMousePressed
 
     private void isLoading() {
         jLabel1.setText("Loading...");

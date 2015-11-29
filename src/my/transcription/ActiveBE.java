@@ -30,6 +30,7 @@ public class ActiveBE {
     private static ArrayList<File> clips;
     private static ArrayList<String> phrases;
     private static ArrayList<String> words;
+    private ArrayList<Integer> attempts;
     
     private Clip clip;
     private boolean isTest;
@@ -39,6 +40,10 @@ public class ActiveBE {
         stmt = User.setupDB();
         rand = new Random();
         clips = new ArrayList<>();
+        attempts = new ArrayList<Integer>();
+        for(int i = 0; i < 20; i++){
+            attempts.add(1);
+        }
     }
     
     public Clip makeClip(int pageNum){
@@ -92,10 +97,10 @@ public class ActiveBE {
         return 0;
     }
     
-    public void newAttempt(){
+    public void newAttempt(int questionNum, int questionID, int practiceID){
         try{
-            //Put attempt in the database
-            //return the question id?
+            int attempt = attempts.get(questionNum - 1);
+            
         }catch(Exception e){
             e.printStackTrace();
         }
