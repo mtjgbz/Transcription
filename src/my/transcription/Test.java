@@ -65,7 +65,7 @@ public class Test extends javax.swing.JFrame {
         this.lesson = lesson;
         this.subLesson = subLesson;
         jMenu2.setText(user);
-        jTextArea1.setText("text1");
+        jTextPane1.setText("text1");
         prevButton.setText("Current");
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
@@ -135,8 +135,6 @@ public class Test extends javax.swing.JFrame {
 
         prevButton = new javax.swing.JButton();
         submitButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         nextButton = new javax.swing.JButton();
         playButton1 = new javax.swing.JButton();
         jPageLabel = new javax.swing.JLabel();
@@ -148,6 +146,8 @@ public class Test extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -179,13 +179,6 @@ public class Test extends javax.swing.JFrame {
                 submitButtonActionPerformed(evt);
             }
         });
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setMaximumSize(new java.awt.Dimension(240, 80));
-        jTextArea1.setMinimumSize(new java.awt.Dimension(240, 80));
-        jTextArea1.setSize(new java.awt.Dimension(470, 150));
-        jScrollPane1.setViewportView(jTextArea1);
 
         nextButton.setBackground(new java.awt.Color(255, 255, 255));
         nextButton.setText("Next");
@@ -249,6 +242,15 @@ public class Test extends javax.swing.JFrame {
             }
         });
 
+        jTextPane1.setEditable(false);
+        jTextPane1.setAutoscrolls(false);
+        jTextPane1.setFocusable(false);
+        jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
+        jTextPane1.setMinimumSize(new java.awt.Dimension(550, 70));
+        jTextPane1.setPreferredSize(new java.awt.Dimension(550, 70));
+        jTextPane1.setRequestFocusEnabled(false);
+        jScrollPane5.setViewportView(jTextPane1);
+
         jMenu1.setText("Home");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -279,7 +281,7 @@ public class Test extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 101, Short.MAX_VALUE)
@@ -321,12 +323,13 @@ public class Test extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
-                        .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6)
+                        .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -494,12 +497,12 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel jPageLabel;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton playButton1;
     private javax.swing.JButton prevButton;
