@@ -68,7 +68,7 @@ public class Practice extends javax.swing.JFrame {
         this.lesson = lesson;
         this.subLesson = subLesson;
         jUserMenu.setText(user);
-        jTextArea1.setText("text1");
+        jTextPane1.setText("text1");
         prevButton.setText("Current");
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
@@ -140,8 +140,6 @@ public class Practice extends javax.swing.JFrame {
         submitButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
         prevButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         playButton1 = new javax.swing.JButton();
         jPageLabel = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -152,6 +150,8 @@ public class Practice extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jHomeMenu = new javax.swing.JMenu();
         jEncMenu = new javax.swing.JMenu();
@@ -198,16 +198,6 @@ public class Practice extends javax.swing.JFrame {
                 prevButtonActionPerformed(evt);
             }
         });
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setCaretColor(new java.awt.Color(255, 255, 255));
-        jTextArea1.setMaximumSize(new java.awt.Dimension(240, 80));
-        jTextArea1.setMinimumSize(new java.awt.Dimension(240, 80));
-        jTextArea1.setSize(new java.awt.Dimension(470, 150));
-        jScrollPane1.setViewportView(jTextArea1);
 
         playButton1.setBackground(new java.awt.Color(255, 255, 255));
         playButton1.setText("Play");
@@ -259,6 +249,15 @@ public class Practice extends javax.swing.JFrame {
         jLabel3.setText("2");
 
         jLabel4.setText("1");
+
+        jTextPane1.setEditable(false);
+        jTextPane1.setAutoscrolls(false);
+        jTextPane1.setFocusable(false);
+        jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
+        jTextPane1.setMinimumSize(new java.awt.Dimension(550, 70));
+        jTextPane1.setPreferredSize(new java.awt.Dimension(550, 70));
+        jTextPane1.setRequestFocusEnabled(false);
+        jScrollPane5.setViewportView(jTextPane1);
 
         jHomeMenu.setText("Home");
         jHomeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -323,7 +322,7 @@ public class Practice extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(250, 250, 250)
@@ -371,7 +370,7 @@ public class Practice extends javax.swing.JFrame {
                         .addGap(64, 64, 64))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -580,12 +579,12 @@ public class Practice extends javax.swing.JFrame {
     private javax.swing.JMenu jNaMaMenu;
     private javax.swing.JMenu jNasMenu;
     private javax.swing.JLabel jPageLabel;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JMenu jToneTableMenu;
     private javax.swing.JMenu jUserMenu;
     private javax.swing.JButton nextButton;
