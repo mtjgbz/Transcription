@@ -348,6 +348,7 @@ public class NamaTable extends javax.swing.JFrame {
         playAllButton = new javax.swing.JButton();
 
         setLocation(new java.awt.Point(x, y));
+        setResizable(false);
 
         jButton1.setText("na3ma3");
         jButton1.setMaximumSize(new java.awt.Dimension(110, 30));
