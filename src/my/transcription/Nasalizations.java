@@ -41,7 +41,7 @@ public class Nasalizations extends javax.swing.JFrame {
 
         setResizable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/Nas.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/TTPictures/Nas.jpeg"))); // NOI18N
         jScrollPane1.setViewportView(jLabel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
