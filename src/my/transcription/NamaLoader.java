@@ -168,7 +168,7 @@ public class NamaLoader {
             clips.add(clip16);
             clips.add(clip17);
             clips.add(clip18);
-            clips.add(clip18);
+            clips.add(clip19);
             clips.add(clip20);
             clips.add(clip21);
             clips.add(clip22);
