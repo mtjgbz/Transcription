@@ -56,13 +56,14 @@ public class User {
                 
                 String regex = rsExp.getString("RegularExpression");
 //                System.out.println(regex);
-                String filePath = path + "lesson" + lesson + "-" + sublesson + ".txt";
-                BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
+//                String filePath = path + "lesson" + lesson + "-" + sublesson + ".txt";
+//                BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
                 
-                searchFile(regex, transcriptions, out);
+                String filePath = "";
+                filePath = searchFile(regex, transcriptions, filePath);
                 
                 filePaths.add(filePath);
-                out.close();
+//                out.close();
             }
             stmt2.close();
             closeDB(stmt, rs);
@@ -89,27 +90,28 @@ public class User {
      * @param path      Directory or file to search for transcription files
      * @param out       Writer for the final text file
      */
-    private static void searchFile(String regex, String path, BufferedWriter out){
+    private static String searchFile(String regex, String path, String out){
         try{
             //Search through all the files
             File home = new File(path);
             File[] fileList = home.listFiles();
             if(fileList == null){
-                return;
+                return null;
             }
             //System.out.println(path);
             for(File f : fileList){
             //If it's null, return so
             //If it's a folder, search through that as well
                 if (f.isDirectory()){
-                    searchFile(regex, f.getPath(), out);
+                    out = searchFile(regex, f.getPath(), out);
                 }
             //If it's .trs, search it using printName
                 else if(f.getName().contains(".trs")){
                     if(setupFile(f.getPath(), regex)){
                         try{
-                            out.write(f.getPath());
-                            out.newLine();
+                            out = out + f.getPath();
+                            out = out + "; ";
+                            return out;
                         }catch(Exception e){
                             e.printStackTrace();
                         }
@@ -120,6 +122,7 @@ public class User {
         }catch(Exception e){
             e.printStackTrace();
         }
+        return out;
     }
     
     /**

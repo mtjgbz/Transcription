@@ -66,41 +66,44 @@ public class PassiveBE {
                     + " AND Sublesson = '" + sublesson + "';";
             rs = stmt.executeQuery(query);
             String path = rs.getString("FileList");
-            System.out.println(path);
+//            System.out.println(path);
 
             //pulling filename from lesson match .txt file
-            File file = new File(path);
-            LineNumberReader reader = new LineNumberReader(new FileReader(file));
-            int lineCount = 0;
+//            File file = new File(path);
+//            LineNumberReader reader = new LineNumberReader(new FileReader(file));
+//            int lineCount = 0;
+            String[] filePaths = path.split("; ");
 
             //reading lines int the file
-            String line = reader.readLine();
+//            String line = reader.readLine();
             //mark the first line so can reset when go to pull random line later
-            reader.mark((int) file.length());
+//            reader.mark((int) file.length());
             //go through lines and count them to get the total number
-            while (line != null) {
-                line = reader.readLine();
-                lineCount++;
-            }
+//            while (line != null) {
+//                line = reader.readLine();
+//                lineCount++;
+//            }
 
-            System.out.println("Line num: " + lineCount);
+//            System.out.println("Line num: " + lineCount);
             //get a random line number from the total number of lines
-            int random = rand.nextInt(lineCount);
+            int random = rand.nextInt(filePaths.length - 1);
             //System.out.println("Random: " + random);
 
-            //reset lineReader to the beginnig of the file so can read up to the random line
+            //reset lineReader to the beginning of the file so can read up to the random line
             //and then return it
-            reader.reset();
+//            reader.reset();
             //System.out.println("Line before loop: " + reader.getLineNumber());
-            for (int i = 1; i < random; i++) {
-                path = reader.readLine();
-            }
-            if (path.contains("txt")){
-                path = reader.readLine();
-            }
+//            for (int i = 1; i < random; i++) {
+//                path = reader.readLine();
+//            }
+//            if (path.contains("txt")){
+//                path = reader.readLine();
+//            }
+            
+            path = filePaths[random];
 
             //close the lineReader and return the line (path for findPhrase)
-            reader.close();
+//            reader.close();
 
             //System.out.println(path);
             String soundName = path.replace(".trs", ".wav");
