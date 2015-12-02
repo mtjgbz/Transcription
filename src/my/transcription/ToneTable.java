@@ -6,13 +6,25 @@
 package my.transcription;
 
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineEvent;
+import static javax.sound.sampled.LineEvent.Type.STOP;
+import javax.sound.sampled.LineListener;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
  * @author mike
  */
 public class ToneTable extends javax.swing.JFrame {
-
+    Clip clip;
     /**
      * Creates new form ToneTable
      */
@@ -207,7 +219,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton57.setText("<html><center><font color=\"orange\">ka<sup>4</sup>ta<sup>4</sup></font><br>tu<sup>4</sup>mi<sup>4</sup><br><font size=\"1\"> (48)</font></center></html>\\n");
         jButton57.setMaximumSize(new java.awt.Dimension(80, 52));
         jButton57.setMinimumSize(new java.awt.Dimension(80, 52));
-        jButton57.setSize(new java.awt.Dimension(80, 52));
         jButton57.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton57ActionPerformed(evt);
@@ -268,7 +279,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton3.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton3.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton3.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton3.setSize(new java.awt.Dimension(85, 52));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -281,7 +291,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton4.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton4.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton4.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton4.setSize(new java.awt.Dimension(85, 52));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -294,7 +303,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton5.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton5.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton5.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton5.setSize(new java.awt.Dimension(85, 52));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -307,7 +315,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton6.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton6.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton6.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton6.setSize(new java.awt.Dimension(95, 52));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -320,7 +327,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton7.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton7.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton7.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton7.setSize(new java.awt.Dimension(95, 52));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -333,7 +339,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton2.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton2.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton2.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton2.setSize(new java.awt.Dimension(85, 52));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -346,7 +351,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton1.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton1.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton1.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton1.setSize(new java.awt.Dimension(85, 52));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -359,7 +363,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton10.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton10.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton10.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton10.setSize(new java.awt.Dimension(85, 52));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -372,7 +375,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton11.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton11.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton11.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton11.setSize(new java.awt.Dimension(85, 52));
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
@@ -385,7 +387,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton12.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton12.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton12.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton12.setSize(new java.awt.Dimension(85, 52));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -398,7 +399,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton9.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton9.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton9.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton9.setSize(new java.awt.Dimension(85, 52));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -411,7 +411,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton8.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton8.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton8.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton8.setSize(new java.awt.Dimension(85, 52));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -424,7 +423,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton13.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton13.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton13.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton13.setSize(new java.awt.Dimension(95, 52));
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -437,7 +435,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton14.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton14.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton14.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton14.setSize(new java.awt.Dimension(95, 52));
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -450,7 +447,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton21.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton21.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton21.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton21.setSize(new java.awt.Dimension(95, 52));
         jButton21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton21ActionPerformed(evt);
@@ -463,7 +459,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton16.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton16.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton16.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton16.setSize(new java.awt.Dimension(85, 52));
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton16ActionPerformed(evt);
@@ -476,7 +471,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton15.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton15.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton15.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton15.setSize(new java.awt.Dimension(85, 52));
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -489,7 +483,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton17.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton17.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton17.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton17.setSize(new java.awt.Dimension(85, 52));
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
@@ -502,7 +495,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton18.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton18.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton18.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton18.setSize(new java.awt.Dimension(85, 52));
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
@@ -515,7 +507,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton19.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton19.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton19.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton19.setSize(new java.awt.Dimension(85, 52));
         jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton19ActionPerformed(evt);
@@ -527,7 +518,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton20.setText("<html><center><font color=\"orange\">ta'<sup>4</sup>bi<sup>4</sup></font><br>cho'<sup>4</sup>ma<sup>4</sup><br><font size=\"1\"> (10)</font></center></html>\\n");
         jButton20.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton20.setMinimumSize(new java.awt.Dimension(95, 52));
-        jButton20.setSize(new java.awt.Dimension(95, 52));
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton20ActionPerformed(evt);
@@ -540,7 +530,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton27.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton27.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton27.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton27.setSize(new java.awt.Dimension(95, 52));
         jButton27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton27ActionPerformed(evt);
@@ -553,7 +542,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton22.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton22.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton22.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton22.setSize(new java.awt.Dimension(85, 52));
         jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton22ActionPerformed(evt);
@@ -566,7 +554,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton23.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton23.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton23.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton23.setSize(new java.awt.Dimension(85, 52));
         jButton23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton23ActionPerformed(evt);
@@ -579,7 +566,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton24.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton24.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton24.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton24.setSize(new java.awt.Dimension(85, 52));
         jButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton24ActionPerformed(evt);
@@ -591,7 +577,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton26.setText("<html><center><font color=\"orange\">xa'<sup>4</sup>nu<sup>1</sup></font><br><font size=\"1\"> (7)</font></center></html>\\n");
         jButton26.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton26.setMinimumSize(new java.awt.Dimension(95, 52));
-        jButton26.setSize(new java.awt.Dimension(95, 52));
         jButton26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton26ActionPerformed(evt);
@@ -604,7 +589,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton34.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton34.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton34.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton34.setSize(new java.awt.Dimension(95, 52));
         jButton34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton34ActionPerformed(evt);
@@ -617,7 +601,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton29.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton29.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton29.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton29.setSize(new java.awt.Dimension(85, 52));
         jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton29ActionPerformed(evt);
@@ -630,7 +613,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton30.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton30.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton30.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton30.setSize(new java.awt.Dimension(85, 52));
         jButton30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton30ActionPerformed(evt);
@@ -643,7 +625,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton31.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton31.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton31.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton31.setSize(new java.awt.Dimension(85, 52));
         jButton31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton31ActionPerformed(evt);
@@ -656,7 +637,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton33.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton33.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton33.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton33.setSize(new java.awt.Dimension(95, 52));
         jButton33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton33ActionPerformed(evt);
@@ -669,7 +649,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton28.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton28.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton28.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton28.setSize(new java.awt.Dimension(85, 52));
         jButton28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton28ActionPerformed(evt);
@@ -682,7 +661,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton39.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton39.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton39.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton39.setSize(new java.awt.Dimension(95, 52));
         jButton39.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton39ActionPerformed(evt);
@@ -695,7 +673,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton35.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton35.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton35.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton35.setSize(new java.awt.Dimension(85, 52));
         jButton35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton35ActionPerformed(evt);
@@ -708,7 +685,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton36.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton36.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton36.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton36.setSize(new java.awt.Dimension(85, 52));
         jButton36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton36ActionPerformed(evt);
@@ -721,7 +697,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton38.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton38.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton38.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton38.setSize(new java.awt.Dimension(95, 52));
         jButton38.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton38ActionPerformed(evt);
@@ -734,7 +709,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton46.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton46.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton46.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton46.setSize(new java.awt.Dimension(95, 52));
         jButton46.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton46ActionPerformed(evt);
@@ -747,7 +721,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton41.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton41.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton41.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton41.setSize(new java.awt.Dimension(85, 52));
         jButton41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton41ActionPerformed(evt);
@@ -760,7 +733,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton42.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton42.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton42.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton42.setSize(new java.awt.Dimension(85, 52));
         jButton42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton42ActionPerformed(evt);
@@ -773,7 +745,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton43.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton43.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton43.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton43.setSize(new java.awt.Dimension(85, 52));
         jButton43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton43ActionPerformed(evt);
@@ -786,7 +757,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton45.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton45.setMinimumSize(new java.awt.Dimension(95, 52));
         jButton45.setPreferredSize(new java.awt.Dimension(95, 52));
-        jButton45.setSize(new java.awt.Dimension(95, 52));
         jButton45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton45ActionPerformed(evt);
@@ -799,7 +769,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton40.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton40.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton40.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton40.setSize(new java.awt.Dimension(85, 52));
         jButton40.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton40ActionPerformed(evt);
@@ -812,7 +781,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton25.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton25.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton25.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton25.setSize(new java.awt.Dimension(85, 52));
         jButton25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton25ActionPerformed(evt);
@@ -825,7 +793,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton32.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton32.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton32.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton32.setSize(new java.awt.Dimension(85, 52));
         jButton32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton32ActionPerformed(evt);
@@ -838,7 +805,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton37.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton37.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton37.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton37.setSize(new java.awt.Dimension(85, 52));
         jButton37.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton37ActionPerformed(evt);
@@ -851,7 +817,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton44.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton44.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton44.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton44.setSize(new java.awt.Dimension(85, 52));
         jButton44.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton44ActionPerformed(evt);
@@ -864,7 +829,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton47.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton47.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton47.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton47.setSize(new java.awt.Dimension(85, 52));
         jButton47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton47ActionPerformed(evt);
@@ -876,7 +840,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton48.setText("<html><center><font color=\"orange\">so'<sup>1</sup>o<sup>3</sup></font><br>kwa'<sup>1</sup>a<sup>3</sup><br><font size=\"1\"> (16)</font></center></html>\\n");
         jButton48.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton48.setMinimumSize(new java.awt.Dimension(85, 52));
-        jButton48.setSize(new java.awt.Dimension(85, 52));
         jButton48.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton48ActionPerformed(evt);
@@ -888,7 +851,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton55.setText("<html><center><font color=\"orange\">yo'<sup>1</sup>o<sup>4</sup></font><br>kwa'<sup>1</sup>a<sup>4</sup><br><font size=\"1\"> (15)</font></center></html>\\n");
         jButton55.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton55.setMinimumSize(new java.awt.Dimension(85, 52));
-        jButton55.setSize(new java.awt.Dimension(85, 52));
         jButton55.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton55ActionPerformed(evt);
@@ -901,7 +863,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton54.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton54.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton54.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton54.setSize(new java.awt.Dimension(85, 52));
         jButton54.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton54ActionPerformed(evt);
@@ -914,7 +875,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton61.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton61.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton61.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton61.setSize(new java.awt.Dimension(85, 52));
         jButton61.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton61ActionPerformed(evt);
@@ -927,7 +887,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton62.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton62.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton62.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton62.setSize(new java.awt.Dimension(85, 52));
         jButton62.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton62ActionPerformed(evt);
@@ -940,7 +899,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton63.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton63.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton63.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton63.setSize(new java.awt.Dimension(85, 52));
         jButton63.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton63ActionPerformed(evt);
@@ -953,7 +911,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton64.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton64.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton64.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton64.setSize(new java.awt.Dimension(85, 52));
         jButton64.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton64ActionPerformed(evt);
@@ -966,7 +923,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton65.setMaximumSize(new java.awt.Dimension(85, 52));
         jButton65.setMinimumSize(new java.awt.Dimension(85, 52));
         jButton65.setPreferredSize(new java.awt.Dimension(85, 52));
-        jButton65.setSize(new java.awt.Dimension(85, 52));
         jButton65.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton65ActionPerformed(evt);
@@ -978,7 +934,6 @@ public class ToneTable extends javax.swing.JFrame {
         jButton66.setText("<html><center><font color=\"orange\">ta'<sup>3</sup>bi<sup>4</sup></font><br>ka'<sup>3</sup>nda<sup>4</sup><br><font size=\"1\"> (19)</font></center></html>\\n");
         jButton66.setMaximumSize(new java.awt.Dimension(95, 52));
         jButton66.setMinimumSize(new java.awt.Dimension(95, 52));
-        jButton66.setSize(new java.awt.Dimension(95, 52));
         jButton66.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton66ActionPerformed(evt);
@@ -991,7 +946,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton67.setMaximumSize(new java.awt.Dimension(95, 52));
             jButton67.setMinimumSize(new java.awt.Dimension(95, 52));
             jButton67.setPreferredSize(new java.awt.Dimension(95, 52));
-            jButton67.setSize(new java.awt.Dimension(95, 52));
             jButton67.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton67ActionPerformed(evt);
@@ -1004,7 +958,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton60.setMaximumSize(new java.awt.Dimension(95, 52));
             jButton60.setMinimumSize(new java.awt.Dimension(95, 52));
             jButton60.setPreferredSize(new java.awt.Dimension(95, 52));
-            jButton60.setSize(new java.awt.Dimension(95, 52));
             jButton60.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton60ActionPerformed(evt);
@@ -1017,7 +970,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton53.setMaximumSize(new java.awt.Dimension(95, 52));
             jButton53.setMinimumSize(new java.awt.Dimension(95, 52));
             jButton53.setPreferredSize(new java.awt.Dimension(95, 52));
-            jButton53.setSize(new java.awt.Dimension(95, 52));
             jButton53.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton53ActionPerformed(evt);
@@ -1030,7 +982,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton52.setMaximumSize(new java.awt.Dimension(95, 52));
             jButton52.setMinimumSize(new java.awt.Dimension(95, 52));
             jButton52.setPreferredSize(new java.awt.Dimension(95, 52));
-            jButton52.setSize(new java.awt.Dimension(95, 52));
             jButton52.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton52ActionPerformed(evt);
@@ -1043,7 +994,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton59.setMaximumSize(new java.awt.Dimension(95, 52));
             jButton59.setMinimumSize(new java.awt.Dimension(95, 52));
             jButton59.setPreferredSize(new java.awt.Dimension(95, 52));
-            jButton59.setSize(new java.awt.Dimension(95, 52));
             jButton59.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton59ActionPerformed(evt);
@@ -1056,7 +1006,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton51.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton51.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton51.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton51.setSize(new java.awt.Dimension(85, 52));
             jButton51.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton51ActionPerformed(evt);
@@ -1069,7 +1018,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton58.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton58.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton58.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton58.setSize(new java.awt.Dimension(85, 52));
             jButton58.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton58ActionPerformed(evt);
@@ -1082,7 +1030,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton50.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton50.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton50.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton50.setSize(new java.awt.Dimension(85, 52));
             jButton50.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton50ActionPerformed(evt);
@@ -1095,7 +1042,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton57real.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton57real.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton57real.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton57real.setSize(new java.awt.Dimension(85, 52));
             jButton57real.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton57realActionPerformed(evt);
@@ -1108,7 +1054,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton49.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton49.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton49.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton49.setSize(new java.awt.Dimension(85, 52));
             jButton49.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton49ActionPerformed(evt);
@@ -1121,7 +1066,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton56.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton56.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton56.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton56.setSize(new java.awt.Dimension(85, 52));
             jButton56.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton56ActionPerformed(evt);
@@ -1134,7 +1078,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton68.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton68.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton68.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton68.setSize(new java.awt.Dimension(85, 52));
             jButton68.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton68ActionPerformed(evt);
@@ -1147,7 +1090,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton69.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton69.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton69.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton69.setSize(new java.awt.Dimension(85, 52));
             jButton69.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton69ActionPerformed(evt);
@@ -1159,7 +1101,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton70.setText("<html><center><font color=\"orange\">ti'<sup>13</sup>bi<sup>2</sup></font><br><font size=\"1\"> (1)</font></center></html>\\n");
             jButton70.setMaximumSize(new java.awt.Dimension(95, 52));
             jButton70.setMinimumSize(new java.awt.Dimension(95, 52));
-            jButton70.setSize(new java.awt.Dimension(95, 52));
             jButton70.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton70ActionPerformed(evt);
@@ -1172,7 +1113,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton71.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton71.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton71.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton71.setSize(new java.awt.Dimension(85, 52));
             jButton71.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton71ActionPerformed(evt);
@@ -1185,7 +1125,6 @@ public class ToneTable extends javax.swing.JFrame {
             jButton72.setMaximumSize(new java.awt.Dimension(85, 52));
             jButton72.setMinimumSize(new java.awt.Dimension(85, 52));
             jButton72.setPreferredSize(new java.awt.Dimension(85, 52));
-            jButton72.setSize(new java.awt.Dimension(85, 52));
             jButton72.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton72ActionPerformed(evt);
@@ -1198,7 +1137,6 @@ public class ToneTable extends javax.swing.JFrame {
                 jButton73.setMaximumSize(new java.awt.Dimension(95, 52));
                 jButton73.setMinimumSize(new java.awt.Dimension(95, 52));
                 jButton73.setPreferredSize(new java.awt.Dimension(95, 52));
-                jButton73.setSize(new java.awt.Dimension(95, 52));
                 jButton73.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         jButton73ActionPerformed(evt);
@@ -1211,7 +1149,6 @@ public class ToneTable extends javax.swing.JFrame {
                 jButton74.setMaximumSize(new java.awt.Dimension(85, 52));
                 jButton74.setMinimumSize(new java.awt.Dimension(85, 52));
                 jButton74.setPreferredSize(new java.awt.Dimension(85, 52));
-                jButton74.setSize(new java.awt.Dimension(85, 52));
                 jButton74.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         jButton74ActionPerformed(evt);
@@ -1223,7 +1160,6 @@ public class ToneTable extends javax.swing.JFrame {
                 jButton75.setText("<html><center><font color=\"orange\">chu'<sup>13</sup>ma<sup>1</sup></font><br><font size=\"1\"> (4)</font></center></html>\\n");
                 jButton75.setMaximumSize(new java.awt.Dimension(95, 52));
                 jButton75.setMinimumSize(new java.awt.Dimension(95, 52));
-                jButton75.setSize(new java.awt.Dimension(95, 52));
                 jButton75.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         jButton75ActionPerformed(evt);
@@ -1236,7 +1172,6 @@ public class ToneTable extends javax.swing.JFrame {
                 jButton76.setMaximumSize(new java.awt.Dimension(85, 52));
                 jButton76.setMinimumSize(new java.awt.Dimension(85, 52));
                 jButton76.setPreferredSize(new java.awt.Dimension(85, 52));
-                jButton76.setSize(new java.awt.Dimension(85, 52));
                 jButton76.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         jButton76ActionPerformed(evt);
@@ -1249,7 +1184,6 @@ public class ToneTable extends javax.swing.JFrame {
                 jButton77.setMaximumSize(new java.awt.Dimension(85, 52));
                 jButton77.setMinimumSize(new java.awt.Dimension(85, 52));
                 jButton77.setPreferredSize(new java.awt.Dimension(85, 52));
-                jButton77.setSize(new java.awt.Dimension(85, 52));
                 jButton77.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         jButton77ActionPerformed(evt);
@@ -1262,7 +1196,6 @@ public class ToneTable extends javax.swing.JFrame {
                 jButton78.setMaximumSize(new java.awt.Dimension(85, 52));
                 jButton78.setMinimumSize(new java.awt.Dimension(85, 52));
                 jButton78.setPreferredSize(new java.awt.Dimension(85, 52));
-                jButton78.setSize(new java.awt.Dimension(85, 52));
                 jButton78.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         jButton78ActionPerformed(evt);
@@ -1275,7 +1208,6 @@ public class ToneTable extends javax.swing.JFrame {
                 jButton79.setMaximumSize(new java.awt.Dimension(85, 52));
                 jButton79.setMinimumSize(new java.awt.Dimension(85, 52));
                 jButton79.setPreferredSize(new java.awt.Dimension(85, 52));
-                jButton79.setSize(new java.awt.Dimension(85, 52));
                 jButton79.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         jButton79ActionPerformed(evt);
@@ -1287,7 +1219,6 @@ public class ToneTable extends javax.swing.JFrame {
                 jButton80.setText("<html><center><font color=\"orange\">yu'<sup>14</sup>bi<sup>2</sup></font><br><font size=\"1\"> (1)</font></center></html>\\n");
                 jButton80.setMaximumSize(new java.awt.Dimension(95, 52));
                 jButton80.setMinimumSize(new java.awt.Dimension(95, 52));
-                jButton80.setSize(new java.awt.Dimension(95, 52));
                 jButton80.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         jButton80ActionPerformed(evt);
@@ -1300,7 +1231,6 @@ public class ToneTable extends javax.swing.JFrame {
                     jButton81.setMaximumSize(new java.awt.Dimension(95, 52));
                     jButton81.setMinimumSize(new java.awt.Dimension(95, 52));
                     jButton81.setPreferredSize(new java.awt.Dimension(95, 52));
-                    jButton81.setSize(new java.awt.Dimension(95, 52));
                     jButton81.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             jButton81ActionPerformed(evt);
@@ -1313,7 +1243,6 @@ public class ToneTable extends javax.swing.JFrame {
                     jButton82.setMaximumSize(new java.awt.Dimension(85, 52));
                     jButton82.setMinimumSize(new java.awt.Dimension(85, 52));
                     jButton82.setPreferredSize(new java.awt.Dimension(85, 52));
-                    jButton82.setSize(new java.awt.Dimension(85, 52));
                     jButton82.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             jButton82ActionPerformed(evt);
@@ -1326,7 +1255,6 @@ public class ToneTable extends javax.swing.JFrame {
                     jButton83.setMaximumSize(new java.awt.Dimension(85, 52));
                     jButton83.setMinimumSize(new java.awt.Dimension(85, 52));
                     jButton83.setPreferredSize(new java.awt.Dimension(85, 52));
-                    jButton83.setSize(new java.awt.Dimension(85, 52));
                     jButton83.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             jButton83ActionPerformed(evt);
@@ -1339,7 +1267,6 @@ public class ToneTable extends javax.swing.JFrame {
                     jButton84.setMaximumSize(new java.awt.Dimension(85, 52));
                     jButton84.setMinimumSize(new java.awt.Dimension(85, 52));
                     jButton84.setPreferredSize(new java.awt.Dimension(85, 52));
-                    jButton84.setSize(new java.awt.Dimension(85, 52));
                     jButton84.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             jButton84ActionPerformed(evt);
@@ -1351,7 +1278,6 @@ public class ToneTable extends javax.swing.JFrame {
                     jButton85.setText("<html><center><font color=\"orange\">si'<sup>14</sup>bi<sup>3</sup></font><br><font size=\"1\"> (6)</font></center></html>\\n");
                     jButton85.setMaximumSize(new java.awt.Dimension(95, 52));
                     jButton85.setMinimumSize(new java.awt.Dimension(95, 52));
-                    jButton85.setSize(new java.awt.Dimension(95, 52));
                     jButton85.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             jButton85ActionPerformed(evt);
@@ -1364,7 +1290,6 @@ public class ToneTable extends javax.swing.JFrame {
                         jButton86.setMaximumSize(new java.awt.Dimension(95, 52));
                         jButton86.setMinimumSize(new java.awt.Dimension(95, 52));
                         jButton86.setPreferredSize(new java.awt.Dimension(95, 52));
-                        jButton86.setSize(new java.awt.Dimension(95, 52));
                         jButton86.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 jButton86ActionPerformed(evt);
@@ -1377,7 +1302,6 @@ public class ToneTable extends javax.swing.JFrame {
                         jButton87.setMaximumSize(new java.awt.Dimension(85, 52));
                         jButton87.setMinimumSize(new java.awt.Dimension(85, 52));
                         jButton87.setPreferredSize(new java.awt.Dimension(85, 52));
-                        jButton87.setSize(new java.awt.Dimension(85, 52));
                         jButton87.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 jButton87ActionPerformed(evt);
@@ -1390,7 +1314,6 @@ public class ToneTable extends javax.swing.JFrame {
                         jButton88.setMaximumSize(new java.awt.Dimension(85, 52));
                         jButton88.setMinimumSize(new java.awt.Dimension(85, 52));
                         jButton88.setPreferredSize(new java.awt.Dimension(85, 52));
-                        jButton88.setSize(new java.awt.Dimension(85, 52));
                         jButton88.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 jButton88ActionPerformed(evt);
@@ -1403,7 +1326,6 @@ public class ToneTable extends javax.swing.JFrame {
                         jButton89.setMaximumSize(new java.awt.Dimension(85, 52));
                         jButton89.setMinimumSize(new java.awt.Dimension(85, 52));
                         jButton89.setPreferredSize(new java.awt.Dimension(85, 52));
-                        jButton89.setSize(new java.awt.Dimension(85, 52));
                         jButton89.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 jButton89ActionPerformed(evt);
@@ -1416,7 +1338,6 @@ public class ToneTable extends javax.swing.JFrame {
                             jButton90.setMaximumSize(new java.awt.Dimension(95, 52));
                             jButton90.setMinimumSize(new java.awt.Dimension(95, 52));
                             jButton90.setPreferredSize(new java.awt.Dimension(95, 52));
-                            jButton90.setSize(new java.awt.Dimension(95, 52));
                             jButton90.addActionListener(new java.awt.event.ActionListener() {
                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                     jButton90ActionPerformed(evt);
@@ -1429,7 +1350,6 @@ public class ToneTable extends javax.swing.JFrame {
                             jButton91.setMaximumSize(new java.awt.Dimension(85, 52));
                             jButton91.setMinimumSize(new java.awt.Dimension(85, 52));
                             jButton91.setPreferredSize(new java.awt.Dimension(85, 52));
-                            jButton91.setSize(new java.awt.Dimension(85, 52));
                             jButton91.addActionListener(new java.awt.event.ActionListener() {
                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                     jButton91ActionPerformed(evt);
@@ -1441,7 +1361,6 @@ public class ToneTable extends javax.swing.JFrame {
                             jButton92.setText("<html><center><font color=\"orange\">chi'<sup>1</sup>li<sup>42</sup></font><br><font size=\"1\"> (1)</font></center></html>\\n");
                             jButton92.setMaximumSize(new java.awt.Dimension(95, 52));
                             jButton92.setMinimumSize(new java.awt.Dimension(95, 52));
-                            jButton92.setSize(new java.awt.Dimension(95, 52));
                             jButton92.addActionListener(new java.awt.event.ActionListener() {
                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                     jButton92ActionPerformed(evt);
@@ -1454,7 +1373,6 @@ public class ToneTable extends javax.swing.JFrame {
                                 jButton93.setMaximumSize(new java.awt.Dimension(95, 52));
                                 jButton93.setMinimumSize(new java.awt.Dimension(95, 52));
                                 jButton93.setPreferredSize(new java.awt.Dimension(95, 52));
-                                jButton93.setSize(new java.awt.Dimension(95, 52));
                                 jButton93.addActionListener(new java.awt.event.ActionListener() {
                                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         jButton93ActionPerformed(evt);
@@ -1467,7 +1385,6 @@ public class ToneTable extends javax.swing.JFrame {
                                 jButton94.setMaximumSize(new java.awt.Dimension(85, 52));
                                 jButton94.setMinimumSize(new java.awt.Dimension(85, 52));
                                 jButton94.setPreferredSize(new java.awt.Dimension(85, 52));
-                                jButton94.setSize(new java.awt.Dimension(85, 52));
                                 jButton94.addActionListener(new java.awt.event.ActionListener() {
                                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         jButton94ActionPerformed(evt);
@@ -1480,7 +1397,6 @@ public class ToneTable extends javax.swing.JFrame {
                                 jButton95.setMaximumSize(new java.awt.Dimension(85, 52));
                                 jButton95.setMinimumSize(new java.awt.Dimension(85, 52));
                                 jButton95.setPreferredSize(new java.awt.Dimension(85, 52));
-                                jButton95.setSize(new java.awt.Dimension(85, 52));
                                 jButton95.addActionListener(new java.awt.event.ActionListener() {
                                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         jButton95ActionPerformed(evt);
@@ -1493,7 +1409,6 @@ public class ToneTable extends javax.swing.JFrame {
                                 jButton96.setMaximumSize(new java.awt.Dimension(85, 52));
                                 jButton96.setMinimumSize(new java.awt.Dimension(85, 52));
                                 jButton96.setPreferredSize(new java.awt.Dimension(85, 52));
-                                jButton96.setSize(new java.awt.Dimension(85, 52));
                                 jButton96.addActionListener(new java.awt.event.ActionListener() {
                                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         jButton96ActionPerformed(evt);
@@ -1505,7 +1420,6 @@ public class ToneTable extends javax.swing.JFrame {
                                 jButton97.setText("<html><center><font color=\"orange\">xa'<sup>1</sup>bi<sup>32</sup></font><br><font size=\"1\"> (1)</font></center></html>\\n");
                                 jButton97.setMaximumSize(new java.awt.Dimension(95, 52));
                                 jButton97.setMinimumSize(new java.awt.Dimension(95, 52));
-                                jButton97.setSize(new java.awt.Dimension(95, 52));
                                 jButton97.addActionListener(new java.awt.event.ActionListener() {
                                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         jButton97ActionPerformed(evt);
@@ -1518,7 +1432,6 @@ public class ToneTable extends javax.swing.JFrame {
                                 jButton98.setMaximumSize(new java.awt.Dimension(85, 52));
                                 jButton98.setMinimumSize(new java.awt.Dimension(85, 52));
                                 jButton98.setPreferredSize(new java.awt.Dimension(85, 52));
-                                jButton98.setSize(new java.awt.Dimension(85, 52));
                                 jButton98.addActionListener(new java.awt.event.ActionListener() {
                                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         jButton98ActionPerformed(evt);
@@ -1531,7 +1444,6 @@ public class ToneTable extends javax.swing.JFrame {
                                 jButton99.setMaximumSize(new java.awt.Dimension(85, 52));
                                 jButton99.setMinimumSize(new java.awt.Dimension(85, 52));
                                 jButton99.setPreferredSize(new java.awt.Dimension(85, 52));
-                                jButton99.setSize(new java.awt.Dimension(85, 52));
                                 jButton99.addActionListener(new java.awt.event.ActionListener() {
                                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         jButton99ActionPerformed(evt);
@@ -1544,7 +1456,6 @@ public class ToneTable extends javax.swing.JFrame {
                                 jButton100.setMaximumSize(new java.awt.Dimension(85, 52));
                                 jButton100.setMinimumSize(new java.awt.Dimension(85, 52));
                                 jButton100.setPreferredSize(new java.awt.Dimension(85, 52));
-                                jButton100.setSize(new java.awt.Dimension(85, 52));
                                 jButton100.addActionListener(new java.awt.event.ActionListener() {
                                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                                         jButton100ActionPerformed(evt);
@@ -1557,7 +1468,6 @@ public class ToneTable extends javax.swing.JFrame {
                                     jButton101.setMaximumSize(new java.awt.Dimension(95, 52));
                                     jButton101.setMinimumSize(new java.awt.Dimension(95, 52));
                                     jButton101.setPreferredSize(new java.awt.Dimension(95, 52));
-                                    jButton101.setSize(new java.awt.Dimension(95, 52));
                                     jButton101.addActionListener(new java.awt.event.ActionListener() {
                                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                             jButton101ActionPerformed(evt);
@@ -1570,7 +1480,6 @@ public class ToneTable extends javax.swing.JFrame {
                                     jButton102.setMaximumSize(new java.awt.Dimension(85, 52));
                                     jButton102.setMinimumSize(new java.awt.Dimension(85, 52));
                                     jButton102.setPreferredSize(new java.awt.Dimension(85, 52));
-                                    jButton102.setSize(new java.awt.Dimension(85, 52));
                                     jButton102.addActionListener(new java.awt.event.ActionListener() {
                                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                             jButton102ActionPerformed(evt);
@@ -1583,7 +1492,6 @@ public class ToneTable extends javax.swing.JFrame {
                                     jButton103.setMaximumSize(new java.awt.Dimension(85, 52));
                                     jButton103.setMinimumSize(new java.awt.Dimension(85, 52));
                                     jButton103.setPreferredSize(new java.awt.Dimension(85, 52));
-                                    jButton103.setSize(new java.awt.Dimension(85, 52));
                                     jButton103.addActionListener(new java.awt.event.ActionListener() {
                                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                             jButton103ActionPerformed(evt);
@@ -1596,7 +1504,6 @@ public class ToneTable extends javax.swing.JFrame {
                                     jButton104.setMaximumSize(new java.awt.Dimension(85, 52));
                                     jButton104.setMinimumSize(new java.awt.Dimension(85, 52));
                                     jButton104.setPreferredSize(new java.awt.Dimension(85, 52));
-                                    jButton104.setSize(new java.awt.Dimension(85, 52));
                                     jButton104.addActionListener(new java.awt.event.ActionListener() {
                                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                             jButton104ActionPerformed(evt);
@@ -1609,7 +1516,6 @@ public class ToneTable extends javax.swing.JFrame {
                                     jButton105.setMaximumSize(new java.awt.Dimension(85, 52));
                                     jButton105.setMinimumSize(new java.awt.Dimension(85, 52));
                                     jButton105.setPreferredSize(new java.awt.Dimension(85, 52));
-                                    jButton105.setSize(new java.awt.Dimension(85, 52));
                                     jButton105.addActionListener(new java.awt.event.ActionListener() {
                                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                             jButton105ActionPerformed(evt);
@@ -1622,7 +1528,6 @@ public class ToneTable extends javax.swing.JFrame {
                                     jButton106.setMaximumSize(new java.awt.Dimension(85, 52));
                                     jButton106.setMinimumSize(new java.awt.Dimension(85, 52));
                                     jButton106.setPreferredSize(new java.awt.Dimension(85, 52));
-                                    jButton106.setSize(new java.awt.Dimension(85, 52));
                                     jButton106.addActionListener(new java.awt.event.ActionListener() {
                                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                             jButton106ActionPerformed(evt);
@@ -1634,7 +1539,6 @@ public class ToneTable extends javax.swing.JFrame {
                                     jButton107.setText("<html><center><font color=\"orange\">xa'<sup>4</sup>nu<sup>13</sup></font><br><font size=\"1\"> (4)</font></center></html>\\n");
                                     jButton107.setMaximumSize(new java.awt.Dimension(95, 52));
                                     jButton107.setMinimumSize(new java.awt.Dimension(95, 52));
-                                    jButton107.setSize(new java.awt.Dimension(95, 52));
                                     jButton107.addActionListener(new java.awt.event.ActionListener() {
                                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                             jButton107ActionPerformed(evt);
@@ -1647,7 +1551,6 @@ public class ToneTable extends javax.swing.JFrame {
                                         jButton108.setMaximumSize(new java.awt.Dimension(95, 52));
                                         jButton108.setMinimumSize(new java.awt.Dimension(95, 52));
                                         jButton108.setPreferredSize(new java.awt.Dimension(95, 52));
-                                        jButton108.setSize(new java.awt.Dimension(95, 52));
                                         jButton108.addActionListener(new java.awt.event.ActionListener() {
                                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 jButton108ActionPerformed(evt);
@@ -1660,7 +1563,6 @@ public class ToneTable extends javax.swing.JFrame {
                                         jButton109.setMaximumSize(new java.awt.Dimension(85, 52));
                                         jButton109.setMinimumSize(new java.awt.Dimension(85, 52));
                                         jButton109.setPreferredSize(new java.awt.Dimension(85, 52));
-                                        jButton109.setSize(new java.awt.Dimension(85, 52));
                                         jButton109.addActionListener(new java.awt.event.ActionListener() {
                                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 jButton109ActionPerformed(evt);
@@ -1672,7 +1574,6 @@ public class ToneTable extends javax.swing.JFrame {
                                         jButton110.setText("<html><center><font color=\"orange\">ka'<sup>4</sup>yu<sup>14</sup></font><br><font size=\"1\"> (2)</font></center></html>\\n");
                                         jButton110.setMaximumSize(new java.awt.Dimension(95, 52));
                                         jButton110.setMinimumSize(new java.awt.Dimension(95, 52));
-                                        jButton110.setSize(new java.awt.Dimension(95, 52));
                                         jButton110.addActionListener(new java.awt.event.ActionListener() {
                                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 jButton110ActionPerformed(evt);
@@ -1685,7 +1586,6 @@ public class ToneTable extends javax.swing.JFrame {
                                         jButton111.setMaximumSize(new java.awt.Dimension(85, 52));
                                         jButton111.setMinimumSize(new java.awt.Dimension(85, 52));
                                         jButton111.setPreferredSize(new java.awt.Dimension(85, 52));
-                                        jButton111.setSize(new java.awt.Dimension(85, 52));
                                         jButton111.addActionListener(new java.awt.event.ActionListener() {
                                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 jButton111ActionPerformed(evt);
@@ -1698,7 +1598,6 @@ public class ToneTable extends javax.swing.JFrame {
                                         jButton112.setMaximumSize(new java.awt.Dimension(85, 52));
                                         jButton112.setMinimumSize(new java.awt.Dimension(85, 52));
                                         jButton112.setPreferredSize(new java.awt.Dimension(85, 52));
-                                        jButton112.setSize(new java.awt.Dimension(85, 52));
                                         jButton112.addActionListener(new java.awt.event.ActionListener() {
                                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 jButton112ActionPerformed(evt);
@@ -1711,7 +1610,6 @@ public class ToneTable extends javax.swing.JFrame {
                                         jButton113.setMaximumSize(new java.awt.Dimension(85, 52));
                                         jButton113.setMinimumSize(new java.awt.Dimension(85, 52));
                                         jButton113.setPreferredSize(new java.awt.Dimension(85, 52));
-                                        jButton113.setSize(new java.awt.Dimension(85, 52));
                                         jButton113.addActionListener(new java.awt.event.ActionListener() {
                                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 jButton113ActionPerformed(evt);
@@ -1723,7 +1621,6 @@ public class ToneTable extends javax.swing.JFrame {
                                         jButton114.setText("<html><center><font color=\"orange\">xa'<sup>4</sup>ni<sup>24</sup></font><br><font size=\"1\"> (1)</font></center></html>\\n");
                                         jButton114.setMaximumSize(new java.awt.Dimension(95, 52));
                                         jButton114.setMinimumSize(new java.awt.Dimension(95, 52));
-                                        jButton114.setSize(new java.awt.Dimension(95, 52));
                                         jButton114.addActionListener(new java.awt.event.ActionListener() {
                                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                 jButton114ActionPerformed(evt);
@@ -1736,7 +1633,6 @@ public class ToneTable extends javax.swing.JFrame {
                                             jButton115.setMaximumSize(new java.awt.Dimension(95, 52));
                                             jButton115.setMinimumSize(new java.awt.Dimension(95, 52));
                                             jButton115.setPreferredSize(new java.awt.Dimension(95, 52));
-                                            jButton115.setSize(new java.awt.Dimension(95, 52));
                                             jButton115.addActionListener(new java.awt.event.ActionListener() {
                                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     jButton115ActionPerformed(evt);
@@ -1748,7 +1644,6 @@ public class ToneTable extends javax.swing.JFrame {
                                             jButton116.setText("<html><center>kia'<sup>3</sup>bi<sup>13</sup><br><font size=\"1\"> (1)</font></center></html>\\n");
                                             jButton116.setMaximumSize(new java.awt.Dimension(95, 52));
                                             jButton116.setMinimumSize(new java.awt.Dimension(95, 52));
-                                            jButton116.setSize(new java.awt.Dimension(95, 52));
                                             jButton116.addActionListener(new java.awt.event.ActionListener() {
                                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     jButton116ActionPerformed(evt);
@@ -1761,7 +1656,6 @@ public class ToneTable extends javax.swing.JFrame {
                                             jButton117.setMaximumSize(new java.awt.Dimension(85, 52));
                                             jButton117.setMinimumSize(new java.awt.Dimension(85, 52));
                                             jButton117.setPreferredSize(new java.awt.Dimension(85, 52));
-                                            jButton117.setSize(new java.awt.Dimension(85, 52));
                                             jButton117.addActionListener(new java.awt.event.ActionListener() {
                                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     jButton117ActionPerformed(evt);
@@ -1774,7 +1668,6 @@ public class ToneTable extends javax.swing.JFrame {
                                             jButton118.setMaximumSize(new java.awt.Dimension(85, 52));
                                             jButton118.setMinimumSize(new java.awt.Dimension(85, 52));
                                             jButton118.setPreferredSize(new java.awt.Dimension(85, 52));
-                                            jButton118.setSize(new java.awt.Dimension(85, 52));
                                             jButton118.addActionListener(new java.awt.event.ActionListener() {
                                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     jButton118ActionPerformed(evt);
@@ -1787,7 +1680,6 @@ public class ToneTable extends javax.swing.JFrame {
                                             jButton119.setMaximumSize(new java.awt.Dimension(85, 52));
                                             jButton119.setMinimumSize(new java.awt.Dimension(85, 52));
                                             jButton119.setPreferredSize(new java.awt.Dimension(85, 52));
-                                            jButton119.setSize(new java.awt.Dimension(85, 52));
                                             jButton119.addActionListener(new java.awt.event.ActionListener() {
                                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     jButton119ActionPerformed(evt);
@@ -1800,7 +1692,6 @@ public class ToneTable extends javax.swing.JFrame {
                                             jButton120.setMaximumSize(new java.awt.Dimension(85, 52));
                                             jButton120.setMinimumSize(new java.awt.Dimension(85, 52));
                                             jButton120.setPreferredSize(new java.awt.Dimension(85, 52));
-                                            jButton120.setSize(new java.awt.Dimension(85, 52));
                                             jButton120.addActionListener(new java.awt.event.ActionListener() {
                                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     jButton120ActionPerformed(evt);
@@ -1812,7 +1703,6 @@ public class ToneTable extends javax.swing.JFrame {
                                             jButton121.setMaximumSize(new java.awt.Dimension(85, 52));
                                             jButton121.setMinimumSize(new java.awt.Dimension(85, 52));
                                             jButton121.setPreferredSize(new java.awt.Dimension(85, 52));
-                                            jButton121.setSize(new java.awt.Dimension(85, 52));
                                             jButton121.addActionListener(new java.awt.event.ActionListener() {
                                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                                     jButton121ActionPerformed(evt);
@@ -1992,7 +1882,7 @@ public class ToneTable extends javax.swing.JFrame {
                                                                                                     .addComponent(jButton109, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                                                     .addComponent(jButton110, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                 .addComponent(jButton115, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                 .addComponent(jButton108, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2183,26 +2073,23 @@ public class ToneTable extends javax.swing.JFrame {
                                                                                     .addComponent(jButton85, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                                     .addComponent(jButton86, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                                        .addComponent(jButton73, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                                                                            .addGap(0, 0, 0)
                                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                .addComponent(jButton73, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(jButton87, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                                                                                    .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                        .addComponent(jButton87, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                                                                                            .addComponent(jButton76, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                            .addComponent(jButton77, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                        .addComponent(jButton74, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                    .addGap(97, 97, 97)
-                                                                                    .addComponent(jButton78, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                    .addComponent(jButton76, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                    .addComponent(jButton79, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                    .addComponent(jButton80, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                    .addComponent(jButton81, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                                                    .addComponent(jButton77, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                .addComponent(jButton74, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                            .addGap(97, 97, 97)
+                                                                            .addComponent(jButton78, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                            .addComponent(jButton79, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                            .addComponent(jButton80, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                            .addComponent(jButton81, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                                     .addGap(1, 1, 1)))
                                                             .addGap(16, 16, 16))
                                                         .addGroup(jLayeredPane5Layout.createSequentialGroup()
@@ -2218,28 +2105,30 @@ public class ToneTable extends javax.swing.JFrame {
                                                     .addGap(0, 0, 0)
                                                     .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                                                            .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
                                                                     .addGap(20, 20, 20)
                                                                     .addComponent(jLabel2))
-                                                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                            .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
                                                                     .addGap(20, 20, 20)
-                                                                    .addComponent(jLabel4)))
+                                                                    .addComponent(jLabel4))
+                                                                .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                     .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2478,8 +2367,7 @@ public class ToneTable extends javax.swing.JFrame {
                                                                 .addComponent(jButton117, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
                                                                     .addGap(18, 18, 18)
-                                                                    .addComponent(jLabel28)
-                                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                                                    .addComponent(jLabel28)))
                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addComponent(jButton118, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
@@ -2496,11 +2384,8 @@ public class ToneTable extends javax.swing.JFrame {
                                                                     .addComponent(jLabel31)
                                                                     .addGap(23, 23, 23)))
                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                                                                    .addGap(0, 0, 0)
-                                                                    .addComponent(jButton120, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(jButton120, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane5Layout.createSequentialGroup()
-                                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                     .addComponent(jLabel29)
                                                                     .addGap(22, 22, 22)))
                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2691,8 +2576,37 @@ public class ToneTable extends javax.swing.JFrame {
                                             pack();
                                         }// </editor-fold>//GEN-END:initComponents
 
+    LineListener listener = new LineListener() {
+        @Override
+        public void update(LineEvent event) {
+            if(event.getType()==STOP){
+                clip.close();
+                }
+            }
+
+    };
+    
+    String path = "/home/mike/Transcription Data/Tones/";
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       AudioInputStream audioIn = null;
+        try {
+            audioIn = AudioSystem.getAudioInputStream(new File(path+"a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav"));
+            clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            audioIn.close();
+            
+            clip.addLineListener(listener);
+            clip.start();
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

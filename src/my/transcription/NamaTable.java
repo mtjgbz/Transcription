@@ -92,7 +92,15 @@ public class NamaTable extends javax.swing.JFrame {
         buttonlist.add(jButton23);
         buttonlist.add(jButton24);
         buttonlist.add(playAllButton);
-        System.out.print(listenerlist.size());
+        System.out.print(listenerlist.size()+" and "+cliplist.size());
+        int i=0;
+       for(Clip clip:cliplist){
+           if(clip.equals(cliplist.get(i))){
+               System.out.print(i + " has match \n");
+           }
+           i++;
+       }
+       
     }
     
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -349,7 +357,6 @@ public class NamaTable extends javax.swing.JFrame {
             @Override
             public void update(LineEvent event) {
                 if(event.getType()==STOP){
-                    cliplist.get(18).setMicrosecondPosition(0);
                     cliplist.get(18).start();
                     jButton18.setForeground(new java.awt.Color(0, 153, 51));
                     jButton19.setForeground(Color.blue);
@@ -1498,21 +1505,24 @@ public class NamaTable extends javax.swing.JFrame {
     private boolean isPlaying = false;
     
     private void playAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playAllButtonActionPerformed
-        for(Clip clip:cliplist){
-            clip.stop();
-        }
+        
         for(javax.swing.JButton butt:buttonlist){
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if(!isPlaying){
+            for(Clip clip:cliplist){
+                clip.stop();
+            }
             playAllButton.setForeground(new java.awt.Color(255, 51, 51));
             isPlaying = true;
             for(Clip clip:cliplist){
                 clip.setMicrosecondPosition(0);
+                
                 if(cliplist.indexOf(clip)<23){
                     clip.addLineListener(listenerlist.get(cliplist.indexOf(clip)));
                 }
             }
+            
             cliplist.get(0).start();
             jButton1.setForeground(Color.blue);
         }else{
