@@ -8,6 +8,7 @@ package my.transcription;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,14 +36,17 @@ public class Practice extends javax.swing.JFrame {
     NamaTable na;
     int NaMaCount = 0;
     
-    private ActiveBE pbe;
+    private ActiveBE backend;
     
     int page = 1;
     
     private ArrayList<String> textList = new ArrayList<>();
     Integer timesVar = 9029000;
-    private ArrayList<String> phraseList;
+    private ArrayList<ArrayList<String>> phraseList;
     private ArrayList<String> wordsList = new ArrayList<String>();
+    ArrayList<Integer> timesList = new ArrayList<>();
+    ArrayList<Timer> timersList = new ArrayList<>();
+    ArrayList<File> clips = new ArrayList<>();
 
     
     ActionListener listener = new ActionListener() {
@@ -73,59 +77,61 @@ public class Practice extends javax.swing.JFrame {
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
         
-        pbe = new ActiveBE(false);
+        backend = new ActiveBE(false);
         initAudio(); 
+        initTextFields();
     }
     
     private void initAudio(){
-        clip = pbe.makeClip(page);
+        clip = backend.makeClip(page);
         //timer = ;
     }
     
     public void initTextFields() {
-//        pbe = new PassiveBE();
-//        phraseList = new ArrayList<String>();
-//        for (int i = 0; i < 20; i++) {
-//            String file = pbe.findFile(lesson, subLesson);
-//            ArrayList<String> phrase = pbe.findPhrase(file);
-//
-//            ArrayList<String> currList;
-//            if (phrase == null || phrase.get(1) == null) {
-//                i--;
-//                continue;
-//            }
-//            boolean contains = false;
-//            int index = 0;
-//
-//            if (contains == true) {
-//                i--;
-//            } else {
-//                phraseList.add(phrase);
-//                currList.set(i % 5, phrase.get(1));
-//            }
-//            
-//            //Put clip and time info here - how are we getting the time information?
-//            //use getClips to return the clip names and files
-//            Float startTime = Float.parseFloat(phrase.get(0));
-//            int startNum = (int) (startTime * 1000000);
-//
-//            timesList.add(startNum);
-//
-//            Float endTime = Float.parseFloat(phrase.get(2));
-//            int endNum = (int) (endTime * 1000);
-//            startNum = (int) (startTime * 1000);
-//            int length = endNum - startNum;
-//
-//            timersList.add(new Timer(length, listener));
-//        }
-//
-//        clip = pbe.getClip();
-//        System.out.println(clip);
-//
-//        ArrayList<String> currList = textList.get(page - 1);
-//        jTextArea1.setText(currList.get(page - 1));
-//
-//        pbe.findWords(currList, wordsList);
+        backend = new ActiveBE(false);
+        phraseList = new ArrayList<ArrayList<String>>();
+        String current;
+        for (int i = 0; i < 20; i++) {
+            String file = backend.findFile(lesson, subLesson);
+            ArrayList<String> phrase = backend.findPhrase(file);
+            
+            
+            if (phrase == null || phrase.get(1) == null) {
+                i--;
+                continue;
+            }
+            boolean contains = false;
+            int index = 0;
+
+            if (contains == true) {
+                i--;
+            } else {
+                phraseList.add(phrase);
+                textList.add(phrase.get(1));
+            }
+            
+            //Put clip and time info here - how are we getting the time information?
+            //use getClips to return the clip names and files
+            Float startTime = Float.parseFloat(phrase.get(0));
+            int startNum = (int) (startTime * 1000000);
+
+            timesList.add(startNum);
+
+            Float endTime = Float.parseFloat(phrase.get(2));
+            int endNum = (int) (endTime * 1000);
+            startNum = (int) (startTime * 1000);
+            int length = endNum - startNum;
+
+            timersList.add(new Timer(length, listener));
+        }
+
+        clips = backend.getClips();
+        //System.out.println(clip);
+
+        current = textList.get(page - 1);
+        jTextPane1.setText(current);
+
+        //backend.findWords(current, wordsList);
     }
 
     /**
@@ -408,8 +414,8 @@ public class Practice extends javax.swing.JFrame {
        clip.close();
        timer.stop();
        jPageLabel.setText("Page " + page);
-       pbe.closeAudio(); 
-       clip = pbe.makeClip(page);
+       backend.closeAudio(); 
+       clip = backend.makeClip(page);
        if(page == 1){
            prevButton.setText("Current");
            prevButton.setEnabled(false);
@@ -419,9 +425,9 @@ public class Practice extends javax.swing.JFrame {
        }
        playButton1.setForeground(new java.awt.Color(0, 153, 51));
        playButton1.setText("Play");
-       pbe.closeAudio();
+       backend.closeAudio();
        initAudio();
-       //pbe.findWords(textList.get(page - 1), wordsList);
+       //backend.findWords(textList.get(page - 1), wordsList);
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
@@ -432,7 +438,7 @@ public class Practice extends javax.swing.JFrame {
         tone.dispose();
         na.dispose();
         new Home(user).setVisible(true);
-        pbe.closeAudio();
+        backend.closeAudio();
         dispose();
     }//GEN-LAST:event_jHomeMenuMouseClicked
 
@@ -488,8 +494,8 @@ public class Practice extends javax.swing.JFrame {
         clip.close();
         timer.stop();
         jPageLabel.setText("Page " + page);
-        pbe.closeAudio();
-        clip = pbe.makeClip(page);
+        backend.closeAudio();
+        clip = backend.makeClip(page);
         if(page==20) {
            nextButton.setText("Current");
            nextButton.setEnabled(false);
@@ -499,9 +505,9 @@ public class Practice extends javax.swing.JFrame {
        }
        playButton1.setForeground(new java.awt.Color(0, 153, 51));
        playButton1.setText("Play");
-       pbe.closeAudio();
+       backend.closeAudio();
        initAudio();
-       //pbe.findWords(textList.get(page - 1), wordsList);
+       //backend.findWords(textList.get(page - 1), wordsList);
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
