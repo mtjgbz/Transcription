@@ -43,6 +43,18 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
 
         setResizable(false);
 
@@ -64,7 +76,7 @@ public class Nasalizations extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
-        jButton3.setText("<html><center>ka'<sup>1</sup>a<sup>1</sup>/ka'<sup>1</sup>an<sup>1</sup><br>ku'<sup>1</sup>u<sup>1</sup>/ku'<sup>1</sup>un<sup>1</sup></center></html>\\n");
+        jButton3.setText("<html><center>ku<sup>3</sup>u<sup>3</sup>/ku<sup>3</sup>un<sup>3</sup><br>kwi<sup>3</sup>i<sup>3</sup>/kwi<sup>3</sup>in<sup>3</sup><br>tu<sup>3</sup>u<sup>3</sup>/tu<sup>3</sup>un<sup>3</sup></center></html>\\n");
         jButton3.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton3.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton3.setPreferredSize(new java.awt.Dimension(160, 60));
@@ -72,7 +84,7 @@ public class Nasalizations extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
-        jButton4.setText("<html><center>ka'<sup>1</sup>a<sup>1</sup>/ka'<sup>1</sup>an<sup>1</sup><br>ku'<sup>1</sup>u<sup>1</sup>/ku'<sup>1</sup>un<sup>1</sup></center></html>\\n");
+        jButton4.setText("<html><center>ka'<sup>3</sup>a<sup>3</sup>/ka'<sup>3</sup>an<sup>3</sup></center></html>\\n");
         jButton4.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton4.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton4.setPreferredSize(new java.awt.Dimension(160, 60));
@@ -80,11 +92,107 @@ public class Nasalizations extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
-        jButton5.setText("<html><center>bi<sup>1</sup>xi<sup>1</sup>/bi<sup>1</sup>xin<sup>1</sup><br>nda<sup>1</sup>ka<sup>1</sup>/nda<sup>1</sup>kan<sup>1</sup></center></html>\\n");
+        jButton5.setText("<html><center>i<sup>4</sup>i<sup>4</sup>/i<sup>4</sup>in<sup>4</sup></center></html>\\n");
         jButton5.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton5.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton5.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton5.setSize(new java.awt.Dimension(160, 60));
+
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton6.setText("<html><center>xi'<sup>4</sup>i<sup>4</sup>/xi'<sup>4</sup>in<sup>4</sup></center></html>\\n");
+        jButton6.setMaximumSize(new java.awt.Dimension(160, 60));
+        jButton6.setMinimumSize(new java.awt.Dimension(160, 60));
+        jButton6.setPreferredSize(new java.awt.Dimension(160, 60));
+        jButton6.setSize(new java.awt.Dimension(160, 60));
+
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton7.setText("<html><center>xa'<sup>4</sup>a<sup>2</sup>/xa'<sup>4</sup>an<sup>2</sup></center></html>\\n");
+        jButton7.setMaximumSize(new java.awt.Dimension(160, 60));
+        jButton7.setMinimumSize(new java.awt.Dimension(160, 60));
+        jButton7.setPreferredSize(new java.awt.Dimension(160, 60));
+        jButton7.setSize(new java.awt.Dimension(160, 60));
+
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton8.setText("<html><center>i'<sup>4</sup>i<sup>3</sup>/i'<sup>4</sup>in<sup>3</sup></center></html>\\n");
+        jButton8.setMaximumSize(new java.awt.Dimension(160, 60));
+        jButton8.setMinimumSize(new java.awt.Dimension(160, 60));
+        jButton8.setPreferredSize(new java.awt.Dimension(160, 60));
+        jButton8.setSize(new java.awt.Dimension(160, 60));
+
+        jButton9.setBackground(new java.awt.Color(255, 255, 255));
+        jButton9.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton9.setText("<html><center>ka<sup>4</sup>ki<sup>3</sup>/ka<sup>4</sup>xin<sup>3</sup><br>xu<sup>4</sup>xa<sup>3</sup>/xu<sup>4</sup>xan<sup>3</sup></center></html>\\n");
+        jButton9.setMaximumSize(new java.awt.Dimension(160, 60));
+        jButton9.setMinimumSize(new java.awt.Dimension(160, 60));
+        jButton9.setPreferredSize(new java.awt.Dimension(160, 60));
+        jButton9.setSize(new java.awt.Dimension(160, 60));
+
+        jButton10.setBackground(new java.awt.Color(255, 255, 255));
+        jButton10.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton10.setText("<html><center>i<sup>3</sup>tu<sup>2</sup>/i<sup>3</sup>tun<sup>2</sup></center></html>\\n");
+        jButton10.setMaximumSize(new java.awt.Dimension(160, 60));
+        jButton10.setMinimumSize(new java.awt.Dimension(160, 60));
+        jButton10.setPreferredSize(new java.awt.Dimension(160, 60));
+        jButton10.setSize(new java.awt.Dimension(160, 60));
+
+        jButton11.setBackground(new java.awt.Color(255, 255, 255));
+        jButton11.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton11.setText("<html><center>ka<sup>1</sup>a<sup>3</sup>/ka<sup>1</sup>an<sup>3</sup><br>ta<sup>1</sup>a<sup>3</sup>/ta<sup>1</sup>an<sup>3</sup></center></html>\\n");
+        jButton11.setMaximumSize(new java.awt.Dimension(160, 60));
+        jButton11.setMinimumSize(new java.awt.Dimension(160, 60));
+        jButton11.setPreferredSize(new java.awt.Dimension(160, 60));
+        jButton11.setSize(new java.awt.Dimension(160, 60));
+
+        jButton12.setBackground(new java.awt.Color(255, 255, 255));
+        jButton12.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton12.setText("<html><center>xi<sup>1</sup>i<sup>4</sup>/xi<sup>1</sup>in<sup>4</sup></center></html>\\n");
+        jButton12.setMaximumSize(new java.awt.Dimension(160, 60));
+        jButton12.setMinimumSize(new java.awt.Dimension(160, 60));
+        jButton12.setPreferredSize(new java.awt.Dimension(160, 60));
+        jButton12.setSize(new java.awt.Dimension(160, 60));
+
+        jButton13.setBackground(new java.awt.Color(255, 255, 255));
+        jButton13.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton13.setText("<html><center>tiu'<sup>1</sup>u<sup>4</sup>/tiu'<sup>1</sup>un<sup>4</sup></center></html>\\n");
+        jButton13.setMaximumSize(new java.awt.Dimension(160, 60));
+        jButton13.setMinimumSize(new java.awt.Dimension(160, 60));
+        jButton13.setPreferredSize(new java.awt.Dimension(160, 60));
+        jButton13.setSize(new java.awt.Dimension(160, 60));
+
+        jButton14.setBackground(new java.awt.Color(255, 255, 255));
+        jButton14.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton14.setText("<html><center>is<sup>1</sup>ta<sup>4</sup>/is<sup>1</sup>tan<sup>4</sup><br>ka<sup>1</sup>tu<sup>4</sup>/ka<sup>1</sup>tun<sup>4</sup><br>tiu<sup>1</sup>ku<sup>4</sup>/tiu<sup>1</sup>kun<sup>4</sup></center></html>\\n");
+        jButton14.setMaximumSize(new java.awt.Dimension(160, 60));
+        jButton14.setMinimumSize(new java.awt.Dimension(160, 60));
+        jButton14.setPreferredSize(new java.awt.Dimension(160, 60));
+        jButton14.setSize(new java.awt.Dimension(160, 60));
+
+        jButton15.setBackground(new java.awt.Color(255, 255, 255));
+        jButton15.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton15.setText("<html><center>i<sup>3</sup>i<sup>4</sup>/i<sup>3</sup>in<sup>4</sup><br>kwi<sup>3</sup>i<sup>4</sup>/kwi<sup>3</sup>in<sup>4</sup><br>tu<sup>3</sup>u<sup>4</sup>/tu<sup>3</sup>un<sup>4</sup></center></html>\\n");
+        jButton15.setMaximumSize(new java.awt.Dimension(160, 75));
+        jButton15.setMinimumSize(new java.awt.Dimension(160, 75));
+        jButton15.setPreferredSize(new java.awt.Dimension(160, 75));
+        jButton15.setSize(new java.awt.Dimension(160, 75));
+
+        jButton16.setBackground(new java.awt.Color(255, 255, 255));
+        jButton16.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton16.setText("<html><center>i'<sup>4</sup>i<sup>3</sup>/i'<sup>4</sup>in<sup>3</sup></center></html>\\n");
+        jButton16.setMaximumSize(new java.awt.Dimension(160, 75));
+        jButton16.setMinimumSize(new java.awt.Dimension(160, 75));
+        jButton16.setPreferredSize(new java.awt.Dimension(160, 75));
+        jButton16.setSize(new java.awt.Dimension(160, 75));
+
+        jButton17.setBackground(new java.awt.Color(255, 255, 255));
+        jButton17.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
+        jButton17.setText("<html><center>ku<sup>3</sup>u<sup>3</sup>/ku<sup>3</sup>un<sup>3</sup><br>kwi<sup>3</sup>i<sup>3</sup>/kwi<sup>3</sup>in<sup>3</sup><br>tu<sup>3</sup>u<sup>3</sup>/tu<sup>3</sup>un<sup>3</sup></center></html>\\n");
+        jButton17.setMaximumSize(new java.awt.Dimension(160, 75));
+        jButton17.setMinimumSize(new java.awt.Dimension(160, 75));
+        jButton17.setPreferredSize(new java.awt.Dimension(160, 75));
+        jButton17.setSize(new java.awt.Dimension(160, 75));
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -93,7 +201,17 @@ public class Nasalizations extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -102,7 +220,20 @@ public class Nasalizations extends javax.swing.JFrame {
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
@@ -113,18 +244,56 @@ public class Nasalizations extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 104, Short.MAX_VALUE))
         );
         jLayeredPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButton5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton17, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane2.setViewportView(jLayeredPane1);
 
@@ -181,10 +350,22 @@ public class Nasalizations extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
