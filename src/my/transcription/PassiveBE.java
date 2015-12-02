@@ -32,6 +32,9 @@ public class PassiveBE {
     private static ArrayList<File> clips;
     private static ArrayList<String> phrases;
     private static ArrayList<String> words;
+    
+    private int lesson;
+    private String sublesson;
 
     private Clip clip1;
     private Clip clip2;
@@ -54,13 +57,16 @@ public class PassiveBE {
      * @param sublesson
      * @return
      */
-        public String findFile(int lesson, String sublesson) {
+        public String findFile(int l, String s) {
         try {
+            lesson = l;
+            sublesson = s;
             //pulling .txt file that contains lesson matches
             String query = "SELECT(FileList) FROM LESSONS WHERE Lesson = " + lesson
                     + " AND Sublesson = '" + sublesson + "';";
             rs = stmt.executeQuery(query);
             String path = rs.getString("FileList");
+            System.out.println(path);
 
             //pulling filename from lesson match .txt file
             File file = new File(path);
@@ -77,7 +83,7 @@ public class PassiveBE {
                 lineCount++;
             }
 
-            //System.out.println("Line num: " + lineCount);
+            System.out.println("Line num: " + lineCount);
             //get a random line number from the total number of lines
             int random = rand.nextInt(lineCount);
             //System.out.println("Random: " + random);
@@ -144,8 +150,12 @@ public class PassiveBE {
             }
             Document doc = dBuilder.parse(file);
             NodeList nList = doc.getElementsByTagName("Sync");
+            
+            String query = "SELECT RegularExpression FROM LESSON_PLAN WHERE "
+                    + "Lesson = " + lesson + " AND Sublesson LIKE '" + sublesson + "';";
+            rs = stmt.executeQuery(query);
 
-            Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2)");       //example exp - change later
+            Pattern regexp = Pattern.compile(rs.getString("RegularExpression"));       //example exp - change later
             Matcher matcher = regexp.matcher(file.getName());
 
             int count = rand.nextInt(nList.getLength());
