@@ -93,8 +93,6 @@ public class NamaTable extends javax.swing.JFrame {
         buttonlist.add(jButton24);
         buttonlist.add(playAllButton);
         System.out.print(listenerlist.size());
-        
-        cliplist.get(18).start();
     }
     
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -351,6 +349,7 @@ public class NamaTable extends javax.swing.JFrame {
             @Override
             public void update(LineEvent event) {
                 if(event.getType()==STOP){
+                    cliplist.get(18).setMicrosecondPosition(0);
                     cliplist.get(18).start();
                     jButton18.setForeground(new java.awt.Color(0, 153, 51));
                     jButton19.setForeground(Color.blue);
