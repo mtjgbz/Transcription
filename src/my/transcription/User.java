@@ -55,6 +55,7 @@ public class User {
                 sublessons.add(sublesson);
                 
                 String regex = rsExp.getString("RegularExpression");
+//                System.out.println(regex);
                 String filePath = path + "lesson" + lesson + "-" + sublesson + ".txt";
                 BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
                 
