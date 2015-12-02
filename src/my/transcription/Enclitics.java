@@ -18,6 +18,8 @@ public class Enclitics extends javax.swing.JFrame {
      */
     public Enclitics() {
         initComponents();
+        this.setTitle("Mixtec Transcription: Enclitics");
+        this.setLocation(x, y);
     }
 
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

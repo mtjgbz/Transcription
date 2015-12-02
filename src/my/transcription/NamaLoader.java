@@ -24,7 +24,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author mike
  */
 public class NamaLoader {
-    
+    //String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/NamaTable/";
     String path = "/home/mike/Transcription Data/Nama/";
     public ArrayList<Clip> load(){
         ArrayList<Clip> clips = new ArrayList<>();

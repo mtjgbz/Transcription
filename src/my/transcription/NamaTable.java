@@ -26,12 +26,7 @@ public class NamaTable extends javax.swing.JFrame {
     ArrayList<Clip> cliplist;
     ArrayList<LineListener> listenerlist;
     ArrayList<javax.swing.JButton> buttonlist;
-    
-    
-    
-    
-    
-    
+
     LineListener listenerAll = new LineListener() {
         @Override
         public void update(LineEvent event) {
@@ -100,7 +95,8 @@ public class NamaTable extends javax.swing.JFrame {
            }
            i++;
        }
-       
+       this.setTitle("Mixtec Transcription: Nama Table");
+       this.setLocation(x, y);
     }
     
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
