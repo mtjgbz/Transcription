@@ -8,6 +8,7 @@ package my.transcription;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
@@ -26,6 +27,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class ToneTable extends javax.swing.JFrame {
     Clip clip;
     boolean running = false;
+    ArrayList<String> stringNames = new ArrayList<>();
     /**
      * Creates new form ToneTable
      */
@@ -2596,12 +2598,11 @@ public class ToneTable extends javax.swing.JFrame {
 
     };
     
-    String path = "/home/mike/Transcription Data/Tones/";
-    //String path = "/Users/Noah/Desktop/";
+    //String path = "/home/mike/Transcription Data/Tones/";
+    String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/ToneTable/";
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
         AudioInputStream audioIn = null;
         try {
             if(clip==null||!clip.isOpen()){
@@ -2628,8 +2629,7 @@ public class ToneTable extends javax.swing.JFrame {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
+        }  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
