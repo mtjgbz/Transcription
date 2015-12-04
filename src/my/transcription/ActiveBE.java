@@ -51,7 +51,7 @@ public class ActiveBE {
     
     public ActiveBE(boolean isTest) {
         this.isTest=isTest;
-        stmt = User.setupDB(parentFrame);
+        //stmt = User.setupDB(parentFrame);
         rand = new Random();
         clips = new ArrayList<>();
         attempts = new ArrayList<Integer>();
