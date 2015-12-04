@@ -35,6 +35,9 @@ public class ToneTable extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Tone Table");
         this.setLocation(x, y);
+        for(int i = 0; i < 120; i++) {
+            stringNames.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        }
     }
 
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -2606,7 +2609,7 @@ public class ToneTable extends javax.swing.JFrame {
         AudioInputStream audioIn = null;
         try {
             if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+"a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav"));
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
@@ -2615,7 +2618,7 @@ public class ToneTable extends javax.swing.JFrame {
             }else{
                 clip.stop();
                 
-                audioIn = AudioSystem.getAudioInputStream(new File(path+"a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav"));
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
@@ -2633,27 +2636,183 @@ public class ToneTable extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        AudioInputStream audioIn = null;
+        try {
+            if(clip==null||!clip.isOpen()){
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }else{
+                clip.stop();
+                
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }
+            
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        AudioInputStream audioIn = null;
+        try {
+            if(clip==null||!clip.isOpen()){
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(3)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }else{
+                clip.stop();
+                
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(3)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }
+            
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        AudioInputStream audioIn = null;
+        try {
+            if(clip==null||!clip.isOpen()){
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }else{
+                clip.stop();
+                
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }
+            
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        AudioInputStream audioIn = null;
+        try {
+            if(clip==null||!clip.isOpen()){
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }else{
+                clip.stop();
+                
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }
+            
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        AudioInputStream audioIn = null;
+        try {
+            if(clip==null||!clip.isOpen()){
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }else{
+                clip.stop();
+                
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }
+            
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        AudioInputStream audioIn = null;
+        try {
+            if(clip==null||!clip.isOpen()){
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }else{
+                clip.stop();
+                
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }
+            
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
