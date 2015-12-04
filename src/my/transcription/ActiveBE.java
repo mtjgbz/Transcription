@@ -21,6 +21,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JFrame;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -43,12 +44,14 @@ public class ActiveBE {
     //private static ArrayList<String> words;
     private ArrayList<Integer> attempts;
     
+    private JFrame parentFrame;
+    
     private Clip clip;
     private boolean isTest;
     
     public ActiveBE(boolean isTest) {
         this.isTest=isTest;
-        stmt = User.setupDB();
+        stmt = User.setupDB(parentFrame);
         rand = new Random();
         clips = new ArrayList<>();
         attempts = new ArrayList<Integer>();
@@ -125,39 +128,12 @@ public class ActiveBE {
             rs = stmt.executeQuery(query);
             String path = rs.getString("FileList");
 
-            //pulling filename from lesson match .txt file
-            File file = new File(path);
-            LineNumberReader reader = new LineNumberReader(new FileReader(file));
-            int lineCount = 0;
+            //pulling filename from lesson match string
+            String[] filePaths = path.split("; ");
 
-            //reading lines int the file
-            String line = reader.readLine();
-            //mark the first line so can reset when go to pull random line later
-            reader.mark((int) file.length());
-            //go through lines and count them to get the total number
-            while (line != null) {
-                line = reader.readLine();
-                lineCount++;
-            }
-
-            //System.out.println("Line num: " + lineCount);
-            //get a random line number from the total number of lines
-            int random = rand.nextInt(lineCount);
-            //System.out.println("Random: " + random);
-
-            //reset lineReader to the beginnig of the file so can read up to the random line
-            //and then return it
-            reader.reset();
-            //System.out.println("Line before loop: " + reader.getLineNumber());
-            for (int i = 1; i < random; i++) {
-                path = reader.readLine();
-            }
-            if (path.contains("txt")){
-                path = reader.readLine();
-            }
-
-            //close the lineReader and return the line (path for findPhrase)
-            reader.close();
+            //get a random file name from the list
+            int random = rand.nextInt(filePaths.length - 1);
+            path = filePaths[random];
 
             //System.out.println(path);
             String soundName = path.replace(".trs", ".wav");
