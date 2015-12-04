@@ -2596,25 +2596,32 @@ public class ToneTable extends javax.swing.JFrame {
 
     };
     
-    String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/ToneTable/";
+    String path = "/home/mike/Transcription Data/Tones/";
     //String path = "/Users/Noah/Desktop/";
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(running) {
-            clip.stop();
-            running = false;
-        }
-        else {
+        
         AudioInputStream audioIn = null;
         try {
-            audioIn = AudioSystem.getAudioInputStream(new File(path+"a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioIn);
-            audioIn.close();
-            clip.addLineListener(listener);
-            clip.start();
-            running = true;
+            if(clip==null||!clip.isOpen()){
+                audioIn = AudioSystem.getAudioInputStream(new File(path+"a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav"));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }else{
+                clip.stop();
+                
+                audioIn = AudioSystem.getAudioInputStream(new File(path+"a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav"));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }
+            
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -2622,7 +2629,7 @@ public class ToneTable extends javax.swing.JFrame {
         } catch (LineUnavailableException ex) {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
