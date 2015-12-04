@@ -18,7 +18,7 @@ public class SignInBE {
     public void setupDB() {
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:TAA.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:src/my/transcription/TAA.db");
             System.out.println("Database opened successfully.");
             stmt = conn.createStatement();
         } catch (Exception e) {
