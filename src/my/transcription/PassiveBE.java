@@ -212,7 +212,7 @@ public class PassiveBE {
      * @param words     Words within the phrases that match the regular expression.
      */
     public void findWords(ArrayList<String> phrases, ArrayList<String> words) {
-        Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2)");       //example exp - change later
+        Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2\\s)");       //example exp - change later
         Matcher matcher;
         for (String phrase : phrases) {
             matcher = regexp.matcher(phrase);
