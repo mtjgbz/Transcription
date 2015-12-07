@@ -117,349 +117,347 @@ public class ToneTable extends javax.swing.JFrame {
         i18.add("e_4-4_tu4mi4_0776_Yolox-RCG500_edited.wav");
         stringNames.add(i18);
         ArrayList<String> i19 = new ArrayList<>();//4.4f
-        i19.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i19.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        i19.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i19.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i10);
         ArrayList<String> i20 = new ArrayList<>();//4.4g
-        i20.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i20.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        i20.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i20.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i20);
-        ArrayList<String> i21 = new ArrayList<>();
-        i21.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i21.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i21 = new ArrayList<>();//4.1b
+        i21.add("b_4-1_ta74a1_1347_Yolox-RCG500_edited.wav");
+        i21.add("b_4-1_yo74o1_0202_Yolox-RCG500_edited.wav");
         stringNames.add(i21);
-        ArrayList<String> i22 = new ArrayList<>();
-        i22.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i22 = new ArrayList<>();//4.1c
+        i22.add("c_1-4_xi1in4_1215_Yolox-RCG500_edited.wav");
         stringNames.add(i22);
-        ArrayList<String> i23 = new ArrayList<>();
-        i23.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i23 = new ArrayList<>();//4.1d
+        i23.add("d_4-1_xa74an1_0227_Yolox-RCG500_edited.wav");
         stringNames.add(i23);
-        ArrayList<String> i24 = new ArrayList<>();
-        i24.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i24.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i24 = new ArrayList<>();//4.1e
+        i24.add("e_4-1_xi4xi1_0556_Yolox-RCG500_edited.wav");
+        i24.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i24);
-        ArrayList<String> i25 = new ArrayList<>();
-        i25.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i25 = new ArrayList<>();//4.1f
+        i25.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i25);
-        ArrayList<String> i26 = new ArrayList<>();
-        i26.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i26 = new ArrayList<>();//4.1g
+        i26.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i26);
-        ArrayList<String> i27 = new ArrayList<>();
-        i27.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i27.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i27 = new ArrayList<>();//4.2a
+        i27.add("a_4-2_nda4a2_0861_Yolox-RCG500_edited.wav");
+        i27.add("a_4-2_kwe4e2_0624_Yolox-RCG500_edited.wav");
         stringNames.add(i27);
-        ArrayList<String> i28 = new ArrayList<>();
-        i28.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i28.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i28 = new ArrayList<>();//4.2b
+        i28.add("b_4-2_pa74a2_0989_Yolox-RCG500_edited.wav");
+        i28.add("b_4-2_tu74u2_0692_Yolox-RCG500_edited.wav");
         stringNames.add(i28);
-        ArrayList<String> i29 = new ArrayList<>();
-        i29.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i29 = new ArrayList<>();//4.2c
+        i29.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i29);
-        ArrayList<String> i30 = new ArrayList<>();
-        i30.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i30 = new ArrayList<>();//4.2d
+        i30.add("d_4-2_xa74an2_0487_Yolox-RCG500_edited.wav");
         stringNames.add(i30);
-        ArrayList<String> i31 = new ArrayList<>();
-        i31.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i31.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i31 = new ArrayList<>();//4.2e
+        i31.add("e_4-2_be4xi2_1799_Yolox-RCG500_edited.wav");
+        i31.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i31);
-        ArrayList<String> i32 = new ArrayList<>();
-        i32.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i32 = new ArrayList<>();//4.2f
+        i32.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i32);
-        ArrayList<String> i33 = new ArrayList<>();
-        i33.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i33 = new ArrayList<>();//4.2g
+        i33.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i33);
-        ArrayList<String> i34 = new ArrayList<>();
-        i34.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i34 = new ArrayList<>();//4.3b
+        i34.add("b_4-3_i74i3_0620_Yolox-RCG500_edited.wav");
         stringNames.add(i34);
-        ArrayList<String> i35 = new ArrayList<>();
-        i35.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i35 = new ArrayList<>();//4.3d
+        i35.add("d_4-3_i74in3_0981_Yolox-RCG500_edited.wav");
         stringNames.add(i35);
-        ArrayList<String> i36 = new ArrayList<>();
-        i36.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i36.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i36 = new ArrayList<>();//4.3e
+        i36.add("e_4-3_xi4xi3_0526_Yolox-RCG500_edited.wav");
+        i36.add("e_4-3_bi4ka3_0673_Yolox-RCG500_edited.wav");
         stringNames.add(i36);
-        ArrayList<String> i37 = new ArrayList<>();
-        i37.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i37 = new ArrayList<>();//4.3f
+        i37.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i37);
-        ArrayList<String> i38 = new ArrayList<>();
-        i38.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i38 = new ArrayList<>();//4.3g
+        i38.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i38);
-        ArrayList<String> i39 = new ArrayList<>();
-        i39.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i39.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i39 = new ArrayList<>();//3.2a
+        i39.add("a_3-2_nda3a2_0653_Yolox-RCG500_edited.wav");
+        i39.add("a_3-2_kwe3e2_1257_Yolox-RCG500_edited.wav");
         stringNames.add(i39);
-        ArrayList<String> i40 = new ArrayList<>();
-        i40.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i40.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i40 = new ArrayList<>();//3.2b
+        i40.add("b_3-2_nda73a2_0538_Yolox-RCG500_edited.wav");
+        i40.add("b_3-2_ku73u2_0539_Yolox-RCG500_edited.wav");
         stringNames.add(i40);
-        ArrayList<String> i41 = new ArrayList<>();
-        i41.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i41 = new ArrayList<>();//3.2c
+        i41.add("c_3-2_tu3un2_0365_Yolox-RCG500_edited.wav");
         stringNames.add(i41);
-        ArrayList<String> i42 = new ArrayList<>();
-        i42.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i42 = new ArrayList<>();//3.2d
+        i42.add("d_3-2_xa73an2_0961_Yolox-RCG500_edited.wav");
         stringNames.add(i42);
-        ArrayList<String> i43 = new ArrayList<>();
-        i43.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i43.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i43 = new ArrayList<>();//3.2e
+        i43.add("e_3-2_xi3xi2_0126_Yolox-RCG500_edited.wav");
+        i43.add("e_3-2_ka3ka2_0812_Yolox-RCG500_edited.wav");
         stringNames.add(i43);
-        ArrayList<String> i44 = new ArrayList<>();
-        i44.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i44 = new ArrayList<>();//3.2f
+        i44.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i44);
-        ArrayList<String> i45 = new ArrayList<>();
-        i45.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i45 = new ArrayList<>();//3.2g
+        i45.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i45);
-        ArrayList<String> i46 = new ArrayList<>();
-        i46.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i46.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i46 = new ArrayList<>();//1.3a
+        i46.add("a_1-3_tu1u3_1431_Yolox-RCG500_edited.wav");
+        i46.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i46);
-        ArrayList<String> i47 = new ArrayList<>();
-        i47.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i47.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i47 = new ArrayList<>();//1.3b
+        i47.add("b_1-3_so71o3_1001_Yolox-RCG500_edited.wav");
+        i47.add("b_1-3_kwa71a3_1088_Yolox-RCG500_edited.wav");
         stringNames.add(i47);
-        ArrayList<String> i48 = new ArrayList<>();
-        i48.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i48.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i48 = new ArrayList<>();//1.3c
+        i48.add("c_1-3_ta1an3_0485_Yolox-RCG500_edited.wav");
+        i48.add("c_1-3_ti1in3_0395_Yolox-RCG500_edited.wav");
         stringNames.add(i48);
-        ArrayList<String> i49 = new ArrayList<>();
-        i49.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i49 = new ArrayList<>();//1.3d
+        i49.add("d_1-3_si71in3_0195_Yolox-RCG500_edited.wav");
         stringNames.add(i49);
-        ArrayList<String> i50 = new ArrayList<>();
-        i50.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i50.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i50 = new ArrayList<>();//1.3e
+        i50.add("e_1-3_ke1ta3_1592a_Yolox-RCG500_edited.wav");
+        i50.add("e_1-3_ba1xi3_0260_Yolox-RCG500_edited.wav");
         stringNames.add(i50);
-        ArrayList<String> i51 = new ArrayList<>();
-        i51.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i51.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i51 = new ArrayList<>();//1.3f
+        i51.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i51.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i51);
-        ArrayList<String> i52 = new ArrayList<>();
-        i52.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i52.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i52 = new ArrayList<>();//1.3g
+        i52.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i52.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i52);
-        ArrayList<String> i53 = new ArrayList<>();
-        i53.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i53.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i53 = new ArrayList<>();//1.4a
+        i53.add("a_1-4_yu1u4_0251_Yolox-RCG500_edited.wav");
+        i53.add("a_1-4_sa1a4_0382_Yolox-RCG500_edited.wav");
         stringNames.add(i53);
-        ArrayList<String> i54 = new ArrayList<>();
-        i54.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i54.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i54 = new ArrayList<>();//1.4b
+        i54.add("b_1-4_yo71o4_0493_Yolox-RCG500_edited.wav");
+        i54.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i54);
-        ArrayList<String> i55 = new ArrayList<>();
-        i55.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i55.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i55 = new ArrayList<>();//1.4c
+        i55.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i55.add("c_1-4_xi1in4_1215_Yolox-RCG500_edited.wav");
         stringNames.add(i55);
-        ArrayList<String> i56 = new ArrayList<>();
-        i56.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i56 = new ArrayList<>();//1.4d
+        i56.add("d_1-4_ti71in4_0744_Yolox-RCG500_edited.wav");
         stringNames.add(i56);
-        ArrayList<String> i57 = new ArrayList<>();
-        i57.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i57.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i57 = new ArrayList<>();//1.4e
+        i57.add("e_1-4_sa1ta4_0186_Yolox-RCG500_edited.wav");
+        i57.add("e_1-4_ta1xi4_0392_Yolox-RCG500_edited.wav");
         stringNames.add(i57);
-        ArrayList<String> i58 = new ArrayList<>();
-        i58.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i58.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i58 = new ArrayList<>();//1.4f
+        i58.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i58.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i58);
-        ArrayList<String> i59 = new ArrayList<>();
-        i59.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i59.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i59 = new ArrayList<>();//1.4g
+        i59.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i59.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i59);
-        ArrayList<String> i60 = new ArrayList<>();
-        i60.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i60.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i60 = new ArrayList<>();//3.4a
+        i60.add("a_3-4_tu3u4_0513_Yolox-RCG500_edited.wav");
+        i60.add("a_3-4_sa3a4_0912_Yolox-RCG500_edited.wav");
         stringNames.add(i60);
-        ArrayList<String> i61 = new ArrayList<>();
-        i61.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i61.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i61 = new ArrayList<>();//3.4b
+        i61.add("b_3-4_yo73o4_0247_Yolox-RCG500_edited.wav");
+        i61.add("b_3-4_ka73a4_0787_Yolox-RCG500_edited.wav");
         stringNames.add(i61);
-        ArrayList<String> i62 = new ArrayList<>();
-        i62.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i62.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i62 = new ArrayList<>();//3.4c
+        i62.add("c_3-4_ta3an4_0319_Yolox-RCG500_edited.wav");
+        i62.add("c_3-4_xi3in4_1258_Yolox-RCG500_edited.wav");
         stringNames.add(i62);
-        ArrayList<String> i63 = new ArrayList<>();
-        i63.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i63 = new ArrayList<>();//3.4d
+        i63.add("d_3-4_ka73an4_0412_Yolox-RCG500_edited.wav");
         stringNames.add(i63);
-        ArrayList<String> i64 = new ArrayList<>();
-        i64.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i64.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i64 = new ArrayList<>();//3.4e
+        i64.add("e_3-4_sa3ta4_0516_Yolox-RCG500_edited.wav");
+        i64.add("e_3-4_ta3xi4_0393_Yolox-RCG500_edited.wav");
         stringNames.add(i64);
-        ArrayList<String> i65 = new ArrayList<>();
-        i65.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i65.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i65 = new ArrayList<>();//3.4f
+        i65.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i65.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i65);
-        ArrayList<String> i66 = new ArrayList<>();
-        i66.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i66.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i66 = new ArrayList<>();//3.4g
+        i66.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i66.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i66);
-        ArrayList<String> i67 = new ArrayList<>();
-        i67.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i67 = new ArrayList<>();//13.2d
+        i67.add("d_13-2_ti713in2_1907_Yolox-RCG500_edited.wav");
         stringNames.add(i67);
-        ArrayList<String> i68 = new ArrayList<>();
-        i68.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i68 = new ArrayList<>();//13.2e
+        i68.add("e_13-2_su13nda2_1202_Yolox-RCG500_edited.wav");
         stringNames.add(i68);
-        ArrayList<String> i69 = new ArrayList<>();
-        i69.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i69 = new ArrayList<>();//13.2f
+        i69.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i69);
-        ArrayList<String> i70 = new ArrayList<>();
-        i70.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i70 = new ArrayList<>();//13.3e
+        i70.add("e_13-3_xu13xa3_1206_Yolox-RCG500_edited.wav");
         stringNames.add(i70);
-        ArrayList<String> i71 = new ArrayList<>();
-        i71.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i71 = new ArrayList<>();//13.4e
+        i71.add("e_13-4_ti13bi4_1911_Yolox-RCG500_edited.wav");
         stringNames.add(i71);
-        ArrayList<String> i72 = new ArrayList<>();
-        i72.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i72 = new ArrayList<>();//13.4g
+        i72.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i72);
-        ArrayList<String> i73 = new ArrayList<>();
-        i73.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i73 = new ArrayList<>();//14.1b
+        i73.add("b_14-1_na714a1_1320_Yolox-RCG500_edited.wav");
         stringNames.add(i73);
-        ArrayList<String> i74 = new ArrayList<>();
-        i74.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i74.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i74 = new ArrayList<>();//14.1f
+        i74.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i74);
-        ArrayList<String> i75 = new ArrayList<>();
-        i75.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i75.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i75 = new ArrayList<>();//14.2a
+        i75.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i75.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i75);
-        ArrayList<String> i76 = new ArrayList<>();
-        i76.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i76 = new ArrayList<>();//14.2b
+        i76.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i76.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i76);
-        ArrayList<String> i77 = new ArrayList<>();
-        i77.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i77.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i77 = new ArrayList<>();//14.2d
+        i77.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i77);
-        ArrayList<String> i78 = new ArrayList<>();
-        i78.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i78 = new ArrayList<>();//14.2e
+        i78.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i78);
-        ArrayList<String> i79 = new ArrayList<>();
-        i79.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i79 = new ArrayList<>();//14.2f
+        i79.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i79);
-        ArrayList<String> i80 = new ArrayList<>();
-        i80.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i80.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i80 = new ArrayList<>();//14.2g
+        i80.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i80);
-        ArrayList<String> i81 = new ArrayList<>();
-        i81.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i81 = new ArrayList<>();//14.3a
+        i81.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i81.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i81);
-        ArrayList<String> i82 = new ArrayList<>();
-        i82.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i82.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i82 = new ArrayList<>();//14.3c
+        i82.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i82);
-        ArrayList<String> i83 = new ArrayList<>();
-        i83.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i83 = new ArrayList<>();//14.3e
+        i83.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i83);
-        ArrayList<String> i84 = new ArrayList<>();
-        i84.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i84 = new ArrayList<>();//14.3f
+        i84.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i84);
-        ArrayList<String> i85 = new ArrayList<>();
-        i85.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i85.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i85 = new ArrayList<>();//14.3g
+        i85.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i85);
-        ArrayList<String> i86 = new ArrayList<>();
-        i86.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i86 = new ArrayList<>();//14.4b
+        i86.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i86.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i86);
-        ArrayList<String> i87 = new ArrayList<>();
-        i87.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i87.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i87 = new ArrayList<>();//14.4d
+        i87.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i87);
-        ArrayList<String> i88 = new ArrayList<>();
-        i88.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i88 = new ArrayList<>();//14.4e
+        i88.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i88.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i88);
-        ArrayList<String> i89 = new ArrayList<>();
-        i89.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i89 = new ArrayList<>();//14.4g
+        i89.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i89);
-        ArrayList<String> i90 = new ArrayList<>();
-        i90.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i90 = new ArrayList<>();//1.42e
+        i90.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i90);
-        ArrayList<String> i91 = new ArrayList<>();
-        i91.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i91 = new ArrayList<>();//1.42f
+        i91.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i91);
-        ArrayList<String> i92 = new ArrayList<>();
-        i92.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i92 = new ArrayList<>();//1.42g
+        i92.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i92);
-        ArrayList<String> i93 = new ArrayList<>();
-        i93.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i93 = new ArrayList<>();//1.43e
+        i93.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i93);
-        ArrayList<String> i94 = new ArrayList<>();
-        i94.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i94 = new ArrayList<>();//1.32a
+        i94.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i94);
-        ArrayList<String> i95 = new ArrayList<>();
-        i95.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i95 = new ArrayList<>();//1.32e
+        i95.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i95);
-        ArrayList<String> i96 = new ArrayList<>();
-        i96.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i96 = new ArrayList<>();//1.32f
+        i96.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i96);
-        ArrayList<String> i97 = new ArrayList<>();
-        i97.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i97 = new ArrayList<>();//3.42a
+        i97.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i97);
-        ArrayList<String> i98 = new ArrayList<>();
-        i98.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i98 = new ArrayList<>();//3.42b
+        i98.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i98);
-        ArrayList<String> i99 = new ArrayList<>();
-        i99.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i99 = new ArrayList<>();//3.42e
+        i99.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i99);
-        ArrayList<String> i100 = new ArrayList<>();
-        i100.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i100 = new ArrayList<>();//3.42g
+        i100.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i100);
-        ArrayList<String> i101 = new ArrayList<>();
-        i101.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i101 = new ArrayList<>();//4.42e
+        i101.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i101);
-        ArrayList<String> i102 = new ArrayList<>();
-        i102.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i102 = new ArrayList<>();//4.13a
+        i102.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i102);
-        ArrayList<String> i103 = new ArrayList<>();
-        i103.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i103 = new ArrayList<>();//4.13b
+        i103.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i103);
-        ArrayList<String> i104 = new ArrayList<>();
-        i104.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i104 = new ArrayList<>();//4.13d
+        i104.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i104);
-        ArrayList<String> i105 = new ArrayList<>();
-        i105.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i105 = new ArrayList<>();//4.13e
+        i105.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i105);
-        ArrayList<String> i106 = new ArrayList<>();
-        i106.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i106 = new ArrayList<>();//4.13f
+        i106.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i106);
-        ArrayList<String> i107 = new ArrayList<>();
-        i107.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i107 = new ArrayList<>();//4.13g
+        i107.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i107);
-        ArrayList<String> i108 = new ArrayList<>();
-        i108.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i108 = new ArrayList<>();//4.14e
+        i108.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i108);
-        ArrayList<String> i109 = new ArrayList<>();
-        i109.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
-        i109.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i109 = new ArrayList<>();//4.14f
+        i109.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i109);
-        ArrayList<String> i110 = new ArrayList<>();
-        i110.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i110 = new ArrayList<>();//4.24a
+        i110.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i110);
-        ArrayList<String> i111 = new ArrayList<>();
-        i111.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i111 = new ArrayList<>();//4.24c
+        i111.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i111.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i111);
-        ArrayList<String> i112 = new ArrayList<>();
-        i112.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i112 = new ArrayList<>();//4.24e
+        i112.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i112);
-        ArrayList<String> i113 = new ArrayList<>();
-        i113.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i113 = new ArrayList<>();//4.24f
+        i113.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i113);
-        ArrayList<String> i114 = new ArrayList<>();
-        i114.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i114 = new ArrayList<>();//4.24g
+        i114.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i114);
-        ArrayList<String> i115 = new ArrayList<>();
-        i115.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i115 = new ArrayList<>();//3.13f
+        i115.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i115);
-        ArrayList<String> i116 = new ArrayList<>();
-        i116.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i116 = new ArrayList<>();//3.14e
+        i116.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i116);
-        ArrayList<String> i117 = new ArrayList<>();
-        i117.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i117 = new ArrayList<>();//4.34e
+        i117.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i117);
-        ArrayList<String> i118 = new ArrayList<>();
-        i118.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
-        i118.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
-        i118.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        ArrayList<String> i118 = new ArrayList<>();//143a
+        i118.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i118.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i118.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i118);
-        ArrayList<String> i119 = new ArrayList<>();
-        i119.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i119 = new ArrayList<>();//132a
+        i119.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i119);
-        ArrayList<String> i120 = new ArrayList<>();
-        i120.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        ArrayList<String> i120 = new ArrayList<>();//342a
+        i120.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i120);
     }
     
@@ -2727,11 +2725,12 @@ public class ToneTable extends javax.swing.JFrame {
                                                         .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                             .addComponent(jButton72, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(jButton73, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addGap(40, 40, 40)
+                                                    .addGap(0, 0, 0)
                                                     .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jButton75, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel15)
-                                                        .addComponent(jButton74, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                            .addComponent(jButton74, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(jLabel15)))
                                                     .addGap(0, 0, 0)
                                                     .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(jLayeredPane5Layout.createSequentialGroup()
@@ -2766,9 +2765,7 @@ public class ToneTable extends javax.swing.JFrame {
                                                                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
                                                                     .addGap(20, 20, 20)
                                                                     .addComponent(jLabel18))
-                                                                .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                                                                    .addGap(0, 0, 0)
-                                                                    .addComponent(jButton90, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addComponent(jButton90, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                             .addGap(34, 34, 34)
                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                 .addComponent(jButton91, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
