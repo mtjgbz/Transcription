@@ -98,9 +98,10 @@ public class Home extends javax.swing.JFrame {
         jNaMaButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jFileMenuItem = new javax.swing.JMenu();
+        jLoadTextMenu = new javax.swing.JMenu();
+        jLoadTextMenu1 = new javax.swing.JMenu();
         jUsernameMenuDropDown = new javax.swing.JMenu();
         jChangePassword = new javax.swing.JMenuItem();
-        jLoadTextMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(665, 400));
@@ -223,6 +224,33 @@ public class Home extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
         jFileMenuItem.setText("File");
+
+        jLoadTextMenu.setText("Load Text");
+        jLoadTextMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLoadTextMenuMousePressed(evt);
+            }
+        });
+        jLoadTextMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLoadTextMenuActionPerformed(evt);
+            }
+        });
+        jFileMenuItem.add(jLoadTextMenu);
+
+        jLoadTextMenu1.setText("Load Tables");
+        jLoadTextMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLoadTextMenu1MousePressed(evt);
+            }
+        });
+        jLoadTextMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLoadTextMenu1ActionPerformed(evt);
+            }
+        });
+        jFileMenuItem.add(jLoadTextMenu1);
+
         jMenuBar1.add(jFileMenuItem);
 
         jUsernameMenuDropDown.setText("User");
@@ -239,19 +267,6 @@ public class Home extends javax.swing.JFrame {
         jUsernameMenuDropDown.add(jChangePassword);
 
         jMenuBar1.add(jUsernameMenuDropDown);
-
-        jLoadTextMenu.setText("Load Text");
-        jLoadTextMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLoadTextMenuMousePressed(evt);
-            }
-        });
-        jLoadTextMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLoadTextMenuActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jLoadTextMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -505,6 +520,14 @@ public class Home extends javax.swing.JFrame {
         window.setVisible(true);
     }//GEN-LAST:event_jLoadTextMenuMousePressed
 
+    private void jLoadTextMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMenu1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLoadTextMenu1MousePressed
+
+    private void jLoadTextMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTextMenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLoadTextMenu1ActionPerformed
+
     private void isLoading() {
         jLabel1.setText("Loading...");
 
@@ -568,6 +591,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLessonLabel;
     private javax.swing.JMenu jLoadTextMenu;
+    private javax.swing.JMenu jLoadTextMenu1;
     private javax.swing.JButton jLogOutButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton jNaMaButton;
