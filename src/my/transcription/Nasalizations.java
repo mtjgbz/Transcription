@@ -6,13 +6,29 @@
 package my.transcription;
 
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineEvent;
+import static javax.sound.sampled.LineEvent.Type.STOP;
+import javax.sound.sampled.LineListener;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
  * @author mike
  */
 public class Nasalizations extends javax.swing.JFrame {
-
+    Clip clip;
+    int buttonNum = 0;
+    ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
+    ArrayList<Integer> count = new ArrayList<>();
     /**
      * Creates new form Nasalizations
      */
@@ -20,6 +36,115 @@ public class Nasalizations extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Nasalizations Table");
         this.setLocation(x, y);
+        for(int i = 0; i < 18; i++) {
+            count.add(0);
+        }
+    
+        ArrayList<String> i0 = new ArrayList<>();//1.1b
+        i0.add("b_1-1_ka71a1-ka71an1_edited.wav");
+        i0.add("b_1-1_ku71u1-ku71un1_edited.wav");
+        stringNames.add(i0);
+        ArrayList<String> i1 = new ArrayList<>();//1.1e
+        i1.add("e_1-1_bi1xi1-bi1xin1_edited.wav");
+        i1.add("e_1-1_nda1ka1-nda1kan1_edited.wav");
+        stringNames.add(i1);
+        ArrayList<String> i2 = new ArrayList<>();//3.3a
+        i2.add("a_3-3_ku3u3-ku3un3_edited.wav");
+        i2.add("a_3-3_kwi3i3-kwi3in3_edited.wav");
+        i2.add("a_3-3_tu3u3-tu3un3_edited.wav");
+        stringNames.add(i2);
+        ArrayList<String> i3 = new ArrayList<>();//3.3b
+        i3.add("b_3-3_ka73a3-ka73an3_edited.wav");
+        stringNames.add(i3);
+        ArrayList<String> i4 = new ArrayList<>();//4.4a
+        i4.add("a_4-4_i4i4-i4in4_edited.wav");
+        stringNames.add(i4);
+        ArrayList<String> i5 = new ArrayList<>();//4.4b
+        i5.add("b_4-4_xi74i4-xi74in4_edited.wav");
+        stringNames.add(i5);
+        ArrayList<String> i6 = new ArrayList<>();//4.2b
+        i6.add("b_4-2_xa74a2-xa74an2_edited.wav");
+        stringNames.add(i6);
+        ArrayList<String> i7 = new ArrayList<>();//4.3b
+        i7.add("b_4-3_i74i3-i74in3_edited.wav");
+        stringNames.add(i7);
+        ArrayList<String> i8 = new ArrayList<>();//4.3e
+        i8.add("e_4-3_ka4xi3-ka4xin3_edited.wav");
+        i8.add("e_4-3_xu4xa3-xu4xan3_edited.wav");
+        stringNames.add(i8);
+        ArrayList<String> i9 = new ArrayList<>();//3.2e
+        i9.add("e_3-2_i3tu2-i3tun2_edited.wav");
+        stringNames.add(i9);
+        ArrayList<String> i10 = new ArrayList<>();//1.3a
+        i10.add("a_1-3_ka1a3-ka1an3_edited.wav");
+        i10.add("a_1-3_ta1a3-ta1an3_edited.wav");
+        stringNames.add(i10);
+        ArrayList<String> i11 = new ArrayList<>();//1.4a
+        i11.add("a_1-4_xi1i4-xi1in4_edited.wav");
+        stringNames.add(i11);
+        ArrayList<String> i12 = new ArrayList<>();//1.4b
+        i12.add("b_1-4_tiu71u4-tiu71un4_edited.wav");
+        stringNames.add(i12);
+        ArrayList<String> i13 = new ArrayList<>();//1.4e
+        i13.add("e_1-4_is1ta4-is1tan4_edited.wav");
+        i13.add("e_1-4_ka1tu4-ka1tun4_edited.wav");
+        i13.add("e_1-4_tiu1ku4-tiu1kun4_edited.wav");
+        stringNames.add(i13);
+        ArrayList<String> i14 = new ArrayList<>();//3.4a
+        i14.add("e_3-4_i3ki4-i3kin4_edited.wav");//need
+        i14.add("e_3-4_i3ki4-i3kin4_edited.wav");//need
+        i14.add("e_3-4_i3ki4-i3kin4_edited.wav");//need
+        stringNames.add(i14);
+        ArrayList<String> i15 = new ArrayList<>();//3.4b
+        i15.add("b_3-4_ka73a4-ka73an4_edited.wav");
+        stringNames.add(i15);
+        ArrayList<String> i16 = new ArrayList<>();//3.4e
+        i16.add("e_3-4_i3ki4-i3kin4_edited.wav");
+        i16.add("e_3-4_ndi3ki4-ndi3kin4_edited.wav");
+        i16.add("e_3-4_sa3ka4-sa3kan4_edited.wav");
+        i16.add("e_3-4_tu3tu4-tu3tun4_edited.wav");
+        stringNames.add(i16);
+        ArrayList<String> i17 = new ArrayList<>();//4.24a
+        i17.add("a_4-24_kwa4a24-kwa4an4_edited.wav");
+        stringNames.add(i17);
+    }
+        
+        public void buttonAction() {
+        AudioInputStream audioIn = null;
+        try {
+            if(clip==null||!clip.isOpen()){
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(buttonNum).get(count.get(buttonNum))));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }else{
+                clip.stop();
+                
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(buttonNum).get(count.get(buttonNum))));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }
+            
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        if(count.get(buttonNum).equals(stringNames.get(buttonNum).size() - 1)){
+            count.set(buttonNum, 0);
+        }
+        else {
+            int value = count.get(buttonNum);
+            value = value + 1;
+            count.set(buttonNum, value);
+        }
     }
 
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -83,6 +208,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton1.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton1.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton1.setSize(new java.awt.Dimension(160, 60));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -91,6 +221,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton2.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton2.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton2.setSize(new java.awt.Dimension(160, 60));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -99,6 +234,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton3.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton3.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton3.setSize(new java.awt.Dimension(160, 60));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -107,6 +247,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton4.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton4.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton4.setSize(new java.awt.Dimension(160, 60));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -115,6 +260,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton5.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton5.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton5.setSize(new java.awt.Dimension(160, 60));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -123,6 +273,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton6.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton6.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton6.setSize(new java.awt.Dimension(160, 60));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -131,6 +286,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton7.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton7.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton7.setSize(new java.awt.Dimension(160, 60));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
         jButton8.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -139,6 +299,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton8.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton8.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton8.setSize(new java.awt.Dimension(160, 60));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setBackground(new java.awt.Color(255, 255, 255));
         jButton9.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -147,6 +312,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton9.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton9.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton9.setSize(new java.awt.Dimension(160, 60));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setBackground(new java.awt.Color(255, 255, 255));
         jButton10.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -155,6 +325,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton10.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton10.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton10.setSize(new java.awt.Dimension(160, 60));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setBackground(new java.awt.Color(255, 255, 255));
         jButton11.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -163,6 +338,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton11.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton11.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton11.setSize(new java.awt.Dimension(160, 60));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setBackground(new java.awt.Color(255, 255, 255));
         jButton12.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -171,6 +351,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton12.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton12.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton12.setSize(new java.awt.Dimension(160, 60));
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jButton13.setBackground(new java.awt.Color(255, 255, 255));
         jButton13.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -179,6 +364,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton13.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton13.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton13.setSize(new java.awt.Dimension(160, 60));
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setBackground(new java.awt.Color(255, 255, 255));
         jButton14.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -187,6 +377,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton14.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton14.setPreferredSize(new java.awt.Dimension(160, 60));
         jButton14.setSize(new java.awt.Dimension(160, 60));
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         jButton15.setBackground(new java.awt.Color(255, 255, 255));
         jButton15.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -195,6 +390,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton15.setMinimumSize(new java.awt.Dimension(160, 75));
         jButton15.setPreferredSize(new java.awt.Dimension(160, 75));
         jButton15.setSize(new java.awt.Dimension(160, 75));
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jButton16.setBackground(new java.awt.Color(255, 255, 255));
         jButton16.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -203,6 +403,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton16.setMinimumSize(new java.awt.Dimension(160, 75));
         jButton16.setPreferredSize(new java.awt.Dimension(160, 75));
         jButton16.setSize(new java.awt.Dimension(160, 75));
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setBackground(new java.awt.Color(255, 255, 255));
         jButton17.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -211,6 +416,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton17.setMinimumSize(new java.awt.Dimension(160, 75));
         jButton17.setPreferredSize(new java.awt.Dimension(160, 75));
         jButton17.setSize(new java.awt.Dimension(160, 75));
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setBackground(new java.awt.Color(255, 255, 255));
         jButton18.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
@@ -219,6 +429,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton18.setMinimumSize(new java.awt.Dimension(160, 75));
         jButton18.setPreferredSize(new java.awt.Dimension(160, 75));
         jButton18.setSize(new java.awt.Dimension(160, 75));
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/TTPictures/Nasalizations2.png"))); // NOI18N
 
@@ -432,6 +647,109 @@ public class Nasalizations extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+        LineListener listener = new LineListener() {
+        @Override
+        public void update(LineEvent event) {
+            if(event.getType()==STOP){
+                clip.close();
+                }
+            }
+    };
+    
+    //String path = "/home/mike/Transcription Data/Tones/";
+    String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/Nasalizations/";
+    
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        buttonNum = 0;
+        buttonAction();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        buttonNum = 1;
+        buttonAction();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        buttonNum = 2;
+        buttonAction();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        buttonNum = 3;
+        buttonAction();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        buttonNum = 4;
+        buttonAction();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        buttonNum = 5;
+        buttonAction();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        buttonNum = 6;
+        buttonAction();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        buttonNum = 7;
+        buttonAction();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        buttonNum = 8;
+        buttonAction();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        buttonNum = 9;
+        buttonAction();
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        buttonNum = 10;
+        buttonAction();
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        buttonNum = 11;
+        buttonAction();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        buttonNum = 12;
+        buttonAction();
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        buttonNum = 13;
+        buttonAction();
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        buttonNum = 14;
+        buttonAction();
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        buttonNum = 15;
+        buttonAction();
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        buttonNum = 16;
+        buttonAction();
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        buttonNum = 17;
+        buttonAction();
+    }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
      * @param args the command line arguments

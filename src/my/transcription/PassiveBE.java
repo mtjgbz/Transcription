@@ -162,7 +162,6 @@ public class PassiveBE {
             Matcher matcher = regexp.matcher(file.getName());
 
             int count = rand.nextInt(nList.getLength());
-            //System.out.println(count + " out of " + nList.getLength());
 
             for (int i = 0; i < nList.getLength(); i++) {
                 Node nNode = nList.item(i);
@@ -170,7 +169,6 @@ public class PassiveBE {
                 String value = nNode.getNextSibling().getNodeValue();
                 matcher.reset(value);
                 if (matcher.find()) {
-                    //phrases.add(value);
                     if (i >= count) {
                         String time = attributes.getNamedItem("time").toString();
                         time = time.replace("time=", "");
@@ -178,7 +176,6 @@ public class PassiveBE {
                         phrase.add(time);
                         if (value != null) {
                             phrase.add(value);
-                            //System.out.println(value);
                         } else {
                             return null;
                         }
@@ -199,10 +196,6 @@ public class PassiveBE {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        for(String p : phrases) {
-//            System.out.println("Phrase: " + p);
-//        }
-//        System.out.println("Size: " + phrases.size());
         return null;
     }
 
@@ -212,7 +205,7 @@ public class PassiveBE {
      * @param words     Words within the phrases that match the regular expression.
      */
     public void findWords(ArrayList<String> phrases, ArrayList<String> words) {
-        Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2)");       //example exp - change later
+        Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2\\s)");       //example exp - change later
         Matcher matcher;
         for (String phrase : phrases) {
             matcher = regexp.matcher(phrase);

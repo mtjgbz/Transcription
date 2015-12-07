@@ -26,8 +26,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class ToneTable extends javax.swing.JFrame {
     Clip clip;
-    boolean running = false;
-    ArrayList<String> stringNames = new ArrayList<>();
+    int buttonNum = 0;
+    ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
+    ArrayList<Integer> count = new ArrayList<>();
     /**
      * Creates new form ToneTable
      */
@@ -35,11 +36,468 @@ public class ToneTable extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Tone Table");
         this.setLocation(x, y);
-        for(int i = 0; i < 120; i++) {
-            stringNames.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        for(int i = 0; i < 121; i++) {
+            count.add(0);
+        }
+        
+        ArrayList<String> i0 = new ArrayList<>();//1.1a
+        i0.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
+        i0.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
+        stringNames.add(i0);
+        ArrayList<String> i1 = new ArrayList<>();//1.1b
+        i1.add("b_1-1_ndi71i1_1082_Yolox-RCG500_edited.wav");
+        i1.add("b_1-1_ka71a1_0366_Yolox-RCG500_edited.wav");
+        stringNames.add(i1);
+        ArrayList<String> i2 = new ArrayList<>();//1.1c
+        i2.add("c_1-1_i1in1_0018_Yolox-RCG500_edited.wav");
+        i2.add("c_1-1_tu1un1_0363_Yolox-RCG500_edited.wav");
+        stringNames.add(i2);
+        ArrayList<String> i3 = new ArrayList<>();//1.1d
+        i3.add("d_1-1_ka71an1_0174_Yolox-RCG500_edited.wav");
+        i3.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i3);
+        ArrayList<String> i4 = new ArrayList<>();//1.1e
+        i4.add("e_1-1_ka1ta1_1080_Yolox-RCG500_edited.wav");
+        i4.add("e_1-1_ta1ni1_1301_Yolox-RCG500_edited.wav");
+        stringNames.add(i4);
+        ArrayList<String> i5 = new ArrayList<>();//1.1f
+        i5.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i5.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i5);
+        ArrayList<String> i6 = new ArrayList<>();//1.1g
+        i6.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i6.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i6);
+        ArrayList<String> i7 = new ArrayList<>();//3.3a
+        i7.add("a_3-3_ya3a3_0113_Yolox-RCG500_edited.wav");
+        i7.add("a_3-3_nda3a3_0327_Yolox-RCG500_edited.wav");
+        stringNames.add(i7);
+        ArrayList<String> i8 = new ArrayList<>();//3.3b
+        i8.add("b_3-3_ndi73i3_0280_Yolox-RCG500_edited.wav");
+        i8.add("b_3-3_ka73a3_1826a_Yolox-RCG500_edited.wav");
+        stringNames.add(i8);
+        ArrayList<String> i9 = new ArrayList<>();//3.3c
+        i9.add("c_3-3_i3in3_0001_Yolox-RCG500_edited.wav");
+        i9.add("c_3-3_tu3un3_1085_Yolox-RCG500_edited.wav");
+        stringNames.add(i9);
+        ArrayList<String> i10 = new ArrayList<>();//3.3d
+        i10.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i10.add("d_3-3_ki73in3_0400_Yolox-RCG500_edited.wav");
+        stringNames.add(i10);
+        ArrayList<String> i11 = new ArrayList<>();//3.3e
+        i11.add("e_3-3_ka3ta3_0333_Yolox-RCG500_edited.wav");
+        i11.add("e_3-3_ta3ni3_0355_Yolox-RCG500_edited.wav");
+        stringNames.add(i11);
+        ArrayList<String> i12 = new ArrayList<>();//3.3f
+        i12.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i12.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i12);
+        ArrayList<String> i13 = new ArrayList<>();//3.3g
+        i13.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i13.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i13);
+        ArrayList<String> i14 = new ArrayList<>();//4.4a
+        i14.add("a_4-4_ya4a4_0489_Yolox-RCG500_edited.wav");
+        i14.add("a_4-4_nda4a4_0114_Yolox-RCG500_edited.wav");
+        stringNames.add(i14);
+        ArrayList<String> i15 = new ArrayList<>();//4.4b
+        i15.add("b_4-4_ndi74i4_1673_Yolox-RCG500_edited.wav");
+        i15.add("b_4-4_ko74o4_1105_Yolox-RCG500_edited.wav");
+        stringNames.add(i15);
+        ArrayList<String> i16 = new ArrayList<>();//4.4c
+        i16.add("c_4-4_i4in4_0235_Yolox-RCG500_edited.wav");
+        i16.add("c_4-4_tiu4un4_1421_Yolox-RCG500_edited.wav");
+        stringNames.add(i16);
+        ArrayList<String> i17 = new ArrayList<>();//4.4d
+        i17.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i17.add("d_4-4_xi74in4_1437_Yolox-RCG500_edited.wav");
+        stringNames.add(i17);
+        ArrayList<String> i18 = new ArrayList<>();//4.4e
+        i18.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i18.add("e_4-4_tu4mi4_0776_Yolox-RCG500_edited.wav");
+        stringNames.add(i18);
+        ArrayList<String> i19 = new ArrayList<>();//4.4f
+        i19.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i19.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i10);
+        ArrayList<String> i20 = new ArrayList<>();//4.4g
+        i20.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i20.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i20);
+        ArrayList<String> i21 = new ArrayList<>();//4.1b
+        i21.add("b_4-1_ta74a1_1347_Yolox-RCG500_edited.wav");
+        i21.add("b_4-1_yo74o1_0202_Yolox-RCG500_edited.wav");
+        stringNames.add(i21);
+        ArrayList<String> i22 = new ArrayList<>();//4.1c
+        i22.add("c_1-4_xi1in4_1215_Yolox-RCG500_edited.wav");
+        stringNames.add(i22);
+        ArrayList<String> i23 = new ArrayList<>();//4.1d
+        i23.add("d_4-1_xa74an1_0227_Yolox-RCG500_edited.wav");
+        stringNames.add(i23);
+        ArrayList<String> i24 = new ArrayList<>();//4.1e
+        i24.add("e_4-1_xi4xi1_0556_Yolox-RCG500_edited.wav");
+        i24.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i24);
+        ArrayList<String> i25 = new ArrayList<>();//4.1f
+        i25.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i25);
+        ArrayList<String> i26 = new ArrayList<>();//4.1g
+        i26.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i26);
+        ArrayList<String> i27 = new ArrayList<>();//4.2a
+        i27.add("a_4-2_nda4a2_0861_Yolox-RCG500_edited.wav");
+        i27.add("a_4-2_kwe4e2_0624_Yolox-RCG500_edited.wav");
+        stringNames.add(i27);
+        ArrayList<String> i28 = new ArrayList<>();//4.2b
+        i28.add("b_4-2_pa74a2_0989_Yolox-RCG500_edited.wav");
+        i28.add("b_4-2_tu74u2_0692_Yolox-RCG500_edited.wav");
+        stringNames.add(i28);
+        ArrayList<String> i29 = new ArrayList<>();//4.2c
+        i29.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i29);
+        ArrayList<String> i30 = new ArrayList<>();//4.2d
+        i30.add("d_4-2_xa74an2_0487_Yolox-RCG500_edited.wav");
+        stringNames.add(i30);
+        ArrayList<String> i31 = new ArrayList<>();//4.2e
+        i31.add("e_4-2_be4xi2_1799_Yolox-RCG500_edited.wav");
+        i31.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i31);
+        ArrayList<String> i32 = new ArrayList<>();//4.2f
+        i32.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i32);
+        ArrayList<String> i33 = new ArrayList<>();//4.2g
+        i33.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i33);
+        ArrayList<String> i34 = new ArrayList<>();//4.3b
+        i34.add("b_4-3_i74i3_0620_Yolox-RCG500_edited.wav");
+        stringNames.add(i34);
+        ArrayList<String> i35 = new ArrayList<>();//4.3d
+        i35.add("d_4-3_i74in3_0981_Yolox-RCG500_edited.wav");
+        stringNames.add(i35);
+        ArrayList<String> i36 = new ArrayList<>();//4.3e
+        i36.add("e_4-3_xi4xi3_0526_Yolox-RCG500_edited.wav");
+        i36.add("e_4-3_bi4ka3_0673_Yolox-RCG500_edited.wav");
+        stringNames.add(i36);
+        ArrayList<String> i37 = new ArrayList<>();//4.3f
+        i37.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i37);
+        ArrayList<String> i38 = new ArrayList<>();//4.3g
+        i38.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i38);
+        ArrayList<String> i39 = new ArrayList<>();//3.2a
+        i39.add("a_3-2_nda3a2_0653_Yolox-RCG500_edited.wav");
+        i39.add("a_3-2_kwe3e2_1257_Yolox-RCG500_edited.wav");
+        stringNames.add(i39);
+        ArrayList<String> i40 = new ArrayList<>();//3.2b
+        i40.add("b_3-2_nda73a2_0538_Yolox-RCG500_edited.wav");
+        i40.add("b_3-2_ku73u2_0539_Yolox-RCG500_edited.wav");
+        stringNames.add(i40);
+        ArrayList<String> i41 = new ArrayList<>();//3.2c
+        i41.add("c_3-2_tu3un2_0365_Yolox-RCG500_edited.wav");
+        stringNames.add(i41);
+        ArrayList<String> i42 = new ArrayList<>();//3.2d
+        i42.add("d_3-2_xa73an2_0961_Yolox-RCG500_edited.wav");
+        stringNames.add(i42);
+        ArrayList<String> i43 = new ArrayList<>();//3.2e
+        i43.add("e_3-2_xi3xi2_0126_Yolox-RCG500_edited.wav");
+        i43.add("e_3-2_ka3ka2_0812_Yolox-RCG500_edited.wav");
+        stringNames.add(i43);
+        ArrayList<String> i44 = new ArrayList<>();//3.2f
+        i44.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i44);
+        ArrayList<String> i45 = new ArrayList<>();//3.2g
+        i45.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i45);
+        ArrayList<String> i46 = new ArrayList<>();//1.3a
+        i46.add("a_1-3_tu1u3_1431_Yolox-RCG500_edited.wav");
+        i46.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i46);
+        ArrayList<String> i47 = new ArrayList<>();//1.3b
+        i47.add("b_1-3_so71o3_1001_Yolox-RCG500_edited.wav");
+        i47.add("b_1-3_kwa71a3_1088_Yolox-RCG500_edited.wav");
+        stringNames.add(i47);
+        ArrayList<String> i48 = new ArrayList<>();//1.3c
+        i48.add("c_1-3_ta1an3_0485_Yolox-RCG500_edited.wav");
+        i48.add("c_1-3_ti1in3_0395_Yolox-RCG500_edited.wav");
+        stringNames.add(i48);
+        ArrayList<String> i49 = new ArrayList<>();//1.3d
+        i49.add("d_1-3_si71in3_0195_Yolox-RCG500_edited.wav");
+        stringNames.add(i49);
+        ArrayList<String> i50 = new ArrayList<>();//1.3e
+        i50.add("e_1-3_ke1ta3_1592a_Yolox-RCG500_edited.wav");
+        i50.add("e_1-3_ba1xi3_0260_Yolox-RCG500_edited.wav");
+        stringNames.add(i50);
+        ArrayList<String> i51 = new ArrayList<>();//1.3f
+        i51.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i51.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i51);
+        ArrayList<String> i52 = new ArrayList<>();//1.3g
+        i52.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i52.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i52);
+        ArrayList<String> i53 = new ArrayList<>();//1.4a
+        i53.add("a_1-4_yu1u4_0251_Yolox-RCG500_edited.wav");
+        i53.add("a_1-4_sa1a4_0382_Yolox-RCG500_edited.wav");
+        stringNames.add(i53);
+        ArrayList<String> i54 = new ArrayList<>();//1.4b
+        i54.add("b_1-4_yo71o4_0493_Yolox-RCG500_edited.wav");
+        i54.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i54);
+        ArrayList<String> i55 = new ArrayList<>();//1.4c
+        i55.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i55.add("c_1-4_xi1in4_1215_Yolox-RCG500_edited.wav");
+        stringNames.add(i55);
+        ArrayList<String> i56 = new ArrayList<>();//1.4d
+        i56.add("d_1-4_ti71in4_0744_Yolox-RCG500_edited.wav");
+        stringNames.add(i56);
+        ArrayList<String> i57 = new ArrayList<>();//1.4e
+        i57.add("e_1-4_sa1ta4_0186_Yolox-RCG500_edited.wav");
+        i57.add("e_1-4_ta1xi4_0392_Yolox-RCG500_edited.wav");
+        stringNames.add(i57);
+        ArrayList<String> i58 = new ArrayList<>();//1.4f
+        i58.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i58.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i58);
+        ArrayList<String> i59 = new ArrayList<>();//1.4g
+        i59.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i59.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i59);
+        ArrayList<String> i60 = new ArrayList<>();//3.4a
+        i60.add("a_3-4_tu3u4_0513_Yolox-RCG500_edited.wav");
+        i60.add("a_3-4_sa3a4_0912_Yolox-RCG500_edited.wav");
+        stringNames.add(i60);
+        ArrayList<String> i61 = new ArrayList<>();//3.4b
+        i61.add("b_3-4_yo73o4_0247_Yolox-RCG500_edited.wav");
+        i61.add("b_3-4_ka73a4_0787_Yolox-RCG500_edited.wav");
+        stringNames.add(i61);
+        ArrayList<String> i62 = new ArrayList<>();//3.4c
+        i62.add("c_3-4_ta3an4_0319_Yolox-RCG500_edited.wav");
+        i62.add("c_3-4_xi3in4_1258_Yolox-RCG500_edited.wav");
+        stringNames.add(i62);
+        ArrayList<String> i63 = new ArrayList<>();//3.4d
+        i63.add("d_3-4_ka73an4_0412_Yolox-RCG500_edited.wav");
+        stringNames.add(i63);
+        ArrayList<String> i64 = new ArrayList<>();//3.4e
+        i64.add("e_3-4_sa3ta4_0516_Yolox-RCG500_edited.wav");
+        i64.add("e_3-4_ta3xi4_0393_Yolox-RCG500_edited.wav");
+        stringNames.add(i64);
+        ArrayList<String> i65 = new ArrayList<>();//3.4f
+        i65.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i65.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i65);
+        ArrayList<String> i66 = new ArrayList<>();//3.4g
+        i66.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i66.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i66);
+        ArrayList<String> i67 = new ArrayList<>();//13.2d
+        i67.add("d_13-2_ti713in2_1907_Yolox-RCG500_edited.wav");
+        stringNames.add(i67);
+        ArrayList<String> i68 = new ArrayList<>();//13.2e
+        i68.add("e_13-2_su13nda2_1202_Yolox-RCG500_edited.wav");
+        stringNames.add(i68);
+        ArrayList<String> i69 = new ArrayList<>();//13.2f
+        i69.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i69);
+        ArrayList<String> i70 = new ArrayList<>();//13.3e
+        i70.add("e_13-3_xu13xa3_1206_Yolox-RCG500_edited.wav");
+        stringNames.add(i70);
+        ArrayList<String> i71 = new ArrayList<>();//13.4e
+        i71.add("e_13-4_ti13bi4_1911_Yolox-RCG500_edited.wav");
+        stringNames.add(i71);
+        ArrayList<String> i72 = new ArrayList<>();//13.4g
+        i72.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i72);
+        ArrayList<String> i73 = new ArrayList<>();//14.1b
+        i73.add("b_14-1_na714a1_1320_Yolox-RCG500_edited.wav");
+        stringNames.add(i73);
+        ArrayList<String> i74 = new ArrayList<>();//14.1f
+        i74.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i74);
+        ArrayList<String> i75 = new ArrayList<>();//14.2a
+        i75.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i75.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i75);
+        ArrayList<String> i76 = new ArrayList<>();//14.2b
+        i76.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i76.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i76);
+        ArrayList<String> i77 = new ArrayList<>();//14.2d
+        i77.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i77);
+        ArrayList<String> i78 = new ArrayList<>();//14.2e
+        i78.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i78);
+        ArrayList<String> i79 = new ArrayList<>();//14.2f
+        i79.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i79);
+        ArrayList<String> i80 = new ArrayList<>();//14.2g
+        i80.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i80);
+        ArrayList<String> i81 = new ArrayList<>();//14.3a
+        i81.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i81.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i81);
+        ArrayList<String> i82 = new ArrayList<>();//14.3c
+        i82.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i82);
+        ArrayList<String> i83 = new ArrayList<>();//14.3e
+        i83.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i83);
+        ArrayList<String> i84 = new ArrayList<>();//14.3f
+        i84.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i84);
+        ArrayList<String> i85 = new ArrayList<>();//14.3g
+        i85.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i85);
+        ArrayList<String> i86 = new ArrayList<>();//14.4b
+        i86.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i86.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i86);
+        ArrayList<String> i87 = new ArrayList<>();//14.4d
+        i87.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i87);
+        ArrayList<String> i88 = new ArrayList<>();//14.4e
+        i88.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i88.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i88);
+        ArrayList<String> i89 = new ArrayList<>();//14.4g
+        i89.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i89);
+        ArrayList<String> i90 = new ArrayList<>();//1.42e
+        i90.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i90);
+        ArrayList<String> i91 = new ArrayList<>();//1.42f
+        i91.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i91);
+        ArrayList<String> i92 = new ArrayList<>();//1.42g
+        i92.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i92);
+        ArrayList<String> i93 = new ArrayList<>();//1.43e
+        i93.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i93);
+        ArrayList<String> i94 = new ArrayList<>();//1.32a
+        i94.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i94);
+        ArrayList<String> i95 = new ArrayList<>();//1.32e
+        i95.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i95);
+        ArrayList<String> i96 = new ArrayList<>();//1.32f
+        i96.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i96);
+        ArrayList<String> i97 = new ArrayList<>();//3.42a
+        i97.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i97);
+        ArrayList<String> i98 = new ArrayList<>();//3.42b
+        i98.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i98);
+        ArrayList<String> i99 = new ArrayList<>();//3.42e
+        i99.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i99);
+        ArrayList<String> i100 = new ArrayList<>();//3.42g
+        i100.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i100);
+        ArrayList<String> i101 = new ArrayList<>();//4.42e
+        i101.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i101);
+        ArrayList<String> i102 = new ArrayList<>();//4.13a
+        i102.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i102);
+        ArrayList<String> i103 = new ArrayList<>();//4.13b
+        i103.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i103);
+        ArrayList<String> i104 = new ArrayList<>();//4.13d
+        i104.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i104);
+        ArrayList<String> i105 = new ArrayList<>();//4.13e
+        i105.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i105);
+        ArrayList<String> i106 = new ArrayList<>();//4.13f
+        i106.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i106);
+        ArrayList<String> i107 = new ArrayList<>();//4.13g
+        i107.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i107);
+        ArrayList<String> i108 = new ArrayList<>();//4.14e
+        i108.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i108);
+        ArrayList<String> i109 = new ArrayList<>();//4.14f
+        i109.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i109);
+        ArrayList<String> i110 = new ArrayList<>();//4.24a
+        i110.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i110);
+        ArrayList<String> i111 = new ArrayList<>();//4.24c
+        i111.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i111.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i111);
+        ArrayList<String> i112 = new ArrayList<>();//4.24e
+        i112.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i112);
+        ArrayList<String> i113 = new ArrayList<>();//4.24f
+        i113.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i113);
+        ArrayList<String> i114 = new ArrayList<>();//4.24g
+        i114.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i114);
+        ArrayList<String> i115 = new ArrayList<>();//3.13f
+        i115.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i115);
+        ArrayList<String> i116 = new ArrayList<>();//3.14e
+        i116.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i116);
+        ArrayList<String> i117 = new ArrayList<>();//4.34e
+        i117.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i117);
+        ArrayList<String> i118 = new ArrayList<>();//143a
+        i118.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i118.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i118.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i118);
+        ArrayList<String> i119 = new ArrayList<>();//132a
+        i119.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i119);
+        ArrayList<String> i120 = new ArrayList<>();//342a
+        i120.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        stringNames.add(i120);
+    }
+    
+    public void buttonAction() {
+        AudioInputStream audioIn = null;
+        try {
+            if(clip==null||!clip.isOpen()){
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(buttonNum).get(count.get(buttonNum))));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }else{
+                clip.stop();
+                
+                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(buttonNum).get(count.get(buttonNum))));
+                clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                audioIn.close();
+                clip.addLineListener(listener);
+                clip.start();
+            }
+            
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        if(count.get(buttonNum).equals(stringNames.get(buttonNum).size() - 1)){
+            count.set(buttonNum, 0);
+        }
+        else {
+            int value = count.get(buttonNum);
+            value = value + 1;
+            count.set(buttonNum, value);
         }
     }
-
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
     Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
@@ -2267,11 +2725,12 @@ public class ToneTable extends javax.swing.JFrame {
                                                         .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                             .addComponent(jButton72, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(jButton73, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addGap(40, 40, 40)
+                                                    .addGap(0, 0, 0)
                                                     .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jButton75, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel15)
-                                                        .addComponent(jButton74, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                            .addComponent(jButton74, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(jLabel15)))
                                                     .addGap(0, 0, 0)
                                                     .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(jLayeredPane5Layout.createSequentialGroup()
@@ -2306,9 +2765,7 @@ public class ToneTable extends javax.swing.JFrame {
                                                                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
                                                                     .addGap(20, 20, 20)
                                                                     .addComponent(jLabel18))
-                                                                .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                                                                    .addGap(0, 0, 0)
-                                                                    .addComponent(jButton90, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addComponent(jButton90, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                             .addGap(34, 34, 34)
                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                 .addComponent(jButton91, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2606,1683 +3063,283 @@ public class ToneTable extends javax.swing.JFrame {
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+        buttonNum = 0;
+        buttonAction();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(2)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        buttonNum = 1;
+        buttonAction();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(3)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(3)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        buttonNum = 2;
+        buttonAction();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(4)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(4)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        buttonNum = 3;
+        buttonAction();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(5)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(5)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        buttonNum = 4;
+        buttonAction();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(6)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(6)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        buttonNum = 5;
+        buttonAction();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(7)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(7)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        buttonNum = 6;
+        buttonAction();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(8)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(8)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }                                          
+        buttonNum = 7;
+        buttonAction();                   
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(9)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(9)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }                                          
+        buttonNum = 8;
+        buttonAction();                              
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(10)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(10)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 9;
+        buttonAction();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(11)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(11)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 10;
+        buttonAction();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(12)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(12)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 11;
+        buttonAction();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(13)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(13)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+       buttonNum = 12;
+        buttonAction();        
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(14)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(14)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 13;
+        buttonAction();
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(15)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(15)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 14;
+        buttonAction(); 
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(16)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(16)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 15;
+        buttonAction();
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(17)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(17)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 16;
+        buttonAction(); 
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(18)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(18)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 17;
+        buttonAction();
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(19)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(19)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 18;
+        buttonAction();
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(20)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(20)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 19;
+        buttonAction();
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(21)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(21)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 20;
+        buttonAction();
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(22)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(22)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+       buttonNum = 21;
+        buttonAction();   
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(23)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(23)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 22;
+        buttonAction();       
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(24)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(24)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 23;
+        buttonAction();
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(25)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(25)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 24;
+        buttonAction();
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(26)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(26)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 25;
+        buttonAction();
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(27)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(27)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 26;
+        buttonAction();   
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(28)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(28)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 27;
+        buttonAction();      
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(29)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(29)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 28;
+        buttonAction(); 
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(30)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(30)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 29;
+        buttonAction();
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(31)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(31)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 30;
+        buttonAction(); 
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(32)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(32)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 31;
+        buttonAction();    
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(33)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(33)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 32;
+        buttonAction(); 
     }//GEN-LAST:event_jButton33ActionPerformed
 
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(34)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(34)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 33;
+        buttonAction();
     }//GEN-LAST:event_jButton34ActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(35)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(35)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 34;
+        buttonAction();
     }//GEN-LAST:event_jButton35ActionPerformed
 
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(36)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(36)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 35;
+        buttonAction();
     }//GEN-LAST:event_jButton36ActionPerformed
 
     private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(37)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(37)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 36;
+        buttonAction();
     }//GEN-LAST:event_jButton37ActionPerformed
 
     private void jButton38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton38ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(38)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(38)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 37;
+        buttonAction();
     }//GEN-LAST:event_jButton38ActionPerformed
 
     private void jButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton39ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(39)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(39)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 38;
+        buttonAction();
     }//GEN-LAST:event_jButton39ActionPerformed
 
     private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(40)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(40)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 39;
+        buttonAction();   
     }//GEN-LAST:event_jButton40ActionPerformed
 
     private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(41)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(41)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 40;
+        buttonAction();
     }//GEN-LAST:event_jButton41ActionPerformed
 
     private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(42)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(42)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 41;
+        buttonAction();   
     }//GEN-LAST:event_jButton42ActionPerformed
 
     private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(43)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(43)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 42;
+        buttonAction();      
     }//GEN-LAST:event_jButton43ActionPerformed
 
     private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(44)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(44)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 43;
+        buttonAction();   
     }//GEN-LAST:event_jButton44ActionPerformed
 
     private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(45)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(45)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 44;
+        buttonAction();
     }//GEN-LAST:event_jButton45ActionPerformed
 
     private void jButton46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton46ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(46)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(46)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 45;
+        buttonAction();
     }//GEN-LAST:event_jButton46ActionPerformed
 
     private void jButton47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton47ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(47)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(47)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 46;
+        buttonAction();
     }//GEN-LAST:event_jButton47ActionPerformed
 
     private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(48)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(48)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 47;
+        buttonAction();
     }//GEN-LAST:event_jButton48ActionPerformed
 
     private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(49)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(49)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 48;
+        buttonAction();
     }//GEN-LAST:event_jButton49ActionPerformed
 
     private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(50)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(50)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 49;
+        buttonAction();
     }//GEN-LAST:event_jButton50ActionPerformed
 
     private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(51)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(51)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 50;
+        buttonAction();
     }//GEN-LAST:event_jButton51ActionPerformed
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(52)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(52)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 51;
+        buttonAction();
     }//GEN-LAST:event_jButton52ActionPerformed
 
     private void jButton53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton53ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(53)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(53)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 52;
+        buttonAction();       
     }//GEN-LAST:event_jButton53ActionPerformed
 
     private void jButton54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton54ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(54)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(54)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 53;
+        buttonAction();    
     }//GEN-LAST:event_jButton54ActionPerformed
 
     private void jButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton55ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(55)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(55)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 54;
+        buttonAction();
     }//GEN-LAST:event_jButton55ActionPerformed
 
     private void jButton56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton56ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(56)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(56)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 55;
+        buttonAction();
     }//GEN-LAST:event_jButton56ActionPerformed
     
     private void jButton57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton57ActionPerformed
@@ -4290,1953 +3347,328 @@ public class ToneTable extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton57ActionPerformed
 
     private void jButton57realActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton57realActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(57)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(57)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 56;
+        buttonAction();  
     }//GEN-LAST:event_jButton57realActionPerformed
 
     private void jButton58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton58ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(58)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(58)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 57;
+        buttonAction();    
     }//GEN-LAST:event_jButton58ActionPerformed
 
     private void jButton59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton59ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(59)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(59)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 58;
+        buttonAction();     
     }//GEN-LAST:event_jButton59ActionPerformed
 
     private void jButton60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton60ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(60)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(60)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 59;
+        buttonAction(); 
     }//GEN-LAST:event_jButton60ActionPerformed
 
     private void jButton61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton61ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(61)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(61)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 60;
+        buttonAction();    
     }//GEN-LAST:event_jButton61ActionPerformed
 
     private void jButton62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton62ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(62)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(62)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 61;
+        buttonAction();
     }//GEN-LAST:event_jButton62ActionPerformed
 
     private void jButton63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton63ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(63)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(63)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 62;
+        buttonAction();
     }//GEN-LAST:event_jButton63ActionPerformed
 
     private void jButton64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton64ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(64)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(64)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 63;
+        buttonAction(); 
     }//GEN-LAST:event_jButton64ActionPerformed
 
     private void jButton65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton65realActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(65)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(65)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 64;
+        buttonAction();
     }//GEN-LAST:event_jButton65realActionPerformed
 
     private void jButton66ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(66)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(66)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 65;
+        buttonAction();  
     }                                         
 
     private void jButton67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton67ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(67)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(67)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 66;
+        buttonAction();
     }//GEN-LAST:event_jButton67ActionPerformed
 
     private void jButton68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton68ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(68)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(68)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 67;
+        buttonAction();
     }//GEN-LAST:event_jButton68ActionPerformed
 
     private void jButton69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton69ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(69)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(69)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 68;
+        buttonAction();    
     }//GEN-LAST:event_jButton69ActionPerformed
 
     private void jButton70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton70ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(70)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(70)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 69;
+        buttonAction();    
     }//GEN-LAST:event_jButton70ActionPerformed
 
     private void jButton71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton71ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(71)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(71)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 70;
+        buttonAction();  
     }//GEN-LAST:event_jButton71ActionPerformed
 
     private void jButton72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton72ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(72)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(72)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 71;
+        buttonAction();
     }//GEN-LAST:event_jButton72ActionPerformed
 
     private void jButton73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton73ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(73)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(73)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 72;
+        buttonAction();
     }//GEN-LAST:event_jButton73ActionPerformed
 
     private void jButton74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton74ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(74)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(74)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 73;
+        buttonAction();     
     }//GEN-LAST:event_jButton74ActionPerformed
 
     private void jButton75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton75ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(75)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(75)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 74;
+        buttonAction();
     }//GEN-LAST:event_jButton75ActionPerformed
 
     private void jButton76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton76ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(76)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(76)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 75;
+        buttonAction();
     }//GEN-LAST:event_jButton76ActionPerformed
 
     private void jButton77ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton77ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(77)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(77)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 76;
+        buttonAction();
     }//GEN-LAST:event_jButton77ActionPerformed
 
     private void jButton78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton78ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(78)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(78)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 77;
+        buttonAction(); 
     }//GEN-LAST:event_jButton78ActionPerformed
 
     private void jButton79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton79ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(79)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(79)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 78;
+        buttonAction();
     }//GEN-LAST:event_jButton79ActionPerformed
 
     private void jButton80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton80ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(80)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(80)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 79;
+        buttonAction();
     }//GEN-LAST:event_jButton80ActionPerformed
 
     private void jButton81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton81ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(81)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(81)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 80;
+        buttonAction();
     }//GEN-LAST:event_jButton81ActionPerformed
 
     private void jButton82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton82ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(82)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(82)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 81;
+        buttonAction();
     }//GEN-LAST:event_jButton82ActionPerformed
 
     private void jButton83ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton83ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(83)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(83)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 82;
+        buttonAction();
     }//GEN-LAST:event_jButton83ActionPerformed
 
     private void jButton84ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton84ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(84)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(84)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 83;
+        buttonAction();
     }//GEN-LAST:event_jButton84ActionPerformed
 
     private void jButton85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton85ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(85)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(85)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 84;
+        buttonAction();   
     }//GEN-LAST:event_jButton85ActionPerformed
 
     private void jButton86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton86ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(86)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(86)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 85;
+        buttonAction();
     }//GEN-LAST:event_jButton86ActionPerformed
 
     private void jButton87ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton87ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(87)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(87)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 86;
+        buttonAction();
     }//GEN-LAST:event_jButton87ActionPerformed
 
     private void jButton88ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton88ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 87;
+        buttonAction();
     }//GEN-LAST:event_jButton88ActionPerformed
 
     private void jButton89ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton89ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 88;
+        buttonAction();   
     }//GEN-LAST:event_jButton89ActionPerformed
 
     private void jButton90ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton90ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 89;
+        buttonAction();
     }//GEN-LAST:event_jButton90ActionPerformed
 
     private void jButton91ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton91ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 90;
+        buttonAction();       
     }//GEN-LAST:event_jButton91ActionPerformed
 
     private void jButton92ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton92ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 91;
+        buttonAction();      
     }//GEN-LAST:event_jButton92ActionPerformed
 
     private void jButton93ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton93ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+       buttonNum = 92;
+        buttonAction();       
     }//GEN-LAST:event_jButton93ActionPerformed
 
     private void jButton94ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton94ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 93;
+        buttonAction();       
     }//GEN-LAST:event_jButton94ActionPerformed
 
     private void jButton95ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton95ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 94;
+        buttonAction();       
     }//GEN-LAST:event_jButton95ActionPerformed
 
     private void jButton96ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton96ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 95;
+        buttonAction();       
     }//GEN-LAST:event_jButton96ActionPerformed
 
     private void jButton97ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton97ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 96;
+        buttonAction();
     }//GEN-LAST:event_jButton97ActionPerformed
 
     private void jButton98ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton98ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 97;
+        buttonAction();
     }//GEN-LAST:event_jButton98ActionPerformed
 
     private void jButton99ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton99ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 98;
+        buttonAction();       
     }//GEN-LAST:event_jButton99ActionPerformed
 
     private void jButton100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton100ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 99;
+        buttonAction();
     }//GEN-LAST:event_jButton100ActionPerformed
 
     private void jButton101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton101ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 100;
+        buttonAction();   
     }//GEN-LAST:event_jButton101ActionPerformed
 
     private void jButton102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton102ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 101;
+        buttonAction();
     }//GEN-LAST:event_jButton102ActionPerformed
 
     private void jButton103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton103ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 102;
+        buttonAction();
     }//GEN-LAST:event_jButton103ActionPerformed
 
     private void jButton104ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton104ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 103;
+        buttonAction();
     }//GEN-LAST:event_jButton104ActionPerformed
 
     private void jButton105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton105ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 104;
+        buttonAction();
     }//GEN-LAST:event_jButton105ActionPerformed
 
     private void jButton106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton106ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 105;
+        buttonAction();
     }//GEN-LAST:event_jButton106ActionPerformed
 
     private void jButton107ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton107ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 106;
+        buttonAction();
     }//GEN-LAST:event_jButton107ActionPerformed
 
     private void jButton108ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton108ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 107;
+        buttonAction();
     }//GEN-LAST:event_jButton108ActionPerformed
 
     private void jButton109ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton109ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 108;
+        buttonAction();
     }//GEN-LAST:event_jButton109ActionPerformed
 
     private void jButton110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton110ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 109;
+        buttonAction();
     }//GEN-LAST:event_jButton110ActionPerformed
 
     private void jButton111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton111ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 110;
+        buttonAction();
     }//GEN-LAST:event_jButton111ActionPerformed
 
     private void jButton112ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton112ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 111;
+        buttonAction();        
     }//GEN-LAST:event_jButton112ActionPerformed
 
     private void jButton113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton113ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 112;
+        buttonAction();       
     }//GEN-LAST:event_jButton113ActionPerformed
 
     private void jButton114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton114ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+       buttonNum = 113;
+        buttonAction();        
     }//GEN-LAST:event_jButton114ActionPerformed
 
     private void jButton115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton115ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 114;
+        buttonAction();    
     }//GEN-LAST:event_jButton115ActionPerformed
 
     private void jButton116ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton116ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 115;
+        buttonAction();      
     }//GEN-LAST:event_jButton116ActionPerformed
 
     private void jButton117ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton117ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 116;
+        buttonAction();    
     }//GEN-LAST:event_jButton117ActionPerformed
 
     private void jButton118ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton118ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 117;
+        buttonAction();
     }//GEN-LAST:event_jButton118ActionPerformed
 
     private void jButton119ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton119ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 118;
+        buttonAction();
     }//GEN-LAST:event_jButton119ActionPerformed
 
     private void jButton120ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton120ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 119;
+        buttonAction();
     }//GEN-LAST:event_jButton120ActionPerformed
 
     private void jButton121ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton121ActionPerformed
-        AudioInputStream audioIn = null;
-        try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }else{
-                clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(1)));
-                clip = AudioSystem.getClip();
-                clip.open(audioIn);
-                audioIn.close();
-                clip.addLineListener(listener);
-                clip.start();
-            }
-            
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        buttonNum = 120;
+        buttonAction();
     }//GEN-LAST:event_jButton121ActionPerformed
 
     /**
