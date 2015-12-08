@@ -14,7 +14,6 @@ public class SignInBE {
     private ResultSet rs;
 
     public SignInBE() {
-
     }
 
     public void setupDB() {
@@ -26,7 +25,6 @@ public class SignInBE {
             SQLiteDataSource ds = new SQLiteDataSource(config);
             ds.setUrl("jdbc:sqlite::resource:"+getClass().getResource("TAA.db").toString());
             conn = ds.getConnection();
-            System.out.println("Database opened successfully");
             stmt = conn.createStatement();
         } catch (Exception e) {
             errorMsg(e.toString(),"Database error");
