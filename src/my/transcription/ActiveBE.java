@@ -41,7 +41,8 @@ public class ActiveBE {
     private Random rand;
     private static ArrayList<File> clips;
     private static ArrayList<String> phrases;
-    //private static ArrayList<String> words;
+    private static ArrayList<String> correctAnswers;
+    private static ArrayList<String> userAnswers;
     private ArrayList<Integer> attempts;
     
     private JFrame parentFrame;
@@ -51,7 +52,7 @@ public class ActiveBE {
     
     public ActiveBE(boolean isTest) {
         this.isTest=isTest;
-        //stmt = User.setupDB(parentFrame);
+        stmt = User.setupDB(parentFrame);
         rand = new Random();
         clips = new ArrayList<>();
         attempts = new ArrayList<Integer>();
@@ -111,10 +112,45 @@ public class ActiveBE {
         return 0;
     }
     
-    public void newAttempt(int questionNum, int questionID, int practiceID){
+    public void newAttempt(int questionNum, int practiceID){
         try{
             int attempt = attempts.get(questionNum - 1);
+            String response = userAnswers.get(questionNum - 1);
+            String answer = userAnswers.get(questionNum - 1);
+
+            //get the practice id from the db
+            stmt = User.setupDB(parentFrame);
             
+            //get the word from that practice from the db or just the array
+            //get the questionID from that word
+            String corrAnswer = correctAnswers.get(questionNum - 1);
+            
+            String query = "SELECT QuestionID FROM PRACTICE_ANSWER WHERE"
+                    + " PracticeID = " + practiceID + " AND ANSWER LIKE "
+                    + corrAnswer + "; ";
+            ResultSet rs = stmt.executeQuery(query);
+            int questionID = rs.getInt("QuestionID");
+            
+            //if it matches the answer in the array put it in as the correct score
+            
+            float score;
+            float weightedScore;
+            if(response.equals(answer)){
+                score = 100;
+                weightedScore = 1/attempt;
+            }else{
+                score = 0;
+                weightedScore = 0/attempt;
+            }
+            
+            query = "INSERT INTO PRACTICE_ATTEMPT(PracticeID, Attempt, "
+                    + "QuestionID, Response, Score, WeightedScore) VALUES("
+                    + attempt + ", " + questionID + ", " + response + ", " + score
+                    + ", " + weightedScore + "; ";
+            
+            stmt.executeQuery(query);            
+            
+            attempts.set(questionNum - 1, attempt + 1);            
         }catch(Exception e){
             e.printStackTrace();
         }

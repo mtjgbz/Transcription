@@ -7,11 +7,8 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.*;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
+import javax.swing.JFrame;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
@@ -29,12 +26,14 @@ public class PassiveBE {
     private Statement stmt;
     private ResultSet rs;
     private Random rand;
+    private JFrame parentFrame;
     private static ArrayList<File> clips;
-    private static ArrayList<String> phrases;
-    private static ArrayList<String> words;
+    private String regex;
     
     private int lesson;
     private String sublesson;
+    
+    Clip[] currentClips = new Clip[5];
 
     private Clip clip1;
     private Clip clip2;
@@ -44,9 +43,11 @@ public class PassiveBE {
 
     /**
      * Creates the passive backend.
+     * @param pFrame    parent JFrame of backend.
      */
-    public PassiveBE() {
-        stmt = User.setupDB();
+    public PassiveBE(JFrame pFrame) {
+        parentFrame = pFrame;
+        stmt = User.setupDB(parentFrame);
         rand = new Random();
         clips = new ArrayList<File>();
     }
@@ -57,7 +58,7 @@ public class PassiveBE {
      * @param sublesson
      * @return
      */
-        public String findFile(int l, String s) {
+    public String findFile(int l, String s) {
         try {
             lesson = l;
             sublesson = s;
@@ -66,62 +67,29 @@ public class PassiveBE {
                     + " AND Sublesson = '" + sublesson + "';";
             rs = stmt.executeQuery(query);
             String path = rs.getString("FileList");
-//            System.out.println(path);
 
-            //pulling filename from lesson match .txt file
-//            File file = new File(path);
-//            LineNumberReader reader = new LineNumberReader(new FileReader(file));
-//            int lineCount = 0;
+            //pulling filename from lesson match string
             String[] filePaths = path.split("; ");
 
-            //reading lines int the file
-//            String line = reader.readLine();
-            //mark the first line so can reset when go to pull random line later
-//            reader.mark((int) file.length());
-            //go through lines and count them to get the total number
-//            while (line != null) {
-//                line = reader.readLine();
-//                lineCount++;
-//            }
-
-//            System.out.println("Line num: " + lineCount);
-            //get a random line number from the total number of lines
+            //get random filename from the list
             int random = rand.nextInt(filePaths.length - 1);
-            //System.out.println("Random: " + random);
-
-            //reset lineReader to the beginning of the file so can read up to the random line
-            //and then return it
-//            reader.reset();
-            //System.out.println("Line before loop: " + reader.getLineNumber());
-//            for (int i = 1; i < random; i++) {
-//                path = reader.readLine();
-//            }
-//            if (path.contains("txt")){
-//                path = reader.readLine();
-//            }
-            
             path = filePaths[random];
 
-            //close the lineReader and return the line (path for findPhrase)
-//            reader.close();
-
-            //System.out.println(path);
+            //create sound file name from transcription path name
             String soundName = path.replace(".trs", ".wav");
-            soundName = soundName.replace("Transcripciones", "Sonido");
+            soundName = soundName.replace("Transcripciones", "Sonidos");
             if (soundName.contains("_ed")) {
                 soundName = soundName.split("_ed")[0];
                 soundName = soundName + ".wav";
 
             }
+            //add the appropriate file to the clip array
             clips.add(new File(soundName));
-
             return path;
-
         } catch (Exception e) {
-            e.printStackTrace();
+            User.errorMessage(parentFrame, e.getMessage(), "Error");
+            parentFrame.dispose();
         }
-        User.closeDB(stmt, rs);
-
         return null;
     }
 
@@ -141,26 +109,36 @@ public class PassiveBE {
      */
     public ArrayList<String> findPhrase(String document) {
         try {
+            //ArrayList for start time, phrase, and end time
             ArrayList<String> phrase = new ArrayList<String>();
 
+            //Setting up the document reader to parse
             File file = new File(document);
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
             dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            if (document.contains(".txt")) {
+            
+            if (!document.contains(".trs")) {
+                //if the document is not a .trs file
                 return null;
             }
+            
+            //Parse the file and get all of the phrases
             Document doc = dBuilder.parse(file);
             NodeList nList = doc.getElementsByTagName("Sync");
             
+            //Get the applicable regular expression from the database
             String query = "SELECT RegularExpression FROM LESSON_PLAN WHERE "
                     + "Lesson = " + lesson + " AND Sublesson LIKE '" + sublesson + "';";
             rs = stmt.executeQuery(query);
+            regex = rs.getString("RegularExpression");
 
-            Pattern regexp = Pattern.compile(rs.getString("RegularExpression"));       //example exp - change later
+            //Setting up the regular expression searcher
+            Pattern regexp = Pattern.compile(regex);
             Matcher matcher = regexp.matcher(file.getName());
 
+            //random number within the number of rows there are
             int count = rand.nextInt(nList.getLength());
 
             for (int i = 0; i < nList.getLength(); i++) {
@@ -194,7 +172,9 @@ public class PassiveBE {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            parentFrame.dispose();            
+            User.closeDB(stmt, rs);
+            User.errorMessage(parentFrame, e.getMessage(), "Error");
         }
         return null;
     }
@@ -205,7 +185,7 @@ public class PassiveBE {
      * @param words     Words within the phrases that match the regular expression.
      */
     public void findWords(ArrayList<String> phrases, ArrayList<String> words) {
-        Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2\\s)");       //example exp - change later
+        Pattern regexp = Pattern.compile(regex);
         Matcher matcher;
         for (String phrase : phrases) {
             matcher = regexp.matcher(phrase);

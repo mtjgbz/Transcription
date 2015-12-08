@@ -5,10 +5,13 @@
  */
 package my.transcription;
 
+import java.awt.Component;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.regex.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
@@ -19,6 +22,7 @@ import org.w3c.dom.*;
 public class User {
     
     private static Connection conn;
+    private static JFrame parentFrame;
     
     /**
      * Creates the window for the file browser and sets it visible.
@@ -34,10 +38,10 @@ public class User {
      * @param transcriptions    Path where all the transcription files are located
      * @param path              Path for the text file to be stored in
      */
-    public static void createTextFile(String transcriptions, String path){
+    public static void createTextFile(String transcriptions){
         try{
-            Statement stmt = setupDB();
-            Statement stmt2 = setupDB();
+            Statement stmt = setupDB(parentFrame);
+            Statement stmt2 = conn.createStatement();
             String query = "SELECT Lesson, Sublesson FROM LESSON_PLAN";
             ResultSet rs = stmt.executeQuery(query);
             ArrayList<String> filePaths = new ArrayList<String>();
@@ -68,7 +72,7 @@ public class User {
             stmt2.close();
             closeDB(stmt, rs);
             
-            stmt = setupDB();
+            stmt = setupDB(parentFrame);
             for(int i = 0; i < filePaths.size(); i++){
                 String newQuery = "UPDATE LESSONS SET FileList = '" + filePaths.get(i) + "' "
                         + "WHERE Lesson = " + lessons.get(i) + " AND "
@@ -168,15 +172,17 @@ public class User {
      * Sets up the database.
      * @return Statement that is a part of the database
      */
-    public static Statement setupDB(){
+    public static Statement setupDB(JFrame pFrame){
         try {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection("jdbc:sqlite:TAA.db");
             System.out.println("Database opened successfully.");
             Statement stmt = conn.createStatement();
+            parentFrame = pFrame;
             return stmt;
         } catch (Exception e) {
-            e.printStackTrace();
+            errorMessage(parentFrame, e.getMessage(), "Error");
+            pFrame.dispose();
         }
         return null;
     }
@@ -190,7 +196,7 @@ public class User {
             stmt.close();
             conn.close();
         }catch(Exception e){
-            e.printStackTrace();
+            errorMessage(parentFrame, e.getMessage(), "Error");
         }
     }
     
@@ -207,5 +213,16 @@ public class User {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    /**
+     * Creates an error message to be displayed.
+     * @param container     Parent container for the pane to be within.
+     * @param message       Message to be displayed within the dialog.
+     * @param title         Title at the top of dialog.
+     */
+    public static void errorMessage(Component container, String message, String title){
+        JOptionPane.showMessageDialog(container, message, title, 
+                JOptionPane.ERROR_MESSAGE);
     }
 }

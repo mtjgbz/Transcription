@@ -105,7 +105,7 @@ public class Passive extends javax.swing.JFrame {
  
          initLists();
  
-         backend = new PassiveBE();
+         backend = new PassiveBE(this);
  
          for (int i = 0; i < 5; i++) {
              timersList.get(0).add(new Timer(4428, listener));
@@ -538,7 +538,7 @@ public class Passive extends javax.swing.JFrame {
      *initializes text field method
      */
     public void initTextFields() {
-        backend = new PassiveBE();
+        backend = new PassiveBE(this);
         phraseList = new ArrayList<ArrayList<String>>();
         for (int i = 0; i < 20; i++) {
             //pulls the transcription file for searching

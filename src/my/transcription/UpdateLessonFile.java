@@ -45,10 +45,7 @@ public class UpdateLessonFile extends javax.swing.JFrame {
 
         transcriptionPath = new javax.swing.JTextField();
         transcriptionLabel = new javax.swing.JLabel();
-        fileLabel = new javax.swing.JLabel();
-        filePath = new javax.swing.JTextField();
         transcriptionBrowse = new javax.swing.JButton();
-        fileBrowse = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
@@ -62,25 +59,10 @@ public class UpdateLessonFile extends javax.swing.JFrame {
 
         transcriptionLabel.setText("Where are your transcriptions located?");
 
-        fileLabel.setText("Lesson Text File location:");
-
-        filePath.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filePathActionPerformed(evt);
-            }
-        });
-
         transcriptionBrowse.setText("Browse...");
         transcriptionBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 transcriptionBrowseActionPerformed(evt);
-            }
-        });
-
-        fileBrowse.setText("Browse...");
-        fileBrowse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fileBrowseActionPerformed(evt);
             }
         });
 
@@ -104,19 +86,18 @@ public class UpdateLessonFile extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(filePath, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                        .addComponent(fileLabel)
-                        .addComponent(transcriptionLabel)
-                        .addComponent(transcriptionPath))
-                    .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(transcriptionBrowse)
-                    .addComponent(fileBrowse)
-                    .addComponent(cancelButton))
+                    .addComponent(transcriptionLabel)
+                    .addComponent(transcriptionPath, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(transcriptionBrowse)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cancelButton)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,17 +108,11 @@ public class UpdateLessonFile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transcriptionPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(transcriptionBrowse))
-                .addGap(36, 36, 36)
-                .addComponent(fileLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fileBrowse))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(okButton)
                     .addComponent(cancelButton))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,19 +128,9 @@ public class UpdateLessonFile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_transcriptionPathActionPerformed
 
-    private void fileBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseActionPerformed
-        // TODO add your handling code here:
-        String file = fileChooser() + "\\";
-        filePath.setText(file);
-    }//GEN-LAST:event_fileBrowseActionPerformed
-
-    private void filePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filePathActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_filePathActionPerformed
-
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
-        User.createTextFile(transcriptionPath.getText(), filePath.getText());
+        User.createTextFile(transcriptionPath.getText());
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
@@ -214,9 +179,6 @@ public class UpdateLessonFile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
-    private javax.swing.JButton fileBrowse;
-    private javax.swing.JLabel fileLabel;
-    private javax.swing.JTextField filePath;
     private javax.swing.JButton okButton;
     private javax.swing.JButton transcriptionBrowse;
     private javax.swing.JLabel transcriptionLabel;
