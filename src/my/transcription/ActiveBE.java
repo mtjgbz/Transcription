@@ -50,6 +50,8 @@ public class ActiveBE {
     private Clip clip;
     private boolean isTest;
     
+    int wordCount = 0;
+    
     public ActiveBE(boolean isTest) {
         this.isTest=isTest;
         stmt = User.setupDB(parentFrame,getClass().getResource("TAA.db").toString());
@@ -212,7 +214,7 @@ public class ActiveBE {
             Document doc = dBuilder.parse(file);
             NodeList nList = doc.getElementsByTagName("Sync");
 
-            Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2)");       //example exp - change later
+            Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2\\s)");       //example exp - change later
             Matcher matcher = regexp.matcher(file.getName());
 
             int count = rand.nextInt(nList.getLength());
@@ -270,7 +272,7 @@ public class ActiveBE {
      * @param words     Words within the phrases that match the regular expression.
      */
     public void findWords(String input, ArrayList<String> words) {
-        Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2)");       //example exp - change later
+        Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2\\s)");       //example exp - change later
         Matcher matcher;
         String[] phrase = input.split(" ");
         matcher = regexp.matcher(input);
@@ -278,8 +280,9 @@ public class ActiveBE {
             System.out.println("found word");
             String word = matcher.group(1);
             //System.out.println("Phrase: " + phrase + " Word: " + word);
-            if (!words.contains(word)) {
+            if (!(words.contains(word))) {
                 words.add(word);
+                wordCount++;
             }
         }
         
@@ -288,4 +291,142 @@ public class ActiveBE {
 //        }
 
     }
+    
+    String setBlanks(String input, ArrayList<String> words){
+        //words.add("yo4o4");
+        //words.add("tan42");
+        boolean used1 = false;
+        boolean used2 = false;
+        boolean used3 = false;
+        boolean used4 = false;
+        
+        String label = "";
+        
+        String word1 = "";
+        String word2 = "";
+        String word3 = "";
+        String word4 = "";
+        
+        int count = 0;
+        //String word2 = words.get(1);
+        String output = "";
+        char[] statement = input.toCharArray();
+        char c; 
+        
+        for(int i = 0; i < statement.length; i++){
+            c = statement[i];
+            label = label + c;  
+            if(wordCount == 1) {
+                word1 = words.get(0);
+                        
+                if (label.contains(word1) && used1 == false){  
+                    count++;
+                    label = label.replace(word1, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used1 = true;
+                }
+            }
+            else if(wordCount == 2) {
+                word1 = words.get(0);
+                word2 = words.get(1);
+                        
+                if (label.contains(word1) && used1 == false){  
+                    count++;
+                    label = label.replace(word1, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used1 = true;
+                }
+                if (label.contains(word2) && used2 == false){  
+                    count++;
+                    label = label.replace(word2, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used2 = true;
+                }
+            }
+            else if(wordCount == 3) {
+                word1 = words.get(0);
+                word2 = words.get(1);
+                word3 = words.get(2);
+                        
+                if (label.contains(word1) && used1 == false){  
+                    count++;
+                    label = label.replace(word1, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used1 = true;
+                }
+                if (label.contains(word2) && used2 == false){  
+                    count++;
+                    label = label.replace(word2, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used2 = true;
+                }
+                if (label.contains(word3) && used3 == false){  
+                    count++;
+                    label = label.replace(word3, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used3 = true;
+                }
+            }
+            else if(wordCount >= 4) {
+                word1 = words.get(0);
+                word2 = words.get(1);
+                word3 = words.get(2);
+                word4 = words.get(3);
+                        
+                if (label.contains(word1) && used1 == false){  
+                    count++;
+                    label = label.replace(word1, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used1 = true;
+                }
+                if (label.contains(word2) && used2 == false){  
+                    count++;
+                    label = label.replace(word2, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used2 = true;
+                }
+                if (label.contains(word3) && used3 == false){  
+                    count++;
+                    label = label.replace(word3, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used3 = true;
+                }
+                if (label.contains(word4) && used4 == false){  
+                    count++;
+                    label = label.replace(word4, "[     ]" );
+                    //blanks.add("[     ] ");
+                    output += label;
+                    label = "";
+                    used4 = true;
+                }
+            }
+        }
+       output += label;
+//       for(String s : blanks) {
+//           System.out.println(s);
+//       }
+       //System.out.println(blanks.size());
+       System.out.println(output);
+       return output;
+    }
 }
+
+
