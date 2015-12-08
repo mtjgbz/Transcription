@@ -24,6 +24,7 @@ public class User {
 
     private static Connection conn;
     private static JFrame parentFrame;
+    private static String dbPath;
 
     /**
      * Creates the window for the file browser and sets it visible.
@@ -42,7 +43,7 @@ public class User {
      */
     public static void createTextFile(String transcriptions) {
         try {
-            Statement stmt = setupDB(parentFrame);
+            Statement stmt = setupDB(parentFrame,dbPath);
             Statement stmt2 = conn.createStatement();
             String query = "SELECT Lesson, Sublesson FROM LESSON_PLAN";
             ResultSet rs = stmt.executeQuery(query);
@@ -74,7 +75,7 @@ public class User {
             stmt2.close();
             closeDB(stmt, rs);
 
-            stmt = setupDB(parentFrame);
+            stmt = setupDB(parentFrame,dbPath);
             for (int i = 0; i < filePaths.size(); i++) {
                 String newQuery = "UPDATE LESSONS SET FileList = '" + filePaths.get(i) + "' "
                         + "WHERE Lesson = " + lessons.get(i) + " AND "
@@ -175,14 +176,15 @@ public class User {
      *
      * @return Statement that is a part of the database
      */
-    public static Statement setupDB(JFrame pFrame) {
+    public static Statement setupDB(JFrame pFrame,String DatabasePath) {
         try {
+            dbPath = DatabasePath;
             Class.forName("org.sqlite.JDBC");
             SQLiteConfig config = new SQLiteConfig();
             config.enableFullSync(true);
             config.setReadOnly(false);
             SQLiteDataSource ds = new SQLiteDataSource(config);
-            //ds.setUrl("jdbc:sqlite::resource:"+getClass().getResource("TAA.db").toString());
+            ds.setUrl("jdbc:sqlite::resource:"+DatabasePath);
             conn = ds.getConnection();
             System.out.println("Database opened successfully");
             Statement stmt = conn.createStatement();

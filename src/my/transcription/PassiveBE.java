@@ -47,7 +47,7 @@ public class PassiveBE {
      */
     public PassiveBE(JFrame pFrame) {
         parentFrame = pFrame;
-        stmt = User.setupDB(parentFrame);
+        stmt = User.setupDB(parentFrame,getClass().getResource("TAA.db").toString());
         rand = new Random();
         clips = new ArrayList<File>();
     }

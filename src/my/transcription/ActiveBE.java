@@ -52,7 +52,7 @@ public class ActiveBE {
     
     public ActiveBE(boolean isTest) {
         this.isTest=isTest;
-        stmt = User.setupDB(parentFrame);
+        stmt = User.setupDB(parentFrame,getClass().getResource("TAA.db").toString());
         rand = new Random();
         clips = new ArrayList<>();
         attempts = new ArrayList<Integer>();
@@ -119,7 +119,7 @@ public class ActiveBE {
             String answer = userAnswers.get(questionNum - 1);
 
             //get the practice id from the db
-            stmt = User.setupDB(parentFrame);
+            stmt = User.setupDB(parentFrame,getClass().getResource("TAA.db").toString());
             
             //get the word from that practice from the db or just the array
             //get the questionID from that word
