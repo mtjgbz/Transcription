@@ -8,6 +8,7 @@ package my.transcription;
 
 import java.sql.*;
 import java.util.Scanner;
+import org.sqlite.*;
 
 /**
  *
@@ -43,8 +44,13 @@ public class ForgottenPasswordBE {
     private void setupDB() {
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:TAA.db");
-            System.out.println("Database opened successfully.");
+            SQLiteConfig config = new SQLiteConfig();
+            config.enableFullSync(true);
+            config.setReadOnly(false);
+            SQLiteDataSource ds = new SQLiteDataSource(config);
+            ds.setUrl("jdbc:sqlite::resource:"+getClass().getResource("TAA.db").toString());
+            conn = ds.getConnection();
+            System.out.println("Database opened successfully");
             stmt = conn.createStatement();
         } catch (Exception e) {
             e.printStackTrace();

@@ -29,7 +29,7 @@ public class SignInBE {
             System.out.println("Database opened successfully");
             stmt = conn.createStatement();
         } catch (Exception e) {
-            errorMsg(e.toString(),"Database error.");
+            errorMsg(e.toString(),"Database error");
         }
     }
 
