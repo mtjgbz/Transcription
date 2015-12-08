@@ -130,7 +130,7 @@ public class UpdateLessonFile extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
-        User.createTextFile(transcriptionPath.getText());
+        User.createTextFile(transcriptionPath.getText(), getClass().getResource("TAA.db").toString());
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 

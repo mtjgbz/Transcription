@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.ImageObserver;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -27,9 +29,11 @@ public class Home extends javax.swing.JFrame {
     ToneTable tone;
     NamaTable na;
     int NaMaCount = 0;
+    private int furthestLesson;
+    private String furthestSublesson;
 
     ArrayList<Integer> lessonList;
-    ArrayList<String> subLessonList;
+    ArrayList<ArrayList<String>> subLessonList;
     
     Timer timer1;
     Boolean loading = false;
@@ -61,16 +65,57 @@ public class Home extends javax.swing.JFrame {
 
         //create lists for lesson numbers
         lessonList = new ArrayList<>();
-        lessonList.add(1);
-        lessonList.add(2);
-        lessonList.add(3);
-
-        //create lists
         subLessonList = new ArrayList<>();
-        subLessonList.add("a");
-        subLessonList.add("b");
-        subLessonList.add("c");
-        
+//        lessonList.add(1);
+//        lessonList.add(2);
+//        lessonList.add(3);
+        try{
+            Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
+            String query = "SELECT Lesson, Sublesson FROM LESSONS;";
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<String> subList = new ArrayList<>();
+            while(rs.next()){
+                int lesson = rs.getInt("Lesson");
+                String sublesson = rs.getString("Sublesson");
+                if(lesson < 1){
+                    continue;
+                }else if (lessonList.contains(lesson)){
+                    subList.add(sublesson);
+                }else{
+                    lessonList.add(lesson);
+                    subLessonList.add(subList);
+                    subList.clear();
+                    subList.add(sublesson);
+                }
+                int currLesson = lesson;
+            }
+            
+            query = "SELECT * FROM LESSON_TRACK WHERE Username LIKE '"
+                    + user + "'; ";
+            rs = stmt.executeQuery(query);
+            int latestLesson = rs.getInt("LatestLesson");
+            String latestSublesson = rs.getString("LatestSublesson");
+            furthestLesson = rs.getInt("FurthestLesson");
+            furthestSublesson = rs.getString("FurthestSublesson");
+            
+            jlessonBox.removeAll();
+            for (int lesson : lessonList){
+                if(lesson <= furthestLesson){
+                    jlessonBox.addItem(lesson);
+                }
+            }
+            jlessonBox.setSelectedItem(latestLesson);
+            
+            int index = jlessonBox.getSelectedIndex();
+            ArrayList<String> currList = subLessonList.get(index);
+            for (String sublesson : currList){
+                jsubLessonBox.addItem(sublesson);
+            }
+            jsubLessonBox.setSelectedItem(latestSublesson);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -412,7 +457,8 @@ public class Home extends javax.swing.JFrame {
             na.dispose();
         }
 
-        Passive pass = new Passive(user, lessonList.get(jlessonBox.getSelectedIndex()), subLessonList.get(jsubLessonBox.getSelectedIndex()));
+        Passive pass = new Passive(user, lessonList.get(jlessonBox.getSelectedIndex()), 
+                subLessonList.get(jlessonBox.getSelectedIndex()).get(jsubLessonBox.getSelectedIndex()));
         pass.setVisible(true);
         dispose();
     }//GEN-LAST:event_jPassiveButtonActionPerformed
@@ -431,7 +477,7 @@ public class Home extends javax.swing.JFrame {
         }
         if (!act.isShowing()) {
             act.setLesson(lessonList.get(jlessonBox.getSelectedIndex()));
-            act.setSubLesson(subLessonList.get(jsubLessonBox.getSelectedIndex()));
+            act.setSubLesson(subLessonList.get(jlessonBox.getSelectedIndex()).get(jsubLessonBox.getSelectedIndex()));
             act.setVisible(true);
         } else {
             act.toFront();
