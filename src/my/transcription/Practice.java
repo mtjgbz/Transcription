@@ -279,12 +279,13 @@ public class Practice extends javax.swing.JFrame {
 //                jTextArea4.setHighlighter(highlighter);
 //            }
             
-            for(int j = 0; j < numTags; j+=2) {
+            for(int j = 0; j < numTags; j++) {
                 //temp = phrases.get(i);
                 //num = tags.get(j);
                 
                 int start = startTags.get(j);
                 int end = endTags.get(j);
+                System.out.println("Start: " + start + " End: " + end);
                 //System.out.println("Start: " + start);
                 //while(start >= 0) {                    
                     
@@ -496,7 +497,6 @@ public class Practice extends javax.swing.JFrame {
                         end1 = i;
                         //tracker = i;
                         e1 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e1: " + i);
                         continue;
@@ -514,7 +514,6 @@ public class Practice extends javax.swing.JFrame {
                         end2 = i;
                         //tracker = i;
                         e2 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e2: " + i);
                         continue;
@@ -532,7 +531,6 @@ public class Practice extends javax.swing.JFrame {
                         end3 = i;
                         //tracker = i;
                         e3 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e3: " + i);
                         continue;
@@ -550,7 +548,6 @@ public class Practice extends javax.swing.JFrame {
                         end4 = i;
                         //tracker = i;
                         e4 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e4: " + i);
                         continue;
@@ -570,7 +567,6 @@ public class Practice extends javax.swing.JFrame {
                         end1 = i;
                         //tracker = i;
                         e1 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e1: " + i);
                         continue;
@@ -588,7 +584,6 @@ public class Practice extends javax.swing.JFrame {
                         end2 = i;
                         //tracker = i;
                         e2 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e2: " + i);
                         continue;
@@ -606,7 +601,6 @@ public class Practice extends javax.swing.JFrame {
                         end3 = i;
                         //tracker = i;
                         e3 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e3: " + i);
                         continue;
@@ -628,7 +622,6 @@ public class Practice extends javax.swing.JFrame {
                         end1 = i;
                         //tracker = i;
                         e1 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e1: " + i);
                         continue;
@@ -646,7 +639,6 @@ public class Practice extends javax.swing.JFrame {
                         end2 = i;
                         //tracker = i;
                         e2 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e2: " + i);
                         continue;
@@ -670,7 +662,6 @@ public class Practice extends javax.swing.JFrame {
                         end1 = i;
                         //tracker = i;
                         e1 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e1: " + i);
                         continue;
@@ -697,6 +688,7 @@ public class Practice extends javax.swing.JFrame {
         for(int i : endTags) {
             System.out.println("end tag: " + i);
         }
+        System.out.println("numTags: " + numTags);
     }
     
     public void initTextFields() {
