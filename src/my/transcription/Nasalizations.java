@@ -29,6 +29,7 @@ public class Nasalizations extends javax.swing.JFrame {
     int buttonNum = 0;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
     ArrayList<Integer> count = new ArrayList<>();
+    String path;
     /**
      * Creates new form Nasalizations
      */
@@ -39,6 +40,9 @@ public class Nasalizations extends javax.swing.JFrame {
         for(int i = 0; i < 18; i++) {
             count.add(0);
         }
+        
+        File file = new File("b_1-1_ka71a1-ka71an1_edited.wav");
+        path = file.getAbsolutePath();
     
         /**
          * creates the ArrayLists for the ArrayList stringNames and adds them
@@ -666,10 +670,11 @@ public class Nasalizations extends javax.swing.JFrame {
     };
     
     //String path = "/home/mike/Transcription Data/Tones/";
-    String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/Nasalizations/";
+    //String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/Nasalizations/";
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println(path);
         buttonNum = 0;
         buttonAction();
     }//GEN-LAST:event_jButton1ActionPerformed

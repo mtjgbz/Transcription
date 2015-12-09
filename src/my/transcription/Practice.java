@@ -99,7 +99,7 @@ public class Practice extends javax.swing.JFrame {
         this.subLesson = subLesson;
         jUserMenu.setText(user);
         jTextPane1.setText("text1");
-        prevButton.setText("Current");
+        prevButton.setText("Previous");
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
         
@@ -279,12 +279,13 @@ public class Practice extends javax.swing.JFrame {
 //                jTextArea4.setHighlighter(highlighter);
 //            }
             
-            for(int j = 0; j < numTags; j+=2) {
+            for(int j = 0; j < numTags; j++) {
                 //temp = phrases.get(i);
                 //num = tags.get(j);
                 
                 int start = startTags.get(j);
                 int end = endTags.get(j);
+                System.out.println("Start: " + start + " End: " + end);
                 //System.out.println("Start: " + start);
                 //while(start >= 0) {                    
                     
@@ -496,7 +497,6 @@ public class Practice extends javax.swing.JFrame {
                         end1 = i;
                         //tracker = i;
                         e1 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e1: " + i);
                         continue;
@@ -514,7 +514,6 @@ public class Practice extends javax.swing.JFrame {
                         end2 = i;
                         //tracker = i;
                         e2 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e2: " + i);
                         continue;
@@ -532,7 +531,6 @@ public class Practice extends javax.swing.JFrame {
                         end3 = i;
                         //tracker = i;
                         e3 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e3: " + i);
                         continue;
@@ -550,7 +548,6 @@ public class Practice extends javax.swing.JFrame {
                         end4 = i;
                         //tracker = i;
                         e4 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e4: " + i);
                         continue;
@@ -570,7 +567,6 @@ public class Practice extends javax.swing.JFrame {
                         end1 = i;
                         //tracker = i;
                         e1 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e1: " + i);
                         continue;
@@ -588,7 +584,6 @@ public class Practice extends javax.swing.JFrame {
                         end2 = i;
                         //tracker = i;
                         e2 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e2: " + i);
                         continue;
@@ -606,7 +601,6 @@ public class Practice extends javax.swing.JFrame {
                         end3 = i;
                         //tracker = i;
                         e3 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e3: " + i);
                         continue;
@@ -628,7 +622,6 @@ public class Practice extends javax.swing.JFrame {
                         end1 = i;
                         //tracker = i;
                         e1 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e1: " + i);
                         continue;
@@ -646,7 +639,6 @@ public class Practice extends javax.swing.JFrame {
                         end2 = i;
                         //tracker = i;
                         e2 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e2: " + i);
                         continue;
@@ -670,7 +662,6 @@ public class Practice extends javax.swing.JFrame {
                         end1 = i;
                         //tracker = i;
                         e1 = true;
-                        numTags++;
                         endTags.add(i);
                         System.out.println("e1: " + i);
                         continue;
@@ -697,6 +688,7 @@ public class Practice extends javax.swing.JFrame {
         for(int i : endTags) {
             System.out.println("end tag: " + i);
         }
+        System.out.println("numTags: " + numTags);
     }
     
     public void initTextFields() {
@@ -792,6 +784,7 @@ public class Practice extends javax.swing.JFrame {
         jPageLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jHomeMenu = new javax.swing.JMenu();
         jEncMenu = new javax.swing.JMenu();
@@ -857,6 +850,8 @@ public class Practice extends javax.swing.JFrame {
         jTextPane1.setColumns(20);
         jTextPane1.setRows(5);
         jScrollPane1.setViewportView(jTextPane1);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
 
         jHomeMenu.setText("Home");
         jHomeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -940,6 +935,8 @@ public class Practice extends javax.swing.JFrame {
                         .addGap(292, 292, 292)
                         .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 105, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -960,6 +957,8 @@ public class Practice extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPageLabel)
                 .addContainerGap(54, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE))
         );
 
         pack();
@@ -1130,6 +1129,7 @@ public class Practice extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jEncMenu;
     private javax.swing.JMenu jHomeMenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jNaMaMenu;
