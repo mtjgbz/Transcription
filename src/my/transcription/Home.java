@@ -69,26 +69,29 @@ public class Home extends javax.swing.JFrame {
 //        lessonList.add(1);
 //        lessonList.add(2);
 //        lessonList.add(3);
+        jlessonBox.removeAllItems();
+        jsubLessonBox.removeAllItems();
+        
         try{
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
-            String query = "SELECT Lesson, Sublesson FROM LESSONS;";
+            String query = "SELECT Lesson, Sublesson FROM LESSON_PLAN;";
             ResultSet rs = stmt.executeQuery(query);
             ArrayList<String> subList = new ArrayList<>();
             while(rs.next()){
-                int lesson = rs.getInt("Lesson");
+                int currLesson = rs.getInt("Lesson");
                 String sublesson = rs.getString("Sublesson");
-                if(lesson < 1){
-                    continue;
-                }else if (lessonList.contains(lesson)){
+                System.out.println(currLesson + ", " + sublesson);
+                if(currLesson < 1){
+                }else if (lessonList.contains(currLesson)){
                     subList.add(sublesson);
                 }else{
-                    lessonList.add(lesson);
+                    lessonList.add(currLesson);
                     subLessonList.add(subList);
                     subList.clear();
                     subList.add(sublesson);
                 }
-                int currLesson = lesson;
             }
+            System.out.println(subLessonList);
             
             query = "SELECT * FROM LESSON_TRACK WHERE Username LIKE '"
                     + user + "'; ";
@@ -99,9 +102,9 @@ public class Home extends javax.swing.JFrame {
             furthestSublesson = rs.getString("FurthestSublesson");
             
             jlessonBox.removeAll();
-            for (int lesson : lessonList){
-                if(lesson <= furthestLesson){
-                    jlessonBox.addItem(lesson);
+            for (int l : lessonList){
+                if(l <= furthestLesson){
+                    jlessonBox.addItem(l);
                 }
             }
             jlessonBox.setSelectedItem(latestLesson);
@@ -109,7 +112,15 @@ public class Home extends javax.swing.JFrame {
             int index = jlessonBox.getSelectedIndex();
             ArrayList<String> currList = subLessonList.get(index);
             for (String sublesson : currList){
-                jsubLessonBox.addItem(sublesson);
+                if(sublesson.equals("Final") && 
+                        currList.indexOf(sublesson) != currList.size() - 1){
+                    continue;
+                }else if(!currList.contains(furthestSublesson) || 
+                        currList.indexOf(furthestSublesson) >= currList.indexOf(sublesson)){
+                    jsubLessonBox.addItem(sublesson);
+                }
+                System.out.println(sublesson + ", " + currList.contains(sublesson) + 
+                        ", " + currList.indexOf(furthestSublesson) + ", " + currList.indexOf(sublesson));
             }
             jsubLessonBox.setSelectedItem(latestSublesson);
         }catch(Exception e){
