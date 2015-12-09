@@ -23,13 +23,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLoadTextMenuActionPerformed"/>
               </Events>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="jLoadTextMenu1">
+            <Menu class="javax.swing.JMenu" name="jLoadTones">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Load Tables"/>
+                <Property name="text" type="java.lang.String" value="Load Tones"/>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLoadTextMenu1MousePressed"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLoadTextMenu1ActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLoadTonesMousePressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLoadTonesActionPerformed"/>
               </Events>
             </Menu>
           </SubComponents>

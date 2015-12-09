@@ -158,7 +158,7 @@ public class Home extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jFileMenuItem = new javax.swing.JMenu();
         jLoadTextMenu = new javax.swing.JMenu();
-        jLoadTextMenu1 = new javax.swing.JMenu();
+        jLoadTones = new javax.swing.JMenu();
         jUsernameMenuDropDown = new javax.swing.JMenu();
         jChangePassword = new javax.swing.JMenuItem();
 
@@ -297,18 +297,18 @@ public class Home extends javax.swing.JFrame {
         });
         jFileMenuItem.add(jLoadTextMenu);
 
-        jLoadTextMenu1.setText("Load Tables");
-        jLoadTextMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLoadTones.setText("Load Tones");
+        jLoadTones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLoadTextMenu1MousePressed(evt);
+                jLoadTonesMousePressed(evt);
             }
         });
-        jLoadTextMenu1.addActionListener(new java.awt.event.ActionListener() {
+        jLoadTones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLoadTextMenu1ActionPerformed(evt);
+                jLoadTonesActionPerformed(evt);
             }
         });
-        jFileMenuItem.add(jLoadTextMenu1);
+        jFileMenuItem.add(jLoadTones);
 
         jMenuBar1.add(jFileMenuItem);
 
@@ -580,13 +580,14 @@ public class Home extends javax.swing.JFrame {
         window.setVisible(true);
     }//GEN-LAST:event_jLoadTextMenuMousePressed
 
-    private void jLoadTextMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMenu1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLoadTextMenu1MousePressed
+    private void jLoadTonesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTonesMousePressed
+        UpdateTones window = new UpdateTones();
+        window.setVisible(true);
+    }//GEN-LAST:event_jLoadTonesMousePressed
 
-    private void jLoadTextMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTextMenu1ActionPerformed
+    private void jLoadTonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTonesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLoadTextMenu1ActionPerformed
+    }//GEN-LAST:event_jLoadTonesActionPerformed
 
     private void isLoading() {
         jLabel1.setText("Loading...");
@@ -651,7 +652,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLessonLabel;
     private javax.swing.JMenu jLoadTextMenu;
-    private javax.swing.JMenu jLoadTextMenu1;
+    private javax.swing.JMenu jLoadTones;
     private javax.swing.JButton jLogOutButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton jNaMaButton;
