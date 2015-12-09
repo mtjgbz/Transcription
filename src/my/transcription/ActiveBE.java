@@ -279,6 +279,7 @@ public class ActiveBE {
         while (matcher.find()) {
             System.out.println("found word");
             String word = matcher.group(1);
+            word = word.replaceAll(" ", "");
             //System.out.println("Phrase: " + phrase + " Word: " + word);
             if (!(words.contains(word))) {
                 words.add(word);
@@ -321,7 +322,7 @@ public class ActiveBE {
                         
                 if (label.contains(word1) && used1 == false){  
                     count++;
-                    label = label.replace(word1, "[     ]" );
+                    label = label.replace(word1, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -334,7 +335,7 @@ public class ActiveBE {
                         
                 if (label.contains(word1) && used1 == false){  
                     count++;
-                    label = label.replace(word1, "[     ]" );
+                    label = label.replace(word1, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -342,7 +343,7 @@ public class ActiveBE {
                 }
                 if (label.contains(word2) && used2 == false){  
                     count++;
-                    label = label.replace(word2, "[     ]" );
+                    label = label.replace(word2, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -356,7 +357,7 @@ public class ActiveBE {
                         
                 if (label.contains(word1) && used1 == false){  
                     count++;
-                    label = label.replace(word1, "[     ]" );
+                    label = label.replace(word1, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -364,7 +365,7 @@ public class ActiveBE {
                 }
                 if (label.contains(word2) && used2 == false){  
                     count++;
-                    label = label.replace(word2, "[     ]" );
+                    label = label.replace(word2, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -372,7 +373,7 @@ public class ActiveBE {
                 }
                 if (label.contains(word3) && used3 == false){  
                     count++;
-                    label = label.replace(word3, "[     ]" );
+                    label = label.replace(word3, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -387,7 +388,7 @@ public class ActiveBE {
                         
                 if (label.contains(word1) && used1 == false){  
                     count++;
-                    label = label.replace(word1, "[     ]" );
+                    label = label.replace(word1, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -395,7 +396,7 @@ public class ActiveBE {
                 }
                 if (label.contains(word2) && used2 == false){  
                     count++;
-                    label = label.replace(word2, "[     ]" );
+                    label = label.replace(word2, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -403,7 +404,7 @@ public class ActiveBE {
                 }
                 if (label.contains(word3) && used3 == false){  
                     count++;
-                    label = label.replace(word3, "[     ]" );
+                    label = label.replace(word3, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -411,7 +412,7 @@ public class ActiveBE {
                 }
                 if (label.contains(word4) && used4 == false){  
                     count++;
-                    label = label.replace(word4, "[     ]" );
+                    label = label.replace(word4, "[     ] " );
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
