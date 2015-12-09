@@ -99,7 +99,7 @@ public class Practice extends javax.swing.JFrame {
         this.subLesson = subLesson;
         jUserMenu.setText(user);
         jTextPane1.setText("text1");
-        prevButton.setText("Current");
+        prevButton.setText("Previous");
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
         
