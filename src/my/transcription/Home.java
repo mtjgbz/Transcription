@@ -11,6 +11,7 @@ import java.awt.image.ImageObserver;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
@@ -74,7 +75,7 @@ public class Home extends javax.swing.JFrame {
         
         try{
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
-            String query = "SELECT Lesson, Sublesson FROM LESSON_PLAN;";
+            String query = "SELECT Lesson, Sublesson FROM LESSONS;";
             ResultSet rs = stmt.executeQuery(query);
             ArrayList<String> subList = new ArrayList<>();
             while(rs.next()){
@@ -84,13 +85,15 @@ public class Home extends javax.swing.JFrame {
                 if(currLesson < 1){
                 }else if (lessonList.contains(currLesson)){
                     subList.add(sublesson);
-                }else{
+                }else if (subList.size() > 0){
                     lessonList.add(currLesson);
-                    subLessonList.add(subList);
+                    ArrayList<String> newList = new ArrayList<>(subList);
+                    subLessonList.add(newList);
                     subList.clear();
                     subList.add(sublesson);
                 }
             }
+            subLessonList.add(subList);
             System.out.println(subLessonList);
             
             query = "SELECT * FROM LESSON_TRACK WHERE Username LIKE '"
