@@ -21,7 +21,8 @@ import javax.swing.Timer;
  * @author Michael, Noah, Casey & Erica
  */
 public class Home extends javax.swing.JFrame {
-    private String lesson;
+    private int lesson;
+    private String sublesson;
     private String user;
 
     Active act;
@@ -121,16 +122,16 @@ public class Home extends javax.swing.JFrame {
             
             int index = (int) jlessonBox.getSelectedItem();
             ArrayList<String> currList = sublessonMap.get(index);
-            for (String sublesson : currList){
-                if(sublesson.equals("Final") && 
-                        currList.indexOf(sublesson) == currList.size() - 1){
-                    jsubLessonBox.addItem(sublesson);
+            for (String subL : currList){
+                if(subL.equals("Final") && 
+                        currList.indexOf(subL) == currList.size() - 1){
+                    jsubLessonBox.addItem(subL);
                 }else if(!currList.contains(furthestSublesson) || 
-                        currList.indexOf(furthestSublesson) >= currList.indexOf(sublesson)){
-                    jsubLessonBox.addItem(sublesson);
+                        currList.indexOf(furthestSublesson) >= currList.indexOf(subL)){
+                    jsubLessonBox.addItem(subL);
                 }
-                System.out.println(sublesson + ", " + currList.contains(sublesson) + 
-                        ", " + currList.indexOf(furthestSublesson) + ", " + currList.indexOf(sublesson));
+                System.out.println(subL + ", " + currList.contains(subL) + 
+                        ", " + currList.indexOf(furthestSublesson) + ", " + currList.indexOf(subL));
             }
             jsubLessonBox.setSelectedItem(latestSublesson);
         }catch(Exception e){
@@ -478,10 +479,13 @@ public class Home extends javax.swing.JFrame {
         if(NaMaCount > 0) {
             na.dispose();
         }
+        
+        lesson = lessonList.get((int) jlessonBox.getSelectedItem());
+        sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
+        
 
-//        Passive pass = new Passive(user, lessonList.get(jlessonBox.getSelectedIndex()), 
-//                subLessonList.get(jlessonBox.getSelectedIndex()).get(jsubLessonBox.getSelectedIndex()));
-//        pass.setVisible(true);
+        Passive pass = new Passive(user, lesson, sublesson);
+        pass.setVisible(true);
         dispose();
     }//GEN-LAST:event_jPassiveButtonActionPerformed
 
@@ -490,6 +494,9 @@ public class Home extends javax.swing.JFrame {
      * @param evt 
      */
     private void jActiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActiveButtonActionPerformed
+        lesson = lessonList.get(jlessonBox.getSelectedIndex());
+        sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
+        
         pass1.dispose();
         enc.dispose();
         nas.dispose();
@@ -498,10 +505,8 @@ public class Home extends javax.swing.JFrame {
             na.dispose();
         }
         if (!act.isShowing()) {
-            act.setLesson(lessonList.get(jlessonBox.getSelectedIndex()));
-//            act.setLesson(1);
-//            act.setSubLesson(subLessonList.get(jlessonBox.getSelectedIndex()).get(jsubLessonBox.getSelectedIndex()));
-//            act.setSubLesson("a");
+            act.setLesson(lesson);
+            act.setSubLesson(sublesson);
             act.setVisible(true);
         } else {
             act.toFront();
