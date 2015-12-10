@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
@@ -34,7 +35,7 @@ public class Home extends javax.swing.JFrame {
     private String furthestSublesson;
 
     ArrayList<Integer> lessonList;
-    ArrayList<ArrayList<String>> subLessonList;
+    private HashMap<Integer, ArrayList<String>> sublessonMap;
     
     Timer timer1;
     Boolean loading = false;
@@ -66,13 +67,18 @@ public class Home extends javax.swing.JFrame {
 
         //create lists for lesson numbers
         lessonList = new ArrayList<>();
-        subLessonList = new ArrayList<>();
+        sublessonMap = new HashMap<>();
 //        lessonList.add(1);
 //        lessonList.add(2);
 //        lessonList.add(3);
         jlessonBox.removeAllItems();
         jsubLessonBox.removeAllItems();
         
+        setupLessons();
+
+    }
+    
+    private void setupLessons(){
         try{
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
             String query = "SELECT Lesson, Sublesson FROM LESSONS;";
@@ -82,19 +88,20 @@ public class Home extends javax.swing.JFrame {
                 int currLesson = rs.getInt("Lesson");
                 String sublesson = rs.getString("Sublesson");
                 System.out.println(currLesson + ", " + sublesson);
-                if(currLesson < 1){
-                }else if (lessonList.contains(currLesson)){
-                    subList.add(sublesson);
-                }else if (subList.size() > 0){
+                System.out.println(lessonList.contains(currLesson));
+                if(!lessonList.contains(currLesson)){
+                    if(currLesson > 1){
+                        subList.add("Final");
+                    }
                     lessonList.add(currLesson);
-                    ArrayList<String> newList = new ArrayList<>(subList);
-                    subLessonList.add(newList);
-                    subList.clear();
+                    sublessonMap.put(currLesson, new ArrayList());
+                }
+                if(!sublesson.equals("Final")){
+                    subList = sublessonMap.get(currLesson);
                     subList.add(sublesson);
                 }
             }
-            subLessonList.add(subList);
-            System.out.println(subLessonList);
+            System.out.println(sublessonMap);
             
             query = "SELECT * FROM LESSON_TRACK WHERE Username LIKE '"
                     + user + "'; ";
@@ -112,12 +119,12 @@ public class Home extends javax.swing.JFrame {
             }
             jlessonBox.setSelectedItem(latestLesson);
             
-            int index = jlessonBox.getSelectedIndex();
-            ArrayList<String> currList = subLessonList.get(index);
+            int index = (int) jlessonBox.getSelectedItem();
+            ArrayList<String> currList = sublessonMap.get(index);
             for (String sublesson : currList){
                 if(sublesson.equals("Final") && 
-                        currList.indexOf(sublesson) != currList.size() - 1){
-                    continue;
+                        currList.indexOf(sublesson) == currList.size() - 1){
+                    jsubLessonBox.addItem(sublesson);
                 }else if(!currList.contains(furthestSublesson) || 
                         currList.indexOf(furthestSublesson) >= currList.indexOf(sublesson)){
                     jsubLessonBox.addItem(sublesson);
@@ -129,7 +136,6 @@ public class Home extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -471,9 +477,9 @@ public class Home extends javax.swing.JFrame {
             na.dispose();
         }
 
-        Passive pass = new Passive(user, lessonList.get(jlessonBox.getSelectedIndex()), 
-                subLessonList.get(jlessonBox.getSelectedIndex()).get(jsubLessonBox.getSelectedIndex()));
-        pass.setVisible(true);
+//        Passive pass = new Passive(user, lessonList.get(jlessonBox.getSelectedIndex()), 
+//                subLessonList.get(jlessonBox.getSelectedIndex()).get(jsubLessonBox.getSelectedIndex()));
+//        pass.setVisible(true);
         dispose();
     }//GEN-LAST:event_jPassiveButtonActionPerformed
 
@@ -491,7 +497,9 @@ public class Home extends javax.swing.JFrame {
         }
         if (!act.isShowing()) {
             act.setLesson(lessonList.get(jlessonBox.getSelectedIndex()));
-            act.setSubLesson(subLessonList.get(jlessonBox.getSelectedIndex()).get(jsubLessonBox.getSelectedIndex()));
+//            act.setLesson(1);
+//            act.setSubLesson(subLessonList.get(jlessonBox.getSelectedIndex()).get(jsubLessonBox.getSelectedIndex()));
+//            act.setSubLesson("a");
             act.setVisible(true);
         } else {
             act.toFront();
