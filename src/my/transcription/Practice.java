@@ -352,7 +352,7 @@ public class Practice extends javax.swing.JFrame {
             System.out.println("ansArray: |" + a + "|");
         }
         
-        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.RED);
+        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
         greenPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
         
         Highlighter highlighter = jTextPane1.getHighlighter();

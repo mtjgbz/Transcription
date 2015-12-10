@@ -27,6 +27,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class ToneTable extends javax.swing.JFrame {
     Clip clip;
     int buttonNum = 0;
+    int numOfButtons = 121;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
     ArrayList<Integer> count = new ArrayList<>();
     /**
@@ -36,7 +37,7 @@ public class ToneTable extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Tone Table");
         this.setLocation(x, y);
-        for(int i = 0; i < 121; i++) {
+        for(int i = 0; i < numOfButtons; i++) {
             count.add(0);
         }
         /**

@@ -27,6 +27,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Nasalizations extends javax.swing.JFrame {
     Clip clip;
     int buttonNum = 0;
+    int numOfButtons = 18;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
     ArrayList<Integer> count = new ArrayList<>();
     String path;
@@ -37,7 +38,7 @@ public class Nasalizations extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Nasalizations Table");
         this.setLocation(x, y);
-        for(int i = 0; i < 18; i++) {
+        for(int i = 0; i < numOfButtons; i++) {
             count.add(0);
         }
     
