@@ -414,7 +414,7 @@ public class Practice extends javax.swing.JFrame {
        clip.close();
        timer.stop();
        jPageLabel.setText("Page " + page);
-       backend.closeAudio(); 
+       //backend.closeAudio(); 
        clip = backend.makeClip(page);
        if(page == 1){
            prevButton.setText("Current");
@@ -425,7 +425,7 @@ public class Practice extends javax.swing.JFrame {
        }
        playButton1.setForeground(new java.awt.Color(0, 153, 51));
        playButton1.setText("Play");
-       backend.closeAudio();
+       //backend.closeAudio();
        initAudio();
        //backend.findWords(textList.get(page - 1), wordsList);
     }//GEN-LAST:event_prevButtonActionPerformed
@@ -494,7 +494,7 @@ public class Practice extends javax.swing.JFrame {
         clip.close();
         timer.stop();
         jPageLabel.setText("Page " + page);
-        backend.closeAudio();
+        //backend.closeAudio();
         clip = backend.makeClip(page);
         if(page==20) {
            nextButton.setText("Current");
@@ -505,7 +505,7 @@ public class Practice extends javax.swing.JFrame {
        }
        playButton1.setForeground(new java.awt.Color(0, 153, 51));
        playButton1.setText("Play");
-       backend.closeAudio();
+       //backend.closeAudio();
        initAudio();
        //backend.findWords(textList.get(page - 1), wordsList);
     }//GEN-LAST:event_nextButtonActionPerformed
