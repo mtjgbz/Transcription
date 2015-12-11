@@ -754,7 +754,7 @@ public class Practice extends javax.swing.JFrame {
         System.out.println("current: " + current);
         findStartEnd(current);
         jTextPane1.setText(current);
-        
+        jTextPane1.setCaretPosition(start1 + ((end1-start1)/2));
         
         try {
             highlightAll(current);
