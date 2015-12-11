@@ -90,6 +90,9 @@ public class Home extends javax.swing.JFrame {
                 String subL = rs.getString("Sublesson");
                 System.out.println(currLesson + ", " + subL);
                 System.out.println(lessonList.contains(currLesson));
+                if(currLesson < 1){
+                    continue;
+                }
                 if(!lessonList.contains(currLesson)){
                     if(currLesson > 1){
                         subList.add("Final");
@@ -102,7 +105,6 @@ public class Home extends javax.swing.JFrame {
                     subList.add(subL);
                 }
             }
-            System.out.println(sublessonMap);
             
             query = "SELECT * FROM LESSON_TRACK WHERE Username LIKE '"
                     + user + "'; ";
@@ -134,6 +136,7 @@ public class Home extends javax.swing.JFrame {
                         ", " + currList.indexOf(furthestSublesson) + ", " + currList.indexOf(subL));
             }
             jsubLessonBox.setSelectedItem(latestSublesson);
+            User.closeDB(stmt, rs);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -480,10 +483,9 @@ public class Home extends javax.swing.JFrame {
             na.dispose();
         }
         
-        lesson = lessonList.get((int) jlessonBox.getSelectedItem());
+        lesson = lessonList.get((int) jlessonBox.getSelectedIndex() + 1);
         sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
         
-
         Passive pass = new Passive(user, lesson, sublesson);
         pass.setVisible(true);
         dispose();
