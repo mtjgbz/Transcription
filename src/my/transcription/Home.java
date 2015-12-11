@@ -87,8 +87,8 @@ public class Home extends javax.swing.JFrame {
             ArrayList<String> subList = new ArrayList<>();
             while(rs.next()){
                 int currLesson = rs.getInt("Lesson");
-                String sublesson = rs.getString("Sublesson");
-                System.out.println(currLesson + ", " + sublesson);
+                String subL = rs.getString("Sublesson");
+                System.out.println(currLesson + ", " + subL);
                 System.out.println(lessonList.contains(currLesson));
                 if(!lessonList.contains(currLesson)){
                     if(currLesson > 1){
@@ -97,9 +97,9 @@ public class Home extends javax.swing.JFrame {
                     lessonList.add(currLesson);
                     sublessonMap.put(currLesson, new ArrayList());
                 }
-                if(!sublesson.equals("Final")){
+                if(!subL.equals("Final")){
                     subList = sublessonMap.get(currLesson);
-                    subList.add(sublesson);
+                    subList.add(subL);
                 }
             }
             System.out.println(sublessonMap);

@@ -175,7 +175,7 @@ public class ActiveBE {
 
             //System.out.println(path);
             String soundName = path.replace(".trs", ".wav");
-            soundName = soundName.replace("Transcripciones", "Sonido");
+            soundName = soundName.replace("Transcripciones", "Sonidos");
             if (soundName.contains("_ed")) {
                 soundName = soundName.split("_ed")[0];
                 soundName = soundName + ".wav";
