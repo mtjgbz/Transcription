@@ -44,7 +44,7 @@ public class User {
     public static void createTextFile(String transcriptions, String path) {
         try {
             dbPath = path;
-            Statement stmt = setupDB(parentFrame,dbPath);
+            Statement stmt = setupDB(parentFrame, dbPath);
             Statement stmt2 = conn.createStatement();
             String query = "SELECT Lesson, Sublesson FROM LESSON_PLAN";
             ResultSet rs = stmt.executeQuery(query);
@@ -76,7 +76,7 @@ public class User {
             stmt2.close();
             closeDB(stmt, rs);
 
-            stmt = setupDB(parentFrame,dbPath);
+            stmt = setupDB(parentFrame, dbPath);
             for (int i = 0; i < filePaths.size(); i++) {
                 String newQuery = "UPDATE LESSONS SET FileList = '" + filePaths.get(i) + "' "
                         + "WHERE Lesson = " + lessons.get(i) + " AND "
@@ -109,7 +109,7 @@ public class User {
             }
             //System.out.println(path);
             for (File f : fileList) {
-            //If it's null, return so
+                //If it's null, return so
                 //If it's a folder, search through that as well
                 if (f.isDirectory()) {
                     out = searchFile(regex, f.getPath(), out);
@@ -177,7 +177,7 @@ public class User {
      *
      * @return Statement that is a part of the database
      */
-    public static Statement setupDB(JFrame pFrame,String DatabasePath) {
+    public static Statement setupDB(JFrame pFrame, String DatabasePath) {
         try {
             dbPath = DatabasePath;
             Class.forName("org.sqlite.JDBC");
@@ -185,7 +185,7 @@ public class User {
             config.enableFullSync(true);
             config.setReadOnly(false);
             SQLiteDataSource ds = new SQLiteDataSource(config);
-            ds.setUrl("jdbc:sqlite::resource:"+DatabasePath);
+            ds.setUrl("jdbc:sqlite::resource:" + DatabasePath);
             conn = ds.getConnection();
             System.out.println("Database opened successfully");
             Statement stmt = conn.createStatement();

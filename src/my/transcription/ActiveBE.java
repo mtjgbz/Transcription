@@ -29,13 +29,12 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-
-
 /**
  *
  * @author mike
  */
 public class ActiveBE {
+
     private Statement stmt;
     private ResultSet rs;
     private Random rand;
@@ -44,34 +43,34 @@ public class ActiveBE {
     private static ArrayList<String> correctAnswers;
     private static ArrayList<String> userAnswers;
     private ArrayList<Integer> attempts;
-    
+
     private JFrame parentFrame;
-    
+
     private Clip clip;
     private boolean isTest;
-    
+
     int wordCount = 0;
-    
+
     public ActiveBE(boolean isTest) {
-        this.isTest=isTest;
-        stmt = User.setupDB(parentFrame,getClass().getResource("TAA.db").toString());
+        this.isTest = isTest;
+        stmt = User.setupDB(parentFrame, getClass().getResource("TAA.db").toString());
         rand = new Random();
         clips = new ArrayList<>();
         attempts = new ArrayList<Integer>();
-        for(int i = 0; i < 20; i++){
+        for (int i = 0; i < 20; i++) {
             attempts.add(1);
         }
     }
-    
-    public Clip makeClip(int pageNum){
-        
+
+    public Clip makeClip(int pageNum) {
+
         AudioInputStream audioIn;
         try {
             //audioIn = AudioSystem.getAudioInputStream(clips.get(pageNum-1));
             audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
             clip = AudioSystem.getClip();
             clip.open(audioIn);
-        //clips1.setMicrosecondPosition(timesList.get(0).get(0));
+            //clips1.setMicrosecondPosition(timesList.get(0).get(0));
             audioIn.close();
             return clip;
         } catch (UnsupportedAudioFileException ex) {
@@ -81,24 +80,24 @@ public class ActiveBE {
         } catch (LineUnavailableException ex) {
             Logger.getLogger(ActiveBE.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return clip;
     }
-    
-    public void closeAudio(){
+
+    public void closeAudio() {
         clip.close();
     }
-    
-    public void submit(ArrayList<String> answerList, ArrayList<String> attemptList){
-        if(isTest){
-            
-        }else{
-            
+
+    public void submit(ArrayList<String> answerList, ArrayList<String> attemptList) {
+        if (isTest) {
+
+        } else {
+
         }
     }
-    
-    public int newPractice(String username, int lesson, String sublesson){
-        try{
+
+    public int newPractice(String username, int lesson, String sublesson) {
+        try {
             String query = "INSERT INTO PRACTICE(Username, DateTaken, Lesson, Sublesson, DateTaken)"
                     + " VALUES('" + username + "', " + lesson + ", '" + sublesson + "', "
                     + "NOW());";
@@ -108,56 +107,55 @@ public class ActiveBE {
             int id = rs.getInt("PracticeID");
             rs.close();
             return id;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
     }
-    
-    public void newAttempt(int questionNum, int practiceID){
-        try{
+
+    public void newAttempt(int questionNum, int practiceID) {
+        try {
             int attempt = attempts.get(questionNum - 1);
             String response = userAnswers.get(questionNum - 1);
             String answer = userAnswers.get(questionNum - 1);
 
             //get the practice id from the db
-            stmt = User.setupDB(parentFrame,getClass().getResource("TAA.db").toString());
-            
+            stmt = User.setupDB(parentFrame, getClass().getResource("TAA.db").toString());
+
             //get the word from that practice from the db or just the array
             //get the questionID from that word
             String corrAnswer = correctAnswers.get(questionNum - 1);
-            
+
             String query = "SELECT QuestionID FROM PRACTICE_ANSWER WHERE"
                     + " PracticeID = " + practiceID + " AND ANSWER LIKE "
                     + corrAnswer + "; ";
             ResultSet rs = stmt.executeQuery(query);
             int questionID = rs.getInt("QuestionID");
-            
+
             //if it matches the answer in the array put it in as the correct score
-            
             float score;
             float weightedScore;
-            if(response.equals(answer)){
+            if (response.equals(answer)) {
                 score = 100;
-                weightedScore = 1/attempt;
-            }else{
+                weightedScore = 1 / attempt;
+            } else {
                 score = 0;
-                weightedScore = 0/attempt;
+                weightedScore = 0 / attempt;
             }
-            
+
             query = "INSERT INTO PRACTICE_ATTEMPT(PracticeID, Attempt, "
                     + "QuestionID, Response, Score, WeightedScore) VALUES("
                     + attempt + ", " + questionID + ", " + response + ", " + score
                     + ", " + weightedScore + "; ";
-            
-            stmt.executeQuery(query);            
-            
-            attempts.set(questionNum - 1, attempt + 1);            
-        }catch(Exception e){
+
+            stmt.executeQuery(query);
+
+            attempts.set(questionNum - 1, attempt + 1);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public String findFile(int lesson, String sublesson) {
         try {
             //pulling .txt file that contains lesson matches
@@ -192,12 +190,14 @@ public class ActiveBE {
 
         return null;
     }
-    
+
     /**
      * Finds the phrase and time around the phrase containing the words for the
      * lesson.
-     * @param document  Path name for the transcription file containing the phrase.
-     * @return          The start time, phrase, and end time as given in the document
+     *
+     * @param document Path name for the transcription file containing the
+     * phrase.
+     * @return The start time, phrase, and end time as given in the document
      */
     public ArrayList<String> findPhrase(String document) {
         try {
@@ -261,15 +261,16 @@ public class ActiveBE {
 //        System.out.println("Size: " + phrases.size());
         return null;
     }
-    
+
     public ArrayList<File> getClips() {
         return clips;
     }
-    
+
     /**
      * Finds the words that fit the lesson in the phrase selected.
-     * @param phrases   Phrases given to Passive that contains applicable words
-     * @param words     Words within the phrases that match the regular expression.
+     *
+     * @param phrases Phrases given to Passive that contains applicable words
+     * @param words Words within the phrases that match the regular expression.
      */
     public void findWords(String input, ArrayList<String> words) {
         Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2\\s)");       //example exp - change later
@@ -286,133 +287,129 @@ public class ActiveBE {
                 wordCount++;
             }
         }
-        
+
 //        for(String w : words) {
 //            System.out.println("Word in Words: " + w);
 //        }
-
     }
-    
-    String setBlanks(String input, ArrayList<String> words){
+
+    String setBlanks(String input, ArrayList<String> words) {
         //words.add("yo4o4");
         //words.add("tan42");
         boolean used1 = false;
         boolean used2 = false;
         boolean used3 = false;
         boolean used4 = false;
-        
+
         String label = "";
-        
+
         String word1 = "";
         String word2 = "";
         String word3 = "";
         String word4 = "";
-        
+
         int count = 0;
         //String word2 = words.get(1);
         String output = "";
         char[] statement = input.toCharArray();
-        char c; 
-        
-        for(int i = 0; i < statement.length; i++){
+        char c;
+
+        for (int i = 0; i < statement.length; i++) {
             c = statement[i];
-            label = label + c;  
-            if(wordCount == 1) {
+            label = label + c;
+            if (wordCount == 1) {
                 word1 = words.get(0);
-                        
-                if (label.contains(word1) && used1 == false){  
+
+                if (label.contains(word1) && used1 == false) {
                     count++;
-                    label = label.replace(word1, "[     ] " );
+                    label = label.replace(word1, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
                     used1 = true;
                 }
-            }
-            else if(wordCount == 2) {
+            } else if (wordCount == 2) {
                 word1 = words.get(0);
                 word2 = words.get(1);
-                        
-                if (label.contains(word1) && used1 == false){  
+
+                if (label.contains(word1) && used1 == false) {
                     count++;
-                    label = label.replace(word1, "[     ] " );
+                    label = label.replace(word1, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
                     used1 = true;
                 }
-                if (label.contains(word2) && used2 == false){  
+                if (label.contains(word2) && used2 == false) {
                     count++;
-                    label = label.replace(word2, "[     ] " );
+                    label = label.replace(word2, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
                     used2 = true;
                 }
-            }
-            else if(wordCount == 3) {
+            } else if (wordCount == 3) {
                 word1 = words.get(0);
                 word2 = words.get(1);
                 word3 = words.get(2);
-                        
-                if (label.contains(word1) && used1 == false){  
+
+                if (label.contains(word1) && used1 == false) {
                     count++;
-                    label = label.replace(word1, "[     ] " );
+                    label = label.replace(word1, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
                     used1 = true;
                 }
-                if (label.contains(word2) && used2 == false){  
+                if (label.contains(word2) && used2 == false) {
                     count++;
-                    label = label.replace(word2, "[     ] " );
+                    label = label.replace(word2, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
                     used2 = true;
                 }
-                if (label.contains(word3) && used3 == false){  
+                if (label.contains(word3) && used3 == false) {
                     count++;
-                    label = label.replace(word3, "[     ] " );
+                    label = label.replace(word3, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
                     used3 = true;
                 }
-            }
-            else if(wordCount >= 4) {
+            } else if (wordCount >= 4) {
                 word1 = words.get(0);
                 word2 = words.get(1);
                 word3 = words.get(2);
                 word4 = words.get(3);
-                        
-                if (label.contains(word1) && used1 == false){  
+
+                if (label.contains(word1) && used1 == false) {
                     count++;
-                    label = label.replace(word1, "[     ] " );
+                    label = label.replace(word1, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
                     used1 = true;
                 }
-                if (label.contains(word2) && used2 == false){  
+                if (label.contains(word2) && used2 == false) {
                     count++;
-                    label = label.replace(word2, "[     ] " );
+                    label = label.replace(word2, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
                     used2 = true;
                 }
-                if (label.contains(word3) && used3 == false){  
+                if (label.contains(word3) && used3 == false) {
                     count++;
-                    label = label.replace(word3, "[     ] " );
+                    label = label.replace(word3, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
                     used3 = true;
                 }
-                if (label.contains(word4) && used4 == false){  
+                if (label.contains(word4) && used4 == false) {
                     count++;
-                    label = label.replace(word4, "[     ] " );
+                    label = label.replace(word4, "[     ] ");
                     //blanks.add("[     ] ");
                     output += label;
                     label = "";
@@ -420,14 +417,12 @@ public class ActiveBE {
                 }
             }
         }
-       output += label;
+        output += label;
 //       for(String s : blanks) {
 //           System.out.println(s);
 //       }
-       //System.out.println(blanks.size());
-       System.out.println(output);
-       return output;
+        //System.out.println(blanks.size());
+        System.out.println(output);
+        return output;
     }
 }
-
-

@@ -228,7 +228,8 @@ public class ForgottenPassword extends javax.swing.JFrame {
 
     /**
      * Confirms the username and then gets the question related to that username
-     * @param evt 
+     *
+     * @param evt
      */
     private void jConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfirmButtonActionPerformed
         String username = jUsernameTextField.getText();

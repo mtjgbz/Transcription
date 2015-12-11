@@ -25,7 +25,6 @@ public class Active extends javax.swing.JFrame {
     //public Active() {
     //    initComponents();
     //}
-
     public Active(Home home, String user) {
         this.home = home;
         this.user = user;
@@ -34,11 +33,12 @@ public class Active extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(148, 189, 203));
         initComponents();
     }
-    
-    public void setLesson(Integer lesson){
+
+    public void setLesson(Integer lesson) {
         this.lesson = lesson;
     }
-    public void setSubLesson(String subLesson){
+
+    public void setSubLesson(String subLesson) {
         this.subLesson = subLesson;
     }
 
@@ -115,13 +115,13 @@ public class Active extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new Practice(user,lesson,subLesson).setVisible(true);
+        new Practice(user, lesson, subLesson).setVisible(true);
         home.dispose();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Test(user,lesson,subLesson).setVisible(true);
+        new Test(user, lesson, subLesson).setVisible(true);
         home.dispose();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -23,11 +23,11 @@ public class SignInBE {
             config.enableFullSync(true);
             config.setReadOnly(false);
             SQLiteDataSource ds = new SQLiteDataSource(config);
-            ds.setUrl("jdbc:sqlite::resource:"+getClass().getResource("TAA.db").toString());
+            ds.setUrl("jdbc:sqlite::resource:" + getClass().getResource("TAA.db").toString());
             conn = ds.getConnection();
             stmt = conn.createStatement();
         } catch (Exception e) {
-            errorMsg(e.toString(),"Database error");
+            errorMsg(e.toString(), "Database error");
         }
     }
 

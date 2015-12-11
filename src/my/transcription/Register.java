@@ -29,8 +29,8 @@ public class Register extends javax.swing.JFrame {
     }
 
     /*
-    Error message when something is wrong
-    */
+     Error message when something is wrong
+     */
     public static void errorMsg(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }

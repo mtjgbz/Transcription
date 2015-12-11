@@ -180,17 +180,15 @@ public class SignIn extends javax.swing.JFrame {
         //CAU: Checking if admin or not
         String username = jUserNameField.getText();
         char[] password = jPasswordField.getPassword();
-        
-        String pass ="";
-        for (char a:password){
-            pass=pass + a;
+
+        String pass = "";
+        for (char a : password) {
+            pass = pass + a;
         }
 
         /**
-         * if the entered username matches the password 
-         * then open the users home page
-         * else if admin is trying to login
-         * else error message 
+         * if the entered username matches the password then open the users home
+         * page else if admin is trying to login else error message
          */
         if (backend.checkPassword(username, pass)) {
             Home home1 = new Home(jUserNameField.getText());
@@ -198,7 +196,6 @@ public class SignIn extends javax.swing.JFrame {
             dispose();
             backend.closeDB();
 
-            
         } else if (backend.checkAdmin(username)) {
 
             AdminHome home2 = new AdminHome(jUserNameField.getText());

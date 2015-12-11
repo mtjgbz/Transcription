@@ -25,11 +25,13 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author Noah, Mike, Casey and Erica
  */
 public class ToneTable extends javax.swing.JFrame {
+
     Clip clip;
     int buttonNum = 0;
     int numOfButtons = 121;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
     ArrayList<Integer> count = new ArrayList<>();
+
     /**
      * Creates new form ToneTable
      */
@@ -37,7 +39,7 @@ public class ToneTable extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Tone Table");
         this.setLocation(x, y);
-        for(int i = 0; i < numOfButtons; i++) {
+        for (int i = 0; i < numOfButtons; i++) {
             count.add(0);
         }
         /**
@@ -463,42 +465,42 @@ public class ToneTable extends javax.swing.JFrame {
         i120.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
         stringNames.add(i120);
     }
-    
+
     /**
-    * method that creates the audio clip every time the button is clicked to avoid heap space errors
-    */
+     * method that creates the audio clip every time the button is clicked to
+     * avoid heap space errors
+     */
     public void buttonAction() {
         AudioInputStream audioIn = null;
         try {
-            if(clip==null||!clip.isOpen()){
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(buttonNum).get(count.get(buttonNum))));
+            if (clip == null || !clip.isOpen()) {
+                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
                 clip.addLineListener(listener);
                 clip.start();
-            }else{
+            } else {
                 clip.stop();
-                
-                audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(buttonNum).get(count.get(buttonNum))));
+
+                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
                 clip.addLineListener(listener);
                 clip.start();
             }
-            
+
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-        if(count.get(buttonNum).equals(stringNames.get(buttonNum).size() - 1)){
-            count.set(buttonNum, 0);
         }
-        else {
+        if (count.get(buttonNum).equals(stringNames.get(buttonNum).size() - 1)) {
+            count.set(buttonNum, 0);
+        } else {
             int value = count.get(buttonNum);
             value = value + 1;
             count.set(buttonNum, value);
@@ -510,7 +512,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     int x = 0;
     int y = 0;
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -3059,17 +3061,17 @@ public class ToneTable extends javax.swing.JFrame {
     LineListener listener = new LineListener() {
         @Override
         public void update(LineEvent event) {
-            if(event.getType()==STOP){
+            if (event.getType() == STOP) {
                 clip.close();
-                }
             }
+        }
 
     };
-    
+
     //String path = "/home/mike/Transcription Data/Tones/";
     String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/ToneTable/";
-    
-    
+
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         buttonNum = 0;
         buttonAction();
@@ -3107,12 +3109,12 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         buttonNum = 7;
-        buttonAction();                   
+        buttonAction();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         buttonNum = 8;
-        buttonAction();                              
+        buttonAction();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -3131,8 +3133,8 @@ public class ToneTable extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-       buttonNum = 12;
-        buttonAction();        
+        buttonNum = 12;
+        buttonAction();
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
@@ -3142,7 +3144,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         buttonNum = 14;
-        buttonAction(); 
+        buttonAction();
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -3152,7 +3154,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         buttonNum = 16;
-        buttonAction(); 
+        buttonAction();
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
@@ -3176,13 +3178,13 @@ public class ToneTable extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-       buttonNum = 21;
-        buttonAction();   
+        buttonNum = 21;
+        buttonAction();
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         buttonNum = 22;
-        buttonAction();       
+        buttonAction();
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
@@ -3202,17 +3204,17 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         buttonNum = 26;
-        buttonAction();   
+        buttonAction();
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         buttonNum = 27;
-        buttonAction();      
+        buttonAction();
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
         buttonNum = 28;
-        buttonAction(); 
+        buttonAction();
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
@@ -3222,17 +3224,17 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
         buttonNum = 30;
-        buttonAction(); 
+        buttonAction();
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
         buttonNum = 31;
-        buttonAction();    
+        buttonAction();
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
         buttonNum = 32;
-        buttonAction(); 
+        buttonAction();
     }//GEN-LAST:event_jButton33ActionPerformed
 
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
@@ -3267,7 +3269,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
         buttonNum = 39;
-        buttonAction();   
+        buttonAction();
     }//GEN-LAST:event_jButton40ActionPerformed
 
     private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
@@ -3277,17 +3279,17 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
         buttonNum = 41;
-        buttonAction();   
+        buttonAction();
     }//GEN-LAST:event_jButton42ActionPerformed
 
     private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
         buttonNum = 42;
-        buttonAction();      
+        buttonAction();
     }//GEN-LAST:event_jButton43ActionPerformed
 
     private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
         buttonNum = 43;
-        buttonAction();   
+        buttonAction();
     }//GEN-LAST:event_jButton44ActionPerformed
 
     private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
@@ -3332,12 +3334,12 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton53ActionPerformed
         buttonNum = 52;
-        buttonAction();       
+        buttonAction();
     }//GEN-LAST:event_jButton53ActionPerformed
 
     private void jButton54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton54ActionPerformed
         buttonNum = 53;
-        buttonAction();    
+        buttonAction();
     }//GEN-LAST:event_jButton54ActionPerformed
 
     private void jButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton55ActionPerformed
@@ -3349,34 +3351,34 @@ public class ToneTable extends javax.swing.JFrame {
         buttonNum = 55;
         buttonAction();
     }//GEN-LAST:event_jButton56ActionPerformed
-    
+
     private void jButton57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton57ActionPerformed
         //don't do anything here, this button is not real and can't be removed
     }//GEN-LAST:event_jButton57ActionPerformed
 
     private void jButton57realActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton57realActionPerformed
         buttonNum = 56;
-        buttonAction();  
+        buttonAction();
     }//GEN-LAST:event_jButton57realActionPerformed
 
     private void jButton58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton58ActionPerformed
         buttonNum = 57;
-        buttonAction();    
+        buttonAction();
     }//GEN-LAST:event_jButton58ActionPerformed
 
     private void jButton59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton59ActionPerformed
         buttonNum = 58;
-        buttonAction();     
+        buttonAction();
     }//GEN-LAST:event_jButton59ActionPerformed
 
     private void jButton60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton60ActionPerformed
         buttonNum = 59;
-        buttonAction(); 
+        buttonAction();
     }//GEN-LAST:event_jButton60ActionPerformed
 
     private void jButton61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton61ActionPerformed
         buttonNum = 60;
-        buttonAction();    
+        buttonAction();
     }//GEN-LAST:event_jButton61ActionPerformed
 
     private void jButton62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton62ActionPerformed
@@ -3391,7 +3393,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton64ActionPerformed
         buttonNum = 63;
-        buttonAction(); 
+        buttonAction();
     }//GEN-LAST:event_jButton64ActionPerformed
 
     private void jButton65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton65realActionPerformed
@@ -3399,10 +3401,10 @@ public class ToneTable extends javax.swing.JFrame {
         buttonAction();
     }//GEN-LAST:event_jButton65realActionPerformed
 
-    private void jButton66ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void jButton66ActionPerformed(java.awt.event.ActionEvent evt) {
         buttonNum = 65;
-        buttonAction();  
-    }                                         
+        buttonAction();
+    }
 
     private void jButton67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton67ActionPerformed
         buttonNum = 66;
@@ -3416,17 +3418,17 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton69ActionPerformed
         buttonNum = 68;
-        buttonAction();    
+        buttonAction();
     }//GEN-LAST:event_jButton69ActionPerformed
 
     private void jButton70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton70ActionPerformed
         buttonNum = 69;
-        buttonAction();    
+        buttonAction();
     }//GEN-LAST:event_jButton70ActionPerformed
 
     private void jButton71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton71ActionPerformed
         buttonNum = 70;
-        buttonAction();  
+        buttonAction();
     }//GEN-LAST:event_jButton71ActionPerformed
 
     private void jButton72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton72ActionPerformed
@@ -3441,7 +3443,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton74ActionPerformed
         buttonNum = 73;
-        buttonAction();     
+        buttonAction();
     }//GEN-LAST:event_jButton74ActionPerformed
 
     private void jButton75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton75ActionPerformed
@@ -3461,7 +3463,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton78ActionPerformed
         buttonNum = 77;
-        buttonAction(); 
+        buttonAction();
     }//GEN-LAST:event_jButton78ActionPerformed
 
     private void jButton79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton79ActionPerformed
@@ -3496,7 +3498,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton85ActionPerformed
         buttonNum = 84;
-        buttonAction();   
+        buttonAction();
     }//GEN-LAST:event_jButton85ActionPerformed
 
     private void jButton86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton86ActionPerformed
@@ -3516,7 +3518,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton89ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton89ActionPerformed
         buttonNum = 88;
-        buttonAction();   
+        buttonAction();
     }//GEN-LAST:event_jButton89ActionPerformed
 
     private void jButton90ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton90ActionPerformed
@@ -3526,32 +3528,32 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton91ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton91ActionPerformed
         buttonNum = 90;
-        buttonAction();       
+        buttonAction();
     }//GEN-LAST:event_jButton91ActionPerformed
 
     private void jButton92ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton92ActionPerformed
         buttonNum = 91;
-        buttonAction();      
+        buttonAction();
     }//GEN-LAST:event_jButton92ActionPerformed
 
     private void jButton93ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton93ActionPerformed
-       buttonNum = 92;
-        buttonAction();       
+        buttonNum = 92;
+        buttonAction();
     }//GEN-LAST:event_jButton93ActionPerformed
 
     private void jButton94ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton94ActionPerformed
         buttonNum = 93;
-        buttonAction();       
+        buttonAction();
     }//GEN-LAST:event_jButton94ActionPerformed
 
     private void jButton95ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton95ActionPerformed
         buttonNum = 94;
-        buttonAction();       
+        buttonAction();
     }//GEN-LAST:event_jButton95ActionPerformed
 
     private void jButton96ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton96ActionPerformed
         buttonNum = 95;
-        buttonAction();       
+        buttonAction();
     }//GEN-LAST:event_jButton96ActionPerformed
 
     private void jButton97ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton97ActionPerformed
@@ -3566,7 +3568,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton99ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton99ActionPerformed
         buttonNum = 98;
-        buttonAction();       
+        buttonAction();
     }//GEN-LAST:event_jButton99ActionPerformed
 
     private void jButton100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton100ActionPerformed
@@ -3576,7 +3578,7 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton101ActionPerformed
         buttonNum = 100;
-        buttonAction();   
+        buttonAction();
     }//GEN-LAST:event_jButton101ActionPerformed
 
     private void jButton102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton102ActionPerformed
@@ -3631,32 +3633,32 @@ public class ToneTable extends javax.swing.JFrame {
 
     private void jButton112ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton112ActionPerformed
         buttonNum = 111;
-        buttonAction();        
+        buttonAction();
     }//GEN-LAST:event_jButton112ActionPerformed
 
     private void jButton113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton113ActionPerformed
         buttonNum = 112;
-        buttonAction();       
+        buttonAction();
     }//GEN-LAST:event_jButton113ActionPerformed
 
     private void jButton114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton114ActionPerformed
-       buttonNum = 113;
-        buttonAction();        
+        buttonNum = 113;
+        buttonAction();
     }//GEN-LAST:event_jButton114ActionPerformed
 
     private void jButton115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton115ActionPerformed
         buttonNum = 114;
-        buttonAction();    
+        buttonAction();
     }//GEN-LAST:event_jButton115ActionPerformed
 
     private void jButton116ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton116ActionPerformed
         buttonNum = 115;
-        buttonAction();      
+        buttonAction();
     }//GEN-LAST:event_jButton116ActionPerformed
 
     private void jButton117ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton117ActionPerformed
         buttonNum = 116;
-        buttonAction();    
+        buttonAction();
     }//GEN-LAST:event_jButton117ActionPerformed
 
     private void jButton118ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton118ActionPerformed

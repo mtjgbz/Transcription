@@ -48,7 +48,7 @@ public class ForgottenPasswordBE {
             config.enableFullSync(true);
             config.setReadOnly(false);
             SQLiteDataSource ds = new SQLiteDataSource(config);
-            ds.setUrl("jdbc:sqlite::resource:"+getClass().getResource("TAA.db").toString());
+            ds.setUrl("jdbc:sqlite::resource:" + getClass().getResource("TAA.db").toString());
             conn = ds.getConnection();
             System.out.println("Database opened successfully");
             stmt = conn.createStatement();
@@ -102,7 +102,7 @@ public class ForgottenPasswordBE {
             e.printStackTrace();
         }
         // return the security question
-        
+
         return question;
     }
 
@@ -133,7 +133,6 @@ public class ForgottenPasswordBE {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
 
         return password;
     }

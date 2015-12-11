@@ -19,17 +19,17 @@ public class UpdateTones extends javax.swing.JFrame {
     public UpdateTones() {
         initComponents();
     }
-    
-    public String fileChooser(){
+
+    public String fileChooser() {
         JFileChooser chooser = new JFileChooser();
         // Note: source for ExampleFileFilter can be found in FileChooserDemo,
         // under the demo/jfc directory in the JDK.
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnVal;
         returnVal = chooser.showOpenDialog(this.getParent());
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-           return chooser.getSelectedFile().getPath();
-        }else{
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            return chooser.getSelectedFile().getPath();
+        } else {
             return "";
         }
     }
@@ -50,11 +50,8 @@ public class UpdateTones extends javax.swing.JFrame {
         transcriptionLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(440, 160));
         setMinimumSize(new java.awt.Dimension(440, 160));
-        setPreferredSize(new java.awt.Dimension(440, 160));
         setResizable(false);
-        setSize(new java.awt.Dimension(440, 160));
 
         transcriptionPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +113,7 @@ public class UpdateTones extends javax.swing.JFrame {
                     .addComponent(transcriptionPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(transcriptionBrowse))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
                 .addContainerGap(38, Short.MAX_VALUE))

@@ -23,6 +23,7 @@ import javax.swing.text.Highlighter;
  * @author Mike, Noah, Casey and Erica
  */
 public class Passive extends javax.swing.JFrame {
+
     private Integer lesson;
 
     int page = 1;
@@ -56,7 +57,7 @@ public class Passive extends javax.swing.JFrame {
 
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
-            
+
             clip1.stop();
             clip1.setMicrosecondPosition(timesList.get(page - 1).get(0));
             clip2.stop();
@@ -96,66 +97,66 @@ public class Passive extends javax.swing.JFrame {
      * @param lesson the lesson the user selected
      * @param subLesson the sub-lesson the user selected
      */
-        public Passive(String user, Integer lesson, String subLesson) {
-         this.user = user;
-         getContentPane().setBackground(new Color(148, 189, 203));
- 
-         this.lesson = lesson;
-         this.subLesson = subLesson;
- 
-         initLists();
- 
-         backend = new PassiveBE(this);
- 
-         for (int i = 0; i < 5; i++) {
-             timersList.get(0).add(new Timer(4428, listener));
-             timersList.get(1).add(new Timer(4428, listener));
-             timersList.get(2).add(new Timer(4428, listener));
-             timersList.get(3).add(new Timer(4428, listener));
-             timesList.get(0).add(9029000);
-             timesList.get(1).add(9029000);
-             timesList.get(2).add(9029000);
-             timesList.get(3).add(9029000);
-         }
- 
-         textList.get(0).add("text1");
-         textList.get(0).add("text2");
-         textList.get(0).add("text3");
-         textList.get(0).add("text4");
-         textList.get(0).add("text5");
- 
-         textList.get(1).add("text6");
-         textList.get(1).add("text7");
-         textList.get(1).add("text8");
-         textList.get(1).add("text9");
-         textList.get(1).add("text10");
- 
-         textList.get(2).add("text11");
-         textList.get(2).add("text12");
-         textList.get(2).add("text13");
-         textList.get(2).add("text14");
-         textList.get(2).add("text15");
- 
-         textList.get(3).add("text16");
-         textList.get(3).add("text17");
-         textList.get(3).add("text18");
-         textList.get(3).add("text19");
-         textList.get(3).add("text20");
- 
-         initComponents();
-         jUserButton.setText(user);
-         this.setTitle("Mixtec Transcription: Passive Training");
- 
-         initTextFields();
-         clipsList = backend.makeClips(1);
- 
-         initAudio();
- 
-         jBackButton.setEnabled(false);
-     }
+    public Passive(String user, Integer lesson, String subLesson) {
+        this.user = user;
+        getContentPane().setBackground(new Color(148, 189, 203));
+
+        this.lesson = lesson;
+        this.subLesson = subLesson;
+
+        initLists();
+
+        backend = new PassiveBE(this);
+
+        for (int i = 0; i < 5; i++) {
+            timersList.get(0).add(new Timer(4428, listener));
+            timersList.get(1).add(new Timer(4428, listener));
+            timersList.get(2).add(new Timer(4428, listener));
+            timersList.get(3).add(new Timer(4428, listener));
+            timesList.get(0).add(9029000);
+            timesList.get(1).add(9029000);
+            timesList.get(2).add(9029000);
+            timesList.get(3).add(9029000);
+        }
+
+        textList.get(0).add("text1");
+        textList.get(0).add("text2");
+        textList.get(0).add("text3");
+        textList.get(0).add("text4");
+        textList.get(0).add("text5");
+
+        textList.get(1).add("text6");
+        textList.get(1).add("text7");
+        textList.get(1).add("text8");
+        textList.get(1).add("text9");
+        textList.get(1).add("text10");
+
+        textList.get(2).add("text11");
+        textList.get(2).add("text12");
+        textList.get(2).add("text13");
+        textList.get(2).add("text14");
+        textList.get(2).add("text15");
+
+        textList.get(3).add("text16");
+        textList.get(3).add("text17");
+        textList.get(3).add("text18");
+        textList.get(3).add("text19");
+        textList.get(3).add("text20");
+
+        initComponents();
+        jUserButton.setText(user);
+        this.setTitle("Mixtec Transcription: Passive Training");
+
+        initTextFields();
+        clipsList = backend.makeClips(1);
+
+        initAudio();
+
+        jBackButton.setEnabled(false);
+    }
 
     /**
-     *initialize Lists method
+     * initialize Lists method
      */
     public void initLists() {
 
@@ -189,7 +190,7 @@ public class Passive extends javax.swing.JFrame {
         timesList.add(times3);
         timesList.add(times4);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -535,7 +536,7 @@ public class Passive extends javax.swing.JFrame {
     }
 
     /**
-     *initializes text field method
+     * initializes text field method
      */
     public void initTextFields() {
         backend = new PassiveBE(this);
@@ -586,7 +587,7 @@ public class Passive extends javax.swing.JFrame {
                 phraseList.add(phrase);
                 currList.set(i % 5, phrase.get(1)); //set the right arraylist position in textList
             }
-            
+
             //Get the start time and add it to the list
             Float startTime = Float.parseFloat(phrase.get(0));
             int startNum = (int) (startTime * 1000000);
@@ -666,7 +667,7 @@ public class Passive extends javax.swing.JFrame {
                     if (start != 0 && Character.isWhitespace(chars[start - 1])) {
                         try {
                             int end = start + word.length();
-                            highlighter.addHighlight(start, end-1, painter);
+                            highlighter.addHighlight(start, end - 1, painter);
                             if (i == 0) {
                                 jTextPane1.setCaretPosition(end);
                             }
@@ -698,7 +699,7 @@ public class Passive extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if(NaMaCount > 0) {
+        if (NaMaCount > 0) {
             na.dispose();
         }
         new Home(user).setVisible(true);
@@ -911,17 +912,17 @@ public class Passive extends javax.swing.JFrame {
         }
 
         jLabel2.setText("Page " + page);
-        
-       if (page == 4) {
+
+        if (page == 4) {
             jNextButton.setText("Current");
             jNextButton.setEnabled(false);
         }
-       
+
         if (page != 1) {
             jBackButton.setText("Back");
             jBackButton.setEnabled(true);
         }
-        
+
         jTextPane1.setText(textList.get(page - 1).get(0));
         jTextPane2.setText(textList.get(page - 1).get(1));
         jTextPane3.setText(textList.get(page - 1).get(2));
@@ -973,15 +974,15 @@ public class Passive extends javax.swing.JFrame {
         if (page <= 4 && page > 1) {
             page--;
         }
-    
+
         jLabel2.setText("Page " + page);
-        
-        if(page == 1) {
+
+        if (page == 1) {
             jBackButton.setText("Current");
             jBackButton.setEnabled(false);
         }
 
-        if(page != 1) {
+        if (page != 1) {
             jNextButton.setText("Next");
             jNextButton.setEnabled(true);
         }
@@ -1035,7 +1036,7 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jBackButtonActionPerformed
 
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
-        if(NaMaCount == 0){
+        if (NaMaCount == 0) {
             na = new NamaTable();
         }
         if (!na.isShowing()) {

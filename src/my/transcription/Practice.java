@@ -29,7 +29,7 @@ import javax.swing.text.Highlighter;
  * @author Mike, Erica, Noah and Casey
  */
 public class Practice extends javax.swing.JFrame {
-    
+
     int start1;
     int end1;
     int start2;
@@ -41,11 +41,10 @@ public class Practice extends javax.swing.JFrame {
     int wordCount;
     int numTags;
     int clicks;
-    
+
     String user;
     Integer lesson;
     String subLesson;
-    
 
     Clip clip;
     Timer timer;
@@ -55,11 +54,11 @@ public class Practice extends javax.swing.JFrame {
     ToneTable tone = new ToneTable();
     NamaTable na;
     int NaMaCount = 0;
-    
+
     private ActiveBE backend;
-    
+
     int page = 1;
-    
+
     private ArrayList<String> textList = new ArrayList<>();
     Integer timesVar = 9029000;
     private ArrayList<ArrayList<String>> phraseList;
@@ -70,14 +69,13 @@ public class Practice extends javax.swing.JFrame {
     ArrayList<Integer> startTags = new ArrayList<>();
     ArrayList<Integer> endTags = new ArrayList<>();
     private ArrayList<String> answers = new ArrayList<>();
-    
+
     private Highlighter.HighlightPainter redPainter;
     private Highlighter.HighlightPainter greenPainter;
 
-    
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
-            
+
             clip.stop();
             clip.setMicrosecondPosition(timesVar);
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
@@ -102,83 +100,83 @@ public class Practice extends javax.swing.JFrame {
         prevButton.setText("Previous");
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
-        
+
         backend = new ActiveBE(false);
-        initAudio(); 
+        initAudio();
         initTextFields();
-        
+
         jScrollPane1.setViewportView(jTextPane1);
         setupDoc();
         numTags = 0;
         jTextPane1.setLineWrap(true);
     }
-    
-    private void initAudio(){
+
+    private void initAudio() {
         clip = backend.makeClip(page);
         //timer = ;
     }
-    
-    private void setupDoc(){
-       AbstractDocument doc = (AbstractDocument) jTextPane1.getDocument();
-        
-       doc.setDocumentFilter(new DocumentFilter() {
+
+    private void setupDoc() {
+        AbstractDocument doc = (AbstractDocument) jTextPane1.getDocument();
+
+        doc.setDocumentFilter(new DocumentFilter() {
             public void replace(DocumentFilter.FilterBypass fb, int offs, int length,
                     String str, AttributeSet a) throws BadLocationException {
 
                 String text = fb.getDocument().getText(0,
                         fb.getDocument().getLength());
                 text += str;
-                if (offs >= start1 && offs<=end1) {
-                    end1+=str.length();
-                    end1-=length;
-                    end2+=str.length();
-                    end2-=length;
-                    start2+=str.length();
-                    start2-=length;
-                    end3+=str.length();
-                    end3-=length;
-                    start3+=str.length();
-                    start3-=length;
-                    end4+=str.length();
-                    end4-=length;
-                    start4+=str.length();
-                    start4-=length;
-                    
+                if (offs >= start1 && offs <= end1) {
+                    end1 += str.length();
+                    end1 -= length;
+                    end2 += str.length();
+                    end2 -= length;
+                    start2 += str.length();
+                    start2 -= length;
+                    end3 += str.length();
+                    end3 -= length;
+                    start3 += str.length();
+                    start3 -= length;
+                    end4 += str.length();
+                    end4 -= length;
+                    start4 += str.length();
+                    start4 -= length;
+
                     super.replace(fb, offs, length, str, a);
-                }else if(offs >= start2 && offs<=end2){
-                    end2+=str.length();
-                    end2-=length;
-                    end3+=str.length();
-                    end3-=length;
-                    start3+=str.length();
-                    start3-=length;
-                    end4+=str.length();
-                    end4-=length;
-                    start4+=str.length();
-                    start4-=length;
-                    
+                } else if (offs >= start2 && offs <= end2) {
+                    end2 += str.length();
+                    end2 -= length;
+                    end3 += str.length();
+                    end3 -= length;
+                    start3 += str.length();
+                    start3 -= length;
+                    end4 += str.length();
+                    end4 -= length;
+                    start4 += str.length();
+                    start4 -= length;
+
                     super.replace(fb, offs, length, str, a);
-                } else if(offs >=start3 && offs<=end3){
-                    end3+=str.length();
-                    end3-=length;
-                    end4+=str.length();
-                    end4-=length;
-                    start4+=str.length();
-                    start4-=length;
-                    
+                } else if (offs >= start3 && offs <= end3) {
+                    end3 += str.length();
+                    end3 -= length;
+                    end4 += str.length();
+                    end4 -= length;
+                    start4 += str.length();
+                    start4 -= length;
+
                     super.replace(fb, offs, length, str, a);
-                } else if(offs >= start4 && offs<=end4) {
-                    end4+=str.length();
-                    end4-=length;
-                    
+                } else if (offs >= start4 && offs <= end4) {
+                    end4 += str.length();
+                    end4 -= length;
+
                     super.replace(fb, offs, length, str, a);
-                }else {
+                } else {
                     Toolkit.getDefaultToolkit().beep();
                 }
             }
-            
-            public void remove(DocumentFilter.FilterBypass fb, int offs, int length)throws BadLocationException{
-                if((offs>=start1 && offs<end1)){
+
+            public void remove(DocumentFilter.FilterBypass fb, int offs, int length) throws BadLocationException {
+                if ((offs >= start1 && offs < end1)) {
                     end1--;
                     start2--;
                     end2--;
@@ -186,26 +184,25 @@ public class Practice extends javax.swing.JFrame {
                     end3--;
                     start4--;
                     end4--;
-                    
+
                     super.remove(fb, offs, length);
-                }else if(offs>=start2 && offs<end2){
+                } else if (offs >= start2 && offs < end2) {
                     end2--;
                     end3--;
                     start3--;
                     start4--;
                     end4--;
-                    
+
                     super.remove(fb, offs, length);
-                }else if(offs>=start3 && offs<end3){
+                } else if (offs >= start3 && offs < end3) {
                     end3--;
                     start4--;
                     end4--;
-                    
+
                     super.remove(fb, offs, length);
-                }
-                else if(offs>=start4 && offs<end4){
+                } else if (offs >= start4 && offs < end4) {
                     end4--;
-                    
+
                     super.remove(fb, offs, length);
                 }
             }
@@ -216,55 +213,53 @@ public class Practice extends javax.swing.JFrame {
                 String text = fb.getDocument().getText(0,
                         fb.getDocument().getLength());
                 text += str;
-                if (offs >= start1&& offs<=end1) {
-                    end1+=str.length();
-                    start2+=str.length();
-                    end2+=str.length();
-                    start3+=str.length();
-                    end3+=str.length();
-                    start4+=str.length();
-                    end4+=str.length();
-                            
+                if (offs >= start1 && offs <= end1) {
+                    end1 += str.length();
+                    start2 += str.length();
+                    end2 += str.length();
+                    start3 += str.length();
+                    end3 += str.length();
+                    start4 += str.length();
+                    end4 += str.length();
+
                     super.insertString(fb, offs, str, a);
-                } else if(offs >= start2 && offs<=end2){
-                    end2+=str.length();
-                    start3+=str.length();
-                    end3+=str.length();
-                    start4+=str.length();
-                    end4+=str.length();
-                    
+                } else if (offs >= start2 && offs <= end2) {
+                    end2 += str.length();
+                    start3 += str.length();
+                    end3 += str.length();
+                    start4 += str.length();
+                    end4 += str.length();
+
                     super.insertString(fb, offs, str, a);
-                } else if(offs >= start3 && offs<=end3) {
-                    end3+=str.length();
-                    start4+=str.length();
-                    end4+=str.length();
-                    
+                } else if (offs >= start3 && offs <= end3) {
+                    end3 += str.length();
+                    start4 += str.length();
+                    end4 += str.length();
+
                     super.insertString(fb, offs, str, a);
-                }else if(offs >= start4 && offs<=end4) {
-                    end4+=str.length();
-                    
+                } else if (offs >= start4 && offs <= end4) {
+                    end4 += str.length();
+
                     super.insertString(fb, offs, str, a);
-                }
-                else {
+                } else {
                     Toolkit.getDefaultToolkit().beep();
                 }
             }
         });
     }
-    
+
     public void highlightAll(String input) throws BadLocationException {
         //String text = "tan3 u1bi1 ku4u4 na1 kan4 tu4u13 ran4, tan3 i3kan4 ndu4ku4=na2, ya1kan3";
         //jTextArea1.setText(text);
         //startEnd = tags;
         Highlighter highlighter = null;
         Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN);
-        
+
         //String temp = input;
         //int num = 0;
-        
-            //if(i == 0) {
-                highlighter = jTextPane1.getHighlighter();
-                jTextPane1.setHighlighter(highlighter);
+        //if(i == 0) {
+        highlighter = jTextPane1.getHighlighter();
+        jTextPane1.setHighlighter(highlighter);
             //}
 //            if(i == 1) {
 //                highlighter = jTextArea2.getHighlighter();
@@ -278,33 +273,33 @@ public class Practice extends javax.swing.JFrame {
 //                highlighter = jTextArea4.getHighlighter();
 //                jTextArea4.setHighlighter(highlighter);
 //            }
-            
-            for(int j = 0; j < numTags; j++) {
+
+        for (int j = 0; j < numTags; j++) {
                 //temp = phrases.get(i);
-                //num = tags.get(j);
-                
-                int start = startTags.get(j);
-                int end = endTags.get(j);
-                System.out.println("Start: " + start + " End: " + end);
+            //num = tags.get(j);
+
+            int start = startTags.get(j);
+            int end = endTags.get(j);
+            System.out.println("Start: " + start + " End: " + end);
                 //System.out.println("Start: " + start);
-                //while(start >= 0) {                    
-                    
-                    char[] chars = input.toCharArray();
-                    if(start != 0 && Character.isWhitespace(chars[start-1])){
-                        try{
+            //while(start >= 0) {                    
+
+            char[] chars = input.toCharArray();
+            if (start != 0 && Character.isWhitespace(chars[start - 1])) {
+                try {
                             //System.out.println("length: " + word.length());
-                            //int end = start + word.length();
-                            //System.out.println("End: " + end);
-                            //System.out.println("printing chars");
+                    //int end = start + word.length();
+                    //System.out.println("End: " + end);
+                    //System.out.println("printing chars");
 //                            for(int i = start; i <= end; i++) {
 //                                
 //                                System.out.print(chars[i]);
 //                            }
-                            highlighter.addHighlight(start, end+1, painter);
+                    highlighter.addHighlight(start, end + 1, painter);
                             //if(i == 0) {
-                            //System.out.println("length of chars: " + chars.length);
-                             //   jTextPane1.setCaretPosition(end);
-                            //}
+                    //System.out.println("length of chars: " + chars.length);
+                    //   jTextPane1.setCaretPosition(end);
+                    //}
 //                            if(i == 1) {
 //                                jTextArea2.setCaretPosition(end);
 //                            }
@@ -314,144 +309,128 @@ public class Practice extends javax.swing.JFrame {
 //                            if(i == 3) {
 //                                jTextArea4.setCaretPosition(end);
 //                            }
-                        }catch(BadLocationException e){
-                            e.printStackTrace();
-                        }
-                        //start = temp.indexOf(word, start+word.length());
-                    }
-                    else {
-                        //start = temp.indexOf(word, start+word.length());
-                    }
-                    
-                //}
-               
-           
+                } catch (BadLocationException e) {
+                    e.printStackTrace();
+                }
+                //start = temp.indexOf(word, start+word.length());
+            } else {
+                //start = temp.indexOf(word, start+word.length());
             }
- 
+
+                //}
+        }
+
     }
-    
+
     private void checkAnswers() throws BadLocationException {
         Document doc = jTextPane1.getDocument();
-        
-        String b1 = doc.getText(start1, end1-start1);
-        String b2 = doc.getText(start2, end2-start2);
-        String b3 = doc.getText(start3, end3-start3);
-        String b4 = doc.getText(start4, end4-start4);
-        
+
+        String b1 = doc.getText(start1, end1 - start1);
+        String b2 = doc.getText(start2, end2 - start2);
+        String b3 = doc.getText(start3, end3 - start3);
+        String b4 = doc.getText(start4, end4 - start4);
+
         b1 = b1.replaceAll(" ", "");
         b2 = b2.replaceAll(" ", "");
         b3 = b3.replaceAll(" ", "");
         b4 = b4.replaceAll(" ", "");
-        
+
         answers.add(b1);
         answers.add(b2);
         answers.add(b3);
         answers.add(b4);
-        
-        for(String a : answers) {
+
+        for (String a : answers) {
             System.out.println("ansArray: |" + a + "|");
         }
-        
+
         redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
         greenPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
-        
+
         Highlighter highlighter = jTextPane1.getHighlighter();
         jTextPane1.setHighlighter(highlighter);
         try {
-            if(wordCount == 4) {
-                if(!(b1.equals(wordsList.get(0)))) {
+            if (wordCount == 4) {
+                if (!(b1.equals(wordsList.get(0)))) {
                     System.out.println("b1 not equal");
                     System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
-                if(!(b2.equals(wordsList.get(1)))) {
+                if (!(b2.equals(wordsList.get(1)))) {
                     System.out.println("b2 not equal");
                     System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + wordsList.get(1) + "|");
                     highlighter.addHighlight(start2, end2, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
-                if(!(b3.equals(wordsList.get(2)))) {
+                if (!(b3.equals(wordsList.get(2)))) {
                     System.out.println("b3 not equal");
                     System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + wordsList.get(2) + "|");
                     highlighter.addHighlight(start3, end3, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b3 equal");
                     highlighter.addHighlight(start3, end3, greenPainter);
                 }
-                if(!(b4.equals(wordsList.get(3)))) {
+                if (!(b4.equals(wordsList.get(3)))) {
                     System.out.println("b3 not equal");
                     System.out.println("b3: " + "|" + b4 + "|" + " word: " + "|" + wordsList.get(3) + "|");
                     highlighter.addHighlight(start4, end4, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b4 equal");
                     highlighter.addHighlight(start4, end4, greenPainter);
                 }
-            }
-            else if(wordCount == 3) {
-                if(!(b1.equals(wordsList.get(0)))) {
+            } else if (wordCount == 3) {
+                if (!(b1.equals(wordsList.get(0)))) {
                     System.out.println("b1 not equal");
                     System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
-                if(!(b2.equals(wordsList.get(1)))) {
+                if (!(b2.equals(wordsList.get(1)))) {
                     System.out.println("b2 not equal");
                     System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + wordsList.get(1) + "|");
                     highlighter.addHighlight(start2, end2, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
-                if(!(b3.equals(wordsList.get(2)))) {
+                if (!(b3.equals(wordsList.get(2)))) {
                     System.out.println("b3 not equal");
                     System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + wordsList.get(2) + "|");
                     highlighter.addHighlight(start3, end3, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b3 equal");
                     highlighter.addHighlight(start3, end3, greenPainter);
                 }
-            }
-            else if(wordCount == 2) {
-                if(!(b1.equals(wordsList.get(0)))) {
+            } else if (wordCount == 2) {
+                if (!(b1.equals(wordsList.get(0)))) {
                     System.out.println("b1 not equal");
                     System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
-                if(!(b2.equals(wordsList.get(1)))) {
+                if (!(b2.equals(wordsList.get(1)))) {
                     System.out.println("b2 not equal");
                     System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + wordsList.get(1) + "|");
                     highlighter.addHighlight(start2, end2, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
-            }
-            else if(wordCount == 1) {
-                if(!(b1.equals(wordsList.get(0)))) {
+            } else if (wordCount == 1) {
+                if (!(b1.equals(wordsList.get(0)))) {
                     System.out.println("b1 not equal");
                     System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
-                }
-                else {
+                } else {
                     System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
@@ -459,12 +438,12 @@ public class Practice extends javax.swing.JFrame {
         } catch (BadLocationException ex) {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(clicks == 3) {
+        if (clicks == 3) {
             submitButton.setEnabled(false);
         }
 
     }
-    
+
     private void findStartEnd(String input) {
         System.out.println("input1: " + input);
         boolean s1 = false;
@@ -472,208 +451,205 @@ public class Practice extends javax.swing.JFrame {
         boolean s2 = false;
         boolean e2 = false;
         boolean s3 = false;
-        boolean e3 = false; 
+        boolean e3 = false;
         boolean s4 = false;
         boolean e4 = false;
-        
+
         char[] statement = input.toCharArray();
         //int temp = 0;
         //int t = 0;
-        char c; 
+        char c;
         //while(temp != 5){
-            for(int i = 0; i < statement.length; i++) {
-                c = statement[i];
-                if(wordCount == 4) {
-                    if(c == '[' && s1 == false) {
-                        start1 = i+1;
-                        //tracker = i;
-                        s1 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s1: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e1 == false) {
-                        end1 = i;
-                        //tracker = i;
-                        e1 = true;
-                        endTags.add(i);
-                        System.out.println("e1: " + i);
-                        continue;
-                    }
-                    if(c == '[' && s2 == false) {
-                        start2 = i+1;
-                        //tracker = i;
-                        s2 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s2: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e2 == false) {
-                        end2 = i;
-                        //tracker = i;
-                        e2 = true;
-                        endTags.add(i);
-                        System.out.println("e2: " + i);
-                        continue;
-                    }
-                    if(c == '[' && s3 == false) {
-                        start3 = i+1;
-                        //tracker = i;
-                        s3 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s3: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e3 == false) {
-                        end3 = i;
-                        //tracker = i;
-                        e3 = true;
-                        endTags.add(i);
-                        System.out.println("e3: " + i);
-                        continue;
-                    }
-                    if(c == ']' && s4 == false) {
-                        start4 = i;
-                        //tracker = i;
-                        s4 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s4: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e4 == false) {
-                        end4 = i;
-                        //tracker = i;
-                        e4 = true;
-                        endTags.add(i);
-                        System.out.println("e4: " + i);
-                        continue;
-                    }
+        for (int i = 0; i < statement.length; i++) {
+            c = statement[i];
+            if (wordCount == 4) {
+                if (c == '[' && s1 == false) {
+                    start1 = i + 1;
+                    //tracker = i;
+                    s1 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s1: " + i);
+                    continue;
                 }
-                else if(wordCount == 3) {
-                    if(c == '[' && s1 == false) {
-                        start1 = i+1;
-                        //tracker = i;
-                        s1 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s1: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e1 == false) {
-                        end1 = i;
-                        //tracker = i;
-                        e1 = true;
-                        endTags.add(i);
-                        System.out.println("e1: " + i);
-                        continue;
-                    }
-                    if(c == '[' && s2 == false) {
-                        start2 = i+1;
-                        //tracker = i;
-                        s2 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s2: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e2 == false) {
-                        end2 = i;
-                        //tracker = i;
-                        e2 = true;
-                        endTags.add(i);
-                        System.out.println("e2: " + i);
-                        continue;
-                    }
-                    if(c == '[' && s3 == false) {
-                        start3 = i+1;
-                        //tracker = i;
-                        s3 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s3: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e3 == false) {
-                        end3 = i;
-                        //tracker = i;
-                        e3 = true;
-                        endTags.add(i);
-                        System.out.println("e3: " + i);
-                        continue;
-                    }
-                    start4 = 0;
-                    end4 = 0;
+                if (c == ']' && e1 == false) {
+                    end1 = i;
+                    //tracker = i;
+                    e1 = true;
+                    endTags.add(i);
+                    System.out.println("e1: " + i);
+                    continue;
                 }
-                else if(wordCount == 2) {
-                    if(c == '[' && s1 == false) {
-                        start1 = i+1;
-                        //tracker = i;
-                        s1 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s1: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e1 == false) {
-                        end1 = i;
-                        //tracker = i;
-                        e1 = true;
-                        endTags.add(i);
-                        System.out.println("e1: " + i);
-                        continue;
-                    }
-                    if(c == '[' && s2 == false) {
-                        start2 = i+1;
-                        //tracker = i;
-                        s2 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s2: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e2 == false) {
-                        end2 = i;
-                        //tracker = i;
-                        e2 = true;
-                        endTags.add(i);
-                        System.out.println("e2: " + i);
-                        continue;
-                    }
-                    start3 = 0;
-                    start4 = 0;
-                    end3 = 0;
-                    end4 = 0; 
+                if (c == '[' && s2 == false) {
+                    start2 = i + 1;
+                    //tracker = i;
+                    s2 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s2: " + i);
+                    continue;
                 }
-                else if(wordCount == 1) {
-                    if(c == '[' && s1 == false) {
-                        start1 = i+1;
-                        //tracker = i;
-                        s1 = true;
-                        numTags++;
-                        startTags.add(i);
-                        System.out.println("s1: " + i);
-                        continue;
-                    }
-                    if(c == ']' && e1 == false) {
-                        end1 = i;
-                        //tracker = i;
-                        e1 = true;
-                        endTags.add(i);
-                        System.out.println("e1: " + i);
-                        continue;
-                    }
-                    start2 = 0;
-                    start3 = 0;
-                    start4 = 0;
-                    end2 = 0;
-                    end3 = 0;
-                    end4 = 0; 
+                if (c == ']' && e2 == false) {
+                    end2 = i;
+                    //tracker = i;
+                    e2 = true;
+                    endTags.add(i);
+                    System.out.println("e2: " + i);
+                    continue;
                 }
+                if (c == '[' && s3 == false) {
+                    start3 = i + 1;
+                    //tracker = i;
+                    s3 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s3: " + i);
+                    continue;
+                }
+                if (c == ']' && e3 == false) {
+                    end3 = i;
+                    //tracker = i;
+                    e3 = true;
+                    endTags.add(i);
+                    System.out.println("e3: " + i);
+                    continue;
+                }
+                if (c == ']' && s4 == false) {
+                    start4 = i;
+                    //tracker = i;
+                    s4 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s4: " + i);
+                    continue;
+                }
+                if (c == ']' && e4 == false) {
+                    end4 = i;
+                    //tracker = i;
+                    e4 = true;
+                    endTags.add(i);
+                    System.out.println("e4: " + i);
+                    continue;
+                }
+            } else if (wordCount == 3) {
+                if (c == '[' && s1 == false) {
+                    start1 = i + 1;
+                    //tracker = i;
+                    s1 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s1: " + i);
+                    continue;
+                }
+                if (c == ']' && e1 == false) {
+                    end1 = i;
+                    //tracker = i;
+                    e1 = true;
+                    endTags.add(i);
+                    System.out.println("e1: " + i);
+                    continue;
+                }
+                if (c == '[' && s2 == false) {
+                    start2 = i + 1;
+                    //tracker = i;
+                    s2 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s2: " + i);
+                    continue;
+                }
+                if (c == ']' && e2 == false) {
+                    end2 = i;
+                    //tracker = i;
+                    e2 = true;
+                    endTags.add(i);
+                    System.out.println("e2: " + i);
+                    continue;
+                }
+                if (c == '[' && s3 == false) {
+                    start3 = i + 1;
+                    //tracker = i;
+                    s3 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s3: " + i);
+                    continue;
+                }
+                if (c == ']' && e3 == false) {
+                    end3 = i;
+                    //tracker = i;
+                    e3 = true;
+                    endTags.add(i);
+                    System.out.println("e3: " + i);
+                    continue;
+                }
+                start4 = 0;
+                end4 = 0;
+            } else if (wordCount == 2) {
+                if (c == '[' && s1 == false) {
+                    start1 = i + 1;
+                    //tracker = i;
+                    s1 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s1: " + i);
+                    continue;
+                }
+                if (c == ']' && e1 == false) {
+                    end1 = i;
+                    //tracker = i;
+                    e1 = true;
+                    endTags.add(i);
+                    System.out.println("e1: " + i);
+                    continue;
+                }
+                if (c == '[' && s2 == false) {
+                    start2 = i + 1;
+                    //tracker = i;
+                    s2 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s2: " + i);
+                    continue;
+                }
+                if (c == ']' && e2 == false) {
+                    end2 = i;
+                    //tracker = i;
+                    e2 = true;
+                    endTags.add(i);
+                    System.out.println("e2: " + i);
+                    continue;
+                }
+                start3 = 0;
+                start4 = 0;
+                end3 = 0;
+                end4 = 0;
+            } else if (wordCount == 1) {
+                if (c == '[' && s1 == false) {
+                    start1 = i + 1;
+                    //tracker = i;
+                    s1 = true;
+                    numTags++;
+                    startTags.add(i);
+                    System.out.println("s1: " + i);
+                    continue;
+                }
+                if (c == ']' && e1 == false) {
+                    end1 = i;
+                    //tracker = i;
+                    e1 = true;
+                    endTags.add(i);
+                    System.out.println("e1: " + i);
+                    continue;
+                }
+                start2 = 0;
+                start3 = 0;
+                start4 = 0;
+                end2 = 0;
+                end3 = 0;
+                end4 = 0;
             }
+        }
         //    temp++;
         //}
 //        System.out.println("Start1: " + start1);
@@ -682,15 +658,15 @@ public class Practice extends javax.swing.JFrame {
 //        System.out.println("End3: " + end2);
 //        System.out.println("Start3: " + start3);
 //        System.out.println("End3: " + end3);
-        for(int i : startTags) {
+        for (int i : startTags) {
             System.out.println("start tag: " + i);
         }
-        for(int i : endTags) {
+        for (int i : endTags) {
             System.out.println("end tag: " + i);
         }
         System.out.println("numTags: " + numTags);
     }
-    
+
     public void initTextFields() {
         backend = new ActiveBE(false);
         phraseList = new ArrayList<ArrayList<String>>();
@@ -698,8 +674,7 @@ public class Practice extends javax.swing.JFrame {
         for (int i = 0; i < 20; i++) {
             String file = backend.findFile(lesson, subLesson);
             ArrayList<String> phrase = backend.findPhrase(file);
-            
-            
+
             if (phrase == null || phrase.get(1) == null) {
                 i--;
                 continue;
@@ -713,7 +688,7 @@ public class Practice extends javax.swing.JFrame {
                 phraseList.add(phrase);
                 textList.add(phrase.get(1));
             }
-            
+
             //Put clip and time info here - how are we getting the time information?
             //use getClips to return the clip names and files
             Float startTime = Float.parseFloat(phrase.get(0));
@@ -734,18 +709,15 @@ public class Practice extends javax.swing.JFrame {
 
         current = textList.get(page - 1);
         System.out.println("wsize: " + wordsList.size());
-        
+
         backend.findWords(current, wordsList);
-        if(wordsList.size() >= 4) {
+        if (wordsList.size() >= 4) {
             wordCount = 4;
-        }
-        else if(wordsList.size() == 3) {
+        } else if (wordsList.size() == 3) {
             wordCount = 3;
-        }
-        else if(wordsList.size() == 2) {
+        } else if (wordsList.size() == 2) {
             wordCount = 2;
-        }
-        else if(wordsList.size() == 1) {
+        } else if (wordsList.size() == 1) {
             wordCount = 1;
         }
         System.out.println("before blanks: " + current);
@@ -754,16 +726,16 @@ public class Practice extends javax.swing.JFrame {
         System.out.println("current: " + current);
         findStartEnd(current);
         jTextPane1.setText(current);
-        jTextPane1.setCaretPosition(start1 + ((end1-start1)/2));
-        
+        jTextPane1.setCaretPosition(start1 + ((end1 - start1) / 2));
+
         try {
             highlightAll(current);
         } catch (BadLocationException ex) {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         System.out.println("wsize: " + wordsList.size());
-        for(String w : wordsList) {
+        for (String w : wordsList) {
             System.out.println("Word: " + w);
         }
     }
@@ -965,7 +937,7 @@ public class Practice extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         clicks++;
         String phrase = jTextPane1.getText();
         findStartEnd(phrase);
@@ -975,33 +947,33 @@ public class Practice extends javax.swing.JFrame {
         } catch (BadLocationException ex) {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }                                            
-    
+    }
+
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
-       page--;
-       clip.stop();
-       clip.close();
-       timer.stop();
-       jPageLabel.setText("Page " + page);
-       //backend.closeAudio(); 
-       clip = backend.makeClip(page);
-       if(page == 1){
-           prevButton.setText("Current");
-           prevButton.setEnabled(false);
-       }else if(page == 19){
-           nextButton.setEnabled(true);
-           nextButton.setText("Next");
-       }
-       playButton1.setForeground(new java.awt.Color(0, 153, 51));
-       playButton1.setText("Play");
-       //backend.closeAudio();
-       initAudio();
-       //backend.findWords(textList.get(page - 1), wordsList);
+        page--;
+        clip.stop();
+        clip.close();
+        timer.stop();
+        jPageLabel.setText("Page " + page);
+        //backend.closeAudio(); 
+        clip = backend.makeClip(page);
+        if (page == 1) {
+            prevButton.setText("Current");
+            prevButton.setEnabled(false);
+        } else if (page == 19) {
+            nextButton.setEnabled(true);
+            nextButton.setText("Next");
+        }
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton1.setText("Play");
+        //backend.closeAudio();
+        initAudio();
+        //backend.findWords(textList.get(page - 1), wordsList);
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
         enc.dispose();
-        if(NaMaCount > 0) {
+        if (NaMaCount > 0) {
             na.dispose();
         }
         tone.dispose();
@@ -1012,7 +984,7 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_jHomeMenuMouseClicked
 
     private void jEncMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEncMenuMouseClicked
-        if(!enc.isShowing()) {
+        if (!enc.isShowing()) {
             enc.setVisible(true);
         } else {
             enc.toFront();
@@ -1020,7 +992,7 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_jEncMenuMouseClicked
 
     private void jNasMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNasMenuMouseClicked
-        if(!nas.isShowing()) {
+        if (!nas.isShowing()) {
             nas.setVisible(true);
         } else {
             nas.toFront();
@@ -1028,7 +1000,7 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_jNasMenuMouseClicked
 
     private void jToneTableMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToneTableMenuMouseClicked
-        if(!tone.isShowing()) {
+        if (!tone.isShowing()) {
             tone.setVisible(true);
         } else {
             tone.toFront();
@@ -1043,7 +1015,7 @@ public class Practice extends javax.swing.JFrame {
     private void playButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton1ActionPerformed
         playButton1.setText("Play");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
-        if(!clip.isRunning()) {
+        if (!clip.isRunning()) {
             clip.setMicrosecondPosition(timesVar);
             clip.start();
             timer.start();
@@ -1065,22 +1037,22 @@ public class Practice extends javax.swing.JFrame {
         jPageLabel.setText("Page " + page);
         //backend.closeAudio();
         clip = backend.makeClip(page);
-        if(page==20) {
-           nextButton.setText("Current");
-           nextButton.setEnabled(false);
-       } else if(page==2) {
-           prevButton.setEnabled(true);
-           prevButton.setText("Previous");
-       }
-       playButton1.setForeground(new java.awt.Color(0, 153, 51));
-       playButton1.setText("Play");
-       //backend.closeAudio();
-       initAudio();
-       //backend.findWords(textList.get(page - 1), wordsList);
+        if (page == 20) {
+            nextButton.setText("Current");
+            nextButton.setEnabled(false);
+        } else if (page == 2) {
+            prevButton.setEnabled(true);
+            prevButton.setText("Previous");
+        }
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton1.setText("Play");
+        //backend.closeAudio();
+        initAudio();
+        //backend.findWords(textList.get(page - 1), wordsList);
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
-        if(NaMaCount == 0){
+        if (NaMaCount == 0) {
             na = new NamaTable();
         }
         if (!na.isShowing()) {

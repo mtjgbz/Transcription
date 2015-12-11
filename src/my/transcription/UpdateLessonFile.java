@@ -12,28 +12,28 @@ import javax.swing.JFileChooser;
  * @author Erica
  */
 public class UpdateLessonFile extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form updateLessonFile
      */
     public UpdateLessonFile() {
         initComponents();
     }
-    
-    public String fileChooser(){
+
+    public String fileChooser() {
         JFileChooser chooser = new JFileChooser();
         // Note: source for ExampleFileFilter can be found in FileChooserDemo,
         // under the demo/jfc directory in the JDK.
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnVal;
         returnVal = chooser.showOpenDialog(this.getParent());
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-           return chooser.getSelectedFile().getPath();
-        }else{
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            return chooser.getSelectedFile().getPath();
+        } else {
             return "";
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

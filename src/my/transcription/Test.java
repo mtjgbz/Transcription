@@ -31,33 +31,32 @@ public class Test extends javax.swing.JFrame {
     Enclitics enc = new Enclitics();
     Nasalizations nas = new Nasalizations();
     ToneTable tone = new ToneTable();
-    
+
     private ActiveBE tbe;
-    
+
     int page = 1;
-    
+
     private ArrayList<String> textList = new ArrayList<>();
     Integer timesVar = 9029000;
     private ArrayList<String> phraseList;
     private ArrayList<String> wordsList = new ArrayList<String>();
 
-    
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
-            
+
             clip.stop();
             clip.setMicrosecondPosition(timesVar);
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
             playButton1.setText("Play");
         }
     };
-    
+
     /**
      * Creates new form Test
      *
      * @param user
      */
-    public Test(String user,Integer lesson, String subLesson) {
+    public Test(String user, Integer lesson, String subLesson) {
         this.setTitle("Mixtec Transcription: Practice");
         initComponents();
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
@@ -69,16 +68,16 @@ public class Test extends javax.swing.JFrame {
         prevButton.setText("Current");
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
-        
+
         tbe = new ActiveBE(false);
         initAudio();
     }
-    
-    private void initAudio(){
+
+    private void initAudio() {
         clip = tbe.makeClip(page);
     }
 
-        public void initTextFields() {
+    public void initTextFields() {
 //        pbe = new PassiveBE();
 //        phraseList = new ArrayList<String>();
 //        for (int i = 0; i < 20; i++) {
@@ -123,7 +122,7 @@ public class Test extends javax.swing.JFrame {
 //
 //        pbe.findWords(currList, wordsList);
     }
-        
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -356,30 +355,30 @@ public class Test extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // pbe.submit(answerList);
-    }                                            
-    
+    }
+
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
-       page--;
-       clip.stop();
-       clip.close();
-       timer.stop();
-       jPageLabel.setText("Page " + page);
-       tbe.closeAudio(); 
-       clip = tbe.makeClip(page);
-       if(page == 1){
-           prevButton.setText("Current");
-           prevButton.setEnabled(false);
-       }else if(page == 19){
-           nextButton.setEnabled(true);
-           nextButton.setText("Next");
-       }
-       playButton1.setForeground(new java.awt.Color(0, 153, 51));
-       playButton1.setText("Play");
-       tbe.closeAudio();
-       initAudio();
-       //pbe.findWords(textList.get(page - 1), wordsList);
+        page--;
+        clip.stop();
+        clip.close();
+        timer.stop();
+        jPageLabel.setText("Page " + page);
+        tbe.closeAudio();
+        clip = tbe.makeClip(page);
+        if (page == 1) {
+            prevButton.setText("Current");
+            prevButton.setEnabled(false);
+        } else if (page == 19) {
+            nextButton.setEnabled(true);
+            nextButton.setText("Next");
+        }
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton1.setText("Play");
+        tbe.closeAudio();
+        initAudio();
+        //pbe.findWords(textList.get(page - 1), wordsList);
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -396,7 +395,7 @@ public class Test extends javax.swing.JFrame {
     private void playButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton1ActionPerformed
         playButton1.setText("Play");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
-        if(!clip.isRunning()) {
+        if (!clip.isRunning()) {
             clip.setMicrosecondPosition(timesVar);
             clip.start();
             timer.start();
@@ -418,18 +417,18 @@ public class Test extends javax.swing.JFrame {
         jPageLabel.setText("Page " + page);
         tbe.closeAudio();
         clip = tbe.makeClip(page);
-        if(page==20) {
-           nextButton.setText("Current");
-           nextButton.setEnabled(false);
-       } else if(page==2) {
-           prevButton.setEnabled(true);
-           prevButton.setText("Previous");
-       }
-       playButton1.setForeground(new java.awt.Color(0, 153, 51));
-       playButton1.setText("Play");
-       tbe.closeAudio();
-       initAudio();
-       //pbe.findWords(textList.get(page - 1), wordsList);
+        if (page == 20) {
+            nextButton.setText("Current");
+            nextButton.setEnabled(false);
+        } else if (page == 2) {
+            prevButton.setEnabled(true);
+            prevButton.setText("Previous");
+        }
+        playButton1.setForeground(new java.awt.Color(0, 153, 51));
+        playButton1.setText("Play");
+        tbe.closeAudio();
+        initAudio();
+        //pbe.findWords(textList.get(page - 1), wordsList);
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

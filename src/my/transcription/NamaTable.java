@@ -30,8 +30,8 @@ public class NamaTable extends javax.swing.JFrame {
     LineListener listenerAll = new LineListener() {
         @Override
         public void update(LineEvent event) {
-            if(event.getType()==STOP){
-                for(javax.swing.JButton butt: buttonlist){
+            if (event.getType() == STOP) {
+                for (javax.swing.JButton butt : buttonlist) {
                     butt.setForeground(new java.awt.Color(0, 153, 51));
                 }
             }
@@ -40,15 +40,15 @@ public class NamaTable extends javax.swing.JFrame {
     LineListener listener24 = new LineListener() {
         @Override
         public void update(LineEvent event) {
-            if(event.getType()==STOP){
-                for(javax.swing.JButton butt: buttonlist){
+            if (event.getType() == STOP) {
+                for (javax.swing.JButton butt : buttonlist) {
                     butt.setForeground(new java.awt.Color(0, 153, 51));
-                    isPlaying=false;
+                    isPlaying = false;
                 }
             }
         }
     };
-    
+
     /**
      * Creates new form NamaTable
      */
@@ -56,8 +56,8 @@ public class NamaTable extends javax.swing.JFrame {
         initComponents();
         NamaLoader loader = new NamaLoader();
         cliplist = loader.load();
-        listenerlist=listeners();
-        for(Clip clip:cliplist){
+        listenerlist = listeners();
+        for (Clip clip : cliplist) {
             clip.addLineListener(listenerAll);
         }
         cliplist.get(23).addLineListener(listener24);
@@ -87,34 +87,33 @@ public class NamaTable extends javax.swing.JFrame {
         buttonlist.add(jButton23);
         buttonlist.add(jButton24);
         buttonlist.add(playAllButton);
-        System.out.print(listenerlist.size()+" and "+cliplist.size());
-        int i=0;
-       for(Clip clip:cliplist){
-           if(clip.equals(cliplist.get(i))){
-               System.out.print(i + " has match \n");
-           }
-           i++;
-       }
-       this.setTitle("Mixtec Transcription: Nama Table");
-       this.setLocation(x, y);
+        System.out.print(listenerlist.size() + " and " + cliplist.size());
+        int i = 0;
+        for (Clip clip : cliplist) {
+            if (clip.equals(cliplist.get(i))) {
+                System.out.print(i + " has match \n");
+            }
+            i++;
+        }
+        this.setTitle("Mixtec Transcription: Nama Table");
+        this.setLocation(x, y);
     }
-    
+
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
     Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
 
     int x = (int) rect.getMaxX();
     int y = 0;
-    
-    public ArrayList<LineListener> listeners(){
+
+    public ArrayList<LineListener> listeners() {
         ArrayList<LineListener> listeners = new ArrayList<>();
-        
-       
+
         LineListener listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(1).start();
                     jButton1.setForeground(new java.awt.Color(0, 153, 51));
                     jButton2.setForeground(Color.blue);
@@ -123,12 +122,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-    
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(2).start();
                     jButton2.setForeground(new java.awt.Color(0, 153, 51));
                     jButton3.setForeground(Color.blue);
@@ -137,12 +136,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(3).start();
                     jButton3.setForeground(new java.awt.Color(0, 153, 51));
                     jButton4.setForeground(Color.blue);
@@ -151,12 +150,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(4).start();
                     jButton4.setForeground(new java.awt.Color(0, 153, 51));
                     jButton5.setForeground(Color.blue);
@@ -165,12 +164,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(5).start();
                     jButton5.setForeground(new java.awt.Color(0, 153, 51));
                     jButton6.setForeground(Color.blue);
@@ -179,12 +178,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(6).start();
                     jButton6.setForeground(new java.awt.Color(0, 153, 51));
                     jButton7.setForeground(Color.blue);
@@ -193,12 +192,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(7).start();
                     jButton7.setForeground(new java.awt.Color(0, 153, 51));
                     jButton8.setForeground(Color.blue);
@@ -207,12 +206,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(8).start();
                     jButton8.setForeground(new java.awt.Color(0, 153, 51));
                     jButton9.setForeground(Color.blue);
@@ -221,12 +220,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(9).start();
                     jButton9.setForeground(new java.awt.Color(0, 153, 51));
                     jButton10.setForeground(Color.blue);
@@ -235,12 +234,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(10).start();
                     jButton10.setForeground(new java.awt.Color(0, 153, 51));
                     jButton11.setForeground(Color.blue);
@@ -249,12 +248,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(11).start();
                     jButton11.setForeground(new java.awt.Color(0, 153, 51));
                     jButton12.setForeground(Color.blue);
@@ -263,12 +262,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(12).start();
                     jButton12.setForeground(new java.awt.Color(0, 153, 51));
                     jButton13.setForeground(Color.blue);
@@ -277,12 +276,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(13).start();
                     jButton13.setForeground(new java.awt.Color(0, 153, 51));
                     jButton14.setForeground(Color.blue);
@@ -291,12 +290,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(14).start();
                     jButton14.setForeground(new java.awt.Color(0, 153, 51));
                     jButton15.setForeground(Color.blue);
@@ -305,12 +304,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(15).start();
                     jButton15.setForeground(new java.awt.Color(0, 153, 51));
                     jButton16.setForeground(Color.blue);
@@ -319,12 +318,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(16).start();
                     jButton16.setForeground(new java.awt.Color(0, 153, 51));
                     jButton17.setForeground(Color.blue);
@@ -333,12 +332,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(17).start();
                     jButton17.setForeground(new java.awt.Color(0, 153, 51));
                     jButton18.setForeground(Color.blue);
@@ -347,12 +346,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(18).start();
                     jButton18.setForeground(new java.awt.Color(0, 153, 51));
                     jButton19.setForeground(Color.blue);
@@ -361,12 +360,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(19).start();
                     jButton19.setForeground(new java.awt.Color(0, 153, 51));
                     jButton20.setForeground(Color.blue);
@@ -375,12 +374,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(20).start();
                     jButton20.setForeground(new java.awt.Color(0, 153, 51));
                     jButton21.setForeground(Color.blue);
@@ -389,12 +388,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(21).start();
                     jButton21.setForeground(new java.awt.Color(0, 153, 51));
                     jButton22.setForeground(Color.blue);
@@ -403,12 +402,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(22).start();
                     jButton22.setForeground(new java.awt.Color(0, 153, 51));
                     jButton23.setForeground(Color.blue);
@@ -417,12 +416,12 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         listener = new LineListener() {
-                
+
             @Override
             public void update(LineEvent event) {
-                if(event.getType()==STOP){
+                if (event.getType() == STOP) {
                     cliplist.get(23).start();
                     jButton23.setForeground(new java.awt.Color(0, 153, 51));
                     jButton24.setForeground(Color.blue);
@@ -431,7 +430,7 @@ public class NamaTable extends javax.swing.JFrame {
             }
         };
         listeners.add(listener);
-        
+
         return listeners;
     }
 
@@ -849,690 +848,689 @@ public class NamaTable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(0).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(0).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(0).setMicrosecondPosition(0);
             cliplist.get(0).start();
             jButton1.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(0).stop();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(1).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(1).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(1).setMicrosecondPosition(0);
             cliplist.get(1).start();
             jButton2.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(1).stop();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(2).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(2).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(2).setMicrosecondPosition(0);
             cliplist.get(2).start();
             jButton3.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(2).stop();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(3).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(3).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(3).setMicrosecondPosition(0);
             cliplist.get(3).start();
             jButton4.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(3).stop();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(4).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(4).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(4).setMicrosecondPosition(0);
             cliplist.get(4).start();
             jButton5.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(4).stop();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(5).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(5).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(5).setMicrosecondPosition(0);
             cliplist.get(5).start();
             jButton6.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(5).stop();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(6).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(6).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(6).setMicrosecondPosition(0);
             cliplist.get(6).start();
             jButton7.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(6).stop();
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(7).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(7).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(7).setMicrosecondPosition(0);
             cliplist.get(7).start();
             jButton8.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(7).stop();
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(8).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(8).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(8).setMicrosecondPosition(0);
             cliplist.get(8).start();
             jButton9.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(8).stop();
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(9).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(9).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(9).setMicrosecondPosition(0);
             cliplist.get(9).start();
             jButton10.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(9).stop();
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(10).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(10).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(10).setMicrosecondPosition(0);
             cliplist.get(10).start();
             jButton11.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(10).stop();
         }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(11).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(11).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(11).setMicrosecondPosition(0);
             cliplist.get(11).start();
             jButton12.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(11).stop();
         }
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(12).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(12).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(12).setMicrosecondPosition(0);
             cliplist.get(12).start();
             jButton13.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(12).stop();
         }
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(13).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(13).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(13).setMicrosecondPosition(0);
             cliplist.get(13).start();
             jButton14.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying){
+        } else if (!isPlaying) {
             cliplist.get(13).stop();
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(14).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(14).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(14).setMicrosecondPosition(0);
             cliplist.get(14).start();
             jButton15.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying){
+        } else if (!isPlaying) {
             cliplist.get(14).stop();
         }
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(15).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(15).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(15).setMicrosecondPosition(0);
             cliplist.get(15).start();
             jButton16.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(15).stop();
         }
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(16).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(16).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(16).setMicrosecondPosition(0);
             cliplist.get(16).start();
             jButton17.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(16).stop();
         }
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(17).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(17).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(17).setMicrosecondPosition(0);
             cliplist.get(17).start();
             jButton18.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(17).stop();
         }
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(18).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(18).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(18).setMicrosecondPosition(0);
             cliplist.get(18).start();
             jButton19.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(18).stop();
         }
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(19).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(19).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(19).setMicrosecondPosition(0);
             cliplist.get(19).start();
             jButton20.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(19).stop();
         }
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(20).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(20).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(20).setMicrosecondPosition(0);
             cliplist.get(20).start();
             jButton21.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(20).stop();
         }
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(21).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(21).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(21).setMicrosecondPosition(0);
             cliplist.get(21).start();
             jButton22.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(21).stop();
         }
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!cliplist.get(22).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+        if (!cliplist.get(22).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(22).setMicrosecondPosition(0);
             cliplist.get(22).start();
             jButton23.setForeground(new java.awt.Color(255, 51, 51));
-        } else if(!isPlaying) {
+        } else if (!isPlaying) {
             cliplist.get(22).stop();
         }
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        for(javax.swing.JButton butt:buttonlist){
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        
-        if(!cliplist.get(23).isRunning()){
-            if(isPlaying){
-                for(Clip clip:cliplist){
-                    if(cliplist.indexOf(clip)<23){
+
+        if (!cliplist.get(23).isRunning()) {
+            if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
                         clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                         clip.stop();
-                    }else{
+                    } else {
                         clip.stop();
                     }
                 }
-            }else{
-                for(Clip clip:cliplist){
+            } else {
+                for (Clip clip : cliplist) {
                     clip.stop();
                 }
             }
             cliplist.get(23).setMicrosecondPosition(0);
             cliplist.get(23).start();
             jButton24.setForeground(new java.awt.Color(255, 51, 51));
-            
-        } else if(!isPlaying) {
+
+        } else if (!isPlaying) {
             cliplist.get(23).stop();
         }
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private boolean isPlaying = false;
-    
+
     private void playAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playAllButtonActionPerformed
-        
-        for(javax.swing.JButton butt:buttonlist){
+
+        for (javax.swing.JButton butt : buttonlist) {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
-        if(!isPlaying){
-            for(Clip clip:cliplist){
+        if (!isPlaying) {
+            for (Clip clip : cliplist) {
                 clip.stop();
             }
             playAllButton.setForeground(new java.awt.Color(255, 51, 51));
             isPlaying = true;
-            for(Clip clip:cliplist){
+            for (Clip clip : cliplist) {
                 clip.setMicrosecondPosition(0);
-                
-                if(cliplist.indexOf(clip)<23){
+
+                if (cliplist.indexOf(clip) < 23) {
                     clip.addLineListener(listenerlist.get(cliplist.indexOf(clip)));
                 }
             }
-            
+
             cliplist.get(0).start();
             jButton1.setForeground(Color.blue);
-        }else{
+        } else {
             isPlaying = false;
-            for(Clip clip:cliplist){
-                if(cliplist.indexOf(clip)<23){
+            for (Clip clip : cliplist) {
+                if (cliplist.indexOf(clip) < 23) {
                     clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
                     clip.stop();
                 }
             }
         }
-        
-    }//GEN-LAST:event_playAllButtonActionPerformed
 
+    }//GEN-LAST:event_playAllButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

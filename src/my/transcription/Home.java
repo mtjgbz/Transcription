@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package my.transcription;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,7 @@ import javax.swing.Timer;
  * @author Michael, Noah, Casey & Erica
  */
 public class Home extends javax.swing.JFrame {
+
     private int lesson;
     private String sublesson;
     private String user;
@@ -37,7 +39,7 @@ public class Home extends javax.swing.JFrame {
 
     ArrayList<Integer> lessonList;
     private HashMap<Integer, ArrayList<String>> sublessonMap;
-    
+
     Timer timer1;
     Boolean loading = false;
 
@@ -51,7 +53,8 @@ public class Home extends javax.swing.JFrame {
 
     /**
      * Constructor
-     * @param user 
+     *
+     * @param user
      */
     public Home(String user) {
         initComponents();
@@ -74,38 +77,38 @@ public class Home extends javax.swing.JFrame {
 //        lessonList.add(3);
         jlessonBox.removeAllItems();
         jsubLessonBox.removeAllItems();
-        
+
         setupLessons();
 
     }
-    
-    private void setupLessons(){
-        try{
+
+    private void setupLessons() {
+        try {
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
             String query = "SELECT Lesson, Sublesson FROM LESSONS;";
             ResultSet rs = stmt.executeQuery(query);
             ArrayList<String> subList = new ArrayList<>();
-            while(rs.next()){
+            while (rs.next()) {
                 int currLesson = rs.getInt("Lesson");
                 String subL = rs.getString("Sublesson");
                 System.out.println(currLesson + ", " + subL);
                 System.out.println(lessonList.contains(currLesson));
-                if(currLesson < 1){
+                if (currLesson < 1) {
                     continue;
                 }
-                if(!lessonList.contains(currLesson)){
-                    if(currLesson > 1){
+                if (!lessonList.contains(currLesson)) {
+                    if (currLesson > 1) {
                         subList.add("Final");
                     }
                     lessonList.add(currLesson);
                     sublessonMap.put(currLesson, new ArrayList());
                 }
-                if(!subL.equals("Final")){
+                if (!subL.equals("Final")) {
                     subList = sublessonMap.get(currLesson);
                     subList.add(subL);
                 }
             }
-            
+
             query = "SELECT * FROM LESSON_TRACK WHERE Username LIKE '"
                     + user + "'; ";
             rs = stmt.executeQuery(query);
@@ -113,31 +116,31 @@ public class Home extends javax.swing.JFrame {
             String latestSublesson = rs.getString("LatestSublesson");
             furthestLesson = rs.getInt("FurthestLesson");
             furthestSublesson = rs.getString("FurthestSublesson");
-            
+
             jlessonBox.removeAll();
-            for (int l : lessonList){
-                if(l <= furthestLesson){
+            for (int l : lessonList) {
+                if (l <= furthestLesson) {
                     jlessonBox.addItem(l);
                 }
             }
             jlessonBox.setSelectedItem(latestLesson);
-            
+
             int index = (int) jlessonBox.getSelectedItem();
             ArrayList<String> currList = sublessonMap.get(index);
-            for (String subL : currList){
-                if(subL.equals("Final") && 
-                        currList.indexOf(subL) == currList.size() - 1){
+            for (String subL : currList) {
+                if (subL.equals("Final")
+                        && currList.indexOf(subL) == currList.size() - 1) {
                     jsubLessonBox.addItem(subL);
-                }else if(!currList.contains(furthestSublesson) || 
-                        currList.indexOf(furthestSublesson) >= currList.indexOf(subL)){
+                } else if (!currList.contains(furthestSublesson)
+                        || currList.indexOf(furthestSublesson) >= currList.indexOf(subL)) {
                     jsubLessonBox.addItem(subL);
                 }
-                System.out.println(subL + ", " + currList.contains(subL) + 
-                        ", " + currList.indexOf(furthestSublesson) + ", " + currList.indexOf(subL));
+                System.out.println(subL + ", " + currList.contains(subL)
+                        + ", " + currList.indexOf(furthestSublesson) + ", " + currList.indexOf(subL));
             }
             jsubLessonBox.setSelectedItem(latestSublesson);
             User.closeDB(stmt, rs);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -429,8 +432,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jlessonBoxActionPerformed
 
     /**
-     * Log out button 
-     * @param evt 
+     * Log out button
+     *
+     * @param evt
      */
     private void jLogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogOutButtonActionPerformed
         act.dispose();
@@ -438,7 +442,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if(NaMaCount > 0) {
+        if (NaMaCount > 0) {
             na.dispose();
         }
 
@@ -448,7 +452,8 @@ public class Home extends javax.swing.JFrame {
 
     /**
      * Trainee Log Button
-     * @param evt 
+     *
+     * @param evt
      */
     private void jTraineeLogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTraineeLogButtonActionPerformed
         act.dispose();
@@ -456,7 +461,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if(NaMaCount > 0) {
+        if (NaMaCount > 0) {
             na.dispose();
         }
 
@@ -465,12 +470,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jTraineeLogButtonActionPerformed
 
     public static void loading() {
-        JOptionPane.showOptionDialog(null, "         Loading...","Passive Loading", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
+        JOptionPane.showOptionDialog(null, "         Loading...", "Passive Loading", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
     }
-    
+
     /**
      * Passive Training Button
-     * @param evt 
+     *
+     * @param evt
      */
     private void jPassiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassiveButtonActionPerformed
         loading = true;
@@ -479,19 +485,13 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if(NaMaCount > 0) {
+        if (NaMaCount > 0) {
             na.dispose();
         }
-        
+
         lesson = lessonList.get((int) jlessonBox.getSelectedIndex());
         sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
-        
-        
-        System.out.print("\n \n \n \n");
-        System.out.print(lesson+"\n");
-        System.out.print(sublesson);
-        
-        
+
         Passive pass = new Passive(user, lesson, sublesson);
         pass.setVisible(true);
         dispose();
@@ -499,17 +499,18 @@ public class Home extends javax.swing.JFrame {
 
     /**
      * Active Training Button and Pop-Up
-     * @param evt 
+     *
+     * @param evt
      */
     private void jActiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActiveButtonActionPerformed
         lesson = lessonList.get(jlessonBox.getSelectedIndex());
         sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
-        
+
         pass1.dispose();
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if(NaMaCount > 0) {
+        if (NaMaCount > 0) {
             na.dispose();
         }
         if (!act.isShowing()) {
@@ -523,7 +524,8 @@ public class Home extends javax.swing.JFrame {
 
     /**
      * Tone Table Button
-     * @param evt 
+     *
+     * @param evt
      */
     private void jTonesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTonesButtonActionPerformed
         if (!tone.isShowing()) {
@@ -543,7 +545,8 @@ public class Home extends javax.swing.JFrame {
 
     /**
      * Enclitic Button
-     * @param evt 
+     *
+     * @param evt
      */
     private void jEncliticButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEncliticButtonActionPerformed
         if (!enc.isShowing()) {
@@ -555,7 +558,8 @@ public class Home extends javax.swing.JFrame {
 
     /**
      * Change Password page
-     * @param evt 
+     *
+     * @param evt
      */
     private void jChangePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseClicked
         pass1.setVisible(true);
@@ -563,7 +567,8 @@ public class Home extends javax.swing.JFrame {
 
     /**
      * Change Password page
-     * @param evt 
+     *
+     * @param evt
      */
     private void jChangePasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseReleased
         act.dispose();
@@ -583,11 +588,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jPassiveButtonMousePressed
 
     private void jLoadTextMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTextMenuActionPerformed
-        
+
     }//GEN-LAST:event_jLoadTextMenuActionPerformed
 
     private void jNaMaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNaMaButtonActionPerformed
-        if(NaMaCount == 0){
+        if (NaMaCount == 0) {
             na = new NamaTable();
         }
         if (!na.isShowing()) {
@@ -617,8 +622,9 @@ public class Home extends javax.swing.JFrame {
 
         ActionListener listener = new ActionListener() {
             int dots = 0;
+
             public void actionPerformed(ActionEvent event) {
-                if(dots < 3) {
+                if (dots < 3) {
                     jLabel1.setText(jLabel1.getText() + ".");
                     dots++;
                 } else {
@@ -630,6 +636,7 @@ public class Home extends javax.swing.JFrame {
         timer1 = new Timer(300, listener);
         timer1.start();
     }
+
     /**
      * @param args the command line arguments
      */
