@@ -216,123 +216,123 @@ public class PassiveBE {
 
             if (pageNum == 1) {
                 AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(0));
-                clip1 = AudioSystem.getClip();
+                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip1 = (Clip)AudioSystem.getLine(info);
                 clip1.open(audioIn);
-                //clips1.setMicrosecondPosition(timesList.get(0).get(0));
                 audioIn.close();
-
+                
                 audioIn = AudioSystem.getAudioInputStream(clips.get(1));
-                clip2 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip2 = (Clip)AudioSystem.getLine(info);
                 clip2.open(audioIn);
-                //clips2.setMicrosecondPosition(timesList.get(0).get(1));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(2));
-                clip3 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip3 = (Clip)AudioSystem.getLine(info);
                 clip3.open(audioIn);
-                //clips3.setMicrosecondPosition(timesList.get(0).get(2));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(3));
-                clip4 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip4 = (Clip)AudioSystem.getLine(info);
                 clip4.open(audioIn);
-                //clips4.setMicrosecondPosition(timesList.get(0).get(3));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(4));
-                clip5 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip5 = (Clip)AudioSystem.getLine(info);
                 clip5.open(audioIn);
-                //clips5.setMicrosecondPosition(timesList.get(0).get(4));
                 audioIn.close();
             } else if (pageNum == 2) {
                 AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(5));
-                clip1 = AudioSystem.getClip();
+                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip1 = (Clip)AudioSystem.getLine(info);
                 clip1.open(audioIn);
-                //clips1.setMicrosecondPosition(timesList.get(0).get(0));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(6));
-                clip2 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip2 = (Clip)AudioSystem.getLine(info);
                 clip2.open(audioIn);
-                //clips2.setMicrosecondPosition(timesList.get(0).get(1));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(7));
-                clip3 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip3 = (Clip)AudioSystem.getLine(info);
                 clip3.open(audioIn);
-                //clips3.setMicrosecondPosition(timesList.get(0).get(2));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(8));
-                clip4 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip4 = (Clip)AudioSystem.getLine(info);
                 clip4.open(audioIn);
-                //clips4.setMicrosecondPosition(timesList.get(0).get(3));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(9));
-                clip5 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip5 = (Clip)AudioSystem.getLine(info);
                 clip5.open(audioIn);
-                //clips5.setMicrosecondPosition(timesList.get(0).get(4));
                 audioIn.close();
             } else if (pageNum == 3) {
                 AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(10));
-                clip1 = AudioSystem.getClip();
+                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip1 = (Clip)AudioSystem.getLine(info);
                 clip1.open(audioIn);
-                //clips1.setMicrosecondPosition(timesList.get(0).get(0));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(11));
-                clip2 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip2 = (Clip)AudioSystem.getLine(info);
                 clip2.open(audioIn);
-                //clips2.setMicrosecondPosition(timesList.get(0).get(1));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(12));
-                clip3 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip3 = (Clip)AudioSystem.getLine(info);
                 clip3.open(audioIn);
-                //clips3.setMicrosecondPosition(timesList.get(0).get(2));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(13));
-                clip4 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip4 = (Clip)AudioSystem.getLine(info);
                 clip4.open(audioIn);
-                //clips4.setMicrosecondPosition(timesList.get(0).get(3));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(14));
-                clip5 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip5 = (Clip)AudioSystem.getLine(info);
                 clip5.open(audioIn);
-                //clips5.setMicrosecondPosition(timesList.get(0).get(4));
                 audioIn.close();
             } else {
                 AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(15));
-                clip1 = AudioSystem.getClip();
+                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip1 = (Clip)AudioSystem.getLine(info);
                 clip1.open(audioIn);
-                //clips1.setMicrosecondPosition(timesList.get(0).get(0));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(16));
-                clip2 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip2 = (Clip)AudioSystem.getLine(info);
                 clip2.open(audioIn);
-                //clips2.setMicrosecondPosition(timesList.get(0).get(1));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(17));
-                clip3 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip3 = (Clip)AudioSystem.getLine(info);
                 clip3.open(audioIn);
-                //clips3.setMicrosecondPosition(timesList.get(0).get(2));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(18));
-                clip4 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip4 = (Clip)AudioSystem.getLine(info);
                 clip4.open(audioIn);
-                //clips4.setMicrosecondPosition(timesList.get(0).get(3));
                 audioIn.close();
 
                 audioIn = AudioSystem.getAudioInputStream(clips.get(19));
-                clip5 = AudioSystem.getClip();
+                info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip5 = (Clip)AudioSystem.getLine(info);
                 clip5.open(audioIn);
-                //clips5.setMicrosecondPosition(timesList.get(0).get(4));
                 audioIn.close();
             }
 

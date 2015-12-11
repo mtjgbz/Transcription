@@ -483,8 +483,14 @@ public class Home extends javax.swing.JFrame {
             na.dispose();
         }
         
-        lesson = lessonList.get((int) jlessonBox.getSelectedIndex() + 1);
+        lesson = lessonList.get((int) jlessonBox.getSelectedIndex());
         sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
+        
+        
+        System.out.print("\n \n \n \n");
+        System.out.print(lesson+"\n");
+        System.out.print(sublesson);
+        
         
         Passive pass = new Passive(user, lesson, sublesson);
         pass.setVisible(true);
