@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineEvent;
 import static javax.sound.sampled.LineEvent.Type.STOP;
 import javax.sound.sampled.LineListener;
@@ -31,122 +32,146 @@ public class NamaLoader {
         AudioInputStream audioIn;
         try {          
             audioIn = AudioSystem.getAudioInputStream(new File(path+"01-01-na3ma3_edited.wav"));
-            Clip clip1 = AudioSystem.getClip();
+            DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip1 = (Clip)AudioSystem.getLine(info);
             clip1.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"02-12-na4ma4_edited.wav"));
-            Clip clip2 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip2 = (Clip)AudioSystem.getLine(info);
             clip2.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"03-21-na4ma4_edited.wav"));
-            Clip clip3 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip3 = (Clip)AudioSystem.getLine(info);
             clip3.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"04-20-na4ma2_edited.wav"));
-            Clip clip4 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip4 = (Clip)AudioSystem.getLine(info);
             clip4.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"05-11-na4ma3_edited.wav"));
-            Clip clip5 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip5 = (Clip)AudioSystem.getLine(info);
             clip5.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"06-10-na3ma2_edited.wav"));
-            Clip clip6 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip6 = (Clip)AudioSystem.getLine(info);
             clip6.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"07-13-na3ma2_edited.wav"));
-            Clip clip7 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip7 = (Clip)AudioSystem.getLine(info);
             clip7.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"08-14-na1ma3_edited.wav"));
-            Clip clip8 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip8 = (Clip)AudioSystem.getLine(info);
             clip8.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"09-17-na1ma4_edited.wav"));
-            Clip clip9 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip9 = (Clip)AudioSystem.getLine(info);
             clip9.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"10-06-na3ma4_edited.wav"));
-            Clip clip10 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip10 = (Clip)AudioSystem.getLine(info);
             clip10.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"11-16-na3ma4_edited.wav"));
-            Clip clip11 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip11 = (Clip)AudioSystem.getLine(info);
             clip11.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"12-15-na14ma2_edited.wav"));
-            Clip clip12 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip12 = (Clip)AudioSystem.getLine(info);
             clip12.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"13-19-na14ma3_edited.wav"));
-            Clip clip13 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip13 = (Clip)AudioSystem.getLine(info);
             clip13.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"14-05-na14ma4_edited.wav"));
-            Clip clip14 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip14 = (Clip)AudioSystem.getLine(info);
             clip14.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"15-24-na14ma13_edited.wav"));
-            Clip clip15 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip15 = (Clip)AudioSystem.getLine(info);
             clip15.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"16-18-na14ma132_edited.wav"));
-            Clip clip16 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip16 = (Clip)AudioSystem.getLine(info);
             clip16.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"17-22-na14ma42_edited.wav"));
-            Clip clip17 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip17 = (Clip)AudioSystem.getLine(info);
             clip17.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"18-09-na1ma32_edited.wav"));
-            Clip clip18 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip18 = (Clip)AudioSystem.getLine(info);
             clip18.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"19-03-na1ma42_edited.wav"));
-            Clip clip19 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip19 = (Clip)AudioSystem.getLine(info);
             clip19.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"20-08-na3ma42_edited.wav"));
-            Clip clip20 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip20 = (Clip)AudioSystem.getLine(info);
             clip20.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"21-02-na4ma13_edited.wav"));
-            Clip clip21 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip21 = (Clip)AudioSystem.getLine(info);
             clip21.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"22-07-na4ma132_edited.wav"));
-            Clip clip22 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip22 = (Clip)AudioSystem.getLine(info);
             clip22.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"23-04-na4ma42_edited.wav"));
-            Clip clip23 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip23 = (Clip)AudioSystem.getLine(info);
             clip23.open(audioIn);
             audioIn.close();
             
             audioIn = AudioSystem.getAudioInputStream(new File(path+"24-23-na4ma42_edited.wav"));
-            Clip clip24 = AudioSystem.getClip();
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            Clip clip24 = (Clip)AudioSystem.getLine(info);
             clip24.open(audioIn);
             audioIn.close();
             
