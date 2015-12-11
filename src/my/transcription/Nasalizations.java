@@ -125,7 +125,7 @@ public class Nasalizations extends javax.swing.JFrame {
         AudioInputStream audioIn = null;
         try {
             if (clip == null || !clip.isOpen()) {
-                audioIn = AudioSystem.getAudioInputStream(new File(path + "Nasalization/" +stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
@@ -134,7 +134,7 @@ public class Nasalizations extends javax.swing.JFrame {
             } else {
                 clip.stop();
 
-                audioIn = AudioSystem.getAudioInputStream(new File(path + "Nasalization/" + stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
