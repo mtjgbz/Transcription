@@ -630,7 +630,7 @@ public class Passive extends javax.swing.JFrame {
     public void highlightWord(ArrayList<String> words, ArrayList<String> phrases) throws BadLocationException {
 
         Highlighter highlighter = null;
-        Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.pink);
+        Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.cyan);
 
         String temp = "";
         String word = "";

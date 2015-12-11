@@ -41,8 +41,9 @@ public class User {
      * @param transcriptions Path where all the transcription files are located
      * @param path Path for the text file to be stored in
      */
-    public static void createTextFile(String transcriptions) {
+    public static void createTextFile(String transcriptions, String path) {
         try {
+            dbPath = path;
             Statement stmt = setupDB(parentFrame,dbPath);
             Statement stmt2 = conn.createStatement();
             String query = "SELECT Lesson, Sublesson FROM LESSON_PLAN";

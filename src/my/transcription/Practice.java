@@ -6,6 +6,7 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -15,17 +16,36 @@ import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Document;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.Highlighter;
 
 /**
  *
  * @author Mike, Erica, Noah and Casey
  */
 public class Practice extends javax.swing.JFrame {
-
+    
+    int start1;
+    int end1;
+    int start2;
+    int end2;
+    int start3;
+    int end3;
+    int start4;
+    int end4;
+    int wordCount;
+    int numTags;
+    int clicks;
+    
     String user;
     Integer lesson;
     String subLesson;
+    
 
     Clip clip;
     Timer timer;
@@ -43,10 +63,16 @@ public class Practice extends javax.swing.JFrame {
     private ArrayList<String> textList = new ArrayList<>();
     Integer timesVar = 9029000;
     private ArrayList<ArrayList<String>> phraseList;
-    private ArrayList<String> wordsList = new ArrayList<String>();
+    private ArrayList<String> wordsList = new ArrayList<>();
     ArrayList<Integer> timesList = new ArrayList<>();
     ArrayList<Timer> timersList = new ArrayList<>();
     ArrayList<File> clips = new ArrayList<>();
+    ArrayList<Integer> startTags = new ArrayList<>();
+    ArrayList<Integer> endTags = new ArrayList<>();
+    private ArrayList<String> answers = new ArrayList<>();
+    
+    private Highlighter.HighlightPainter redPainter;
+    private Highlighter.HighlightPainter greenPainter;
 
     
     ActionListener listener = new ActionListener() {
@@ -73,18 +99,596 @@ public class Practice extends javax.swing.JFrame {
         this.subLesson = subLesson;
         jUserMenu.setText(user);
         jTextPane1.setText("text1");
-        prevButton.setText("Current");
+        prevButton.setText("Previous");
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
         
         backend = new ActiveBE(false);
         initAudio(); 
         initTextFields();
+        
+        jScrollPane1.setViewportView(jTextPane1);
+        setupDoc();
+        numTags = 0;
+        jTextPane1.setLineWrap(true);
     }
     
     private void initAudio(){
         clip = backend.makeClip(page);
         //timer = ;
+    }
+    
+    private void setupDoc(){
+       AbstractDocument doc = (AbstractDocument) jTextPane1.getDocument();
+        
+       doc.setDocumentFilter(new DocumentFilter() {
+            public void replace(DocumentFilter.FilterBypass fb, int offs, int length,
+                    String str, AttributeSet a) throws BadLocationException {
+
+                String text = fb.getDocument().getText(0,
+                        fb.getDocument().getLength());
+                text += str;
+                if (offs >= start1 && offs<=end1) {
+                    end1+=str.length();
+                    end1-=length;
+                    end2+=str.length();
+                    end2-=length;
+                    start2+=str.length();
+                    start2-=length;
+                    end3+=str.length();
+                    end3-=length;
+                    start3+=str.length();
+                    start3-=length;
+                    end4+=str.length();
+                    end4-=length;
+                    start4+=str.length();
+                    start4-=length;
+                    
+                    super.replace(fb, offs, length, str, a);
+                }else if(offs >= start2 && offs<=end2){
+                    end2+=str.length();
+                    end2-=length;
+                    end3+=str.length();
+                    end3-=length;
+                    start3+=str.length();
+                    start3-=length;
+                    end4+=str.length();
+                    end4-=length;
+                    start4+=str.length();
+                    start4-=length;
+                    
+                    super.replace(fb, offs, length, str, a);
+                } else if(offs >=start3 && offs<=end3){
+                    end3+=str.length();
+                    end3-=length;
+                    end4+=str.length();
+                    end4-=length;
+                    start4+=str.length();
+                    start4-=length;
+                    
+                    super.replace(fb, offs, length, str, a);
+                } else if(offs >= start4 && offs<=end4) {
+                    end4+=str.length();
+                    end4-=length;
+                    
+                    super.replace(fb, offs, length, str, a);
+                }else {
+                    Toolkit.getDefaultToolkit().beep();
+                }
+            }
+            
+            public void remove(DocumentFilter.FilterBypass fb, int offs, int length)throws BadLocationException{
+                if((offs>=start1 && offs<end1)){
+                    end1--;
+                    start2--;
+                    end2--;
+                    start3--;
+                    end3--;
+                    start4--;
+                    end4--;
+                    
+                    super.remove(fb, offs, length);
+                }else if(offs>=start2 && offs<end2){
+                    end2--;
+                    end3--;
+                    start3--;
+                    start4--;
+                    end4--;
+                    
+                    super.remove(fb, offs, length);
+                }else if(offs>=start3 && offs<end3){
+                    end3--;
+                    start4--;
+                    end4--;
+                    
+                    super.remove(fb, offs, length);
+                }
+                else if(offs>=start4 && offs<end4){
+                    end4--;
+                    
+                    super.remove(fb, offs, length);
+                }
+            }
+
+            public void insertString(DocumentFilter.FilterBypass fb, int offs, String str,
+                    AttributeSet a) throws BadLocationException {
+
+                String text = fb.getDocument().getText(0,
+                        fb.getDocument().getLength());
+                text += str;
+                if (offs >= start1&& offs<=end1) {
+                    end1+=str.length();
+                    start2+=str.length();
+                    end2+=str.length();
+                    start3+=str.length();
+                    end3+=str.length();
+                    start4+=str.length();
+                    end4+=str.length();
+                            
+                    super.insertString(fb, offs, str, a);
+                } else if(offs >= start2 && offs<=end2){
+                    end2+=str.length();
+                    start3+=str.length();
+                    end3+=str.length();
+                    start4+=str.length();
+                    end4+=str.length();
+                    
+                    super.insertString(fb, offs, str, a);
+                } else if(offs >= start3 && offs<=end3) {
+                    end3+=str.length();
+                    start4+=str.length();
+                    end4+=str.length();
+                    
+                    super.insertString(fb, offs, str, a);
+                }else if(offs >= start4 && offs<=end4) {
+                    end4+=str.length();
+                    
+                    super.insertString(fb, offs, str, a);
+                }
+                else {
+                    Toolkit.getDefaultToolkit().beep();
+                }
+            }
+        });
+    }
+    
+    public void highlightAll(String input) throws BadLocationException {
+        //String text = "tan3 u1bi1 ku4u4 na1 kan4 tu4u13 ran4, tan3 i3kan4 ndu4ku4=na2, ya1kan3";
+        //jTextArea1.setText(text);
+        //startEnd = tags;
+        Highlighter highlighter = null;
+        Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN);
+        
+        //String temp = input;
+        //int num = 0;
+        
+            //if(i == 0) {
+                highlighter = jTextPane1.getHighlighter();
+                jTextPane1.setHighlighter(highlighter);
+            //}
+//            if(i == 1) {
+//                highlighter = jTextArea2.getHighlighter();
+//                jTextArea2.setHighlighter(highlighter);
+//            }
+//            if(i == 2) {
+//                highlighter = jTextArea3.getHighlighter();
+//                jTextArea3.setHighlighter(highlighter);
+//            }
+//            if(i == 3) {
+//                highlighter = jTextArea4.getHighlighter();
+//                jTextArea4.setHighlighter(highlighter);
+//            }
+            
+            for(int j = 0; j < numTags; j++) {
+                //temp = phrases.get(i);
+                //num = tags.get(j);
+                
+                int start = startTags.get(j);
+                int end = endTags.get(j);
+                System.out.println("Start: " + start + " End: " + end);
+                //System.out.println("Start: " + start);
+                //while(start >= 0) {                    
+                    
+                    char[] chars = input.toCharArray();
+                    if(start != 0 && Character.isWhitespace(chars[start-1])){
+                        try{
+                            //System.out.println("length: " + word.length());
+                            //int end = start + word.length();
+                            //System.out.println("End: " + end);
+                            //System.out.println("printing chars");
+//                            for(int i = start; i <= end; i++) {
+//                                
+//                                System.out.print(chars[i]);
+//                            }
+                            highlighter.addHighlight(start, end+1, painter);
+                            //if(i == 0) {
+                            //System.out.println("length of chars: " + chars.length);
+                             //   jTextPane1.setCaretPosition(end);
+                            //}
+//                            if(i == 1) {
+//                                jTextArea2.setCaretPosition(end);
+//                            }
+//                            if(i == 2) {
+//                                jTextArea3.setCaretPosition(end);
+//                            }
+//                            if(i == 3) {
+//                                jTextArea4.setCaretPosition(end);
+//                            }
+                        }catch(BadLocationException e){
+                            e.printStackTrace();
+                        }
+                        //start = temp.indexOf(word, start+word.length());
+                    }
+                    else {
+                        //start = temp.indexOf(word, start+word.length());
+                    }
+                    
+                //}
+               
+           
+            }
+ 
+    }
+    
+    private void checkAnswers() throws BadLocationException {
+        Document doc = jTextPane1.getDocument();
+        
+        String b1 = doc.getText(start1, end1-start1);
+        String b2 = doc.getText(start2, end2-start2);
+        String b3 = doc.getText(start3, end3-start3);
+        String b4 = doc.getText(start4, end4-start4);
+        
+        b1 = b1.replaceAll(" ", "");
+        b2 = b2.replaceAll(" ", "");
+        b3 = b3.replaceAll(" ", "");
+        b4 = b4.replaceAll(" ", "");
+        
+        answers.add(b1);
+        answers.add(b2);
+        answers.add(b3);
+        answers.add(b4);
+        
+        for(String a : answers) {
+            System.out.println("ansArray: |" + a + "|");
+        }
+        
+        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
+        greenPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
+        
+        Highlighter highlighter = jTextPane1.getHighlighter();
+        jTextPane1.setHighlighter(highlighter);
+        try {
+            if(wordCount == 4) {
+                if(!(b1.equals(wordsList.get(0)))) {
+                    System.out.println("b1 not equal");
+                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
+                    highlighter.addHighlight(start1, end1, redPainter);
+                }
+                else {
+                    System.out.println("b1 equal");
+                    highlighter.addHighlight(start1, end1, greenPainter);
+                }
+                if(!(b2.equals(wordsList.get(1)))) {
+                    System.out.println("b2 not equal");
+                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + wordsList.get(1) + "|");
+                    highlighter.addHighlight(start2, end2, redPainter);
+                }
+                else {
+                    System.out.println("b2 equal");
+                    highlighter.addHighlight(start2, end2, greenPainter);
+                }
+                if(!(b3.equals(wordsList.get(2)))) {
+                    System.out.println("b3 not equal");
+                    System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + wordsList.get(2) + "|");
+                    highlighter.addHighlight(start3, end3, redPainter);
+                }
+                else {
+                    System.out.println("b3 equal");
+                    highlighter.addHighlight(start3, end3, greenPainter);
+                }
+                if(!(b4.equals(wordsList.get(3)))) {
+                    System.out.println("b3 not equal");
+                    System.out.println("b3: " + "|" + b4 + "|" + " word: " + "|" + wordsList.get(3) + "|");
+                    highlighter.addHighlight(start4, end4, redPainter);
+                }
+                else {
+                    System.out.println("b4 equal");
+                    highlighter.addHighlight(start4, end4, greenPainter);
+                }
+            }
+            else if(wordCount == 3) {
+                if(!(b1.equals(wordsList.get(0)))) {
+                    System.out.println("b1 not equal");
+                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
+                    highlighter.addHighlight(start1, end1, redPainter);
+                }
+                else {
+                    System.out.println("b1 equal");
+                    highlighter.addHighlight(start1, end1, greenPainter);
+                }
+                if(!(b2.equals(wordsList.get(1)))) {
+                    System.out.println("b2 not equal");
+                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + wordsList.get(1) + "|");
+                    highlighter.addHighlight(start2, end2, redPainter);
+                }
+                else {
+                    System.out.println("b2 equal");
+                    highlighter.addHighlight(start2, end2, greenPainter);
+                }
+                if(!(b3.equals(wordsList.get(2)))) {
+                    System.out.println("b3 not equal");
+                    System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + wordsList.get(2) + "|");
+                    highlighter.addHighlight(start3, end3, redPainter);
+                }
+                else {
+                    System.out.println("b3 equal");
+                    highlighter.addHighlight(start3, end3, greenPainter);
+                }
+            }
+            else if(wordCount == 2) {
+                if(!(b1.equals(wordsList.get(0)))) {
+                    System.out.println("b1 not equal");
+                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
+                    highlighter.addHighlight(start1, end1, redPainter);
+                }
+                else {
+                    System.out.println("b1 equal");
+                    highlighter.addHighlight(start1, end1, greenPainter);
+                }
+                if(!(b2.equals(wordsList.get(1)))) {
+                    System.out.println("b2 not equal");
+                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + wordsList.get(1) + "|");
+                    highlighter.addHighlight(start2, end2, redPainter);
+                }
+                else {
+                    System.out.println("b2 equal");
+                    highlighter.addHighlight(start2, end2, greenPainter);
+                }
+            }
+            else if(wordCount == 1) {
+                if(!(b1.equals(wordsList.get(0)))) {
+                    System.out.println("b1 not equal");
+                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
+                    highlighter.addHighlight(start1, end1, redPainter);
+                }
+                else {
+                    System.out.println("b1 equal");
+                    highlighter.addHighlight(start1, end1, greenPainter);
+                }
+            }
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(clicks == 3) {
+            submitButton.setEnabled(false);
+        }
+
+    }
+    
+    private void findStartEnd(String input) {
+        System.out.println("input1: " + input);
+        boolean s1 = false;
+        boolean e1 = false;
+        boolean s2 = false;
+        boolean e2 = false;
+        boolean s3 = false;
+        boolean e3 = false; 
+        boolean s4 = false;
+        boolean e4 = false;
+        
+        char[] statement = input.toCharArray();
+        //int temp = 0;
+        //int t = 0;
+        char c; 
+        //while(temp != 5){
+            for(int i = 0; i < statement.length; i++) {
+                c = statement[i];
+                if(wordCount == 4) {
+                    if(c == '[' && s1 == false) {
+                        start1 = i+1;
+                        //tracker = i;
+                        s1 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s1: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e1 == false) {
+                        end1 = i;
+                        //tracker = i;
+                        e1 = true;
+                        endTags.add(i);
+                        System.out.println("e1: " + i);
+                        continue;
+                    }
+                    if(c == '[' && s2 == false) {
+                        start2 = i+1;
+                        //tracker = i;
+                        s2 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s2: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e2 == false) {
+                        end2 = i;
+                        //tracker = i;
+                        e2 = true;
+                        endTags.add(i);
+                        System.out.println("e2: " + i);
+                        continue;
+                    }
+                    if(c == '[' && s3 == false) {
+                        start3 = i+1;
+                        //tracker = i;
+                        s3 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s3: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e3 == false) {
+                        end3 = i;
+                        //tracker = i;
+                        e3 = true;
+                        endTags.add(i);
+                        System.out.println("e3: " + i);
+                        continue;
+                    }
+                    if(c == ']' && s4 == false) {
+                        start4 = i;
+                        //tracker = i;
+                        s4 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s4: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e4 == false) {
+                        end4 = i;
+                        //tracker = i;
+                        e4 = true;
+                        endTags.add(i);
+                        System.out.println("e4: " + i);
+                        continue;
+                    }
+                }
+                else if(wordCount == 3) {
+                    if(c == '[' && s1 == false) {
+                        start1 = i+1;
+                        //tracker = i;
+                        s1 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s1: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e1 == false) {
+                        end1 = i;
+                        //tracker = i;
+                        e1 = true;
+                        endTags.add(i);
+                        System.out.println("e1: " + i);
+                        continue;
+                    }
+                    if(c == '[' && s2 == false) {
+                        start2 = i+1;
+                        //tracker = i;
+                        s2 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s2: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e2 == false) {
+                        end2 = i;
+                        //tracker = i;
+                        e2 = true;
+                        endTags.add(i);
+                        System.out.println("e2: " + i);
+                        continue;
+                    }
+                    if(c == '[' && s3 == false) {
+                        start3 = i+1;
+                        //tracker = i;
+                        s3 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s3: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e3 == false) {
+                        end3 = i;
+                        //tracker = i;
+                        e3 = true;
+                        endTags.add(i);
+                        System.out.println("e3: " + i);
+                        continue;
+                    }
+                    start4 = 0;
+                    end4 = 0;
+                }
+                else if(wordCount == 2) {
+                    if(c == '[' && s1 == false) {
+                        start1 = i+1;
+                        //tracker = i;
+                        s1 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s1: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e1 == false) {
+                        end1 = i;
+                        //tracker = i;
+                        e1 = true;
+                        endTags.add(i);
+                        System.out.println("e1: " + i);
+                        continue;
+                    }
+                    if(c == '[' && s2 == false) {
+                        start2 = i+1;
+                        //tracker = i;
+                        s2 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s2: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e2 == false) {
+                        end2 = i;
+                        //tracker = i;
+                        e2 = true;
+                        endTags.add(i);
+                        System.out.println("e2: " + i);
+                        continue;
+                    }
+                    start3 = 0;
+                    start4 = 0;
+                    end3 = 0;
+                    end4 = 0; 
+                }
+                else if(wordCount == 1) {
+                    if(c == '[' && s1 == false) {
+                        start1 = i+1;
+                        //tracker = i;
+                        s1 = true;
+                        numTags++;
+                        startTags.add(i);
+                        System.out.println("s1: " + i);
+                        continue;
+                    }
+                    if(c == ']' && e1 == false) {
+                        end1 = i;
+                        //tracker = i;
+                        e1 = true;
+                        endTags.add(i);
+                        System.out.println("e1: " + i);
+                        continue;
+                    }
+                    start2 = 0;
+                    start3 = 0;
+                    start4 = 0;
+                    end2 = 0;
+                    end3 = 0;
+                    end4 = 0; 
+                }
+            }
+        //    temp++;
+        //}
+//        System.out.println("Start1: " + start1);
+//        System.out.println("End1: " + end1);
+//        System.out.println("Start2: " + start2);
+//        System.out.println("End3: " + end2);
+//        System.out.println("Start3: " + start3);
+//        System.out.println("End3: " + end3);
+        for(int i : startTags) {
+            System.out.println("start tag: " + i);
+        }
+        for(int i : endTags) {
+            System.out.println("end tag: " + i);
+        }
+        System.out.println("numTags: " + numTags);
     }
     
     public void initTextFields() {
@@ -129,9 +733,39 @@ public class Practice extends javax.swing.JFrame {
         //System.out.println(clip);
 
         current = textList.get(page - 1);
+        System.out.println("wsize: " + wordsList.size());
+        
+        backend.findWords(current, wordsList);
+        if(wordsList.size() >= 4) {
+            wordCount = 4;
+        }
+        else if(wordsList.size() == 3) {
+            wordCount = 3;
+        }
+        else if(wordsList.size() == 2) {
+            wordCount = 2;
+        }
+        else if(wordsList.size() == 1) {
+            wordCount = 1;
+        }
+        System.out.println("before blanks: " + current);
+        System.out.println("wordCount: " + wordCount);
+        current = backend.setBlanks(current, wordsList);
+        System.out.println("current: " + current);
+        findStartEnd(current);
         jTextPane1.setText(current);
-
-        //backend.findWords(current, wordsList);
+        
+        
+        try {
+            highlightAll(current);
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("wsize: " + wordsList.size());
+        for(String w : wordsList) {
+            System.out.println("Word: " + w);
+        }
     }
 
     /**
@@ -148,16 +782,9 @@ public class Practice extends javax.swing.JFrame {
         prevButton = new javax.swing.JButton();
         playButton1 = new javax.swing.JButton();
         jPageLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jHomeMenu = new javax.swing.JMenu();
         jEncMenu = new javax.swing.JMenu();
@@ -168,12 +795,12 @@ public class Practice extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setFocusableWindowState(false);
+        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(700, 430));
         setResizable(false);
 
         submitButton.setBackground(new java.awt.Color(255, 255, 255));
-        submitButton.setText("Submit");
+        submitButton.setText("Check Answers");
         submitButton.setMaximumSize(new java.awt.Dimension(97, 30));
         submitButton.setMinimumSize(new java.awt.Dimension(97, 30));
         submitButton.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -220,50 +847,11 @@ public class Practice extends javax.swing.JFrame {
         jPageLabel.setForeground(new java.awt.Color(204, 204, 204));
         jPageLabel.setText("Page 1");
 
-        jTextField1.setMaximumSize(new java.awt.Dimension(14, 28));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+        jTextPane1.setColumns(20);
+        jTextPane1.setRows(5);
+        jScrollPane1.setViewportView(jTextPane1);
 
-        jTextField2.setMaximumSize(new java.awt.Dimension(14, 28));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-        jTextField3.setMaximumSize(new java.awt.Dimension(14, 28));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
-        jTextField4.setMaximumSize(new java.awt.Dimension(14, 28));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("4");
-
-        jLabel2.setText("3");
-
-        jLabel3.setText("2");
-
-        jLabel4.setText("1");
-
-        jTextPane1.setEditable(false);
-        jTextPane1.setAutoscrolls(false);
-        jTextPane1.setFocusable(false);
-        jTextPane1.setMaximumSize(new java.awt.Dimension(550, 70));
-        jTextPane1.setMinimumSize(new java.awt.Dimension(550, 70));
-        jTextPane1.setPreferredSize(new java.awt.Dimension(550, 70));
-        jTextPane1.setRequestFocusEnabled(false);
-        jScrollPane5.setViewportView(jTextPane1);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
 
         jHomeMenu.setText("Home");
         jHomeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -325,18 +913,10 @@ public class Practice extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(250, 250, 250)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 52, Short.MAX_VALUE)
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(223, 223, 223)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPageLabel)
                         .addGap(15, 15, 15))
                     .addGroup(layout.createSequentialGroup()
@@ -347,24 +927,16 @@ public class Practice extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jLabel4)
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel3)
-                        .addGap(118, 118, 118)
-                        .addComponent(jLabel2)
-                        .addGap(118, 118, 118)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(292, 292, 292)
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 105, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,32 +944,21 @@ public class Practice extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
-                        .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPageLabel))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(jPageLabel)
+                .addContainerGap(54, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE))
         );
 
         pack();
@@ -405,7 +966,15 @@ public class Practice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // pbe.submit(answerList);
+        clicks++;
+        String phrase = jTextPane1.getText();
+        findStartEnd(phrase);
+        setupDoc();
+        try {
+            checkAnswers();
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }                                            
     
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
@@ -510,22 +1079,6 @@ public class Practice extends javax.swing.JFrame {
        //backend.findWords(textList.get(page - 1), wordsList);
     }//GEN-LAST:event_nextButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
         if(NaMaCount == 0){
             na = new NamaTable();
@@ -577,20 +1130,13 @@ public class Practice extends javax.swing.JFrame {
     private javax.swing.JMenu jEncMenu;
     private javax.swing.JMenu jHomeMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jNaMaMenu;
     private javax.swing.JMenu jNasMenu;
     private javax.swing.JLabel jPageLabel;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextPane1;
     private javax.swing.JMenu jToneTableMenu;
     private javax.swing.JMenu jUserMenu;
     private javax.swing.JButton nextButton;

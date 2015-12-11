@@ -22,13 +22,15 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
- * @author mike
+ * @author Noah, Mike, Casey and Erica
  */
 public class Nasalizations extends javax.swing.JFrame {
     Clip clip;
     int buttonNum = 0;
+    int numOfButtons = 18;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
     ArrayList<Integer> count = new ArrayList<>();
+    String path;
     /**
      * Creates new form Nasalizations
      */
@@ -36,12 +38,15 @@ public class Nasalizations extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Nasalizations Table");
         this.setLocation(x, y);
-        for(int i = 0; i < 18; i++) {
+        for(int i = 0; i < numOfButtons; i++) {
             count.add(0);
         }
     
+        /**
+         * creates the ArrayLists for the ArrayList stringNames and adds them
+         */
         ArrayList<String> i0 = new ArrayList<>();//1.1b
-        i0.add("b_1-1_ka71a1-ka71an1_edited.wav");
+        i0.add("b_1-1_ku71u1-ku71un1_edited.wav");
         i0.add("b_1-1_ku71u1-ku71un1_edited.wav");
         stringNames.add(i0);
         ArrayList<String> i1 = new ArrayList<>();//1.1e
@@ -108,11 +113,13 @@ public class Nasalizations extends javax.swing.JFrame {
         i17.add("a_4-24_kwa4a24-kwa4an4_edited.wav");
         stringNames.add(i17);
     }
-        
+        /**
+         * method that creates the audio clip every time the button is clicked to avoid heap space errors
+         */
         public void buttonAction() {
         AudioInputStream audioIn = null;
         try {
-            if(clip==null||!clip.isOpen()){
+            if(clip == null||!clip.isOpen()){
                 audioIn = AudioSystem.getAudioInputStream(new File(path+stringNames.get(buttonNum).get(count.get(buttonNum))));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
@@ -648,7 +655,10 @@ public class Nasalizations extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-        LineListener listener = new LineListener() {
+    /**
+     * Listener for the clip if it's closed.
+     */
+    LineListener listener = new LineListener() {
         @Override
         public void update(LineEvent event) {
             if(event.getType()==STOP){
@@ -658,7 +668,7 @@ public class Nasalizations extends javax.swing.JFrame {
     };
     
     //String path = "/home/mike/Transcription Data/Tones/";
-    String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/Nasalizations/";
+    //String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/Nasalizations/";
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

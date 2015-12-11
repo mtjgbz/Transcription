@@ -9,14 +9,14 @@ import javax.swing.JFileChooser;
 
 /**
  *
- * @author Erica
+ * @author Noah
  */
-public class UpdateLessonFile extends javax.swing.JFrame {
-    
+public class UpdateTones extends javax.swing.JFrame {
+
     /**
-     * Creates new form updateLessonFile
+     * Creates new form UpdateTones
      */
-    public UpdateLessonFile() {
+    public UpdateTones() {
         initComponents();
     }
     
@@ -33,7 +33,7 @@ public class UpdateLessonFile extends javax.swing.JFrame {
             return "";
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,21 +44,23 @@ public class UpdateLessonFile extends javax.swing.JFrame {
     private void initComponents() {
 
         transcriptionPath = new javax.swing.JTextField();
-        transcriptionLabel = new javax.swing.JLabel();
         transcriptionBrowse = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        transcriptionLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(440, 160));
+        setMinimumSize(new java.awt.Dimension(440, 160));
+        setPreferredSize(new java.awt.Dimension(440, 160));
         setResizable(false);
+        setSize(new java.awt.Dimension(440, 160));
 
         transcriptionPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 transcriptionPathActionPerformed(evt);
             }
         });
-
-        transcriptionLabel.setText("Where are your transcriptions located?");
 
         transcriptionBrowse.setText("Browse...");
         transcriptionBrowse.addActionListener(new java.awt.event.ActionListener() {
@@ -81,62 +83,63 @@ public class UpdateLessonFile extends javax.swing.JFrame {
             }
         });
 
+        transcriptionLabel.setText("Where are your tones located?");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(transcriptionLabel)
-                    .addComponent(transcriptionPath, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(transcriptionBrowse)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cancelButton)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(transcriptionLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(transcriptionPath, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(transcriptionBrowse)))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(35, 35, 35)
                 .addComponent(transcriptionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transcriptionPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(transcriptionBrowse))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(okButton)
-                    .addComponent(cancelButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cancelButton)
+                    .addComponent(okButton))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void transcriptionBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transcriptionBrowseActionPerformed
-        // TODO add your handling code here:
-        String file = fileChooser() + "\\";
-        transcriptionPath.setText(file);
-    }//GEN-LAST:event_transcriptionBrowseActionPerformed
-
     private void transcriptionPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transcriptionPathActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_transcriptionPathActionPerformed
 
+    private void transcriptionBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transcriptionBrowseActionPerformed
+        String file = fileChooser() + "\\";
+        transcriptionPath.setText(file);
+    }//GEN-LAST:event_transcriptionBrowseActionPerformed
+
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
-        User.createTextFile(transcriptionPath.getText(), getClass().getResource("TAA.db").toString());
+        //User.createTextFile(transcriptionPath.getText(), getClass().getResource("TAA.db").toString());
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
@@ -157,23 +160,20 @@ public class UpdateLessonFile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateLessonFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateLessonFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateLessonFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateLessonFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateLessonFile().setVisible(true);
+                new UpdateTones().setVisible(true);
             }
         });
     }

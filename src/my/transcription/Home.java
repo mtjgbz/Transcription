@@ -8,7 +8,11 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.ImageObserver;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
@@ -17,7 +21,8 @@ import javax.swing.Timer;
  * @author Michael, Noah, Casey & Erica
  */
 public class Home extends javax.swing.JFrame {
-    private String lesson;
+    private int lesson;
+    private String sublesson;
     private String user;
 
     Active act;
@@ -27,9 +32,11 @@ public class Home extends javax.swing.JFrame {
     ToneTable tone;
     NamaTable na;
     int NaMaCount = 0;
+    private int furthestLesson;
+    private String furthestSublesson;
 
     ArrayList<Integer> lessonList;
-    ArrayList<String> subLessonList;
+    private HashMap<Integer, ArrayList<String>> sublessonMap;
     
     Timer timer1;
     Boolean loading = false;
@@ -61,16 +68,75 @@ public class Home extends javax.swing.JFrame {
 
         //create lists for lesson numbers
         lessonList = new ArrayList<>();
-        lessonList.add(1);
-        lessonList.add(2);
-        lessonList.add(3);
-
-        //create lists
-        subLessonList = new ArrayList<>();
-        subLessonList.add("a");
-        subLessonList.add("b");
-        subLessonList.add("c");
+        sublessonMap = new HashMap<>();
+//        lessonList.add(1);
+//        lessonList.add(2);
+//        lessonList.add(3);
+        jlessonBox.removeAllItems();
+        jsubLessonBox.removeAllItems();
         
+        setupLessons();
+
+    }
+    
+    private void setupLessons(){
+        try{
+            Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
+            String query = "SELECT Lesson, Sublesson FROM LESSONS;";
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<String> subList = new ArrayList<>();
+            while(rs.next()){
+                int currLesson = rs.getInt("Lesson");
+                String sublesson = rs.getString("Sublesson");
+                System.out.println(currLesson + ", " + sublesson);
+                System.out.println(lessonList.contains(currLesson));
+                if(!lessonList.contains(currLesson)){
+                    if(currLesson > 1){
+                        subList.add("Final");
+                    }
+                    lessonList.add(currLesson);
+                    sublessonMap.put(currLesson, new ArrayList());
+                }
+                if(!sublesson.equals("Final")){
+                    subList = sublessonMap.get(currLesson);
+                    subList.add(sublesson);
+                }
+            }
+            System.out.println(sublessonMap);
+            
+            query = "SELECT * FROM LESSON_TRACK WHERE Username LIKE '"
+                    + user + "'; ";
+            rs = stmt.executeQuery(query);
+            int latestLesson = rs.getInt("LatestLesson");
+            String latestSublesson = rs.getString("LatestSublesson");
+            furthestLesson = rs.getInt("FurthestLesson");
+            furthestSublesson = rs.getString("FurthestSublesson");
+            
+            jlessonBox.removeAll();
+            for (int l : lessonList){
+                if(l <= furthestLesson){
+                    jlessonBox.addItem(l);
+                }
+            }
+            jlessonBox.setSelectedItem(latestLesson);
+            
+            int index = (int) jlessonBox.getSelectedItem();
+            ArrayList<String> currList = sublessonMap.get(index);
+            for (String subL : currList){
+                if(subL.equals("Final") && 
+                        currList.indexOf(subL) == currList.size() - 1){
+                    jsubLessonBox.addItem(subL);
+                }else if(!currList.contains(furthestSublesson) || 
+                        currList.indexOf(furthestSublesson) >= currList.indexOf(subL)){
+                    jsubLessonBox.addItem(subL);
+                }
+                System.out.println(subL + ", " + currList.contains(subL) + 
+                        ", " + currList.indexOf(furthestSublesson) + ", " + currList.indexOf(subL));
+            }
+            jsubLessonBox.setSelectedItem(latestSublesson);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -99,7 +165,7 @@ public class Home extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jFileMenuItem = new javax.swing.JMenu();
         jLoadTextMenu = new javax.swing.JMenu();
-        jLoadTextMenu1 = new javax.swing.JMenu();
+        jLoadTones = new javax.swing.JMenu();
         jUsernameMenuDropDown = new javax.swing.JMenu();
         jChangePassword = new javax.swing.JMenuItem();
 
@@ -238,18 +304,18 @@ public class Home extends javax.swing.JFrame {
         });
         jFileMenuItem.add(jLoadTextMenu);
 
-        jLoadTextMenu1.setText("Load Tables");
-        jLoadTextMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLoadTones.setText("Load Tones");
+        jLoadTones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLoadTextMenu1MousePressed(evt);
+                jLoadTonesMousePressed(evt);
             }
         });
-        jLoadTextMenu1.addActionListener(new java.awt.event.ActionListener() {
+        jLoadTones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLoadTextMenu1ActionPerformed(evt);
+                jLoadTonesActionPerformed(evt);
             }
         });
-        jFileMenuItem.add(jLoadTextMenu1);
+        jFileMenuItem.add(jLoadTones);
 
         jMenuBar1.add(jFileMenuItem);
 
@@ -280,13 +346,15 @@ public class Home extends javax.swing.JFrame {
                         .addGap(181, 181, 181)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jNasalizationButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPassiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLessonLabel)
-                        .addGap(39, 39, 39)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLessonLabel)
+                                .addGap(39, 39, 39))
+                            .addComponent(jNaMaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
@@ -310,7 +378,7 @@ public class Home extends javax.swing.JFrame {
                         .addGap(290, 290, 290))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(270, 270, 270)
-                .addComponent(jNaMaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 671, Short.MAX_VALUE))
@@ -334,17 +402,17 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jActiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTonesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTonesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jNaMaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNasalizationButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEncliticButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jNaMaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
                 .addComponent(jLogOutButton)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 391, Short.MAX_VALUE))
         );
@@ -411,8 +479,12 @@ public class Home extends javax.swing.JFrame {
         if(NaMaCount > 0) {
             na.dispose();
         }
+        
+        lesson = lessonList.get((int) jlessonBox.getSelectedItem());
+        sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
+        
 
-        Passive pass = new Passive(user, lessonList.get(jlessonBox.getSelectedIndex()), subLessonList.get(jsubLessonBox.getSelectedIndex()));
+        Passive pass = new Passive(user, lesson, sublesson);
         pass.setVisible(true);
         dispose();
     }//GEN-LAST:event_jPassiveButtonActionPerformed
@@ -422,6 +494,9 @@ public class Home extends javax.swing.JFrame {
      * @param evt 
      */
     private void jActiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActiveButtonActionPerformed
+        lesson = lessonList.get(jlessonBox.getSelectedIndex());
+        sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
+        
         pass1.dispose();
         enc.dispose();
         nas.dispose();
@@ -430,8 +505,8 @@ public class Home extends javax.swing.JFrame {
             na.dispose();
         }
         if (!act.isShowing()) {
-            act.setLesson(lessonList.get(jlessonBox.getSelectedIndex()));
-            act.setSubLesson(subLessonList.get(jsubLessonBox.getSelectedIndex()));
+            act.setLesson(lesson);
+            act.setSubLesson(sublesson);
             act.setVisible(true);
         } else {
             act.toFront();
@@ -520,13 +595,14 @@ public class Home extends javax.swing.JFrame {
         window.setVisible(true);
     }//GEN-LAST:event_jLoadTextMenuMousePressed
 
-    private void jLoadTextMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMenu1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLoadTextMenu1MousePressed
+    private void jLoadTonesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTonesMousePressed
+        UpdateTones window = new UpdateTones();
+        window.setVisible(true);
+    }//GEN-LAST:event_jLoadTonesMousePressed
 
-    private void jLoadTextMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTextMenu1ActionPerformed
+    private void jLoadTonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTonesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLoadTextMenu1ActionPerformed
+    }//GEN-LAST:event_jLoadTonesActionPerformed
 
     private void isLoading() {
         jLabel1.setText("Loading...");
@@ -591,7 +667,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLessonLabel;
     private javax.swing.JMenu jLoadTextMenu;
-    private javax.swing.JMenu jLoadTextMenu1;
+    private javax.swing.JMenu jLoadTones;
     private javax.swing.JButton jLogOutButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton jNaMaButton;

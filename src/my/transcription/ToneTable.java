@@ -22,11 +22,12 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
- * @author mike
+ * @author Noah, Mike, Casey and Erica
  */
 public class ToneTable extends javax.swing.JFrame {
     Clip clip;
     int buttonNum = 0;
+    int numOfButtons = 121;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
     ArrayList<Integer> count = new ArrayList<>();
     /**
@@ -36,10 +37,12 @@ public class ToneTable extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Tone Table");
         this.setLocation(x, y);
-        for(int i = 0; i < 121; i++) {
+        for(int i = 0; i < numOfButtons; i++) {
             count.add(0);
         }
-        
+        /**
+         * creates the ArrayLists for the ArrayList stringNames and adds them
+         */
         ArrayList<String> i0 = new ArrayList<>();//1.1a
         i0.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");
         i0.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");
@@ -461,6 +464,9 @@ public class ToneTable extends javax.swing.JFrame {
         stringNames.add(i120);
     }
     
+    /**
+    * method that creates the audio clip every time the button is clicked to avoid heap space errors
+    */
     public void buttonAction() {
         AudioInputStream audioIn = null;
         try {
@@ -505,7 +511,6 @@ public class ToneTable extends javax.swing.JFrame {
     int x = 0;
     int y = 0;
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -3048,6 +3053,9 @@ public class ToneTable extends javax.swing.JFrame {
                                             pack();
                                         }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Listener for the clip if it's closed.
+     */
     LineListener listener = new LineListener() {
         @Override
         public void update(LineEvent event) {
