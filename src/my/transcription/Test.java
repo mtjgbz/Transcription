@@ -8,6 +8,8 @@ package my.transcription;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +22,7 @@ import javax.swing.Timer;
  * @author mike
  */
 public class Test extends javax.swing.JFrame {
-
+    private static String path;
     String user;
     Integer lesson;
     String subLesson;
@@ -29,8 +31,8 @@ public class Test extends javax.swing.JFrame {
     Timer timer;
 
     Enclitics enc = new Enclitics();
-    Nasalizations nas = new Nasalizations();
-    ToneTable tone = new ToneTable();
+    Nasalizations nas;
+    ToneTable tone;
 
     private ActiveBE tbe;
 
@@ -71,8 +73,26 @@ public class Test extends javax.swing.JFrame {
 
         tbe = new ActiveBE(false);
         initAudio();
+        setupTones();
+        nas = new Nasalizations(path);
+        tone = new ToneTable(path);
     }
 
+    private void setupTones() {
+        try {
+            Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
+            
+            String newQuery1 = "SELECT FileList FROM LESSONS WHERE Lesson = 0;";
+            ResultSet rsExp = stmt.executeQuery(newQuery1);
+            path = (rsExp.getString("FileList"));
+            stmt.execute(newQuery1);
+
+            User.closeDB(stmt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void initAudio() {
         clip = tbe.makeClip(page);
     }

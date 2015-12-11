@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package my.transcription;
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.sound.sampled.*;
 import java.io.File;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,13 +24,11 @@ import javax.swing.text.Highlighter;
  * @author Mike, Noah, Casey and Erica
  */
 public class Passive extends javax.swing.JFrame {
-
+    private static String path;
     private Integer lesson;
-
     int page = 1;
     String user;
     int t = 0;
-
     String subLesson;
 
     ArrayList<Clip> clipsList = new ArrayList<>();
@@ -83,8 +82,8 @@ public class Passive extends javax.swing.JFrame {
     };
 
     Enclitics enc = new Enclitics();
-    Nasalizations nas = new Nasalizations();
-    ToneTable tone = new ToneTable();
+    Nasalizations nas;
+    ToneTable tone;
     NamaTable na;
     int NaMaCount = 0;
 
@@ -151,10 +150,26 @@ public class Passive extends javax.swing.JFrame {
         clipsList = backend.makeClips(1);
 
         initAudio();
-
+        setupTones();
+        nas = new Nasalizations(path);
+        tone = new ToneTable(path);
         jBackButton.setEnabled(false);
     }
 
+    private void setupTones() {
+        try {
+            Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
+            
+            String newQuery1 = "SELECT FileList FROM LESSONS WHERE Lesson = 0;";
+            ResultSet rsExp = stmt.executeQuery(newQuery1);
+            path = (rsExp.getString("FileList"));
+            stmt.execute(newQuery1);
+
+            User.closeDB(stmt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * initialize Lists method
      */

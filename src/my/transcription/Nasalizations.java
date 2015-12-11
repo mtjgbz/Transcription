@@ -31,15 +31,16 @@ public class Nasalizations extends javax.swing.JFrame {
     int numOfButtons = 18;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
     ArrayList<Integer> count = new ArrayList<>();
-    String path;
+    private static String path;
 
     /**
      * Creates new form Nasalizations
      */
-    public Nasalizations() {
+    public Nasalizations(String path) {
         initComponents();
         this.setTitle("Mixtec Transcription: Nasalizations Table");
         this.setLocation(x, y);
+        this.path = path;
         for (int i = 0; i < numOfButtons; i++) {
             count.add(0);
         }
@@ -124,7 +125,7 @@ public class Nasalizations extends javax.swing.JFrame {
         AudioInputStream audioIn = null;
         try {
             if (clip == null || !clip.isOpen()) {
-                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + "Nasalization/" +stringNames.get(buttonNum).get(count.get(buttonNum))));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
@@ -133,7 +134,7 @@ public class Nasalizations extends javax.swing.JFrame {
             } else {
                 clip.stop();
 
-                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + "Nasalization/" + stringNames.get(buttonNum).get(count.get(buttonNum))));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
@@ -793,7 +794,7 @@ public class Nasalizations extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Nasalizations().setVisible(true);
+                new Nasalizations(path).setVisible(true);
             }
         });
     }

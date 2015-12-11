@@ -10,11 +10,12 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
@@ -29,7 +30,7 @@ import javax.swing.text.Highlighter;
  * @author Mike, Erica, Noah and Casey
  */
 public class Practice extends javax.swing.JFrame {
-
+    private static String path;
     int start1;
     int end1;
     int start2;
@@ -50,8 +51,8 @@ public class Practice extends javax.swing.JFrame {
     Timer timer;
 
     Enclitics enc = new Enclitics();
-    Nasalizations nas = new Nasalizations();
-    ToneTable tone = new ToneTable();
+    Nasalizations nas;
+    ToneTable tone;
     NamaTable na;
     int NaMaCount = 0;
 
@@ -109,6 +110,24 @@ public class Practice extends javax.swing.JFrame {
         setupDoc();
         numTags = 0;
         jTextPane1.setLineWrap(true);
+        setupTones();
+        nas = new Nasalizations(path);
+        tone = new ToneTable(path);
+    }
+    
+    private void setupTones() {
+        try {
+            Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
+            
+            String newQuery1 = "SELECT FileList FROM LESSONS WHERE Lesson = 0;";
+            ResultSet rsExp = stmt.executeQuery(newQuery1);
+            path = (rsExp.getString("FileList"));
+            stmt.execute(newQuery1);
+
+            User.closeDB(stmt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void initAudio() {
@@ -767,7 +786,6 @@ public class Practice extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(700, 430));
         setResizable(false);
 

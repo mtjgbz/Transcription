@@ -31,14 +31,16 @@ public class ToneTable extends javax.swing.JFrame {
     int numOfButtons = 121;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
     ArrayList<Integer> count = new ArrayList<>();
+    private static String path;
 
     /**
      * Creates new form ToneTable
      */
-    public ToneTable() {
+    public ToneTable(String path) {
         initComponents();
         this.setTitle("Mixtec Transcription: Tone Table");
         this.setLocation(x, y);
+        this.path = path;
         for (int i = 0; i < numOfButtons; i++) {
             count.add(0);
         }
@@ -474,7 +476,7 @@ public class ToneTable extends javax.swing.JFrame {
         AudioInputStream audioIn = null;
         try {
             if (clip == null || !clip.isOpen()) {
-                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + "ToneTable/" + stringNames.get(buttonNum).get(count.get(buttonNum))));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
@@ -483,7 +485,7 @@ public class ToneTable extends javax.swing.JFrame {
             } else {
                 clip.stop();
 
-                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + "ToneTable/" + stringNames.get(buttonNum).get(count.get(buttonNum))));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
@@ -3068,10 +3070,6 @@ public class ToneTable extends javax.swing.JFrame {
 
     };
 
-    //String path = "/home/mike/Transcription Data/Tones/";
-    String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/ToneTable/";
-
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         buttonNum = 0;
         buttonAction();
@@ -3711,7 +3709,7 @@ public class ToneTable extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ToneTable().setVisible(true);
+                new ToneTable(path).setVisible(true);
             }
         });
     }
