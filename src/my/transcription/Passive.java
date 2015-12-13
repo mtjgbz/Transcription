@@ -83,8 +83,8 @@ public class Passive extends javax.swing.JFrame {
 
     Enclitics enc = new Enclitics();
     Nasalizations nas;
-    ToneTable tone;
     NamaTable na;
+    ToneTable tone;
     int NaMaCount = 0;
 
     private PassiveBE backend;
