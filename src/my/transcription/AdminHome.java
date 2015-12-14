@@ -6,6 +6,8 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -14,22 +16,33 @@ import java.awt.Color;
 public class AdminHome extends javax.swing.JFrame {
 
     private String user;
+    private AdminBE backend;
 
     /**
      * Creates new form AdminHome
      */
     public AdminHome() {
         initComponents();
-        //jList1.setEditable(false);
         this.setTitle("Mixtec Transcription: Administrator Home");
         getContentPane().setBackground(new Color(187, 202, 162));
+        backend = new AdminBE(this);
+        userSelection();
     }
 
     public AdminHome(String user) {
-        initComponents();
-        this.setTitle("Mixtec Transcription: Administrator Home");
+        this();
         this.user = user;
-        getContentPane().setBackground(new Color(187, 202, 162));
+    }
+    
+    public void userSelection(){
+        list1.removeAll();
+        HashMap<String, String> userMap = backend.createLogs();
+        Iterator it = userMap.entrySet().iterator();
+        while(it.hasNext()){
+            HashMap.Entry pair = (HashMap.Entry) it.next();
+            String name = (String) pair.getKey();
+            list1.add(name);
+        }
     }
 
     /**
@@ -42,21 +55,13 @@ public class AdminHome extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        list1 = new java.awt.List();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(jList1);
 
         jMenu1.setText("Log Out");
         jMenuBar1.add(jMenu1);
@@ -68,16 +73,16 @@ public class AdminHome extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,10 +125,9 @@ public class AdminHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private java.awt.List list1;
     // End of variables declaration//GEN-END:variables
 }
