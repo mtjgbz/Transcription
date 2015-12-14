@@ -132,6 +132,27 @@ public class User {
         }
         return out;
     }
+    
+    public static void createTonePath(String transcriptions, String path) {
+        try {
+            dbPath = path;
+            Statement stmt = setupDB(parentFrame,dbPath);
+            System.out.println(transcriptions);
+            String newQuery = "UPDATE LESSONS SET FileList = '" + transcriptions + "' WHERE Lesson = 0;";
+            System.out.println(newQuery);
+            stmt.execute(newQuery);
+            
+            String newQuery1 = "SELECT FileList FROM LESSONS WHERE Lesson = 0;";
+            ResultSet rsExp = stmt.executeQuery(newQuery1);
+            System.out.println(rsExp.getString("FileList"));
+            stmt.execute(newQuery1);
+
+            closeDB(stmt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Searches the given file to see if there is any phrase matching the

@@ -10,11 +10,12 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
@@ -29,7 +30,7 @@ import javax.swing.text.Highlighter;
  * @author Mike, Erica, Noah and Casey
  */
 public class Practice extends javax.swing.JFrame {
-
+    private static String path;
     int start1;
     int end1;
     int start2;
@@ -50,8 +51,8 @@ public class Practice extends javax.swing.JFrame {
     Timer timer;
 
     Enclitics enc = new Enclitics();
-    Nasalizations nas = new Nasalizations();
-    ToneTable tone = new ToneTable();
+    Nasalizations nas;
+    ToneTable tone;
     NamaTable na;
     int NaMaCount = 0;
 
@@ -62,7 +63,8 @@ public class Practice extends javax.swing.JFrame {
     private ArrayList<String> textList = new ArrayList<>();
     Integer timesVar = 9029000;
     private ArrayList<ArrayList<String>> phraseList;
-    private ArrayList<String> wordsList = new ArrayList<>();
+    private ArrayList<String> words = new ArrayList<>();
+    ArrayList<ArrayList<String>> wordsList = new ArrayList<>();
     ArrayList<Integer> timesList = new ArrayList<>();
     ArrayList<Timer> timersList = new ArrayList<>();
     ArrayList<File> clips = new ArrayList<>();
@@ -109,6 +111,24 @@ public class Practice extends javax.swing.JFrame {
         setupDoc();
         numTags = 0;
         jTextPane1.setLineWrap(true);
+        setupTones();
+        nas = new Nasalizations(path);
+        tone = new ToneTable(path);
+    }
+    
+    private void setupTones() {
+        try {
+            Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
+            
+            String newQuery1 = "SELECT FileList FROM LESSONS WHERE Lesson = 0;";
+            ResultSet rsExp = stmt.executeQuery(newQuery1);
+            path = (rsExp.getString("FileList"));
+            stmt.execute(newQuery1);
+
+            User.closeDB(stmt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void initAudio() {
@@ -285,7 +305,7 @@ public class Practice extends javax.swing.JFrame {
             //while(start >= 0) {                    
 
             char[] chars = input.toCharArray();
-            if (start != 0 && Character.isWhitespace(chars[start - 1])) {
+            //if (start != 0 && Character.isWhitespace(chars[start - 1])) {
                 try {
                             //System.out.println("length: " + word.length());
                     //int end = start + word.length();
@@ -313,9 +333,9 @@ public class Practice extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
                 //start = temp.indexOf(word, start+word.length());
-            } else {
-                //start = temp.indexOf(word, start+word.length());
-            }
+//            } else {
+//                //start = temp.indexOf(word, start+word.length());
+//            }
 
                 //}
         }
@@ -351,84 +371,84 @@ public class Practice extends javax.swing.JFrame {
         jTextPane1.setHighlighter(highlighter);
         try {
             if (wordCount == 4) {
-                if (!(b1.equals(wordsList.get(0)))) {
+                if (!(b1.equals(words.get(0)))) {
                     System.out.println("b1 not equal");
-                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
+                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + words.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
                     System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
-                if (!(b2.equals(wordsList.get(1)))) {
+                if (!(b2.equals(words.get(1)))) {
                     System.out.println("b2 not equal");
-                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + wordsList.get(1) + "|");
+                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + words.get(1) + "|");
                     highlighter.addHighlight(start2, end2, redPainter);
                 } else {
                     System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
-                if (!(b3.equals(wordsList.get(2)))) {
+                if (!(b3.equals(words.get(2)))) {
                     System.out.println("b3 not equal");
-                    System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + wordsList.get(2) + "|");
+                    System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + words.get(2) + "|");
                     highlighter.addHighlight(start3, end3, redPainter);
                 } else {
                     System.out.println("b3 equal");
                     highlighter.addHighlight(start3, end3, greenPainter);
                 }
-                if (!(b4.equals(wordsList.get(3)))) {
+                if (!(b4.equals(words.get(3)))) {
                     System.out.println("b3 not equal");
-                    System.out.println("b3: " + "|" + b4 + "|" + " word: " + "|" + wordsList.get(3) + "|");
+                    System.out.println("b3: " + "|" + b4 + "|" + " word: " + "|" + words.get(3) + "|");
                     highlighter.addHighlight(start4, end4, redPainter);
                 } else {
                     System.out.println("b4 equal");
                     highlighter.addHighlight(start4, end4, greenPainter);
                 }
             } else if (wordCount == 3) {
-                if (!(b1.equals(wordsList.get(0)))) {
+                if (!(b1.equals(words.get(0)))) {
                     System.out.println("b1 not equal");
-                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
+                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + words.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
                     System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
-                if (!(b2.equals(wordsList.get(1)))) {
+                if (!(b2.equals(words.get(1)))) {
                     System.out.println("b2 not equal");
-                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + wordsList.get(1) + "|");
+                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + words.get(1) + "|");
                     highlighter.addHighlight(start2, end2, redPainter);
                 } else {
                     System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
-                if (!(b3.equals(wordsList.get(2)))) {
+                if (!(b3.equals(words.get(2)))) {
                     System.out.println("b3 not equal");
-                    System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + wordsList.get(2) + "|");
+                    System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + words.get(2) + "|");
                     highlighter.addHighlight(start3, end3, redPainter);
                 } else {
                     System.out.println("b3 equal");
                     highlighter.addHighlight(start3, end3, greenPainter);
                 }
             } else if (wordCount == 2) {
-                if (!(b1.equals(wordsList.get(0)))) {
+                if (!(b1.equals(words.get(0)))) {
                     System.out.println("b1 not equal");
-                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
+                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + words.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
                     System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
-                if (!(b2.equals(wordsList.get(1)))) {
+                if (!(b2.equals(words.get(1)))) {
                     System.out.println("b2 not equal");
-                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + wordsList.get(1) + "|");
+                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + words.get(1) + "|");
                     highlighter.addHighlight(start2, end2, redPainter);
                 } else {
                     System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
             } else if (wordCount == 1) {
-                if (!(b1.equals(wordsList.get(0)))) {
+                if (!(b1.equals(words.get(0)))) {
                     System.out.println("b1 not equal");
-                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + wordsList.get(0) + "|");
+                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + words.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
                     System.out.println("b1 equal");
@@ -445,6 +465,7 @@ public class Practice extends javax.swing.JFrame {
     }
 
     private void findStartEnd(String input) {
+        numTags = 0;
         System.out.println("input1: " + input);
         boolean s1 = false;
         boolean e1 = false;
@@ -463,7 +484,8 @@ public class Practice extends javax.swing.JFrame {
         for (int i = 0; i < statement.length; i++) {
             c = statement[i];
             if (wordCount == 4) {
-                if (c == '[' && s1 == false) {
+                if (c == '[' && s1 == false && statement[i+1] == ' ') {
+                    
                     start1 = i + 1;
                     //tracker = i;
                     s1 = true;
@@ -471,16 +493,19 @@ public class Practice extends javax.swing.JFrame {
                     startTags.add(i);
                     System.out.println("s1: " + i);
                     continue;
+                   
                 }
-                if (c == ']' && e1 == false) {
+                if (c == ']' && e1 == false && statement[i-1] == ' ') {
+                    
                     end1 = i;
                     //tracker = i;
                     e1 = true;
                     endTags.add(i);
                     System.out.println("e1: " + i);
                     continue;
+                 
                 }
-                if (c == '[' && s2 == false) {
+                if (c == '[' && s2 == false && statement[i+1] == ' ') {
                     start2 = i + 1;
                     //tracker = i;
                     s2 = true;
@@ -489,7 +514,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("s2: " + i);
                     continue;
                 }
-                if (c == ']' && e2 == false) {
+                if (c == ']' && e2 == false && statement[i-1] == ' ') {
                     end2 = i;
                     //tracker = i;
                     e2 = true;
@@ -497,7 +522,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("e2: " + i);
                     continue;
                 }
-                if (c == '[' && s3 == false) {
+                if (c == '[' && s3 == false && statement[i+1] == ' ') {
                     start3 = i + 1;
                     //tracker = i;
                     s3 = true;
@@ -506,7 +531,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("s3: " + i);
                     continue;
                 }
-                if (c == ']' && e3 == false) {
+                if (c == ']' && e3 == false && statement[i-1] == ' ') {
                     end3 = i;
                     //tracker = i;
                     e3 = true;
@@ -514,7 +539,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("e3: " + i);
                     continue;
                 }
-                if (c == ']' && s4 == false) {
+                if (c == ']' && s4 == false && statement[i+1] == ' ') {
                     start4 = i;
                     //tracker = i;
                     s4 = true;
@@ -523,7 +548,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("s4: " + i);
                     continue;
                 }
-                if (c == ']' && e4 == false) {
+                if (c == ']' && e4 == false && statement[i-1] == ' ') {
                     end4 = i;
                     //tracker = i;
                     e4 = true;
@@ -532,7 +557,7 @@ public class Practice extends javax.swing.JFrame {
                     continue;
                 }
             } else if (wordCount == 3) {
-                if (c == '[' && s1 == false) {
+                if (c == '[' && s1 == false && statement[i+1] == ' ') {
                     start1 = i + 1;
                     //tracker = i;
                     s1 = true;
@@ -541,7 +566,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("s1: " + i);
                     continue;
                 }
-                if (c == ']' && e1 == false) {
+                if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
                     //tracker = i;
                     e1 = true;
@@ -549,7 +574,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("e1: " + i);
                     continue;
                 }
-                if (c == '[' && s2 == false) {
+                if (c == '[' && s2 == false && statement[i+1] == ' ') {
                     start2 = i + 1;
                     //tracker = i;
                     s2 = true;
@@ -558,7 +583,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("s2: " + i);
                     continue;
                 }
-                if (c == ']' && e2 == false) {
+                if (c == ']' && e2 == false && statement[i-1] == ' ') {
                     end2 = i;
                     //tracker = i;
                     e2 = true;
@@ -566,7 +591,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("e2: " + i);
                     continue;
                 }
-                if (c == '[' && s3 == false) {
+                if (c == '[' && s3 == false && statement[i+1] == ' ') {
                     start3 = i + 1;
                     //tracker = i;
                     s3 = true;
@@ -575,7 +600,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("s3: " + i);
                     continue;
                 }
-                if (c == ']' && e3 == false) {
+                if (c == ']' && e3 == false && statement[i-1] == ' ') {
                     end3 = i;
                     //tracker = i;
                     e3 = true;
@@ -586,7 +611,7 @@ public class Practice extends javax.swing.JFrame {
                 start4 = 0;
                 end4 = 0;
             } else if (wordCount == 2) {
-                if (c == '[' && s1 == false) {
+                if (c == '[' && s1 == false && statement[i+1] == ' ') {
                     start1 = i + 1;
                     //tracker = i;
                     s1 = true;
@@ -595,7 +620,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("s1: " + i);
                     continue;
                 }
-                if (c == ']' && e1 == false) {
+                if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
                     //tracker = i;
                     e1 = true;
@@ -603,7 +628,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("e1: " + i);
                     continue;
                 }
-                if (c == '[' && s2 == false) {
+                if (c == '[' && s2 == false && statement[i+1] == ' ') {
                     start2 = i + 1;
                     //tracker = i;
                     s2 = true;
@@ -612,7 +637,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("s2: " + i);
                     continue;
                 }
-                if (c == ']' && e2 == false) {
+                if (c == ']' && e2 == false && statement[i-1] == ' ') {
                     end2 = i;
                     //tracker = i;
                     e2 = true;
@@ -625,7 +650,7 @@ public class Practice extends javax.swing.JFrame {
                 end3 = 0;
                 end4 = 0;
             } else if (wordCount == 1) {
-                if (c == '[' && s1 == false) {
+                if (c == '[' && s1 == false && statement[i+1] == ' ') {
                     start1 = i + 1;
                     //tracker = i;
                     s1 = true;
@@ -634,7 +659,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("s1: " + i);
                     continue;
                 }
-                if (c == ']' && e1 == false) {
+                if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
                     //tracker = i;
                     e1 = true;
@@ -674,7 +699,7 @@ public class Practice extends javax.swing.JFrame {
         for (int i = 0; i < 20; i++) {
             String file = backend.findFile(lesson, subLesson);
             ArrayList<String> phrase = backend.findPhrase(file);
-
+            
             if (phrase == null || phrase.get(1) == null) {
                 i--;
                 continue;
@@ -703,26 +728,78 @@ public class Practice extends javax.swing.JFrame {
 
             timersList.add(new Timer(length, listener));
         }
-
+       
         clips = backend.getClips();
         //System.out.println(clip);
 
-        current = textList.get(page - 1);
-        System.out.println("wsize: " + wordsList.size());
+//        current = textList.get(page-1);
+//        System.out.println("wsize: " + wordsList.size());
+//
+//        backend.findWords(current, wordsList);
+//        if (wordsList.size() >= 4) {
+//            wordCount = 4;
+//        } else if (wordsList.size() == 3) {
+//            wordCount = 3;
+//        } else if (wordsList.size() == 2) {
+//            wordCount = 2;
+//        } else if (wordsList.size() == 1) {
+//            wordCount = 1;
+//        }
+//        System.out.println("before blanks: " + current);
+//        System.out.println("wordCount: " + wordCount);
+//        current = backend.setBlanks(current, wordsList);
+//        System.out.println("current: " + current);
+//        findStartEnd(current);
+//        jTextPane1.setText(current);
+//        jTextPane1.setCaretPosition(start1 + ((end1 - start1) / 2));
+//
+//        try {
+//            highlightAll(current);
+//        } catch (BadLocationException ex) {
+//            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        System.out.println("wsize: " + wordsList.size());
+//        for (String w : wordsList) {
+//            System.out.println("Word: " + w);
+//        }
+//        for (String w : textList) {
+//            System.out.println("Text: " + w);
+//        }
+        showText();
+    }
+    
+    private void showText() {
+        if(!startTags.isEmpty() && !endTags.isEmpty()) {
+            startTags.clear();
+            endTags.clear();
+            words.clear();
+        }
+        
+        String current = textList.get(page-1);
+        System.out.println("wsize: " + words.size());
 
-        backend.findWords(current, wordsList);
-        if (wordsList.size() >= 4) {
+        backend.findWords(current, words);
+        if (words.size() >= 4) {
             wordCount = 4;
-        } else if (wordsList.size() == 3) {
+        } else if (words.size() == 3) {
             wordCount = 3;
-        } else if (wordsList.size() == 2) {
+        } else if (words.size() == 2) {
             wordCount = 2;
-        } else if (wordsList.size() == 1) {
+        } else if (words.size() == 1) {
             wordCount = 1;
         }
+        wordsList.add(words);
+        System.out.println("wordsList size: " + wordsList.size());
         System.out.println("before blanks: " + current);
         System.out.println("wordCount: " + wordCount);
-        current = backend.setBlanks(current, wordsList);
+        System.out.println("Page: " + page);
+        for(String w : wordsList.get(page-1)) {
+            System.out.println("in wordslist: " + w);
+        }    
+        int index = page - 1;
+        System.out.println("Index: " + index);
+        current = backend.setBlanks(current, words);
         System.out.println("current: " + current);
         findStartEnd(current);
         jTextPane1.setText(current);
@@ -734,8 +811,8 @@ public class Practice extends javax.swing.JFrame {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        System.out.println("wsize: " + wordsList.size());
-        for (String w : wordsList) {
+        System.out.println("wsize: " + words.size());
+        for (String w : wordsList.get(page-1)) {
             System.out.println("Word: " + w);
         }
     }
@@ -767,7 +844,6 @@ public class Practice extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(700, 430));
         setResizable(false);
 
@@ -969,6 +1045,7 @@ public class Practice extends javax.swing.JFrame {
         //backend.closeAudio();
         initAudio();
         //backend.findWords(textList.get(page - 1), wordsList);
+        showText();
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
@@ -1030,6 +1107,7 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_playButton1ActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        String current = "";
         page++;
         clip.stop();
         clip.close();
@@ -1048,7 +1126,23 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         //backend.closeAudio();
         initAudio();
+        //initTextFields();
+//        current = textList.get(page-1);
+//        backend.findWords(current, wordsList);
+//        if (wordsList.size() >= 4) {
+//            wordCount = 4;
+//        }
+//        current = backend.setBlanks(current, wordsList);
+//        findStartEnd(current);
+//        jTextPane1.setText(current);
+//        try {
+//            highlightAll(current);
+//        } catch (BadLocationException ex) {
+//            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        jTextPane1.setCaretPosition(start1 + ((end1 - start1) / 2));
         //backend.findWords(textList.get(page - 1), wordsList);
+        showText();
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked

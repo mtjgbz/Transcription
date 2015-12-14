@@ -11,6 +11,8 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineEvent;
@@ -22,7 +24,7 @@ import javax.sound.sampled.LineListener;
  * @author mike
  */
 public class NamaTable extends javax.swing.JFrame {
-
+    private static String path;
     ArrayList<Clip> cliplist;
     ArrayList<LineListener> listenerlist;
     ArrayList<javax.swing.JButton> buttonlist;
@@ -54,8 +56,9 @@ public class NamaTable extends javax.swing.JFrame {
      */
     public NamaTable() {
         initComponents();
+        setupTones();
         NamaLoader loader = new NamaLoader();
-        cliplist = loader.load();
+        cliplist = loader.load(path);
         listenerlist = listeners();
         for (Clip clip : cliplist) {
             clip.addLineListener(listenerAll);
@@ -434,6 +437,21 @@ public class NamaTable extends javax.swing.JFrame {
         return listeners;
     }
 
+    private void setupTones() {
+        try {
+            Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
+            
+            String newQuery1 = "SELECT FileList FROM LESSONS WHERE Lesson = 0;";
+            ResultSet rsExp = stmt.executeQuery(newQuery1);
+            path = (rsExp.getString("FileList"));
+            stmt.execute(newQuery1);
+
+            User.closeDB(stmt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

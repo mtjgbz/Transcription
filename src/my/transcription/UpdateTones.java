@@ -132,7 +132,7 @@ public class UpdateTones extends javax.swing.JFrame {
     }//GEN-LAST:event_transcriptionBrowseActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        //User.createTextFile(transcriptionPath.getText(), getClass().getResource("TAA.db").toString());
+        User.createTonePath(transcriptionPath.getText(), getClass().getResource("TAA.db").toString());
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 

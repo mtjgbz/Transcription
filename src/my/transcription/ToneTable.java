@@ -31,14 +31,16 @@ public class ToneTable extends javax.swing.JFrame {
     int numOfButtons = 121;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
     ArrayList<Integer> count = new ArrayList<>();
+    private static String path;
 
     /**
      * Creates new form ToneTable
      */
-    public ToneTable() {
+    public ToneTable(String path) {
         initComponents();
         this.setTitle("Mixtec Transcription: Tone Table");
         this.setLocation(x, y);
+        this.path = path;
         for (int i = 0; i < numOfButtons; i++) {
             count.add(0);
         }
@@ -59,19 +61,19 @@ public class ToneTable extends javax.swing.JFrame {
         stringNames.add(i2);
         ArrayList<String> i3 = new ArrayList<>();//1.1d
         i3.add("d_1-1_ka71an1_0174_Yolox-RCG500_edited.wav");
-        i3.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i3.add("d_1-1_si71in1_edited.wav");
         stringNames.add(i3);
         ArrayList<String> i4 = new ArrayList<>();//1.1e
         i4.add("e_1-1_ka1ta1_1080_Yolox-RCG500_edited.wav");
         i4.add("e_1-1_ta1ni1_1301_Yolox-RCG500_edited.wav");
         stringNames.add(i4);
         ArrayList<String> i5 = new ArrayList<>();//1.1f
-        i5.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i5.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i5.add("f_1-1_nda71bi1_0686_Yolox-RCG500_edited.wav");
+        i5.add("f_1-1_na71ma1_0072_Yolox-RCG500_edited.wav");
         stringNames.add(i5);
         ArrayList<String> i6 = new ArrayList<>();//1.1g
-        i6.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i6.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i6.add("g_1-1_nda1xin1_1146_Yolox-RCG500_edited.wav");
+        i6.add("g_1-1_ta1tan1_1065_Yolox-RCG500_edited.wav");
         stringNames.add(i6);
         ArrayList<String> i7 = new ArrayList<>();//3.3a
         i7.add("a_3-3_ya3a3_0113_Yolox-RCG500_edited.wav");
@@ -94,12 +96,12 @@ public class ToneTable extends javax.swing.JFrame {
         i11.add("e_3-3_ta3ni3_0355_Yolox-RCG500_edited.wav");
         stringNames.add(i11);
         ArrayList<String> i12 = new ArrayList<>();//3.3f
-        i12.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i12.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i12.add("f_3-3_ka73bi3_0347_Yolox-RCG500_edited.wav");
+        i12.add("f_3-3_na73ma3_1322_Yolox-RCG500_edited.wav");
         stringNames.add(i12);
         ArrayList<String> i13 = new ArrayList<>();//3.3g
-        i13.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i13.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i13.add("g_3-3_nda3xin3_1154_Yolox-RCG500_edited.wav");
+        i13.add("g_3-3_ya3tan3_0330_Yolox-RCG500_edited.wav");
         stringNames.add(i13);
         ArrayList<String> i14 = new ArrayList<>();//4.4a
         i14.add("a_4-4_ya4a4_0489_Yolox-RCG500_edited.wav");
@@ -114,7 +116,7 @@ public class ToneTable extends javax.swing.JFrame {
         i16.add("c_4-4_tiu4un4_1421_Yolox-RCG500_edited.wav");
         stringNames.add(i16);
         ArrayList<String> i17 = new ArrayList<>();//4.4d
-        i17.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i17.add("d_4-4_ka74an4_edited.wav");
         i17.add("d_4-4_xi74in4_1437_Yolox-RCG500_edited.wav");
         stringNames.add(i17);
         ArrayList<String> i18 = new ArrayList<>();//4.4e
@@ -122,12 +124,12 @@ public class ToneTable extends javax.swing.JFrame {
         i18.add("e_4-4_tu4mi4_0776_Yolox-RCG500_edited.wav");
         stringNames.add(i18);
         ArrayList<String> i19 = new ArrayList<>();//4.4f
-        i19.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i19.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i19.add("f_4-4_ta74bi4_0666_Yolox-RCG500_edited.wav");
+        i19.add("f_4-4_cho74ma4_edited.wav");
         stringNames.add(i10);
         ArrayList<String> i20 = new ArrayList<>();//4.4g
-        i20.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i20.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i20.add("g_4-4_ya4xin4_0623_Yolox-RCG500_edited.wav");
+        i20.add("g_4-4_ta4tan4_0604_Yolox-RCG500_edited.wav");
         stringNames.add(i20);
         ArrayList<String> i21 = new ArrayList<>();//4.1b
         i21.add("b_4-1_ta74a1_1347_Yolox-RCG500_edited.wav");
@@ -144,7 +146,7 @@ public class ToneTable extends javax.swing.JFrame {
         i24.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
         stringNames.add(i24);
         ArrayList<String> i25 = new ArrayList<>();//4.1f
-        i25.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i25.add("f_4-1_xa74nu1_0488_Yolox-RCG500_edited.wav");
         stringNames.add(i25);
         ArrayList<String> i26 = new ArrayList<>();//4.1g
         i26.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
@@ -165,10 +167,10 @@ public class ToneTable extends javax.swing.JFrame {
         stringNames.add(i30);
         ArrayList<String> i31 = new ArrayList<>();//4.2e
         i31.add("e_4-2_be4xi2_1799_Yolox-RCG500_edited.wav");
-        i31.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i31.add("e_4-2_sa4ka2_edited.wav");
         stringNames.add(i31);
         ArrayList<String> i32 = new ArrayList<>();//4.2f
-        i32.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i32.add("f_4-2_nda74bi2_0661_Yolox-RCG500_edited.wav");
         stringNames.add(i32);
         ArrayList<String> i33 = new ArrayList<>();//4.2g
         i33.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
@@ -184,10 +186,10 @@ public class ToneTable extends javax.swing.JFrame {
         i36.add("e_4-3_bi4ka3_0673_Yolox-RCG500_edited.wav");
         stringNames.add(i36);
         ArrayList<String> i37 = new ArrayList<>();//4.3f
-        i37.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i37.add("f_4-3_nda74bi3_1385_Yolox-RCG500_edited.wav");
         stringNames.add(i37);
         ArrayList<String> i38 = new ArrayList<>();//4.3g
-        i38.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i38.add("g_4-3_la4tun3_1083_Yolox-RCG500_edited.wav");
         stringNames.add(i38);
         ArrayList<String> i39 = new ArrayList<>();//3.2a
         i39.add("a_3-2_nda3a2_0653_Yolox-RCG500_edited.wav");
@@ -208,14 +210,14 @@ public class ToneTable extends javax.swing.JFrame {
         i43.add("e_3-2_ka3ka2_0812_Yolox-RCG500_edited.wav");
         stringNames.add(i43);
         ArrayList<String> i44 = new ArrayList<>();//3.2f
-        i44.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i44.add("f_3-2_ka73ndi2_0443_Yolox-RCG500_edited.wav");
         stringNames.add(i44);
         ArrayList<String> i45 = new ArrayList<>();//3.2g
-        i45.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i45.add("g_3-2_i3tun2_1009_Yolox-RCG500_edited.wav");
         stringNames.add(i45);
         ArrayList<String> i46 = new ArrayList<>();//1.3a
         i46.add("a_1-3_tu1u3_1431_Yolox-RCG500_edited.wav");
-        i46.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i46.add("a_1-3_sa1a3_edited.wav");
         stringNames.add(i46);
         ArrayList<String> i47 = new ArrayList<>();//1.3b
         i47.add("b_1-3_so71o3_1001_Yolox-RCG500_edited.wav");
@@ -233,12 +235,12 @@ public class ToneTable extends javax.swing.JFrame {
         i50.add("e_1-3_ba1xi3_0260_Yolox-RCG500_edited.wav");
         stringNames.add(i50);
         ArrayList<String> i51 = new ArrayList<>();//1.3f
-        i51.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i51.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i51.add("f_1-3_ki71bi3_0450_Yolox-RCG500_edited.wav");
+        i51.add("f_1-3_sa71nda3_1176_Yolox-RCG500_edited.wav");
         stringNames.add(i51);
         ArrayList<String> i52 = new ArrayList<>();//1.3g
-        i52.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i52.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i52.add("g_1-3_bi1xin3_0634_Yolox-RCG500_edited.wav");
+        i52.add("g_1-3_ya1kan3_1806_Yolox-RCG500_edited.wav");
         stringNames.add(i52);
         ArrayList<String> i53 = new ArrayList<>();//1.4a
         i53.add("a_1-4_yu1u4_0251_Yolox-RCG500_edited.wav");
@@ -246,10 +248,10 @@ public class ToneTable extends javax.swing.JFrame {
         stringNames.add(i53);
         ArrayList<String> i54 = new ArrayList<>();//1.4b
         i54.add("b_1-4_yo71o4_0493_Yolox-RCG500_edited.wav");
-        i54.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i54.add("b_1-4_kwa71a4_edited.wav");
         stringNames.add(i54);
         ArrayList<String> i55 = new ArrayList<>();//1.4c
-        i55.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i55.add("c_1-4_ja1an4_edited.wav");
         i55.add("c_1-4_xi1in4_1215_Yolox-RCG500_edited.wav");
         stringNames.add(i55);
         ArrayList<String> i56 = new ArrayList<>();//1.4d
@@ -260,12 +262,12 @@ public class ToneTable extends javax.swing.JFrame {
         i57.add("e_1-4_ta1xi4_0392_Yolox-RCG500_edited.wav");
         stringNames.add(i57);
         ArrayList<String> i58 = new ArrayList<>();//1.4f
-        i58.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i58.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i58.add("f_1-4_ta71bi4_0390_Yolox-RCG500_edited.wav");
+        i58.add("f_1-4_xa71nda4_0969_Yolox-RCG500_edited.wav");
         stringNames.add(i58);
         ArrayList<String> i59 = new ArrayList<>();//1.4g
-        i59.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i59.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i59.add("g_1-4_xi1xin4_1251_Yolox-RCG500_edited.wav");
+        i59.add("g_1-4_ka1xan4_0387_Yolox-RCG500_edited.wav");
         stringNames.add(i59);
         ArrayList<String> i60 = new ArrayList<>();//3.4a
         i60.add("a_3-4_tu3u4_0513_Yolox-RCG500_edited.wav");
@@ -287,12 +289,12 @@ public class ToneTable extends javax.swing.JFrame {
         i64.add("e_3-4_ta3xi4_0393_Yolox-RCG500_edited.wav");
         stringNames.add(i64);
         ArrayList<String> i65 = new ArrayList<>();//3.4f
-        i65.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i65.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i65.add("f_3-4_ta73bi4_0391_Yolox-RCG500_edited.wav");
+        i65.add("f_3-4_ka73nda4_1734_Yolox-RCG500_edited.wav");
         stringNames.add(i65);
         ArrayList<String> i66 = new ArrayList<>();//3.4g
-        i66.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i66.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i66.add("g_3-4_ki3xin4_1012_Yolox-RCG500_edited.wav");
+        i66.add("g_3-4_ka3xan4_0092_Yolox-RCG500_edited.wav");
         stringNames.add(i66);
         ArrayList<String> i67 = new ArrayList<>();//13.2d
         i67.add("d_13-2_ti713in2_1907_Yolox-RCG500_edited.wav");
@@ -301,7 +303,7 @@ public class ToneTable extends javax.swing.JFrame {
         i68.add("e_13-2_su13nda2_1202_Yolox-RCG500_edited.wav");
         stringNames.add(i68);
         ArrayList<String> i69 = new ArrayList<>();//13.2f
-        i69.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i69.add("f_13-2_ti713bi2_0944_Yolox-RCG500_edited.wav");
         stringNames.add(i69);
         ArrayList<String> i70 = new ArrayList<>();//13.3e
         i70.add("e_13-3_xu13xa3_1206_Yolox-RCG500_edited.wav");
@@ -310,13 +312,13 @@ public class ToneTable extends javax.swing.JFrame {
         i71.add("e_13-4_ti13bi4_1911_Yolox-RCG500_edited.wav");
         stringNames.add(i71);
         ArrayList<String> i72 = new ArrayList<>();//13.4g
-        i72.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i72.add("g_13-4_Ndwa13xin4_2028_Yolox-RCG500_edited.wav");
         stringNames.add(i72);
         ArrayList<String> i73 = new ArrayList<>();//14.1b
         i73.add("b_14-1_na714a1_1320_Yolox-RCG500_edited.wav");
         stringNames.add(i73);
         ArrayList<String> i74 = new ArrayList<>();//14.1f
-        i74.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i74.add("f_14-1_chu714ma1_1342_Yolox-RCG500_edited.wav");
         stringNames.add(i74);
         ArrayList<String> i75 = new ArrayList<>();//14.2a
         i75.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
@@ -3068,10 +3070,6 @@ public class ToneTable extends javax.swing.JFrame {
 
     };
 
-    //String path = "/home/mike/Transcription Data/Tones/";
-    String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/ToneTable/";
-
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         buttonNum = 0;
         buttonAction();
@@ -3711,7 +3709,7 @@ public class ToneTable extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ToneTable().setVisible(true);
+                new ToneTable(path).setVisible(true);
             }
         });
     }

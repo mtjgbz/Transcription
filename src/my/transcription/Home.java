@@ -26,6 +26,7 @@ public class Home extends javax.swing.JFrame {
     private int lesson;
     private String sublesson;
     private String user;
+    private static String path;
 
     Active act;
     ChangePass pass1;
@@ -65,20 +66,18 @@ public class Home extends javax.swing.JFrame {
         act = new Active(this, user);
         pass1 = new ChangePass();
         enc = new Enclitics();
-        nas = new Nasalizations();
-        tone = new ToneTable();
         jLabel1.setText(" ");
 
         //create lists for lesson numbers
         lessonList = new ArrayList<>();
         sublessonMap = new HashMap<>();
-//        lessonList.add(1);
-//        lessonList.add(2);
-//        lessonList.add(3);
         jlessonBox.removeAllItems();
         jsubLessonBox.removeAllItems();
 
         setupLessons();
+        
+        nas = new Nasalizations(path);
+        tone = new ToneTable(path);
 
     }
 
@@ -108,6 +107,10 @@ public class Home extends javax.swing.JFrame {
                     subList.add(subL);
                 }
             }
+            String newQuery1 = "SELECT FileList FROM LESSONS WHERE Lesson = 0;";
+            ResultSet rsExp = stmt.executeQuery(newQuery1);
+            path = (rsExp.getString("FileList"));
+            stmt.execute(newQuery1);
 
             query = "SELECT * FROM LESSON_TRACK WHERE Username LIKE '"
                     + user + "'; ";
