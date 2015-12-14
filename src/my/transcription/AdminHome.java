@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Iterator;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -23,7 +24,7 @@ public class AdminHome extends javax.swing.JFrame {
 
     private String user;
     private AdminBE backend;
-    private HashMap<String, String> userMap;
+    private Map<String, String> userMap;
     
     private JTabbedPane pane;
     private JTable table;
@@ -52,7 +53,7 @@ public class AdminHome extends javax.swing.JFrame {
         userMap = backend.createLogs();
         Iterator it = userMap.entrySet().iterator();
         while(it.hasNext()){
-            HashMap.Entry pair = (HashMap.Entry) it.next();
+            Map.Entry pair = (Map.Entry) it.next();
             String name = (String) pair.getKey();
             list1.add(name);
         }
@@ -90,7 +91,7 @@ public class AdminHome extends javax.swing.JFrame {
         Iterator it = practiceMap.entrySet().iterator();
         int rowNum = 0;
         while(it.hasNext()){
-            HashMap.Entry pair = (HashMap.Entry) it.next();
+            Map.Entry pair = (Map.Entry) it.next();
             ArrayList<String> list = (ArrayList<String>) pair.getKey();
             model.addRow(list.toArray());
         }

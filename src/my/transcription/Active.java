@@ -6,7 +6,6 @@
 package my.transcription;
 
 import java.awt.Color;
-import javax.swing.JFrame;
 
 /**
  *
@@ -21,10 +20,9 @@ public class Active extends javax.swing.JFrame {
 
     /**
      * Creates new form Active
+     * @param home
+     * @param user
      */
-    //public Active() {
-    //    initComponents();
-    //}
     public Active(Home home, String user) {
         this.home = home;
         this.user = user;
@@ -34,10 +32,18 @@ public class Active extends javax.swing.JFrame {
         initComponents();
     }
 
+    /**
+     * 
+     * @param lesson 
+     */
     public void setLesson(Integer lesson) {
         this.lesson = lesson;
     }
-
+    
+    /**
+     * 
+     * @param subLesson 
+     */
     public void setSubLesson(String subLesson) {
         this.subLesson = subLesson;
     }
@@ -142,19 +148,16 @@ public class Active extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Active.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Active.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Active.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Active.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 //    new Active().setVisible(true);
             }
