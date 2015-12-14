@@ -273,6 +273,7 @@ public class ActiveBE {
      * @param words Words within the phrases that match the regular expression.
      */
     public void findWords(String input, ArrayList<String> words) {
+        wordCount = 0;
         Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2\\s)");       //example exp - change later
         Matcher matcher;
         String[] phrase = input.split(" ");
