@@ -214,7 +214,7 @@ public class ActiveBE {
             Document doc = dBuilder.parse(file);
             NodeList nList = doc.getElementsByTagName("Sync");
 
-            Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2\\s)");       //example exp - change later
+            Pattern regexp = Pattern.compile("\\s([b-df-hj-np-tv-zñ]+[aeiou]([134])[b-df-hj-np-tv-zñ][aeiou]\\2)\\s");       //example exp - change later
             Matcher matcher = regexp.matcher(file.getName());
 
             int count = rand.nextInt(nList.getLength());
@@ -274,7 +274,7 @@ public class ActiveBE {
      */
     public void findWords(String input, ArrayList<String> words) {
         wordCount = 0;
-        Pattern regexp = Pattern.compile("\\s([a-zñ]+[aeiou]([134])[a-zñ]?[aeiou]\\2\\s)");       //example exp - change later
+        Pattern regexp = Pattern.compile("\\s([b-df-hj-np-tv-zñ]+[aeiou]([134])[b-df-hj-np-tv-zñ][aeiou]\\2)\\s");       //example exp - change later
         Matcher matcher;
         String[] phrase = input.split(" ");
         matcher = regexp.matcher(input);
