@@ -57,6 +57,7 @@ public class ActiveBE {
         rand = new Random();
         clips = new ArrayList<>();
         attempts = new ArrayList<Integer>();
+        correctAnswers = new ArrayList<String>();
         for (int i = 0; i < 20; i++) {
             attempts.add(1);
         }
@@ -147,7 +148,6 @@ public class ActiveBE {
                     + "QuestionID, Response, Score, WeightedScore) VALUES("
                     + attempt + ", " + questionID + ", " + response + ", " + score
                     + ", " + weightedScore + "; ";
-
             stmt.executeQuery(query);
 
             attempts.set(questionNum - 1, attempt + 1);
@@ -282,16 +282,12 @@ public class ActiveBE {
             System.out.println("found word");
             String word = matcher.group(1);
             word = word.replaceAll(" ", "");
-            //System.out.println("Phrase: " + phrase + " Word: " + word);
             if (!(words.contains(word))) {
                 words.add(word);
+                correctAnswers.add(word);
                 wordCount++;
             }
         }
-
-//        for(String w : words) {
-//            System.out.println("Word in Words: " + w);
-//        }
     }
 
     String setBlanks(String input, ArrayList<String> words) {
