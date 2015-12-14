@@ -5,9 +5,15 @@
  */
 package my.transcription;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +23,13 @@ public class AdminHome extends javax.swing.JFrame {
 
     private String user;
     private AdminBE backend;
+    private HashMap<String, String> userMap;
+    
+    private JTabbedPane pane;
+    private JTable table;
+    
+    private static final String[] TABLE_NAMES = {"Date and Time Taken", "Lesson", "Sublesson"};
+    private static final int COLUMN_NUM = 3;
 
     /**
      * Creates new form AdminHome
@@ -36,13 +49,52 @@ public class AdminHome extends javax.swing.JFrame {
     
     public void userSelection(){
         list1.removeAll();
-        HashMap<String, String> userMap = backend.createLogs();
+        userMap = backend.createLogs();
         Iterator it = userMap.entrySet().iterator();
         while(it.hasNext()){
             HashMap.Entry pair = (HashMap.Entry) it.next();
             String name = (String) pair.getKey();
             list1.add(name);
         }
+    }
+    
+    public void createPane(){
+        jPanel1.removeAll();
+        jPanel1.setLayout(new BorderLayout());
+        
+        pane = new JTabbedPane();
+        pane.setVisible(true);
+        
+        practiceSelection();
+        
+        JScrollPane panel = new JScrollPane(table);
+        
+        pane.addTab("Practice", panel);
+        jPanel1.add(pane);
+        jPanel1.revalidate();
+    }
+    
+    public void practiceSelection(){
+        String studentUser = userMap.get(list1.getSelectedItem());
+        HashMap<ArrayList<String>, Integer> practiceMap = backend.userPractice(studentUser);
+        
+        table = new JTable(practiceMap.size(), COLUMN_NUM){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        DefaultTableModel model = new DefaultTableModel(TABLE_NAMES, practiceMap.size());
+        table.setModel(model);
+        
+        Iterator it = practiceMap.entrySet().iterator();
+        int rowNum = 0;
+        while(it.hasNext()){
+            HashMap.Entry pair = (HashMap.Entry) it.next();
+            ArrayList<String> list = (ArrayList<String>) pair.getKey();
+            model.addRow(list.toArray());
+        }
+        
     }
 
     /**
@@ -55,13 +107,43 @@ public class AdminHome extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
         list1 = new java.awt.List();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
 
         jMenu1.setText("Log Out");
         jMenuBar1.add(jMenu1);
@@ -73,21 +155,25 @@ public class AdminHome extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        createPane();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,8 +211,10 @@ public class AdminHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private java.awt.List list1;
     // End of variables declaration//GEN-END:variables

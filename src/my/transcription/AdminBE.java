@@ -6,6 +6,7 @@
 package my.transcription;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
 
@@ -45,5 +46,31 @@ public class AdminBE {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public HashMap<ArrayList<String>, Integer> userPractice(String username){
+        try{
+            String query = "SELECT * FROM PRACTICE WHERE Username = '" + username + "';";
+            rs = stmt.executeQuery(query);
+            
+            HashMap<ArrayList<String>, Integer> practiceMap = new HashMap<>();
+            while(rs.next()){
+                int practiceID = rs.getInt("PracticeID");
+                String date = rs.getString("DateTaken");
+                int lesson = rs.getInt("Lesson");
+                String sublesson = rs.getString("Sublesson");
+                
+                ArrayList<String> practiceInfo = new ArrayList<>();
+                practiceInfo.add(date);
+                practiceInfo.add("" + lesson);
+                practiceInfo.add(sublesson);
+                
+                practiceMap.put(practiceInfo, practiceID);
+            }
+            return practiceMap;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;        
     }
 }
