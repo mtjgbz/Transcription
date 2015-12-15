@@ -444,7 +444,6 @@ public class Practice extends javax.swing.JFrame {
 
     private void findStartEnd(String input) {
         numTags = 0;
-        System.out.println("input1: " + input);
         boolean s1 = false;
         boolean e1 = false;
         boolean s2 = false;
@@ -455,37 +454,27 @@ public class Practice extends javax.swing.JFrame {
         boolean e4 = false;
 
         char[] statement = input.toCharArray();
-        //int temp = 0;
-        //int t = 0;
         char c;
-        //while(temp != 5){
         for (int i = 0; i < statement.length; i++) {
             c = statement[i];
             if (wordCount == 4) {
                 if (c == '[' && s1 == false && statement[i+1] == ' ') {
-                    
                     start1 = i + 1;
-                    //tracker = i;
                     s1 = true;
                     numTags++;
                     startTags.add(i);
                     System.out.println("s1: " + i);
                     continue;
-                   
                 }
                 if (c == ']' && e1 == false && statement[i-1] == ' ') {
-                    
                     end1 = i;
-                    //tracker = i;
                     e1 = true;
                     endTags.add(i);
                     System.out.println("e1: " + i);
                     continue;
-                 
                 }
                 if (c == '[' && s2 == false && statement[i+1] == ' ') {
                     start2 = i + 1;
-                    //tracker = i;
                     s2 = true;
                     numTags++;
                     startTags.add(i);
@@ -494,7 +483,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && e2 == false && statement[i-1] == ' ') {
                     end2 = i;
-                    //tracker = i;
                     e2 = true;
                     endTags.add(i);
                     System.out.println("e2: " + i);
@@ -502,7 +490,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == '[' && s3 == false && statement[i+1] == ' ') {
                     start3 = i + 1;
-                    //tracker = i;
                     s3 = true;
                     numTags++;
                     startTags.add(i);
@@ -511,7 +498,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && e3 == false && statement[i-1] == ' ') {
                     end3 = i;
-                    //tracker = i;
                     e3 = true;
                     endTags.add(i);
                     System.out.println("e3: " + i);
@@ -519,7 +505,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && s4 == false && statement[i+1] == ' ') {
                     start4 = i;
-                    //tracker = i;
                     s4 = true;
                     numTags++;
                     startTags.add(i);
@@ -528,7 +513,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && e4 == false && statement[i-1] == ' ') {
                     end4 = i;
-                    //tracker = i;
                     e4 = true;
                     endTags.add(i);
                     System.out.println("e4: " + i);
@@ -537,7 +521,6 @@ public class Practice extends javax.swing.JFrame {
             } else if (wordCount == 3) {
                 if (c == '[' && s1 == false && statement[i+1] == ' ') {
                     start1 = i + 1;
-                    //tracker = i;
                     s1 = true;
                     numTags++;
                     startTags.add(i);
@@ -546,7 +529,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
-                    //tracker = i;
                     e1 = true;
                     endTags.add(i);
                     System.out.println("e1: " + i);
@@ -554,7 +536,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == '[' && s2 == false && statement[i+1] == ' ') {
                     start2 = i + 1;
-                    //tracker = i;
                     s2 = true;
                     numTags++;
                     startTags.add(i);
@@ -563,7 +544,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && e2 == false && statement[i-1] == ' ') {
                     end2 = i;
-                    //tracker = i;
                     e2 = true;
                     endTags.add(i);
                     System.out.println("e2: " + i);
@@ -571,7 +551,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == '[' && s3 == false && statement[i+1] == ' ') {
                     start3 = i + 1;
-                    //tracker = i;
                     s3 = true;
                     numTags++;
                     startTags.add(i);
@@ -580,7 +559,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && e3 == false && statement[i-1] == ' ') {
                     end3 = i;
-                    //tracker = i;
                     e3 = true;
                     endTags.add(i);
                     System.out.println("e3: " + i);
@@ -591,7 +569,6 @@ public class Practice extends javax.swing.JFrame {
             } else if (wordCount == 2) {
                 if (c == '[' && s1 == false && statement[i+1] == ' ') {
                     start1 = i + 1;
-                    //tracker = i;
                     s1 = true;
                     numTags++;
                     startTags.add(i);
@@ -600,7 +577,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
-                    //tracker = i;
                     e1 = true;
                     endTags.add(i);
                     System.out.println("e1: " + i);
@@ -608,7 +584,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == '[' && s2 == false && statement[i+1] == ' ') {
                     start2 = i + 1;
-                    //tracker = i;
                     s2 = true;
                     numTags++;
                     startTags.add(i);
@@ -617,7 +592,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && e2 == false && statement[i-1] == ' ') {
                     end2 = i;
-                    //tracker = i;
                     e2 = true;
                     endTags.add(i);
                     System.out.println("e2: " + i);
@@ -630,7 +604,6 @@ public class Practice extends javax.swing.JFrame {
             } else if (wordCount == 1) {
                 if (c == '[' && s1 == false && statement[i+1] == ' ') {
                     start1 = i + 1;
-                    //tracker = i;
                     s1 = true;
                     numTags++;
                     startTags.add(i);
@@ -639,7 +612,6 @@ public class Practice extends javax.swing.JFrame {
                 }
                 if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
-                    //tracker = i;
                     e1 = true;
                     endTags.add(i);
                     System.out.println("e1: " + i);
