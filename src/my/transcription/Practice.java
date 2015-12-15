@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package my.transcription;
-
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -46,6 +45,7 @@ public class Practice extends javax.swing.JFrame {
     String user;
     Integer lesson;
     String subLesson;
+    ArrayList<File> audio = new ArrayList<>();
 
     Clip clip;
     Timer timer;
@@ -61,13 +61,13 @@ public class Practice extends javax.swing.JFrame {
     int page = 1;
 
     private ArrayList<String> textList = new ArrayList<>();
-    Integer timesVar = 9029000;
+    //Integer timesVar = 9029000;
     private ArrayList<ArrayList<String>> phraseList;
     private ArrayList<String> words = new ArrayList<>();
     ArrayList<ArrayList<String>> wordsList = new ArrayList<>();
     ArrayList<Integer> timesList = new ArrayList<>();
     ArrayList<Timer> timersList = new ArrayList<>();
-    ArrayList<File> clips = new ArrayList<>();
+    ArrayList<Clip> clips = new ArrayList<>();
     ArrayList<Integer> startTags = new ArrayList<>();
     ArrayList<Integer> endTags = new ArrayList<>();
     private ArrayList<String> answers = new ArrayList<>();
@@ -79,7 +79,7 @@ public class Practice extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent event) {
 
             clip.stop();
-            clip.setMicrosecondPosition(timesVar);
+            clip.setMicrosecondPosition(timesList.get(page));
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
             playButton1.setText("Play");
         }
@@ -104,8 +104,9 @@ public class Practice extends javax.swing.JFrame {
         timer = new Timer(4428, listener);
 
         backend = new ActiveBE(false);
-        initAudio();
         initTextFields();
+        initAudio();
+        
 
         jScrollPane1.setViewportView(jTextPane1);
         setupDoc();
@@ -133,7 +134,7 @@ public class Practice extends javax.swing.JFrame {
 
     private void initAudio() {
         clip = backend.makeClip(page);
-        //timer = ;
+        timer = timersList.get(page-1);
     }
 
     private void setupDoc() {
@@ -729,7 +730,7 @@ public class Practice extends javax.swing.JFrame {
             timersList.add(new Timer(length, listener));
         }
        
-        clips = backend.getClips();
+        audio = backend.getClips();
         //System.out.println(clip);
 
 //        current = textList.get(page-1);
@@ -1031,8 +1032,8 @@ public class Practice extends javax.swing.JFrame {
         clip.close();
         timer.stop();
         jPageLabel.setText("Page " + page);
-        //backend.closeAudio(); 
-        clip = backend.makeClip(page);
+        backend.closeAudio(); 
+        clip = backend.makeClip(page-1);
         if (page == 1) {
             prevButton.setText("Current");
             prevButton.setEnabled(false);
@@ -1042,7 +1043,7 @@ public class Practice extends javax.swing.JFrame {
         }
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         playButton1.setText("Play");
-        //backend.closeAudio();
+        backend.closeAudio();
         initAudio();
         //backend.findWords(textList.get(page - 1), wordsList);
         showText();
@@ -1093,7 +1094,7 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         if (!clip.isRunning()) {
-            clip.setMicrosecondPosition(timesVar);
+            clip.setMicrosecondPosition(timesList.get(page-1));
             clip.start();
             timer.start();
             playButton1.setForeground(new java.awt.Color(255, 51, 51));
@@ -1113,8 +1114,8 @@ public class Practice extends javax.swing.JFrame {
         clip.close();
         timer.stop();
         jPageLabel.setText("Page " + page);
-        //backend.closeAudio();
-        clip = backend.makeClip(page);
+        backend.closeAudio();
+        clip = backend.makeClip(page-1);
         if (page == 20) {
             nextButton.setText("Current");
             nextButton.setEnabled(false);
@@ -1124,7 +1125,7 @@ public class Practice extends javax.swing.JFrame {
         }
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         playButton1.setText("Play");
-        //backend.closeAudio();
+        backend.closeAudio();
         initAudio();
         //initTextFields();
 //        current = textList.get(page-1);

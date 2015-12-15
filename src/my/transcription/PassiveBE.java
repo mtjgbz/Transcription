@@ -218,7 +218,6 @@ public class PassiveBE {
         ArrayList<Clip> clips1 = new ArrayList<>();
 
         try {
-
             if (pageNum == 1) {
                 AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(0));
                 DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());

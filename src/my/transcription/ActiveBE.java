@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
@@ -67,13 +68,11 @@ public class ActiveBE {
 
         AudioInputStream audioIn;
         try {
-            //audioIn = AudioSystem.getAudioInputStream(clips.get(pageNum-1));
-            audioIn = AudioSystem.getAudioInputStream(new File("oGolden.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioIn);
-            //clips1.setMicrosecondPosition(timesList.get(0).get(0));
-            audioIn.close();
-            return clip;
+                audioIn = AudioSystem.getAudioInputStream(clips.get(pageNum-1));
+                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
+                clip = (Clip) AudioSystem.getLine(info);
+                clip.open(audioIn);
+                audioIn.close();
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(ActiveBE.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

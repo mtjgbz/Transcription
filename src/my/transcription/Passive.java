@@ -36,7 +36,7 @@ public class Passive extends javax.swing.JFrame {
     ArrayList<ArrayList<String>> textList = new ArrayList<>();
     ArrayList<ArrayList<Integer>> timesList = new ArrayList<>();
 
-    //Dummy array list
+    //ArrayList for storing
     ArrayList<File> clips = new ArrayList<>();
 
     Clip clip1;
@@ -548,6 +548,8 @@ public class Passive extends javax.swing.JFrame {
         timer3 = timersList.get(page - 1).get(2);
         timer4 = timersList.get(page - 1).get(3);
         timer5 = timersList.get(page - 1).get(4);
+        
+        System.out.println(timersList);
     }
 
     /**
