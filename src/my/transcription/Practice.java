@@ -108,7 +108,6 @@ public class Practice extends javax.swing.JFrame {
         initTextFields();
         initAudio();
         
-
         jScrollPane1.setViewportView(jTextPane1);
         setupDoc();
         numTags = 0;
@@ -118,6 +117,11 @@ public class Practice extends javax.swing.JFrame {
         tone = new ToneTable(path);
         attempts = 3;
         attemptCountLabel.setText("You have " + attempts + " attempts left.");
+        
+        incorrect2Label.setVisible(false);
+        incorrect1Label.setVisible(false);
+        incorrect3Label.setVisible(false);
+        incorrect4Label.setVisible(false);
     }
     
     private void setupTones() {
@@ -293,6 +297,8 @@ public class Practice extends javax.swing.JFrame {
     }
 
     private void checkAnswers() throws BadLocationException {
+        boolean correct1 = false, correct2 = false, correct3 = false, correct4 = false;
+        
         Document doc = jTextPane1.getDocument();
 
         String b1 = doc.getText(start1, end1 - start1);
@@ -320,21 +326,25 @@ public class Practice extends javax.swing.JFrame {
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
                     highlighter.addHighlight(start1, end1, greenPainter);
+                    correct1 = true;
                 }
                 if (!(b2.equals(words.get(1)))) {
                     highlighter.addHighlight(start2, end2, redPainter);
                 } else {
                     highlighter.addHighlight(start2, end2, greenPainter);
+                    correct2 = true;
                 }
                 if (!(b3.equals(words.get(2)))) {
                     highlighter.addHighlight(start3, end3, redPainter);
                 } else {
                     highlighter.addHighlight(start3, end3, greenPainter);
+                    correct3 = true;
                 }
                 if (!(b4.equals(words.get(3)))) {
                     highlighter.addHighlight(start4, end4, redPainter);
                 } else {
                     highlighter.addHighlight(start4, end4, greenPainter);
+                    correct4 = true;
                 }
                 answers.add(b1);
                 answers.add(b2);
@@ -345,16 +355,19 @@ public class Practice extends javax.swing.JFrame {
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
                     highlighter.addHighlight(start1, end1, greenPainter);
+                    correct1 = true;
                 }
                 if (!(b2.equals(words.get(1)))) {
                     highlighter.addHighlight(start2, end2, redPainter);
                 } else {
                     highlighter.addHighlight(start2, end2, greenPainter);
+                    correct2 = true; 
                 }
                 if (!(b3.equals(words.get(2)))) {
                     highlighter.addHighlight(start3, end3, redPainter);
                 } else {
                     highlighter.addHighlight(start3, end3, greenPainter);
+                    correct3 = true; 
                 }
                 answers.add(b1);
                 answers.add(b2);
@@ -364,11 +377,13 @@ public class Practice extends javax.swing.JFrame {
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
                     highlighter.addHighlight(start1, end1, greenPainter);
+                    correct1 = true;
                 }
                 if (!(b2.equals(words.get(1)))) {
                     highlighter.addHighlight(start2, end2, redPainter);
                 } else {
                     highlighter.addHighlight(start2, end2, greenPainter);
+                    correct2 = true;
                 }
                 answers.add(b1);
                 answers.add(b2);
@@ -377,6 +392,7 @@ public class Practice extends javax.swing.JFrame {
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
                     highlighter.addHighlight(start1, end1, greenPainter);
+                    correct1 = true;
                 }
                 answers.add(b1);
             }
@@ -385,6 +401,58 @@ public class Practice extends javax.swing.JFrame {
         }
         if (clicks == 3) {
             submitButton.setEnabled(false);
+            showCorrectAnswers(words, correct1, correct2, correct3, correct4);
+        }
+    }
+    
+    private void showCorrectAnswers(ArrayList<String> w, boolean c1, boolean c2, boolean c3, boolean c4) {
+        if(w.size() == 4) {
+            if(c1 == false) {
+                incorrect2Label.setVisible(true);
+                incorrect2Label.setText("The correct answer for the first blank is: " + w.get(0));
+            }
+            if(c2 == false) {
+                incorrect1Label.setVisible(true);
+                incorrect1Label.setText("The correct answer for the second blank is: " + w.get(1));
+            }
+            if(c3 == false) {
+                incorrect3Label.setVisible(true);
+                incorrect3Label.setText("The correct answer for the third blank is: " + w.get(2));
+            }
+            if(c4 == false) {
+                incorrect4Label.setVisible(true);
+                incorrect4Label.setText("The correct answer for the fourth blank is: " + w.get(3));
+            }
+        }
+        else if(w.size() == 3) {
+            if(c1 == false) {
+                incorrect2Label.setVisible(true);
+                incorrect2Label.setText("The correct answer for the first blank is: " + w.get(0));
+            }
+            if(c2 == false) {
+                incorrect1Label.setVisible(true);
+                incorrect1Label.setText("The correct answer for the second blank is: " + w.get(1));
+            }
+            if(c3 == false) {
+                incorrect3Label.setVisible(true);
+                incorrect3Label.setText("The correct answer for the third blank is: " + w.get(2));
+            }
+        }
+        else if(w.size() == 2) {
+            if(c1 == false) {
+                incorrect2Label.setVisible(true);
+                incorrect2Label.setText("The correct answer for the first blank is: " + w.get(0));
+            }
+            if(c2 == false) {
+                incorrect1Label.setVisible(true);
+                incorrect1Label.setText("The correct answer for the second blank is: " + w.get(1));
+            }
+        }
+        else if(w.size() == 1) {
+            if(c1 == false) {
+                incorrect2Label.setVisible(true);
+                incorrect2Label.setText("The correct answer for the first blank is: " + w.get(0));
+            }
         }
     }
 
@@ -681,6 +749,10 @@ public class Practice extends javax.swing.JFrame {
         jTextPane1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         attemptCountLabel = new javax.swing.JLabel();
+        incorrect2Label = new javax.swing.JLabel();
+        incorrect1Label = new javax.swing.JLabel();
+        incorrect3Label = new javax.swing.JLabel();
+        incorrect4Label = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jHomeMenu = new javax.swing.JMenu();
         jEncMenu = new javax.swing.JMenu();
@@ -750,6 +822,14 @@ public class Practice extends javax.swing.JFrame {
 
         attemptCountLabel.setText("jLabel2");
 
+        incorrect2Label.setText("jLabel2");
+
+        incorrect1Label.setText("jLabel3");
+
+        incorrect3Label.setText("jLabel4");
+
+        incorrect4Label.setText("jLabel5");
+
         jHomeMenu.setText("Home");
         jHomeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -810,7 +890,9 @@ public class Practice extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(250, 250, 250)
+                .addContainerGap()
+                .addComponent(incorrect1Label)
+                .addGap(199, 199, 199)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -832,7 +914,16 @@ public class Practice extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(attemptCountLabel)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(incorrect3Label))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(incorrect4Label))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(incorrect2Label)))
                 .addGap(0, 105, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE))
@@ -849,17 +940,28 @@ public class Practice extends javax.swing.JFrame {
                         .addComponent(attemptCountLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPageLabel)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addComponent(jPageLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(incorrect1Label)
+                        .addGap(7, 7, 7)
+                        .addComponent(incorrect2Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(incorrect3Label)
+                .addGap(4, 4, 4)
+                .addComponent(incorrect4Label))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, Short.MAX_VALUE))
         );
 
         pack();
@@ -1033,6 +1135,10 @@ public class Practice extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel attemptCountLabel;
+    private javax.swing.JLabel incorrect1Label;
+    private javax.swing.JLabel incorrect2Label;
+    private javax.swing.JLabel incorrect3Label;
+    private javax.swing.JLabel incorrect4Label;
     private javax.swing.JMenu jEncMenu;
     private javax.swing.JMenu jHomeMenu;
     private javax.swing.JLabel jLabel1;
