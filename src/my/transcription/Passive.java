@@ -684,7 +684,7 @@ public class Passive extends javax.swing.JFrame {
                     if (start != 0 && Character.isWhitespace(chars[start - 1])) {
                         try {
                             int end = start + word.length();
-                            highlighter.addHighlight(start, end - 1, painter);
+                            highlighter.addHighlight(start, end, painter);
                             if (i == 0) {
                                 jTextPane1.setCaretPosition(end);
                             }
