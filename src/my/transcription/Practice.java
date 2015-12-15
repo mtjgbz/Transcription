@@ -759,7 +759,7 @@ public class Practice extends javax.swing.JFrame {
 
         jPageLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jPageLabel.setForeground(new java.awt.Color(204, 204, 204));
-        jPageLabel.setText("Page 1");
+        jPageLabel.setText("Page 1/20");
 
         jTextPane1.setColumns(20);
         jTextPane1.setRows(5);
@@ -904,7 +904,7 @@ public class Practice extends javax.swing.JFrame {
         clip.stop();
         clip.close();
         timer.stop();
-        jPageLabel.setText("Page " + page);
+        jPageLabel.setText("Page " + page + "/20");
         backend.closeAudio(); 
         clip = backend.makeClip(page);
         if (page == 1) {
@@ -986,7 +986,7 @@ public class Practice extends javax.swing.JFrame {
         clip.stop();
         clip.close();
         timer.stop();
-        jPageLabel.setText("Page " + page);
+        jPageLabel.setText("Page " + page + "/20");
         backend.closeAudio();
         clip = backend.makeClip(page);
         if (page == 20) {
