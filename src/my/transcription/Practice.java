@@ -963,7 +963,6 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_playButton1ActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        String current = "";
         page++;
         clip.stop();
         clip.close();
@@ -982,22 +981,6 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         backend.closeAudio();
         initAudio();
-        //initTextFields();
-//        current = textList.get(page-1);
-//        backend.findWords(current, wordsList);
-//        if (wordsList.size() >= 4) {
-//            wordCount = 4;
-//        }
-//        current = backend.setBlanks(current, wordsList);
-//        findStartEnd(current);
-//        jTextPane1.setText(current);
-//        try {
-//            highlightAll(current);
-//        } catch (BadLocationException ex) {
-//            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        jTextPane1.setCaretPosition(start1 + ((end1 - start1) / 2));
-        //backend.findWords(textList.get(page - 1), wordsList);
         showText();
     }//GEN-LAST:event_nextButtonActionPerformed
 
