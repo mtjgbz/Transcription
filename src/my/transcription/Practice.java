@@ -359,8 +359,6 @@ public class Practice extends javax.swing.JFrame {
         b3 = b3.replaceAll(" ", "");
         b4 = b4.replaceAll(" ", "");
 
-        
-
         for (String a : answers) {
             System.out.println("ansArray: |" + a + "|");
         }
@@ -373,35 +371,23 @@ public class Practice extends javax.swing.JFrame {
         try {
             if (wordCount == 4) {
                 if (!(b1.equals(words.get(0)))) {
-                    System.out.println("b1 not equal");
-                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + words.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
-                    System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
                 if (!(b2.equals(words.get(1)))) {
-                    System.out.println("b2 not equal");
-                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + words.get(1) + "|");
                     highlighter.addHighlight(start2, end2, redPainter);
                 } else {
-                    System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
                 if (!(b3.equals(words.get(2)))) {
-                    System.out.println("b3 not equal");
-                    System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + words.get(2) + "|");
                     highlighter.addHighlight(start3, end3, redPainter);
                 } else {
-                    System.out.println("b3 equal");
                     highlighter.addHighlight(start3, end3, greenPainter);
                 }
                 if (!(b4.equals(words.get(3)))) {
-                    System.out.println("b3 not equal");
-                    System.out.println("b3: " + "|" + b4 + "|" + " word: " + "|" + words.get(3) + "|");
                     highlighter.addHighlight(start4, end4, redPainter);
                 } else {
-                    System.out.println("b4 equal");
                     highlighter.addHighlight(start4, end4, greenPainter);
                 }
                 answers.add(b1);
@@ -410,27 +396,18 @@ public class Practice extends javax.swing.JFrame {
                 answers.add(b4);
             } else if (wordCount == 3) {
                 if (!(b1.equals(words.get(0)))) {
-                    System.out.println("b1 not equal");
-                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + words.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
-                    System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
                 if (!(b2.equals(words.get(1)))) {
-                    System.out.println("b2 not equal");
-                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + words.get(1) + "|");
                     highlighter.addHighlight(start2, end2, redPainter);
                 } else {
-                    System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
                 if (!(b3.equals(words.get(2)))) {
-                    System.out.println("b3 not equal");
-                    System.out.println("b3: " + "|" + b3 + "|" + " word: " + "|" + words.get(2) + "|");
                     highlighter.addHighlight(start3, end3, redPainter);
                 } else {
-                    System.out.println("b3 equal");
                     highlighter.addHighlight(start3, end3, greenPainter);
                 }
                 answers.add(b1);
@@ -438,30 +415,21 @@ public class Practice extends javax.swing.JFrame {
                 answers.add(b3);
             } else if (wordCount == 2) {
                 if (!(b1.equals(words.get(0)))) {
-                    System.out.println("b1 not equal");
-                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + words.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
-                    System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
                 if (!(b2.equals(words.get(1)))) {
-                    System.out.println("b2 not equal");
-                    System.out.println("b2: " + "|" + b2 + "|" + " word: " + "|" + words.get(1) + "|");
                     highlighter.addHighlight(start2, end2, redPainter);
                 } else {
-                    System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
                 answers.add(b1);
                 answers.add(b2);
             } else if (wordCount == 1) {
                 if (!(b1.equals(words.get(0)))) {
-                    System.out.println("b1 not equal");
-                    System.out.println("b1: " + "|" + b1 + "|" + " word: " + "|" + words.get(0) + "|");
                     highlighter.addHighlight(start1, end1, redPainter);
                 } else {
-                    System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
                 answers.add(b1);
@@ -472,7 +440,6 @@ public class Practice extends javax.swing.JFrame {
         if (clicks == 3) {
             submitButton.setEnabled(false);
         }
-
     }
 
     private void findStartEnd(String input) {
