@@ -774,7 +774,7 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setForeground(new java.awt.Color(0, 153, 51));
 
         if (!clip1.isRunning()) {
-            clip1.setMicrosecondPosition(timesList.get(t).get(0));
+            clip1.setMicrosecondPosition(timesList.get(page - 1).get(0));
             clip1.start();
             timer1.restart();
             playButton1.setForeground(new java.awt.Color(255, 51, 51));
@@ -808,7 +808,7 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setForeground(new java.awt.Color(0, 153, 51));
 
         if (!clip2.isRunning()) {
-            clip2.setMicrosecondPosition(timesList.get(t).get(1));
+            clip2.setMicrosecondPosition(timesList.get(page - 1).get(1));
             clip2.start();
             timer2.restart();
             playButton2.setForeground(new java.awt.Color(255, 51, 51));
@@ -842,7 +842,7 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setForeground(new java.awt.Color(0, 153, 51));
 
         if (!clip3.isRunning()) {
-            clip3.setMicrosecondPosition(timesList.get(t).get(2));
+            clip3.setMicrosecondPosition(timesList.get(page - 1).get(2));
             clip3.start();
             timer3.restart();
             playButton3.setForeground(new java.awt.Color(255, 51, 51));
@@ -876,7 +876,7 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setForeground(new java.awt.Color(0, 153, 51));
 
         if (!clip4.isRunning()) {
-            clip4.setMicrosecondPosition(timesList.get(t).get(3));
+            clip4.setMicrosecondPosition(timesList.get(page - 1).get(3));
             clip4.start();
             timer4.restart();
             playButton4.setForeground(new java.awt.Color(255, 51, 51));
@@ -910,7 +910,7 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setForeground(new java.awt.Color(0, 153, 51));
 
         if (!clip5.isRunning()) {
-            clip5.setMicrosecondPosition(timesList.get(t).get(4));
+            clip5.setMicrosecondPosition(timesList.get(page - 1).get(4));
             clip5.start();
             timer5.restart();
             playButton5.setForeground(new java.awt.Color(255, 51, 51));

@@ -80,7 +80,7 @@ public class Practice extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent event) {
 
             clip.stop();
-            clip.setMicrosecondPosition(timesList.get(page));
+            clip.setMicrosecondPosition(timesList.get(page-1));
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
             playButton1.setText("Play");
         }
@@ -1045,7 +1045,7 @@ public class Practice extends javax.swing.JFrame {
         timer.stop();
         jPageLabel.setText("Page " + page);
         backend.closeAudio(); 
-        clip = backend.makeClip(page-1);
+        clip = backend.makeClip(page);
         if (page == 1) {
             prevButton.setText("Current");
             prevButton.setEnabled(false);
@@ -1103,6 +1103,8 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
     private void playButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton1ActionPerformed
+        clip.stop();
+        timer.stop();
         playButton1.setText("Play");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         if (!clip.isRunning()) {
@@ -1127,7 +1129,7 @@ public class Practice extends javax.swing.JFrame {
         timer.stop();
         jPageLabel.setText("Page " + page);
         backend.closeAudio();
-        clip = backend.makeClip(page-1);
+        clip = backend.makeClip(page);
         if (page == 20) {
             nextButton.setText("Current");
             nextButton.setEnabled(false);
