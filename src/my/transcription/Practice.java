@@ -359,10 +359,7 @@ public class Practice extends javax.swing.JFrame {
         b3 = b3.replaceAll(" ", "");
         b4 = b4.replaceAll(" ", "");
 
-        answers.add(b1);
-        answers.add(b2);
-        answers.add(b3);
-        answers.add(b4);
+        
 
         for (String a : answers) {
             System.out.println("ansArray: |" + a + "|");
@@ -407,6 +404,10 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("b4 equal");
                     highlighter.addHighlight(start4, end4, greenPainter);
                 }
+                answers.add(b1);
+                answers.add(b2);
+                answers.add(b3);
+                answers.add(b4);
             } else if (wordCount == 3) {
                 if (!(b1.equals(words.get(0)))) {
                     System.out.println("b1 not equal");
@@ -432,6 +433,9 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("b3 equal");
                     highlighter.addHighlight(start3, end3, greenPainter);
                 }
+                answers.add(b1);
+                answers.add(b2);
+                answers.add(b3);
             } else if (wordCount == 2) {
                 if (!(b1.equals(words.get(0)))) {
                     System.out.println("b1 not equal");
@@ -449,6 +453,8 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("b2 equal");
                     highlighter.addHighlight(start2, end2, greenPainter);
                 }
+                answers.add(b1);
+                answers.add(b2);
             } else if (wordCount == 1) {
                 if (!(b1.equals(words.get(0)))) {
                     System.out.println("b1 not equal");
@@ -458,6 +464,7 @@ public class Practice extends javax.swing.JFrame {
                     System.out.println("b1 equal");
                     highlighter.addHighlight(start1, end1, greenPainter);
                 }
+                answers.add(b1);
             }
         } catch (BadLocationException ex) {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
@@ -679,21 +686,6 @@ public class Practice extends javax.swing.JFrame {
                 end4 = 0;
             }
         }
-        //    temp++;
-        //}
-//        System.out.println("Start1: " + start1);
-//        System.out.println("End1: " + end1);
-//        System.out.println("Start2: " + start2);
-//        System.out.println("End3: " + end2);
-//        System.out.println("Start3: " + start3);
-//        System.out.println("End3: " + end3);
-        for (int i : startTags) {
-            System.out.println("start tag: " + i);
-        }
-        for (int i : endTags) {
-            System.out.println("end tag: " + i);
-        }
-        System.out.println("numTags: " + numTags);
     }
 
     public void initTextFields() {
@@ -734,42 +726,7 @@ public class Practice extends javax.swing.JFrame {
         }
        
         audio = backend.getClips();
-        //System.out.println(clip);
 
-//        current = textList.get(page-1);
-//        System.out.println("wsize: " + wordsList.size());
-//
-//        backend.findWords(current, wordsList);
-//        if (wordsList.size() >= 4) {
-//            wordCount = 4;
-//        } else if (wordsList.size() == 3) {
-//            wordCount = 3;
-//        } else if (wordsList.size() == 2) {
-//            wordCount = 2;
-//        } else if (wordsList.size() == 1) {
-//            wordCount = 1;
-//        }
-//        System.out.println("before blanks: " + current);
-//        System.out.println("wordCount: " + wordCount);
-//        current = backend.setBlanks(current, wordsList);
-//        System.out.println("current: " + current);
-//        findStartEnd(current);
-//        jTextPane1.setText(current);
-//        jTextPane1.setCaretPosition(start1 + ((end1 - start1) / 2));
-//
-//        try {
-//            highlightAll(current);
-//        } catch (BadLocationException ex) {
-//            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        System.out.println("wsize: " + wordsList.size());
-//        for (String w : wordsList) {
-//            System.out.println("Word: " + w);
-//        }
-//        for (String w : textList) {
-//            System.out.println("Text: " + w);
-//        }
         showText();
     }
     
@@ -1057,7 +1014,6 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         backend.closeAudio();
         initAudio();
-        //backend.findWords(textList.get(page - 1), wordsList);
         showText();
     }//GEN-LAST:event_prevButtonActionPerformed
 
