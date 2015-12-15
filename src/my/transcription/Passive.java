@@ -950,12 +950,6 @@ public class Passive extends javax.swing.JFrame {
         clip4.stop();
         clip5.stop();
 
-        clip1.close();
-        clip2.close();
-        clip3.close();
-        clip4.close();
-        clip5.close();
-
         timer1.stop();
         timer2.stop();
         timer3.stop();
@@ -1013,12 +1007,6 @@ public class Passive extends javax.swing.JFrame {
         clip3.stop();
         clip4.stop();
         clip5.stop();
-
-        clip1.close();
-        clip2.close();
-        clip3.close();
-        clip4.close();
-        clip5.close();
 
         timer1.stop();
         timer2.stop();
