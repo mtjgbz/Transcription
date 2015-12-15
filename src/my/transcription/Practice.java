@@ -41,6 +41,7 @@ public class Practice extends javax.swing.JFrame {
     int wordCount;
     int numTags;
     int clicks;
+    int attempts;
 
     String user;
     Integer lesson;
@@ -115,6 +116,8 @@ public class Practice extends javax.swing.JFrame {
         setupTones();
         nas = new Nasalizations(path);
         tone = new ToneTable(path);
+        attempts = 3;
+        attemptCountLabel.setText("You have " + attempts + " attempts left.");
     }
     
     private void setupTones() {
@@ -835,6 +838,7 @@ public class Practice extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        attemptCountLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jHomeMenu = new javax.swing.JMenu();
         jEncMenu = new javax.swing.JMenu();
@@ -901,6 +905,8 @@ public class Practice extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextPane1);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
+
+        attemptCountLabel.setText("jLabel2");
 
         jHomeMenu.setText("Home");
         jHomeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -976,13 +982,15 @@ public class Practice extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(292, 292, 292)
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(292, 292, 292)
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(attemptCountLabel)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 105, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE))
@@ -995,7 +1003,9 @@ public class Practice extends javax.swing.JFrame {
                         .addGap(132, 132, 132)
                         .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addGap(55, 55, 55)
+                        .addComponent(attemptCountLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1016,6 +1026,8 @@ public class Practice extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         clicks++;
+        attempts--;
+        attemptCountLabel.setText("You have " + attempts + " attemtps left.");       
         String phrase = jTextPane1.getText();
         findStartEnd(phrase);
         setupDoc();
@@ -1194,6 +1206,7 @@ public class Practice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel attemptCountLabel;
     private javax.swing.JMenu jEncMenu;
     private javax.swing.JMenu jHomeMenu;
     private javax.swing.JLabel jLabel1;
