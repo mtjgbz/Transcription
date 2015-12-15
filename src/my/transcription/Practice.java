@@ -273,75 +273,21 @@ public class Practice extends javax.swing.JFrame {
     }
 
     public void highlightAll(String input) throws BadLocationException {
-        //String text = "tan3 u1bi1 ku4u4 na1 kan4 tu4u13 ran4, tan3 i3kan4 ndu4ku4=na2, ya1kan3";
-        //jTextArea1.setText(text);
-        //startEnd = tags;
         Highlighter highlighter = null;
         Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN);
 
-        //String temp = input;
-        //int num = 0;
-        //if(i == 0) {
         highlighter = jTextPane1.getHighlighter();
         jTextPane1.setHighlighter(highlighter);
-            //}
-//            if(i == 1) {
-//                highlighter = jTextArea2.getHighlighter();
-//                jTextArea2.setHighlighter(highlighter);
-//            }
-//            if(i == 2) {
-//                highlighter = jTextArea3.getHighlighter();
-//                jTextArea3.setHighlighter(highlighter);
-//            }
-//            if(i == 3) {
-//                highlighter = jTextArea4.getHighlighter();
-//                jTextArea4.setHighlighter(highlighter);
-//            }
-
+        
         for (int j = 0; j < numTags; j++) {
-                //temp = phrases.get(i);
-            //num = tags.get(j);
-
             int start = startTags.get(j);
             int end = endTags.get(j);
-            System.out.println("Start: " + start + " End: " + end);
-                //System.out.println("Start: " + start);
-            //while(start >= 0) {                    
+            try {
+                highlighter.addHighlight(start, end + 1, painter);
 
-            char[] chars = input.toCharArray();
-            //if (start != 0 && Character.isWhitespace(chars[start - 1])) {
-                try {
-                            //System.out.println("length: " + word.length());
-                    //int end = start + word.length();
-                    //System.out.println("End: " + end);
-                    //System.out.println("printing chars");
-//                            for(int i = start; i <= end; i++) {
-//                                
-//                                System.out.print(chars[i]);
-//                            }
-                    highlighter.addHighlight(start, end + 1, painter);
-                            //if(i == 0) {
-                    //System.out.println("length of chars: " + chars.length);
-                    //   jTextPane1.setCaretPosition(end);
-                    //}
-//                            if(i == 1) {
-//                                jTextArea2.setCaretPosition(end);
-//                            }
-//                            if(i == 2) {
-//                                jTextArea3.setCaretPosition(end);
-//                            }
-//                            if(i == 3) {
-//                                jTextArea4.setCaretPosition(end);
-//                            }
-                } catch (BadLocationException e) {
-                    e.printStackTrace();
-                }
-                //start = temp.indexOf(word, start+word.length());
-//            } else {
-//                //start = temp.indexOf(word, start+word.length());
-//            }
-
-                //}
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
         }
 
     }
