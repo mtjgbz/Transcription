@@ -6,19 +6,74 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import static my.transcription.SignIn.errorMsg;
+import org.sqlite.SQLiteConfig;
+import org.sqlite.SQLiteDataSource;
 
 /**
  *
  * @author Mike, Noah, Casey and Erica
  */
 public class ChangePass extends javax.swing.JFrame {
-
+    private String password;
+    private Connection conn;
+    private Statement stmt;
+    private ResultSet rs;
+    String user;
     /**
      * Creates new form ChangePass
      */
     public ChangePass() {
+        this.user = user;
         initComponents();
         getContentPane().setBackground(new Color(148, 189, 203));
+    }
+    
+    
+    public void setupDB() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            SQLiteConfig config = new SQLiteConfig();
+            config.enableFullSync(true);
+            config.setReadOnly(false);
+            SQLiteDataSource ds = new SQLiteDataSource(config);
+            ds.setUrl("jdbc:sqlite::resource:" + getClass().getResource("TAA.db").toString());
+            conn = ds.getConnection();
+            stmt = conn.createStatement();
+        } catch (Exception e) {
+            errorMsg(e.toString(), "Database error");
+        }
+    }
+
+    public void closeDB() {
+        try {
+            stmt.close();
+            if (rs != null) {
+                rs.close();
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public boolean checkPassword(String username, String password) {
+        try {
+            String query = "SELECT COUNT(*) AS Users FROM USERS WHERE USERNAME = '" + user + "' AND PASSWORD = '" + password + "';";
+            rs = stmt.executeQuery(query);
+            if (rs.getInt("Users") == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**
@@ -50,6 +105,11 @@ public class ChangePass extends javax.swing.JFrame {
         jLabel3.setText("Verify New Password:");
 
         jButton1.setText("Set Password");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
 
@@ -73,7 +133,9 @@ public class ChangePass extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(147, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,12 +156,18 @@ public class ChangePass extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 266, Short.MAX_VALUE)))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
