@@ -20,7 +20,7 @@ import org.sqlite.SQLiteDataSource;
  */
 public class ChangePass extends javax.swing.JFrame {
     private String currentPassCheck;
-    private String currentPass;
+    private String currentPass="";
     private String newPass1;
     private String newPass2;
     private Connection conn;
@@ -31,7 +31,7 @@ public class ChangePass extends javax.swing.JFrame {
     /**
      * Creates new form ChangePass
      */
-    public ChangePass() {
+    public ChangePass(String user) {
         this.user = user;
         initComponents();
         getContentPane().setBackground(new Color(148, 189, 203));
@@ -65,14 +65,20 @@ public class ChangePass extends javax.swing.JFrame {
         }
     }
     
-    public void getCurrentPassword() {
+    public boolean getCurrentPassword(String password) {
         try {
-            String query = "SELECT Password FROM USERS WHERE USERNAME = '" + user + "';";
+            String query = "SELECT COUNT(*) AS Users FROM USERS WHERE USERNAME = '" + user + "' AND PASSWORD = '" + password + "';";
             ResultSet rsExp = stmt.executeQuery(query);
-            currentPassCheck = (rsExp.getString("Password"));
-            stmt.execute(query);
+            if (rsExp.getInt("Users") == 1) {
+                System.out.print("works");
+                return true;
+            } else {
+                System.out.print("stuff");
+                return false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
      public void addNewPassword() {
@@ -195,15 +201,17 @@ public class ChangePass extends javax.swing.JFrame {
 
     private void jSetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSetPasswordActionPerformed
         setupDB();
-        currentPass = jCurrentPassword.getSelectedText();
+        char[] pass = jCurrentPassword.getPassword();
+        for(char c :pass){
+            currentPass+=c;
+        }
         newPass1 = jNewPassword1.getSelectedText();
         newPass2 = jNewPassword2.getSelectedText();
-        getCurrentPassword();
-        if(currentPassCheck.equals(currentPass)) {
+        if(getCurrentPassword(currentPass)) {
             if(newPass1.equals(newPass2)) {
                 if(newPass1.length() >= reqSize) {
                     System.out.println("All good.");
-                    addNewPassword();
+                    //addNewPassword();
                 } 
                 else {
                 System.out.println("The new Password you have entered has to be 4 or more characters.");
@@ -261,7 +269,7 @@ public class ChangePass extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChangePass().setVisible(true);
+                
             }
         });
     }

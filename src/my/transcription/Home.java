@@ -64,7 +64,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(148, 189, 203));
         jUsernameMenuDropDown.setText(user);
         act = new Active(this, user);
-        pass1 = new ChangePass();
+        pass1 = new ChangePass(user);
         enc = new Enclitics();
         jLabel1.setText(" ");
 
