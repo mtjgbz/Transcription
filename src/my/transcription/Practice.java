@@ -43,11 +43,16 @@ public class Practice extends javax.swing.JFrame {
     int clicks;
     int attempts;
     boolean correct1 = false, correct2 = false, correct3 = false, correct4 = false;
-
+    
     String user;
     Integer lesson;
     String subLesson;
     ArrayList<File> audio = new ArrayList<>();
+    
+    String blank1;
+    String blank2;
+    String blank3;
+    String blank4;
 
     Clip clip;
     Timer timer;
@@ -73,6 +78,7 @@ public class Practice extends javax.swing.JFrame {
     ArrayList<Integer> startTags = new ArrayList<>();
     ArrayList<Integer> endTags = new ArrayList<>();
     private ArrayList<String> answers = new ArrayList<>();
+    ArrayList<Boolean> btnStatus = new ArrayList<>();
 
     private Highlighter.HighlightPainter redPainter;
     private Highlighter.HighlightPainter greenPainter;
@@ -119,7 +125,9 @@ public class Practice extends javax.swing.JFrame {
         tone = new ToneTable(path);
         attempts = 3;
         attemptCountLabel.setText("You have " + attempts + " attempts left.");
-        
+        for(int i = 0; i < 20; i++) {
+            btnStatus.add(true);
+        } 
     }
     
     private void setupTones() {
@@ -293,30 +301,33 @@ public class Practice extends javax.swing.JFrame {
         }
 
     }
-   
-    private void checkAnswers() throws BadLocationException {
-        
+    
+    private void getAnswers() throws BadLocationException {
         Document doc = jTextPane1.getDocument();
 
-        String b1 = doc.getText(start1, end1 - start1);
-        String b2 = doc.getText(start2, end2 - start2);
-        String b3 = doc.getText(start3, end3 - start3);
-        String b4 = doc.getText(start4, end4 - start4);
+        blank1 = doc.getText(start1, end1 - start1);
+        blank2 = doc.getText(start2, end2 - start2);
+        blank3 = doc.getText(start3, end3 - start3);
+        blank4 = doc.getText(start4, end4 - start4);
 
-        b1 = b1.replaceAll(" ", "");
-        b2 = b2.replaceAll(" ", "");
-        b3 = b3.replaceAll(" ", "");
-        b4 = b4.replaceAll(" ", "");
+        blank1 = blank1.replaceAll(" ", "");
+        blank2 = blank2.replaceAll(" ", "");
+        blank3 = blank3.replaceAll(" ", "");
+        blank4 = blank4.replaceAll(" ", "");
+    }
+    
+    private void saveState() {
         
-        for (String a : answers) {
-            System.out.println("ansArray: |" + a + "|");
-        }
-
+    }
+   
+    private void checkAnswers() throws BadLocationException {
+        getAnswers();
+        
         if (wordCount == 4) {
-            boolean right1 = highlightWord(b1, words.get(0), start1, end1);
-            boolean right2 = highlightWord(b2, words.get(1), start2, end2);
-            boolean right3 = highlightWord(b3, words.get(2), start3, end3);
-            boolean right4 = highlightWord(b4, words.get(3), start4, end4);
+            boolean right1 = highlightWord(blank1, words.get(0), start1, end1);
+            boolean right2 = highlightWord(blank2, words.get(1), start2, end2);
+            boolean right3 = highlightWord(blank3, words.get(2), start3, end3);
+            boolean right4 = highlightWord(blank4, words.get(3), start4, end4);
             if(right1) {
                 disableDocFilter1();
             }
@@ -329,15 +340,15 @@ public class Practice extends javax.swing.JFrame {
             if(right4) {
                 disableDocFilter4();
             }
-            answers.add(b1);
-            answers.add(b2);
-            answers.add(b3);
-            answers.add(b4);
+            answers.add(blank1);
+            answers.add(blank2);
+            answers.add(blank3);
+            answers.add(blank4);
         }
         else if (wordCount == 3) {
-            boolean right1 = highlightWord(b1, words.get(0), start1, end1);
-            boolean right2 = highlightWord(b2, words.get(1), start2, end2);
-            boolean right3 = highlightWord(b3, words.get(2), start3, end3);
+            boolean right1 = highlightWord(blank1, words.get(0), start1, end1);
+            boolean right2 = highlightWord(blank2, words.get(1), start2, end2);
+            boolean right3 = highlightWord(blank3, words.get(2), start3, end3);
             if(right1) {
                 disableDocFilter1();
             }
@@ -347,28 +358,28 @@ public class Practice extends javax.swing.JFrame {
             if(right3) {
                 disableDocFilter3();
             }
-            answers.add(b1);
-            answers.add(b2);
-            answers.add(b3);
+            answers.add(blank1);
+            answers.add(blank2);
+            answers.add(blank3);
         }
         else if (wordCount == 2) {
-            boolean right1 = highlightWord(b1, words.get(0), start1, end1);
-            boolean right2 = highlightWord(b2, words.get(1), start2, end2);
+            boolean right1 = highlightWord(blank1, words.get(0), start1, end1);
+            boolean right2 = highlightWord(blank2, words.get(1), start2, end2);
             if(right1) {
                 disableDocFilter1();
             }
             if(right2) {
                 disableDocFilter2();
             }
-            answers.add(b1);
-            answers.add(b2);
+            answers.add(blank1);
+            answers.add(blank2);
         }
         else if (wordCount == 1) {
-            boolean right  = highlightWord(b1, words.get(0), start1, end1);
+            boolean right  = highlightWord(blank1, words.get(0), start1, end1);
             if(right) {
                 disableDocFilter1();
             }
-            answers.add(b1);
+            answers.add(blank1);
         }
     }
     
@@ -705,10 +716,6 @@ public class Practice extends javax.swing.JFrame {
         showText();
     }
     
-    private void saveState() {
-        
-    }
-    
     private void showText() {
         if(!startTags.isEmpty() && !endTags.isEmpty()) {
             startTags.clear();
@@ -975,6 +982,8 @@ public class Practice extends javax.swing.JFrame {
         }
         if (clicks == 3) {
             submitButton.setEnabled(false); 
+            btnStatus.set(page-1, false);
+            
             findWrongAnswers();
         }
     }
@@ -997,6 +1006,7 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         playButton1.setText("Play");
         backend.closeAudio();
+        submitButton.setEnabled(btnStatus.get(page-1));
         initAudio();
         showText();
     }//GEN-LAST:event_prevButtonActionPerformed
@@ -1080,7 +1090,7 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         backend.closeAudio();
         initAudio();
-        submitButton.setEnabled(true);
+        submitButton.setEnabled(btnStatus.get(page-1));
         clicks = 0;
         attempts = 3;
         attemptCountLabel.setText("You have " + attempts + " attempts left.");
