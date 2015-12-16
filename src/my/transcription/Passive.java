@@ -246,7 +246,6 @@ public class Passive extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(970, 600));
         setMinimumSize(new java.awt.Dimension(970, 600));
         setResizable(false);
 
@@ -386,7 +385,8 @@ public class Passive extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("Page 1");
+        jLabel2.setText("Page 1/4");
+        jLabel2.setToolTipText("");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
         jLabel1.setFocusable(false);
@@ -928,7 +928,7 @@ public class Passive extends javax.swing.JFrame {
             page++;
         }
 
-        jLabel2.setText("Page " + page);
+        jLabel2.setText("Page " + page + "/4");
 
         if (page == 4) {
             jNextButton.setText("Current");
@@ -986,7 +986,7 @@ public class Passive extends javax.swing.JFrame {
             page--;
         }
 
-        jLabel2.setText("Page " + page);
+        jLabel2.setText("Page " + page + "/4");
 
         if (page == 1) {
             jBackButton.setText("Current");
