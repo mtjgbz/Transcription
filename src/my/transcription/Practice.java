@@ -323,24 +323,32 @@ public class Practice extends javax.swing.JFrame {
                 } else {
                     highlighter.addHighlight(start1-1, end1+1, greenPainter);
                     correct1 = true;
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 if (!(b2.equals(words.get(1)))) {
                     highlighter.addHighlight(start2-1, end2+1, redPainter);
                 } else {
                     highlighter.addHighlight(start2-1, end2+1, greenPainter);
                     correct2 = true;
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 if (!(b3.equals(words.get(2)))) {
                     highlighter.addHighlight(start3-1, end3+1, redPainter);
                 } else {
                     highlighter.addHighlight(start3-1, end3+1, greenPainter);
                     correct3 = true;
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 if (!(b4.equals(words.get(3)))) {
                     highlighter.addHighlight(start4-1, end4+1, redPainter);
                 } else {
                     highlighter.addHighlight(start4-1, end4+1, greenPainter);
                     correct4 = true;
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 answers.add(b1);
                 answers.add(b2);
@@ -352,18 +360,24 @@ public class Practice extends javax.swing.JFrame {
                 } else {
                     highlighter.addHighlight(start1-1, end1+1, greenPainter);
                     correct1 = true;
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 if (!(b2.equals(words.get(1)))) {
                     highlighter.addHighlight(start2-1, end2+1, redPainter);
                 } else {
                     highlighter.addHighlight(start2-1, end2+1, greenPainter);
                     correct2 = true; 
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 if (!(b3.equals(words.get(2)))) {
                     highlighter.addHighlight(start3-1, end3+1, redPainter);
                 } else {
                     highlighter.addHighlight(start3-1, end3+1, greenPainter);
                     correct3 = true; 
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 answers.add(b1);
                 answers.add(b2);
@@ -374,12 +388,16 @@ public class Practice extends javax.swing.JFrame {
                 } else {
                     highlighter.addHighlight(start1-1, end1+1, greenPainter);
                     correct1 = true;
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 if (!(b2.equals(words.get(1)))) {
                     highlighter.addHighlight(start2-1, end2+1, redPainter);
                 } else {
                     highlighter.addHighlight(start2-1, end2+1, greenPainter);
                     correct2 = true;
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 answers.add(b1);
                 answers.add(b2);
@@ -390,6 +408,8 @@ public class Practice extends javax.swing.JFrame {
                 } else {
                     highlighter.addHighlight(start1-1, end1+1, greenPainter);
                     correct1 = true;
+                    start1 = 0; 
+                    end1 = 0;
                 }
                 answers.add(b1);
             }
