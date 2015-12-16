@@ -293,8 +293,9 @@ public class Practice extends javax.swing.JFrame {
         }
 
     }
-
+   
     private void checkAnswers() throws BadLocationException {
+        
         Document doc = jTextPane1.getDocument();
 
         String b1 = doc.getText(start1, end1 - start1);
@@ -306,120 +307,121 @@ public class Practice extends javax.swing.JFrame {
         b2 = b2.replaceAll(" ", "");
         b3 = b3.replaceAll(" ", "");
         b4 = b4.replaceAll(" ", "");
-
+        
         for (String a : answers) {
             System.out.println("ansArray: |" + a + "|");
         }
 
-        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
-        greenPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
-
-        Highlighter highlighter = jTextPane1.getHighlighter();
-        jTextPane1.setHighlighter(highlighter);
-        try {
-            if (wordCount == 4) {
-                if (!(b1.equals(words.get(0)))) {
-                    highlighter.addHighlight(start1-1, end1+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start1-1, end1+1, greenPainter);
-                    correct1 = true;
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                if (!(b2.equals(words.get(1)))) {
-                    highlighter.addHighlight(start2-1, end2+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start2-1, end2+1, greenPainter);
-                    correct2 = true;
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                if (!(b3.equals(words.get(2)))) {
-                    highlighter.addHighlight(start3-1, end3+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start3-1, end3+1, greenPainter);
-                    correct3 = true;
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                if (!(b4.equals(words.get(3)))) {
-                    highlighter.addHighlight(start4-1, end4+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start4-1, end4+1, greenPainter);
-                    correct4 = true;
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                answers.add(b1);
-                answers.add(b2);
-                answers.add(b3);
-                answers.add(b4);
-            } else if (wordCount == 3) {
-                if (!(b1.equals(words.get(0)))) {
-                    highlighter.addHighlight(start1-1, end1+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start1-1, end1+1, greenPainter);
-                    correct1 = true;
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                if (!(b2.equals(words.get(1)))) {
-                    highlighter.addHighlight(start2-1, end2+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start2-1, end2+1, greenPainter);
-                    correct2 = true; 
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                if (!(b3.equals(words.get(2)))) {
-                    highlighter.addHighlight(start3-1, end3+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start3-1, end3+1, greenPainter);
-                    correct3 = true; 
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                answers.add(b1);
-                answers.add(b2);
-                answers.add(b3);
-            } else if (wordCount == 2) {
-                if (!(b1.equals(words.get(0)))) {
-                    highlighter.addHighlight(start1-1, end1+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start1-1, end1+1, greenPainter);
-                    correct1 = true;
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                if (!(b2.equals(words.get(1)))) {
-                    highlighter.addHighlight(start2-1, end2+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start2-1, end2+1, greenPainter);
-                    correct2 = true;
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                answers.add(b1);
-                answers.add(b2);
-            } else if (wordCount == 1) {
-                if (!(b1.equals(words.get(0)))) {
-                    highlighter.addHighlight(start1-1, end1+1, redPainter);
-                    System.out.println("Start1: " + start1 + " End1: " + end1);
-                } else {
-                    highlighter.addHighlight(start1-1, end1+1, greenPainter);
-                    correct1 = true;
-                    start1 = 0; 
-                    end1 = 0;
-                }
-                answers.add(b1);
+        if (wordCount == 4) {
+            boolean right1 = highlightWord(b1, words.get(0), start1, end1);
+            boolean right2 = highlightWord(b2, words.get(1), start2, end2);
+            boolean right3 = highlightWord(b3, words.get(2), start3, end3);
+            boolean right4 = highlightWord(b4, words.get(3), start4, end4);
+            if(right1) {
+                disableDocFilter1();
             }
-        } catch (BadLocationException ex) {
-            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+            if(right2) {
+                disableDocFilter2();
+            }
+            if(right3) {
+                disableDocFilter3();
+            }
+            if(right4) {
+                disableDocFilter4();
+            }
+            answers.add(b1);
+            answers.add(b2);
+            answers.add(b3);
+            answers.add(b4);
+        }
+        else if (wordCount == 3) {
+            boolean right1 = highlightWord(b1, words.get(0), start1, end1);
+            boolean right2 = highlightWord(b2, words.get(1), start2, end2);
+            boolean right3 = highlightWord(b3, words.get(2), start3, end3);
+            if(right1) {
+                disableDocFilter1();
+            }
+            if(right2) {
+                disableDocFilter2();
+            }
+            if(right3) {
+                disableDocFilter3();
+            }
+            answers.add(b1);
+            answers.add(b2);
+            answers.add(b3);
+        }
+        else if (wordCount == 2) {
+            boolean right1 = highlightWord(b1, words.get(0), start1, end1);
+            boolean right2 = highlightWord(b2, words.get(1), start2, end2);
+            if(right1) {
+                disableDocFilter1();
+            }
+            if(right2) {
+                disableDocFilter2();
+            }
+            answers.add(b1);
+            answers.add(b2);
+        }
+        else if (wordCount == 1) {
+            boolean right  = highlightWord(b1, words.get(0), start1, end1);
+            if(right) {
+                disableDocFilter1();
+            }
+            answers.add(b1);
         }
         if (clicks == 3) {
             submitButton.setEnabled(false); 
             findWrongAnswers();
         }
+    }
+    
+    private void disableDocFilter1() {
+        correct1 = true;
+        start1 = 0;
+        end1 = 0;
+    }
+    
+    private void disableDocFilter2() {
+        correct2 = true;
+        start2 = 0;
+        end2 = 0;
+    }
+    
+    private void disableDocFilter3() {
+        correct3 = true;
+        start3 = 0;
+        end3 = 0;
+    }
+    
+    private void disableDocFilter4() {
+        correct4 = true;
+        start4 = 0;
+        end4 = 0;
+    }
+    
+    private boolean highlightWord(String ans, String word, int start, int end) {
+        
+        Highlighter highlighter = jTextPane1.getHighlighter();
+        jTextPane1.setHighlighter(highlighter);
+        
+        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
+        greenPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
+        
+        try {
+            if(!(ans.equals(word))) {
+                highlighter.addHighlight(start-1, end+1, redPainter);
+                //return false;
+            }  
+            else {
+                highlighter.addHighlight(start-1, end+1, greenPainter);
+                return true;
+            }
+        }catch (BadLocationException ex) {
+                Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+        
     }
     
     private void findWrongAnswers() {
