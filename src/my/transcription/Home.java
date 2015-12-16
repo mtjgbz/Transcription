@@ -34,7 +34,7 @@ public class Home extends javax.swing.JFrame {
     Nasalizations nas;
     ToneTable tone;
     NamaTable na;
-    int NaMaCount = 0;
+    private boolean NaMaOpen= false;
     private int furthestLesson;
     private String furthestSublesson;
 
@@ -445,7 +445,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if (NaMaCount > 0) {
+        if (NaMaOpen) {
             na.dispose();
         }
 
@@ -464,7 +464,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if (NaMaCount > 0) {
+        if (NaMaOpen) {
             na.dispose();
         }
 
@@ -488,7 +488,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if (NaMaCount > 0) {
+        if (NaMaOpen) {
             na.dispose();
         }
 
@@ -513,7 +513,7 @@ public class Home extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if (NaMaCount > 0) {
+        if (NaMaOpen) {
             na.dispose();
         }
         if (!act.isShowing()) {
@@ -595,15 +595,15 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoadTextMenuActionPerformed
 
     private void jNaMaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNaMaButtonActionPerformed
-        if (NaMaCount == 0) {
+        if (!NaMaOpen) {
             na = new NamaTable();
+            NaMaOpen=true;
         }
         if (!na.isShowing()) {
             na.setVisible(true);
         } else {
             na.toFront();
         }
-        NaMaCount++;
     }//GEN-LAST:event_jNaMaButtonActionPerformed
 
     private void jLoadTextMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMenuMousePressed
