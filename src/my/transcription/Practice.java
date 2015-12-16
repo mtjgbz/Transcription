@@ -961,7 +961,9 @@ public class Practice extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(incorrect4Label))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 332, Short.MAX_VALUE)))
         );
 
         pack();
