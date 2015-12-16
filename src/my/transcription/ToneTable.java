@@ -2174,6 +2174,7 @@ public class ToneTable extends javax.swing.JFrame {
                                                 }
                                             });
 
+                                            jButton121.setBackground(new java.awt.Color(255, 255, 255));
                                             jButton121.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
                                             jButton121.setText("<html><center>ku<sup>4</sup>tu<sup>1</sup>pi<sup>132</sup><br><font size=\"1\"> (1)</font></center></html>\\n");
                                             jButton121.setMaximumSize(new java.awt.Dimension(85, 52));

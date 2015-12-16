@@ -207,7 +207,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
-        setLocation(x,y);
         setResizable(false);
 
         jScrollPane2.setHorizontalScrollBar(null);
@@ -218,7 +217,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton1.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton1.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton1.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton1.setSize(new java.awt.Dimension(160, 60));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -231,7 +229,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton2.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton2.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton2.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton2.setSize(new java.awt.Dimension(160, 60));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -244,7 +241,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton3.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton3.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton3.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton3.setSize(new java.awt.Dimension(160, 60));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -257,7 +253,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton4.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton4.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton4.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton4.setSize(new java.awt.Dimension(160, 60));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -270,7 +265,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton5.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton5.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton5.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton5.setSize(new java.awt.Dimension(160, 60));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -283,7 +277,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton6.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton6.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton6.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton6.setSize(new java.awt.Dimension(160, 60));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -296,7 +289,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton7.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton7.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton7.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton7.setSize(new java.awt.Dimension(160, 60));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -309,7 +301,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton8.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton8.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton8.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton8.setSize(new java.awt.Dimension(160, 60));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -322,7 +313,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton9.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton9.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton9.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton9.setSize(new java.awt.Dimension(160, 60));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -335,7 +325,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton10.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton10.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton10.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton10.setSize(new java.awt.Dimension(160, 60));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -348,7 +337,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton11.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton11.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton11.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton11.setSize(new java.awt.Dimension(160, 60));
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
@@ -361,7 +349,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton12.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton12.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton12.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton12.setSize(new java.awt.Dimension(160, 60));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -374,7 +361,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton13.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton13.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton13.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton13.setSize(new java.awt.Dimension(160, 60));
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -387,7 +373,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton14.setMaximumSize(new java.awt.Dimension(160, 60));
         jButton14.setMinimumSize(new java.awt.Dimension(160, 60));
         jButton14.setPreferredSize(new java.awt.Dimension(160, 60));
-        jButton14.setSize(new java.awt.Dimension(160, 60));
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -400,7 +385,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton15.setMaximumSize(new java.awt.Dimension(160, 75));
         jButton15.setMinimumSize(new java.awt.Dimension(160, 75));
         jButton15.setPreferredSize(new java.awt.Dimension(160, 75));
-        jButton15.setSize(new java.awt.Dimension(160, 75));
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -413,7 +397,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton16.setMaximumSize(new java.awt.Dimension(160, 75));
         jButton16.setMinimumSize(new java.awt.Dimension(160, 75));
         jButton16.setPreferredSize(new java.awt.Dimension(160, 75));
-        jButton16.setSize(new java.awt.Dimension(160, 75));
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton16ActionPerformed(evt);
@@ -426,7 +409,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton17.setMaximumSize(new java.awt.Dimension(160, 75));
         jButton17.setMinimumSize(new java.awt.Dimension(160, 75));
         jButton17.setPreferredSize(new java.awt.Dimension(160, 75));
-        jButton17.setSize(new java.awt.Dimension(160, 75));
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
@@ -439,7 +421,6 @@ public class Nasalizations extends javax.swing.JFrame {
         jButton18.setMaximumSize(new java.awt.Dimension(160, 75));
         jButton18.setMinimumSize(new java.awt.Dimension(160, 75));
         jButton18.setPreferredSize(new java.awt.Dimension(160, 75));
-        jButton18.setSize(new java.awt.Dimension(160, 75));
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
@@ -472,61 +453,58 @@ public class Nasalizations extends javax.swing.JFrame {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel11)))
+                .addGap(22, 22, 22)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel11))
-                        .addGap(28, 28, 28)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -593,11 +571,11 @@ public class Nasalizations extends javax.swing.JFrame {
                                 .addComponent(jLabel10)
                                 .addGap(26, 26, 26)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
                 .addContainerGap())
         );
         jLayeredPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
