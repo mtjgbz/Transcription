@@ -370,10 +370,6 @@ public class Practice extends javax.swing.JFrame {
             }
             answers.add(b1);
         }
-        if (clicks == 3) {
-            submitButton.setEnabled(false); 
-            findWrongAnswers();
-        }
     }
     
     private void disableDocFilter1() {
@@ -967,7 +963,8 @@ public class Practice extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         clicks++;
         attempts--;
-        attemptCountLabel.setText("You have " + attempts + " attemtps left.");       
+        attemptCountLabel.setText("You have " + attempts + " attemtps left.");   
+        
         String phrase = jTextPane1.getText();
         findStartEnd(phrase);
         setupDoc();
@@ -975,6 +972,10 @@ public class Practice extends javax.swing.JFrame {
             checkAnswers();
         } catch (BadLocationException ex) {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (clicks == 3) {
+            submitButton.setEnabled(false); 
+            findWrongAnswers();
         }
     }
 
