@@ -6,19 +6,83 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import static my.transcription.SignIn.errorMsg;
+import org.sqlite.SQLiteConfig;
+import org.sqlite.SQLiteDataSource;
 
 /**
  *
  * @author Mike, Noah, Casey and Erica
  */
 public class ChangePass extends javax.swing.JFrame {
-
+    private String currentPassCheck;
+    private String currentPass;
+    private String newPass1;
+    private String newPass2;
+    private Connection conn;
+    private Statement stmt;
+    private ResultSet rs;
+    private int reqSize = 4;
+    String user;
     /**
      * Creates new form ChangePass
      */
     public ChangePass() {
+        this.user = user;
         initComponents();
         getContentPane().setBackground(new Color(148, 189, 203));
+    }
+    
+    
+    public void setupDB() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            SQLiteConfig config = new SQLiteConfig();
+            config.enableFullSync(true);
+            config.setReadOnly(false);
+            SQLiteDataSource ds = new SQLiteDataSource(config);
+            ds.setUrl("jdbc:sqlite::resource:" + getClass().getResource("TAA.db").toString());
+            conn = ds.getConnection();
+            stmt = conn.createStatement();
+        } catch (Exception e) {
+            errorMsg(e.toString(), "Database error");
+        }
+    }
+
+    public void closeDB() {
+        try {
+            stmt.close();
+            if (rs != null) {
+                rs.close();
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void getCurrentPassword() {
+        try {
+            String query = "SELECT Password FROM USERS WHERE USERNAME = '" + user + "';";
+            ResultSet rsExp = stmt.executeQuery(query);
+            currentPassCheck = (rsExp.getString("Password"));
+            stmt.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+     public void addNewPassword() {
+        try {
+            String newQuery = "UPDATE USERS SET Password = '" + newPass1 + "' WHERE Username = '" + user + "';";
+            System.out.println(newQuery);
+            stmt.execute(newQuery);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -30,50 +94,78 @@ public class ChangePass extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jSetPassword = new javax.swing.JButton();
         jBackground = new javax.swing.JLabel();
+        jCurrentPassword = new javax.swing.JPasswordField();
+        jNewPassword1 = new javax.swing.JPasswordField();
+        jNewPassword2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(430, 300));
         setMinimumSize(new java.awt.Dimension(430, 300));
 
-        jLabel1.setText("Old Password");
+        jLabel1.setText("Current Password");
 
-        jLabel2.setText("New Password:");
+        jLabel2.setText("New Password");
 
-        jLabel3.setText("Verify New Password:");
+        jLabel3.setText("  Verify New Password");
 
-        jButton1.setText("Set Password");
+        jSetPassword.setBackground(new java.awt.Color(255, 255, 255));
+        jSetPassword.setText("Set Password");
+        jSetPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSetPasswordActionPerformed(evt);
+            }
+        });
 
         jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
+
+        jCurrentPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCurrentPasswordActionPerformed(evt);
+            }
+        });
+
+        jNewPassword1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jNewPassword1ActionPerformed(evt);
+            }
+        });
+
+        jNewPassword2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jNewPassword2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel1))
+                        .addGap(143, 143, 143)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jNewPassword1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                            .addComponent(jNewPassword2, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                            .addComponent(jCurrentPassword)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSetPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(168, 168, 168)
                         .addComponent(jLabel2))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(jLabel1)))
+                .addContainerGap(144, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,25 +173,63 @@ public class ChangePass extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCurrentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jNewPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jNewPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSetPassword)
+                .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 300, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jSetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSetPasswordActionPerformed
+        setupDB();
+        currentPass = jCurrentPassword.getSelectedText();
+        newPass1 = jNewPassword1.getSelectedText();
+        newPass2 = jNewPassword2.getSelectedText();
+        getCurrentPassword();
+        if(currentPassCheck.equals(currentPass)) {
+            if(newPass1.equals(newPass2)) {
+                if(newPass1.length() >= reqSize) {
+                    System.out.println("All good.");
+                    addNewPassword();
+                } 
+                else {
+                System.out.println("The new Password you have entered has to be 4 or more characters.");
+                }
+            }
+            else {
+                System.out.println("The new Passwords you have entered do not match.");
+            }
+        }
+        else {
+            System.out.println("The Current Password you typed in is incorrect.");
+        }
+        closeDB(); 
+    }//GEN-LAST:event_jSetPasswordActionPerformed
+
+    private void jCurrentPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCurrentPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCurrentPasswordActionPerformed
+
+    private void jNewPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNewPassword1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jNewPassword1ActionPerformed
+
+    private void jNewPassword2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNewPassword2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jNewPassword2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,12 +268,12 @@ public class ChangePass extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jBackground;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPasswordField jCurrentPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JPasswordField jNewPassword1;
+    private javax.swing.JPasswordField jNewPassword2;
+    private javax.swing.JButton jSetPassword;
     // End of variables declaration//GEN-END:variables
 }
