@@ -42,6 +42,7 @@ public class Practice extends javax.swing.JFrame {
     int numTags;
     int clicks;
     int attempts;
+    boolean correct1 = false, correct2 = false, correct3 = false, correct4 = false;
 
     String user;
     Integer lesson;
@@ -75,6 +76,7 @@ public class Practice extends javax.swing.JFrame {
 
     private Highlighter.HighlightPainter redPainter;
     private Highlighter.HighlightPainter greenPainter;
+    private Highlighter.HighlightPainter cyanPainter;
 
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
@@ -141,9 +143,6 @@ public class Practice extends javax.swing.JFrame {
     }
 
     private void setupDoc() {
-//        System.out.println("Before buff: " + start1 + " " + end1);
-//        addBuffer();
-//        System.out.println("After buff: " + start1 + " " + end1);
         AbstractDocument doc = (AbstractDocument) jTextPane1.getDocument();
 
         doc.setDocumentFilter(new DocumentFilter() {
@@ -294,12 +293,8 @@ public class Practice extends javax.swing.JFrame {
         }
 
     }
-
+   
     private void checkAnswers() throws BadLocationException {
-        //System.out.println("Before sub buffer: " + start1 + " " + end1);
-        //subtractBuffer();
-        //System.out.println("After sub buffer: " + start1 + " " + end1);
-        boolean correct1 = false, correct2 = false, correct3 = false, correct4 = false;
         
         Document doc = jTextPane1.getDocument();
 
@@ -312,100 +307,180 @@ public class Practice extends javax.swing.JFrame {
         b2 = b2.replaceAll(" ", "");
         b3 = b3.replaceAll(" ", "");
         b4 = b4.replaceAll(" ", "");
-
+        
         for (String a : answers) {
             System.out.println("ansArray: |" + a + "|");
         }
 
-        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
-        greenPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
-
-        Highlighter highlighter = jTextPane1.getHighlighter();
-        jTextPane1.setHighlighter(highlighter);
-        try {
-            if (wordCount == 4) {
-                if (!(b1.equals(words.get(0)))) {
-                    highlighter.addHighlight(start1-1, end1+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start1-1, end1+1, greenPainter);
-                    correct1 = true;
-                }
-                if (!(b2.equals(words.get(1)))) {
-                    highlighter.addHighlight(start2-1, end2+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start2-1, end2+1, greenPainter);
-                    correct2 = true;
-                }
-                if (!(b3.equals(words.get(2)))) {
-                    highlighter.addHighlight(start3-1, end3+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start3-1, end3+1, greenPainter);
-                    correct3 = true;
-                }
-                if (!(b4.equals(words.get(3)))) {
-                    highlighter.addHighlight(start4-1, end4+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start4-1, end4+1, greenPainter);
-                    correct4 = true;
-                }
-                answers.add(b1);
-                answers.add(b2);
-                answers.add(b3);
-                answers.add(b4);
-            } else if (wordCount == 3) {
-                if (!(b1.equals(words.get(0)))) {
-                    highlighter.addHighlight(start1-1, end1+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start1-1, end1+1, greenPainter);
-                    correct1 = true;
-                }
-                if (!(b2.equals(words.get(1)))) {
-                    highlighter.addHighlight(start2-1, end2+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start2-1, end2+1, greenPainter);
-                    correct2 = true; 
-                }
-                if (!(b3.equals(words.get(2)))) {
-                    highlighter.addHighlight(start3-1, end3+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start3-1, end3+1, greenPainter);
-                    correct3 = true; 
-                }
-                answers.add(b1);
-                answers.add(b2);
-                answers.add(b3);
-            } else if (wordCount == 2) {
-                if (!(b1.equals(words.get(0)))) {
-                    highlighter.addHighlight(start1-1, end1+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start1-1, end1+1, greenPainter);
-                    correct1 = true;
-                }
-                if (!(b2.equals(words.get(1)))) {
-                    highlighter.addHighlight(start2-1, end2+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start2-1, end2+1, greenPainter);
-                    correct2 = true;
-                }
-                answers.add(b1);
-                answers.add(b2);
-            } else if (wordCount == 1) {
-                if (!(b1.equals(words.get(0)))) {
-                    highlighter.addHighlight(start1-1, end1+1, redPainter);
-                } else {
-                    highlighter.addHighlight(start1-1, end1+1, greenPainter);
-                    correct1 = true;
-                }
-                answers.add(b1);
+        if (wordCount == 4) {
+            boolean right1 = highlightWord(b1, words.get(0), start1, end1);
+            boolean right2 = highlightWord(b2, words.get(1), start2, end2);
+            boolean right3 = highlightWord(b3, words.get(2), start3, end3);
+            boolean right4 = highlightWord(b4, words.get(3), start4, end4);
+            if(right1) {
+                disableDocFilter1();
             }
-        } catch (BadLocationException ex) {
-            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+            if(right2) {
+                disableDocFilter2();
+            }
+            if(right3) {
+                disableDocFilter3();
+            }
+            if(right4) {
+                disableDocFilter4();
+            }
+            answers.add(b1);
+            answers.add(b2);
+            answers.add(b3);
+            answers.add(b4);
+        }
+        else if (wordCount == 3) {
+            boolean right1 = highlightWord(b1, words.get(0), start1, end1);
+            boolean right2 = highlightWord(b2, words.get(1), start2, end2);
+            boolean right3 = highlightWord(b3, words.get(2), start3, end3);
+            if(right1) {
+                disableDocFilter1();
+            }
+            if(right2) {
+                disableDocFilter2();
+            }
+            if(right3) {
+                disableDocFilter3();
+            }
+            answers.add(b1);
+            answers.add(b2);
+            answers.add(b3);
+        }
+        else if (wordCount == 2) {
+            boolean right1 = highlightWord(b1, words.get(0), start1, end1);
+            boolean right2 = highlightWord(b2, words.get(1), start2, end2);
+            if(right1) {
+                disableDocFilter1();
+            }
+            if(right2) {
+                disableDocFilter2();
+            }
+            answers.add(b1);
+            answers.add(b2);
+        }
+        else if (wordCount == 1) {
+            boolean right  = highlightWord(b1, words.get(0), start1, end1);
+            if(right) {
+                disableDocFilter1();
+            }
+            answers.add(b1);
         }
         if (clicks == 3) {
             submitButton.setEnabled(false); 
+            findWrongAnswers();
         }
     }
     
+    private void disableDocFilter1() {
+        correct1 = true;
+        start1 = 0;
+        end1 = 0;
+    }
+    
+    private void disableDocFilter2() {
+        correct2 = true;
+        start2 = 0;
+        end2 = 0;
+    }
+    
+    private void disableDocFilter3() {
+        correct3 = true;
+        start3 = 0;
+        end3 = 0;
+    }
+    
+    private void disableDocFilter4() {
+        correct4 = true;
+        start4 = 0;
+        end4 = 0;
+    }
+    
+    private boolean highlightWord(String ans, String word, int start, int end) {
+        
+        Highlighter highlighter = jTextPane1.getHighlighter();
+        jTextPane1.setHighlighter(highlighter);
+        
+        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
+        greenPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
+        
+        try {
+            if(!(ans.equals(word))) {
+                highlighter.addHighlight(start-1, end+1, redPainter);
+                //return false;
+            }  
+            else {
+                highlighter.addHighlight(start-1, end+1, greenPainter);
+                return true;
+            }
+        }catch (BadLocationException ex) {
+                Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+        
+    }
+    
+    private void findWrongAnswers() {
+        if(wordCount == 1 && correct1 == false) {
+            System.out.println("find Start1: " + start1 + " End1: " + end1);
+            displayCorrectAnswers(start1, end1, words.get(0));
+        }
+        else if(wordCount == 2) {
+            if(correct1 == false) {
+                displayCorrectAnswers(start1, end1, words.get(0));
+            }
+            if(correct2 == false) {
+                displayCorrectAnswers(start2, end2, words.get(1));
+            }
+        }
+        else if(wordCount == 3) {
+            if(correct1 == false) {
+                displayCorrectAnswers(start1, end1, words.get(0));
+            }
+            if(correct2 == false) {
+                displayCorrectAnswers(start2, end2, words.get(1));
+            }
+            if(correct3 == false) {
+                displayCorrectAnswers(start3, end3, words.get(2));
+            }
+        }
+        else if(wordCount == 4) {
+            if(correct1 == false) {
+                displayCorrectAnswers(start1, end1, words.get(0));
+            }
+            if(correct2 == false) {
+                displayCorrectAnswers(start2, end2, words.get(1));
+            }
+            if(correct3 == false) {
+                displayCorrectAnswers(start3, end3, words.get(2));
+            }
+            if(correct4 == false) {
+                displayCorrectAnswers(start4, end4, words.get(3));
+            }
+        }
+    }
+    
+    private void displayCorrectAnswers(int redStart, int blueStart, String word) {
+        Document doc = jTextPane1.getDocument();
+        
+        cyanPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN);
+        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
+        
+        Highlighter highlighter = jTextPane1.getHighlighter();
+        jTextPane1.setHighlighter(highlighter);
+        System.out.println("Word b4 highlight: " + word);
+        try {
+            doc.insertString(blueStart, " " + word, null);
+            highlighter.addHighlight(redStart, blueStart, redPainter);
+            highlighter.addHighlight(blueStart, blueStart+word.length()+1, cyanPainter);
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
 
     private void findStartEnd(String input) {
         numTags = 0;
@@ -634,6 +709,10 @@ public class Practice extends javax.swing.JFrame {
         showText();
     }
     
+    private void saveState() {
+        
+    }
+    
     private void showText() {
         if(!startTags.isEmpty() && !endTags.isEmpty()) {
             startTags.clear();
@@ -710,8 +789,10 @@ public class Practice extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(700, 430));
+        setMaximumSize(new java.awt.Dimension(700, 410));
+        setMinimumSize(new java.awt.Dimension(700, 410));
         setResizable(false);
+        setSize(new java.awt.Dimension(700, 410));
 
         submitButton.setBackground(new java.awt.Color(255, 255, 255));
         submitButton.setText("Check Answers");
@@ -828,31 +909,29 @@ public class Practice extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPageLabel)
-                        .addGap(15, 15, 15))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 588, Short.MAX_VALUE)
+                .addComponent(jPageLabel)
+                .addGap(15, 15, 15))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(249, 249, 249)
+                .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(292, 292, 292)
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(attemptCountLabel)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 105, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(290, 290, 290)
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE))
         );
@@ -861,14 +940,14 @@ public class Practice extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
+                        .addGap(135, 135, 135)
                         .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(attemptCountLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -876,9 +955,9 @@ public class Practice extends javax.swing.JFrame {
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addComponent(jPageLabel)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, Short.MAX_VALUE))
         );
 
         pack();
@@ -927,7 +1006,7 @@ public class Practice extends javax.swing.JFrame {
             na.dispose();
         }
         tone.dispose();
-        na.dispose();
+        nas.dispose();
         new Home(user).setVisible(true);
         backend.closeAudio();
         dispose();
@@ -1000,6 +1079,10 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         backend.closeAudio();
         initAudio();
+        submitButton.setEnabled(true);
+        clicks = 0;
+        attempts = 3;
+        attemptCountLabel.setText("You have " + attempts + " attempts left.");
         showText();
     }//GEN-LAST:event_nextButtonActionPerformed
 
