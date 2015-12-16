@@ -42,6 +42,7 @@ public class Practice extends javax.swing.JFrame {
     int numTags;
     int clicks;
     int attempts;
+    boolean correct1 = false, correct2 = false, correct3 = false, correct4 = false;
 
     String user;
     Integer lesson;
@@ -75,6 +76,7 @@ public class Practice extends javax.swing.JFrame {
 
     private Highlighter.HighlightPainter redPainter;
     private Highlighter.HighlightPainter greenPainter;
+    private Highlighter.HighlightPainter cyanPainter;
 
     ActionListener listener = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
@@ -141,9 +143,6 @@ public class Practice extends javax.swing.JFrame {
     }
 
     private void setupDoc() {
-//        System.out.println("Before buff: " + start1 + " " + end1);
-//        addBuffer();
-//        System.out.println("After buff: " + start1 + " " + end1);
         AbstractDocument doc = (AbstractDocument) jTextPane1.getDocument();
 
         doc.setDocumentFilter(new DocumentFilter() {
@@ -296,11 +295,6 @@ public class Practice extends javax.swing.JFrame {
     }
 
     private void checkAnswers() throws BadLocationException {
-        //System.out.println("Before sub buffer: " + start1 + " " + end1);
-        //subtractBuffer();
-        //System.out.println("After sub buffer: " + start1 + " " + end1);
-        boolean correct1 = false, correct2 = false, correct3 = false, correct4 = false;
-        
         Document doc = jTextPane1.getDocument();
 
         String b1 = doc.getText(start1, end1 - start1);
@@ -392,6 +386,7 @@ public class Practice extends javax.swing.JFrame {
             } else if (wordCount == 1) {
                 if (!(b1.equals(words.get(0)))) {
                     highlighter.addHighlight(start1-1, end1+1, redPainter);
+                    System.out.println("Start1: " + start1 + " End1: " + end1);
                 } else {
                     highlighter.addHighlight(start1-1, end1+1, greenPainter);
                     correct1 = true;
@@ -403,9 +398,67 @@ public class Practice extends javax.swing.JFrame {
         }
         if (clicks == 3) {
             submitButton.setEnabled(false); 
+            findWrongAnswers();
         }
     }
     
+    private void findWrongAnswers() {
+        if(wordCount == 1 && correct1 == false) {
+            System.out.println("find Start1: " + start1 + " End1: " + end1);
+            displayCorrectAnswers(start1, end1, words.get(0));
+        }
+        else if(wordCount == 2) {
+            if(correct1 == false) {
+                displayCorrectAnswers(start1, end1, words.get(0));
+            }
+            if(correct2 == false) {
+                displayCorrectAnswers(start2, end2, words.get(1));
+            }
+        }
+        else if(wordCount == 3) {
+            if(correct1 == false) {
+                displayCorrectAnswers(start1, end1, words.get(0));
+            }
+            if(correct2 == false) {
+                displayCorrectAnswers(start2, end2, words.get(1));
+            }
+            if(correct3 == false) {
+                displayCorrectAnswers(start3, end3, words.get(2));
+            }
+        }
+        else if(wordCount == 4) {
+            if(correct1 == false) {
+                displayCorrectAnswers(start1, end1, words.get(0));
+            }
+            if(correct2 == false) {
+                displayCorrectAnswers(start2, end2, words.get(1));
+            }
+            if(correct3 == false) {
+                displayCorrectAnswers(start3, end3, words.get(2));
+            }
+            if(correct4 == false) {
+                displayCorrectAnswers(start4, end4, words.get(3));
+            }
+        }
+    }
+    
+    private void displayCorrectAnswers(int redStart, int blueStart, String word) {
+        Document doc = jTextPane1.getDocument();
+        
+        cyanPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN);
+        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
+        
+        Highlighter highlighter = jTextPane1.getHighlighter();
+        jTextPane1.setHighlighter(highlighter);
+        System.out.println("Word b4 highlight: " + word);
+        try {
+            doc.insertString(blueStart, " " + word, null);
+            highlighter.addHighlight(redStart, blueStart, redPainter);
+            highlighter.addHighlight(blueStart, blueStart+word.length()+1, cyanPainter);
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
 
     private void findStartEnd(String input) {
         numTags = 0;
@@ -632,6 +685,10 @@ public class Practice extends javax.swing.JFrame {
         audio = backend.getClips();
 
         showText();
+    }
+    
+    private void saveState() {
+        
     }
     
     private void showText() {
@@ -1000,6 +1057,10 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         backend.closeAudio();
         initAudio();
+        submitButton.setEnabled(true);
+        clicks = 0;
+        attempts = 3;
+        attemptCountLabel.setText("You have " + attempts + " attempts left.");
         showText();
     }//GEN-LAST:event_nextButtonActionPerformed
 
