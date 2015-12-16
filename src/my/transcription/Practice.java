@@ -56,7 +56,7 @@ public class Practice extends javax.swing.JFrame {
     Nasalizations nas;
     ToneTable tone;
     NamaTable na;
-    int NaMaCount = 0;
+    private boolean NaMaOpen = false;
 
     private ActiveBE backend;
 
@@ -980,7 +980,7 @@ public class Practice extends javax.swing.JFrame {
 
     private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
         enc.dispose();
-        if (NaMaCount > 0) {
+        if (NaMaOpen) {
             na.dispose();
         }
         tone.dispose();
@@ -1065,15 +1065,15 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
-        if (NaMaCount == 0) {
+        if (!NaMaOpen) {
             na = new NamaTable();
+            NaMaOpen=true;
         }
         if (!na.isShowing()) {
             na.setVisible(true);
         } else {
             na.toFront();
         }
-        NaMaCount++;
     }//GEN-LAST:event_jNaMaMenuMouseClicked
 
     /**

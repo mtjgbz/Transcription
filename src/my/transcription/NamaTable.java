@@ -51,6 +51,8 @@ public class NamaTable extends javax.swing.JFrame {
         }
     };
 
+    
+       private boolean clipsMade = false;
     /**
      * Creates new form NamaTable
      */

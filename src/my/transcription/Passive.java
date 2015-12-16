@@ -85,7 +85,7 @@ public class Passive extends javax.swing.JFrame {
     Nasalizations nas;
     NamaTable na;
     ToneTable tone;
-    int NaMaCount = 0;
+    private boolean NaMaOpen = false;
 
     private PassiveBE backend;
 
@@ -716,7 +716,7 @@ public class Passive extends javax.swing.JFrame {
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if (NaMaCount > 0) {
+        if (NaMaOpen) {
             na.dispose();
         }
         new Home(user).setVisible(true);
@@ -1041,15 +1041,16 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jBackButtonActionPerformed
 
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
-        if (NaMaCount == 0) {
+        if (!NaMaOpen) {
             na = new NamaTable();
+            NaMaOpen = true;
         }
         if (!na.isShowing()) {
             na.setVisible(true);
         } else {
             na.toFront();
-        }
-        NaMaCount++;
+        } 
+        
     }//GEN-LAST:event_jNaMaMenuMouseClicked
 
     /**
