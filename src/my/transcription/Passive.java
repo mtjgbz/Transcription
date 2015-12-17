@@ -924,6 +924,12 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_playButton5MouseReleased
 
     private void jNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNextButtonActionPerformed
+        playButton1.setEnabled(false);
+        playButton2.setEnabled(false);
+        playButton3.setEnabled(false);
+        playButton4.setEnabled(false);
+        playButton5.setEnabled(false);
+        
         if (page >= 1 && page < 4) {
             page++;
         }
@@ -939,12 +945,14 @@ public class Passive extends javax.swing.JFrame {
             jBackButton.setText("Back");
             jBackButton.setEnabled(true);
         }
+        
+        jTextPane1.setText("Loading...");
+        jTextPane2.setText("Loading...");
+        jTextPane3.setText("Loading...");
+        jTextPane4.setText("Loading...");
+        jTextPane5.setText("Loading...");
 
-        jTextPane1.setText(textList.get(page - 1).get(0));
-        jTextPane2.setText(textList.get(page - 1).get(1));
-        jTextPane3.setText(textList.get(page - 1).get(2));
-        jTextPane4.setText(textList.get(page - 1).get(3));
-        jTextPane5.setText(textList.get(page - 1).get(4));
+        
 
         clip1.stop();
         clip2.stop();
@@ -974,6 +982,19 @@ public class Passive extends javax.swing.JFrame {
         clipsList = backend.makeClips(page);
         initAudio();
         backend.findWords(textList.get(page - 1), wordsList);
+        
+        playButton1.setEnabled(true);
+        playButton2.setEnabled(true);
+        playButton3.setEnabled(true);
+        playButton4.setEnabled(true);
+        playButton5.setEnabled(true);
+        
+        jTextPane1.setText(textList.get(page - 1).get(0));
+        jTextPane2.setText(textList.get(page - 1).get(1));
+        jTextPane3.setText(textList.get(page - 1).get(2));
+        jTextPane4.setText(textList.get(page - 1).get(3));
+        jTextPane5.setText(textList.get(page - 1).get(4));
+        
         try {
             highlightWord(wordsList, textList.get(page - 1));
         } catch (BadLocationException ex) {
@@ -982,6 +1003,12 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jNextButtonActionPerformed
 
     private void jBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackButtonActionPerformed
+        playButton1.setEnabled(false);
+        playButton2.setEnabled(false);
+        playButton3.setEnabled(false);
+        playButton4.setEnabled(false);
+        playButton5.setEnabled(false);
+        
         if (page <= 4 && page > 1) {
             page--;
         }
@@ -1022,17 +1049,25 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setForeground(new java.awt.Color(0, 153, 51));
         playButton5.setForeground(new java.awt.Color(0, 153, 51));
 
-        playButton1.setText("Play");
-        playButton2.setText("Play");
-        playButton3.setText("Play");
-        playButton4.setText("Play");
-        playButton5.setText("Play");
+        
 
         backend.closeAudio();
         clipsList = backend.makeClips(page);
         initAudio();
         backend.findWords(textList.get(page - 1), wordsList);
 
+        playButton1.setText("Play");
+        playButton2.setText("Play");
+        playButton3.setText("Play");
+        playButton4.setText("Play");
+        playButton5.setText("Play");
+        
+        playButton1.setEnabled(true);
+        playButton2.setEnabled(true);
+        playButton3.setEnabled(true);
+        playButton4.setEnabled(true);
+        playButton5.setEnabled(true);
+        
         try {
             highlightWord(wordsList, textList.get(page - 1));
         } catch (BadLocationException ex) {

@@ -5,6 +5,7 @@
  */
 package my.transcription;
 
+import java.io.File;
 import javax.swing.JFileChooser;
 
 /**
@@ -127,7 +128,7 @@ public class UpdateTones extends javax.swing.JFrame {
     }//GEN-LAST:event_transcriptionPathActionPerformed
 
     private void transcriptionBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transcriptionBrowseActionPerformed
-        String file = fileChooser() + "\\";
+        String file = fileChooser() + File.separator;
         transcriptionPath.setText(file);
     }//GEN-LAST:event_transcriptionBrowseActionPerformed
 
