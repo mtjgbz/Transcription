@@ -166,7 +166,7 @@ public class Home extends javax.swing.JFrame {
         jBackground = new javax.swing.JLabel();
         jNaMaButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jFileMenuItem = new javax.swing.JMenu();
+        jFile = new javax.swing.JMenu();
         jLoadTextMenu = new javax.swing.JMenu();
         jLoadTones = new javax.swing.JMenu();
         jUsernameMenuDropDown = new javax.swing.JMenu();
@@ -299,7 +299,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
-        jFileMenuItem.setText("File");
+        jFile.setText("File");
 
         jLoadTextMenu.setText("Load Text");
         jLoadTextMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -312,7 +312,7 @@ public class Home extends javax.swing.JFrame {
                 jLoadTextMenuActionPerformed(evt);
             }
         });
-        jFileMenuItem.add(jLoadTextMenu);
+        jFile.add(jLoadTextMenu);
 
         jLoadTones.setText("Load Tones");
         jLoadTones.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -325,9 +325,9 @@ public class Home extends javax.swing.JFrame {
                 jLoadTonesActionPerformed(evt);
             }
         });
-        jFileMenuItem.add(jLoadTones);
+        jFile.add(jLoadTones);
 
-        jMenuBar1.add(jFileMenuItem);
+        jMenuBar1.add(jFile);
 
         jUsernameMenuDropDown.setText("User");
 
@@ -647,48 +647,12 @@ public class Home extends javax.swing.JFrame {
         timer1.start();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Home().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jActiveButton;
     private javax.swing.JLabel jBackground;
     private javax.swing.JMenuItem jChangePassword;
     private javax.swing.JButton jEncliticButton;
-    private javax.swing.JMenu jFileMenuItem;
+    private javax.swing.JMenu jFile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLessonLabel;

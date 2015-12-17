@@ -6,7 +6,6 @@
 package my.transcription;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author mike
+ * @author Noah, Erica, Casey, and Michael
  */
 public class AdminHome extends javax.swing.JFrame {
 
@@ -38,8 +37,6 @@ public class AdminHome extends javax.swing.JFrame {
     public AdminHome() {
         initComponents();
         this.setTitle("Mixtec Transcription: Administrator Home");
-        getContentPane().setBackground(new Color(187, 202, 162));
-        jPanel1.setBackground(new Color(187, 202, 162));
         backend = new AdminBE(this);
         userSelection();
     }
@@ -109,46 +106,98 @@ public class AdminHome extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         list1 = new java.awt.List();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jBackButton = new javax.swing.JMenu();
+        jLogOut = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jLoadText = new javax.swing.JMenuItem();
+        jLoadTones = new javax.swing.JMenuItem();
 
         jRadioButton1.setText("jRadioButton1");
 
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(154, 154, 154))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 323, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Log Out");
-        jMenuBar1.add(jMenu1);
+        jBackButton.setText("Back");
+        jBackButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBackButtonMousePressed(evt);
+            }
+        });
+        jMenuBar1.add(jBackButton);
+
+        jLogOut.setText("Log Out");
+        jLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLogOutMousePressed(evt);
+            }
+        });
+        jMenuBar1.add(jLogOut);
+
+        jMenu3.setText("File");
+
+        jLoadText.setText("Load Text");
+        jLoadText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLoadTextMousePressed(evt);
+            }
+        });
+        jMenu3.add(jLoadText);
+
+        jLoadTones.setText("Load Tones");
+        jLoadTones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLoadTonesMousePressed(evt);
+            }
+        });
+        jMenu3.add(jLoadTones);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -156,17 +205,14 @@ public class AdminHome extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -176,6 +222,27 @@ public class AdminHome extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         createPane();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackButtonMousePressed
+        AdminHome home2 = new AdminHome("admin");
+        home2.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBackButtonMousePressed
+
+    private void jLogOutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLogOutMousePressed
+        new SignIn().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLogOutMousePressed
+
+    private void jLoadTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMousePressed
+        UpdateLessonFile window = new UpdateLessonFile();
+        window.setVisible(true);
+    }//GEN-LAST:event_jLoadTextMousePressed
+
+    private void jLoadTonesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTonesMousePressed
+        UpdateTones window = new UpdateTones();
+        window.setVisible(true);
+    }//GEN-LAST:event_jLoadTonesMousePressed
 
     /**
      * @param args the command line arguments
@@ -213,9 +280,15 @@ public class AdminHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jBackButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jLoadText;
+    private javax.swing.JMenuItem jLoadTones;
+    private javax.swing.JMenu jLogOut;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private java.awt.List list1;
