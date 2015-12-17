@@ -40,9 +40,9 @@ public class ActiveBE {
     private static ArrayList<File> clips;
     private static ArrayList<String> phrases;
     private static ArrayList<String> correctAnswers;
-    private static ArrayList<String> userAnswers;
+    private static ArrayList<ArrayList<String>> userAnswers;
     private ArrayList<Integer> attempts;
-    private int practiceID;
+    private static int practiceID;
 
     private JFrame parentFrame;
 
@@ -58,19 +58,14 @@ public class ActiveBE {
         clips = new ArrayList<>();
         attempts = new ArrayList<Integer>();
         correctAnswers = new ArrayList<String>();
+        userAnswers = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             attempts.add(1);
         }
     }
     
-    public void addCorrectAnswer(String answer){
-        if(!correctAnswers.contains(answer)){
-            correctAnswers.add(answer);
-        }
-    }
-    
     public void addUserAnswer(String answer, int questionNum){
-        userAnswers.add(answer);
+        userAnswers.get(questionNum).add(answer);
     }
 
     public Clip makeClip(int pageNum) {
@@ -107,9 +102,9 @@ public class ActiveBE {
 
     public int newPractice(String username, int lesson, String sublesson) {
         try {
-            String query = "INSERT INTO PRACTICE(Username, DateTaken, Lesson, Sublesson, DateTaken)"
+            String query = "INSERT INTO PRACTICE(Username, Lesson, Sublesson, DateTaken)"
                     + " VALUES('" + username + "', " + lesson + ", '" + sublesson + "', "
-                    + "NOW());";
+                    + "datetime('now', 'localtime'));";
             stmt.execute(query);
             query = "SELECT(PracticeID) FROM PRACTICE WHERE PracticeID = LAST_INSERT_ROWID();";
             ResultSet rs = stmt.executeQuery(query);
@@ -126,7 +121,8 @@ public class ActiveBE {
         try {
             int attempt = Math.abs(attemptInverse - 3);
             int questionID = getQuestionNum(word);
-            String userAnswer = userAnswers.get(questionID);
+            ArrayList<String> currList = userAnswers.get(questionID);
+            String userAnswer = currList.get(currList.size() - 1);
             int score;
             if(correct){
                 score = 1;
@@ -134,7 +130,13 @@ public class ActiveBE {
                 score = 0;
             }
             
+            System.out.println("User Answers: " + userAnswers);
+            System.out.println("PracticeID: " + practiceID);
             
+            String query = "INSERT INTO PRACTICE_ATTEMPT(PracticeID, Attempt, QuestionID, "
+                    + "Response, Score) VALUES(" + practiceID + ", " + attempt + ", "
+                    + questionID + ", '" + userAnswer + "', " + score + ");";
+            stmt.execute(query);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -252,6 +254,7 @@ public class ActiveBE {
     
     public int getQuestionNum(String answer){
         System.out.println("List of answers: " + correctAnswers);
+        System.out.println(userAnswers);
         return correctAnswers.indexOf(answer);
     }
 
@@ -268,12 +271,12 @@ public class ActiveBE {
         String[] phrase = input.split(" ");
         matcher = regexp.matcher(input);
         while (matcher.find()) {
-            System.out.println("found word");
             String word = matcher.group(1);
             word = word.replaceAll(" ", "");
             if (!(words.contains(word))) {
                 words.add(word);
                 correctAnswers.add(word);
+                userAnswers.add(new ArrayList<String>());
                 wordCount++;
             }
         }
@@ -408,7 +411,6 @@ public class ActiveBE {
 //           System.out.println(s);
 //       }
         //System.out.println(blanks.size());
-        System.out.println(output);
         return output;
     }
 }
