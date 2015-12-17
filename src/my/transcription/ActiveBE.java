@@ -41,6 +41,7 @@ public class ActiveBE {
     private static ArrayList<String> phrases;
     private static ArrayList<String> correctAnswers;
     private static ArrayList<ArrayList<String>> userAnswers;
+    private static ArrayList<Integer> idList;
     private ArrayList<Integer> attempts;
     private static int practiceID;
 
@@ -59,8 +60,27 @@ public class ActiveBE {
         attempts = new ArrayList<Integer>();
         correctAnswers = new ArrayList<String>();
         userAnswers = new ArrayList<>();
+        idList = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             attempts.add(1);
+        }
+    }
+    
+    public void addCorrectAnswer(String answer, int questionNum){
+        try{
+            String query = "INSERT INTO PRACTICE_ANSWER(PracticeID, Answer, "
+                    + "QuestionNum) VALUES(" + practiceID + ", '" + answer + "', "
+                    + questionNum + ");";
+            stmt.execute(query);
+            
+            String query1 = "SELECT QuestionID FROM PRACTICE_ANSWER WHERE "
+                    + "QuestionID = LAST_INSERT_ROWID();";
+            rs = stmt.executeQuery(query1);
+            int questionID = rs.getInt("QuestionID");
+            rs.close();
+            idList.add(questionID);
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
     
@@ -276,6 +296,7 @@ public class ActiveBE {
             if (!(words.contains(word))) {
                 words.add(word);
                 correctAnswers.add(word);
+                addCorrectAnswer(word, correctAnswers.indexOf(word));
                 userAnswers.add(new ArrayList<String>());
                 wordCount++;
             }
