@@ -12,6 +12,7 @@ import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
@@ -41,7 +42,7 @@ public class Practice extends javax.swing.JFrame {
     int wordCount;
     int numTags;
     int clicks;
-    int attempts;
+    int attempt;
     boolean correct1 = false, correct2 = false, correct3 = false, correct4 = false;
     
     String user;
@@ -77,8 +78,11 @@ public class Practice extends javax.swing.JFrame {
     ArrayList<Clip> clips = new ArrayList<>();
     ArrayList<Integer> startTags = new ArrayList<>();
     ArrayList<Integer> endTags = new ArrayList<>();
-    private ArrayList<String> answers = new ArrayList<>();
+    private ArrayList<ArrayList<ArrayList<String>>> answers = new ArrayList<>();
     ArrayList<Boolean> btnStatus = new ArrayList<>();
+    ArrayList<Integer> attempts = new ArrayList<>();
+    ArrayList<ArrayList<Integer>> saveStart = new ArrayList<>(); 
+    ArrayList<ArrayList<Integer>> saveEnd = new ArrayList<>();
 
     private Highlighter.HighlightPainter redPainter;
     private Highlighter.HighlightPainter greenPainter;
@@ -123,11 +127,34 @@ public class Practice extends javax.swing.JFrame {
         setupTones();
         nas = new Nasalizations(path);
         tone = new ToneTable(path);
-        attempts = 3;
-        attemptCountLabel.setText("You have " + attempts + " attempts left.");
+        attempt = 3;
+        attemptCountLabel.setText("You have " + attempt + " attempts left.");
+
         for(int i = 0; i < 20; i++) {
             btnStatus.add(true);
-        } 
+            answers.add(new ArrayList<ArrayList<String>>());
+            attempts.add(3);
+            saveStart.add(new ArrayList<Integer>());
+            saveEnd.add(new ArrayList<Integer>());
+            for(int j = 0; j < 4; j++) {
+               
+                saveStart.get(i).add(j);
+                saveEnd.get(i).add(j);
+                
+                answers.get(i).add(new ArrayList<String>());
+                for(int k = 0; k < 3; k++) {
+                    answers.get(i).get(j).add(" ");
+                }
+            }
+        }
+        for(Integer i : saveStart.get(0)) {
+            System.out.println("saveStart(0) " + i);
+        }
+        for(Integer i : saveEnd.get(0)) {
+            System.out.println("saveEnd(0) " + i);
+        }
+        System.out.println("answers(0) " + answers.get(0));
+
     }
     
     private void setupTones() {
@@ -316,7 +343,10 @@ public class Practice extends javax.swing.JFrame {
         blank4 = blank4.replaceAll(" ", "");
     }
     
-    private void saveState() {
+    private void saveState(int attempt, int start, int end, int wCount, int pg, String word, boolean correct) {
+        attempts.set(pg-1, attempt);
+        saveStart.get(pg-1).set(wCount, start);
+        saveEnd.get(pg-1).set(wCount, end);
         
     }
    
@@ -340,10 +370,10 @@ public class Practice extends javax.swing.JFrame {
             if(right4) {
                 disableDocFilter4();
             }
-            answers.add(blank1);
-            answers.add(blank2);
-            answers.add(blank3);
-            answers.add(blank4);
+            answers.get(page-1).get(wordCount-1).add(blank1);
+            answers.get(page-1).get(wordCount-1).add(blank2);
+            answers.get(page-1).get(wordCount-1).add(blank3);
+            answers.get(page-1).get(wordCount-1).add(blank4);
         }
         else if (wordCount == 3) {
             boolean right1 = highlightWord(blank1, words.get(0), start1, end1);
@@ -358,9 +388,9 @@ public class Practice extends javax.swing.JFrame {
             if(right3) {
                 disableDocFilter3();
             }
-            answers.add(blank1);
-            answers.add(blank2);
-            answers.add(blank3);
+            answers.get(page-1).get(wordCount-1).add(blank1);
+            answers.get(page-1).get(wordCount-1).add(blank2);
+            answers.get(page-1).get(wordCount-1).add(blank3);
         }
         else if (wordCount == 2) {
             boolean right1 = highlightWord(blank1, words.get(0), start1, end1);
@@ -371,15 +401,16 @@ public class Practice extends javax.swing.JFrame {
             if(right2) {
                 disableDocFilter2();
             }
-            answers.add(blank1);
-            answers.add(blank2);
+            answers.get(page-1).get(wordCount-1).add(blank1);
+            answers.get(page-1).get(wordCount-1).add(blank2);
         }
         else if (wordCount == 1) {
             boolean right  = highlightWord(blank1, words.get(0), start1, end1);
             if(right) {
                 disableDocFilter1();
             }
-            answers.add(blank1);
+            answers.get(page-1).get(wordCount-1).add(blank1);
+            saveState(attempt, start1, end1, wordCount, page, words.get(0), correct1);
         }
     }
     
@@ -953,7 +984,7 @@ public class Practice extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
@@ -969,8 +1000,8 @@ public class Practice extends javax.swing.JFrame {
    
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         clicks++;
-        attempts--;
-        attemptCountLabel.setText("You have " + attempts + " attemtps left.");   
+        attempt--;
+        attemptCountLabel.setText("You have " + attempt + " attemtps left.");   
         
         String phrase = jTextPane1.getText();
         findStartEnd(phrase);
@@ -983,9 +1014,12 @@ public class Practice extends javax.swing.JFrame {
         if (clicks == 3) {
             submitButton.setEnabled(false); 
             btnStatus.set(page-1, false);
-            
             findWrongAnswers();
+            for(String w : answers.get(page-1).get(wordCount-1)) {
+                System.out.println("answer: " + w);
+            }
         }
+        
     }
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
@@ -1007,6 +1041,7 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         backend.closeAudio();
         submitButton.setEnabled(btnStatus.get(page-1));
+        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attemtps left."); 
         initAudio();
         showText();
     }//GEN-LAST:event_prevButtonActionPerformed
@@ -1092,8 +1127,8 @@ public class Practice extends javax.swing.JFrame {
         initAudio();
         submitButton.setEnabled(btnStatus.get(page-1));
         clicks = 0;
-        attempts = 3;
-        attemptCountLabel.setText("You have " + attempts + " attempts left.");
+        attempt = 3;
+        attemptCountLabel.setText("You have " + attempt + " attempts left.");
         showText();
     }//GEN-LAST:event_nextButtonActionPerformed
 
