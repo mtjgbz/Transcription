@@ -7,6 +7,7 @@ package my.transcription;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -19,6 +20,8 @@ import static javax.sound.sampled.LineEvent.Type.STOP;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JOptionPane;
+import static my.transcription.Nasalizations.errorMsg;
 
 /**
  *
@@ -117,6 +120,10 @@ public class Nasalizations extends javax.swing.JFrame {
         stringNames.add(i17);
     }
 
+    public static void errorMsg(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
+    }
+    
     /**
      * method that creates the audio clip every time the button is clicked to
      * avoid heap space errors
@@ -142,12 +149,14 @@ public class Nasalizations extends javax.swing.JFrame {
                 clip.start();
             }
 
+        } catch (FileNotFoundException ex) { 
+            errorMsg("Nasalization Audio Not Found, Please Have Admin Load Audio Files.", "Nasalization");
         } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
-            Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (count.get(buttonNum).equals(stringNames.get(buttonNum).size() - 1)) {
             count.set(buttonNum, 0);
@@ -742,40 +751,6 @@ public class Nasalizations extends javax.swing.JFrame {
         buttonAction();
     }//GEN-LAST:event_jButton18ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Nasalizations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Nasalizations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Nasalizations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Nasalizations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Nasalizations(path).setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
