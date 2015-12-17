@@ -39,6 +39,7 @@ public class AdminHome extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Mixtec Transcription: Administrator Home");
         getContentPane().setBackground(new Color(187, 202, 162));
+        jPanel1.setBackground(new Color(187, 202, 162));
         backend = new AdminBE(this);
         userSelection();
     }

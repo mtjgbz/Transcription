@@ -350,6 +350,8 @@ public class Practice extends javax.swing.JFrame {
         saveStart.get(pg-1).set(wCount-1, start);
         saveEnd.get(pg-1).set(wCount-1, end);
         correct.get(pg-1).set(wCount-1, crct);
+        
+//        backend.newAttempt(attempt, word, crct);
     }
    
     private void checkAnswers() throws BadLocationException {
@@ -376,6 +378,11 @@ public class Practice extends javax.swing.JFrame {
             answers.get(page-1).get(wordCount-1).add(blank2);
             answers.get(page-1).get(wordCount-1).add(blank3);
             answers.get(page-1).get(wordCount-1).add(blank4);
+            
+            backend.addUserAnswer(blank1, backend.getQuestionNum(words.get(0)));
+            backend.addUserAnswer(blank2, backend.getQuestionNum(words.get(1)));
+            backend.addUserAnswer(blank3, backend.getQuestionNum(words.get(2)));
+            backend.addUserAnswer(blank4, backend.getQuestionNum(words.get(3)));
         }
         else if (wordCount == 3) {
             boolean right1 = highlightWord(blank1, words.get(0), start1, end1);
@@ -393,6 +400,10 @@ public class Practice extends javax.swing.JFrame {
             answers.get(page-1).get(wordCount-1).add(blank1);
             answers.get(page-1).get(wordCount-1).add(blank2);
             answers.get(page-1).get(wordCount-1).add(blank3);
+            
+            backend.addUserAnswer(blank1, backend.getQuestionNum(words.get(0)));
+            backend.addUserAnswer(blank2, backend.getQuestionNum(words.get(1)));
+            backend.addUserAnswer(blank3, backend.getQuestionNum(words.get(2)));
         }
         else if (wordCount == 2) {
             boolean right1 = highlightWord(blank1, words.get(0), start1, end1);
@@ -405,6 +416,9 @@ public class Practice extends javax.swing.JFrame {
             }
             answers.get(page-1).get(wordCount-1).add(blank1);
             answers.get(page-1).get(wordCount-1).add(blank2);
+            
+            backend.addUserAnswer(blank1, backend.getQuestionNum(words.get(0)));
+            backend.addUserAnswer(blank2, backend.getQuestionNum(words.get(1)));
         }
         else if (wordCount == 1) {
             boolean right  = highlightWord(blank1, words.get(0), start1, end1);
@@ -412,6 +426,9 @@ public class Practice extends javax.swing.JFrame {
                 disableDocFilter1();
             }
             answers.get(page-1).get(wordCount-1).add(blank1);
+            
+            backend.addUserAnswer(blank1, backend.getQuestionNum(words.get(0)));
+            
             saveState(attempt, start1, end1, wordCount, page, words.get(0), correct1);
         }
     }
@@ -776,6 +793,7 @@ public class Practice extends javax.swing.JFrame {
         System.out.println("Page: " + page);
         for(String w : wordsList.get(page-1)) {
             System.out.println("in wordslist: " + w);
+            
         }    
         int index = page - 1;
         System.out.println("Index: " + index);
@@ -1046,9 +1064,13 @@ public class Practice extends javax.swing.JFrame {
         submitButton.setEnabled(btnStatus.get(page-1));
         attemptCountLabel.setText("You have " + attempts.get(page-1) + " attemtps left."); 
         try {
-            doc.insertString(saveStart.get(page-1).get(wordCount-1), answers.get(page-1).get(wordCount-1).get(attempts.get(page-1)), null);
+            int start = saveStart.get(page - 1).get(wordCount - 1);
+            int end = saveEnd.get(page - 1).get(wordCount - 1);
+            String answer = answers.get(page - 1).get(wordCount - 1).get(attempts.get(page - 1));
+            String word = wordsList.get(page - 1).get(wordCount - 1);
+            doc.insertString(start, answer, null);
             if(correct.get(page-1).get(wordCount-1) == false) {
-                displayCorrectAnswers(saveStart.get(page-1).get(wordCount-1), saveEnd.get(page-1).get(wordCount-1), wordsList.get(page-1).get(wordCount));
+                displayCorrectAnswers(start, end, word);
             }
         } catch (BadLocationException ex) {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);

@@ -6,9 +6,7 @@
 package my.transcription;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.LineNumberReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -44,6 +42,7 @@ public class ActiveBE {
     private static ArrayList<String> correctAnswers;
     private static ArrayList<String> userAnswers;
     private ArrayList<Integer> attempts;
+    private int practiceID;
 
     private JFrame parentFrame;
 
@@ -62,6 +61,16 @@ public class ActiveBE {
         for (int i = 0; i < 20; i++) {
             attempts.add(1);
         }
+    }
+    
+    public void addCorrectAnswer(String answer){
+        if(!correctAnswers.contains(answer)){
+            correctAnswers.add(answer);
+        }
+    }
+    
+    public void addUserAnswer(String answer, int questionNum){
+        userAnswers.add(answer);
     }
 
     public Clip makeClip(int pageNum) {
@@ -104,52 +113,28 @@ public class ActiveBE {
             stmt.execute(query);
             query = "SELECT(PracticeID) FROM PRACTICE WHERE PracticeID = LAST_INSERT_ROWID();";
             ResultSet rs = stmt.executeQuery(query);
-            int id = rs.getInt("PracticeID");
+            practiceID = rs.getInt("PracticeID");
             rs.close();
-            return id;
+            return practiceID;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
     }
 
-    public void newAttempt(int questionNum, int practiceID) {
+    public void newAttempt(int attemptInverse, String word, boolean correct) {
         try {
-            int attempt = attempts.get(questionNum - 1);
-            String response = userAnswers.get(questionNum - 1);
-            String answer = userAnswers.get(questionNum - 1);
-
-            //get the practice id from the db
-            stmt = User.setupDB(parentFrame, getClass().getResource("TAA.db").toString());
-
-            //get the word from that practice from the db or just the array
-            //get the questionID from that word
-            String corrAnswer = correctAnswers.get(questionNum - 1);
-
-            String query = "SELECT QuestionID FROM PRACTICE_ANSWER WHERE"
-                    + " PracticeID = " + practiceID + " AND ANSWER LIKE "
-                    + corrAnswer + "; ";
-            ResultSet rs = stmt.executeQuery(query);
-            int questionID = rs.getInt("QuestionID");
-
-            //if it matches the answer in the array put it in as the correct score
-            float score;
-            float weightedScore;
-            if (response.equals(answer)) {
-                score = 100;
-                weightedScore = 1 / attempt;
-            } else {
+            int attempt = Math.abs(attemptInverse - 3);
+            int questionID = getQuestionNum(word);
+            String userAnswer = userAnswers.get(questionID);
+            int score;
+            if(correct){
+                score = 1;
+            }else{
                 score = 0;
-                weightedScore = 0 / attempt;
             }
-
-            query = "INSERT INTO PRACTICE_ATTEMPT(PracticeID, Attempt, "
-                    + "QuestionID, Response, Score, WeightedScore) VALUES("
-                    + attempt + ", " + questionID + ", " + response + ", " + score
-                    + ", " + weightedScore + "; ";
-            stmt.executeQuery(query);
-
-            attempts.set(questionNum - 1, attempt + 1);
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -263,6 +248,11 @@ public class ActiveBE {
 
     public ArrayList<File> getClips() {
         return clips;
+    }
+    
+    public int getQuestionNum(String answer){
+        System.out.println("List of answers: " + correctAnswers);
+        return correctAnswers.indexOf(answer);
     }
 
     /**
