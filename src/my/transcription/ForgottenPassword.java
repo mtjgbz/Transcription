@@ -159,7 +159,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
                         .addComponent(jYourPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 160, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,9 +204,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
                 .addComponent(jSignIn)
                 .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 291, Short.MAX_VALUE)))
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 328, Short.MAX_VALUE))
         );
 
         pack();
@@ -266,35 +264,10 @@ public class ForgottenPassword extends javax.swing.JFrame {
     }//GEN-LAST:event_jConfirmButtonActionPerformed
 
     private void jSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSignInActionPerformed
-//        //ECL: Checking username and password
-//        //CAU: Checking if admin or not
-//        String username = jUserNameField.getText();
-//        char[] password = jPasswordField.getPassword();
-//
-//        String pass = "";
-//        for (char a : password) {
-//            pass = pass + a;
-//        }
-//
-//        /**
-//        * if the entered username matches the password then open the users home
-//        * page else if admin is trying to login else error message
-//        */
-//        if (backend.checkPassword(username, pass)) {
-//            Home home1 = new Home(jUserNameField.getText());
-//            home1.setVisible(true);
-//            dispose();
-//            backend.closeDB();
-//
-//        } else if (backend.checkAdmin(username)) {
-//
-//            AdminHome home2 = new AdminHome(jUserNameField.getText());
-//            home2.setVisible(true);
-//            backend.closeDB();
-//            dispose();
-//        } else {
-//            errorMsg("Sign-in failed.  Please try again.", "Sign-in");
-//        }
+            Home home1 = new Home(jUsernameTextField.getText());
+            home1.setVisible(true);
+            dispose();
+            backend.closeDB();
     }//GEN-LAST:event_jSignInActionPerformed
 
     /**
