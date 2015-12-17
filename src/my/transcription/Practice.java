@@ -403,17 +403,18 @@ public class Practice extends javax.swing.JFrame {
             if(right2) {
                 disableDocFilter2();
             }
-            answers.get(page-1).get(wordCount-1).add(blank1);
-            answers.get(page-1).get(wordCount-1).add(blank2);
+            answers.get(page-1).get(wordCount-1).set(attempt, blank1);
+            answers.get(page-1).get(wordCount-1).set(attempt, blank2);
         }
         else if (wordCount == 1) {
             boolean right  = highlightWord(blank1, words.get(0), start1, end1);
             if(right) {
                 disableDocFilter1();
             }
-            answers.get(page-1).get(wordCount-1).add(blank1);
+            answers.get(page-1).get(wordCount-1).set(attempt, blank1);
             saveState(attempt, start1, end1, wordCount, page, words.get(0), correct1);
         }
+        System.out.println(answers.get(0));
     }
     
     private void disableDocFilter1() {
@@ -1046,15 +1047,17 @@ public class Practice extends javax.swing.JFrame {
         submitButton.setEnabled(btnStatus.get(page-1));
         attemptCountLabel.setText("You have " + attempts.get(page-1) + " attemtps left."); 
         try {
-            doc.insertString(saveStart.get(page-1).get(wordCount-1), answers.get(page-1).get(wordCount-1).get(attempts.get(page-1)), null);
+            doc.insertString(181, "hello", null);
+            //doc.insertString(saveStart.get(page-1).get(wordCount-1), answers.get(page-1).get(wordCount-1).get(attempts.get(page-1)), null);
             if(correct.get(page-1).get(wordCount-1) == false) {
-                displayCorrectAnswers(saveStart.get(page-1).get(wordCount-1), saveEnd.get(page-1).get(wordCount-1), wordsList.get(page-1).get(wordCount));
+                displayCorrectAnswers(saveStart.get(page-1).get(wordCount-1), saveEnd.get(page-1).get(wordCount-1), wordsList.get(page-1).get(wordCount-1));
             }
         } catch (BadLocationException ex) {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
         }
         initAudio();
         showText();
+        jTextPane1.setText(text);
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
@@ -1116,7 +1119,7 @@ public class Practice extends javax.swing.JFrame {
             playButton1.setText("Play");
         }
     }//GEN-LAST:event_playButton1ActionPerformed
-
+    String text = " ";
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         page++;
         clip.stop();
@@ -1141,6 +1144,8 @@ public class Practice extends javax.swing.JFrame {
         attempt = 3;
         attemptCountLabel.setText("You have " + attempts.get(page-1) + " attemtps left.");
         showText();
+        text = jTextPane1.getText();
+        System.out.println("back btn press text: " + text);
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
