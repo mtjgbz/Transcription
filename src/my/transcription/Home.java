@@ -487,7 +487,6 @@ public class Home extends javax.swing.JFrame {
     private void jPassiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassiveButtonActionPerformed
         loading = true;
         act.dispose();
-        pass1.dispose();
         enc.dispose();
         nas.dispose();
         tone.dispose();
