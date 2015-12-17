@@ -431,6 +431,7 @@ public class Practice extends javax.swing.JFrame {
             
             saveState(attempt, start1, end1, wordCount, page, words.get(0), correct1);
         }
+        System.out.println(answers.get(0));
     }
     
     private void disableDocFilter1() {
@@ -1077,6 +1078,7 @@ public class Practice extends javax.swing.JFrame {
         }
         initAudio();
         showText();
+        jTextPane1.setText(text);
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
@@ -1138,7 +1140,7 @@ public class Practice extends javax.swing.JFrame {
             playButton1.setText("Play");
         }
     }//GEN-LAST:event_playButton1ActionPerformed
-
+    String text = " ";
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         page++;
         clip.stop();
@@ -1163,6 +1165,8 @@ public class Practice extends javax.swing.JFrame {
         attempt = 3;
         attemptCountLabel.setText("You have " + attempts.get(page-1) + " attemtps left.");
         showText();
+        text = jTextPane1.getText();
+        System.out.println("back btn press text: " + text);
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
