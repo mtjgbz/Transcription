@@ -218,127 +218,35 @@ public class PassiveBE {
         ArrayList<Clip> clips1 = new ArrayList<>();
 
         try {
-            if (pageNum == 1) {
-                AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(0));
-                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip1 = (Clip) AudioSystem.getLine(info);
-                clip1.open(audioIn);
-                audioIn.close();
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get((pageNum - 1) * 5));
+            DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            clip1 = (Clip) AudioSystem.getLine(info);
+            clip1.open(audioIn);
+            audioIn.close();
 
-                audioIn = AudioSystem.getAudioInputStream(clips.get(1));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip2 = (Clip) AudioSystem.getLine(info);
-                clip2.open(audioIn);
-                audioIn.close();
+            audioIn = AudioSystem.getAudioInputStream(clips.get(((pageNum - 1) * 5) + 1));
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            clip2 = (Clip) AudioSystem.getLine(info);
+            clip2.open(audioIn);
+            audioIn.close();
 
-                audioIn = AudioSystem.getAudioInputStream(clips.get(2));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip3 = (Clip) AudioSystem.getLine(info);
-                clip3.open(audioIn);
-                audioIn.close();
+            audioIn = AudioSystem.getAudioInputStream(clips.get(((pageNum - 1) * 5) + 2));
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            clip3 = (Clip) AudioSystem.getLine(info);
+            clip3.open(audioIn);
+            audioIn.close();
 
-                audioIn = AudioSystem.getAudioInputStream(clips.get(3));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip4 = (Clip) AudioSystem.getLine(info);
-                clip4.open(audioIn);
-                audioIn.close();
+            audioIn = AudioSystem.getAudioInputStream(clips.get(((pageNum - 1) * 5) + 3));
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            clip4 = (Clip) AudioSystem.getLine(info);
+            clip4.open(audioIn);
+            audioIn.close();
 
-                audioIn = AudioSystem.getAudioInputStream(clips.get(4));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip5 = (Clip) AudioSystem.getLine(info);
-                clip5.open(audioIn);
-                audioIn.close();
-            } else if (pageNum == 2) {
-                AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(5));
-                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip1 = (Clip) AudioSystem.getLine(info);
-                clip1.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(6));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip2 = (Clip) AudioSystem.getLine(info);
-                clip2.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(7));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip3 = (Clip) AudioSystem.getLine(info);
-                clip3.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(8));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip4 = (Clip) AudioSystem.getLine(info);
-                clip4.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(9));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip5 = (Clip) AudioSystem.getLine(info);
-                clip5.open(audioIn);
-                audioIn.close();
-            } else if (pageNum == 3) {
-                AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(10));
-                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip1 = (Clip) AudioSystem.getLine(info);
-                clip1.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(11));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip2 = (Clip) AudioSystem.getLine(info);
-                clip2.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(12));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip3 = (Clip) AudioSystem.getLine(info);
-                clip3.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(13));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip4 = (Clip) AudioSystem.getLine(info);
-                clip4.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(14));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip5 = (Clip) AudioSystem.getLine(info);
-                clip5.open(audioIn);
-                audioIn.close();
-            } else {
-                AudioInputStream audioIn = AudioSystem.getAudioInputStream(clips.get(15));
-                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip1 = (Clip) AudioSystem.getLine(info);
-                clip1.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(16));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip2 = (Clip) AudioSystem.getLine(info);
-                clip2.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(17));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip3 = (Clip) AudioSystem.getLine(info);
-                clip3.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(18));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip4 = (Clip) AudioSystem.getLine(info);
-                clip4.open(audioIn);
-                audioIn.close();
-
-                audioIn = AudioSystem.getAudioInputStream(clips.get(19));
-                info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip5 = (Clip) AudioSystem.getLine(info);
-                clip5.open(audioIn);
-                audioIn.close();
-            }
+            audioIn = AudioSystem.getAudioInputStream(clips.get(((pageNum - 1) * 5) + 4));
+            info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            clip5 = (Clip) AudioSystem.getLine(info);
+            clip5.open(audioIn);
+            audioIn.close();
 
             clips1.add(clip1);
             clips1.add(clip2);
