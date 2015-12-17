@@ -26,8 +26,6 @@ public class Active extends javax.swing.JFrame {
     public Active(Home home, String user) {
         this.home = home;
         this.user = user;
-        this.lesson = lesson;
-        this.subLesson = subLesson;
         getContentPane().setBackground(new Color(148, 189, 203));
         initComponents();
     }
