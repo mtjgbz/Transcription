@@ -85,8 +85,6 @@ public class Home extends javax.swing.JFrame {
             while (rs.next()) {
                 int currLesson = rs.getInt("Lesson");
                 String subL = rs.getString("Sublesson");
-                System.out.println(currLesson + ", " + subL);
-                System.out.println(lessonList.contains(currLesson));
                 if (currLesson < 1) {
                     continue;
                 }
