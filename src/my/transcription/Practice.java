@@ -118,6 +118,7 @@ public class Practice extends javax.swing.JFrame {
         timer = new Timer(4428, listener);
 
         backend = new ActiveBE(false);
+        backend.newPractice(user, lesson, subLesson);
         initTextFields();
         initAudio();
         
@@ -149,14 +150,6 @@ public class Practice extends javax.swing.JFrame {
                 }
             }
         }
-        for(Integer i : saveStart.get(0)) {
-            System.out.println("saveStart(0) " + i);
-        }
-        for(Integer i : saveEnd.get(0)) {
-            System.out.println("saveEnd(0) " + i);
-        }
-        System.out.println("answers(0) " + answers.get(0));
-
     }
     
     private void setupTones() {
@@ -351,7 +344,7 @@ public class Practice extends javax.swing.JFrame {
         saveEnd.get(pg-1).set(wCount-1, end);
         correct.get(pg-1).set(wCount-1, crct);
         
-//        backend.newAttempt(attempt, word, crct);
+        backend.newAttempt(attempt, word, crct);
     }
    
     private void checkAnswers() throws BadLocationException {
@@ -431,7 +424,6 @@ public class Practice extends javax.swing.JFrame {
             
             saveState(attempt, start1, end1, wordCount, page, words.get(0), correct1);
         }
-        System.out.println(answers.get(0));
     }
     
     private void disableDocFilter1() {
@@ -484,7 +476,6 @@ public class Practice extends javax.swing.JFrame {
     
     private void findWrongAnswers() {
         if(wordCount == 1 && correct1 == false) {
-            System.out.println("find Start1: " + start1 + " End1: " + end1);
             displayCorrectAnswers(start1, end1, words.get(0));
         }
         else if(wordCount == 2) {
@@ -530,7 +521,6 @@ public class Practice extends javax.swing.JFrame {
         
         Highlighter highlighter = jTextPane1.getHighlighter();
         jTextPane1.setHighlighter(highlighter);
-        System.out.println("Word b4 highlight: " + word);
         try {
             doc.insertString(blueStart, " " + word, null);
             highlighter.addHighlight(redStart, blueStart, redPainter);
@@ -561,14 +551,12 @@ public class Practice extends javax.swing.JFrame {
                     s1 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s1: " + i);
                     continue;
                 }
                 if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
                     e1 = true;
                     endTags.add(i);
-                    System.out.println("e1: " + i);
                     continue;
                 }
                 if (c == '[' && s2 == false && statement[i+1] == ' ') {
@@ -576,14 +564,12 @@ public class Practice extends javax.swing.JFrame {
                     s2 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s2: " + i);
                     continue;
                 }
                 if (c == ']' && e2 == false && statement[i-1] == ' ') {
                     end2 = i;
                     e2 = true;
                     endTags.add(i);
-                    System.out.println("e2: " + i);
                     continue;
                 }
                 if (c == '[' && s3 == false && statement[i+1] == ' ') {
@@ -591,14 +577,12 @@ public class Practice extends javax.swing.JFrame {
                     s3 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s3: " + i);
                     continue;
                 }
                 if (c == ']' && e3 == false && statement[i-1] == ' ') {
                     end3 = i;
                     e3 = true;
                     endTags.add(i);
-                    System.out.println("e3: " + i);
                     continue;
                 }
                 if (c == ']' && s4 == false && statement[i+1] == ' ') {
@@ -606,14 +590,12 @@ public class Practice extends javax.swing.JFrame {
                     s4 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s4: " + i);
                     continue;
                 }
                 if (c == ']' && e4 == false && statement[i-1] == ' ') {
                     end4 = i;
                     e4 = true;
                     endTags.add(i);
-                    System.out.println("e4: " + i);
                     continue;
                 }
             } else if (wordCount == 3) {
@@ -622,14 +604,12 @@ public class Practice extends javax.swing.JFrame {
                     s1 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s1: " + i);
                     continue;
                 }
                 if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
                     e1 = true;
                     endTags.add(i);
-                    System.out.println("e1: " + i);
                     continue;
                 }
                 if (c == '[' && s2 == false && statement[i+1] == ' ') {
@@ -637,14 +617,12 @@ public class Practice extends javax.swing.JFrame {
                     s2 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s2: " + i);
                     continue;
                 }
                 if (c == ']' && e2 == false && statement[i-1] == ' ') {
                     end2 = i;
                     e2 = true;
                     endTags.add(i);
-                    System.out.println("e2: " + i);
                     continue;
                 }
                 if (c == '[' && s3 == false && statement[i+1] == ' ') {
@@ -652,14 +630,12 @@ public class Practice extends javax.swing.JFrame {
                     s3 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s3: " + i);
                     continue;
                 }
                 if (c == ']' && e3 == false && statement[i-1] == ' ') {
                     end3 = i;
                     e3 = true;
                     endTags.add(i);
-                    System.out.println("e3: " + i);
                     continue;
                 }
                 start4 = 0;
@@ -670,14 +646,12 @@ public class Practice extends javax.swing.JFrame {
                     s1 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s1: " + i);
                     continue;
                 }
                 if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
                     e1 = true;
                     endTags.add(i);
-                    System.out.println("e1: " + i);
                     continue;
                 }
                 if (c == '[' && s2 == false && statement[i+1] == ' ') {
@@ -685,14 +659,12 @@ public class Practice extends javax.swing.JFrame {
                     s2 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s2: " + i);
                     continue;
                 }
                 if (c == ']' && e2 == false && statement[i-1] == ' ') {
                     end2 = i;
                     e2 = true;
                     endTags.add(i);
-                    System.out.println("e2: " + i);
                     continue;
                 }
                 start3 = 0;
@@ -705,14 +677,12 @@ public class Practice extends javax.swing.JFrame {
                     s1 = true;
                     numTags++;
                     startTags.add(i);
-                    System.out.println("s1: " + i);
                     continue;
                 }
                 if (c == ']' && e1 == false && statement[i-1] == ' ') {
                     end1 = i;
                     e1 = true;
                     endTags.add(i);
-                    System.out.println("e1: " + i);
                     continue;
                 }
                 start2 = 0;
@@ -775,7 +745,6 @@ public class Practice extends javax.swing.JFrame {
         }
         
         String current = textList.get(page-1);
-        System.out.println("wsize: " + words.size());
 
         backend.findWords(current, words);
         if (words.size() >= 4) {
@@ -788,18 +757,9 @@ public class Practice extends javax.swing.JFrame {
             wordCount = 1;
         }
         wordsList.add(words);
-        System.out.println("wordsList size: " + wordsList.size());
-        System.out.println("before blanks: " + current);
-        System.out.println("wordCount: " + wordCount);
-        System.out.println("Page: " + page);
-        for(String w : wordsList.get(page-1)) {
-            System.out.println("in wordslist: " + w);
-            
-        }    
+        
         int index = page - 1;
-        System.out.println("Index: " + index);
         current = backend.setBlanks(current, words);
-        System.out.println("current: " + current);
         findStartEnd(current);
         jTextPane1.setText(current);
         jTextPane1.setCaretPosition(start1 + ((end1 - start1) / 2));
@@ -810,7 +770,6 @@ public class Practice extends javax.swing.JFrame {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        System.out.println("wsize: " + words.size());
         for (String w : wordsList.get(page-1)) {
             System.out.println("Word: " + w);
         }
@@ -1036,9 +995,6 @@ public class Practice extends javax.swing.JFrame {
             submitButton.setEnabled(false); 
             btnStatus.set(page-1, false);
             findWrongAnswers();
-            for(String w : answers.get(page-1).get(wordCount-1)) {
-                System.out.println("answer: " + w);
-            }
         }
         
     }
@@ -1063,7 +1019,7 @@ public class Practice extends javax.swing.JFrame {
         playButton1.setText("Play");
         backend.closeAudio();
         submitButton.setEnabled(btnStatus.get(page-1));
-        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attemtps left."); 
+        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attempts left."); 
         try {
             int start = saveStart.get(page - 1).get(wordCount - 1);
             int end = saveEnd.get(page - 1).get(wordCount - 1);
