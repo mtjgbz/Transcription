@@ -110,7 +110,7 @@ public class ChangePass extends javax.swing.JFrame {
         jNewPassword2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(430, 300));
+        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(430, 300));
 
         jLabel1.setText("Current Password");

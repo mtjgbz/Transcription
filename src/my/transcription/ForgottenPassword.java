@@ -48,11 +48,11 @@ public class ForgottenPassword extends javax.swing.JFrame {
         jSecQuestLabel = new javax.swing.JLabel();
         jSecQuestAnsTextField = new javax.swing.JTextField();
         jBackground = new javax.swing.JLabel();
+        jSignIn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jBackMenuButton = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(414, 350));
         setMinimumSize(new java.awt.Dimension(414, 350));
 
         jUsernameTextField.setMaximumSize(new java.awt.Dimension(198, 28));
@@ -108,6 +108,17 @@ public class ForgottenPassword extends javax.swing.JFrame {
 
         jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
 
+        jSignIn.setBackground(new java.awt.Color(204, 204, 204));
+        jSignIn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jSignIn.setText("Sign In");
+        jSignIn.setEnabled(false);
+        //jButton1.setBackground(Color.RED);
+        jSignIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSignInActionPerformed(evt);
+            }
+        });
+
         jBackMenuButton.setText("Back");
         jBackMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,15 +157,22 @@ public class ForgottenPassword extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jValidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
+                        .addGap(132, 132, 132)
                         .addComponent(jYourPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jYourPasswordLabel)
-                .addGap(157, 157, 157))
+                .addGap(0, 160, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jYourPasswordLabel)
+                        .addGap(157, 157, 157))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jSignIn)
+                        .addGap(160, 160, 160))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,9 +200,13 @@ public class ForgottenPassword extends javax.swing.JFrame {
                 .addComponent(jYourPasswordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jYourPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSignIn)
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 291, Short.MAX_VALUE)))
         );
 
         pack();
@@ -206,6 +228,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
             errorMsg("Security Answer is incorrect.", "Forgotten Password");
         } else {
             jYourPasswordTextField.setText(password);
+            jSignIn.setEnabled(rootPaneCheckingEnabled);
         }
 
 
@@ -241,6 +264,38 @@ public class ForgottenPassword extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jConfirmButtonActionPerformed
+
+    private void jSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSignInActionPerformed
+//        //ECL: Checking username and password
+//        //CAU: Checking if admin or not
+//        String username = jUserNameField.getText();
+//        char[] password = jPasswordField.getPassword();
+//
+//        String pass = "";
+//        for (char a : password) {
+//            pass = pass + a;
+//        }
+//
+//        /**
+//        * if the entered username matches the password then open the users home
+//        * page else if admin is trying to login else error message
+//        */
+//        if (backend.checkPassword(username, pass)) {
+//            Home home1 = new Home(jUserNameField.getText());
+//            home1.setVisible(true);
+//            dispose();
+//            backend.closeDB();
+//
+//        } else if (backend.checkAdmin(username)) {
+//
+//            AdminHome home2 = new AdminHome(jUserNameField.getText());
+//            home2.setVisible(true);
+//            backend.closeDB();
+//            dispose();
+//        } else {
+//            errorMsg("Sign-in failed.  Please try again.", "Sign-in");
+//        }
+    }//GEN-LAST:event_jSignInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,6 +341,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
     private javax.swing.JTextField jSecQuestAnsTextField;
     private javax.swing.JLabel jSecQuestLabel;
     private javax.swing.JTextField jSecQuestTextField;
+    private javax.swing.JButton jSignIn;
     private javax.swing.JLabel jUsernameLabel;
     private javax.swing.JTextField jUsernameTextField;
     private javax.swing.JButton jValidateButton;

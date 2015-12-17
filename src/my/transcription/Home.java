@@ -504,7 +504,6 @@ public class Home extends javax.swing.JFrame {
         lesson = lessonList.get(jlessonBox.getSelectedIndex());
         sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
 
-        pass1.dispose();
         enc.dispose();
         nas.dispose();
         tone.dispose();
