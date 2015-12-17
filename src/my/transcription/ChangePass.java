@@ -10,24 +10,26 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import static my.transcription.SignIn.errorMsg;
 import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteDataSource;
 
 /**
  *
- * @author Mike, Noah, Casey and Erica
+ * @author Noah
  */
 public class ChangePass extends javax.swing.JFrame {
-    private String currentPassCheck;
-    private String currentPass="";
-    private String newPass1;
-    private String newPass2;
+    private String currentPass = "";
+    private String newPass1 = "";
+    private String newPass2 = "";
     private Connection conn;
     private Statement stmt;
     private ResultSet rs;
     private int reqSize = 4;
     String user;
+    
+    
     /**
      * Creates new form ChangePass
      */
@@ -70,10 +72,8 @@ public class ChangePass extends javax.swing.JFrame {
             String query = "SELECT COUNT(*) AS Users FROM USERS WHERE USERNAME = '" + user + "' AND PASSWORD = '" + password + "';";
             ResultSet rsExp = stmt.executeQuery(query);
             if (rsExp.getInt("Users") == 1) {
-                System.out.print("works");
                 return true;
             } else {
-                System.out.print("stuff");
                 return false;
             }
         } catch (SQLException e) {
@@ -201,28 +201,44 @@ public class ChangePass extends javax.swing.JFrame {
 
     private void jSetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSetPasswordActionPerformed
         setupDB();
-        char[] pass = jCurrentPassword.getPassword();
-        for(char c :pass){
+        char[] pass1 = jCurrentPassword.getPassword();
+        for(char c :pass1){
             currentPass+=c;
         }
-        newPass1 = jNewPassword1.getSelectedText();
-        newPass2 = jNewPassword2.getSelectedText();
+        char[] pass2 = jNewPassword1.getPassword();
+        for(char c :pass2){
+            newPass1+=c;
+        }
+        
+        char[] pass3 = jNewPassword2.getPassword();
+        for(char c :pass3){
+            newPass2+=c;
+        }
+
         if(getCurrentPassword(currentPass)) {
             if(newPass1.equals(newPass2)) {
                 if(newPass1.length() >= reqSize) {
                     System.out.println("All good.");
-                    //addNewPassword();
+                    addNewPassword();
+                    success("Your password has successfully been changed.", "Change Password");
+                    this.dispose();
                 } 
                 else {
                 System.out.println("The new Password you have entered has to be 4 or more characters.");
+                errorMsg("The new password you have entered needs to contain 4 or more characters.", "Change Password");
+                this.dispose();
                 }
             }
             else {
                 System.out.println("The new Passwords you have entered do not match.");
+                errorMsg("The new Passwords you have entered do not match.", "Change Password");
+                this.dispose();
             }
         }
         else {
             System.out.println("The Current Password you typed in is incorrect.");
+            errorMsg("The Current Password you typed in is incorrect.", "Change Password");
+            this.dispose();
         }
         closeDB(); 
     }//GEN-LAST:event_jSetPasswordActionPerformed
@@ -239,40 +255,15 @@ public class ChangePass extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jNewPassword2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChangePass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChangePass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChangePass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChangePass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-        });
+    public static void errorMsg(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }
+    
+    public static void success(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "Success: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jBackground;

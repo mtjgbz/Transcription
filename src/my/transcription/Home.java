@@ -8,11 +8,9 @@ package my.transcription;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -22,11 +20,14 @@ import javax.swing.Timer;
  * @author Michael, Noah, Casey & Erica
  */
 public class Home extends javax.swing.JFrame {
-
     private int lesson;
     private String sublesson;
     private String user;
     private static String path;
+    private int furthestLesson;
+    private String furthestSublesson;
+    private boolean NaMaOpen = false;
+    private HashMap<Integer, ArrayList<String>> sublessonMap;
 
     Active act;
     ChangePass pass1;
@@ -34,13 +35,8 @@ public class Home extends javax.swing.JFrame {
     Nasalizations nas;
     ToneTable tone;
     NamaTable na;
-    private boolean NaMaOpen= false;
-    private int furthestLesson;
-    private String furthestSublesson;
-
     ArrayList<Integer> lessonList;
-    private HashMap<Integer, ArrayList<String>> sublessonMap;
-
+   
     Timer timer1;
     Boolean loading = false;
 
@@ -64,7 +60,6 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(148, 189, 203));
         jUsernameMenuDropDown.setText(user);
         act = new Active(this, user);
-        pass1 = new ChangePass(user);
         enc = new Enclitics();
         jLabel1.setText(" ");
 
@@ -565,7 +560,7 @@ public class Home extends javax.swing.JFrame {
      * @param evt
      */
     private void jChangePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseClicked
-        pass1.setVisible(true);
+
     }//GEN-LAST:event_jChangePasswordMouseClicked
 
     /**
@@ -575,15 +570,17 @@ public class Home extends javax.swing.JFrame {
      */
     private void jChangePasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseReleased
         act.dispose();
-        pass1.dispose();
+        //pass1.dispose();
         enc.dispose();
         nas.dispose();
         tone.dispose();
-        if (!pass1.isShowing()) {
-            pass1.setVisible(true);
-        } else {
-            pass1.toFront();
-        }
+//        if (!pass1.isShowing()) {
+//            pass1.setVisible(true);
+//        } else {
+//            pass1.toFront();
+//        }
+        pass1 = new ChangePass(user);
+        pass1.setVisible(true);
     }//GEN-LAST:event_jChangePasswordMouseReleased
 
     private void jPassiveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPassiveButtonMousePressed
