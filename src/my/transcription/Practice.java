@@ -83,6 +83,7 @@ public class Practice extends javax.swing.JFrame {
     ArrayList<Integer> attempts = new ArrayList<>();
     ArrayList<ArrayList<Integer>> saveStart = new ArrayList<>(); 
     ArrayList<ArrayList<Integer>> saveEnd = new ArrayList<>();
+    ArrayList<ArrayList<Boolean>> correct = new ArrayList<>();
 
     private Highlighter.HighlightPainter redPainter;
     private Highlighter.HighlightPainter greenPainter;
@@ -136,8 +137,9 @@ public class Practice extends javax.swing.JFrame {
             attempts.add(3);
             saveStart.add(new ArrayList<Integer>());
             saveEnd.add(new ArrayList<Integer>());
+            correct.add(new ArrayList<Boolean>());
             for(int j = 0; j < 4; j++) {
-               
+                correct.get(i).add(false);
                 saveStart.get(i).add(j);
                 saveEnd.get(i).add(j);
                 
@@ -343,11 +345,11 @@ public class Practice extends javax.swing.JFrame {
         blank4 = blank4.replaceAll(" ", "");
     }
     
-    private void saveState(int attempt, int start, int end, int wCount, int pg, String word, boolean correct) {
+    private void saveState(int attempt, int start, int end, int wCount, int pg, String word, boolean crct) {
         attempts.set(pg-1, attempt);
-        saveStart.get(pg-1).set(wCount, start);
-        saveEnd.get(pg-1).set(wCount, end);
-        
+        saveStart.get(pg-1).set(wCount-1, start);
+        saveEnd.get(pg-1).set(wCount-1, end);
+        correct.get(pg-1).set(wCount-1, crct);
     }
    
     private void checkAnswers() throws BadLocationException {
@@ -1023,6 +1025,7 @@ public class Practice extends javax.swing.JFrame {
     }
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
+        Document doc = jTextPane1.getDocument();
         page--;
         clip.stop();
         clip.close();
@@ -1042,6 +1045,14 @@ public class Practice extends javax.swing.JFrame {
         backend.closeAudio();
         submitButton.setEnabled(btnStatus.get(page-1));
         attemptCountLabel.setText("You have " + attempts.get(page-1) + " attemtps left."); 
+        try {
+            doc.insertString(saveStart.get(page-1).get(wordCount-1), answers.get(page-1).get(wordCount-1).get(attempts.get(page-1)), null);
+            if(correct.get(page-1).get(wordCount-1) == false) {
+                displayCorrectAnswers(saveStart.get(page-1).get(wordCount-1), saveEnd.get(page-1).get(wordCount-1), wordsList.get(page-1).get(wordCount));
+            }
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initAudio();
         showText();
     }//GEN-LAST:event_prevButtonActionPerformed
@@ -1128,7 +1139,7 @@ public class Practice extends javax.swing.JFrame {
         submitButton.setEnabled(btnStatus.get(page-1));
         clicks = 0;
         attempt = 3;
-        attemptCountLabel.setText("You have " + attempt + " attempts left.");
+        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attemtps left.");
         showText();
     }//GEN-LAST:event_nextButtonActionPerformed
 
