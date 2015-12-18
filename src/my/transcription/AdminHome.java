@@ -28,8 +28,8 @@ public class AdminHome extends javax.swing.JFrame {
     private JTabbedPane pane;
     private JTable table;
     
-    private static final String[] TABLE_NAMES = {"Date and Time Taken", "Lesson", "Sublesson"};
-    private static final int COLUMN_NUM = 3;
+    private static final String[] TABLE_NAMES = {"Date and Time Taken", "Lesson", "Sublesson", "Score"};
+    private static final int COLUMN_NUM = 4;
 
     /**
      * Creates new form AdminHome
@@ -77,20 +77,20 @@ public class AdminHome extends javax.swing.JFrame {
         String studentUser = userMap.get(list1.getSelectedItem());
         HashMap<ArrayList<String>, Integer> practiceMap = backend.userPractice(studentUser);
         
-        table = new JTable(practiceMap.size(), COLUMN_NUM){
+        table = new JTable(){
             @Override
             public boolean isCellEditable(int row, int column){
                 return false;
             }
         };
-        DefaultTableModel model = new DefaultTableModel(TABLE_NAMES, practiceMap.size());
+        DefaultTableModel model = new DefaultTableModel(TABLE_NAMES, 0);
         table.setModel(model);
         
         Iterator it = practiceMap.entrySet().iterator();
-        int rowNum = 0;
         while(it.hasNext()){
             Map.Entry pair = (Map.Entry) it.next();
             ArrayList<String> list = (ArrayList<String>) pair.getKey();
+            System.out.println(list);
             model.addRow(list.toArray());
         }
         
