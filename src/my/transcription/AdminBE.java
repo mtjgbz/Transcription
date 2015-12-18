@@ -59,11 +59,13 @@ public class AdminBE {
                 String date = rs.getString("DateTaken");
                 int lesson = rs.getInt("Lesson");
                 String sublesson = rs.getString("Sublesson");
+                float score = rs.getFloat("Score");
                 
                 ArrayList<String> practiceInfo = new ArrayList<>();
                 practiceInfo.add(date);
                 practiceInfo.add("" + lesson);
                 practiceInfo.add(sublesson);
+                practiceInfo.add("" + score);
                 
                 practiceMap.put(practiceInfo, practiceID);
             }

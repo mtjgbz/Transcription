@@ -90,37 +90,24 @@ public class ActiveBE {
     
     public void calculateScore(){
         try{
-            String query = "SELECT * FROM PRACTICE_ATTEMPT AS T JOIN PRACTICE_ANSWER AS A "
-                    + "ON A.QuestionID = T.QuestionID WHERE T.PracticeID = " + practiceID + ";";
+            String query = "SELECT * FROM PRACTICE_ATTEMPT WHERE PracticeID = "
+                    + practiceID + ";";
             rs = stmt.executeQuery(query);
             float weightedScore = 0;
-            float finalScore = 0;
             int attemptNum = 0;
-            int questionNum = 0;
-            int questionCount = 0;
-            int lastQuestion = 0;
-            float score = 0;
             while(rs.next()){
-                int question = rs.getInt("QuestionNum");
                 int num = rs.getInt("Score");
-                if(question != lastQuestion){
-                    questionCount++;
-                    score /= questionNum;
-                    finalScore += score;
-                    score = 0;
-                    questionNum = 0;
-                    lastQuestion = question;
-                }
                 attemptNum++;
-                questionNum++;
                 weightedScore += num;
-                score += num;
             }
             weightedScore /= attemptNum;
-            finalScore /= questionCount;
             System.out.println("Weighted: " + weightedScore);
-            System.out.println("Final: " + finalScore);
+            weightedScore *= 100;
             rs.close();
+            
+            query = "UPDATE PRACTICE SET Score = " + weightedScore + " WHERE PracticeID = "
+                    + practiceID + ";";
+            stmt.execute(query);
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -709,7 +709,6 @@ public class Practice extends javax.swing.JFrame {
                 continue;
             }
             boolean contains = false;
-            int index = 0;
 
             if (contains == true) {
                 i--;
@@ -759,7 +758,6 @@ public class Practice extends javax.swing.JFrame {
         }
         wordsList.add(words);
         
-        int index = page - 1;
         current = backend.setBlanks(current, words);
         findStartEnd(current);
         jTextPane1.setText(current);
@@ -982,7 +980,7 @@ public class Practice extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         clicks++;
         attempt--;
-        attemptCountLabel.setText("You have " + attempt + " attemtps left.");   
+        attemptCountLabel.setText("You have " + attempt + " attempts left.");   
         
         String phrase = jTextPane1.getText();
         findStartEnd(phrase);
@@ -1024,6 +1022,7 @@ public class Practice extends javax.swing.JFrame {
         try {
             int start = saveStart.get(page - 1).get(wordCount - 1);
             int end = saveEnd.get(page - 1).get(wordCount - 1);
+            System.out.println(answers);
             String answer = answers.get(page - 1).get(wordCount - 1).get(attempts.get(page - 1));
             String word = wordsList.get(page - 1).get(wordCount - 1);
             doc.insertString(start, answer, null);
@@ -1120,10 +1119,9 @@ public class Practice extends javax.swing.JFrame {
         submitButton.setEnabled(btnStatus.get(page-1));
         clicks = 0;
         attempt = 3;
-        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attemtps left.");
+        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attempts left.");
         showText();
         text = jTextPane1.getText();
-        System.out.println("back btn press text: " + text);
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
