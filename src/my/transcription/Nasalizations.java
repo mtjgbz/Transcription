@@ -25,7 +25,7 @@ import static my.transcription.Nasalizations.errorMsg;
 
 /**
  *
- * @author Noah, Mike, Casey and Erica
+ * @author Noah
  */
 public class Nasalizations extends javax.swing.JFrame {
 
@@ -120,6 +120,11 @@ public class Nasalizations extends javax.swing.JFrame {
         stringNames.add(i17);
     }
 
+    /**
+     * Error Message Pop-Up
+     * @param infoMessage
+     * @param titleBar 
+     */
     public static void errorMsg(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }
@@ -658,9 +663,10 @@ public class Nasalizations extends javax.swing.JFrame {
         }
     };
 
-    //String path = "/home/mike/Transcription Data/Tones/";
-    //String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/Nasalizations/";
-
+    /**
+     * All of the Buttons Action Performed
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         buttonNum = 0;
         buttonAction();
