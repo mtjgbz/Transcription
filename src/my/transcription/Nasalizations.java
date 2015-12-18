@@ -751,7 +751,6 @@ public class Nasalizations extends javax.swing.JFrame {
         buttonAction();
     }//GEN-LAST:event_jButton18ActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
