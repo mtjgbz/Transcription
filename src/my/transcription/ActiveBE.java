@@ -87,6 +87,44 @@ public class ActiveBE {
     public void addUserAnswer(String answer, int questionNum){
         userAnswers.get(questionNum).add(answer);
     }
+    
+    public void calculateScore(){
+        try{
+            String query = "SELECT * FROM PRACTICE_ATTEMPT AS T JOIN PRACTICE_ANSWER AS A "
+                    + "ON A.QuestionID = T.QuestionID WHERE T.PracticeID = " + practiceID + ";";
+            rs = stmt.executeQuery(query);
+            float weightedScore = 0;
+            float finalScore = 0;
+            int attemptNum = 0;
+            int questionNum = 0;
+            int questionCount = 0;
+            int lastQuestion = 0;
+            float score = 0;
+            while(rs.next()){
+                int question = rs.getInt("QuestionNum");
+                int num = rs.getInt("Score");
+                if(question != lastQuestion){
+                    questionCount++;
+                    score /= questionNum;
+                    finalScore += score;
+                    score = 0;
+                    questionNum = 0;
+                    lastQuestion = question;
+                }
+                attemptNum++;
+                questionNum++;
+                weightedScore += num;
+                score += num;
+            }
+            weightedScore /= attemptNum;
+            finalScore /= questionCount;
+            System.out.println("Weighted: " + weightedScore);
+            System.out.println("Final: " + finalScore);
+            rs.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public Clip makeClip(int pageNum) {
 
@@ -140,8 +178,8 @@ public class ActiveBE {
     public void newAttempt(int attemptInverse, String word, boolean correct) {
         try {
             int attempt = Math.abs(attemptInverse - 3);
-            int questionID = getQuestionNum(word);
-            ArrayList<String> currList = userAnswers.get(questionID);
+            int questionID = idList.get(getQuestionNum(word));
+            ArrayList<String> currList = userAnswers.get(getQuestionNum(word));
             String userAnswer = currList.get(currList.size() - 1);
             int score;
             if(correct){

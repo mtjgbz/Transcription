@@ -345,6 +345,7 @@ public class Practice extends javax.swing.JFrame {
         correct.get(pg-1).set(wCount-1, crct);
         
         backend.newAttempt(attempt, word, crct);
+        backend.calculateScore();
     }
    
     private void checkAnswers() throws BadLocationException {
