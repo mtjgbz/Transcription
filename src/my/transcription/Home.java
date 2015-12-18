@@ -449,9 +449,6 @@ public class Home extends javax.swing.JFrame {
      * @param infoMessage
      * @param titleBar 
      */
-    public static void errorMsg(String infoMessage, String titleBar) {
-        JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
-    }
     
      /**
      * Passive Training Button
