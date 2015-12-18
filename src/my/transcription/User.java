@@ -107,7 +107,7 @@ public class User {
             if (fileList == null) {
                 return null;
             }
-            //System.out.println(path);
+
             for (File f : fileList) {
                 //If it's null, return so
                 //If it's a folder, search through that as well

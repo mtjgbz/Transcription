@@ -75,4 +75,45 @@ public class AdminBE {
         }
         return null;        
     }
+    
+    public int getPracticeID(String date){
+        try{
+            String query = "SELECT PracticeID FROM PRACTICE WHERE DATETAKEN = " + date;
+            rs = stmt.executeQuery(query);
+            int practiceID = rs.getInt("PracticeID");
+            return practiceID;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+    public ArrayList<ArrayList<String>> traineeLog(int practiceID){
+        try{
+            String query = "SELECT * FROM PRACTICE_ANSWER AS A JOIN PRACTICE_ATTEMPT AS T "
+                    + "ON A.QuestionID = T.QuestionID WHERE A.PracticeID = "
+                    + practiceID + ";";
+            rs = stmt.executeQuery(query);
+            
+            ArrayList<ArrayList<String>> results = new ArrayList<>();
+            while(rs.next()){
+                String questionNum = "" + rs.getInt("QuestionNum");
+                String attempt = "" + rs.getInt("Attempt");
+                String response = rs.getString("Response");
+                String answer = rs.getString("Answer");
+                
+                ArrayList<String> row = new ArrayList<>();
+                row.add(questionNum);
+                row.add(attempt);
+                row.add(response);
+                row.add(answer);
+                
+                results.add(row);
+            }            
+        }catch(Exception e){
+            
+        }
+            
+        return null;
+    }
 }

@@ -58,8 +58,8 @@ public class AdminHome extends javax.swing.JFrame {
     }
     
     public void createPane(){
-        jPanel1.removeAll();
-        jPanel1.setLayout(new BorderLayout());
+//        jPanel1.removeAll();
+//        jPanel1.setLayout(new BorderLayout());
         
         pane = new JTabbedPane();
         pane.setVisible(true);
@@ -158,7 +158,7 @@ public class AdminHome extends javax.swing.JFrame {
                 .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 323, Short.MAX_VALUE))
         );

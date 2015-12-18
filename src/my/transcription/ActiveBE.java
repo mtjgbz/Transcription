@@ -68,6 +68,7 @@ public class ActiveBE {
     
     public void addCorrectAnswer(String answer, int questionNum){
         try{
+            questionNum++;
             String query = "INSERT INTO PRACTICE_ANSWER(PracticeID, Answer, "
                     + "QuestionNum) VALUES(" + practiceID + ", '" + answer + "', "
                     + questionNum + ");";
