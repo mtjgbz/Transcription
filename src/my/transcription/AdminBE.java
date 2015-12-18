@@ -69,6 +69,7 @@ public class AdminBE {
                 
                 practiceMap.put(practiceInfo, practiceID);
             }
+            rs.close();
             return practiceMap;
         }catch(Exception e){
             e.printStackTrace();
@@ -78,9 +79,10 @@ public class AdminBE {
     
     public int getPracticeID(String date){
         try{
-            String query = "SELECT PracticeID FROM PRACTICE WHERE DATETAKEN = " + date;
+            String query = "SELECT PracticeID FROM PRACTICE WHERE DATETAKEN = '" + date + "';";
             rs = stmt.executeQuery(query);
             int practiceID = rs.getInt("PracticeID");
+            rs.close();
             return practiceID;
         }catch(Exception e){
             e.printStackTrace();
@@ -110,8 +112,9 @@ public class AdminBE {
                 
                 results.add(row);
             }            
+            return results;
         }catch(Exception e){
-            
+            e.printStackTrace();
         }
             
         return null;

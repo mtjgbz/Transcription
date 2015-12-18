@@ -6,6 +6,8 @@
 package my.transcription;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,11 +26,13 @@ public class AdminHome extends javax.swing.JFrame {
     private String user;
     private AdminBE backend;
     private Map<String, String> userMap;
+    private boolean selectLog;
     
     private JTabbedPane pane;
     private JTable table;
     
-    private static final String[] TABLE_NAMES = {"Date and Time Taken", "Lesson", "Sublesson", "Score"};
+    private static final String[] PRACTICE_NAMES = {"Date and Time Taken", "Lesson", "Sublesson", "Score"};
+    private static final String[] ATTEMPT_NAMES = {"Question Number", "Attempt Number", "User Answer", "Correct Answer"};
     private static final int COLUMN_NUM = 4;
 
     /**
@@ -37,6 +41,7 @@ public class AdminHome extends javax.swing.JFrame {
     public AdminHome() {
         initComponents();
         this.setTitle("Mixtec Transcription: Administrator Home");
+        selectLog = false;
         backend = new AdminBE(this);
         userSelection();
     }
@@ -58,8 +63,9 @@ public class AdminHome extends javax.swing.JFrame {
     }
     
     public void createPane(){
-//        jPanel1.removeAll();
-//        jPanel1.setLayout(new BorderLayout());
+        jPanel1.remove(list1);
+        jPanel1.remove(jLabel1);
+        jPanel1.setLayout(new BorderLayout());
         
         pane = new JTabbedPane();
         pane.setVisible(true);
@@ -83,7 +89,7 @@ public class AdminHome extends javax.swing.JFrame {
                 return false;
             }
         };
-        DefaultTableModel model = new DefaultTableModel(TABLE_NAMES, 0);
+        DefaultTableModel model = new DefaultTableModel(PRACTICE_NAMES, 0);
         table.setModel(model);
         
         Iterator it = practiceMap.entrySet().iterator();
@@ -92,6 +98,29 @@ public class AdminHome extends javax.swing.JFrame {
             ArrayList<String> list = (ArrayList<String>) pair.getKey();
             System.out.println(list);
             model.addRow(list.toArray());
+        }    
+    }
+    
+    public void updateTable(){
+        int selectedRow = table.getSelectedRow();
+        String date = (String) table.getValueAt(selectedRow, 0);
+        System.out.println("Date: " + date);
+        int practiceID = backend.getPracticeID(date);
+        
+        table.removeAll();
+        DefaultTableModel model = new DefaultTableModel(ATTEMPT_NAMES, 0);
+        table.setModel(model);
+        
+        if(practiceID >= 0){
+            ArrayList<ArrayList<String>> results = backend.traineeLog(practiceID);
+            
+            if(results != null){
+                for(ArrayList<String> r : results){
+                    model.addRow(r.toArray());
+                }
+            }
+
+            table.repaint();
         }
         
     }
@@ -220,7 +249,12 @@ public class AdminHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        createPane();
+        if(selectLog){
+            updateTable();
+        }else{
+            createPane();
+            selectLog = true;
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackButtonMousePressed
