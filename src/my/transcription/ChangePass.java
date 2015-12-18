@@ -220,25 +220,26 @@ public class ChangePass extends javax.swing.JFrame {
                 if(newPass1.length() >= reqSize) {
                     System.out.println("All good.");
                     addNewPassword();
-                    success("Your password has successfully been changed.", "Change Password");
                     this.dispose();
+                    success("Your password has successfully been changed.", "Change Password");
                 } 
                 else {
+                    this.dispose();
                 System.out.println("The new Password you have entered has to be 4 or more characters.");
-                errorMsg("The new password you have entered needs to contain 4 or more characters.", "Change Password");
-                this.dispose();
+                errorMsg("The new password you have entered needs to contain 4 or more characters, Please Try Again.", "Change Password");
                 }
             }
             else {
-                System.out.println("The new Passwords you have entered do not match.");
-                errorMsg("The new Passwords you have entered do not match.", "Change Password");
                 this.dispose();
+                System.out.println("The new Passwords you have entered do not match.");
+                errorMsg("The new Passwords you have entered do not match, Please Try Again.", "Change Password");
             }
         }
         else {
-            System.out.println("The Current Password you typed in is incorrect.");
-            errorMsg("The Current Password you typed in is incorrect.", "Change Password");
             this.dispose();
+            System.out.println("The Current Password you typed in is incorrect.");
+            errorMsg("Your Current Password that you typed in is incorrect, Please Try Again.", "Change Password");
+            
         }
         closeDB(); 
     }//GEN-LAST:event_jSetPasswordActionPerformed

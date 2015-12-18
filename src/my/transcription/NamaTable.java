@@ -107,7 +107,7 @@ public class NamaTable extends javax.swing.JFrame {
     Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
 
     int x = (int) rect.getMaxX();
-    int y = 0;
+    int y = (int) rect.getMaxY();
 
     public ArrayList<LineListener> listeners() {
         ArrayList<LineListener> listeners = new ArrayList<>();
@@ -452,6 +452,24 @@ public class NamaTable extends javax.swing.JFrame {
         }
     }
     
+    private void stopPlayingAll(){
+        if (isPlaying) {
+                for (Clip clip : cliplist) {
+                    if (cliplist.indexOf(clip) < 23) {
+                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
+                        clip.stop();
+                    } else {
+                        clip.stop();
+                    }
+                }
+                isPlaying=false;
+            } else {
+                for (Clip clip : cliplist) {
+                    clip.stop();
+                }
+            }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -486,6 +504,12 @@ public class NamaTable extends javax.swing.JFrame {
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         playAllButton = new javax.swing.JButton();
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jButton1.setForeground(new java.awt.Color(0, 153, 51));
         jButton1.setText("na3ma3");
@@ -870,20 +894,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(0).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(0).setMicrosecondPosition(0);
             cliplist.get(0).start();
             jButton1.setForeground(new java.awt.Color(255, 51, 51));
@@ -897,20 +908,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(1).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(1).setMicrosecondPosition(0);
             cliplist.get(1).start();
             jButton2.setForeground(new java.awt.Color(255, 51, 51));
@@ -924,20 +922,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(2).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(2).setMicrosecondPosition(0);
             cliplist.get(2).start();
             jButton3.setForeground(new java.awt.Color(255, 51, 51));
@@ -951,20 +936,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(3).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(3).setMicrosecondPosition(0);
             cliplist.get(3).start();
             jButton4.setForeground(new java.awt.Color(255, 51, 51));
@@ -978,20 +950,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(4).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(4).setMicrosecondPosition(0);
             cliplist.get(4).start();
             jButton5.setForeground(new java.awt.Color(255, 51, 51));
@@ -1005,20 +964,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(5).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(5).setMicrosecondPosition(0);
             cliplist.get(5).start();
             jButton6.setForeground(new java.awt.Color(255, 51, 51));
@@ -1032,20 +978,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(6).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(6).setMicrosecondPosition(0);
             cliplist.get(6).start();
             jButton7.setForeground(new java.awt.Color(255, 51, 51));
@@ -1059,20 +992,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(7).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(7).setMicrosecondPosition(0);
             cliplist.get(7).start();
             jButton8.setForeground(new java.awt.Color(255, 51, 51));
@@ -1086,20 +1006,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(8).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(8).setMicrosecondPosition(0);
             cliplist.get(8).start();
             jButton9.setForeground(new java.awt.Color(255, 51, 51));
@@ -1113,20 +1020,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(9).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(9).setMicrosecondPosition(0);
             cliplist.get(9).start();
             jButton10.setForeground(new java.awt.Color(255, 51, 51));
@@ -1140,20 +1034,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(10).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(10).setMicrosecondPosition(0);
             cliplist.get(10).start();
             jButton11.setForeground(new java.awt.Color(255, 51, 51));
@@ -1167,20 +1048,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(11).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(11).setMicrosecondPosition(0);
             cliplist.get(11).start();
             jButton12.setForeground(new java.awt.Color(255, 51, 51));
@@ -1194,20 +1062,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(12).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(12).setMicrosecondPosition(0);
             cliplist.get(12).start();
             jButton13.setForeground(new java.awt.Color(255, 51, 51));
@@ -1221,20 +1076,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(13).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(13).setMicrosecondPosition(0);
             cliplist.get(13).start();
             jButton14.setForeground(new java.awt.Color(255, 51, 51));
@@ -1248,20 +1090,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(14).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(14).setMicrosecondPosition(0);
             cliplist.get(14).start();
             jButton15.setForeground(new java.awt.Color(255, 51, 51));
@@ -1284,6 +1113,7 @@ public class NamaTable extends javax.swing.JFrame {
                         clip.stop();
                     }
                 }
+                isPlaying=false;
             } else {
                 for (Clip clip : cliplist) {
                     clip.stop();
@@ -1302,20 +1132,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(16).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(16).setMicrosecondPosition(0);
             cliplist.get(16).start();
             jButton17.setForeground(new java.awt.Color(255, 51, 51));
@@ -1329,20 +1146,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(17).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(17).setMicrosecondPosition(0);
             cliplist.get(17).start();
             jButton18.setForeground(new java.awt.Color(255, 51, 51));
@@ -1356,20 +1160,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(18).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(18).setMicrosecondPosition(0);
             cliplist.get(18).start();
             jButton19.setForeground(new java.awt.Color(255, 51, 51));
@@ -1383,20 +1174,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(19).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(19).setMicrosecondPosition(0);
             cliplist.get(19).start();
             jButton20.setForeground(new java.awt.Color(255, 51, 51));
@@ -1410,20 +1188,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(20).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+           stopPlayingAll();
             cliplist.get(20).setMicrosecondPosition(0);
             cliplist.get(20).start();
             jButton21.setForeground(new java.awt.Color(255, 51, 51));
@@ -1437,20 +1202,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(21).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(21).setMicrosecondPosition(0);
             cliplist.get(21).start();
             jButton22.setForeground(new java.awt.Color(255, 51, 51));
@@ -1464,20 +1216,7 @@ public class NamaTable extends javax.swing.JFrame {
             butt.setForeground(new java.awt.Color(0, 153, 51));
         }
         if (!cliplist.get(22).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+           stopPlayingAll();
             cliplist.get(22).setMicrosecondPosition(0);
             cliplist.get(22).start();
             jButton23.setForeground(new java.awt.Color(255, 51, 51));
@@ -1492,20 +1231,7 @@ public class NamaTable extends javax.swing.JFrame {
         }
 
         if (!cliplist.get(23).isRunning()) {
-            if (isPlaying) {
-                for (Clip clip : cliplist) {
-                    if (cliplist.indexOf(clip) < 23) {
-                        clip.removeLineListener(listenerlist.get(cliplist.indexOf(clip)));
-                        clip.stop();
-                    } else {
-                        clip.stop();
-                    }
-                }
-            } else {
-                for (Clip clip : cliplist) {
-                    clip.stop();
-                }
-            }
+            stopPlayingAll();
             cliplist.get(23).setMicrosecondPosition(0);
             cliplist.get(23).start();
             jButton24.setForeground(new java.awt.Color(255, 51, 51));
@@ -1549,6 +1275,10 @@ public class NamaTable extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_playAllButtonActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        stopPlayingAll();
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
