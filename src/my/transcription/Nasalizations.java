@@ -172,7 +172,7 @@ public class Nasalizations extends javax.swing.JFrame {
     Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
 
     int x = (int) rect.getMaxX();
-    int y = (int) rect.getMaxY();
+    int y = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.

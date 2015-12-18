@@ -107,7 +107,7 @@ public class NamaTable extends javax.swing.JFrame {
     Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
 
     int x = (int) rect.getMaxX();
-    int y = 0;
+    int y = (int) rect.getMaxY();
 
     public ArrayList<LineListener> listeners() {
         ArrayList<LineListener> listeners = new ArrayList<>();
