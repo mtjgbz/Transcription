@@ -6,8 +6,6 @@
 package my.transcription;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -166,9 +164,6 @@ public class Home extends javax.swing.JFrame {
         jBackground = new javax.swing.JLabel();
         jNaMaButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jFile = new javax.swing.JMenu();
-        jLoadTextMenu = new javax.swing.JMenu();
-        jLoadTones = new javax.swing.JMenu();
         jUsernameMenuDropDown = new javax.swing.JMenu();
         jChangePassword = new javax.swing.JMenuItem();
 
@@ -298,36 +293,6 @@ public class Home extends javax.swing.JFrame {
         });
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
-
-        jFile.setText("File");
-
-        jLoadTextMenu.setText("Load Text");
-        jLoadTextMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLoadTextMenuMousePressed(evt);
-            }
-        });
-        jLoadTextMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLoadTextMenuActionPerformed(evt);
-            }
-        });
-        jFile.add(jLoadTextMenu);
-
-        jLoadTones.setText("Load Tones");
-        jLoadTones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLoadTonesMousePressed(evt);
-            }
-        });
-        jLoadTones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLoadTonesActionPerformed(evt);
-            }
-        });
-        jFile.add(jLoadTones);
-
-        jMenuBar1.add(jFile);
 
         jUsernameMenuDropDown.setText("User");
 
@@ -479,16 +444,22 @@ public class Home extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jTraineeLogButtonActionPerformed
 
-    public static void loading() {
-        JOptionPane.showOptionDialog(null, "         Loading...", "Passive Loading", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
-    }
-
     /**
+     * Error Message Pop-Up
+     * @param infoMessage
+     * @param titleBar 
+     */
+    public static void errorMsg(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
+    }
+    
+     /**
      * Passive Training Button
      *
      * @param evt
      */
     private void jPassiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassiveButtonActionPerformed
+        
         loading = true;
         act.dispose();
         enc.dispose();
@@ -580,26 +551,16 @@ public class Home extends javax.swing.JFrame {
      */
     private void jChangePasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseReleased
         act.dispose();
-        //pass1.dispose();
         enc.dispose();
         nas.dispose();
         tone.dispose();
-//        if (!pass1.isShowing()) {
-//            pass1.setVisible(true);
-//        } else {
-//            pass1.toFront();
-//        }
         pass1 = new ChangePass(user);
         pass1.setVisible(true);
     }//GEN-LAST:event_jChangePasswordMouseReleased
 
     private void jPassiveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPassiveButtonMousePressed
-        isLoading();
+
     }//GEN-LAST:event_jPassiveButtonMousePressed
-
-    private void jLoadTextMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTextMenuActionPerformed
-
-    }//GEN-LAST:event_jLoadTextMenuActionPerformed
 
     private void jNaMaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNaMaButtonActionPerformed
         if (!NaMaOpen) {
@@ -613,51 +574,14 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jNaMaButtonActionPerformed
 
-    private void jLoadTextMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMenuMousePressed
-        UpdateLessonFile window = new UpdateLessonFile();
-        window.setVisible(true);
-    }//GEN-LAST:event_jLoadTextMenuMousePressed
-
-    private void jLoadTonesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTonesMousePressed
-        UpdateTones window = new UpdateTones();
-        window.setVisible(true);
-    }//GEN-LAST:event_jLoadTonesMousePressed
-
-    private void jLoadTonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTonesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLoadTonesActionPerformed
-
-    private void isLoading() {
-        jLabel1.setText("Loading...");
-
-        ActionListener listener = new ActionListener() {
-            int dots = 0;
-
-            public void actionPerformed(ActionEvent event) {
-                if (dots < 3) {
-                    jLabel1.setText(jLabel1.getText() + ".");
-                    dots++;
-                } else {
-                    dots = 0;
-                    jLabel1.setText("Loading");
-                }
-            }
-        };
-        timer1 = new Timer(300, listener);
-        timer1.start();
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jActiveButton;
     private javax.swing.JLabel jBackground;
     private javax.swing.JMenuItem jChangePassword;
     private javax.swing.JButton jEncliticButton;
-    private javax.swing.JMenu jFile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLessonLabel;
-    private javax.swing.JMenu jLoadTextMenu;
-    private javax.swing.JMenu jLoadTones;
     private javax.swing.JButton jLogOutButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton jNaMaButton;

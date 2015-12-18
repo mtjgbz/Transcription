@@ -9,31 +9,6 @@
         </Property>
       </Properties>
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jFile">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
-          </Properties>
-          <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jLoadTextMenu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Load Text"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLoadTextMenuMousePressed"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLoadTextMenuActionPerformed"/>
-              </Events>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jLoadTones">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Load Tones"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLoadTonesMousePressed"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLoadTonesActionPerformed"/>
-              </Events>
-            </Menu>
-          </SubComponents>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="jUsernameMenuDropDown">
           <Properties>
             <Property name="text" type="java.lang.String" value="User"/>

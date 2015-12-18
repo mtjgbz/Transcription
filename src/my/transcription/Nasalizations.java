@@ -222,6 +222,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
 
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jScrollPane2.setHorizontalScrollBar(null);
 
@@ -757,6 +762,10 @@ public class Nasalizations extends javax.swing.JFrame {
         buttonAction();
     }//GEN-LAST:event_jButton18ActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        clip.stop();
+    }//GEN-LAST:event_formWindowClosing
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
