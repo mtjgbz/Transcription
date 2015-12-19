@@ -763,7 +763,9 @@ public class Nasalizations extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        clip.stop();
+        if(clip != null) {
+            clip.stop();
+        }
     }//GEN-LAST:event_formWindowClosing
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

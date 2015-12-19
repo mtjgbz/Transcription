@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.sound.sampled.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
+import static my.transcription.Nasalizations.errorMsg;
 
 /**
  *
@@ -563,8 +566,14 @@ public class Passive extends javax.swing.JFrame {
         backend = new PassiveBE(this);
         phraseList = new ArrayList<ArrayList<String>>();
         for (int i = 0; i < 20; i++) {
+            String file = null;
             //pulls the transcription file for searching
-            String file = backend.findFile(lesson, subLesson);
+            try{
+                file = backend.findFile(lesson, subLesson);
+            } catch (Exception ex) { 
+                errorMsg("Nasalization Audio Not Found, Please Have Admin Load Audio Files.", "Nasalization");
+            }
+            
             //pulls the start time, phrase, and end time from the file selected above
             ArrayList<String> phrase = backend.findPhrase(file);
 

@@ -3694,7 +3694,9 @@ public class ToneTable extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton121ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        clip.stop();
+        if(clip != null) {
+            clip.stop();
+        }
     }//GEN-LAST:event_formWindowClosing
 
 
