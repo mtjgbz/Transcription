@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import static my.transcription.SignIn.errorMsg;
 import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteDataSource;
 
@@ -218,7 +217,6 @@ public class ChangePass extends javax.swing.JFrame {
         if(getCurrentPassword(currentPass)) {
             if(newPass1.equals(newPass2)) {
                 if(newPass1.length() >= reqSize) {
-                    System.out.println("All good.");
                     addNewPassword();
                     this.dispose();
                     success("Your password has successfully been changed.", "Change Password");

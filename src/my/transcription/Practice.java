@@ -12,7 +12,6 @@ import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
@@ -105,7 +104,7 @@ public class Practice extends javax.swing.JFrame {
      * @param user
      */
     public Practice(String user, Integer lesson, String subLesson) {
-        this.setTitle("Mixtec Transcription: Practice");
+        this.setTitle("Mixtec Transcription: Práctica");
         initComponents();
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         this.user = user;
