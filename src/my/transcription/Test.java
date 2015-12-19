@@ -5,16 +5,12 @@
  */
 package my.transcription;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 
 /**
@@ -59,7 +55,7 @@ public class Test extends javax.swing.JFrame {
      * @param user
      */
     public Test(String user, Integer lesson, String subLesson) {
-        this.setTitle("Mixtec Transcription: Practice");
+        this.setTitle("Mixtec Transcription: Examen");
         initComponents();
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         this.user = user;

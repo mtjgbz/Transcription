@@ -74,7 +74,7 @@ public class Active extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Test");
+        jButton2.setText("Examen");
         jButton2.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton2.setMinimumSize(new java.awt.Dimension(97, 30));
         jButton2.setPreferredSize(new java.awt.Dimension(97, 30));
