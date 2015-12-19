@@ -180,7 +180,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setText("Loading...");
+        jLabel1.setText("Cargando...");
 
         jlessonBox.setBackground(new java.awt.Color(204, 204, 204));
         jlessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -198,14 +198,14 @@ public class Home extends javax.swing.JFrame {
         jsubLessonBox.setPreferredSize(new java.awt.Dimension(130, 30));
 
         jLessonLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLessonLabel.setText("Lesson");
+        jLessonLabel.setText("Lección");
 
         jSubLessonLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jSubLessonLabel.setText("Sub-lesson");
+        jSubLessonLabel.setText("Sub-Lección");
 
         jLogOutButton.setBackground(new java.awt.Color(204, 204, 204));
         jLogOutButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLogOutButton.setText("Log Out");
+        jLogOutButton.setText("Cerrar Sesión");
         jLogOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLogOutButtonActionPerformed(evt);
@@ -214,7 +214,7 @@ public class Home extends javax.swing.JFrame {
 
         jPassiveButton.setBackground(new java.awt.Color(204, 204, 204));
         jPassiveButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jPassiveButton.setText("Passive");
+        jPassiveButton.setText("Pasivo");
         jPassiveButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jPassiveButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -229,7 +229,7 @@ public class Home extends javax.swing.JFrame {
 
         jActiveButton.setBackground(new java.awt.Color(204, 204, 204));
         jActiveButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jActiveButton.setText("Active");
+        jActiveButton.setText("Activo");
         jActiveButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jActiveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,7 +239,7 @@ public class Home extends javax.swing.JFrame {
 
         jTraineeLogButton.setBackground(new java.awt.Color(204, 204, 204));
         jTraineeLogButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTraineeLogButton.setText("Trainee Log");
+        jTraineeLogButton.setText("Registro de Aprendiz");
         jTraineeLogButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jTraineeLogButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +249,7 @@ public class Home extends javax.swing.JFrame {
 
         jTonesButton.setBackground(new java.awt.Color(204, 204, 204));
         jTonesButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTonesButton.setText("Tones");
+        jTonesButton.setText("Tonos");
         jTonesButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jTonesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,7 +259,7 @@ public class Home extends javax.swing.JFrame {
 
         jNasalizationButton.setBackground(new java.awt.Color(204, 204, 204));
         jNasalizationButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jNasalizationButton.setText("Nasalizations");
+        jNasalizationButton.setText("Nasalización");
         jNasalizationButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jNasalizationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,7 +269,7 @@ public class Home extends javax.swing.JFrame {
 
         jEncliticButton.setBackground(new java.awt.Color(204, 204, 204));
         jEncliticButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jEncliticButton.setText("Enclitics");
+        jEncliticButton.setText("Enclíticos");
         jEncliticButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jEncliticButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,9 +294,9 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
-        jUsernameMenuDropDown.setText("User");
+        jUsernameMenuDropDown.setText("Usuario");
 
-        jChangePassword.setText("Change Password");
+        jChangePassword.setText("Cambiar la Contraseña");
         jChangePassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jChangePasswordMouseReleased(evt);
@@ -315,19 +315,6 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(235, 235, 235))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(290, 290, 290))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(270, 270, 270)
-                .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -360,6 +347,19 @@ public class Home extends javax.swing.JFrame {
                         .addGap(181, 181, 181)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(186, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(247, 247, 247)
+                .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(261, 261, 261))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(281, 281, 281))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 671, Short.MAX_VALUE))
         );
@@ -390,9 +390,9 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNasalizationButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEncliticButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
+                .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLogOutButton)
                 .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

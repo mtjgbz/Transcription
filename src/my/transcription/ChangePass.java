@@ -221,24 +221,24 @@ public class ChangePass extends javax.swing.JFrame {
                 if(newPass1.length() >= reqSize) {
                     addNewPassword();
                     this.dispose();
-                    success("Your password has successfully been changed.", "Change Password");
+                    success("La contraseña ha sido cambiada con éxito.", "Cambiar la Contraseña");
                 } 
                 else {
                     this.dispose();
                 System.out.println("The new Password you have entered has to be 4 or more characters.");
-                errorMsg("The new password you have entered needs to contain 4 or more characters, Please Try Again.", "Change Password");
+                errorMsg("La contraseña nueva que ha introducido debe contener 4 o más caracteres, inténtalo de nuevo por favor.", "Cambiar la Contraseña");
                 }
             }
             else {
                 this.dispose();
                 System.out.println("The new Passwords you have entered do not match.");
-                errorMsg("The new Passwords you have entered do not match, Please Try Again.", "Change Password");
+                errorMsg("Las dos contraseñas que ha introducido no coinciden.", "Cambiar la Contraseña");
             }
         }
         else {
             this.dispose();
             System.out.println("The Current Password you typed in is incorrect.");
-            errorMsg("Your Current Password that you typed in is incorrect, Please Try Again.", "Change Password");
+            errorMsg("La contraseña no es correcta, inténtalo de nuevo por favor.", "Cambiar la Contraseña");
             
         }
         closeDB(); 
@@ -261,7 +261,7 @@ public class ChangePass extends javax.swing.JFrame {
     }
     
     public static void success(String infoMessage, String titleBar) {
-        JOptionPane.showMessageDialog(null, infoMessage, "Success: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, infoMessage, "Éxito: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
     
    

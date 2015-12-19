@@ -64,24 +64,24 @@ public class ForgottenPassword extends javax.swing.JFrame {
             }
         });
 
-        jUsernameLabel.setText("            Username:");
+        jUsernameLabel.setText(" Nombre de Usuario:");
         jUsernameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jValidateButton.setBackground(new java.awt.Color(255, 255, 255));
-        jValidateButton.setText("Validate");
+        jValidateButton.setText("Validar");
         jValidateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jValidateButtonActionPerformed(evt);
             }
         });
 
-        jYourPasswordLabel.setText("Your Password:");
+        jYourPasswordLabel.setText("Su Contraseña:");
 
-        jSecQuestAnsLabel.setText("            Security Question Answer:");
+        jSecQuestAnsLabel.setText(" Respuesta a la pregunta de seguridad:");
         jSecQuestAnsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jSecQuestTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jSecQuestTextField.setText("SECURITY QUESTION");
+        jSecQuestTextField.setText("PREGUNTA DE SEGURIDAD");
         jSecQuestTextField.setMaximumSize(new java.awt.Dimension(300, 28));
         jSecQuestTextField.setMinimumSize(new java.awt.Dimension(300, 28));
         jSecQuestTextField.setPreferredSize(new java.awt.Dimension(300, 28));
@@ -92,14 +92,14 @@ public class ForgottenPassword extends javax.swing.JFrame {
         });
 
         jConfirmButton.setBackground(new java.awt.Color(255, 255, 255));
-        jConfirmButton.setText("Confirm");
+        jConfirmButton.setText("Confirmar");
         jConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jConfirmButtonActionPerformed(evt);
             }
         });
 
-        jSecQuestLabel.setText("            Security Question:");
+        jSecQuestLabel.setText("            Pregunta de Seguridad:");
         jSecQuestLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jSecQuestAnsTextField.setMaximumSize(new java.awt.Dimension(198, 28));
@@ -110,7 +110,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
 
         jSignIn.setBackground(new java.awt.Color(204, 204, 204));
         jSignIn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jSignIn.setText("Sign In");
+        jSignIn.setText("Ingresar");
         jSignIn.setEnabled(false);
         //jButton1.setBackground(Color.RED);
         jSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
             }
         });
 
-        jBackMenuButton.setText("Back");
+        jBackMenuButton.setText("Atrás");
         jBackMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBackMenuButtonMouseClicked(evt);
@@ -135,15 +135,10 @@ public class ForgottenPassword extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSecQuestAnsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSecQuestLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSecQuestLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,36 +150,36 @@ public class ForgottenPassword extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jSecQuestAnsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jValidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jValidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSecQuestAnsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
                         .addComponent(jYourPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 160, Short.MAX_VALUE)
+                .addGap(0, 163, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jYourPasswordLabel)
                         .addGap(157, 157, 157))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jSignIn)
-                        .addGap(160, 160, 160))))
+                        .addGap(156, 156, 156))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 420, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jUsernameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(50, 50, 50)
                         .addComponent(jConfirmButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jUsernameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(4, 4, 4)
                 .addComponent(jSecQuestLabel)
