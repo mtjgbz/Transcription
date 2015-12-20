@@ -39,7 +39,7 @@ public class AdminHome extends javax.swing.JFrame {
      */
     public AdminHome() {
         initComponents();
-        this.setTitle("Mixtec Transcription: Administrator Home");
+        this.setTitle("Transcripción Mixteca: Hogar de Administración");
         selectLog = false;
         backend = new AdminBE(this);
         userSelection();
@@ -75,9 +75,8 @@ public class AdminHome extends javax.swing.JFrame {
         JScrollPane practicePanel = new JScrollPane(practiceTable);
         JScrollPane testPanel = new JScrollPane(testTable);
         
-        
-        pane.addTab("Practice", practicePanel);
-        pane.addTab("Test", testPanel);
+        pane.addTab("Práctica", practicePanel);
+        pane.addTab("Examen", testPanel);
         jPanel1.add(pane);
         jPanel1.revalidate();
     }
@@ -166,7 +165,7 @@ public class AdminHome extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Submit");
+        jButton1.setText("Enviar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -185,8 +184,8 @@ public class AdminHome extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(154, 154, 154))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(153, 153, 153))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,10 +200,10 @@ public class AdminHome extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 323, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, Short.MAX_VALUE))
         );
 
-        jBackButton.setText("Back");
+        jBackButton.setText("Atrás ");
         jBackButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jBackButtonMousePressed(evt);
@@ -212,7 +211,7 @@ public class AdminHome extends javax.swing.JFrame {
         });
         jMenuBar1.add(jBackButton);
 
-        jLogOut.setText("Log Out");
+        jLogOut.setText("Cerrar sesión");
         jLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLogOutMousePressed(evt);
@@ -220,9 +219,9 @@ public class AdminHome extends javax.swing.JFrame {
         });
         jMenuBar1.add(jLogOut);
 
-        jMenu3.setText("File");
+        jMenu3.setText("Archivo");
 
-        jLoadText.setText("Load Text");
+        jLoadText.setText("Texto de Carga");
         jLoadText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLoadTextMousePressed(evt);
@@ -230,7 +229,7 @@ public class AdminHome extends javax.swing.JFrame {
         });
         jMenu3.add(jLoadText);
 
-        jLoadTones.setText("Load Tones");
+        jLoadTones.setText("Tonos de Carga ");
         jLoadTones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLoadTonesMousePressed(evt);
