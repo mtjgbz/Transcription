@@ -100,9 +100,9 @@ public class Nasalizations extends javax.swing.JFrame {
         i13.add("e_1-4_tiu1ku4-tiu1kun4_edited.wav");
         stringNames.add(i13);
         ArrayList<String> i14 = new ArrayList<>();//3.4a
-        i14.add("e_3-4_i3ki4-i3kin4_edited.wav");//need
-        i14.add("e_3-4_i3ki4-i3kin4_edited.wav");//need
-        i14.add("e_3-4_i3ki4-i3kin4_edited.wav");//need
+        i14.add("3.4a-1.wav");
+        i14.add("3.4a-2.wav");
+        i14.add("3.4a-3.wav");
         stringNames.add(i14);
         ArrayList<String> i15 = new ArrayList<>();//3.4b
         i15.add("b_3-4_ka73a4-ka73an4_edited.wav");

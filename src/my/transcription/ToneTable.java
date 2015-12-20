@@ -144,13 +144,13 @@ public class ToneTable extends javax.swing.JFrame {
         stringNames.add(i23);
         ArrayList<String> i24 = new ArrayList<>();//4.1e
         i24.add("e_4-1_xi4xi1_0556_Yolox-RCG500_edited.wav");
-        i24.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i24.add("4.1e-2.wav");
         stringNames.add(i24);
         ArrayList<String> i25 = new ArrayList<>();//4.1f
         i25.add("f_4-1_xa74nu1_0488_Yolox-RCG500_edited.wav");
         stringNames.add(i25);
         ArrayList<String> i26 = new ArrayList<>();//4.1g
-        i26.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i26.add("4.1g-1.wav");
         stringNames.add(i26);
         ArrayList<String> i27 = new ArrayList<>();//4.2a
         i27.add("a_4-2_nda4a2_0861_Yolox-RCG500_edited.wav");
@@ -161,7 +161,7 @@ public class ToneTable extends javax.swing.JFrame {
         i28.add("b_4-2_tu74u2_0692_Yolox-RCG500_edited.wav");
         stringNames.add(i28);
         ArrayList<String> i29 = new ArrayList<>();//4.2c
-        i29.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i29.add("4.2c-1.wav");
         stringNames.add(i29);
         ArrayList<String> i30 = new ArrayList<>();//4.2d
         i30.add("d_4-2_xa74an2_0487_Yolox-RCG500_edited.wav");
@@ -174,7 +174,7 @@ public class ToneTable extends javax.swing.JFrame {
         i32.add("f_4-2_nda74bi2_0661_Yolox-RCG500_edited.wav");
         stringNames.add(i32);
         ArrayList<String> i33 = new ArrayList<>();//4.2g
-        i33.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i33.add("4.2g-1.wav");
         stringNames.add(i33);
         ArrayList<String> i34 = new ArrayList<>();//4.3b
         i34.add("b_4-3_i74i3_0620_Yolox-RCG500_edited.wav");
@@ -322,150 +322,150 @@ public class ToneTable extends javax.swing.JFrame {
         i74.add("f_14-1_chu714ma1_1342_Yolox-RCG500_edited.wav");
         stringNames.add(i74);
         ArrayList<String> i75 = new ArrayList<>();//14.2a
-        i75.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i75.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i75.add("14.2a-1.wav");
+        i75.add("14.2a-2.wav");
         stringNames.add(i75);
         ArrayList<String> i76 = new ArrayList<>();//14.2b
-        i76.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
-        i76.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i76.add("14.2b-1.wav");
+        i76.add("14.2b-2.wav");
         stringNames.add(i76);
         ArrayList<String> i77 = new ArrayList<>();//14.2d
-        i77.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i77.add("14.2d-1.wav");
         stringNames.add(i77);
         ArrayList<String> i78 = new ArrayList<>();//14.2e
-        i78.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i78.add("14.2e-1.wav");
         stringNames.add(i78);
         ArrayList<String> i79 = new ArrayList<>();//14.2f
-        i79.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i79.add("14.2f-1.wav");
         stringNames.add(i79);
         ArrayList<String> i80 = new ArrayList<>();//14.2g
-        i80.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i80.add("14.2g-1.wav");
         stringNames.add(i80);
         ArrayList<String> i81 = new ArrayList<>();//14.3a
-        i81.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
-        i81.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i81.add("14.3a-1.wav");
+        i81.add("14.3a-2.wav");
         stringNames.add(i81);
         ArrayList<String> i82 = new ArrayList<>();//14.3c
-        i82.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i82.add("14.3c-1.wav");
         stringNames.add(i82);
         ArrayList<String> i83 = new ArrayList<>();//14.3e
-        i83.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i83.add("14.3e-1.wav");
         stringNames.add(i83);
         ArrayList<String> i84 = new ArrayList<>();//14.3f
-        i84.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i84.add("14.3f-1.wav");
         stringNames.add(i84);
         ArrayList<String> i85 = new ArrayList<>();//14.3g
-        i85.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i85.add("14.3g-1.wav");
         stringNames.add(i85);
         ArrayList<String> i86 = new ArrayList<>();//14.4b
-        i86.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
-        i86.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i86.add("14.4b-1.wav");
+        i86.add("14.4b-2.wav");
         stringNames.add(i86);
         ArrayList<String> i87 = new ArrayList<>();//14.4d
-        i87.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i87.add("14.4d-1.wav");
         stringNames.add(i87);
         ArrayList<String> i88 = new ArrayList<>();//14.4e
-        i88.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
-        i88.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i88.add("14.4e-1.wav");
+        i88.add("14.4e-2.wav");
         stringNames.add(i88);
         ArrayList<String> i89 = new ArrayList<>();//14.4g
-        i89.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i89.add("14.4g-1.wav");
         stringNames.add(i89);
         ArrayList<String> i90 = new ArrayList<>();//1.42e
-        i90.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i90.add("1.42e-1.wav");
         stringNames.add(i90);
         ArrayList<String> i91 = new ArrayList<>();//1.42f
-        i91.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i91.add("1.42f-1.wav");
         stringNames.add(i91);
         ArrayList<String> i92 = new ArrayList<>();//1.42g
-        i92.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i92.add("1.42g-1.wav");
         stringNames.add(i92);
         ArrayList<String> i93 = new ArrayList<>();//1.43e
-        i93.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i93.add("1.43e-1.wav");
         stringNames.add(i93);
         ArrayList<String> i94 = new ArrayList<>();//1.32a
-        i94.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i94.add("1.32a-1.wav");
         stringNames.add(i94);
         ArrayList<String> i95 = new ArrayList<>();//1.32e
-        i95.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i95.add("1.32e-1.wav");
         stringNames.add(i95);
         ArrayList<String> i96 = new ArrayList<>();//1.32f
-        i96.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i96.add("1.32f-1.wav");
         stringNames.add(i96);
         ArrayList<String> i97 = new ArrayList<>();//3.42a
-        i97.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i97.add("3.42a-1.wav");
         stringNames.add(i97);
         ArrayList<String> i98 = new ArrayList<>();//3.42b
-        i98.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i98.add("3.42b-1.wav");
         stringNames.add(i98);
         ArrayList<String> i99 = new ArrayList<>();//3.42e
-        i99.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i99.add("3.42e-1.wav");
         stringNames.add(i99);
         ArrayList<String> i100 = new ArrayList<>();//3.42g
-        i100.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i100.add("3.42g-1.wav");
         stringNames.add(i100);
         ArrayList<String> i101 = new ArrayList<>();//4.42e
-        i101.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i101.add("4.42e-1.wav");
         stringNames.add(i101);
         ArrayList<String> i102 = new ArrayList<>();//4.13a
-        i102.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i102.add("4.13a-1.wav");
         stringNames.add(i102);
         ArrayList<String> i103 = new ArrayList<>();//4.13b
-        i103.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i103.add("4.13b-1.wav");
         stringNames.add(i103);
         ArrayList<String> i104 = new ArrayList<>();//4.13d
-        i104.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i104.add("4.13d-1.wav");
         stringNames.add(i104);
         ArrayList<String> i105 = new ArrayList<>();//4.13e
-        i105.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i105.add("4.13e-1.wav");
         stringNames.add(i105);
         ArrayList<String> i106 = new ArrayList<>();//4.13f
-        i106.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i106.add("4.13f-1.wav");
         stringNames.add(i106);
         ArrayList<String> i107 = new ArrayList<>();//4.13g
-        i107.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i107.add("4.13g-1.wav");
         stringNames.add(i107);
         ArrayList<String> i108 = new ArrayList<>();//4.14e
-        i108.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i108.add("4.14a-1.wav");
         stringNames.add(i108);
         ArrayList<String> i109 = new ArrayList<>();//4.14f
-        i109.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i109.add("4.14f-1.wav");
         stringNames.add(i109);
         ArrayList<String> i110 = new ArrayList<>();//4.24a
-        i110.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i110.add("4.24a-1.wav");
         stringNames.add(i110);
         ArrayList<String> i111 = new ArrayList<>();//4.24c
-        i111.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
-        i111.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i111.add("4.24c-1.wav");
+        i111.add("4.24c-2.wav");
         stringNames.add(i111);
         ArrayList<String> i112 = new ArrayList<>();//4.24e
-        i112.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i112.add("4.24e-1.wav");
         stringNames.add(i112);
         ArrayList<String> i113 = new ArrayList<>();//4.24f
-        i113.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i113.add("4.24f-1.wav");
         stringNames.add(i113);
         ArrayList<String> i114 = new ArrayList<>();//4.24g
-        i114.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i114.add("4.24g-1.wav");
         stringNames.add(i114);
         ArrayList<String> i115 = new ArrayList<>();//3.13f
-        i115.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i115.add("3.13f-1.wav");
         stringNames.add(i115);
         ArrayList<String> i116 = new ArrayList<>();//3.14e
-        i116.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i116.add("3.14e-1.wav");
         stringNames.add(i116);
         ArrayList<String> i117 = new ArrayList<>();//4.34e
-        i117.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i117.add("4.34-1.wav");
         stringNames.add(i117);
         ArrayList<String> i118 = new ArrayList<>();//143a
-        i118.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
-        i118.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
-        i118.add("a_1-1_nda1a1_1024_Yolox-RCG500_edited.wav");//need
+        i118.add("143a-1.wav");
+        i118.add("143a-2.wav");
+        i118.add("143a-e.wav");
         stringNames.add(i118);
         ArrayList<String> i119 = new ArrayList<>();//132a
-        i119.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i119.add("132a-1.wav");
         stringNames.add(i119);
         ArrayList<String> i120 = new ArrayList<>();//342a
-        i120.add("a_1-1_ya1a1_0945_Yolox-RCG500_edited.wav");//need
+        i120.add("342a-1.wav");
         stringNames.add(i120);
     }
 
@@ -2168,7 +2168,7 @@ public class ToneTable extends javax.swing.JFrame {
 
                                             jButton119.setBackground(new java.awt.Color(255, 255, 255));
                                             jButton119.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
-                                            jButton119.setText("<html><center>ba<sup>143</sup><br>ja<sup>143</sup><br><font size=\"1\"> (3)</font></center></html>\\n");
+                                            jButton119.setText("<html><center>ba<sup>143</sup><br>ja<sup>143</sup><br>nda<sup>143</sup><br><font size=\"1\"> (3)</font></center></html>\\n");
                                             jButton119.setMaximumSize(new java.awt.Dimension(85, 52));
                                             jButton119.setMinimumSize(new java.awt.Dimension(85, 52));
                                             jButton119.setPreferredSize(new java.awt.Dimension(85, 52));
@@ -2273,40 +2273,45 @@ public class ToneTable extends javax.swing.JFrame {
                                             jLayeredPane5Layout.setHorizontalGroup(
                                                 jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                                                    .addGap(26, 26, 26)
-                                                    .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jLabel2)
-                                                        .addComponent(jLabel3)
-                                                        .addComponent(jLabel4)
-                                                        .addComponent(jLabel5)
-                                                        .addComponent(jLabel8)
-                                                        .addComponent(jLabel7)
-                                                        .addComponent(jLabel6)
-                                                        .addComponent(jLabel11)
-                                                        .addComponent(jLabel10)
-                                                        .addComponent(jLabel9)
-                                                        .addComponent(jLabel12)
-                                                        .addComponent(jLabel13)
-                                                        .addComponent(jLabel14)
-                                                        .addComponent(jLabel15)
-                                                        .addComponent(jLabel16)
-                                                        .addComponent(jLabel17)
-                                                        .addComponent(jLabel18)
-                                                        .addComponent(jLabel19)
-                                                        .addComponent(jLabel20)
-                                                        .addComponent(jLabel21)
-                                                        .addComponent(jLabel22)
-                                                        .addComponent(jLabel23)
-                                                        .addComponent(jLabel24)
-                                                        .addComponent(jLabel25)
-                                                        .addComponent(jLabel26)
-                                                        .addComponent(jLabel27)
-                                                        .addComponent(jLabel28)
-                                                        .addComponent(jLabel29)
-                                                        .addComponent(jLabel30)
-                                                        .addComponent(jLabel32)
-                                                        .addComponent(jLabel31))
-                                                    .addGap(10, 10, 10)
+                                                    .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jLayeredPane5Layout.createSequentialGroup()
+                                                            .addGap(26, 26, 26)
+                                                            .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                .addComponent(jLabel2)
+                                                                .addComponent(jLabel3)
+                                                                .addComponent(jLabel4)
+                                                                .addComponent(jLabel5)
+                                                                .addComponent(jLabel8)
+                                                                .addComponent(jLabel7)
+                                                                .addComponent(jLabel6)
+                                                                .addComponent(jLabel11)
+                                                                .addComponent(jLabel10)
+                                                                .addComponent(jLabel9)
+                                                                .addComponent(jLabel12)
+                                                                .addComponent(jLabel13)
+                                                                .addComponent(jLabel14)
+                                                                .addComponent(jLabel15)
+                                                                .addComponent(jLabel16)
+                                                                .addComponent(jLabel17)
+                                                                .addComponent(jLabel18)
+                                                                .addComponent(jLabel19)
+                                                                .addComponent(jLabel20)
+                                                                .addComponent(jLabel21)
+                                                                .addComponent(jLabel22)
+                                                                .addComponent(jLabel23)
+                                                                .addComponent(jLabel24)
+                                                                .addComponent(jLabel25)
+                                                                .addComponent(jLabel26)
+                                                                .addComponent(jLabel27)
+                                                                .addComponent(jLabel28)
+                                                                .addComponent(jLabel29)
+                                                                .addComponent(jLabel30)
+                                                                .addComponent(jLabel32))
+                                                            .addGap(10, 10, 10))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane5Layout.createSequentialGroup()
+                                                            .addContainerGap()
+                                                            .addComponent(jLabel31)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                                     .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(jLayeredPane5Layout.createSequentialGroup()
                                                             .addComponent(jLabel33)
@@ -2871,16 +2876,14 @@ public class ToneTable extends javax.swing.JFrame {
                                                                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
                                                                     .addGap(20, 20, 20)
                                                                     .addComponent(jLabel30)))
+                                                            .addGap(6, 6, 6)
+                                                            .addComponent(jLabel33)
+                                                            .addGap(18, 18, 18)
                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                                                                    .addGap(6, 6, 6)
-                                                                    .addComponent(jLabel33)
-                                                                    .addGap(18, 18, 18)
-                                                                    .addComponent(jButton119, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(jButton119, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane5Layout.createSequentialGroup()
-                                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                     .addComponent(jLabel31)
-                                                                    .addGap(23, 23, 23)))
+                                                                    .addGap(31, 31, 31)))
                                                             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addComponent(jButton120, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane5Layout.createSequentialGroup()
