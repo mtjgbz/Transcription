@@ -27,7 +27,7 @@ public class SignInBE {
             conn = ds.getConnection();
             stmt = conn.createStatement();
         } catch (Exception e) {
-            errorMsg(e.toString(), "Database error");
+            errorMsg(e.toString(), "Error de la base de datos.");
         }
     }
 

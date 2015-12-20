@@ -7,7 +7,7 @@ package my.transcription;
 
 /**
  *
- * @author mike
+ * @author Mike
  */
 public class TraineeLog extends javax.swing.JFrame {
 
@@ -40,7 +40,7 @@ public class TraineeLog extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(665, 415));
 
-        jMenu1.setText("Home");
+        jMenu1.setText("Hogar");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);

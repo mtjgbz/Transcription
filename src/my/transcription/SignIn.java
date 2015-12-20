@@ -22,7 +22,7 @@ public class SignIn extends javax.swing.JFrame {
      * Creates new form SignIn
      */
     public SignIn() {
-        this.setTitle("Mixtec Transcription: Sign-in");
+        this.setTitle("Transcripción Mixteca: Ingresar");
         initComponents();
         //ECL: Create SignInBE here
         backend = new SignInBE();
@@ -70,7 +70,7 @@ public class SignIn extends javax.swing.JFrame {
 
         jSignIn.setBackground(new java.awt.Color(204, 204, 204));
         jSignIn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jSignIn.setText("Sign In");
+        jSignIn.setText("Ingresar");
         //jButton1.setBackground(Color.RED);
         jSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +80,7 @@ public class SignIn extends javax.swing.JFrame {
 
         jRegisterButton.setBackground(new java.awt.Color(204, 204, 204));
         jRegisterButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jRegisterButton.setText("Register");
+        jRegisterButton.setText("Registrar ");
         jRegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRegisterButtonActionPerformed(evt);
@@ -90,10 +90,10 @@ public class SignIn extends javax.swing.JFrame {
         jUserNameField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
 
         jPasswordLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jPasswordLabel.setText("Password");
+        jPasswordLabel.setText("Contraseña ");
 
         jUserNameLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jUserNameLabel.setText("User Name");
+        jUserNameLabel.setText("Nombre de Usuario");
 
         jPasswordField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -105,7 +105,7 @@ public class SignIn extends javax.swing.JFrame {
         jForgottenPassword.setBackground(new java.awt.Color(255, 255, 255));
         jForgottenPassword.setForeground(new java.awt.Color(102, 102, 102));
         jForgottenPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jForgottenPassword.setText("Forgotten Password?");
+        jForgottenPassword.setText("¿Contraseña Olvidada?");
         jForgottenPassword.setForeground(new Color(54,91,143));
         jForgottenPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,10 +119,6 @@ public class SignIn extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jUserNameLabel)
-                .addGap(163, 163, 163))
             .addGroup(layout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,18 +127,22 @@ public class SignIn extends javax.swing.JFrame {
                 .addGap(142, 142, 142))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(116, 116, 116)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jUserNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jForgottenPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(8, 8, 8)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jUserNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(131, 131, 131)
+                        .addComponent(jUserNameLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(jPasswordLabel))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jForgottenPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)))
+                        .addGap(158, 158, 158)
+                        .addComponent(jPasswordLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE))
@@ -201,7 +201,7 @@ public class SignIn extends javax.swing.JFrame {
             backend.closeDB();
             dispose();
         } else {
-            errorMsg("Sign-in failed.  Please try again.", "Sign-in");
+            errorMsg("Fallo al Iniciar Sesion. Por favor, inténtalo de nuevo.", "Ingresar");
         }
 
     }//GEN-LAST:event_jSignInActionPerformed
@@ -233,7 +233,7 @@ public class SignIn extends javax.swing.JFrame {
                 backend.closeDB();
                 dispose();
             } else {
-                errorMsg("Sign-in failed.  Please try again.", "Sign-in");
+                errorMsg("Fallo al Iniciar Sesion. Por favor, inténtalo de nuevo.", "Ingresar");
             }
         }
     }//GEN-LAST:event_jPasswordFieldKeyPressed

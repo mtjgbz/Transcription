@@ -47,7 +47,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,7 +79,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="transcriptionBrowse">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Browse..."/>
+        <Property name="text" type="java.lang.String" value="Navegar..."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transcriptionBrowseActionPerformed"/>
@@ -95,7 +95,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="cancelButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cancel"/>
+        <Property name="text" type="java.lang.String" value="Cancelar "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
@@ -103,7 +103,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="transcriptionLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Where are your tones located?"/>
+        <Property name="text" type="java.lang.String" value="&#xbf;D&#xf3;nde est&#xe1;n ubicadas las tonos?"/>
       </Properties>
     </Component>
   </SubComponents>
