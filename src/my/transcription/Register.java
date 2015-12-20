@@ -83,35 +83,35 @@ public class Register extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(400, 550));
         setResizable(false);
 
-        jSecurityQuestionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose a Security Question." }));
+        jSecurityQuestionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elegir una Pregunta de Seguridad" }));
         jSecurityQuestionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSecurityQuestionComboBoxActionPerformed(evt);
             }
         });
 
-        jFirstNameLabel.setText("First Name");
+        jFirstNameLabel.setText("Nombre");
 
-        jLastNameLabel.setText("Last Name");
+        jLastNameLabel.setText("Apellido ");
 
-        jUsernameLabel.setText("Username");
+        jUsernameLabel.setText("Nombre de Usuario");
 
-        jPasswordLabel.setText("Password");
+        jPasswordLabel.setText("Contraseña");
 
-        jRetypePassLabel.setText("Retype Password");
+        jRetypePassLabel.setText("Vuelva a Escribir la Contraseña");
 
-        jRegisterButton.setText("Register");
+        jRegisterButton.setText("Inscripción");
         jRegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRegisterButtonActionPerformed(evt);
             }
         });
 
-        jSecQuestionAnswerLabel.setText("Answer Security Question");
+        jSecQuestionAnswerLabel.setText("Responder a la Pregunta de Seguridad ");
 
         jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
 
-        jBackButton.setText("Back");
+        jBackButton.setText("Atrás");
         jBackButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBackButtonMouseClicked(evt);
@@ -214,7 +214,7 @@ public class Register extends javax.swing.JFrame {
             jReTypePassField.setText("");
             jSecurityQuestionComboBox.setSelectedIndex(0);
             jSecQuestAnswerField.setText("");
-            errorMsg(success, "Registration");
+            errorMsg(success, "Inscripción");
         }
     }//GEN-LAST:event_jRegisterButtonActionPerformed
 

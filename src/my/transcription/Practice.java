@@ -94,7 +94,7 @@ public class Practice extends javax.swing.JFrame {
             clip.stop();
             clip.setMicrosecondPosition(timesList.get(page-1));
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
-            playButton1.setText("Play");
+            playButton1.setText("Juega");
         }
     };
 
@@ -104,7 +104,7 @@ public class Practice extends javax.swing.JFrame {
      * @param user
      */
     public Practice(String user, Integer lesson, String subLesson) {
-        this.setTitle("Mixtec Transcription: Práctica");
+        this.setTitle("Transcripción Mixteca: Práctica");
         initComponents();
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         this.user = user;
@@ -112,7 +112,7 @@ public class Practice extends javax.swing.JFrame {
         this.subLesson = subLesson;
         jUserMenu.setText(user);
         jTextPane1.setText("text1");
-        prevButton.setText("Previous");
+        prevButton.setText("Anterior");
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
 
@@ -129,7 +129,7 @@ public class Practice extends javax.swing.JFrame {
         nas = new Nasalizations(path);
         tone = new ToneTable(path);
         attempt = 3;
-        attemptCountLabel.setText("You have " + attempt + " attempts left.");
+        attemptCountLabel.setText("Tiene " + attempt + " intentos restantes.");
 
         for(int i = 0; i < 20; i++) {
             btnStatus.add(true);
@@ -975,7 +975,7 @@ public class Practice extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         clicks++;
         attempt--;
-        attemptCountLabel.setText("You have " + attempt + " attempts left.");   
+        attemptCountLabel.setText("Tiene " + attempt + " intentos restantes.");   
         
         String phrase = jTextPane1.getText();
         findStartEnd(phrase);
@@ -999,21 +999,21 @@ public class Practice extends javax.swing.JFrame {
         clip.stop();
         clip.close();
         timer.stop();
-        jPageLabel.setText("Page " + page + "/20");
+        jPageLabel.setText("Página " + page + "/20");
         backend.closeAudio(); 
         clip = backend.makeClip(page);
         if (page == 1) {
-            prevButton.setText("Current");
+            prevButton.setText("Contraseña");
             prevButton.setEnabled(false);
         } else if (page == 19) {
             nextButton.setEnabled(true);
-            nextButton.setText("Next");
+            nextButton.setText("Próximo");
         }
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
-        playButton1.setText("Play");
+        playButton1.setText("Juega");
         backend.closeAudio();
         submitButton.setEnabled(btnStatus.get(page-1));
-        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attempts left."); 
+        attemptCountLabel.setText("Tiene " + attempts.get(page-1) + " intentos restantes."); 
         try {
             int start = saveStart.get(page - 1).get(wordCount - 1);
             int end = saveEnd.get(page - 1).get(wordCount - 1);
@@ -1076,19 +1076,19 @@ public class Practice extends javax.swing.JFrame {
     private void playButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton1ActionPerformed
         clip.stop();
         timer.stop();
-        playButton1.setText("Play");
+        playButton1.setText("Juega");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         if (!clip.isRunning()) {
             clip.setMicrosecondPosition(timesList.get(page-1));
             clip.start();
             timer.start();
             playButton1.setForeground(new java.awt.Color(255, 51, 51));
-            playButton1.setText("Stop");
+            playButton1.setText("Para");
         } else {
             clip.stop();
             timer.stop();
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
-            playButton1.setText("Play");
+            playButton1.setText("Juega");
         }
     }//GEN-LAST:event_playButton1ActionPerformed
     String text = " ";
@@ -1097,24 +1097,24 @@ public class Practice extends javax.swing.JFrame {
         clip.stop();
         clip.close();
         timer.stop();
-        jPageLabel.setText("Page " + page + "/20");
+        jPageLabel.setText("Página " + page + "/20");
         backend.closeAudio();
         clip = backend.makeClip(page);
         if (page == 20) {
-            nextButton.setText("Current");
+            nextButton.setText("Contraseña");
             nextButton.setEnabled(false);
         } else if (page == 2) {
             prevButton.setEnabled(true);
-            prevButton.setText("Previous");
+            prevButton.setText("Anterior");
         }
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
-        playButton1.setText("Play");
+        playButton1.setText("Juega");
         backend.closeAudio();
         initAudio();
         submitButton.setEnabled(btnStatus.get(page-1));
         clicks = 0;
         attempt = 3;
-        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attempts left.");
+        attemptCountLabel.setText("Tiene " + attempts.get(page-1) + " intentos restantes .");
         showText();
         text = jTextPane1.getText();
     }//GEN-LAST:event_nextButtonActionPerformed

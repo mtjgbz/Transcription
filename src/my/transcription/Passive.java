@@ -964,8 +964,6 @@ public class Passive extends javax.swing.JFrame {
         jTextPane4.setText("Loading...");
         jTextPane5.setText("Loading...");
 
-        
-
         clip1.stop();
         clip2.stop();
         clip3.stop();
