@@ -44,7 +44,7 @@ public class ActiveBE {
     private static HashMap<Integer, ArrayList<String>> userAnswers;
     private static ArrayList<Integer> idList;
     private ArrayList<Integer> attempts;
-    private static int practiceID;
+    private static int sessionID;
 
     private JFrame parentFrame;
 
@@ -52,6 +52,16 @@ public class ActiveBE {
     private boolean isTest;
 
     int wordCount = 0;
+    
+    private static final String TEST_TABLE = "TESTS";
+    private static final String TEST_ATTEMPT = "TEST_ATTEMPT";
+    private static final String TEST_ANSWER = "TEST_ANSWER";
+    private static final String TEST_ID = "TestID";
+    
+    private static final String PRACTICE_TABLE = "PRACTICE";
+    private static final String PRACTICE_ATTEMPT = "PRACTICE_ATTEMPT";
+    private static final String PRACTICE_ANSWER = "PRACTICE_ANSWER";
+    private static final String PRACTICE_ID = "PracticeID";
 
     public ActiveBE(boolean isTest) {
         this.isTest = isTest;
@@ -68,14 +78,24 @@ public class ActiveBE {
     }
     
     public void addCorrectAnswer(String answer, int questionNum){
+        String table;
+        String column;
+        if(isTest){
+            table = TEST_ANSWER;
+            column = TEST_ID;
+        }else{
+            table = PRACTICE_ANSWER;
+            column = PRACTICE_ID;
+        }
+        
         try{
             questionNum++;
-            String query = "INSERT INTO PRACTICE_ANSWER(PracticeID, Answer, "
-                    + "QuestionNum) VALUES(" + practiceID + ", '" + answer + "', "
+            String query = "INSERT INTO " + table + "(" + column + ", Answer, "
+                    + "QuestionNum) VALUES(" + sessionID + ", '" + answer + "', "
                     + questionNum + ");";
             stmt.execute(query);
             
-            String query1 = "SELECT QuestionID FROM PRACTICE_ANSWER WHERE "
+            String query1 = "SELECT QuestionID FROM " + table + " WHERE "
                     + "QuestionID = LAST_INSERT_ROWID();";
             rs = stmt.executeQuery(query1);
             int questionID = rs.getInt("QuestionID");
@@ -96,9 +116,19 @@ public class ActiveBE {
             score = 0; 
         }
         
+        String table;
+        String column;
+        if(isTest){
+            table = TEST_ATTEMPT;
+            column = TEST_ID;
+        }else{
+            table = PRACTICE_ATTEMPT;
+            column = PRACTICE_ID;
+        }
+        
         try{
-            String query = "INSERT INTO PRACTICE_ATTEMPT(PracticeID, Attempt, QuestionID, "
-                    + "Response, Score) VALUES(" + practiceID + ", " + attempt + ", "
+            String query = "INSERT INTO " + table + "(" + column + ", Attempt, QuestionID, "
+                    + "Response, Score) VALUES(" + sessionID + ", " + attempt + ", "
                     + questionID + ", '" + answer + "', " + score + ");";
             stmt.execute(query);
         }catch(Exception e){
@@ -107,9 +137,23 @@ public class ActiveBE {
     }
     
     public void calculateScore(){
+        String table;
+        String table2;
+        String column;
+        
+        if(isTest){
+            table = TEST_ATTEMPT;
+            table2 = TEST_TABLE;
+            column = TEST_ID;
+        }else{
+            table = PRACTICE_ATTEMPT;
+            table2 = PRACTICE_TABLE;
+            column = PRACTICE_ID;
+        }
+        
         try{
-            String query = "SELECT * FROM PRACTICE_ATTEMPT WHERE PracticeID = "
-                    + practiceID + ";";
+            String query = "SELECT * FROM " + table + " WHERE " + column + " = "
+                    + sessionID + ";";
             rs = stmt.executeQuery(query);
             float weightedScore = 0;
             int attemptNum = 0;
@@ -123,8 +167,8 @@ public class ActiveBE {
             weightedScore *= 100;
             rs.close();
             
-            query = "UPDATE PRACTICE SET Score = " + weightedScore + " WHERE PracticeID = "
-                    + practiceID + ";";
+            query = "UPDATE " + table2 + " SET Score = " + weightedScore + " WHERE " + column + " = "
+                    + sessionID + ";";
             stmt.execute(query);
         }catch(Exception e){
             e.printStackTrace();
@@ -164,16 +208,26 @@ public class ActiveBE {
     }
 
     public int newPractice(String username, int lesson, String sublesson) {
+        String table;
+        String column;
+        if(isTest){
+            table = TEST_TABLE;
+            column = TEST_ID;
+        }else{
+            table = PRACTICE_TABLE;
+            column = PRACTICE_ID;
+        }
+        
         try {
-            String query = "INSERT INTO PRACTICE(Username, Lesson, Sublesson, DateTaken)"
+            String query = "INSERT INTO " + table + "(Username, Lesson, Sublesson, DateTaken)"
                     + " VALUES('" + username + "', " + lesson + ", '" + sublesson + "', "
                     + "datetime('now', 'localtime'));";
             stmt.execute(query);
-            query = "SELECT(PracticeID) FROM PRACTICE WHERE PracticeID = LAST_INSERT_ROWID();";
+            query = "SELECT(" + column + ") FROM " + table + " WHERE " + column + " = LAST_INSERT_ROWID();";
             ResultSet rs = stmt.executeQuery(query);
-            practiceID = rs.getInt("PracticeID");
+            sessionID = rs.getInt(column);
             rs.close();
-            return practiceID;
+            return sessionID;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -193,11 +247,18 @@ public class ActiveBE {
                 score = 0;
             }
             
-            System.out.println("User Answers: " + userAnswers);
-            System.out.println("PracticeID: " + practiceID);
+            String table;
+            String column;
+            if(isTest){
+                table = TEST_ATTEMPT;
+                column = TEST_ID;
+            }else{
+                table = PRACTICE_ATTEMPT;
+                column = PRACTICE_ID;
+            }
             
-            String query = "INSERT INTO PRACTICE_ATTEMPT(PracticeID, Attempt, QuestionID, "
-                    + "Response, Score) VALUES(" + practiceID + ", " + attempt + ", "
+            String query = "INSERT INTO " + table + "(" + column + ", Attempt, QuestionID, "
+                    + "Response, Score) VALUES(" + sessionID + ", " + attempt + ", "
                     + questionID + ", '" + userAnswer + "', " + score + ");";
             stmt.execute(query);
         } catch (Exception e) {
@@ -316,8 +377,19 @@ public class ActiveBE {
     }
     
     public int getQuestionID(String answer){
+        String table;
+        String column; 
+        
+        if(isTest){
+            table = TEST_ANSWER;
+            column = TEST_ID;
+        }else{
+            table = PRACTICE_ANSWER;
+            column = PRACTICE_ID;
+        }
+        
         try{
-            String query = "SELECT * FROM PRACTICE_ANSWER WHERE PracticeID = " + practiceID
+            String query = "SELECT * FROM " + table + " WHERE " + column + " = " + sessionID
                     + " AND Answer LIKE '" + answer + "';";
             rs = stmt.executeQuery(query);
             int id = rs.getInt("QuestionID");
