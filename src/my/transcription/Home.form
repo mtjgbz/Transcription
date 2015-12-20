@@ -109,7 +109,7 @@
                       <Component id="jLabel2" min="-2" pref="304" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
                       <Component id="jLogOutButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>

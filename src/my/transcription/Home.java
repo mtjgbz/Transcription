@@ -354,7 +354,7 @@ public class Home extends javax.swing.JFrame {
                         .addGap(181, 181, 181)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
+                        .addGap(280, 280, 280)
                         .addComponent(jLogOutButton)))
                 .addContainerGap(186, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
