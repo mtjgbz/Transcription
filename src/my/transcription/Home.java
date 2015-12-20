@@ -8,6 +8,7 @@ package my.transcription;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -559,8 +560,10 @@ public class Home extends javax.swing.JFrame {
     private void jEncliticButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEncliticButtonActionPerformed
         if (!enc.isShowing()) {
             enc.setVisible(true);
+            
         } else {
             enc.toFront();
+            
         }
     }//GEN-LAST:event_jEncliticButtonActionPerformed
 

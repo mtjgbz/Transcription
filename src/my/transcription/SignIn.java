@@ -6,6 +6,7 @@
 package my.transcription;
 
 import java.awt.Color;
+import java.io.File;
 import javax.swing.JOptionPane;
 //import javax.swing.JDialog
 //TODO: Figure out how to carry username throughout windows

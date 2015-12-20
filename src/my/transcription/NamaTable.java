@@ -90,14 +90,6 @@ public class NamaTable extends javax.swing.JFrame {
         buttonlist.add(jButton23);
         buttonlist.add(jButton24);
         buttonlist.add(playAllButton);
-        System.out.print(listenerlist.size() + " and " + cliplist.size());
-        int i = 0;
-        for (Clip clip : cliplist) {
-            if (clip.equals(cliplist.get(i))) {
-                System.out.print(i + " has match \n");
-            }
-            i++;
-        }
         this.setTitle("Mixtec Transcription: Nama Table");
         this.setLocation(x, y);
     }
