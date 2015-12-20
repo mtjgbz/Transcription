@@ -42,7 +42,7 @@ public class ToneTable extends javax.swing.JFrame {
      */
     public ToneTable(String path) {
         initComponents();
-        this.setTitle("Mixtec Transcription: Tone Table");
+        this.setTitle("Transcripción Mixteca: Mesa de Tonos");
         this.setLocation(x, y);
         this.path = path;
         /**
@@ -515,7 +515,7 @@ public class ToneTable extends javax.swing.JFrame {
             }
 
         } catch (FileNotFoundException ex) { 
-            errorMsg("Tone Table Audio Not Found, Please Have Admin Load Audio Files.", "Tone Table");
+            errorMsg("Tono Tabla Audio no encontrado, por favor tenga carga de administración de archivos de audio.", "Mesa de Tonos");
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
