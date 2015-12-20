@@ -58,13 +58,17 @@ public class AudioClip {
                 
                 bytesBuffer = new byte[bytes];
             }   int off = (int) (byteRate*startPos/1e6);
+            
+            dataLine.start();
             int bytesRead = audioIn.read(bytesBuffer);
             dataLine.write(bytesBuffer,off,bytesRead);
             audioIn.close();
             
-            dataLine.start();
+            
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             Logger.getLogger(AudioClip.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
 }
