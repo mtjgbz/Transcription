@@ -116,22 +116,30 @@ public class AdminHome extends javax.swing.JFrame {
         }
         int selectedRow = table.getSelectedRow();
         String date = (String) table.getValueAt(selectedRow, 0);
-        int practiceID = backend.getPracticeID(date);
+        int id = backend.getID(date, isTest);
+        System.out.println("ID: " + id);
         
         table.removeAll();
         DefaultTableModel model = new DefaultTableModel(ATTEMPT_NAMES, 0);
         table.setModel(model);
         
-        if(practiceID >= 0){
-            ArrayList<ArrayList<String>> results = backend.traineeLog(practiceID);
+        if(id >= 0){
+            ArrayList<ArrayList<String>> results = backend.traineeLog(id, isTest);
             
             if(results != null){
                 for(ArrayList<String> r : results){
+                    System.out.println(r);
                     model.addRow(r.toArray());
                 }
             }
-
-            practiceTable.repaint();
+            
+            if(isTest){
+                testTable = table;
+                testTable.repaint();
+            }else{
+                practiceTable = table;
+                practiceTable.repaint();
+            }
         }
         
     }
@@ -262,7 +270,12 @@ public class AdminHome extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         if(selectLog){
-            updateTable(false);
+            int index = pane.getSelectedIndex();
+            if(index == 0){
+                updateTable(false);
+            }else{
+                updateTable(true);
+            }
         }else{
             createPane();
             selectLog = true;

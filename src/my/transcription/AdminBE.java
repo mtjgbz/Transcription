@@ -86,11 +86,21 @@ public class AdminBE {
         return null;        
     }
     
-    public int getPracticeID(String date){
+    public int getID(String date, boolean isTest){
         try{
-            String query = "SELECT PracticeID FROM PRACTICE WHERE DATETAKEN = '" + date + "';";
+            String name;
+            String table;
+            if(isTest){
+                name = "TestID";
+                table = "TESTS";
+            }else{
+                name = "PracticeID";
+                table = "PRACTICE";
+            }
+            String query = "SELECT " + name + " FROM " + table + " WHERE DATETAKEN = '" 
+                    + date + "';";
             rs = stmt.executeQuery(query);
-            int practiceID = rs.getInt("PracticeID");
+            int practiceID = rs.getInt(name);
             rs.close();
             return practiceID;
         }catch(Exception e){
@@ -99,11 +109,24 @@ public class AdminBE {
         return -1;
     }
     
-    public ArrayList<ArrayList<String>> traineeLog(int practiceID){
+    public ArrayList<ArrayList<String>> traineeLog(int id, boolean isTest){
         try{
-            String query = "SELECT * FROM PRACTICE_ANSWER AS A JOIN PRACTICE_ATTEMPT AS T "
-                    + "ON A.QuestionID = T.QuestionID WHERE A.PracticeID = "
-                    + practiceID + ";";
+            String answerTable;
+            String attemptTable;
+            String columnName;
+            if(isTest){
+                answerTable = "TEST_ANSWER";
+                attemptTable = "TEST_ATTEMPT";
+                columnName = "TestID";
+            }else{
+                answerTable = "PRACTIC_ANSWER";
+                attemptTable = "PRACTICE_ATTEMPT";
+                columnName = "PracticeID";
+            }
+            
+            String query = "SELECT * FROM " + answerTable + " AS A JOIN "
+                    + attemptTable + " AS T ON A.QuestionID = T.QuestionID WHERE"
+                    + " A." + columnName + " = " + id + ";";
             rs = stmt.executeQuery(query);
             
             ArrayList<ArrayList<String>> results = new ArrayList<>();
@@ -121,6 +144,7 @@ public class AdminBE {
                 
                 results.add(row);
             }            
+            System.out.println(results);
             return results;
         }catch(Exception e){
             e.printStackTrace();
