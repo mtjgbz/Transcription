@@ -6,7 +6,6 @@
 package my.transcription;
 
 import java.sql.*;
-import java.util.Scanner;
 import org.sqlite.*;
 
 /**
@@ -45,7 +44,6 @@ public class RegisterBE {
             SQLiteDataSource ds = new SQLiteDataSource(config);
             ds.setUrl("jdbc:sqlite::resource:" + getClass().getResource("TAA.db").toString());
             conn = ds.getConnection();
-            System.out.println("Database opened successfully");
             stmt = conn.createStatement();
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,11 +100,11 @@ public class RegisterBE {
         try {
             int changed = stmt.executeUpdate(query);
             if (changed < 1) {
-                System.out.println("Insert failed.");
+                System.out.println("Insertar fracasó.");
             }
         } catch (Exception e) {
             if (e.getMessage().contains("UNIQUE")) {
-                return "Username already exists. Please try again.";
+                return "Nombre de usuario ya existe. Por favor, vuelva a intentarlo.";
             }
             return e.getMessage();
         }
@@ -179,14 +177,14 @@ public class RegisterBE {
         password = p;
         if (!passwordMatch(p2)) { //ECL: If the two passwords given don't match or are blank
             password = null;
-            System.out.println("Passwords do not match.");
-            return "Passwords do not match.";
+            System.out.println("Las contraseñas no coinciden.");
+            return "Las contraseñas no coinciden.";
         }
 
         //ECL: Check if any of the fields are empty - if they are, produce error
         if (emptyFields(f, l, u, a)) {
             password = null;
-            return "Not all fields were filled.";
+            return "No se llenaron todos los campos.";
         }
         fname = f;
         lname = l;
