@@ -570,7 +570,7 @@ public class Passive extends javax.swing.JFrame {
             try{
                 file = backend.findFile(lesson, subLesson);
             } catch (Exception ex) { 
-                errorMsg("Nasalization Audio Not Found, Please Have Admin Load Audio Files.", "Nasalización");
+                errorMsg("Nasalization Audio no Encontrado, Por favor tenga carga de Ddministración de archivos de Audio..", "Nasalización");
             }
             
             //pulls the start time, phrase, and end time from the file selected above

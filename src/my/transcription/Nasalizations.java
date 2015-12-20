@@ -41,7 +41,7 @@ public class Nasalizations extends javax.swing.JFrame {
      */
     public Nasalizations(String path) {
         initComponents();
-        this.setTitle("Mixtec Transcription: Nasalizations Table");
+        this.setTitle("Transcripción Mixteca: Mesa de Nasalización");
         this.setLocation(x, y);
         this.path = path;
         for (int i = 0; i < numOfButtons; i++) {
@@ -155,7 +155,7 @@ public class Nasalizations extends javax.swing.JFrame {
             }
 
         } catch (FileNotFoundException ex) { 
-            errorMsg("Nasalization Audio Not Found, Please Have Admin Load Audio Files.", "Nasalization");
+            errorMsg("Nasalization Audio no Encontrado, Por favor tenga carga de Ddministración de archivos de Audio.", "Nasalización");
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

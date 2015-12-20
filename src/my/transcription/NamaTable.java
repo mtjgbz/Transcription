@@ -98,7 +98,7 @@ public class NamaTable extends javax.swing.JFrame {
             }
             i++;
         }
-        this.setTitle("Mixtec Transcription: Nama Table");
+        this.setTitle("Transcripción Mixteca: Mesa de Nama");
         this.setLocation(x, y);
     }
 
@@ -892,9 +892,7 @@ public class NamaTable extends javax.swing.JFrame {
                 .addComponent(playAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 6, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 358, Short.MAX_VALUE))
         );
 
         pack();

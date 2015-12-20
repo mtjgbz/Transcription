@@ -203,10 +203,6 @@ public class PassiveBE {
                 }
             }
         }
-//        for(String w : words) {
-//            System.out.println("Word in Words: " + w);
-//        }
-
     }
 
     /**
