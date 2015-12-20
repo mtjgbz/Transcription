@@ -64,7 +64,7 @@ public class UpdateTones extends javax.swing.JFrame {
             }
         });
 
-        transcriptionBrowse.setText("Browse...");
+        transcriptionBrowse.setText("Navegar...");
         transcriptionBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 transcriptionBrowseActionPerformed(evt);
@@ -78,14 +78,14 @@ public class UpdateTones extends javax.swing.JFrame {
             }
         });
 
-        cancelButton.setText("Cancel");
+        cancelButton.setText("Cancelar ");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
             }
         });
 
-        transcriptionLabel.setText("Where are your tones located?");
+        transcriptionLabel.setText("¿Dónde están ubicadas las tonos? ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +96,7 @@ public class UpdateTones extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addComponent(cancelButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -106,7 +106,7 @@ public class UpdateTones extends javax.swing.JFrame {
                                 .addComponent(transcriptionPath, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(transcriptionBrowse)))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
