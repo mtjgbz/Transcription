@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,7 +6,6 @@
 package my.transcription;
 
 import java.sql.*;
-import java.util.Scanner;
 import org.sqlite.*;
 
 /**
@@ -15,29 +13,29 @@ import org.sqlite.*;
  * @author Casey
  */
 public class ForgottenPasswordBE {
-// TODO: pull security question from DB and populate jTextField4 with it
-// TODO: pull inputted username and sec ques ans and check agianst DB entries.
-//       if match pull password from DB and populate jTextField3 with it
-// TODO: ResultSet closed error
-
+    // TODO: pull security question from DB and populate jTextField4 with it
+    // TODO: pull inputted username and sec ques ans and check agianst DB entries.
+    //       if match pull password from DB and populate jTextField3 with it
+    // TODO: ResultSet closed error
+    
     private String fname;
     private String lname;
     private String username;
     private String password;
     private int questionID;
     private String questionAnswer;
-
+    
     private Connection conn;
     private Statement stmt;
     private ResultSet rs;
-
+    
     /**
      * Constructor to set up database.
      */
     public ForgottenPasswordBE() {
         setupDB();
     }
-
+    
     /**
      * Sets up the database to connect from.
      */
@@ -50,13 +48,12 @@ public class ForgottenPasswordBE {
             SQLiteDataSource ds = new SQLiteDataSource(config);
             ds.setUrl("jdbc:sqlite::resource:" + getClass().getResource("TAA.db").toString());
             conn = ds.getConnection();
-            System.out.println("Database opened successfully");
             stmt = conn.createStatement();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
     /**
      * Closes the database connection and all similar statements and results.
      */
@@ -67,9 +64,9 @@ public class ForgottenPasswordBE {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
     }
-
+    
     /**
      * @author Casey
      * @param un the username that the method will pull the security question
@@ -83,7 +80,7 @@ public class ForgottenPasswordBE {
         try {
             // 1st Query to pull QuestionID from USERS
             String query1 = "SELECT QuestionID FROM USERS WHERE Username='" + username + "';";
-
+            
             // Execute first query and store in questionID
             rs = stmt.executeQuery(query1);
             if (rs.next()) {
@@ -97,15 +94,15 @@ public class ForgottenPasswordBE {
                 question = "";
             }
             rs.close();
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
         // return the security question
-
+        
         return question;
     }
-
+    
     /**
      * @author Casey
      * @param un username pulled from the trainees input
@@ -119,10 +116,10 @@ public class ForgottenPasswordBE {
         questionAnswer = qAnswer;
         try {
             String query = "SELECT Password FROM USERS "
-                    + "WHERE QuestionID ='" + questionID + "' "
-                    + "AND Username='" + username + "' "
-                    + "AND QuestionAnswer='" + questionAnswer + "';";
-
+            + "WHERE QuestionID ='" + questionID + "' "
+            + "AND Username='" + username + "' "
+            + "AND QuestionAnswer='" + questionAnswer + "';";
+            
             rs = stmt.executeQuery(query);
             if (rs.next()) {
                 password = rs.getString("Password");
@@ -133,8 +130,8 @@ public class ForgottenPasswordBE {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
         return password;
     }
-
+    
 }

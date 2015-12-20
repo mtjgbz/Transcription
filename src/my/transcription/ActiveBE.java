@@ -33,7 +33,7 @@ import org.w3c.dom.NodeList;
  * @author mike
  */
 public class ActiveBE {
-
+    
     private Statement stmt;
     private ResultSet rs;
     private Random rand;
@@ -44,14 +44,14 @@ public class ActiveBE {
     private static ArrayList<Integer> idList;
     private ArrayList<Integer> attempts;
     private static int practiceID;
-
+    
     private JFrame parentFrame;
-
+    
     private Clip clip;
     private boolean isTest;
-
+    
     int wordCount = 0;
-
+    
     public ActiveBE(boolean isTest) {
         this.isTest = isTest;
         stmt = User.setupDB(parentFrame, getClass().getResource("TAA.db").toString());
@@ -70,12 +70,12 @@ public class ActiveBE {
         try{
             questionNum++;
             String query = "INSERT INTO PRACTICE_ANSWER(PracticeID, Answer, "
-                    + "QuestionNum) VALUES(" + practiceID + ", '" + answer + "', "
-                    + questionNum + ");";
+            + "QuestionNum) VALUES(" + practiceID + ", '" + answer + "', "
+            + questionNum + ");";
             stmt.execute(query);
             
             String query1 = "SELECT QuestionID FROM PRACTICE_ANSWER WHERE "
-                    + "QuestionID = LAST_INSERT_ROWID();";
+            + "QuestionID = LAST_INSERT_ROWID();";
             rs = stmt.executeQuery(query1);
             int questionID = rs.getInt("QuestionID");
             rs.close();
@@ -92,7 +92,7 @@ public class ActiveBE {
     public void calculateScore(){
         try{
             String query = "SELECT * FROM PRACTICE_ATTEMPT WHERE PracticeID = "
-                    + practiceID + ";";
+            + practiceID + ";";
             rs = stmt.executeQuery(query);
             float weightedScore = 0;
             int attemptNum = 0;
@@ -107,22 +107,22 @@ public class ActiveBE {
             rs.close();
             
             query = "UPDATE PRACTICE SET Score = " + weightedScore + " WHERE PracticeID = "
-                    + practiceID + ";";
+            + practiceID + ";";
             stmt.execute(query);
         }catch(Exception e){
             e.printStackTrace();
         }
     }
-
+    
     public Clip makeClip(int pageNum) {
-
+        
         AudioInputStream audioIn;
         try {
-                audioIn = AudioSystem.getAudioInputStream(clips.get(pageNum-1));
-                DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
-                clip = (Clip) AudioSystem.getLine(info);
-                clip.open(audioIn);
-                audioIn.close();
+            audioIn = AudioSystem.getAudioInputStream(clips.get(pageNum-1));
+            DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
+            clip = (Clip) AudioSystem.getLine(info);
+            clip.open(audioIn);
+            audioIn.close();
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(ActiveBE.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -130,27 +130,27 @@ public class ActiveBE {
         } catch (LineUnavailableException ex) {
             Logger.getLogger(ActiveBE.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return clip;
     }
-
+    
     public void closeAudio() {
         clip.close();
     }
-
+    
     public void submit(ArrayList<String> answerList, ArrayList<String> attemptList) {
         if (isTest) {
-
+            
         } else {
-
+            
         }
     }
-
+    
     public int newPractice(String username, int lesson, String sublesson) {
         try {
             String query = "INSERT INTO PRACTICE(Username, Lesson, Sublesson, DateTaken)"
-                    + " VALUES('" + username + "', " + lesson + ", '" + sublesson + "', "
-                    + "datetime('now', 'localtime'));";
+            + " VALUES('" + username + "', " + lesson + ", '" + sublesson + "', "
+            + "datetime('now', 'localtime'));";
             stmt.execute(query);
             query = "SELECT(PracticeID) FROM PRACTICE WHERE PracticeID = LAST_INSERT_ROWID();";
             ResultSet rs = stmt.executeQuery(query);
@@ -162,7 +162,7 @@ public class ActiveBE {
         }
         return 0;
     }
-
+    
     public void newAttempt(int attemptInverse, String word, boolean correct) {
         try {
             int attempt = Math.abs(attemptInverse - 3);
@@ -180,49 +180,49 @@ public class ActiveBE {
             System.out.println("PracticeID: " + practiceID);
             
             String query = "INSERT INTO PRACTICE_ATTEMPT(PracticeID, Attempt, QuestionID, "
-                    + "Response, Score) VALUES(" + practiceID + ", " + attempt + ", "
-                    + questionID + ", '" + userAnswer + "', " + score + ");";
+            + "Response, Score) VALUES(" + practiceID + ", " + attempt + ", "
+            + questionID + ", '" + userAnswer + "', " + score + ");";
             stmt.execute(query);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
     public String findFile(int lesson, String sublesson) {
         try {
             //pulling .txt file that contains lesson matches
             String query = "SELECT(FileList) FROM LESSONS WHERE Lesson = " + lesson
-                    + " AND Sublesson = '" + sublesson + "';";
+            + " AND Sublesson = '" + sublesson + "';";
             rs = stmt.executeQuery(query);
             String path = rs.getString("FileList");
-
+            
             //pulling filename from lesson match string
             String[] filePaths = path.split("; ");
-
+            
             //get a random file name from the list
             int random = rand.nextInt(filePaths.length - 1);
             path = filePaths[random];
-
+            
             //System.out.println(path);
             String soundName = path.replace(".trs", ".wav");
             soundName = soundName.replace("Transcripciones", "Sonidos");
             if (soundName.contains("_ed")) {
                 soundName = soundName.split("_ed")[0];
                 soundName = soundName + ".wav";
-
+                
             }
             clips.add(new File(soundName));
-
+            
             return path;
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
         User.closeDB(stmt, rs);
-
+        
         return null;
     }
-
+    
     /**
      * Finds the phrase and time around the phrase containing the words for the
      * lesson.
@@ -234,10 +234,10 @@ public class ActiveBE {
     public ArrayList<String> findPhrase(String document) {
         try {
             ArrayList<String> phrase = new ArrayList<String>();
-
+            
             File file = new File(document);
             DocumentBuilderFactory dbFactory
-                    = DocumentBuilderFactory.newInstance();
+            = DocumentBuilderFactory.newInstance();
             dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             if (document.contains(".txt")) {
@@ -245,13 +245,13 @@ public class ActiveBE {
             }
             Document doc = dBuilder.parse(file);
             NodeList nList = doc.getElementsByTagName("Sync");
-
+            
             Pattern regexp = Pattern.compile("\\s([b-df-hj-np-tv-zñ]+[aeiou]([134])[b-df-hj-np-tv-zñ][aeiou]\\2)\\s");       //example exp - change later
             Matcher matcher = regexp.matcher(file.getName());
-
+            
             int count = rand.nextInt(nList.getLength());
             //System.out.println(count + " out of " + nList.getLength());
-
+            
             for (int i = 0; i < nList.getLength(); i++) {
                 Node nNode = nList.item(i);
                 NamedNodeMap attributes = nNode.getAttributes();
@@ -287,13 +287,13 @@ public class ActiveBE {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        for(String p : phrases) {
-//            System.out.println("Phrase: " + p);
-//        }
-//        System.out.println("Size: " + phrases.size());
+        //        for(String p : phrases) {
+        //            System.out.println("Phrase: " + p);
+        //        }
+        //        System.out.println("Size: " + phrases.size());
         return null;
     }
-
+    
     public ArrayList<File> getClips() {
         return clips;
     }
@@ -303,7 +303,7 @@ public class ActiveBE {
         System.out.println(userAnswers);
         return correctAnswers.indexOf(answer);
     }
-
+    
     /**
      * Finds the words that fit the lesson in the phrase selected.
      *
@@ -328,7 +328,7 @@ public class ActiveBE {
             }
         }
     }
-
+    
     String setBlanks(String input, ArrayList<String> words) {
         //words.add("yo4o4");
         //words.add("tan42");
@@ -336,26 +336,26 @@ public class ActiveBE {
         boolean used2 = false;
         boolean used3 = false;
         boolean used4 = false;
-
+        
         String label = "";
-
+        
         String word1 = "";
         String word2 = "";
         String word3 = "";
         String word4 = "";
-
+        
         int count = 0;
         //String word2 = words.get(1);
         String output = "";
         char[] statement = input.toCharArray();
         char c;
-
+        
         for (int i = 0; i < statement.length; i++) {
             c = statement[i];
             label = label + c;
             if (wordCount == 1) {
                 word1 = words.get(0);
-
+                
                 if (label.contains(word1) && used1 == false) {
                     count++;
                     label = label.replace(word1, "[     ] ");
@@ -367,7 +367,7 @@ public class ActiveBE {
             } else if (wordCount == 2) {
                 word1 = words.get(0);
                 word2 = words.get(1);
-
+                
                 if (label.contains(word1) && used1 == false) {
                     count++;
                     label = label.replace(word1, "[     ] ");
@@ -388,7 +388,7 @@ public class ActiveBE {
                 word1 = words.get(0);
                 word2 = words.get(1);
                 word3 = words.get(2);
-
+                
                 if (label.contains(word1) && used1 == false) {
                     count++;
                     label = label.replace(word1, "[     ] ");
@@ -418,7 +418,7 @@ public class ActiveBE {
                 word2 = words.get(1);
                 word3 = words.get(2);
                 word4 = words.get(3);
-
+                
                 if (label.contains(word1) && used1 == false) {
                     count++;
                     label = label.replace(word1, "[     ] ");
@@ -454,10 +454,6 @@ public class ActiveBE {
             }
         }
         output += label;
-//       for(String s : blanks) {
-//           System.out.println(s);
-//       }
-        //System.out.println(blanks.size());
         return output;
     }
 }

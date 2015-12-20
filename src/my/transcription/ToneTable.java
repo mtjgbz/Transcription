@@ -41,7 +41,7 @@ public class ToneTable extends javax.swing.JFrame {
      */
     public ToneTable(String path) {
         initComponents();
-        this.setTitle("Mixtec Transcription: Tone Table");
+        this.setTitle("Transcripción Mixteca: Mesa de Tonos");
         this.setLocation(x, y);
         this.path = path;
         for (int i = 0; i < numOfButtons; i++) {
@@ -501,7 +501,7 @@ public class ToneTable extends javax.swing.JFrame {
             }
 
         } catch (FileNotFoundException ex) { 
-            errorMsg("Tone Table Audio Not Found, Please Have Admin Load Audio Files.", "Tone Table");
+            errorMsg("Mesa de Tonos de audio no se encuentra, por favor tenga carga de administración de archivos de audio.", "Mesa de Tonos");
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -711,6 +711,11 @@ public class ToneTable extends javax.swing.JFrame {
         });
 
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -3687,6 +3692,12 @@ public class ToneTable extends javax.swing.JFrame {
         buttonNum = 120;
         buttonAction();
     }//GEN-LAST:event_jButton121ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        if(clip != null) {
+            clip.stop();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,7 +6,6 @@
 package my.transcription;
 
 import java.sql.*;
-import java.util.Scanner;
 import org.sqlite.*;
 
 /**
@@ -14,25 +13,25 @@ import org.sqlite.*;
  * @author Erica
  */
 public class RegisterBE {
-
+    
     private String fname;
     private String lname;
     private String username;
     private String password;
     private int questionID;
     private String questionAnswer;
-
+    
     private Connection conn;
     Statement stmt;
     //private ResultSet rs;
-
+    
     /**
      * Constructor to set up database.
      */
     public RegisterBE() {
         setupDB();
     }
-
+    
     /**
      * Sets up the database to connect from.
      */
@@ -45,13 +44,12 @@ public class RegisterBE {
             SQLiteDataSource ds = new SQLiteDataSource(config);
             ds.setUrl("jdbc:sqlite::resource:" + getClass().getResource("TAA.db").toString());
             conn = ds.getConnection();
-            System.out.println("Database opened successfully");
             stmt = conn.createStatement();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
     /**
      * Closes the database connection and all similar statements and results.
      */
@@ -63,9 +61,9 @@ public class RegisterBE {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
     }
-
+    
     /**
      * Checks the password against its entered match. Also checks if either
      * field is blank.
@@ -83,7 +81,7 @@ public class RegisterBE {
             return false;
         }
     }
-
+    
     /**
      * Inserts the user into the database.
      *
@@ -91,54 +89,40 @@ public class RegisterBE {
      */
     private String insertUser() {
         String query = "INSERT INTO USERS"
-                + "(Fname, Lname, Username, Password, "
-                + "QuestionID, QuestionAnswer) VALUES('"
-                + fname + "', '"
-                + lname + "', '"
-                + username + "', '"
-                + password + "', "
-                + questionID + ", '"
-                + questionAnswer + "');";
+        + "(Fname, Lname, Username, Password, "
+        + "QuestionID, QuestionAnswer) VALUES('"
+        + fname + "', '"
+        + lname + "', '"
+        + username + "', '"
+        + password + "', "
+        + questionID + ", '"
+        + questionAnswer + "');";
         try {
             int changed = stmt.executeUpdate(query);
-            if (changed < 1) {
-                System.out.println("Insert failed.");
-            }
         } catch (Exception e) {
             if (e.getMessage().contains("UNIQUE")) {
-                return "Username already exists. Please try again.";
+                return "Nombre de usuario ya existe. Por favor, inténtalo de nuevo.";
             }
             return e.getMessage();
         }
-
+        
         return "";
     }
-
+    
     private void setInitialLesson() {
         String query1 = "INSERT INTO LESSON_TRACK(Username) VALUES ('" + username + "');";
-
-//        String query2 = "UPDATE LESSON_TRACK "
-//                + "SET LatestLesson = 1, LatestSubLesson = a, "
-//                + "FurthestLesson = 1, FurthestSublesson = a "
-//                + "WHERE UserID= "
-//                + "(SELECT UserID FROM USERS WHERE Username = '" + username + "');";
         try {
             int changed1 = stmt.executeUpdate(query1);
-            //int changed2 = stmt.executeUpdate(query2);
             if (changed1 < 1) {
-                System.out.println("Insert failed.");
-            } //            if(changed2 < 1){
-            //                System.out.println("Insert failed.");
-            //            }
+            }
             else {
-                System.out.println("Lesson Track updated");
                 closeDB();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
     /**
      * Checks if there are any empty fields submitted.
      *
@@ -158,11 +142,10 @@ public class RegisterBE {
         } else if (answer.equals("")) {
             return true;
         } else {
-            //System.out.println("All fields have values.");
             return false;
         }
     }
-
+    
     /**
      * Sets the information given by the user.
      *
@@ -179,28 +162,28 @@ public class RegisterBE {
         password = p;
         if (!passwordMatch(p2)) { //ECL: If the two passwords given don't match or are blank
             password = null;
-            System.out.println("Passwords do not match.");
-            return "Passwords do not match.";
+            System.out.println("Las contraseñas no coinciden.");
+            return "Las contraseñas no coinciden.";
         }
-
+        
         //ECL: Check if any of the fields are empty - if they are, produce error
         if (emptyFields(f, l, u, a)) {
             password = null;
-            return "Not all fields were filled.";
+            return "No se llenaron todos los campos.";
         }
         fname = f;
         lname = l;
         username = u;
         questionID = id;
         questionAnswer = a;
-
+        
         //ECL: Catch any error messages that might exist and use for popup.
         String success = insertUser();
         if (success != null) {
             setInitialLesson();
             return success;
         }
-
+        
         closeDB();
         return "";
     }
