@@ -454,10 +454,6 @@ public class ActiveBE {
             }
         }
         output += label;
-//       for(String s : blanks) {
-//           System.out.println(s);
-//       }
-        //System.out.println(blanks.size());
         return output;
     }
 }

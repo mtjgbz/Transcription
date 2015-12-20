@@ -7,7 +7,6 @@ package my.transcription;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
-// TODO: Print error messages
 
 /**
  *
@@ -218,7 +217,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
         //validate that the password is correct
         String password = backend.validatePassword(username, answer);
         if (password == "") {
-            errorMsg("Security Answer is incorrect.", "Forgotten Password");
+            errorMsg("Respuesta de seguridad es incorrecto.", "Contraseña Olvidada");
         } else {
             jYourPasswordTextField.setText(password);
             jSignIn.setEnabled(rootPaneCheckingEnabled);
@@ -251,7 +250,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
         String username = jUsernameTextField.getText();
         String secQuestion = backend.retrieveSecurityQuestion(username);
         if (secQuestion == "") {
-            errorMsg("Username not found.", "Forgotten Password");
+            errorMsg("Usuario no encontrado.", "Contraseña Olvidada");
         } else {
             jSecQuestTextField.setText(secQuestion);
         }

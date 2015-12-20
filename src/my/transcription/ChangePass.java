@@ -50,7 +50,7 @@ public class ChangePass extends javax.swing.JFrame {
             conn = ds.getConnection();
             stmt = conn.createStatement();
         } catch (Exception e) {
-            errorMsg(e.toString(), "Database error");
+            errorMsg(e.toString(), "Error de la Base de Datos.");
         }
     }
 

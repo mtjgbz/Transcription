@@ -6,8 +6,6 @@
 package my.transcription;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +38,7 @@ public class AdminHome extends javax.swing.JFrame {
      */
     public AdminHome() {
         initComponents();
-        this.setTitle("Mixtec Transcription: Administrator Home");
+        this.setTitle("Transcripción Mixteca: Hogar de Administración");
         selectLog = false;
         backend = new AdminBE(this);
         userSelection();
@@ -74,7 +72,7 @@ public class AdminHome extends javax.swing.JFrame {
         
         JScrollPane panel = new JScrollPane(table);
         
-        pane.addTab("Practice", panel);
+        pane.addTab("Práctica", panel);
         jPanel1.add(pane);
         jPanel1.revalidate();
     }

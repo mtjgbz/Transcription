@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -43,7 +42,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-        this.setTitle("Mixtec Transcription: Home");
+        this.setTitle("Transcripción Mixteca: Hogar");
     }
 
     /**
@@ -53,7 +52,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home(String user) {
         initComponents();
-        this.setTitle("Mixtec Transcription: Home");
+        this.setTitle("Transcripción Mixteca: Hogar");
         this.user = user;
         getContentPane().setBackground(new Color(148, 189, 203));
         jUsernameMenuDropDown.setText(user);

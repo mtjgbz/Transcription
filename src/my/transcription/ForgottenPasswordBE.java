@@ -7,7 +7,6 @@
 package my.transcription;
 
 import java.sql.*;
-import java.util.Scanner;
 import org.sqlite.*;
 
 /**
@@ -50,7 +49,6 @@ public class ForgottenPasswordBE {
             SQLiteDataSource ds = new SQLiteDataSource(config);
             ds.setUrl("jdbc:sqlite::resource:" + getClass().getResource("TAA.db").toString());
             conn = ds.getConnection();
-            System.out.println("Database opened successfully");
             stmt = conn.createStatement();
         } catch (Exception e) {
             e.printStackTrace();
