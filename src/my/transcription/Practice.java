@@ -344,7 +344,7 @@ public class Practice extends javax.swing.JFrame {
         saveEnd.get(pg-1).set(wCount-1, end);
         correct.get(pg-1).set(wCount-1, crct);
         
-        backend.newAttempt(attempt, word, crct);
+        //backend.newAttempt(attempt, word, crct);
         backend.calculateScore();
     }
    
@@ -373,10 +373,10 @@ public class Practice extends javax.swing.JFrame {
             answers.get(page-1).get(wordCount-1).add(blank3);
             answers.get(page-1).get(wordCount-1).add(blank4);
             
-            backend.addUserAnswer(blank1, backend.getQuestionNum(words.get(0)));
-            backend.addUserAnswer(blank2, backend.getQuestionNum(words.get(1)));
-            backend.addUserAnswer(blank3, backend.getQuestionNum(words.get(2)));
-            backend.addUserAnswer(blank4, backend.getQuestionNum(words.get(3)));
+            backend.addUserAnswer(blank1, backend.getQuestionID(words.get(0)), attempt, correct1);
+            backend.addUserAnswer(blank2, backend.getQuestionID(words.get(1)), attempt, correct2);
+            backend.addUserAnswer(blank3, backend.getQuestionID(words.get(2)), attempt, correct3);
+            backend.addUserAnswer(blank4, backend.getQuestionID(words.get(3)), attempt, correct4);
         }
         else if (wordCount == 3) {
             boolean right1 = highlightWord(blank1, words.get(0), start1, end1);
@@ -395,9 +395,9 @@ public class Practice extends javax.swing.JFrame {
             answers.get(page-1).get(wordCount-1).add(blank2);
             answers.get(page-1).get(wordCount-1).add(blank3);
             
-            backend.addUserAnswer(blank1, backend.getQuestionNum(words.get(0)));
-            backend.addUserAnswer(blank2, backend.getQuestionNum(words.get(1)));
-            backend.addUserAnswer(blank3, backend.getQuestionNum(words.get(2)));
+            backend.addUserAnswer(blank1, backend.getQuestionID(words.get(0)), attempt, correct1);
+            backend.addUserAnswer(blank2, backend.getQuestionID(words.get(1)), attempt, correct2);
+            backend.addUserAnswer(blank3, backend.getQuestionID(words.get(2)), attempt, correct3);
         }
         else if (wordCount == 2) {
             boolean right1 = highlightWord(blank1, words.get(0), start1, end1);
@@ -411,8 +411,8 @@ public class Practice extends javax.swing.JFrame {
             answers.get(page-1).get(wordCount-1).add(blank1);
             answers.get(page-1).get(wordCount-1).add(blank2);
             
-            backend.addUserAnswer(blank1, backend.getQuestionNum(words.get(0)));
-            backend.addUserAnswer(blank2, backend.getQuestionNum(words.get(1)));
+            backend.addUserAnswer(blank1, backend.getQuestionID(words.get(0)), attempt, correct1);
+            backend.addUserAnswer(blank2, backend.getQuestionID(words.get(1)), attempt, correct2);
         }
         else if (wordCount == 1) {
             boolean right  = highlightWord(blank1, words.get(0), start1, end1);
@@ -421,7 +421,8 @@ public class Practice extends javax.swing.JFrame {
             }
             answers.get(page-1).get(wordCount-1).add(blank1);
             
-            backend.addUserAnswer(blank1, backend.getQuestionNum(words.get(0)));
+            int id = backend.getQuestionID(words.get(0));
+            backend.addUserAnswer(blank1, id, attempt, correct1);
             
             saveState(attempt, start1, end1, wordCount, page, words.get(0), correct1);
         }
@@ -1022,7 +1023,6 @@ public class Practice extends javax.swing.JFrame {
         try {
             int start = saveStart.get(page - 1).get(wordCount - 1);
             int end = saveEnd.get(page - 1).get(wordCount - 1);
-            System.out.println(answers);
             String answer = answers.get(page - 1).get(wordCount - 1).get(attempts.get(page - 1));
             String word = wordsList.get(page - 1).get(wordCount - 1);
             doc.insertString(start, answer, null);

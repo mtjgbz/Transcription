@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,7 +41,7 @@ public class ActiveBE {
     private static ArrayList<File> clips;
     private static ArrayList<String> phrases;
     private static ArrayList<String> correctAnswers;
-    private static ArrayList<ArrayList<String>> userAnswers;
+    private static HashMap<Integer, ArrayList<String>> userAnswers;
     private static ArrayList<Integer> idList;
     private ArrayList<Integer> attempts;
     private static int practiceID;
@@ -59,7 +60,7 @@ public class ActiveBE {
         clips = new ArrayList<>();
         attempts = new ArrayList<Integer>();
         correctAnswers = new ArrayList<String>();
-        userAnswers = new ArrayList<>();
+        userAnswers = new HashMap<>();
         idList = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             attempts.add(1);
@@ -85,8 +86,24 @@ public class ActiveBE {
         }
     }
     
-    public void addUserAnswer(String answer, int questionNum){
-        userAnswers.get(questionNum).add(answer);
+    public void addUserAnswer(String answer, int questionID, int attempt, boolean correct){
+        userAnswers.get(questionID).add(answer);
+        attempt = Math.abs(attempt - 3);
+        int score;
+        if(correct){ 
+            score = 1; 
+        }else{ 
+            score = 0; 
+        }
+        
+        try{
+            String query = "INSERT INTO PRACTICE_ATTEMPT(PracticeID, Attempt, QuestionID, "
+                    + "Response, Score) VALUES(" + practiceID + ", " + attempt + ", "
+                    + questionID + ", '" + answer + "', " + score + ");";
+            stmt.execute(query);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     public void calculateScore(){
@@ -166,8 +183,8 @@ public class ActiveBE {
     public void newAttempt(int attemptInverse, String word, boolean correct) {
         try {
             int attempt = Math.abs(attemptInverse - 3);
-            int questionID = idList.get(getQuestionNum(word));
-            ArrayList<String> currList = userAnswers.get(getQuestionNum(word));
+            int questionID = idList.get(0);
+            ArrayList<String> currList = userAnswers.get(getQuestionID(word));
             String userAnswer = currList.get(currList.size() - 1);
             int score;
             if(correct){
@@ -298,10 +315,18 @@ public class ActiveBE {
         return clips;
     }
     
-    public int getQuestionNum(String answer){
-        System.out.println("List of answers: " + correctAnswers);
-        System.out.println(userAnswers);
-        return correctAnswers.indexOf(answer);
+    public int getQuestionID(String answer){
+        try{
+            String query = "SELECT * FROM PRACTICE_ANSWER WHERE PracticeID = " + practiceID
+                    + " AND Answer LIKE '" + answer + "';";
+            rs = stmt.executeQuery(query);
+            int id = rs.getInt("QuestionID");
+            System.out.println(answer + ": " + id);
+            return id;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     /**
@@ -323,7 +348,7 @@ public class ActiveBE {
                 words.add(word);
                 correctAnswers.add(word);
                 addCorrectAnswer(word, correctAnswers.indexOf(word));
-                userAnswers.add(new ArrayList<String>());
+                userAnswers.put(getQuestionID(word), new ArrayList<String>());
                 wordCount++;
             }
         }
