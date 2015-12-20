@@ -414,7 +414,7 @@ public class Nasalizations extends javax.swing.JFrame {
 
         jButton16.setBackground(new java.awt.Color(255, 255, 255));
         jButton16.setFont(new java.awt.Font("Lucida Grande", 0, 11)); // NOI18N
-        jButton16.setText("<html><center>i'<sup>4</sup>i<sup>3</sup>/i'<sup>4</sup>in<sup>3</sup></center></html>\\n");
+        jButton16.setText("<html><center>ka'<sup>3</sup>a<sup>4</sup>/ka'<sup>3</sup>an<sup>4</sup></center></html>\\n");
         jButton16.setMaximumSize(new java.awt.Dimension(160, 75));
         jButton16.setMinimumSize(new java.awt.Dimension(160, 75));
         jButton16.setPreferredSize(new java.awt.Dimension(160, 75));

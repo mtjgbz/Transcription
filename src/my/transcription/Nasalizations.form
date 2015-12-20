@@ -583,7 +583,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="11" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;i&apos;&lt;sup&gt;4&lt;/sup&gt;i&lt;sup&gt;3&lt;/sup&gt;/i&apos;&lt;sup&gt;4&lt;/sup&gt;in&lt;sup&gt;3&lt;/sup&gt;&lt;/center&gt;&lt;/html&gt;\u005cn" containsInvalidXMLChars="true"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;ka&apos;&lt;sup&gt;3&lt;/sup&gt;a&lt;sup&gt;4&lt;/sup&gt;/ka&apos;&lt;sup&gt;3&lt;/sup&gt;an&lt;sup&gt;4&lt;/sup&gt;&lt;/center&gt;&lt;/html&gt;\u005cn" containsInvalidXMLChars="true"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[160, 75]"/>
                 </Property>
