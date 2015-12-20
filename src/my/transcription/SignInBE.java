@@ -6,16 +6,16 @@ import org.sqlite.*;
 //TODO: move setupDB as part of constructor and close DB within the methods
 
 public class SignInBE {
-    
+
     private String username;
     private String password;
     private Connection conn;
     private Statement stmt;
     private ResultSet rs;
-    
+
     public SignInBE() {
     }
-    
+
     public void setupDB() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -27,10 +27,10 @@ public class SignInBE {
             conn = ds.getConnection();
             stmt = conn.createStatement();
         } catch (Exception e) {
-            errorMsg(e.toString(), "Error de la base de datos.");
+            errorMsg(e.toString(), "Database error");
         }
     }
-    
+
     public void closeDB() {
         try {
             stmt.close();
@@ -42,15 +42,15 @@ public class SignInBE {
             e.printStackTrace();
         }
     }
-    
+
     public void setUsername(String u) {
         username = u;
     }
-    
+
     public void setPassword(String p) {
         password = p;
     }
-    
+
     public boolean checkPassword(String username, String password) {
         try {
             String query = "SELECT COUNT(*) AS Users FROM USERS WHERE USERNAME = '" + username + "' AND PASSWORD = '" + password + "';";
@@ -63,14 +63,14 @@ public class SignInBE {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return false;
     }
-    
+
     public boolean checkAdmin(String username) {
-        
+
         return username.equals("admin");
-        
+
     }
-    
+
 }
