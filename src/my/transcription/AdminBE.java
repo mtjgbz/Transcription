@@ -48,29 +48,38 @@ public class AdminBE {
         return null;
     }
     
-    public HashMap<ArrayList<String>, Integer> userPractice(String username){
+    public HashMap<ArrayList<String>, Integer> pullResults(String username, boolean isTest){
         try{
-            String query = "SELECT * FROM PRACTICE WHERE Username = '" + username + "';";
+            String table;
+            String id;
+            if(isTest){
+                table = "TESTS";
+                id = "TestID";
+            }else{
+                table = "PRACTICE";
+                id = "PracticeID";
+            }
+            String query = "SELECT * FROM " + table + " WHERE Username = '" + username + "';";
             rs = stmt.executeQuery(query);
             
-            HashMap<ArrayList<String>, Integer> practiceMap = new HashMap<>();
+            HashMap<ArrayList<String>, Integer> map = new HashMap<>();
             while(rs.next()){
-                int practiceID = rs.getInt("PracticeID");
+                int practiceID = rs.getInt(id);
                 String date = rs.getString("DateTaken");
                 int lesson = rs.getInt("Lesson");
                 String sublesson = rs.getString("Sublesson");
                 float score = rs.getFloat("Score");
                 
-                ArrayList<String> practiceInfo = new ArrayList<>();
-                practiceInfo.add(date);
-                practiceInfo.add("" + lesson);
-                practiceInfo.add(sublesson);
-                practiceInfo.add("" + score);
+                ArrayList<String> info = new ArrayList<>();
+                info.add(date);
+                info.add("" + lesson);
+                info.add(sublesson);
+                info.add("" + score);
                 
-                practiceMap.put(practiceInfo, practiceID);
+                map.put(info, practiceID);
             }
             rs.close();
-            return practiceMap;
+            return map;
         }catch(Exception e){
             e.printStackTrace();
         }

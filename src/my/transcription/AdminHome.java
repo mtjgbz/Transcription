@@ -6,8 +6,6 @@
 package my.transcription;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,10 +27,11 @@ public class AdminHome extends javax.swing.JFrame {
     private boolean selectLog;
     
     private JTabbedPane pane;
-    private JTable table;
+    private JTable practiceTable;
+    private JTable testTable;
     
-    private static final String[] PRACTICE_NAMES = {"Date and Time Taken", "Lesson", "Sublesson", "Score"};
-    private static final String[] ATTEMPT_NAMES = {"Question Number", "Attempt Number", "User Answer", "Correct Answer"};
+    private static final String[] LOG_NAMES = {"Date and Time Taken", "Lesson", "Sublesson", "Score"};
+    private static final String[] ATTEMPT_NAMES = {"Question No.", "Attempt No.", "User Answer", "Correct Answer"};
     private static final int COLUMN_NUM = 4;
 
     /**
@@ -70,41 +69,54 @@ public class AdminHome extends javax.swing.JFrame {
         pane = new JTabbedPane();
         pane.setVisible(true);
         
-        practiceSelection();
+        setupTable(false);
+        setupTable(true);
         
-        JScrollPane panel = new JScrollPane(table);
+        JScrollPane practicePanel = new JScrollPane(practiceTable);
+        JScrollPane testPanel = new JScrollPane(testTable);
         
-        pane.addTab("Practice", panel);
+        
+        pane.addTab("Practice", practicePanel);
+        pane.addTab("Test", testPanel);
         jPanel1.add(pane);
         jPanel1.revalidate();
     }
     
-    public void practiceSelection(){
+    public void setupTable(boolean isTest){
         String studentUser = userMap.get(list1.getSelectedItem());
-        HashMap<ArrayList<String>, Integer> practiceMap = backend.userPractice(studentUser);
+        HashMap<ArrayList<String>, Integer> practiceMap = backend.pullResults(studentUser, isTest);
         
-        table = new JTable(){
+        JTable table = new JTable(){
             @Override
             public boolean isCellEditable(int row, int column){
                 return false;
             }
         };
-        DefaultTableModel model = new DefaultTableModel(PRACTICE_NAMES, 0);
+        DefaultTableModel model = new DefaultTableModel(LOG_NAMES, 0);
         table.setModel(model);
         
-        Iterator it = practiceMap.entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry pair = (Map.Entry) it.next();
+        for (Map.Entry pair : practiceMap.entrySet()) {
             ArrayList<String> list = (ArrayList<String>) pair.getKey();
             System.out.println(list);
             model.addRow(list.toArray());
-        }    
+        }
+        
+        if(isTest){
+            testTable = table;
+        }else{
+            practiceTable = table;
+        }
     }
     
-    public void updateTable(){
+    public void updateTable(boolean isTest){
+        JTable table;
+        if(isTest){
+            table = testTable;
+        }else{
+            table = practiceTable;
+        }
         int selectedRow = table.getSelectedRow();
         String date = (String) table.getValueAt(selectedRow, 0);
-        System.out.println("Date: " + date);
         int practiceID = backend.getPracticeID(date);
         
         table.removeAll();
@@ -120,7 +132,7 @@ public class AdminHome extends javax.swing.JFrame {
                 }
             }
 
-            table.repaint();
+            practiceTable.repaint();
         }
         
     }
@@ -249,8 +261,9 @@ public class AdminHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         if(selectLog){
-            updateTable();
+            updateTable(false);
         }else{
             createPane();
             selectLog = true;
