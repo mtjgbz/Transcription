@@ -162,14 +162,12 @@ public class Test extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 23, 665, 420));
-        setMaximumSize(new java.awt.Dimension(700, 410));
         setMinimumSize(new java.awt.Dimension(700, 410));
-        setPreferredSize(new java.awt.Dimension(700, 410));
         setResizable(false);
         setSize(new java.awt.Dimension(700, 410));
 
         prevButton.setBackground(new java.awt.Color(255, 255, 255));
-        prevButton.setText("Previous");
+        prevButton.setText("Anterior ");
         prevButton.setMaximumSize(new java.awt.Dimension(97, 30));
         prevButton.setMinimumSize(new java.awt.Dimension(97, 30));
         prevButton.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -180,7 +178,7 @@ public class Test extends javax.swing.JFrame {
         });
 
         submitButton.setBackground(new java.awt.Color(255, 255, 255));
-        submitButton.setText("Check Answers");
+        submitButton.setText("Comprobar las Respuestas ");
         submitButton.setMaximumSize(new java.awt.Dimension(97, 30));
         submitButton.setMinimumSize(new java.awt.Dimension(97, 30));
         submitButton.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -191,7 +189,7 @@ public class Test extends javax.swing.JFrame {
         });
 
         nextButton.setBackground(new java.awt.Color(255, 255, 255));
-        nextButton.setText("Next");
+        nextButton.setText("Próximo");
         nextButton.setMaximumSize(new java.awt.Dimension(97, 30));
         nextButton.setMinimumSize(new java.awt.Dimension(97, 30));
         nextButton.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -202,7 +200,7 @@ public class Test extends javax.swing.JFrame {
         });
 
         playButton1.setBackground(new java.awt.Color(255, 255, 255));
-        playButton1.setText("Play");
+        playButton1.setText("Juega");
         playButton1.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton1.setMinimumSize(new java.awt.Dimension(97, 29));
         playButton1.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -214,7 +212,7 @@ public class Test extends javax.swing.JFrame {
 
         jPageLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jPageLabel.setForeground(new java.awt.Color(204, 204, 204));
-        jPageLabel.setText("Page 1/ 20");
+        jPageLabel.setText("Página 1/ 20");
 
         jTextPane1.setEditable(false);
         jTextPane1.setAutoscrolls(false);
@@ -226,7 +224,7 @@ public class Test extends javax.swing.JFrame {
         jTextPane1.setSize(new java.awt.Dimension(470, 163));
         jScrollPane5.setViewportView(jTextPane1);
 
-        jMenu1.setText("Home");
+        jMenu1.setText("Hogar");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);
@@ -252,27 +250,26 @@ public class Test extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(290, 290, 290))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPageLabel)
-                .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(249, 249, 249)
-                        .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 104, Short.MAX_VALUE))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(104, 104, 104))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPageLabel)
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

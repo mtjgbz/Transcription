@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -76,11 +75,11 @@ public class Passive extends javax.swing.JFrame {
             playButton4.setForeground(new java.awt.Color(0, 153, 51));
             playButton5.setForeground(new java.awt.Color(0, 153, 51));
 
-            playButton1.setText("Play");
-            playButton2.setText("Play");
-            playButton3.setText("Play");
-            playButton4.setText("Play");
-            playButton5.setText("Play");
+            playButton1.setText("Juega");
+            playButton2.setText("Juega");
+            playButton3.setText("Juega");
+            playButton4.setText("Juega");
+            playButton5.setText("Juega");
         }
     };
 
@@ -147,7 +146,7 @@ public class Passive extends javax.swing.JFrame {
 
         initComponents();
         jUserButton.setText(user);
-        this.setTitle("Mixtec Transcription: Passive Training");
+        this.setTitle("Transcripción Mixteca: Entrenamiento Pasivo");
 
         initTextFields();
         clipsList = backend.makeClips(1);
@@ -304,7 +303,7 @@ public class Passive extends javax.swing.JFrame {
         playButton1.setBackground(new java.awt.Color(204, 204, 204));
         playButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
-        playButton1.setText("Play");
+        playButton1.setText("Juega ");
         playButton1.setFocusCycleRoot(true);
         playButton1.setFocusTraversalPolicyProvider(true);
         playButton1.setMaximumSize(new java.awt.Dimension(97, 29));
@@ -319,7 +318,7 @@ public class Passive extends javax.swing.JFrame {
         playButton2.setBackground(new java.awt.Color(204, 204, 204));
         playButton2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton2.setForeground(new java.awt.Color(0, 153, 51));
-        playButton2.setText("Play");
+        playButton2.setText("Juega ");
         playButton2.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton2.setMinimumSize(new java.awt.Dimension(97, 29));
         playButton2.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -332,7 +331,7 @@ public class Passive extends javax.swing.JFrame {
         playButton3.setBackground(new java.awt.Color(204, 204, 204));
         playButton3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton3.setForeground(new java.awt.Color(0, 153, 51));
-        playButton3.setText("Play");
+        playButton3.setText("Juega ");
         playButton3.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton3.setMinimumSize(new java.awt.Dimension(97, 29));
         playButton3.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -345,7 +344,7 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setBackground(new java.awt.Color(204, 204, 204));
         playButton4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton4.setForeground(new java.awt.Color(0, 153, 51));
-        playButton4.setText("Play");
+        playButton4.setText("Juega ");
         playButton4.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton4.setMinimumSize(new java.awt.Dimension(97, 29));
         playButton4.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -358,7 +357,7 @@ public class Passive extends javax.swing.JFrame {
         playButton5.setBackground(new java.awt.Color(204, 204, 204));
         playButton5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         playButton5.setForeground(new java.awt.Color(0, 153, 51));
-        playButton5.setText("Play");
+        playButton5.setText("Juega ");
         playButton5.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton5.setMinimumSize(new java.awt.Dimension(97, 29));
         playButton5.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -369,7 +368,7 @@ public class Passive extends javax.swing.JFrame {
         });
 
         jNextButton.setBackground(new java.awt.Color(204, 204, 204));
-        jNextButton.setText("Next");
+        jNextButton.setText("Próximo ");
         jNextButton.setMaximumSize(new java.awt.Dimension(97, 30));
         jNextButton.setMinimumSize(new java.awt.Dimension(97, 30));
         jNextButton.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -380,7 +379,7 @@ public class Passive extends javax.swing.JFrame {
         });
 
         jBackButton.setBackground(new java.awt.Color(204, 204, 204));
-        jBackButton.setText("Current");
+        jBackButton.setText("Contraseña");
         jBackButton.setMaximumSize(new java.awt.Dimension(97, 30));
         jBackButton.setMinimumSize(new java.awt.Dimension(97, 30));
         jBackButton.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -392,7 +391,7 @@ public class Passive extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("Page 1/4");
+        jLabel2.setText("Página 1/4");
         jLabel2.setToolTipText("");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/transcription/blue.png"))); // NOI18N
@@ -402,7 +401,7 @@ public class Passive extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
-        jHomeMenuButton.setText("Home");
+        jHomeMenuButton.setText("Hogar");
         jHomeMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jHomeMenuButtonMouseClicked(evt);
@@ -410,8 +409,8 @@ public class Passive extends javax.swing.JFrame {
         });
         jMenuBar1.add(jHomeMenuButton);
 
+        jEncliticMenuButton.setText("Enclíticos");
         jEncliticMenuButton.setActionCommand("Enclitics");
-        jEncliticMenuButton.setLabel("Enclitics");
         jEncliticMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jEncliticMenuButtonMouseClicked(evt);
@@ -419,7 +418,7 @@ public class Passive extends javax.swing.JFrame {
         });
         jMenuBar1.add(jEncliticMenuButton);
 
-        jNasMenuButton.setText("Nasalization");
+        jNasMenuButton.setText("Nasalización");
         jNasMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jNasMenuButtonMouseClicked(evt);
@@ -427,7 +426,7 @@ public class Passive extends javax.swing.JFrame {
         });
         jMenuBar1.add(jNasMenuButton);
 
-        jTTMenuButton.setText("Tone Table");
+        jTTMenuButton.setText("Mesa de Tonos");
         jTTMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTTMenuButtonMouseClicked(evt);
@@ -445,7 +444,7 @@ public class Passive extends javax.swing.JFrame {
 
         jUserButton.setText("User");
 
-        jMenuItem1.setText("Log out");
+        jMenuItem1.setText("Cerrar Sesión");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jMenuItem1MouseReleased(evt);
@@ -487,7 +486,7 @@ public class Passive extends javax.swing.JFrame {
                 .addComponent(jNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(240, 240, 240)
                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(20, 20, 20))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,7 +532,7 @@ public class Passive extends javax.swing.JFrame {
                 .addComponent(playButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, Short.MAX_VALUE))
         );
 
         pack();
@@ -571,7 +570,7 @@ public class Passive extends javax.swing.JFrame {
             try{
                 file = backend.findFile(lesson, subLesson);
             } catch (Exception ex) { 
-                errorMsg("Nasalization Audio Not Found, Please Have Admin Load Audio Files.", "Nasalization");
+                errorMsg("Nasalization Audio Not Found, Please Have Admin Load Audio Files.", "Nasalización");
             }
             
             //pulls the start time, phrase, and end time from the file selected above
@@ -777,10 +776,10 @@ public class Passive extends javax.swing.JFrame {
         timer3.stop();
         timer4.stop();
 
-        playButton5.setText("Play");
-        playButton2.setText("Play");
-        playButton3.setText("Play");
-        playButton4.setText("Play");
+        playButton5.setText("Juega");
+        playButton2.setText("Juega");
+        playButton3.setText("Juega");
+        playButton4.setText("Juega");
         playButton2.setForeground(new java.awt.Color(0, 153, 51));
         playButton3.setForeground(new java.awt.Color(0, 153, 51));
         playButton4.setForeground(new java.awt.Color(0, 153, 51));
@@ -791,12 +790,12 @@ public class Passive extends javax.swing.JFrame {
             clip1.start();
             timer1.restart();
             playButton1.setForeground(new java.awt.Color(255, 51, 51));
-            playButton1.setText("Stop");
+            playButton1.setText("Para");
         } else {
             clip1.stop();
             timer1.stop();
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
-            playButton1.setText("Play");
+            playButton1.setText("Juega");
         }
     }//GEN-LAST:event_playButton1MouseReleased
 
@@ -811,10 +810,10 @@ public class Passive extends javax.swing.JFrame {
         timer3.stop();
         timer4.stop();
 
-        playButton1.setText("Play");
-        playButton5.setText("Play");
-        playButton3.setText("Play");
-        playButton4.setText("Play");
+        playButton1.setText("Juega");
+        playButton5.setText("Juega");
+        playButton3.setText("Juega");
+        playButton4.setText("Juega");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         playButton3.setForeground(new java.awt.Color(0, 153, 51));
         playButton4.setForeground(new java.awt.Color(0, 153, 51));
@@ -825,12 +824,12 @@ public class Passive extends javax.swing.JFrame {
             clip2.start();
             timer2.restart();
             playButton2.setForeground(new java.awt.Color(255, 51, 51));
-            playButton2.setText("Stop");
+            playButton2.setText("Para");
         } else {
             clip2.stop();
             timer2.stop();
             playButton2.setForeground(new java.awt.Color(0, 153, 51));
-            playButton2.setText("Play");
+            playButton2.setText("Juega");
         }
     }//GEN-LAST:event_playButton2MouseReleased
 
@@ -845,10 +844,10 @@ public class Passive extends javax.swing.JFrame {
         timer5.stop();
         timer4.stop();
 
-        playButton1.setText("Play");
-        playButton2.setText("Play");
-        playButton5.setText("Play");
-        playButton4.setText("Play");
+        playButton1.setText("Juega");
+        playButton2.setText("Juega");
+        playButton5.setText("Juega");
+        playButton4.setText("Juega");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         playButton2.setForeground(new java.awt.Color(0, 153, 51));
         playButton4.setForeground(new java.awt.Color(0, 153, 51));
@@ -859,12 +858,12 @@ public class Passive extends javax.swing.JFrame {
             clip3.start();
             timer3.restart();
             playButton3.setForeground(new java.awt.Color(255, 51, 51));
-            playButton3.setText("Stop");
+            playButton3.setText("Para");
         } else {
             clip3.stop();
             timer3.stop();
             playButton3.setForeground(new java.awt.Color(0, 153, 51));
-            playButton3.setText("Play");
+            playButton3.setText("Juega");
         }
     }//GEN-LAST:event_playButton3MouseReleased
 
@@ -879,10 +878,10 @@ public class Passive extends javax.swing.JFrame {
         timer3.stop();
         timer5.stop();
 
-        playButton1.setText("Play");
-        playButton2.setText("Play");
-        playButton3.setText("Play");
-        playButton5.setText("Play");
+        playButton1.setText("Juega");
+        playButton2.setText("Juega");
+        playButton3.setText("Juega");
+        playButton5.setText("Juega");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         playButton2.setForeground(new java.awt.Color(0, 153, 51));
         playButton3.setForeground(new java.awt.Color(0, 153, 51));
@@ -893,12 +892,12 @@ public class Passive extends javax.swing.JFrame {
             clip4.start();
             timer4.restart();
             playButton4.setForeground(new java.awt.Color(255, 51, 51));
-            playButton4.setText("Stop");
+            playButton4.setText("Para");
         } else {
             clip4.stop();
             timer4.stop();
             playButton4.setForeground(new java.awt.Color(0, 153, 51));
-            playButton4.setText("Play");
+            playButton4.setText("Juega");
         }
     }//GEN-LAST:event_playButton4MouseReleased
 
@@ -913,10 +912,10 @@ public class Passive extends javax.swing.JFrame {
         timer3.stop();
         timer4.stop();
 
-        playButton1.setText("Play");
-        playButton2.setText("Play");
-        playButton3.setText("Play");
-        playButton4.setText("Play");
+        playButton1.setText("Juega");
+        playButton2.setText("Juega");
+        playButton3.setText("Juega");
+        playButton4.setText("Juega");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         playButton2.setForeground(new java.awt.Color(0, 153, 51));
         playButton3.setForeground(new java.awt.Color(0, 153, 51));
@@ -927,12 +926,12 @@ public class Passive extends javax.swing.JFrame {
             clip5.start();
             timer5.restart();
             playButton5.setForeground(new java.awt.Color(255, 51, 51));
-            playButton5.setText("Stop");
+            playButton5.setText("Para");
         } else {
             clip5.stop();
             timer5.stop();
             playButton5.setForeground(new java.awt.Color(0, 153, 51));
-            playButton5.setText("Play");
+            playButton5.setText("Juega");
         }
     }//GEN-LAST:event_playButton5MouseReleased
 
@@ -947,15 +946,15 @@ public class Passive extends javax.swing.JFrame {
             page++;
         }
 
-        jLabel2.setText("Page " + page + "/4");
+        jLabel2.setText("Página " + page + "/4");
 
         if (page == 4) {
-            jNextButton.setText("Current");
+            jNextButton.setText("Contraseña");
             jNextButton.setEnabled(false);
         }
 
         if (page != 1) {
-            jBackButton.setText("Back");
+            jBackButton.setText("Atrás");
             jBackButton.setEnabled(true);
         }
         
@@ -985,11 +984,11 @@ public class Passive extends javax.swing.JFrame {
         playButton4.setForeground(new java.awt.Color(0, 153, 51));
         playButton5.setForeground(new java.awt.Color(0, 153, 51));
 
-        playButton1.setText("Play");
-        playButton2.setText("Play");
-        playButton3.setText("Play");
-        playButton4.setText("Play");
-        playButton5.setText("Play");
+        playButton1.setText("Juega");
+        playButton2.setText("Juega");
+        playButton3.setText("Juega");
+        playButton4.setText("Juega");
+        playButton5.setText("Juega");
 
         backend.closeAudio();
         clipsList = backend.makeClips(page);
@@ -1026,15 +1025,15 @@ public class Passive extends javax.swing.JFrame {
             page--;
         }
 
-        jLabel2.setText("Page " + page + "/4");
+        jLabel2.setText("Página " + page + "/4");
 
         if (page == 1) {
-            jBackButton.setText("Current");
+            jBackButton.setText("Contraseña");
             jBackButton.setEnabled(false);
         }
 
         if (page != 1) {
-            jNextButton.setText("Next");
+            jNextButton.setText("Próximo");
             jNextButton.setEnabled(true);
         }
 
@@ -1069,11 +1068,11 @@ public class Passive extends javax.swing.JFrame {
         initAudio();
         backend.findWords(textList.get(page - 1), wordsList);
 
-        playButton1.setText("Play");
-        playButton2.setText("Play");
-        playButton3.setText("Play");
-        playButton4.setText("Play");
-        playButton5.setText("Play");
+        playButton1.setText("Juega");
+        playButton2.setText("Juega");
+        playButton3.setText("Juega");
+        playButton4.setText("Juega");
+        playButton5.setText("Juega");
         
         playButton1.setEnabled(true);
         playButton2.setEnabled(true);
