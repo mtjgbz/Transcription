@@ -119,7 +119,7 @@ public class AdminBE {
                 attemptTable = "TEST_ATTEMPT";
                 columnName = "TestID";
             }else{
-                answerTable = "PRACTIC_ANSWER";
+                answerTable = "PRACTICE_ANSWER";
                 attemptTable = "PRACTICE_ATTEMPT";
                 columnName = "PracticeID";
             }

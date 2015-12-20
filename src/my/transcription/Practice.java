@@ -344,7 +344,6 @@ public class Practice extends javax.swing.JFrame {
         saveEnd.get(pg-1).set(wCount-1, end);
         correct.get(pg-1).set(wCount-1, crct);
         
-        //backend.newAttempt(attempt, word, crct);
         backend.calculateScore();
     }
    
@@ -463,7 +462,8 @@ public class Practice extends javax.swing.JFrame {
         try {
             if(!(ans.equals(word))) {
                 highlighter.addHighlight(start-1, end+1, redPainter);
-                //return false;
+                System.out.println("Word is false!");
+//                return false;
             }  
             else {
                 highlighter.addHighlight(start-1, end+1, greenPainter);
@@ -697,6 +697,13 @@ public class Practice extends javax.swing.JFrame {
         }
     }
 
+    public void resetCorrect(){
+        correct1 = false;
+        correct2 = false;
+        correct3 = false;
+        correct4 = false;
+    }
+    
     public void initTextFields() {
         backend = new ActiveBE(false);
         phraseList = new ArrayList<ArrayList<String>>();
@@ -1121,6 +1128,7 @@ public class Practice extends javax.swing.JFrame {
         attempt = 3;
         attemptCountLabel.setText("You have " + attempts.get(page-1) + " attempts left.");
         showText();
+        resetCorrect();
         text = jTextPane1.getText();
     }//GEN-LAST:event_nextButtonActionPerformed
 
