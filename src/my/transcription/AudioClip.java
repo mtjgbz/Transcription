@@ -27,9 +27,15 @@ public class AudioClip {
     long startPos;
     long stopPos;
     
+    public AudioClip(){
+       this.file = new File("/home/mike/Transcription Data/Tones/01-01-na3ma3_edited.wav");
+       stopPos = 0;
+    }
+    
     public AudioClip(File file){
        this.file = file;
        stopPos = 0;
+       
     }
     public AudioClip(File file, long startPos, long stopPos){
         this.file=file;
@@ -38,13 +44,16 @@ public class AudioClip {
     }
     
     public void start(){
-        AudioInputStream audioIn = null;
+        AudioInputStream audioIn;
         try {
+                        System.out.print("playback dones");
+
             audioIn = AudioSystem.getAudioInputStream(file);
             AudioFormat format = audioIn.getFormat();
             DataLine.Info info = new DataLine.Info(SourceDataLine.class,format);
             SourceDataLine dataLine  = (SourceDataLine) AudioSystem.getLine(info);
             dataLine.open(format);
+            dataLine.start();
             float byteRate = format.getFrameSize()*format.getFrameRate();
             byte[] bytesBuffer;
             if(stopPos==0){
@@ -57,15 +66,22 @@ public class AudioClip {
                 int bytes = (int) (length*byteRate);
                 
                 bytesBuffer = new byte[bytes];
-            }   int off = (int) (byteRate*startPos/1e6);
+            }  
+            int off = (int) (byteRate*startPos/1e6);
             
-            dataLine.start();
+            
             int bytesRead = audioIn.read(bytesBuffer);
             dataLine.write(bytesBuffer,off,bytesRead);
+            dataLine.drain();
+            dataLine.close();
+            
             audioIn.close();
             
             
+            
+            
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+            ex.printStackTrace();
             Logger.getLogger(AudioClip.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
