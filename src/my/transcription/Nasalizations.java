@@ -33,8 +33,9 @@ public class Nasalizations extends javax.swing.JFrame {
     int buttonNum = 0;
     int numOfButtons = 18;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
-    ArrayList<Integer> count = new ArrayList<>();
     private static String path;
+    int counter = 0;
+    int count = 0;
 
     /**
      * Creates new form Nasalizations
@@ -44,15 +45,12 @@ public class Nasalizations extends javax.swing.JFrame {
         this.setTitle("Mixtec Transcription: Nasalizations Table");
         this.setLocation(x, y);
         this.path = path;
-        for (int i = 0; i < numOfButtons; i++) {
-            count.add(0);
-        }
 
         /**
          * creates the ArrayLists for the ArrayList stringNames and adds them
          */
         ArrayList<String> i0 = new ArrayList<>();//1.1b
-        i0.add("b_1-1_ku71u1-ku71un1_edited.wav");
+        i0.add("b_1-1_ka71a1-ka71an1_edited.wav");
         i0.add("b_1-1_ku71u1-ku71un1_edited.wav");
         stringNames.add(i0);
         ArrayList<String> i1 = new ArrayList<>();//1.1e
@@ -129,24 +127,40 @@ public class Nasalizations extends javax.swing.JFrame {
      * avoid heap space errors
      */
     public void buttonAction() {
+       if(count == stringNames.get(buttonNum).size()) {
+            count = 0;
+        }
         AudioInputStream audioIn = null;
         try {
             if (clip == null || !clip.isOpen()) {
-                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count)));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
-                clip.addLineListener(listener);
+                System.out.println(counter);
+                System.out.println(stringNames.get(buttonNum).size());
+                if(counter == stringNames.get(buttonNum).size()) {
+                    clip.addLineListener(listener2);
+                }
+                else {
+                counter++;
+                count++;
                 clip.start();
+                clip.addLineListener(listener);
+                }
+                
             } else {
+                counter = 0;
+                count = 0;
                 clip.stop();
-
-                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count)));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
                 clip.addLineListener(listener);
                 clip.start();
+                counter++;
+                count++;
             }
 
         } catch (FileNotFoundException ex) { 
@@ -157,13 +171,6 @@ public class Nasalizations extends javax.swing.JFrame {
             Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
             Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (count.get(buttonNum).equals(stringNames.get(buttonNum).size() - 1)) {
-            count.set(buttonNum, 0);
-        } else {
-            int value = count.get(buttonNum);
-            value = value + 1;
-            count.set(buttonNum, value);
         }
     }
 
@@ -217,6 +224,11 @@ public class Nasalizations extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
 
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jScrollPane2.setHorizontalScrollBar(null);
 
@@ -654,6 +666,15 @@ public class Nasalizations extends javax.swing.JFrame {
         public void update(LineEvent event) {
             if (event.getType() == STOP) {
                 clip.close();
+                buttonAction();
+            }
+        }
+    };
+    LineListener listener2 = new LineListener() {
+        @Override
+        public void update(LineEvent event) {
+            if (event.getType() == STOP) {
+                clip.close();
             }
         }
     };
@@ -750,6 +771,10 @@ public class Nasalizations extends javax.swing.JFrame {
         buttonNum = 17;
         buttonAction();
     }//GEN-LAST:event_jButton18ActionPerformed
+   
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        clip.stop();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -60,7 +60,6 @@ public class Active extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(400, 160));
         setMinimumSize(new java.awt.Dimension(400, 160));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));

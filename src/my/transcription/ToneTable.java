@@ -33,8 +33,9 @@ public class ToneTable extends javax.swing.JFrame {
     int buttonNum = 0;
     int numOfButtons = 121;
     ArrayList<ArrayList<String>> stringNames = new ArrayList<>();
-    ArrayList<Integer> count = new ArrayList<>();
     private static String path;
+    int counter = 0;
+    int count = 0;
 
     /**
      * Creates new form ToneTable
@@ -44,9 +45,6 @@ public class ToneTable extends javax.swing.JFrame {
         this.setTitle("Mixtec Transcription: Tone Table");
         this.setLocation(x, y);
         this.path = path;
-        for (int i = 0; i < numOfButtons; i++) {
-            count.add(0);
-        }
         /**
          * creates the ArrayLists for the ArrayList stringNames and adds them
          */
@@ -480,24 +478,40 @@ public class ToneTable extends javax.swing.JFrame {
      * avoid heap space errors
      */
     public void buttonAction() {
+        if(count == stringNames.get(buttonNum).size()) {
+            count = 0;
+        }
         AudioInputStream audioIn = null;
         try {
             if (clip == null || !clip.isOpen()) {
-                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count)));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
-                clip.addLineListener(listener);
+                System.out.println(counter);
+                System.out.println(stringNames.get(buttonNum).size());
+                if(counter == stringNames.get(buttonNum).size()) {
+                    clip.addLineListener(listener2);
+                }
+                else {
+                counter++;
+                count++;
                 clip.start();
+                clip.addLineListener(listener);
+                }
+                
             } else {
+                counter = 0;
+                count = 0;
                 clip.stop();
-
-                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count.get(buttonNum))));
+                audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count)));
                 clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 audioIn.close();
                 clip.addLineListener(listener);
                 clip.start();
+                counter++;
+                count++;
             }
 
         } catch (FileNotFoundException ex) { 
@@ -508,13 +522,6 @@ public class ToneTable extends javax.swing.JFrame {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
             Logger.getLogger(ToneTable.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (count.get(buttonNum).equals(stringNames.get(buttonNum).size() - 1)) {
-            count.set(buttonNum, 0);
-        } else {
-            int value = count.get(buttonNum);
-            value = value + 1;
-            count.set(buttonNum, value);
         }
     }
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -3069,14 +3076,22 @@ public class ToneTable extends javax.swing.JFrame {
     /**
      * Listener for the clip if it's closed.
      */
-    LineListener listener = new LineListener() {
+     LineListener listener = new LineListener() {
+        @Override
+        public void update(LineEvent event) {
+            if (event.getType() == STOP) {
+                clip.close();
+                buttonAction();
+            }
+        }
+    };
+    LineListener listener2 = new LineListener() {
         @Override
         public void update(LineEvent event) {
             if (event.getType() == STOP) {
                 clip.close();
             }
         }
-
     };
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
