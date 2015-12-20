@@ -64,16 +64,21 @@ public class AdminHome extends javax.swing.JFrame {
     public void createPane(){
         jPanel1.remove(list1);
         jPanel1.remove(jLabel1);
+//        jPanel1.removeAll();
         jPanel1.setLayout(new BorderLayout());
+//        jPanel1.add(jButton1, BorderLayout.SOUTH);
         
         pane = new JTabbedPane();
+        pane.setPreferredSize(jPanel1.getSize());
         pane.setVisible(true);
         
         setupTable(false);
         setupTable(true);
         
-        JScrollPane practicePanel = new JScrollPane(practiceTable);
-        JScrollPane testPanel = new JScrollPane(testTable);
+        JScrollPane practicePanel = new JScrollPane(practiceTable, 
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        JScrollPane testPanel = new JScrollPane(testTable,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
         pane.addTab("Práctica", practicePanel);
         pane.addTab("Examen", testPanel);
