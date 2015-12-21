@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class AdminHome extends javax.swing.JFrame {
 
     private String user;
-    private AdminBE backend;
+    private LogBE backend;
     private Map<String, String> userMap;
     private boolean selectLog;
     
@@ -41,7 +41,7 @@ public class AdminHome extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Transcripción Mixteca: Hogar de Administración");
         selectLog = false;
-        backend = new AdminBE(this);
+        backend = new LogBE(this);
         userSelection();
     }
 

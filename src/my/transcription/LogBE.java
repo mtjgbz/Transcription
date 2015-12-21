@@ -14,13 +14,13 @@ import javax.swing.JFrame;
  *
  * @author Erica
  */
-public class AdminBE {
+public class LogBE {
     private Statement stmt;
     private ResultSet rs;
     
     private JFrame parentFrame;
     
-    public AdminBE(JFrame pFrame){
+    public LogBE(JFrame pFrame){
         parentFrame = pFrame;
     }
     
