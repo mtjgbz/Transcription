@@ -54,10 +54,19 @@ public class AudioClip {
      * @param stopPos Microsecond position at which the clip will stop
      */
     public AudioClip(File file, long startPos, long stopPos) {
-        this.file = file;
-        this.startPos = startPos;
-        this.stopPos = stopPos;
-        offset = (int) (stopPos - startPos);
+        AudioInputStream audioIn = null;
+        try {
+            this.file = file;
+            this.startPos = startPos;
+            this.stopPos = stopPos;
+            offset = (int) (stopPos - startPos);
+            audioIn = AudioSystem.getAudioInputStream(file);
+            AudioFormat format = audioIn.getFormat();
+            totalToRead = (int)((offset/1e6)*format.getFrameRate()*format.getFrameSize());
+            audioIn.close();
+        } catch (UnsupportedAudioFileException | IOException ex) {
+            Logger.getLogger(AudioClip.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     /**
