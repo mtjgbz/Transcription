@@ -84,6 +84,7 @@ public class Practice extends javax.swing.JFrame {
     ArrayList<ArrayList<Integer>> saveStart = new ArrayList<>(); 
     ArrayList<ArrayList<Integer>> saveEnd = new ArrayList<>();
     ArrayList<ArrayList<Boolean>> correct = new ArrayList<>();
+    ArrayList<String> saveText = new ArrayList<String>();
 
     private Highlighter.HighlightPainter redPainter;
     private Highlighter.HighlightPainter greenPainter;
@@ -338,7 +339,7 @@ public class Practice extends javax.swing.JFrame {
         blank4 = blank4.replaceAll(" ", "");
     }
     
-    private void saveState(int attempt, int start, int end, int wCount, int pg, String word, boolean crct) {
+    private void saveState(String text, int attempt, int start, int end, int wCount, int pg, String word, boolean crct) {
         attempts.set(pg-1, attempt);
         saveStart.get(pg-1).set(wCount-1, start);
         saveEnd.get(pg-1).set(wCount-1, end);
@@ -415,15 +416,31 @@ public class Practice extends javax.swing.JFrame {
         }
         else if (wordCount == 1) {
             boolean right  = highlightWord(blank1, words.get(0), start1, end1);
-            if(right) {
-                disableDocFilter1();
-            }
-            answers.get(page-1).get(wordCount-1).add(blank1);
+            
+            answers.get(page-1).get(wordCount-1).set(attempt, blank1);
             
             int id = backend.getQuestionID(words.get(0));
             backend.addUserAnswer(blank1, id, attempt, correct1);
+            char[] chars = jTextPane1.getText().toCharArray();
+            int index = end1;
+            char c = chars[index];
+            System.out.println("end char @: " + index + " is " + c);
             
-            saveState(attempt, start1, end1, wordCount, page, words.get(0), correct1);
+            String text = jTextPane1.getText();
+            saveState(text, attempt, start1, end1, wordCount, page, words.get(0), correct1);
+            System.out.println("text: " + text);
+            System.out.println("end char save: " + saveEnd.get(page-1).get(wordCount-1));
+            System.out.println("ca attempt #: " + attempt);
+            System.out.println("ca start1: " + start1);
+            System.out.println("ca end1: " + end1);
+            System.out.println("ca wordCount: " + wordCount);
+            System.out.println("ca page #: " + page);
+            System.out.println("ca word: " + words.get(0));
+            System.out.println("ca correct1: " + correct1);
+            System.out.println("blank1/answer: " + blank1 + answers.get(page-1).get(wordCount-1));
+            if(right) {
+                disableDocFilter1();
+            }
         }
     }
     
@@ -1037,9 +1054,52 @@ public class Practice extends javax.swing.JFrame {
         }
         initAudio();
         showText();
-        jTextPane1.setText(text);
+        renderState(jTextPane1.getText());
     }//GEN-LAST:event_prevButtonActionPerformed
 
+    private void renderState(String phrase) {
+        System.out.println("phrase: " + phrase);
+        System.out.println("rs start1: " + start1);
+        System.out.println("rs end1: " + saveEnd.get(page-1).get(wordCount-1));
+        char[] chars = phrase.toCharArray();
+        int index = saveEnd.get(page-1).get(wordCount-1);
+        char c = chars[index];
+        System.out.println("end: " + saveEnd.get(page-1).get(wordCount-1));
+        //phrase = phrase.substring(0, saveStart.get(page-1).get(wordCount-1)) +  " " + answers.get(page-1).get(wordCount-1).get(attempts.get(page-1)) + " ]" + phrase.substring((saveEnd.get(page-1).get(wordCount-1))-1, phrase.length());
+        System.out.println("substring: " + phrase);
+        String text = saveText.get(page-1);
+        System.out.println("saveText: " + text);
+        int start = saveStart.get(page - 1).get(wordCount - 1);
+        int end = saveEnd.get(page - 1).get(wordCount - 1);
+        System.out.println("start: " + start + " end: " + end);
+        String answer = answers.get(page - 1).get(wordCount - 1).get(attempts.get(page - 1));
+        String word = wordsList.get(page - 1).get(wordCount - 1);
+        System.out.println("answer: " + answer);
+        jTextPane1.setText(text);
+         
+        Highlighter highlighter = jTextPane1.getHighlighter();
+        jTextPane1.setHighlighter(highlighter);
+       
+        redPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.PINK);
+        greenPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
+        
+        try {
+            if(!(answer.equals(word))) {
+                highlighter.addHighlight(start-1, end+1, redPainter);
+                //return false;
+            }  
+            else {
+                highlighter.addHighlight(start-1, end+1, greenPainter);
+                
+            }
+        }catch (BadLocationException ex) {
+                Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //return text;
+    }
+
+    
     private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
         enc.dispose();
         if (NaMaOpen) {
@@ -1099,7 +1159,7 @@ public class Practice extends javax.swing.JFrame {
             playButton1.setText("Reproducir");
         }
     }//GEN-LAST:event_playButton1ActionPerformed
-    String text = " ";
+    
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         page++;
         clip.stop();
@@ -1125,7 +1185,7 @@ public class Practice extends javax.swing.JFrame {
         attemptCountLabel.setText("Tiene " + attempts.get(page-1) + " intentos restantes.");
         showText();
         resetCorrect();
-        text = jTextPane1.getText();
+        //text = jTextPane1.getText();
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
