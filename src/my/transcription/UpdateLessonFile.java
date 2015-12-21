@@ -138,25 +138,40 @@ public class UpdateLessonFile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Transcription Browser
+     * @param evt file chooser
+     */
     private void transcriptionBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transcriptionBrowseActionPerformed
-        // TODO add your handling code here:
         String file = fileChooser() + File.separator;
         transcriptionPath.setText(file);
     }//GEN-LAST:event_transcriptionBrowseActionPerformed
 
     private void transcriptionPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transcriptionPathActionPerformed
-        // TODO add your handling code here:
+        //auto generated code
     }//GEN-LAST:event_transcriptionPathActionPerformed
 
+    /**
+     * Adds the text file to the database
+     * @param evt okay button, dispose of the browser
+     */
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         User.createTextFile(transcriptionPath.getText(), getClass().getResource("TAA.db").toString());
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
+    /**
+     * Cancels the operation
+     * @param evt disposes of the browser 
+     */
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    /**
+     * Sets the text to loading
+     * @param evt Loading text
+     */
     private void okButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okButtonMousePressed
         jLabel1.setText("Cargando...");
     }//GEN-LAST:event_okButtonMousePressed

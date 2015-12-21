@@ -5,21 +5,17 @@
  */
 package my.transcription;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 
 /**
  *
- * @author mike
+ * @author Mike
  */
 public class Test extends javax.swing.JFrame {
     private static String path;
@@ -55,7 +51,6 @@ public class Test extends javax.swing.JFrame {
 
     /**
      * Creates new form Test
-     *
      * @param user
      */
     public Test(String user, Integer lesson, String subLesson) {
@@ -78,6 +73,9 @@ public class Test extends javax.swing.JFrame {
         tone = new ToneTable(path);
     }
 
+    /**
+     * Sets up the tones for test
+     */
     private void setupTones() {
         try {
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
@@ -93,10 +91,16 @@ public class Test extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Initalizes the Audio
+     */
     private void initAudio() {
         clip = tbe.makeClip(page);
     }
 
+    /**
+     * Initalizes the text field
+     */
     public void initTextFields() {
 //        pbe = new PassiveBE();
 //        phraseList = new ArrayList<String>();
@@ -303,10 +307,18 @@ public class Test extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Submit button
+     * @param evt 
+     */
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // pbe.submit(answerList);
     }
 
+    /**
+     * Previous Button
+     * @param evt 
+     */
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
         page--;
         clip.stop();
@@ -383,40 +395,6 @@ public class Test extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new Test().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;

@@ -26,7 +26,7 @@ import static my.transcription.ToneTable.errorMsg;
 
 /**
  *
- * @author Noah, Mike, Casey and Erica
+ * @author Noah
  */
 public class ToneTable extends javax.swing.JFrame {
 
@@ -3099,6 +3099,10 @@ public class ToneTable extends javax.swing.JFrame {
         }
     };
 
+    /**
+     * All Buttons Action Performed
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         buttonNum = 0;
         buttonAction();
