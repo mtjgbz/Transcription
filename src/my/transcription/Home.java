@@ -39,14 +39,13 @@ public class Home extends javax.swing.JFrame {
     ArrayList<Integer> lessonList;
    
     Timer timer1;
-    Boolean loading = false;
 
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
-        this.setTitle("Mixtec Transcription: Home");
+        this.setTitle("Transcripción Mixteca: Hogar");
     }
 
     /**
@@ -56,7 +55,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home(String user) {
         initComponents();
-        this.setTitle("Mixtec Transcription: Home");
+        this.setTitle("Transcripción Mixteca: Hogar");
         this.user = user;
         getContentPane().setBackground(new Color(148, 189, 203));
         jUsernameMenuDropDown.setText(user);
@@ -167,9 +166,6 @@ public class Home extends javax.swing.JFrame {
         jBackground = new javax.swing.JLabel();
         jNaMaButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jFile = new javax.swing.JMenu();
-        jLoadTextMenu = new javax.swing.JMenu();
-        jLoadTones = new javax.swing.JMenu();
         jUsernameMenuDropDown = new javax.swing.JMenu();
         jChangePassword = new javax.swing.JMenuItem();
 
@@ -182,11 +178,10 @@ public class Home extends javax.swing.JFrame {
         jLabel2.setMaximumSize(new java.awt.Dimension(338, 2));
         jLabel2.setMinimumSize(new java.awt.Dimension(338, 2));
         jLabel2.setPreferredSize(new java.awt.Dimension(338, 2));
-        jLabel2.setSize(new java.awt.Dimension(338, 2));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setText("Loading...");
+        jLabel1.setText("Cargando...");
 
         jlessonBox.setBackground(new java.awt.Color(204, 204, 204));
         jlessonBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -204,14 +199,14 @@ public class Home extends javax.swing.JFrame {
         jsubLessonBox.setPreferredSize(new java.awt.Dimension(130, 30));
 
         jLessonLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLessonLabel.setText("Lesson");
+        jLessonLabel.setText("Lección");
 
         jSubLessonLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jSubLessonLabel.setText("Sub-lesson");
+        jSubLessonLabel.setText("Sub-Lección");
 
         jLogOutButton.setBackground(new java.awt.Color(204, 204, 204));
         jLogOutButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLogOutButton.setText("Log Out");
+        jLogOutButton.setText("Juega");
         jLogOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLogOutButtonActionPerformed(evt);
@@ -220,7 +215,7 @@ public class Home extends javax.swing.JFrame {
 
         jPassiveButton.setBackground(new java.awt.Color(204, 204, 204));
         jPassiveButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jPassiveButton.setText("Passive");
+        jPassiveButton.setText("Pasivo");
         jPassiveButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jPassiveButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -235,7 +230,7 @@ public class Home extends javax.swing.JFrame {
 
         jActiveButton.setBackground(new java.awt.Color(204, 204, 204));
         jActiveButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jActiveButton.setText("Active");
+        jActiveButton.setText("Activo");
         jActiveButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jActiveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,7 +240,7 @@ public class Home extends javax.swing.JFrame {
 
         jTraineeLogButton.setBackground(new java.awt.Color(204, 204, 204));
         jTraineeLogButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTraineeLogButton.setText("Trainee Log");
+        jTraineeLogButton.setText("Registro de Aprendiz");
         jTraineeLogButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jTraineeLogButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,7 +250,7 @@ public class Home extends javax.swing.JFrame {
 
         jTonesButton.setBackground(new java.awt.Color(204, 204, 204));
         jTonesButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTonesButton.setText("Tones");
+        jTonesButton.setText("Tonos");
         jTonesButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jTonesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,7 +260,7 @@ public class Home extends javax.swing.JFrame {
 
         jNasalizationButton.setBackground(new java.awt.Color(204, 204, 204));
         jNasalizationButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jNasalizationButton.setText("Nasalizations");
+        jNasalizationButton.setText("Nasalización");
         jNasalizationButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jNasalizationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,7 +270,7 @@ public class Home extends javax.swing.JFrame {
 
         jEncliticButton.setBackground(new java.awt.Color(204, 204, 204));
         jEncliticButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jEncliticButton.setText("Enclitics");
+        jEncliticButton.setText("Enclíticos");
         jEncliticButton.setPreferredSize(new java.awt.Dimension(130, 30));
         jEncliticButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,39 +295,9 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 254));
 
-        jFile.setText("File");
-
-        jLoadTextMenu.setText("Load Text");
-        jLoadTextMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLoadTextMenuMousePressed(evt);
-            }
-        });
-        jLoadTextMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLoadTextMenuActionPerformed(evt);
-            }
-        });
-        jFile.add(jLoadTextMenu);
-
-        jLoadTones.setText("Load Tones");
-        jLoadTones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLoadTonesMousePressed(evt);
-            }
-        });
-        jLoadTones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLoadTonesActionPerformed(evt);
-            }
-        });
-        jFile.add(jLoadTones);
-
-        jMenuBar1.add(jFile);
-
         jUsernameMenuDropDown.setText("User");
 
-        jChangePassword.setText("Change Password");
+        jChangePassword.setText("Cambiar la Contraseña ");
         jChangePassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jChangePasswordMouseReleased(evt);
@@ -351,19 +316,6 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(235, 235, 235))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(290, 290, 290))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(270, 270, 270)
-                .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -377,10 +329,10 @@ public class Home extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jNaMaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLessonLabel)
-                                        .addGap(39, 39, 39))
-                                    .addComponent(jNaMaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(43, 43, 43)))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
@@ -390,12 +342,24 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(jEncliticButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jsubLessonBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
+                                .addGap(61, 61, 61)
                                 .addComponent(jSubLessonLabel))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(260, 260, 260)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(186, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(292, 292, 292))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTraineeLogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(250, 250, 250))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 671, Short.MAX_VALUE))
         );
@@ -480,9 +444,6 @@ public class Home extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jTraineeLogButtonActionPerformed
 
-    public static void loading() {
-        JOptionPane.showOptionDialog(null, "         Loading...", "Passive Loading", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
-    }
 
     /**
      * Passive Training Button
@@ -490,7 +451,6 @@ public class Home extends javax.swing.JFrame {
      * @param evt
      */
     private void jPassiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassiveButtonActionPerformed
-        loading = true;
         act.dispose();
         enc.dispose();
         nas.dispose();
@@ -498,7 +458,6 @@ public class Home extends javax.swing.JFrame {
         if (NaMaOpen) {
             na.dispose();
         }
-
         lesson = lessonList.get((int) jlessonBox.getSelectedIndex());
         sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
 
@@ -583,26 +542,17 @@ public class Home extends javax.swing.JFrame {
      */
     private void jChangePasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseReleased
         act.dispose();
-        //pass1.dispose();
+
         enc.dispose();
         nas.dispose();
         tone.dispose();
-//        if (!pass1.isShowing()) {
-//            pass1.setVisible(true);
-//        } else {
-//            pass1.toFront();
-//        }
         pass1 = new ChangePass(user);
         pass1.setVisible(true);
     }//GEN-LAST:event_jChangePasswordMouseReleased
 
     private void jPassiveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPassiveButtonMousePressed
-        isLoading();
+        jLabel1.setText("Cargando...");
     }//GEN-LAST:event_jPassiveButtonMousePressed
-
-    private void jLoadTextMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTextMenuActionPerformed
-
-    }//GEN-LAST:event_jLoadTextMenuActionPerformed
 
     private void jNaMaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNaMaButtonActionPerformed
         if (!NaMaOpen) {
@@ -616,51 +566,14 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jNaMaButtonActionPerformed
 
-    private void jLoadTextMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMenuMousePressed
-        UpdateLessonFile window = new UpdateLessonFile();
-        window.setVisible(true);
-    }//GEN-LAST:event_jLoadTextMenuMousePressed
-
-    private void jLoadTonesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTonesMousePressed
-        UpdateTones window = new UpdateTones();
-        window.setVisible(true);
-    }//GEN-LAST:event_jLoadTonesMousePressed
-
-    private void jLoadTonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoadTonesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLoadTonesActionPerformed
-
-    private void isLoading() {
-        jLabel1.setText("Loading...");
-
-        ActionListener listener = new ActionListener() {
-            int dots = 0;
-
-            public void actionPerformed(ActionEvent event) {
-                if (dots < 3) {
-                    jLabel1.setText(jLabel1.getText() + ".");
-                    dots++;
-                } else {
-                    dots = 0;
-                    jLabel1.setText("Loading");
-                }
-            }
-        };
-        timer1 = new Timer(300, listener);
-        timer1.start();
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jActiveButton;
     private javax.swing.JLabel jBackground;
     private javax.swing.JMenuItem jChangePassword;
     private javax.swing.JButton jEncliticButton;
-    private javax.swing.JMenu jFile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLessonLabel;
-    private javax.swing.JMenu jLoadTextMenu;
-    private javax.swing.JMenu jLoadTones;
     private javax.swing.JButton jLogOutButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton jNaMaButton;

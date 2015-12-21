@@ -24,7 +24,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jLogOut">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
+            <Property name="text" type="java.lang.String" value="Juega"/>
           </Properties>
           <Events>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLogOutMousePressed"/>

@@ -63,7 +63,7 @@ public class Active extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(400, 160));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Practice");
+        jButton1.setText("Práctica");
         jButton1.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton1.setMinimumSize(new java.awt.Dimension(97, 30));
         jButton1.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -74,7 +74,7 @@ public class Active extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Test");
+        jButton2.setText("Examen");
         jButton2.setMaximumSize(new java.awt.Dimension(97, 30));
         jButton2.setMinimumSize(new java.awt.Dimension(97, 30));
         jButton2.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -99,7 +99,9 @@ public class Active extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +112,7 @@ public class Active extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(74, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE))
         );
 
         pack();

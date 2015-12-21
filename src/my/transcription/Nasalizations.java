@@ -42,7 +42,7 @@ public class Nasalizations extends javax.swing.JFrame {
      */
     public Nasalizations(String path) {
         initComponents();
-        this.setTitle("Mixtec Transcription: Nasalizations Table");
+        this.setTitle("Transcripción Mixteca: Mesa de Nasalización");
         this.setLocation(x, y);
         this.path = path;
 
@@ -164,7 +164,7 @@ public class Nasalizations extends javax.swing.JFrame {
             }
 
         } catch (FileNotFoundException ex) { 
-            errorMsg("Nasalization Audio Not Found, Please Have Admin Load Audio Files.", "Nasalization");
+            errorMsg("Nasalization audio no encontrado, por favor tenga carga de administración de archivos de audio.", "Nasalización");
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -678,9 +678,6 @@ public class Nasalizations extends javax.swing.JFrame {
             }
         }
     };
-
-    //String path = "/home/mike/Transcription Data/Tones/";
-    //String path = "/Users/Noah/Documents/YOLOX MIXTEC/Table Sound Files/Nasalizations/";
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         buttonNum = 0;

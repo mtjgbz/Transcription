@@ -90,7 +90,7 @@ public class NamaTable extends javax.swing.JFrame {
         buttonlist.add(jButton23);
         buttonlist.add(jButton24);
         buttonlist.add(playAllButton);
-        this.setTitle("Mixtec Transcription: Nama Table");
+        this.setTitle("Transcripción Mixteca: Mesa de NaMa");
         this.setLocation(x, y);
     }
 
@@ -769,7 +769,7 @@ public class NamaTable extends javax.swing.JFrame {
         });
 
         playAllButton.setForeground(new java.awt.Color(0, 153, 51));
-        playAllButton.setText("Play All");
+        playAllButton.setText("Juega Todo");
         playAllButton.setMaximumSize(new java.awt.Dimension(110, 30));
         playAllButton.setMinimumSize(new java.awt.Dimension(110, 30));
         playAllButton.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -833,7 +833,9 @@ public class NamaTable extends javax.swing.JFrame {
                     .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -880,9 +882,9 @@ public class NamaTable extends javax.swing.JFrame {
                     .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(playAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 358, Short.MAX_VALUE))
         );
 
         pack();

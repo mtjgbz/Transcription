@@ -11,7 +11,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jHomeMenuButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Home"/>
+            <Property name="text" type="java.lang.String" value="Hogar"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jHomeMenuButtonMouseClicked"/>
@@ -19,8 +19,8 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jEncliticMenuButton">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Encl&#xed;ticos"/>
             <Property name="actionCommand" type="java.lang.String" value="Enclitics"/>
-            <Property name="label" type="java.lang.String" value="Enclitics"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jEncliticMenuButtonMouseClicked"/>
@@ -28,7 +28,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jNasMenuButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nasalization"/>
+            <Property name="text" type="java.lang.String" value="Nasalizaci&#xf3;n"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jNasMenuButtonMouseClicked"/>
@@ -36,7 +36,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jTTMenuButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tone Table"/>
+            <Property name="text" type="java.lang.String" value="Mesa de Tonos"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTTMenuButtonMouseClicked"/>
@@ -57,7 +57,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Log out"/>
+                <Property name="text" type="java.lang.String" value="Juega"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuItem1MouseReleased"/>
@@ -100,13 +100,13 @@
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="playButton4" min="-2" max="-2" attributes="0"/>
                   <Component id="playButton5" min="-2" max="-2" attributes="0"/>
                   <Component id="playButton3" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="playButton2" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="playButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="playButton4" min="-2" pref="105" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -125,15 +125,12 @@
               <Component id="jNextButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
               <Component id="filler2" min="-2" pref="0" max="-2" attributes="0"/>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="892" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jLabel1" alignment="1" pref="972" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -150,7 +147,7 @@
               <Component id="jScrollPane6" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="filler1" min="-2" max="-2" attributes="0"/>
@@ -185,10 +182,7 @@
               <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" pref="500" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
-              </Group>
+              <Component id="jLabel1" alignment="0" pref="597" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -335,17 +329,20 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="99" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Play"/>
+        <Property name="text" type="java.lang.String" value="Reproducir"/>
         <Property name="focusCycleRoot" type="boolean" value="true"/>
         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
+        </Property>
+        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[105, 29]"/>
         </Property>
       </Properties>
       <Events>
@@ -373,15 +370,18 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="99" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Play"/>
+        <Property name="text" type="java.lang.String" value="Reproducir"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
+        </Property>
+        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[105, 29]"/>
         </Property>
       </Properties>
       <Events>
@@ -399,15 +399,18 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="99" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Play"/>
+        <Property name="text" type="java.lang.String" value="Reproducir"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
+        </Property>
+        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[105, 29]"/>
         </Property>
       </Properties>
       <Events>
@@ -425,7 +428,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="99" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Play"/>
+        <Property name="text" type="java.lang.String" value="Reproducir"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[97, 29]"/>
         </Property>
@@ -451,15 +454,18 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="99" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Play"/>
+        <Property name="text" type="java.lang.String" value="Reproducir"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[97, 29]"/>
+          <Dimension value="[105, 29]"/>
+        </Property>
+        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[105, 29]"/>
         </Property>
       </Properties>
       <Events>
@@ -471,7 +477,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Next"/>
+        <Property name="text" type="java.lang.String" value="Pr&#xf3;ximo"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[97, 30]"/>
         </Property>
@@ -491,7 +497,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Current"/>
+        <Property name="text" type="java.lang.String" value="Actual"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[97, 30]"/>
         </Property>
@@ -530,7 +536,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Page 1/4"/>
+        <Property name="text" type="java.lang.String" value="P&#xe1;gina 1/4"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
