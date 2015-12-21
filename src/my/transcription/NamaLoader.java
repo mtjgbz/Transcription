@@ -26,6 +26,10 @@ public class NamaLoader {
     private static String path;
     private ArrayList<File> fileList;
 
+    /**
+     * Creates the necessary files for nama table to work
+     * @param path Path as a Sting to the files associated with the nama table 
+     */
     public void makeFiles(String path) {
         this.path = path;
         fileList.add(new File(path + "01-01-na3ma3_edited.wav"));
@@ -54,6 +58,11 @@ public class NamaLoader {
 
     }
 
+    /**
+     * Creates clips from each file
+     * 
+     * @return Returns an ArrayList of the clips created
+     */
     public ArrayList<Clip> load() {
         ArrayList<Clip> clips = new ArrayList<>();
         AudioInputStream audioIn;

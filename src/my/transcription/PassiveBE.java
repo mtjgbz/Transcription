@@ -1,5 +1,6 @@
 package my.transcription;
 
+import java.awt.event.WindowEvent;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;

@@ -30,11 +30,19 @@ public class LogBE {
     private static final String PRACTICE_ID = "PracticeID";
     private static final String PRACTICE_TABLE = "PRACTICE";
     
+    /**
+     * Creates a backend for the given parent frame
+     * @param pFrame    parent frame of the database
+     */
     public LogBE(JFrame pFrame){
         parentFrame = pFrame;
         stmt = User.setupDB(parentFrame, getClass().getResource("TAA.db").toString());
     }
     
+    /**
+     * Creates the list of users to select logs from.
+     * @return      Map of usernames mapped to student names.
+     */
     public HashMap<String, String> createLogs(){
         try{
             String query = "SELECT * FROM USERS;";
@@ -58,6 +66,12 @@ public class LogBE {
         return null;
     }
     
+    /**
+     * Selects all logs from the database on active sessions.
+     * @param username  username for the logs.
+     * @param isTest    true if pulling from test information, false if pulling from practice
+     * @return          ID of logs mapped to respective logs
+     */
     public HashMap<ArrayList<String>, Integer> pullResults(String username, boolean isTest){
         try{
             String table;
@@ -96,6 +110,12 @@ public class LogBE {
         return null;        
     }
     
+    /**
+     * Gets the ID of a row in a log
+     * @param date      Date of the log taken
+     * @param isTest    True if used for a log for a test, false if for practice
+     * @return          The ID if successful, -1 if unsuccessful.
+     */
     public int getID(String date, boolean isTest){
         try{
             String name;
@@ -119,6 +139,12 @@ public class LogBE {
         return -1;
     }
     
+    /**
+     * Pulls the answers from the database for logs of answers.
+     * @param id        ID for the log selected.
+     * @param isTest    True if log for a test, false if for practice
+     * @return          ArrayList of log rows
+     */
     public ArrayList<ArrayList<String>> traineeLog(int id, boolean isTest){
         try{
             String answerTable;

@@ -30,6 +30,7 @@ public class Passive extends javax.swing.JFrame {
     String user;
     int t = 0;
     String subLesson;
+    private int decrease;
 
     ArrayList<Clip> clipsList = new ArrayList<>();
     ArrayList<ArrayList<Timer>> timersList = new ArrayList<>();
@@ -99,6 +100,7 @@ public class Passive extends javax.swing.JFrame {
     public Passive(String user, Integer lesson, String subLesson) {
         this.user = user;
         getContentPane().setBackground(new Color(148, 189, 203));
+        decrease = 0;
 
         this.lesson = lesson;
         this.subLesson = subLesson;
@@ -572,7 +574,6 @@ public class Passive extends javax.swing.JFrame {
             ArrayList<String> currList;
             if (phrase == null || phrase.get(1) == null) {
                 i--;
-                continue;
             }
             boolean contains = false;   //if the phrase has already been used
             int index = 0;              //index of the array list within arraylists
