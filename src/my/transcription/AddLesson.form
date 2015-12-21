@@ -82,7 +82,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="addButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add New Lesson/Sublesson"/>
+        <Property name="text" type="java.lang.String" value="Add/Update  New Lesson+Sublesson"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addButtonActionPerformed"/>
@@ -106,7 +106,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Regular Expression for new lesson/sublesson"/>
+        <Property name="text" type="java.lang.String" value="Regular Expression for this Lesson, Sublesson pair"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="cancelButton">
