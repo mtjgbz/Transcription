@@ -219,10 +219,18 @@ public class Register extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jRegisterButtonActionPerformed
 
+    /**
+     * Security Question ComboBox
+     * @param evt 
+     */
     private void jSecurityQuestionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSecurityQuestionComboBoxActionPerformed
-        // TODO add your handling code here:
+        // auto generated
     }//GEN-LAST:event_jSecurityQuestionComboBoxActionPerformed
 
+    /**
+     * Back to Sign in Button.
+     * @param evt Closes the database, sets sign-in to visible and disposes of register
+     */
     private void jBackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackButtonMouseClicked
         //ECL: close the backend before moving to the other page
         backend.closeDB();
