@@ -112,14 +112,11 @@ public class RegisterBE {
         return "";
     }
 
+    /**
+     * Initializes the lessons
+     */
     private void setInitialLesson() {
         String query1 = "INSERT INTO LESSON_TRACK(Username) VALUES ('" + username + "');";
-
-//        String query2 = "UPDATE LESSON_TRACK "
-//                + "SET LatestLesson = 1, LatestSubLesson = a, "
-//                + "FurthestLesson = 1, FurthestSublesson = a "
-//                + "WHERE UserID= "
-//                + "(SELECT UserID FROM USERS WHERE Username = '" + username + "');";
         try {
             int changed1 = stmt.executeUpdate(query1);
             //int changed2 = stmt.executeUpdate(query2);

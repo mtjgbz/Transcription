@@ -3,8 +3,11 @@ package my.transcription;
 import java.sql.*;
 import static my.transcription.SignIn.errorMsg;
 import org.sqlite.*;
-//TODO: move setupDB as part of constructor and close DB within the methods
 
+/**
+ * Sign in BE
+ * @author Noah, Michael, Casey, Erica
+ */
 public class SignInBE {
 
     private String username;
@@ -13,9 +16,15 @@ public class SignInBE {
     private Statement stmt;
     private ResultSet rs;
 
+    /**
+     * Constructor
+     */
     public SignInBE() {
     }
 
+    /**
+     * Sets up the Database
+     */
     public void setupDB() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -31,6 +40,9 @@ public class SignInBE {
         }
     }
 
+    /**
+     * closes the database
+     */
     public void closeDB() {
         try {
             stmt.close();
@@ -43,14 +55,28 @@ public class SignInBE {
         }
     }
 
+    /**
+     * Sets u to username
+     * @param u 
+     */
     public void setUsername(String u) {
         username = u;
     }
 
+    /**
+     * sets p to password
+     * @param p 
+     */
     public void setPassword(String p) {
         password = p;
     }
 
+    /**
+     * Verifies that the password is correct.
+     * @param username
+     * @param password
+     * @return 
+     */
     public boolean checkPassword(String username, String password) {
         try {
             String query = "SELECT COUNT(*) AS Users FROM USERS WHERE USERNAME = '" + username + "' AND PASSWORD = '" + password + "';";
@@ -67,10 +93,13 @@ public class SignInBE {
         return false;
     }
 
+    /**
+     * Checks if it's the admin trying to login
+     * @param username
+     * @return 
+     */
     public boolean checkAdmin(String username) {
 
         return username.equals("admin");
-
     }
-
 }

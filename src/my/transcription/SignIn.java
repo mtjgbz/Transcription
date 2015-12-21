@@ -7,8 +7,6 @@ package my.transcription;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
-//import javax.swing.JDialog
-//TODO: Figure out how to carry username throughout windows
 
 /**
  *
@@ -206,6 +204,10 @@ public class SignIn extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jSignInActionPerformed
 
+    /**
+     * Register Button
+     * @param evt closes the database creates a register page and disposes of sign-in.
+     */
     private void jRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterButtonActionPerformed
         //ECL: Close the DB
         backend.closeDB();
@@ -214,7 +216,10 @@ public class SignIn extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jRegisterButtonActionPerformed
 
-
+    /**
+     * Password field, where the password is typed in.
+     * @param evt 
+     */
     private void jPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyPressed
         if (evt.getKeyCode() == 10) {
             String username = jUserNameField.getText();
@@ -238,6 +243,10 @@ public class SignIn extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPasswordFieldKeyPressed
 
+    /**
+     * Creates a Forgotten Password page, disposes of sign-in.
+     * @param evt 
+     */
     private void jForgottenPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jForgottenPasswordMouseClicked
         new ForgottenPassword().setVisible(true);
         dispose();
