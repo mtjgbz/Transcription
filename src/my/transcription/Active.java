@@ -31,16 +31,16 @@ public class Active extends javax.swing.JFrame {
     }
 
     /**
-     * 
-     * @param lesson 
+     * Sets the lesson information for the class.
+     * @param lesson lesson selected from the home page.
      */
     public void setLesson(Integer lesson) {
         this.lesson = lesson;
     }
     
     /**
-     * 
-     * @param subLesson 
+     * Sets the sublesson information for the class.
+     * @param subLesson     sublesson selected from the home page.
      */
     public void setSubLesson(String subLesson) {
         this.subLesson = subLesson;
@@ -125,6 +125,10 @@ public class Active extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Creates the test window with the user, lesson, and sublesson
+     * @param evt   click for event
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new Test(user, lesson, subLesson).setVisible(true);
         home.dispose();
