@@ -95,7 +95,7 @@ public class Practice extends javax.swing.JFrame {
             clip.stop();
             clip.setMicrosecondPosition(timesList.get(page-1));
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
-            playButton1.setText("Play");
+            playButton1.setText("Reproducir");
         }
     };
 
@@ -105,7 +105,7 @@ public class Practice extends javax.swing.JFrame {
      * @param user
      */
     public Practice(String user, Integer lesson, String subLesson) {
-        this.setTitle("Mixtec Transcription: Practice");
+        this.setTitle("Transcripción Mixteca: Práctica");
         initComponents();
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         this.user = user;
@@ -113,7 +113,7 @@ public class Practice extends javax.swing.JFrame {
         this.subLesson = subLesson;
         jUserMenu.setText(user);
         jTextPane1.setText("text1");
-        prevButton.setText("Previous");
+        prevButton.setText("Anterior");
         prevButton.setEnabled(false);
         timer = new Timer(4428, listener);
 
@@ -130,7 +130,7 @@ public class Practice extends javax.swing.JFrame {
         nas = new Nasalizations(path);
         tone = new ToneTable(path);
         attempt = 3;
-        attemptCountLabel.setText("You have " + attempt + " attempts left.");
+        attemptCountLabel.setText("Tiene " + attempt + " intentos restantes.");
 
         for(int i = 0; i < 20; i++) {
             btnStatus.add(true);
@@ -810,13 +810,11 @@ public class Practice extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(700, 410));
         setMinimumSize(new java.awt.Dimension(700, 410));
         setResizable(false);
-        setSize(new java.awt.Dimension(700, 410));
 
         submitButton.setBackground(new java.awt.Color(255, 255, 255));
-        submitButton.setText("Check Answers");
+        submitButton.setText("Comprobar las Respuestas");
         submitButton.setMaximumSize(new java.awt.Dimension(97, 30));
         submitButton.setMinimumSize(new java.awt.Dimension(97, 30));
         submitButton.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -827,7 +825,7 @@ public class Practice extends javax.swing.JFrame {
         });
 
         nextButton.setBackground(new java.awt.Color(255, 255, 255));
-        nextButton.setText("Next");
+        nextButton.setText("Próximo");
         nextButton.setMaximumSize(new java.awt.Dimension(97, 30));
         nextButton.setMinimumSize(new java.awt.Dimension(97, 30));
         nextButton.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -838,7 +836,7 @@ public class Practice extends javax.swing.JFrame {
         });
 
         prevButton.setBackground(new java.awt.Color(255, 255, 255));
-        prevButton.setText("Previous");
+        prevButton.setText("Anterior");
         prevButton.setMaximumSize(new java.awt.Dimension(97, 30));
         prevButton.setMinimumSize(new java.awt.Dimension(97, 30));
         prevButton.setPreferredSize(new java.awt.Dimension(97, 30));
@@ -849,7 +847,7 @@ public class Practice extends javax.swing.JFrame {
         });
 
         playButton1.setBackground(new java.awt.Color(255, 255, 255));
-        playButton1.setText("Play");
+        playButton1.setText("Reproducir");
         playButton1.setMaximumSize(new java.awt.Dimension(97, 29));
         playButton1.setMinimumSize(new java.awt.Dimension(97, 29));
         playButton1.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -861,7 +859,7 @@ public class Practice extends javax.swing.JFrame {
 
         jPageLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jPageLabel.setForeground(new java.awt.Color(204, 204, 204));
-        jPageLabel.setText("Page 1/20");
+        jPageLabel.setText("Página 1/20");
 
         jTextPane1.setColumns(20);
         jTextPane1.setRows(5);
@@ -871,7 +869,7 @@ public class Practice extends javax.swing.JFrame {
 
         attemptCountLabel.setText("jLabel2");
 
-        jHomeMenu.setText("Home");
+        jHomeMenu.setText("Hogar");
         jHomeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jHomeMenuMouseClicked(evt);
@@ -879,8 +877,8 @@ public class Practice extends javax.swing.JFrame {
         });
         jMenuBar1.add(jHomeMenu);
 
+        jEncMenu.setText("Enclíticos");
         jEncMenu.setActionCommand("Enclitics");
-        jEncMenu.setLabel("Enclitics");
         jEncMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jEncMenuMouseClicked(evt);
@@ -888,7 +886,7 @@ public class Practice extends javax.swing.JFrame {
         });
         jMenuBar1.add(jEncMenu);
 
-        jNasMenu.setText("Nasalization");
+        jNasMenu.setText("Nasalización");
         jNasMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jNasMenuMouseClicked(evt);
@@ -896,7 +894,7 @@ public class Practice extends javax.swing.JFrame {
         });
         jMenuBar1.add(jNasMenu);
 
-        jToneTableMenu.setText("Tone Table");
+        jToneTableMenu.setText("Mesa de Tonos");
         jToneTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jToneTableMenuMouseClicked(evt);
@@ -914,7 +912,7 @@ public class Practice extends javax.swing.JFrame {
 
         jUserMenu.setText("User");
 
-        jMenuItem1.setText("Log out");
+        jMenuItem1.setText("Juega");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jMenuItem1MouseReleased(evt);
@@ -931,28 +929,26 @@ public class Practice extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 588, Short.MAX_VALUE)
+                .addGap(0, 570, Short.MAX_VALUE)
                 .addComponent(jPageLabel)
                 .addGap(15, 15, 15))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(249, 249, 249)
-                .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(playButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(attemptCountLabel)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(attemptCountLabel)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(249, 249, 249)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE))
         );
@@ -988,7 +984,7 @@ public class Practice extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         clicks++;
         attempt--;
-        attemptCountLabel.setText("You have " + attempt + " attempts left.");   
+        attemptCountLabel.setText("Tiene " + attempt + " intentos restantes.");   
         
         String phrase = jTextPane1.getText();
         findStartEnd(phrase);
@@ -1012,21 +1008,21 @@ public class Practice extends javax.swing.JFrame {
         clip.stop();
         clip.close();
         timer.stop();
-        jPageLabel.setText("Page " + page + "/20");
+        jPageLabel.setText("Página " + page + "/20");
         backend.closeAudio(); 
         clip = backend.makeClip(page);
         if (page == 1) {
-            prevButton.setText("Current");
+            prevButton.setText("Actual");
             prevButton.setEnabled(false);
         } else if (page == 19) {
             nextButton.setEnabled(true);
-            nextButton.setText("Next");
+            nextButton.setText("Próximo");
         }
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
-        playButton1.setText("Play");
+        playButton1.setText("Reproducir");
         backend.closeAudio();
         submitButton.setEnabled(btnStatus.get(page-1));
-        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attempts left."); 
+        attemptCountLabel.setText("Tiene " + attempts.get(page-1) + " intentos restantes."); 
         try {
             int start = saveStart.get(page - 1).get(wordCount - 1);
             int end = saveEnd.get(page - 1).get(wordCount - 1);
@@ -1088,19 +1084,19 @@ public class Practice extends javax.swing.JFrame {
     private void playButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton1ActionPerformed
         clip.stop();
         timer.stop();
-        playButton1.setText("Play");
+        playButton1.setText("Reproducir");
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
         if (!clip.isRunning()) {
             clip.setMicrosecondPosition(timesList.get(page-1));
             clip.start();
             timer.start();
             playButton1.setForeground(new java.awt.Color(255, 51, 51));
-            playButton1.setText("Stop");
+            playButton1.setText("Para");
         } else {
             clip.stop();
             timer.stop();
             playButton1.setForeground(new java.awt.Color(0, 153, 51));
-            playButton1.setText("Play");
+            playButton1.setText("Reproducir");
         }
     }//GEN-LAST:event_playButton1ActionPerformed
     String text = " ";
@@ -1109,24 +1105,24 @@ public class Practice extends javax.swing.JFrame {
         clip.stop();
         clip.close();
         timer.stop();
-        jPageLabel.setText("Page " + page + "/20");
+        jPageLabel.setText("Página " + page + "/20");
         backend.closeAudio();
         clip = backend.makeClip(page);
         if (page == 20) {
-            nextButton.setText("Current");
+            nextButton.setText("Actual");
             nextButton.setEnabled(false);
         } else if (page == 2) {
             prevButton.setEnabled(true);
-            prevButton.setText("Previous");
+            prevButton.setText("Anterior");
         }
         playButton1.setForeground(new java.awt.Color(0, 153, 51));
-        playButton1.setText("Play");
+        playButton1.setText("Reproducir");
         backend.closeAudio();
         initAudio();
         submitButton.setEnabled(btnStatus.get(page-1));
         clicks = 0;
         attempt = 3;
-        attemptCountLabel.setText("You have " + attempts.get(page-1) + " attempts left.");
+        attemptCountLabel.setText("Tiene " + attempts.get(page-1) + " intentos restantes.");
         showText();
         resetCorrect();
         text = jTextPane1.getText();
