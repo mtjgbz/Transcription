@@ -344,7 +344,7 @@ public class Practice extends javax.swing.JFrame {
         saveStart.get(pg-1).set(wCount-1, start);
         saveEnd.get(pg-1).set(wCount-1, end);
         correct.get(pg-1).set(wCount-1, crct);
-        
+        saveText.add(text);
         backend.calculateScore();
     }
    
