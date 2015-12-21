@@ -108,6 +108,10 @@ public class AddLesson extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Adds the inputted lesson if it has not been entered already.
+     * @param evt   The event of clicking the mouse.
+     */
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         if (lessonField.getText().matches("\\d") && (subLessonField.getText().matches("\\D") || subLessonField.getText().matches("Final"))) {
             System.out.print(lessonField.getText() + subLessonField.getText());
@@ -125,6 +129,10 @@ public class AddLesson extends javax.swing.JFrame {
 
     }//GEN-LAST:event_addButtonActionPerformed
 
+    /**
+     * Closes the open window.
+     * @param evt   Event of clicking on the button.
+     */
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed

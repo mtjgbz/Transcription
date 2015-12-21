@@ -44,11 +44,18 @@ public class AdminHome extends javax.swing.JFrame {
         userSelection();
     }
 
+    /**
+     * Creates the window with the given user.
+     * @param user  Admin username passed through from sign-in.
+     */
     public AdminHome(String user) {
         this();
         this.user = user;
     }
     
+    /**
+     * Populates the list with the names of users from the database.
+     */
     public void userSelection(){
         list1.removeAll();
         userMap = backend.createLogs();
@@ -60,6 +67,9 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Creates the tabbed pane with the table within.
+     */
     public void createPane(){
         jPanel1.remove(list1);
         jPanel1.remove(jLabel1);
@@ -83,6 +93,10 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel1.revalidate();
     }
     
+    /**
+     * Initially sets up the table with list of practice/test logs.
+     * @param isTest    True if table is for test, false if for practice.
+     */
     public void setupTable(boolean isTest){
         String studentUser = userMap.get(list1.getSelectedItem());
         HashMap<ArrayList<String>, Integer> practiceMap = backend.pullResults(studentUser, isTest);
@@ -108,6 +122,10 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Updates the table to reveal attempt information.
+     * @param isTest    True if table is for test, false if for practice.
+     */
     public void updateTable(boolean isTest){
         JTable table;
         if(isTest){
@@ -277,6 +295,10 @@ public class AdminHome extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Updates the log once name submitted, updated once row in log selected.
+     * @param evt   Event of mouse clicking.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         if(selectLog){
@@ -292,27 +314,47 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Returns the admin to the admin home page.
+     * @param evt   Event clicked to return home.
+     */
     private void jBackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackButtonMousePressed
         AdminHome home2 = new AdminHome("admin");
         home2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBackButtonMousePressed
 
+    /**
+     * Logs the user out, and returns to sign in page.
+     * @param evt   Event of clicking on log out button.
+     */
     private void jLogOutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLogOutMousePressed
         new SignIn().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLogOutMousePressed
 
+    /**
+     * Opens the window to load transcriptions into the database.
+     * @param evt   Event of clicking on load text button.
+     */
     private void jLoadTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTextMousePressed
         UpdateLessonFile window = new UpdateLessonFile();
         window.setVisible(true);
     }//GEN-LAST:event_jLoadTextMousePressed
 
+    /**
+     * Opens the window to load tone audio files into the database.
+     * @param evt   Event of clicking on the load tones button.
+     */
     private void jLoadTonesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoadTonesMousePressed
         UpdateTones window = new UpdateTones();
         window.setVisible(true);
     }//GEN-LAST:event_jLoadTonesMousePressed
 
+    /**
+     * Opens the window to add a lesson to the database.
+     * @param evt   Event of clicking on the add lesson button.
+     */
     private void jAddLessonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAddLessonMousePressed
        AddLesson window = new AddLesson();
        window.setVisible(true);
