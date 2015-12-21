@@ -5,13 +5,32 @@
  */
 package my.transcription;
 
+import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mike
  */
 public class TraineeLog extends javax.swing.JFrame {
 
-    String user;
+    private String user;
+    private LogBE backend;
+    private boolean selectLog;
+    private ArrayList<ArrayList<String>> log;
+    
+    private JTable practiceTable;
+    private JTable testTable;
+    private JTabbedPane tabbedPane;
+    
+    private static final String[] LOG_NAMES = {"Date and Time Taken", "Lesson", "Sublesson", "Score"};
+    private static final String[] ATTEMPT_NAMES = {"Question No.", "Attempt No.", "User Answer", "Correct Answer"};
 
     /**
      * Creates new form TraineeLog
@@ -20,6 +39,98 @@ public class TraineeLog extends javax.swing.JFrame {
         this.user = user;
         initComponents();
         jMenu2.setText(user);
+        backend = new LogBE(this);
+        log = new ArrayList<>();
+        selectLog = true;
+        
+        setupPane();
+    }
+    
+    public void setupPane(){
+        jPanel1.setLayout(new BorderLayout());
+        tabbedPane = new JTabbedPane();
+        tabbedPane.setPreferredSize(jPanel1.getSize());
+        tabbedPane.setVisible(true);
+        
+        setupTable(false);
+        setupTable(true);
+        
+        JScrollPane practicePanel = new JScrollPane(practiceTable, 
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        JScrollPane testPanel = new JScrollPane(testTable,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        tabbedPane.addTab("Práctica", practicePanel);
+        tabbedPane.addTab("Examen", testPanel);
+        tabbedPane.repaint();
+        jPanel1.add(tabbedPane);
+        jPanel1.revalidate();
+    }
+    
+    public void setupTable(boolean isTest){
+        HashMap<ArrayList<String>, Integer> map = backend.pullResults(user, isTest);
+        
+        JTable table = new JTable(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        DefaultTableModel model = new DefaultTableModel(LOG_NAMES, 0);
+        table.setModel(model);
+        
+        for (Map.Entry pair : map.entrySet()) {
+            ArrayList<String> list = (ArrayList<String>) pair.getKey();
+            model.addRow(list.toArray());
+            log.add(list);
+        }
+        
+        if(isTest){
+            testTable = table;
+        }else{
+            practiceTable = table;
+        }
+    }
+    
+    public void updateTable(boolean isTest){
+        JTable table;
+        if(isTest){
+            table = testTable;
+        }else{
+            table = practiceTable;
+        }
+        int selectedRow = table.getSelectedRow();
+        JTable lastTable = new JTable(table.getModel());
+
+        table.removeAll();
+        DefaultTableModel model = new DefaultTableModel(ATTEMPT_NAMES, 0);
+        table.setModel(model);
+        
+        if(selectLog == false){
+            for (ArrayList<String> l : log){
+                model.addRow(l.toArray());
+            }
+        } else{
+
+            String date = (String) lastTable.getValueAt(selectedRow, 0);
+            int id = backend.getID(date, isTest);
+                
+            if(id >= 0){
+                ArrayList<ArrayList<String>> results = backend.traineeLog(id, isTest);
+
+                if(results !=  null && selectLog == true){
+                    for(ArrayList<String> r : results){
+                        model.addRow(r.toArray());
+                    }
+                }
+            }
+        }
+            
+        if(isTest){
+            testTable = table;
+        }else{
+            practiceTable = table;
+        }
     }
 
     /**
@@ -31,7 +142,8 @@ public class TraineeLog extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -39,6 +151,30 @@ public class TraineeLog extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(665, 415));
+
+        jButton1.setText("Enviar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(274, 274, 274)
+                .addComponent(jButton1)
+                .addContainerGap(312, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(353, 353, 353)
+                .addComponent(jButton1)
+                .addGap(0, 11, Short.MAX_VALUE))
+        );
 
         jMenu1.setText("Hogar");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,15 +202,16 @@ public class TraineeLog extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -92,46 +229,35 @@ public class TraineeLog extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int index = tabbedPane.getSelectedIndex();
+        if(selectLog){
+            if(index == 0){
+                updateTable(false);
+            }else{
+                updateTable(true);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TraineeLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TraineeLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TraineeLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TraineeLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            jButton1.setText("Atrás");
+            selectLog = false;
+        }else{
+            if(index == 0){
+                updateTable(false);
+            }else{
+                updateTable(true);
+            }
+            
+            jButton1.setText("Enviar");
+            selectLog = true;
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //   new TraineeLog().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -468,7 +468,7 @@ public class Home extends javax.swing.JFrame {
      */
     private void jTraineeLogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTraineeLogButtonActionPerformed
         act.dispose();
-        pass1.dispose();
+//        pass1.dispose();
         enc.dispose();
         nas.dispose();
         tone.dispose();
