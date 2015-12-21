@@ -63,6 +63,10 @@ public class ActiveBE {
     private static final String PRACTICE_ANSWER = "PRACTICE_ANSWER";
     private static final String PRACTICE_ID = "PracticeID";
 
+    /**
+     * Creates the Test or Passive backend, based on boolean input
+     * @param isTest    Whether the active class is practice or a test.
+     */
     public ActiveBE(boolean isTest) {
         this.isTest = isTest;
         stmt = User.setupDB(parentFrame, getClass().getResource("TAA.db").toString());
@@ -77,6 +81,11 @@ public class ActiveBE {
         }
     }
     
+    /**
+     * Adds the selected correct answer to the database
+     * @param answer        Gold standard word to be added to the database.
+     * @param questionNum   Question number that the answer applies to
+     */
     public void addCorrectAnswer(String answer, int questionNum){
         String table;
         String column;
@@ -106,6 +115,13 @@ public class ActiveBE {
         }
     }
     
+    /**
+     * Adds the answer given by a user into the database
+     * @param answer        User response to the blank
+     * @param questionID    QuestionID to be added with the user response
+     * @param attempt       Attempt number of the response
+     * @param correct       Boolean for if the answer is correct
+     */
     public void addUserAnswer(String answer, int questionID, int attempt, boolean correct){
         userAnswers.get(questionID).add(answer);
         attempt = Math.abs(attempt - 3);
@@ -136,6 +152,9 @@ public class ActiveBE {
         }
     }
     
+    /**
+     * Updates the database on the current score of the active session.
+     */
     public void calculateScore(){
         String table;
         String table2;
@@ -175,6 +194,11 @@ public class ActiveBE {
         }
     }
 
+    /**
+     * Sets up the clips for the given page.
+     * @param pageNum   page number for which the audio clip will be played on
+     * @return          the clip opened for the page.
+     */
     public Clip makeClip(int pageNum) {
 
         AudioInputStream audioIn;
@@ -195,18 +219,20 @@ public class ActiveBE {
         return clip;
     }
 
+    /**
+     * Closes the open clip.
+     */
     public void closeAudio() {
         clip.close();
     }
-
-    public void submit(ArrayList<String> answerList, ArrayList<String> attemptList) {
-        if (isTest) {
-
-        } else {
-
-        }
-    }
-
+    
+    /**
+     * Creates a new log entry when an active session is started.
+     * @param username      User opening the session.
+     * @param lesson        Lesson of the session.
+     * @param sublesson     Sublesson of the session.
+     * @return              ID of the session that has been entered into the DB.
+     */
     public int newPractice(String username, int lesson, String sublesson) {
         String table;
         String column;
@@ -234,9 +260,15 @@ public class ActiveBE {
         return 0;
     }
 
-    public void newAttempt(int attemptInverse, String word, boolean correct) {
+    /**
+     * Adds a new entry into the database for new new active attempt.
+     * @param a         attempt number given from the session.
+     * @param word      user's answer for the blank
+     * @param correct   if the user's answer is correct or incorrect.
+     */
+    public void newAttempt(int a, String word, boolean correct) {
         try {
-            int attempt = Math.abs(attemptInverse - 3);
+            int attempt = Math.abs(a - 3);
             int questionID = idList.get(0);
             ArrayList<String> currList = userAnswers.get(getQuestionID(word));
             String userAnswer = currList.get(currList.size() - 1);
@@ -266,6 +298,12 @@ public class ActiveBE {
         }
     }
 
+    /**
+     * pulls a random transcription file for the lesson from the database.
+     * @param lesson        Lesson for the file.
+     * @param sublesson     Sublesson for the file.
+     * @return              Path of the file randomly chosen.
+     */
     public String findFile(int lesson, String sublesson) {
         try {
             //pulling .txt file that contains lesson matches
@@ -372,10 +410,19 @@ public class ActiveBE {
         return null;
     }
 
+    /**
+     * Returns the list of clips open for the session.
+     * @return  List of clips open for the session.
+     */
     public ArrayList<File> getClips() {
         return clips;
     }
     
+    /**
+     * Returns the ID in the database of a given word within the practice ID.
+     * @param answer    Gold standard answer to find in the database.
+     * @return          QuestionID of answer from database.
+     */
     public int getQuestionID(String answer){
         String table;
         String column; 
@@ -426,6 +473,12 @@ public class ActiveBE {
         }
     }
 
+    /**
+     * Sets the blanks within the phrase selected from the database.
+     * @param input     phrase selected for use in Active
+     * @param words     words found from the phrase that will be blanked out.
+     * @return          phrase with blanks.
+     */
     String setBlanks(String input, ArrayList<String> words) {
         //words.add("yo4o4");
         //words.add("tan42");

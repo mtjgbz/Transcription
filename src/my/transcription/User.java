@@ -63,15 +63,12 @@ public class User {
                 sublessons.add(sublesson);
 
                 String regex = rsExp.getString("RegularExpression");
-//                System.out.println(regex);
-//                String filePath = path + "lesson" + lesson + "-" + sublesson + ".txt";
-//                BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
+                regex = regex.replace(" ", "");
 
                 String filePath = "";
                 filePath = searchFile(regex, transcriptions, filePath);
 
                 filePaths.add(filePath);
-//                out.close();
             }
             stmt2.close();
             closeDB(stmt, rs);
@@ -81,7 +78,6 @@ public class User {
                 String newQuery = "UPDATE LESSONS SET FileList = '" + filePaths.get(i) + "' "
                         + "WHERE Lesson = " + lessons.get(i) + " AND "
                         + "Sublesson LIKE '" + sublessons.get(i) + "';";
-                System.out.println(newQuery);
                 stmt.execute(newQuery);
             }
             closeDB(stmt);
@@ -109,11 +105,9 @@ public class User {
             }
 
             for (File f : fileList) {
-                //If it's null, return so
-                //If it's a folder, search through that as well
                 if (f.isDirectory()) {
                     out = searchFile(regex, f.getPath(), out);
-                } //If it's .trs, search it using printName
+                } 
                 else if (f.getName().contains(".trs")) {
                     if (setupFile(f.getPath(), regex)) {
                         try {
@@ -125,7 +119,6 @@ public class User {
                         }
                     }
                 }
-                //If it comes up "positive" add it to a .txt file
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -218,7 +211,6 @@ public class User {
                 matcher.reset(value);
 
                 if (matcher.find()) {
-                    //System.out.println(value);
                     return true;
                 }
             }
