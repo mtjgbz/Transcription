@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineEvent;
 import static javax.sound.sampled.LineEvent.Type.STOP;
 import javax.sound.sampled.LineListener;
@@ -134,7 +135,8 @@ public class Nasalizations extends javax.swing.JFrame {
         try {
             if (clip == null || !clip.isOpen()) {
                 audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count)));
-                clip = AudioSystem.getClip();
+                DataLine.Info info = new DataLine.Info(Clip.class,audioIn.getFormat());
+                clip = (Clip) AudioSystem.getLine(info);
                 clip.open(audioIn);
                 audioIn.close();
                 System.out.println(counter);
@@ -154,7 +156,8 @@ public class Nasalizations extends javax.swing.JFrame {
                 count = 0;
                 clip.stop();
                 audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count)));
-                clip = AudioSystem.getClip();
+                DataLine.Info info = new DataLine.Info(Clip.class,audioIn.getFormat());
+                clip = (Clip) AudioSystem.getLine(info);
                 clip.open(audioIn);
                 audioIn.close();
                 clip.addLineListener(listener);
@@ -165,11 +168,7 @@ public class Nasalizations extends javax.swing.JFrame {
 
         } catch (FileNotFoundException ex) { 
             errorMsg("Nasalization audio no encontrado, por favor tenga carga de administración de archivos de audio.", "Nasalización");
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             Logger.getLogger(Nasalizations.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
