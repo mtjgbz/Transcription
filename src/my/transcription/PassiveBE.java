@@ -194,19 +194,13 @@ public class PassiveBE {
         Matcher matcher;
         for (String phrase : phrases) {
             matcher = regexp.matcher(phrase);
-            //System.out.println(phrase);
             while (matcher.find()) {
                 String word = matcher.group(1);
-                //System.out.println("Phrase: " + phrase + " Word: " + word);
                 if (!words.contains(word)) {
                     words.add(word);
                 }
             }
         }
-//        for(String w : words) {
-//            System.out.println("Word in Words: " + w);
-//        }
-
     }
 
     /**
@@ -273,9 +267,4 @@ public class PassiveBE {
         clip4.close();
         clip5.close();
     }
-
-    //Parse through document paths until random one reached
-    //Create parser to go through file
-    //Randomly select a line from that file
-    //Return that line
 }
