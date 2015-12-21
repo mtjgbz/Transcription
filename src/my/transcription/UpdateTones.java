@@ -22,8 +22,8 @@ public class UpdateTones extends javax.swing.JFrame {
     }
     
     /**
-     * 
-     * @return 
+     * Sets up a file chooser where the tone path is selected.
+     * @return the string path
      */
     public String fileChooser() {
         JFileChooser chooser = new JFileChooser();
@@ -128,25 +128,34 @@ public class UpdateTones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void transcriptionPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transcriptionPathActionPerformed
-        // TODO add your handling code here:
+        //auto generated
     }//GEN-LAST:event_transcriptionPathActionPerformed
 
+    /**
+     * Returns the Path that comes from the file browser
+     * @param evt gets file path
+     */
     private void transcriptionBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transcriptionBrowseActionPerformed
         String file = fileChooser() + File.separator;
         transcriptionPath.setText(file);
     }//GEN-LAST:event_transcriptionBrowseActionPerformed
 
+    /**
+     * Adds the String Path to lesson 0 in database.
+     * @param evt adds to database and then disposes the window
+     */
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         User.createTonePath(transcriptionPath.getText(), getClass().getResource("TAA.db").toString());
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
+    /**
+     * Cancels and disposes the window
+     * @param evt disposes window
+     */
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
-
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;

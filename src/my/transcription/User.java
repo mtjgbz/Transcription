@@ -126,6 +126,13 @@ public class User {
         return out;
     }
 
+    /**
+     * Creates the tone path and stores it in the Database.
+     * Updates the database with the tone path as lesson 0.
+     *
+     * @param transcriptions Path where all the tonal files are located
+     * @param path Path for the tone
+     */
     public static void createTonePath(String transcriptions, String path) {
         try {
             dbPath = path;

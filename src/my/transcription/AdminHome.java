@@ -30,7 +30,7 @@ public class AdminHome extends javax.swing.JFrame {
     private JTable practiceTable;
     private JTable testTable;
     
-    private static final String[] LOG_NAMES = {"Date and Time Taken", "Lesson", "Sublesson", "Score"};
+    private static final String[] LOG_NAMES = {"Fecha y Hora Tomado", "Lección", "Sub-lección", "Puntuación"};
     private static final String[] ATTEMPT_NAMES = {"Question No.", "Attempt No.", "User Answer", "Correct Answer"};
 
     /**
