@@ -211,10 +211,19 @@ public class ForgottenPassword extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Creates an error message if anything is incorrect.
+     * @param infoMessage   Message to appear in the window.
+     * @param titleBar      Message to appear in the title bar.
+     */
     public static void errorMsg(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }
 
+    /**
+     * Validates that the user's security question was answered correctly.
+     * @param evt   Event of clicking on the validate button.
+     */
     private void jValidateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jValidateButtonActionPerformed
         // Getting username and security question answer info and sending to validatePassword
         String username = jUsernameTextField.getText();
@@ -236,6 +245,10 @@ public class ForgottenPassword extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jUsernameTextFieldActionPerformed
 
+    /**
+     * Closes the backend and returns to the sign-in page
+     * @param evt   Event of clicking on the back button
+     */
     private void jBackMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMenuButtonMouseClicked
         //ECL: close the backend before moving to the other page
         backend.closeDB();
@@ -250,7 +263,7 @@ public class ForgottenPassword extends javax.swing.JFrame {
     /**
      * Confirms the username and then gets the question related to that username
      *
-     * @param evt
+     * @param evt   Event of clicking on the confirm button.
      */
     private void jConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfirmButtonActionPerformed
         String username = jUsernameTextField.getText();
@@ -263,6 +276,10 @@ public class ForgottenPassword extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jConfirmButtonActionPerformed
 
+    /**
+     * Brings the user to the home page after getting password from validation.
+     * @param evt   Event of clicking on the sign in button.
+     */
     private void jSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSignInActionPerformed
             Home home1 = new Home(jUsernameTextField.getText());
             home1.setVisible(true);
