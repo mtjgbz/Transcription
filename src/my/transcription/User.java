@@ -140,6 +140,14 @@ public class User {
         }
     }
 
+    /**
+     * Adds or updates a given Lesson, Sublesson pair in the TAA database
+     * 
+     * @param lesson Lesson number to be added or updated
+     * @param subLesson Sublesson to be added or updated
+     * @param regEx Regular Expression associated with Lesson and Sublesson
+     * @param path Path to Database resource
+     */
     public static void addLesson(String lesson, String subLesson, String regEx, String path) {
         try {
             dbPath = path;
@@ -161,7 +169,14 @@ public class User {
                         + subLesson + "', '"
                         + regEx + "');";
                 stmt.execute(newQuery);
+                
+                newQuery = "INSERT INTO LESSON"
+                        + "(Lesson, Sublesson) VALUES ('"
+                        + lesson + "', '"
+                        + subLesson + "');";
+                stmt.execute(newQuery);
             }
+            closeDB(stmt,rs);
 
         } catch (Exception e) {
             e.printStackTrace();

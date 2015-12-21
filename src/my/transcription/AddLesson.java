@@ -38,7 +38,7 @@ public class AddLesson extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        addButton.setText("Add New Lesson/Sublesson");
+        addButton.setText("Add/Update  New Lesson+Sublesson");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
@@ -49,7 +49,7 @@ public class AddLesson extends javax.swing.JFrame {
 
         jLabel2.setText("New Sublesson");
 
-        jLabel3.setText("Regular Expression for new lesson/sublesson");
+        jLabel3.setText("Regular Expression for this Lesson, Sublesson pair");
 
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
