@@ -51,7 +51,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Constructor
      *
-     * @param user
+     * @param user  username of the person passed through from sign in
      */
     public Home(String user) {
         initComponents();
@@ -76,6 +76,9 @@ public class Home extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Sets up the lesson combo boxes
+     */
     private void setupLessons() {
         try {
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
@@ -410,7 +413,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Log out button
      *
-     * @param evt
+     * @param evt   Event of clicking on log out button
      */
     private void jLogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogOutButtonActionPerformed
         act.dispose();
@@ -428,7 +431,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Trainee Log Button
      *
-     * @param evt
+     * @param evt   event of clicking on the trainee log.
      */
     private void jTraineeLogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTraineeLogButtonActionPerformed
         act.dispose();
@@ -448,7 +451,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Passive Training Button
      *
-     * @param evt
+     * @param evt   Event of clicking on the passive button.
      */
     private void jPassiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassiveButtonActionPerformed
         act.dispose();
@@ -469,7 +472,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Active Training Button and Pop-Up
      *
-     * @param evt
+     * @param evt   Event of clicking on the active button
      */
     private void jActiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActiveButtonActionPerformed
         lesson = lessonList.get(jlessonBox.getSelectedIndex());
@@ -493,7 +496,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Tone Table Button
      *
-     * @param evt
+     * @param evt   Event of clicking on the tone table button
      */
     private void jTonesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTonesButtonActionPerformed
         if (!tone.isShowing()) {
@@ -503,6 +506,10 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTonesButtonActionPerformed
 
+    /**
+     * Brings up the nasalization table
+     * @param evt   Event of clicking the nasalization table button
+     */
     private void jNasalizationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNasalizationButtonActionPerformed
         if (!nas.isShowing()) {
             nas.setVisible(true);
@@ -514,7 +521,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Enclitic Button
      *
-     * @param evt
+     * @param evt   event of clicking the enclitics button
      */
     private void jEncliticButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEncliticButtonActionPerformed
         if (!enc.isShowing()) {
@@ -538,7 +545,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Change Password page
      *
-     * @param evt
+     * @param evt   event of clicking the change password button
      */
     private void jChangePasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseReleased
         act.dispose();
@@ -550,10 +557,18 @@ public class Home extends javax.swing.JFrame {
         pass1.setVisible(true);
     }//GEN-LAST:event_jChangePasswordMouseReleased
 
+    /**
+     * Displays the loading text.
+     * @param evt   event of clicking on the passive button.
+     */
     private void jPassiveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPassiveButtonMousePressed
         jLabel1.setText("Cargando...");
     }//GEN-LAST:event_jPassiveButtonMousePressed
 
+    /**
+     * Brings up the nama table
+     * @param evt   event of clicking on the nama table button
+     */
     private void jNaMaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNaMaButtonActionPerformed
         if (!NaMaOpen) {
             na = new NamaTable();

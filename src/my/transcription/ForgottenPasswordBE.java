@@ -7,7 +7,6 @@
 package my.transcription;
 
 import java.sql.*;
-import java.util.Scanner;
 import org.sqlite.*;
 
 /**
