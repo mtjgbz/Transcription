@@ -211,7 +211,7 @@ public class AdminHome extends javax.swing.JFrame {
                 .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, Short.MAX_VALUE))
         );
@@ -224,7 +224,7 @@ public class AdminHome extends javax.swing.JFrame {
         });
         jMenuBar1.add(jBackButton);
 
-        jLogOut.setText("Cerrar sesión");
+        jLogOut.setText("Juega");
         jLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLogOutMousePressed(evt);

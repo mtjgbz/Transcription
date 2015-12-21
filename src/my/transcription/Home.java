@@ -39,14 +39,13 @@ public class Home extends javax.swing.JFrame {
     ArrayList<Integer> lessonList;
    
     Timer timer1;
-    Boolean loading = false;
 
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
-        this.setTitle("Mixtec Transcription: Home");
+        this.setTitle("Transcripción Mixteca: Hogar");
     }
 
     /**
@@ -56,7 +55,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home(String user) {
         initComponents();
-        this.setTitle("Mixtec Transcription: Home");
+        this.setTitle("Transcripción Mixteca: Hogar");
         this.user = user;
         getContentPane().setBackground(new Color(148, 189, 203));
         jUsernameMenuDropDown.setText(user);
@@ -445,9 +444,6 @@ public class Home extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jTraineeLogButtonActionPerformed
 
-    public static void loading() {
-        JOptionPane.showOptionDialog(null, "         Loading...", "Passive Loading", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
-    }
 
     /**
      * Passive Training Button
@@ -455,7 +451,6 @@ public class Home extends javax.swing.JFrame {
      * @param evt
      */
     private void jPassiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassiveButtonActionPerformed
-        loading = true;
         act.dispose();
         enc.dispose();
         nas.dispose();
@@ -463,7 +458,6 @@ public class Home extends javax.swing.JFrame {
         if (NaMaOpen) {
             na.dispose();
         }
-
         lesson = lessonList.get((int) jlessonBox.getSelectedIndex());
         sublesson = sublessonMap.get(lesson).get(jsubLessonBox.getSelectedIndex());
 
@@ -548,21 +542,16 @@ public class Home extends javax.swing.JFrame {
      */
     private void jChangePasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jChangePasswordMouseReleased
         act.dispose();
-        //pass1.dispose();
+
         enc.dispose();
         nas.dispose();
         tone.dispose();
-//        if (!pass1.isShowing()) {
-//            pass1.setVisible(true);
-//        } else {
-//            pass1.toFront();
-//        }
         pass1 = new ChangePass(user);
         pass1.setVisible(true);
     }//GEN-LAST:event_jChangePasswordMouseReleased
 
     private void jPassiveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPassiveButtonMousePressed
-        isLoading();
+        jLabel1.setText("Cargando...");
     }//GEN-LAST:event_jPassiveButtonMousePressed
 
     private void jNaMaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNaMaButtonActionPerformed
@@ -576,26 +565,6 @@ public class Home extends javax.swing.JFrame {
             na.toFront();
         }
     }//GEN-LAST:event_jNaMaButtonActionPerformed
-
-    private void isLoading() {
-        jLabel1.setText("Loading...");
-
-        ActionListener listener = new ActionListener() {
-            int dots = 0;
-
-            public void actionPerformed(ActionEvent event) {
-                if (dots < 3) {
-                    jLabel1.setText(jLabel1.getText() + ".");
-                    dots++;
-                } else {
-                    dots = 0;
-                    jLabel1.setText("Loading");
-                }
-            }
-        };
-        timer1 = new Timer(300, listener);
-        timer1.start();
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jActiveButton;

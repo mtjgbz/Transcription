@@ -19,6 +19,7 @@ public class UpdateLessonFile extends javax.swing.JFrame {
      */
     public UpdateLessonFile() {
         initComponents();
+        jLabel1.setText(" ");
     }
     /**
      * 
@@ -52,6 +53,7 @@ public class UpdateLessonFile extends javax.swing.JFrame {
         transcriptionBrowse = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -72,6 +74,11 @@ public class UpdateLessonFile extends javax.swing.JFrame {
         });
 
         okButton.setText("OK");
+        okButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                okButtonMousePressed(evt);
+            }
+        });
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
@@ -84,6 +91,10 @@ public class UpdateLessonFile extends javax.swing.JFrame {
                 cancelButtonActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("Cargando...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,6 +110,8 @@ public class UpdateLessonFile extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(cancelButton)
@@ -114,10 +127,12 @@ public class UpdateLessonFile extends javax.swing.JFrame {
                     .addComponent(transcriptionPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(transcriptionBrowse))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(okButton)
-                    .addComponent(cancelButton))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(okButton)
+                        .addComponent(cancelButton))
+                    .addComponent(jLabel1))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,19 +149,22 @@ public class UpdateLessonFile extends javax.swing.JFrame {
     }//GEN-LAST:event_transcriptionPathActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
         User.createTextFile(transcriptionPath.getText(), getClass().getResource("TAA.db").toString());
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void okButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okButtonMousePressed
+        jLabel1.setText("Cargando...");
+    }//GEN-LAST:event_okButtonMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton okButton;
     private javax.swing.JButton transcriptionBrowse;
     private javax.swing.JLabel transcriptionLabel;
