@@ -63,15 +63,12 @@ public class User {
                 sublessons.add(sublesson);
 
                 String regex = rsExp.getString("RegularExpression");
-//                System.out.println(regex);
-//                String filePath = path + "lesson" + lesson + "-" + sublesson + ".txt";
-//                BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
+                regex = regex.replace(" ", "");
 
                 String filePath = "";
                 filePath = searchFile(regex, transcriptions, filePath);
 
                 filePaths.add(filePath);
-//                out.close();
             }
             stmt2.close();
             closeDB(stmt, rs);
@@ -81,7 +78,6 @@ public class User {
                 String newQuery = "UPDATE LESSONS SET FileList = '" + filePaths.get(i) + "' "
                         + "WHERE Lesson = " + lessons.get(i) + " AND "
                         + "Sublesson LIKE '" + sublessons.get(i) + "';";
-                System.out.println(newQuery);
                 stmt.execute(newQuery);
             }
             closeDB(stmt);
@@ -109,11 +105,9 @@ public class User {
             }
 
             for (File f : fileList) {
-                //If it's null, return so
-                //If it's a folder, search through that as well
                 if (f.isDirectory()) {
                     out = searchFile(regex, f.getPath(), out);
-                } //If it's .trs, search it using printName
+                } 
                 else if (f.getName().contains(".trs")) {
                     if (setupFile(f.getPath(), regex)) {
                         try {
@@ -125,18 +119,17 @@ public class User {
                         }
                     }
                 }
-                //If it comes up "positive" add it to a .txt file
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return out;
     }
-    
+
     public static void createTonePath(String transcriptions, String path) {
         try {
             dbPath = path;
-            Statement stmt = setupDB(parentFrame,dbPath);
+            Statement stmt = setupDB(parentFrame, dbPath);
             System.out.println(transcriptions);
             String newQuery = "UPDATE LESSONS SET FileList = '" + transcriptions + "' WHERE Lesson = 0;";
             stmt.execute(newQuery);
@@ -147,6 +140,48 @@ public class User {
         }
     }
 
+    /**
+     * Adds or updates a given Lesson, Sublesson pair in the TAA database
+     * 
+     * @param lesson Lesson number to be added or updated
+     * @param subLesson Sublesson to be added or updated
+     * @param regEx Regular Expression associated with Lesson and Sublesson
+     * @param path Path to Database resource
+     */
+    public static void addLesson(String lesson, String subLesson, String regEx, String path) {
+        try {
+            dbPath = path;
+            Statement stmt = setupDB(parentFrame, dbPath);
+            String query = "SELECT COUNT(*) AS RegularExpression"
+                    + " FROM LESSON_PLAN WHERE Lesson = '"
+                    + lesson + "' AND Sublesson = '"
+                    + subLesson + "';";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.getInt("RegularExpression") == 1) {
+                String newQuery = "UPDATE LESSON_PLAN SET RegularExpression = '"
+                        + regEx + "' WHERE Lesson = '" + lesson
+                        + "' AND Sublesson = '" + subLesson + "';";
+                stmt.execute(newQuery);
+            } else {
+                String newQuery = "INSERT INTO LESSON_PLAN"
+                        + "(Lesson, Sublesson, RegularExpression) VALUES ('"
+                        + lesson + "', '"
+                        + subLesson + "', '"
+                        + regEx + "');";
+                stmt.execute(newQuery);
+                
+                newQuery = "INSERT INTO LESSON"
+                        + "(Lesson, Sublesson) VALUES ('"
+                        + lesson + "', '"
+                        + subLesson + "');";
+                stmt.execute(newQuery);
+            }
+            closeDB(stmt,rs);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Searches the given file to see if there is any phrase matching the
@@ -176,7 +211,6 @@ public class User {
                 matcher.reset(value);
 
                 if (matcher.find()) {
-                    //System.out.println(value);
                     return true;
                 }
             }

@@ -17,74 +17,88 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author mike
  */
 public class AudioClip {
-    File file;
-    long startPos;
-    long stopPos;
-    
-    public AudioClip(){
-       this.file = new File("/home/mike/Transcription Data/Tones/01-01-na3ma3_edited.wav");
-       stopPos = 0;
+
+    private File file;
+    private long startPos;
+    private long stopPos;
+    private boolean stopped = true;
+    private int totalToRead;
+    private int offset;
+
+    public AudioClip() {
+        this.file = new File("/home/mike/Transcription Data/Tones/01-01-na3ma3_edited.wav");
+        stopPos = 0;
     }
-    
-    public AudioClip(File file){
-       this.file = file;
-       stopPos = 0;
-       
+
+    public AudioClip(File file) {
+        this.file = file;
+        stopPos = 0;
+        
+
     }
-    public AudioClip(File file, long startPos, long stopPos){
-        this.file=file;
-        this.startPos=startPos;
+
+    public AudioClip(File file, long startPos, long stopPos) {
+        this.file = file;
+        this.startPos = startPos;
         this.stopPos = stopPos;
+        offset = (int) (stopPos - startPos);
     }
-    
-    public void start(){
+
+    public void start() {
         AudioInputStream audioIn;
         try {
-                        System.out.print("playback dones");
 
             audioIn = AudioSystem.getAudioInputStream(file);
             AudioFormat format = audioIn.getFormat();
-            DataLine.Info info = new DataLine.Info(SourceDataLine.class,format);
-            SourceDataLine dataLine  = (SourceDataLine) AudioSystem.getLine(info);
+            DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+            SourceDataLine dataLine = (SourceDataLine) AudioSystem.getLine(info);
             dataLine.open(format);
             dataLine.start();
-            float byteRate = format.getFrameSize()*format.getFrameRate();
-            byte[] bytesBuffer;
-            if(stopPos==0){
-                bytesBuffer = new byte[dataLine.getBufferSize()];
-            }else{
-                long difference = stopPos-startPos;
-                
-                float length = (float) (difference/1e6);
-                
-                int bytes = (int) (length*byteRate);
-                
-                bytesBuffer = new byte[bytes];
-            }  
-            int off = (int) (byteRate*startPos/1e6);
-            
-            
-            int bytesRead = audioIn.read(bytesBuffer);
-            dataLine.write(bytesBuffer,off,bytesRead);
+            stopped = false;
+            byte[] bytesBuffer = new byte[audioIn.available()];
+            int bytesToRead = audioIn.available();
+            int total = 0;
+            int bytesRead;
+            boolean first = true;
+            if (stopPos == 0) {
+                while (((bytesRead = audioIn.read(bytesBuffer, 0, bytesToRead)) != -1) && !stopped) {
+                    bytesToRead = audioIn.available();
+                    dataLine.write(bytesBuffer, 0, bytesRead);
+
+                }
+            } else {
+                while (total < totalToRead && !stopped) {
+                    bytesToRead = audioIn.available();
+                    if (first) {
+                        bytesRead = audioIn.read(bytesBuffer, offset, bytesToRead);
+                    } else {
+                        bytesRead = audioIn.read(bytesBuffer, 0, bytesToRead);
+                    }
+                    if (bytesRead == -1) {
+                        break;
+                    }
+                    total += bytesRead;
+                    dataLine.write(bytesBuffer, 0, bytesRead);
+
+                }
+            }
             dataLine.drain();
             dataLine.close();
-            
+
             audioIn.close();
-            
-            
-            
-            
+
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             ex.printStackTrace();
             Logger.getLogger(AudioClip.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
+    public void stop() {
+        stopped = true;
+    }
 }

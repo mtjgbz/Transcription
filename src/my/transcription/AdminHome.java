@@ -32,7 +32,6 @@ public class AdminHome extends javax.swing.JFrame {
     
     private static final String[] LOG_NAMES = {"Date and Time Taken", "Lesson", "Sublesson", "Score"};
     private static final String[] ATTEMPT_NAMES = {"Question No.", "Attempt No.", "User Answer", "Correct Answer"};
-    private static final int COLUMN_NUM = 4;
 
     /**
      * Creates new form AdminHome
@@ -64,9 +63,7 @@ public class AdminHome extends javax.swing.JFrame {
     public void createPane(){
         jPanel1.remove(list1);
         jPanel1.remove(jLabel1);
-//        jPanel1.removeAll();
         jPanel1.setLayout(new BorderLayout());
-//        jPanel1.add(jButton1, BorderLayout.SOUTH);
         
         pane = new JTabbedPane();
         pane.setPreferredSize(jPanel1.getSize());
@@ -101,7 +98,6 @@ public class AdminHome extends javax.swing.JFrame {
         
         for (Map.Entry pair : practiceMap.entrySet()) {
             ArrayList<String> list = (ArrayList<String>) pair.getKey();
-            System.out.println(list);
             model.addRow(list.toArray());
         }
         
@@ -170,6 +166,7 @@ public class AdminHome extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jLoadText = new javax.swing.JMenuItem();
         jLoadTones = new javax.swing.JMenuItem();
+        jAddLesson = new javax.swing.JMenuItem();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -250,6 +247,14 @@ public class AdminHome extends javax.swing.JFrame {
         });
         jMenu3.add(jLoadTones);
 
+        jAddLesson.setText("Add/Update Lesson");
+        jAddLesson.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jAddLessonMousePressed(evt);
+            }
+        });
+        jMenu3.add(jAddLesson);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -308,42 +313,14 @@ public class AdminHome extends javax.swing.JFrame {
         window.setVisible(true);
     }//GEN-LAST:event_jLoadTonesMousePressed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jAddLessonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAddLessonMousePressed
+       AddLesson window = new AddLesson();
+       window.setVisible(true);
+    }//GEN-LAST:event_jAddLessonMousePressed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminHome().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jAddLesson;
     private javax.swing.JMenu jBackButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
