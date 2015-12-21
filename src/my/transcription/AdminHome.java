@@ -265,7 +265,7 @@ public class AdminHome extends javax.swing.JFrame {
         });
         jMenu3.add(jLoadTones);
 
-        jAddLesson.setText("Add/Update Lesson");
+        jAddLesson.setText("Añadir / Actualizar Lección");
         jAddLesson.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jAddLessonMousePressed(evt);
