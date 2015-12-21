@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import static my.transcription.SignIn.errorMsg;
 import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteDataSource;
 
@@ -35,6 +34,7 @@ public class ChangePass extends javax.swing.JFrame {
      */
     public ChangePass(String user) {
         this.user = user;
+        this.setTitle("Transcripción Mixteca: Cambiar la Contraseña");
         initComponents();
         getContentPane().setBackground(new Color(148, 189, 203));
     }
@@ -51,7 +51,7 @@ public class ChangePass extends javax.swing.JFrame {
             conn = ds.getConnection();
             stmt = conn.createStatement();
         } catch (Exception e) {
-            errorMsg(e.toString(), "Database error");
+            errorMsg(e.toString(), "Error de la Base de Datos");
         }
     }
 
@@ -113,14 +113,14 @@ public class ChangePass extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(430, 300));
 
-        jLabel1.setText("Current Password");
+        jLabel1.setText("         Contraseña Actual");
 
-        jLabel2.setText("New Password");
+        jLabel2.setText("         Contraseña Nueva");
 
-        jLabel3.setText("  Verify New Password");
+        jLabel3.setText("  Verificar Contraseña Nueva");
 
         jSetPassword.setBackground(new java.awt.Color(255, 255, 255));
-        jSetPassword.setText("Set Password");
+        jSetPassword.setText("Establecer la Contraseña ");
         jSetPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSetPasswordActionPerformed(evt);
@@ -152,22 +152,16 @@ public class ChangePass extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jNewPassword1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                            .addComponent(jNewPassword2, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                            .addComponent(jCurrentPassword)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSetPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(jLabel1)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addGap(130, 130, 130)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jNewPassword2)
+                    .addComponent(jSetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCurrentPassword)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jNewPassword1)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,27 +212,26 @@ public class ChangePass extends javax.swing.JFrame {
         if(getCurrentPassword(currentPass)) {
             if(newPass1.equals(newPass2)) {
                 if(newPass1.length() >= reqSize) {
-                    System.out.println("All good.");
                     addNewPassword();
                     this.dispose();
-                    success("Your password has successfully been changed.", "Change Password");
+                    success("La contraseña ha sido cambiada con éxito.", "Cambiar la Contraseña");
                 } 
                 else {
                     this.dispose();
                 System.out.println("The new Password you have entered has to be 4 or more characters.");
-                errorMsg("The new password you have entered needs to contain 4 or more characters, Please Try Again.", "Change Password");
+                errorMsg("La contraseña nueva que ha introducido debe contener 4 o más caracteres, inténtalo de nuevo por favor.", "Cambiar la Contraseña");
                 }
             }
             else {
                 this.dispose();
                 System.out.println("The new Passwords you have entered do not match.");
-                errorMsg("The new Passwords you have entered do not match, Please Try Again.", "Change Password");
+                errorMsg("Las dos contraseñas que ha introducido no coinciden, inténtalo de nuevo por favor.", "Cambiar la Contraseña");
             }
         }
         else {
             this.dispose();
             System.out.println("The Current Password you typed in is incorrect.");
-            errorMsg("Your Current Password that you typed in is incorrect, Please Try Again.", "Change Password");
+            errorMsg("La contraseña actual no es correcta, inténtalo de nuevo por favor.", "Cambiar la Contraseña");
             
         }
         closeDB(); 
@@ -261,7 +254,7 @@ public class ChangePass extends javax.swing.JFrame {
     }
     
     public static void success(String infoMessage, String titleBar) {
-        JOptionPane.showMessageDialog(null, infoMessage, "Success: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, infoMessage, "Éxito: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
     
    
