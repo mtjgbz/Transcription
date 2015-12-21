@@ -5,21 +5,17 @@
  */
 package my.transcription;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 
 /**
  *
- * @author mike
+ * @author Mike
  */
 public class Test extends javax.swing.JFrame {
     private static String path;
@@ -55,7 +51,6 @@ public class Test extends javax.swing.JFrame {
 
     /**
      * Creates new form Test
-     *
      * @param user
      */
     public Test(String user, Integer lesson, String subLesson) {
@@ -78,6 +73,9 @@ public class Test extends javax.swing.JFrame {
         tone = new ToneTable(path);
     }
 
+    /**
+     * Sets up the tones for test
+     */
     private void setupTones() {
         try {
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
@@ -93,10 +91,16 @@ public class Test extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Initalizes the Audio
+     */
     private void initAudio() {
         clip = tbe.makeClip(page);
     }
 
+    /**
+     * Initalizes the text field
+     */
     public void initTextFields() {
 //        pbe = new PassiveBE();
 //        phraseList = new ArrayList<String>();
@@ -303,10 +307,18 @@ public class Test extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Submit button
+     * @param evt 
+     */
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // pbe.submit(answerList);
     }
 
+    /**
+     * Previous Button
+     * @param evt 
+     */
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
         page--;
         clip.stop();

@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author mike
+ * @author Michael
  */
 public class TraineeLog extends javax.swing.JFrame {
 
@@ -46,6 +46,10 @@ public class TraineeLog extends javax.swing.JFrame {
         setupPane();
     }
     
+    /**
+     * Creating the panel that is within the frame.
+     * Updates it and contains tabs.
+     */
     public void setupPane(){
         jPanel1.setLayout(new BorderLayout());
         tabbedPane = new JTabbedPane();
@@ -67,6 +71,10 @@ public class TraineeLog extends javax.swing.JFrame {
         jPanel1.revalidate();
     }
     
+    /**
+     * Sets up the table for the Panel.
+     * @param isTest 
+     */
     public void setupTable(boolean isTest){
         HashMap<ArrayList<String>, Integer> map = backend.pullResults(user, isTest);
         
@@ -92,6 +100,10 @@ public class TraineeLog extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * 
+     * @param isTest 
+     */
     public void updateTable(boolean isTest){
         JTable table;
         if(isTest){
