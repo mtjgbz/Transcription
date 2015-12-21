@@ -55,10 +55,10 @@ public class PassiveBE {
     }
 
     /**
-     *
-     * @param lesson
-     * @param sublesson
-     * @return
+     * Selects the files to select phrases from
+     * @param l     lesson of the practice session
+     * @param s     sublesson of the practice session
+     * @return      path of file to pull phrases from.        
      */
     public String findFile(int l, String s) {
         try {
@@ -205,9 +205,9 @@ public class PassiveBE {
     }
 
     /**
-     *
-     * @param pageNum
-     * @return
+     * Creates the clips for the page.
+     * @param pageNum   Page number that is currently open
+     * @return          List of clips created.
      */
     public ArrayList<Clip> makeClips(int pageNum) {
         ArrayList<Clip> clips1 = new ArrayList<>();
