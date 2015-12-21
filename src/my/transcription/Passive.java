@@ -158,6 +158,9 @@ public class Passive extends javax.swing.JFrame {
         jBackButton.setEnabled(false);
     }
 
+    /**
+     * Selects the list of files from the database.
+     */
     private void setupTones() {
         try {
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
@@ -574,6 +577,7 @@ public class Passive extends javax.swing.JFrame {
             ArrayList<String> currList;
             if (phrase == null || phrase.get(1) == null) {
                 i--;
+                continue;
             }
             boolean contains = false;   //if the phrase has already been used
             int index = 0;              //index of the array list within arraylists
@@ -605,6 +609,7 @@ public class Passive extends javax.swing.JFrame {
             }
             if (contains == true) {
                 i--;                //if the phrase has already been used, try again
+                continue;
             } else {
                 phraseList.add(phrase);
                 currList.set(i % 5, phrase.get(1)); //set the right arraylist position in textList
@@ -645,9 +650,9 @@ public class Passive extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @param words
-     * @param phrases
+     * Highlights the words that are applicable to the lesson.
+     * @param words     words that are selected to be highlighted
+     * @param phrases   phrases that contains the words to be highlighted
      * @throws BadLocationException
      */
     public void highlightWord(ArrayList<String> words, ArrayList<String> phrases) throws BadLocationException {
@@ -717,6 +722,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Returns the user to home.
+     * @param evt   Event of clicking on home button.
+     */
     private void jHomeMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuButtonMouseClicked
         enc.dispose();
         nas.dispose();
@@ -729,6 +738,10 @@ public class Passive extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jHomeMenuButtonMouseClicked
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jEncliticMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEncliticMenuButtonMouseClicked
         if (!enc.isShowing()) {
             enc.setVisible(true);
@@ -1093,40 +1106,6 @@ public class Passive extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jNaMaMenuMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Passive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Passive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Passive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Passive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new Passive().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
