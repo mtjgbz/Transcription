@@ -739,8 +739,8 @@ public class Passive extends javax.swing.JFrame {
     }//GEN-LAST:event_jHomeMenuButtonMouseClicked
 
     /**
-     * 
-     * @param evt 
+     * Opens the Enclitics table.
+     * @param evt   Event of clicking on the enclitics button
      */
     private void jEncliticMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEncliticMenuButtonMouseClicked
         if (!enc.isShowing()) {
@@ -750,6 +750,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jEncliticMenuButtonMouseClicked
 
+    /**
+     * Opens the Nasalization table.
+     * @param evt   Event of clicking on the nasalization button.
+     */
     private void jNasMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNasMenuButtonMouseClicked
         if (!nas.isShowing()) {
             nas.setVisible(true);
@@ -758,6 +762,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jNasMenuButtonMouseClicked
 
+    /**
+     * Opens the tone table.
+     * @param evt   Event of clicking on the tone table button.
+     */
     private void jTTMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTMenuButtonMouseClicked
         if (!tone.isShowing()) {
             tone.setVisible(true);
@@ -766,11 +774,19 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTTMenuButtonMouseClicked
 
+    /**
+     * Returns to sign in page
+     * @param evt   Event when clicking on log out button
+     */
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
         new SignIn().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
+    /**
+     * Plays the sound. 
+     * @param evt   Event of clicking the play button.
+     */
     private void playButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton1MouseReleased
         clip2.stop();
         clip3.stop();
@@ -805,6 +821,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playButton1MouseReleased
 
+    /**
+     * Plays the second sound item.
+     * @param evt   Event of clicking the play button.
+     */
     private void playButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton2MouseReleased
         clip1.stop();
         clip3.stop();
@@ -839,6 +859,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playButton2MouseReleased
 
+    /**
+     * Plays the third item on the page.
+     * @param evt   Event of clicking on the play button.
+     */
     private void playButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton3MouseReleased
         clip1.stop();
         clip2.stop();
@@ -873,6 +897,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playButton3MouseReleased
 
+    /**
+     * Plays the fourth item.
+     * @param evt   Event of clicking on the play button.
+     */
     private void playButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton4MouseReleased
         clip1.stop();
         clip2.stop();
@@ -907,6 +935,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playButton4MouseReleased
 
+    /**
+     * Plays the fifth item.
+     * @param evt   Event of clicking on the play button
+     */
     private void playButton5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButton5MouseReleased
         clip1.stop();
         clip2.stop();
@@ -941,6 +973,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playButton5MouseReleased
 
+    /**
+     * Moves to the next page.
+     * @param evt   Event of clicking the next button.
+     */
     private void jNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNextButtonActionPerformed
         playButton1.setEnabled(false);
         playButton2.setEnabled(false);
@@ -1020,6 +1056,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jNextButtonActionPerformed
 
+    /**
+     * Moves back one page
+     * @param evt   Event of clicking on the back button.
+     */
     private void jBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackButtonActionPerformed
         playButton1.setEnabled(false);
         playButton2.setEnabled(false);
@@ -1093,6 +1133,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBackButtonActionPerformed
 
+    /**
+     * Opens the nama table.
+     * @param evt   Event of clicking on the nama table button
+     */
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
         if (!NaMaOpen) {
             na = new NamaTable();
