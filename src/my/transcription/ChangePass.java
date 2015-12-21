@@ -39,7 +39,9 @@ public class ChangePass extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(148, 189, 203));
     }
     
-    
+    /**
+     * Sets up the database.
+     */
     public void setupDB() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -55,6 +57,9 @@ public class ChangePass extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * closes the database.
+     */
     public void closeDB() {
         try {
             stmt.close();
@@ -67,6 +72,11 @@ public class ChangePass extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Ensures the user has entered current password correctly.
+     * @param password  current password of the user
+     * @return          true if user and password information are correct
+     */
     public boolean getCurrentPassword(String password) {
         try {
             String query = "SELECT COUNT(*) AS Users FROM USERS WHERE USERNAME = '" + user + "' AND PASSWORD = '" + password + "';";
@@ -81,7 +91,11 @@ public class ChangePass extends javax.swing.JFrame {
             return false;
         }
     }
-     public void addNewPassword() {
+    
+    /**
+     * Updates the user's password to the newly entered one.
+     */
+    public void addNewPassword() {
         try {
             String newQuery = "UPDATE USERS SET Password = '" + newPass1 + "' WHERE Username = '" + user + "';";
             System.out.println(newQuery);
@@ -193,6 +207,10 @@ public class ChangePass extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Sets the updated password.
+     * @param evt   Event of clicking on set password.
+     */
     private void jSetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSetPasswordActionPerformed
         setupDB();
         char[] pass1 = jCurrentPassword.getPassword();
@@ -249,10 +267,20 @@ public class ChangePass extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jNewPassword2ActionPerformed
 
+    /**
+     * Displays an error message with given information.
+     * @param infoMessage       Message to appear in the window.
+     * @param titleBar          Message to appear on title bar.
+     */
     public static void errorMsg(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "Error: " + titleBar, JOptionPane.ERROR_MESSAGE);
     }
     
+    /**
+     * Displays a message telling about updated password.
+     * @param infoMessage       Message to appear in the window.
+     * @param titleBar          Message to appear in the title bar.
+     */
     public static void success(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "Éxito: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
