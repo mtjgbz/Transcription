@@ -32,7 +32,6 @@ public class AdminHome extends javax.swing.JFrame {
     
     private static final String[] LOG_NAMES = {"Date and Time Taken", "Lesson", "Sublesson", "Score"};
     private static final String[] ATTEMPT_NAMES = {"Question No.", "Attempt No.", "User Answer", "Correct Answer"};
-    private static final int COLUMN_NUM = 4;
 
     /**
      * Creates new form AdminHome
@@ -64,9 +63,7 @@ public class AdminHome extends javax.swing.JFrame {
     public void createPane(){
         jPanel1.remove(list1);
         jPanel1.remove(jLabel1);
-//        jPanel1.removeAll();
         jPanel1.setLayout(new BorderLayout());
-//        jPanel1.add(jButton1, BorderLayout.SOUTH);
         
         pane = new JTabbedPane();
         pane.setPreferredSize(jPanel1.getSize());
@@ -101,7 +98,6 @@ public class AdminHome extends javax.swing.JFrame {
         
         for (Map.Entry pair : practiceMap.entrySet()) {
             ArrayList<String> list = (ArrayList<String>) pair.getKey();
-            System.out.println(list);
             model.addRow(list.toArray());
         }
         

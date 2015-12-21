@@ -20,13 +20,23 @@ public class LogBE {
     
     private JFrame parentFrame;
     
+    private static final String TEST_ATTEMPT = "TEST_ATTEMPT";
+    private static final String TEST_ANSWER = "TEST_ANSWER";
+    private static final String TEST_ID = "TestID";
+    private static final String TEST_TABLE = "TESTS";
+    
+    private static final String PRACTICE_ATTEMPT = "PRACTICE_ATTEMPT";
+    private static final String PRACTICE_ANSWER = "PRACTICE_ANSWER";
+    private static final String PRACTICE_ID = "PracticeID";
+    private static final String PRACTICE_TABLE = "PRACTICE";
+    
     public LogBE(JFrame pFrame){
         parentFrame = pFrame;
+        stmt = User.setupDB(parentFrame, getClass().getResource("TAA.db").toString());
     }
     
     public HashMap<String, String> createLogs(){
         try{
-            stmt = User.setupDB(parentFrame, getClass().getResource("TAA.db").toString());
             String query = "SELECT * FROM USERS;";
             rs = stmt.executeQuery(query);
             
@@ -53,11 +63,11 @@ public class LogBE {
             String table;
             String id;
             if(isTest){
-                table = "TESTS";
-                id = "TestID";
+                table = TEST_TABLE;
+                id = TEST_ID;
             }else{
-                table = "PRACTICE";
-                id = "PracticeID";
+                table = PRACTICE_TABLE;
+                id = PRACTICE_ID;
             }
             String query = "SELECT * FROM " + table + " WHERE Username = '" + username + "';";
             rs = stmt.executeQuery(query);
@@ -91,11 +101,11 @@ public class LogBE {
             String name;
             String table;
             if(isTest){
-                name = "TestID";
-                table = "TESTS";
+                name = TEST_ID;
+                table = TEST_TABLE;
             }else{
-                name = "PracticeID";
-                table = "PRACTICE";
+                name = PRACTICE_ID;
+                table = PRACTICE_TABLE;
             }
             String query = "SELECT " + name + " FROM " + table + " WHERE DATETAKEN = '" 
                     + date + "';";
@@ -115,13 +125,13 @@ public class LogBE {
             String attemptTable;
             String columnName;
             if(isTest){
-                answerTable = "TEST_ANSWER";
-                attemptTable = "TEST_ATTEMPT";
-                columnName = "TestID";
+                answerTable = TEST_ANSWER;
+                attemptTable = TEST_ATTEMPT;
+                columnName = TEST_ID;
             }else{
-                answerTable = "PRACTICE_ANSWER";
-                attemptTable = "PRACTICE_ATTEMPT";
-                columnName = "PracticeID";
+                answerTable = PRACTICE_ANSWER;
+                attemptTable = PRACTICE_ATTEMPT;
+                columnName = PRACTICE_ID;
             }
             
             String query = "SELECT * FROM " + answerTable + " AS A JOIN "
