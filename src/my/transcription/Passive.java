@@ -158,6 +158,9 @@ public class Passive extends javax.swing.JFrame {
         jBackButton.setEnabled(false);
     }
 
+    /**
+     * Selects the list of files from the database.
+     */
     private void setupTones() {
         try {
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
@@ -574,6 +577,7 @@ public class Passive extends javax.swing.JFrame {
             ArrayList<String> currList;
             if (phrase == null || phrase.get(1) == null) {
                 i--;
+                continue;
             }
             boolean contains = false;   //if the phrase has already been used
             int index = 0;              //index of the array list within arraylists
@@ -645,9 +649,9 @@ public class Passive extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @param words
-     * @param phrases
+     * Highlights the words that are applicable to the lesson.
+     * @param words     words that are selected to be highlighted
+     * @param phrases   phrases that contains the words to be highlighted
      * @throws BadLocationException
      */
     public void highlightWord(ArrayList<String> words, ArrayList<String> phrases) throws BadLocationException {
@@ -717,6 +721,10 @@ public class Passive extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Returns the user to home.
+     * @param evt   Event of clicking on home button.
+     */
     private void jHomeMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuButtonMouseClicked
         enc.dispose();
         nas.dispose();
@@ -729,6 +737,10 @@ public class Passive extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jHomeMenuButtonMouseClicked
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jEncliticMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEncliticMenuButtonMouseClicked
         if (!enc.isShowing()) {
             enc.setVisible(true);
