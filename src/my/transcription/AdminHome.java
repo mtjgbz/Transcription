@@ -166,6 +166,7 @@ public class AdminHome extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jLoadText = new javax.swing.JMenuItem();
         jLoadTones = new javax.swing.JMenuItem();
+        jAddLesson = new javax.swing.JMenuItem();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -246,6 +247,14 @@ public class AdminHome extends javax.swing.JFrame {
         });
         jMenu3.add(jLoadTones);
 
+        jAddLesson.setText("Add Lesson");
+        jAddLesson.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jAddLessonMousePressed(evt);
+            }
+        });
+        jMenu3.add(jAddLesson);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -304,6 +313,11 @@ public class AdminHome extends javax.swing.JFrame {
         window.setVisible(true);
     }//GEN-LAST:event_jLoadTonesMousePressed
 
+    private void jAddLessonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAddLessonMousePressed
+       AddLesson window = new AddLesson();
+       window.setVisible(true);
+    }//GEN-LAST:event_jAddLessonMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -340,6 +354,7 @@ public class AdminHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jAddLesson;
     private javax.swing.JMenu jBackButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

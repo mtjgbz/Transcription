@@ -125,11 +125,11 @@ public class User {
         }
         return out;
     }
-    
+
     public static void createTonePath(String transcriptions, String path) {
         try {
             dbPath = path;
-            Statement stmt = setupDB(parentFrame,dbPath);
+            Statement stmt = setupDB(parentFrame, dbPath);
             System.out.println(transcriptions);
             String newQuery = "UPDATE LESSONS SET FileList = '" + transcriptions + "' WHERE Lesson = 0;";
             stmt.execute(newQuery);
@@ -140,6 +140,33 @@ public class User {
         }
     }
 
+    public static void addLesson(String lesson, String subLesson, String regEx, String path) {
+        try {
+            dbPath = path;
+            Statement stmt = setupDB(parentFrame, dbPath);
+            String query = "SELECT COUNT(*) AS RegularExpression"
+                    + " FROM LESSON_PLAN WHERE Lesson = '"
+                    + lesson + "' AND Sublesson = '"
+                    + subLesson + "';";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.getInt("RegularExpression") == 1) {
+                String newQuery = "UPDATE LESSON_PLAN SET RegularExpression = '"
+                        + regEx + "' WHERE Lesson = '" + lesson
+                        + "' AND Sublesson = '" + subLesson + "';";
+                stmt.execute(newQuery);
+            } else {
+                String newQuery = "INSERT INTO LESSON_PLAN"
+                        + "(Lesson, Sublesson, RegularExpression) VALUES ('"
+                        + lesson + "', '"
+                        + subLesson + "', '"
+                        + regEx + "');";
+                stmt.execute(newQuery);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Searches the given file to see if there is any phrase matching the
