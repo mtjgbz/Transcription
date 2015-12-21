@@ -609,6 +609,7 @@ public class Passive extends javax.swing.JFrame {
             }
             if (contains == true) {
                 i--;                //if the phrase has already been used, try again
+                continue;
             } else {
                 phraseList.add(phrase);
                 currList.set(i % 5, phrase.get(1)); //set the right arraylist position in textList
