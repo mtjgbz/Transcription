@@ -153,6 +153,9 @@ public class Practice extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Gets the list of files for the lesson.
+     */
     private void setupTones() {
         try {
             Statement stmt = User.setupDB(this, getClass().getResource("TAA.db").toString());
@@ -168,11 +171,17 @@ public class Practice extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Initializes the audio.
+     */
     private void initAudio() {
         clip = backend.makeClip(page);
         timer = timersList.get(page-1);
     }
 
+    /**
+     * Sets up the document filter.
+     */
     private void setupDoc() {
         AbstractDocument doc = (AbstractDocument) jTextPane1.getDocument();
 
@@ -305,6 +314,11 @@ public class Practice extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Highlights the words that need to be highlighted.
+     * @param input     phrase with words to be highlighted.
+     * @throws BadLocationException 
+     */
     public void highlightAll(String input) throws BadLocationException {
         Highlighter highlighter = null;
         Highlighter.HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN);
@@ -325,6 +339,10 @@ public class Practice extends javax.swing.JFrame {
 
     }
     
+    /**
+     * Gets the answers that have been entered by the user.
+     * @throws BadLocationException 
+     */
     private void getAnswers() throws BadLocationException {
         Document doc = jTextPane1.getDocument();
 
@@ -339,6 +357,17 @@ public class Practice extends javax.swing.JFrame {
         blank4 = blank4.replaceAll(" ", "");
     }
     
+    /**
+     * Saves the state on the question.
+     * @param text      complete phrase from question
+     * @param attempt   attempts left on the question
+     * @param start     starting index of the answer
+     * @param end       ending index of the answer
+     * @param wCount    word number in the list of words
+     * @param pg        current page the user is on
+     * @param word      word entered by the user
+     * @param crct      True if answer is correct, false if incorrect
+     */
     private void saveState(String text, int attempt, int start, int end, int wCount, int pg, String word, boolean crct) {
         attempts.set(pg-1, attempt);
         saveStart.get(pg-1).set(wCount-1, start);
@@ -348,6 +377,10 @@ public class Practice extends javax.swing.JFrame {
         backend.calculateScore();
     }
    
+    /**
+     * Checks the answers in the phrase
+     * @throws BadLocationException 
+     */
     private void checkAnswers() throws BadLocationException {
         getAnswers();
         
@@ -444,30 +477,50 @@ public class Practice extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Marks questions correct and disables the document filter.
+     */
     private void disableDocFilter1() {
         correct1 = true;
         start1 = 0;
         end1 = 0;
     }
     
+    /**
+     * Marks question correct and disables the document filter.
+     */
     private void disableDocFilter2() {
         correct2 = true;
         start2 = 0;
         end2 = 0;
     }
     
+    /**
+     * Marks question correct and disables the document filter.
+     */
     private void disableDocFilter3() {
         correct3 = true;
         start3 = 0;
         end3 = 0;
     }
     
+    /**
+     * Marks question correct and disables the document filter
+     */
     private void disableDocFilter4() {
         correct4 = true;
         start4 = 0;
         end4 = 0;
     }
     
+    /**
+     * Highlights the words appropriately if correct or incorrect.
+     * @param ans       user response
+     * @param word      correct answer
+     * @param start     start of input
+     * @param end       end of input
+     * @return          true if answer is correct
+     */
     private boolean highlightWord(String ans, String word, int start, int end) {
         
         Highlighter highlighter = jTextPane1.getHighlighter();
@@ -493,6 +546,9 @@ public class Practice extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Checks all of the words for the wrong answers.
+     */
     private void findWrongAnswers() {
         if(wordCount == 1 && correct1 == false) {
             displayCorrectAnswers(start1, end1, words.get(0));
@@ -532,6 +588,12 @@ public class Practice extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Displays the correct answer when the user is out of attempts.
+     * @param redStart      
+     * @param blueStart
+     * @param word 
+     */
     private void displayCorrectAnswers(int redStart, int blueStart, String word) {
         Document doc = jTextPane1.getDocument();
         
@@ -549,6 +611,10 @@ public class Practice extends javax.swing.JFrame {
         }
     }    
 
+    /**
+     * Finds the start and the end of the inputted word.
+     * @param input 
+     */
     private void findStartEnd(String input) {
         numTags = 0;
         boolean s1 = false;
@@ -714,6 +780,9 @@ public class Practice extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Resets all correct booleans to false.
+     */
     public void resetCorrect(){
         correct1 = false;
         correct2 = false;
@@ -721,6 +790,9 @@ public class Practice extends javax.swing.JFrame {
         correct4 = false;
     }
     
+    /**
+     * Preps the text fields for display.
+     */
     public void initTextFields() {
         backend = new ActiveBE(false);
         phraseList = new ArrayList<ArrayList<String>>();
@@ -762,6 +834,9 @@ public class Practice extends javax.swing.JFrame {
         showText();
     }
     
+    /**
+     * Shows text in the text panes.
+     */
     private void showText() {
         if(!startTags.isEmpty() && !endTags.isEmpty()) {
             startTags.clear();
@@ -998,6 +1073,10 @@ public class Practice extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
    
+    /**
+     * Submits the answers to be checked.
+     * @param evt   Event of clicking on the submit button.
+     */
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         clicks++;
         attempt--;
@@ -1019,6 +1098,10 @@ public class Practice extends javax.swing.JFrame {
         
     }
 
+    /**
+     * Moves to the previous question.
+     * @param evt   Event of clicking on the back button. 
+     */
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
         Document doc = jTextPane1.getDocument();
         page--;
@@ -1057,6 +1140,10 @@ public class Practice extends javax.swing.JFrame {
         renderState(jTextPane1.getText());
     }//GEN-LAST:event_prevButtonActionPerformed
 
+    /**
+     * Displays the prepared phrase.
+     * @param phrase    phrase to be displayed.
+     */
     private void renderState(String phrase) {
         System.out.println("phrase: " + phrase);
         System.out.println("rs start1: " + start1);
@@ -1099,7 +1186,10 @@ public class Practice extends javax.swing.JFrame {
         //return text;
     }
 
-    
+    /**
+     * Returns the user to the home page.
+     * @param evt   Event of clicking the home button.
+     */
     private void jHomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMenuMouseClicked
         enc.dispose();
         if (NaMaOpen) {
@@ -1112,6 +1202,10 @@ public class Practice extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jHomeMenuMouseClicked
 
+    /**
+     * Opens the Enclitics table.
+     * @param evt Event of clicking the enclitics button.
+     */
     private void jEncMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEncMenuMouseClicked
         if (!enc.isShowing()) {
             enc.setVisible(true);
@@ -1120,6 +1214,10 @@ public class Practice extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jEncMenuMouseClicked
 
+    /**
+     * Opens the nasalizations table.
+     * @param evt   Event of clicking the nasalization button.
+     */
     private void jNasMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNasMenuMouseClicked
         if (!nas.isShowing()) {
             nas.setVisible(true);
@@ -1128,6 +1226,10 @@ public class Practice extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jNasMenuMouseClicked
 
+    /**
+     * Opens the Tone table.
+     * @param evt   Event of clicking the tone table button.
+     */
     private void jToneTableMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToneTableMenuMouseClicked
         if (!tone.isShowing()) {
             tone.setVisible(true);
@@ -1136,11 +1238,19 @@ public class Practice extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jToneTableMenuMouseClicked
 
+    /**
+     * Logs out the user and returns to the sign in page.
+     * @param evt   Event of clicking on the log out button.
+     */
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
         new SignIn().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
+    /**
+     * Plays the sound file next to the phrase.
+     * @param evt   Event of clicking on the play button.
+     */
     private void playButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButton1ActionPerformed
         clip.stop();
         timer.stop();
@@ -1160,6 +1270,10 @@ public class Practice extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playButton1ActionPerformed
     
+    /**
+     * Moves to the next page.
+     * @param evt   Event of clicking the next button.
+     */
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         page++;
         clip.stop();
@@ -1188,6 +1302,10 @@ public class Practice extends javax.swing.JFrame {
         //text = jTextPane1.getText();
     }//GEN-LAST:event_nextButtonActionPerformed
 
+    /**
+     * Opens the nama page.
+     * @param evt   Event of clicking the nama button.
+     */
     private void jNaMaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNaMaMenuMouseClicked
         if (!NaMaOpen) {
             na = new NamaTable();
