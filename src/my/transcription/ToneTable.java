@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineEvent;
 import static javax.sound.sampled.LineEvent.Type.STOP;
 import javax.sound.sampled.LineListener;
@@ -485,7 +486,8 @@ public class ToneTable extends javax.swing.JFrame {
         try {
             if (clip == null || !clip.isOpen()) {
                 audioIn = AudioSystem.getAudioInputStream(new File(path + stringNames.get(buttonNum).get(count)));
-                clip = AudioSystem.getClip();
+                DataLine.Info info = new DataLine.Info(Clip.class,audioIn.getFormat());
+                clip = (Clip) AudioSystem.getLine(info);
                 clip.open(audioIn);
                 audioIn.close();
                 System.out.println(counter);

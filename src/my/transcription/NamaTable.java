@@ -58,7 +58,8 @@ public class NamaTable extends javax.swing.JFrame {
         initComponents();
         setupTones();
         NamaLoader loader = new NamaLoader();
-        cliplist = loader.load(path);
+        loader.makeFiles(path);
+        cliplist = loader.load();
         listenerlist = listeners();
         for (Clip clip : cliplist) {
             clip.addLineListener(listenerAll);
