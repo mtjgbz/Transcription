@@ -169,6 +169,7 @@ public class User {
                         + regEx + "');";
                 stmt.execute(newQuery);
             }
+            closeDB(stmt,rs);
 
         } catch (Exception e) {
             e.printStackTrace();
