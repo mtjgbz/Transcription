@@ -176,6 +176,12 @@ public class User {
                         + subLesson + "', '"
                         + regEx + "');";
                 stmt.execute(newQuery);
+                
+                newQuery = "INSERT INTO LESSON"
+                        + "(Lesson, Sublesson) VALUES ('"
+                        + lesson + "', '"
+                        + subLesson + "');";
+                stmt.execute(newQuery);
             }
             closeDB(stmt,rs);
 
